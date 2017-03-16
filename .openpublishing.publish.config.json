@@ -3,12 +3,12 @@
   "need_generate_intellisense": false,
   "docsets_to_publish": [
     {
-      "docset_name": "mooncaketest",
-      "build_source_folder": "mooncaketest",
-      "build_output_subfolder": "mooncaketest",
-      "locale": "en-us",
-      "monikers": [],
-      "open_to_public_contributors": true,
+      "docset_name": "opsacndocsdemo",
+      "build_source_folder": "articles",
+      "build_output_subfolder": "articles",
+      "locale": "zh-cn",
+      "version": 0,
+      "open_to_public_contributors": false,
       "type_mapping": {
         "Conceptual": "Content",
         "ManagedReference": "Content",
@@ -16,7 +16,39 @@
       },
       "build_entry_point": "docs",
       "template_folder": "_themes",
-      "version": 0
+      "is_dynamic_rendering": false
+    },
+    {
+      "docset_name": "opsacndocsdemo-develop",
+      "build_source_folder": "develop",
+      "build_output_subfolder": "develop",
+      "locale": "zh-cn",
+      "version": 0,
+      "open_to_public_contributors": false,
+      "type_mapping": {
+        "Conceptual": "Content",
+        "ManagedReference": "Content",
+        "RestApi": "Content"
+      },
+      "build_entry_point": "docs",
+      "template_folder": "_themes",
+      "is_dynamic_rendering": false
+    },
+    {
+      "docset_name": "opsacndocsdemo-downloads",
+      "build_source_folder": "downloads",
+      "build_output_subfolder": "downloads",
+      "locale": "zh-cn",
+      "version": 0,
+      "open_to_public_contributors": false,
+      "type_mapping": {
+        "Conceptual": "Content",
+        "ManagedReference": "Content",
+        "RestApi": "Content"
+      },
+      "build_entry_point": "docs",
+      "template_folder": "_themes",
+      "is_dynamic_rendering": false
     }
   ],
   "notification_subscribers": [],
@@ -26,7 +58,7 @@
   "dependent_repositories": [
     {
       "path_to_root": "_themes",
-      "url": "https://github.com/Microsoft/templates.docs.msft",
+      "url": "https://github.com/Microsoft/templates.docs.msft.zh-cn",
       "branch": "master",
       "branch_mapping": {}
     }

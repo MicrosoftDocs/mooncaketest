@@ -1,0 +1,286 @@
+- name: Azure
+  tocHref: /opsacndocsdemo/
+  topicHref: /opsacndocsdemo/index
+  items:
+  - name: Active Directory
+    tocHref: /opsacndocsdemo/active-directory/
+    topicHref: /opsacndocsdemo/active-directory/
+    items:
+      - name: Connect
+        tocHref: /opsacndocsdemo/active-directory/connect/
+        topicHref: /opsacndocsdemo/active-directory/connect/
+      - name: Connect Health
+        tocHref: /opsacndocsdemo/active-directory/connect-health/
+        topicHref: /opsacndocsdemo/active-directory/connect-health/
+      - name: Develop
+        tocHref: /opsacndocsdemo/active-directory/develop/
+        topicHref: /opsacndocsdemo/active-directory/develop/
+      - name: Privileged Identity Management
+        tocHref: /opsacndocsdemo/active-directory/privileged-identity-management/
+        topicHref: /opsacndocsdemo/active-directory/privileged-identity-management/
+  - name: Active Directory B2C
+    tocHref: /opsacndocsdemo/active-directory-b2c/
+    topicHref: /opsacndocsdemo/active-directory-b2c/
+  - name: Active Directory Domain Services
+    tocHref: /opsacndocsdemo/active-directory-domain-services/
+    topicHref: /opsacndocsdemo/active-directory-domain-services/
+  - name: Analysis Services
+    tocHref: /opsacndocsdemo/analysis-services/
+    topicHref: /opsacndocsdemo/analysis-services/
+  - name: API Management
+    tocHref: /opsacndocsdemo/api-management/
+    topicHref: /opsacndocsdemo/api-management/
+  - name: App Service
+    tocHref: /opsacndocsdemo/app-service/
+    topicHref: /opsacndocsdemo/app-service/
+    items:
+    - name: Web Apps
+      tocHref: /opsacndocsdemo/app-service-web/
+      topicHref: /opsacndocsdemo/app-service-web/
+    - name: Mobile Apps
+      tocHref: /opsacndocsdemo/app-service-mobile/
+      topicHref: /opsacndocsdemo/app-service-mobile/
+    - name: API Apps
+      tocHref: /opsacndocsdemo/app-service-api/
+      topicHref: /opsacndocsdemo/app-service-api/
+  - name: Advisor
+    tocHref: /opsacndocsdemo/advisor/
+    topicHref: /opsacndocsdemo/advisor/
+  - name: Logic Apps
+    tocHref: /opsacndocsdemo/logic-apps/
+    topicHref: /opsacndocsdemo/logic-apps/
+  - name: Application Gateway
+    tocHref: /opsacndocsdemo/application-gateway/
+    topicHref: /opsacndocsdemo/application-gateway/
+  - name: Application Insights
+    tocHref: /opsacndocsdemo/application-insights/
+    topicHref: /opsacndocsdemo/application-insights/
+  - name: Automation
+    tocHref: /opsacndocsdemo/automation/
+    topicHref: /opsacndocsdemo/automation/
+  - name: Container Registry
+    tocHref: /opsacndocsdemo/container-registry/
+    topicHref: /opsacndocsdemo/container-registry/
+  - name: Functions
+    tocHref: /opsacndocsdemo/azure-functions/
+    topicHref: /opsacndocsdemo/azure-functions/
+  - name: Government
+    tocHref: /opsacndocsdemo/azure-government/
+    topicHref: /opsacndocsdemo/azure-government/
+  - name: Portal
+    tocHref: /opsacndocsdemo/azure-portal/
+    topicHref: /opsacndocsdemo/azure-portal/
+  - name: Resource Manager
+    tocHref: /opsacndocsdemo/azure-resource-manager/
+    topicHref: /opsacndocsdemo/azure-resource-manager/
+  - name: Azure Stack
+    tocHref: /opsacndocsdemo/azure-stack/
+    topicHref: /opsacndocsdemo/azure-stack/
+  - name: Supportability
+    tocHref: /opsacndocsdemo/azure-supportability/
+    topicHref: /opsacndocsdemo/azure-supportability/
+  - name: Backup
+    tocHref: /opsacndocsdemo/backup/
+    topicHref: /opsacndocsdemo/backup/
+  - name: Batch
+    tocHref: /opsacndocsdemo/batch/
+    topicHref: /opsacndocsdemo/batch/
+  - name: Billing
+    tocHref: /opsacndocsdemo/billing/
+    topicHref: /opsacndocsdemo/billing/
+  - name: Biztalk Services
+    tocHref: /opsacndocsdemo/biztalk-services/
+    topicHref: /opsacndocsdemo/biztalk-services/
+  - name: Cache
+    tocHref: /opsacndocsdemo/cache/
+    topicHref: /opsacndocsdemo/cache/
+  - name: CDN
+    tocHref: /opsacndocsdemo/cdn/
+    topicHref: /opsacndocsdemo/cdn/
+  - name: Cloud Services
+    tocHref: /opsacndocsdemo/cloud-services/
+    topicHref: /opsacndocsdemo/cloud-services/
+  - name: Cognitive Services
+    tocHref: /opsacndocsdemo/cognitive-services/
+    topicHref: /opsacndocsdemo/cognitive-services/
+  - name: Connectors
+    tocHref: /opsacndocsdemo/connectors/
+    topicHref: /opsacndocsdemo/connectors/
+  - name: Container Service
+    tocHref: /opsacndocsdemo/container-service/
+    topicHref: /opsacndocsdemo/container-service/
+  - name: Data Catalog
+    tocHref: /opsacndocsdemo/data-catalog/
+    topicHref: /opsacndocsdemo/data-catalog/
+  - name: Data Factory
+    tocHref: /opsacndocsdemo/data-factory/
+    topicHref: /opsacndocsdemo/data-factory/
+  - name: Data Lake Analytics
+    tocHref: /opsacndocsdemo/data-lake-analytics/
+    topicHref: /opsacndocsdemo/data-lake-analytics/
+  - name: Data Lake Store
+    tocHref: /opsacndocsdemo/data-lake-store/
+    topicHref: /opsacndocsdemo/data-lake-store/
+  - name: Devtest Lab
+    tocHref: /opsacndocsdemo/devtest-lab/
+    topicHref: /opsacndocsdemo/devtest-lab/
+  - name: DNS
+    tocHref: /opsacndocsdemo/dns/
+    topicHref: /opsacndocsdemo/dns/
+  - name: DocumentDB
+    tocHref: /opsacndocsdemo/documentdb/
+    topicHref: /opsacndocsdemo/documentdb/
+  - name: Event Hubs
+    tocHref: /opsacndocsdemo/event-hubs/
+    topicHref: /opsacndocsdemo/event-hubs/
+  - name: Expressroute
+    tocHref: /opsacndocsdemo/expressroute/
+    topicHref: /opsacndocsdemo/expressroute/
+  - name: Guidance
+    tocHref: /opsacndocsdemo/guidance/
+    topicHref: /opsacndocsdemo/guidance/
+  - name: HDInsight
+    tocHref: /opsacndocsdemo/hdinsight/
+    topicHref: /opsacndocsdemo/hdinsight/
+  - name: IoT Hub
+    tocHref: /opsacndocsdemo/iot-hub/
+    topicHref: /opsacndocsdemo/iot-hub/
+  - name: IoT Suite
+    tocHref: /opsacndocsdemo/iot-suite/
+    topicHref: /opsacndocsdemo/iot-suite/
+  - name: Key Vault
+    tocHref: /opsacndocsdemo/key-vault/
+    topicHref: /opsacndocsdemo/key-vault/
+  - name: Load Balancer
+    tocHref: /opsacndocsdemo/load-balancer/
+    topicHref: /opsacndocsdemo/load-balancer/
+  - name: Log Analytics
+    tocHref: /opsacndocsdemo/log-analytics/
+    topicHref: /opsacndocsdemo/log-analytics/
+  - name: Machine Learning
+    tocHref: /opsacndocsdemo/machine-learning/
+    topicHref: /opsacndocsdemo/machine-learning/
+  - name: Marketplace Consumer
+    tocHref: /opsacndocsdemo/marketplace-consumer/
+    topicHref: /opsacndocsdemo/marketplace-consumer/
+  - name: Marketplace Publishing
+    tocHref: /opsacndocsdemo/marketplace-publishing/
+    topicHref: /opsacndocsdemo/marketplace-publishing/
+  - name: Media Services
+    tocHref: /opsacndocsdemo/media-services/
+    topicHref: /opsacndocsdemo/media-services/
+  - name: Mobile Engagement
+    tocHref: /opsacndocsdemo/mobile-engagement/
+    topicHref: /opsacndocsdemo/mobile-engagement/
+  - name: Mobile Services
+    tocHref: /opsacndocsdemo/mobile-services/
+    topicHref: /opsacndocsdemo/mobile-services/
+  - name: Monitoring And Diagnostics
+    tocHref: /opsacndocsdemo/monitoring-and-diagnostics/
+    topicHref: /opsacndocsdemo/monitoring-and-diagnostics/
+  - name: Multi-Factor Authentication
+    tocHref: /opsacndocsdemo/multi-factor-authentication/
+    topicHref: /opsacndocsdemo/multi-factor-authentication/
+    items:
+      - name: User Guide
+        tocHref: /opsacndocsdemo/multi-factor-authentication/end-user/
+        topicHref: /opsacndocsdemo/multi-factor-authentication/end-user/
+  - name: Network Watcher
+    tocHref: /opsacndocsdemo/network-watcher/
+    topicHref: /opsacndocsdemo/network-watcher/
+  - name: Notification Hubs
+    tocHref: /opsacndocsdemo/notification-hubs/
+    topicHref: /opsacndocsdemo/notification-hubs/
+  - name: Operations Management Suite
+    tocHref: /opsacndocsdemo/operations-management-suite/
+    topicHref: /opsacndocsdemo/operations-management-suite/
+  - name: Power BI Embedded
+    tocHref: /opsacndocsdemo/power-bi-embedded/
+    topicHref: /opsacndocsdemo/power-bi-embedded/
+  - name: Redis Cache
+    tocHref: /opsacndocsdemo/redis-cache/
+    topicHref: /opsacndocsdemo/redis-cache/
+  - name: Remoteapp
+    tocHref: /opsacndocsdemo/remoteapp/
+    topicHref: /opsacndocsdemo/remoteapp/
+  - name: Resiliency
+    tocHref: /opsacndocsdemo/resiliency/
+    topicHref: /opsacndocsdemo/resiliency/
+  - name: Resource Health
+    tocHref: /opsacndocsdemo/resource-health/
+    topicHref: /opsacndocsdemo/resource-health/
+  - name: Scheduler
+    tocHref: /opsacndocsdemo/scheduler/
+    topicHref: /opsacndocsdemo/scheduler/
+  - name: Search
+    tocHref: /opsacndocsdemo/search/
+    topicHref: /opsacndocsdemo/search/
+  - name: Security
+    tocHref: /opsacndocsdemo/security/
+    topicHref: /opsacndocsdemo/security/
+  - name: Security Center
+    tocHref: /opsacndocsdemo/security-center/
+    topicHref: /opsacndocsdemo/security-center/
+  - name: Service Bus
+    tocHref: /opsacndocsdemo/service-bus/
+    topicHref: /opsacndocsdemo/service-bus/
+  - name: Service Bus Messaging
+    tocHref: /opsacndocsdemo/service-bus-messaging/
+    topicHref: /opsacndocsdemo/service-bus-messaging/
+  - name: Service Bus Relay
+    tocHref: /opsacndocsdemo/service-bus-relay/
+    topicHref: /opsacndocsdemo/service-bus-relay/
+  - name: Service Fabric
+    tocHref: /opsacndocsdemo/service-fabric/
+    topicHref: /opsacndocsdemo/service-fabric/
+  - name: Site Recovery
+    tocHref: /opsacndocsdemo/site-recovery/
+    topicHref: /opsacndocsdemo/site-recovery/
+  - name: SQL Data Warehouse
+    tocHref: /opsacndocsdemo/sql-data-warehouse/
+    topicHref: /opsacndocsdemo/sql-data-warehouse/
+  - name: SQL Database
+    tocHref: /opsacndocsdemo/sql-database/
+    topicHref: /opsacndocsdemo/sql-database/
+  - name: SQL Server Stretch Database
+    tocHref: /opsacndocsdemo/sql-server-stretch-database/
+    topicHref: /opsacndocsdemo/sql-server-stretch-database/
+  - name: Storage
+    tocHref: /opsacndocsdemo/storage/
+    topicHref: /opsacndocsdemo/storage/
+  - name: StorSimple
+    tocHref: /opsacndocsdemo/storsimple/
+    topicHref: /opsacndocsdemo/storsimple/
+  - name: Stream Analytics
+    tocHref: /opsacndocsdemo/stream-analytics/
+    topicHref: /opsacndocsdemo/stream-analytics/
+  - name: Traffic Manager
+    tocHref: /opsacndocsdemo/traffic-manager/
+    topicHref: /opsacndocsdemo/traffic-manager/
+  - name: Virtual Machine Scale Sets
+    tocHref: /opsacndocsdemo/virtual-machine-scale-sets/
+    topicHref: /opsacndocsdemo/virtual-machine-scale-sets/
+  - name: Virtual Machines
+    tocHref: /opsacndocsdemo/virtual-machines/
+    topicHref: /opsacndocsdemo/virtual-machines/
+    items:
+      - name: Linux
+        tocHref: /opsacndocsdemo/virtual-machines/linux/
+        topicHref: /opsacndocsdemo/virtual-machines/linux/
+        items:
+          - name: Classic Deployment
+            tocHref: /opsacndocsdemo/virtual-machines/linux/classic/
+            topicHref: /opsacndocsdemo/virtual-machines/linux/classic/
+      - name: Windows
+        tocHref: /opsacndocsdemo/virtual-machines/windows/
+        topicHref: /opsacndocsdemo/virtual-machines/windows/
+        items:
+          - name: Classic Deployment
+            tocHref: /opsacndocsdemo/virtual-machines/windows/classic/
+            topicHref: /opsacndocsdemo/virtual-machines/windows/classic/
+  - name: Virtual Network
+    tocHref: /opsacndocsdemo/virtual-network/
+    topicHref: /opsacndocsdemo/virtual-network/
+  - name: VPN Gateway
+    tocHref: /opsacndocsdemo/vpn-gateway/
+    topicHref: /opsacndocsdemo/vpn-gateway/

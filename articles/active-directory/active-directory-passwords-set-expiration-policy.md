@@ -13,20 +13,23 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/01/2016
+ms.date: 02/13/2017
+wacn.date: 03/07/2017
 ms.author: curtand
-wacn.date: 02/06/2017
 ---
 
 # 在 Azure Active Directory 中设置密码过期策略
-
 > [!IMPORTANT]
-> **你是否因登录时遇到问题而浏览至此？** 如果是这样，[可按以下方式更改和重置你的密码](./active-directory-passwords-update-your-own-password.md)。
+**你是否因登录时遇到问题而浏览至此？** 如果是这样，[可按以下方式更改和重置你的密码](./active-directory-passwords-update-your-own-password.md)。
+>
+>
 
 作为 Microsoft 云服务的全局管理员，你可以使用适用于 Windows PowerShell 的 Azure Active Directory 模块将用户密码设置为永不过期。你还可以使用 Windows PowerShell cmdlet 删除永不过期配置，或者查看已将哪些用户密码设置为永不过期。本文所提供的帮助针对于云服务，如 Microsoft Intune 和 Office 365，这些云服务依赖于 Azure Active Directory 为其提供标识与目录服务。
 
-  > [!NOTE]
-  > 只能将未通过目录同步进行同步的用户帐户的密码配置为永不过期。有关目录同步的详细信息，请参阅[目录同步路线图](./active-directory-aadconnect.md)中的主题列表。
+> [!NOTE]
+只能将未通过目录同步进行同步的用户帐户的密码配置为永不过期。有关目录同步的详细信息，请参阅[目录同步路线图](./active-directory-aadconnect.md)中的主题列表。
+>
+>
 
 若要使用 Windows PowerShell cmdlet，首先必须安装它们。
 
@@ -59,4 +62,5 @@ wacn.date: 02/06/2017
 ## 后续步骤
 - **你是否因登录时遇到问题而浏览至此？** 如果是这样，[可按以下方式更改和重置你的密码](./active-directory-passwords-update-your-own-password.md)。
 
-<!---HONumber=Mooncake_Quality_Review_0125_2017-->
+<!---HONumber=Mooncake_0227_2017-->
+<!---Update_Description: wording update -->

@@ -37,6 +37,7 @@ Azure IoT 套件预配置解决方案是你可以使用订阅部署到 Azure 的
 | 解决方案 | 数据提取 | 设备标识 | 命令和控制 | 规则和操作 | 预测分析 |
 |------------------------|-----|-----|-----|-----|-----|
 | [远程监视][lnk-getstarted-preconfigured] |是 |是 |是 |是 |- |
+| [主动维护][lnk-predictive-maintenance] |是 |是 |是 |是 |是 |
 
 - *数据提取*：向云中大规模输入数据。
 - *设备标识*：管理每个连接设备的唯一标识。
@@ -126,7 +127,7 @@ IoT 中心通过服务端遥测数据读取终结点使收到的遥测数据可�
 [lnk-event-processor]: ../event-hubs/event-hubs-programming-guide.md#event-processor-host
 [lnk-web-job]: ../app-service-web/web-sites-create-web-jobs.md
 [lnk-identity-registry]: ../iot-hub/iot-hub-devguide-identity-registry.md
-[lnk-predictive-maintenance]: /documentation/articles/iot-suite-predictive-overview/
+[lnk-predictive-maintenance]: ./iot-suite-predictive-overview.md
 [lnk-azureiotsuite]: https://www.azureiotsuite.cn/
 [lnk-refarch]: http://download.microsoft.com/download/A/4/D/A4DAD253-BC21-41D3-B9D9-87D2AE6F0719/Microsoft_Azure_IoT_Reference_Architecture.pdf
 [lnk-getstarted-preconfigured]: ./iot-suite-getstarted-preconfigured-solutions.md

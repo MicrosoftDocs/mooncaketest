@@ -13,8 +13,8 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/28/2016
-wacn.date: 01/24/2017
+ms.date: 01/05/2017
+wacn.date: 02/24/2017
 ms.author: juliako
 ---
 
@@ -844,6 +844,9 @@ static public IAsset EncodeWithOverlay(IAsset assetSource, string customPresetFi
 
 以下示例演示如何生成预设来连接两个或更多个视频文件。最常见的应用场景：你想在主视频中添加标题或预告片。预期使用场合：当一起编辑的视频文件共享属性（视频分辨率、帧速率、音轨计数等）时。务必注意不要混合使用不同帧速率或不同音轨数的视频。
 
+>[!NOTE]
+串联功能的当前设计要求输入视频剪辑在分辨率、帧率等方面保持一致。
+
 ###要求和注意事项
 
 - 输入视频应只有一个音轨。
@@ -1052,5 +1055,5 @@ job.GetExecutionProgressTask(CancellationToken.None).Wait();
 ## 另请参阅
 [媒体服务编码概述](./media-services-encode-asset.md)
 
-<!---HONumber=Mooncake_0109_2017-->
-<!--Description_Update: remove "创建编码作业" code; Update MSDN links to A.cn links; Add code sample for "创建覆盖层"-->
+<!---HONumber=Mooncake_0220_2017-->
+<!--Description_Update: add one note for Concatenate feature-->

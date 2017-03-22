@@ -1,6 +1,6 @@
 ---
-title: 在 Resource Manager 模板中处理状态 | Azure
-description: 显示了如何通过建议的方法来使用复杂对象，以便与 Azure 资源管理器模板和已链接模板共享状态数据
+title: 在 Azure 模板之间传递复杂值 | Azure
+description: 显示了如何通过建议的方法来使用复杂对象，以便与 Azure Resource Manager 模板和已链接模板共享状态数据。
 services: azure-resource-manager
 documentationcenter: ''
 author: tfitzmac
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 10/26/2016
-wacn.date: 12/26/2016
+wacn.date: 03/03/2017
 ms.author: tomfitz
 ---
 
-# 在 Azure 资源管理器模板中共享状态
+# 在 Azure Resource Manager 模板中来回共享状态
 本主题介绍有关在模板中管理和共享状态的最佳实践。本主题中所示的参数和变量是用户为了方便组织部署要求而可以定义的对象类型的示例。通过这些示例，你可以使用适合环境的属性值实现自己的对象。
 
 本主题是包含更多内容的白皮书的一部分。若要阅读完整的白皮书，请下载[一流的 Resource Manager 模板注意事项和成熟的做法](http://download.microsoft.com/download/8/E/1/8E1DBEFA-CECE-4DC9-A813-93520A5D7CFE/World%20Class%20ARM%20Templates%20-%20Considerations%20and%20Proven%20Practices.pdf)。
@@ -177,7 +177,7 @@ ms.author: tomfitz
 | --- | --- | --- |
 | location |Azure 区域的约束列表中的字符串 |资源的部署位置。 |
 | storageAccountNamePrefix |String |在其中放置 VM 磁盘的存储帐户的唯一 DNS 名称 |
-| domainName |String |可公开访问的 jumpbox VM 的域名采用的格式：**{domainName}.{location}.chinacloudapp.cn** 例如：**mydomainname.chinanorth.chinacloudapp.cn** |
+| domainName |String |可公开访问的 jumpbox VM 的域名采用的格式：**{域名}.{位置}.chinacloudapp.cn**，例如：**mydomainname.chinanorth.chinacloudapp.cn** |
 | adminUsername |String |VM 的用户名 |
 | adminPassword |String |VM 的密码 |
 | tshirtSize |所提供 T 恤尺寸的约束列表中的字符串 |要预配的指定的缩放单位大小。例如，“小”、“中”、“大” |
@@ -278,7 +278,7 @@ ms.author: tomfitz
 如果你需要多个可用性集（例如，一个用于主节点，另一个用于数据节点），你可以使用某个名称作为前缀，并指定多个可用性集，或者遵循此前显示的用于创建变量（针对特定 T 恤大小）的模型。
 
 #### storageSettings
-通常会与链接的模板共享存储详细信息。在以下示例中， *storageSettings* 对象提供了有关存储帐户和容器名称的详细信息。
+通常会与链接的模板共享存储详细信息。在以下示例中，*storageSettings* 对象提供了有关存储帐户和容器名称的详细信息。
 
 ```
 "storageSettings": {
@@ -321,7 +321,7 @@ ms.author: tomfitz
 },
 ```
 
-请注意， *osImageReference* 会检索主模板中定义的 *osSettings* 变量的值。这意味着你可以轻松更改 VM 的操作系统 — 完全进行更改或基于模板使用者的首选项进行更改。
+请注意，*osImageReference* 会检索主模板中定义的 *osSettings* 变量的值。这意味着用户可以轻松更改 VM 的操作系统--完全进行更改或基于模板使用者的首选项进行更改。
 
 #### vmScripts
 *vmScripts* 对象包含可以下载并可在 VM 实例上执行的脚本的详细信息，包括外部和内部引用。外部引用包含基础结构。内部引用包含已按照的软件和配置。
@@ -439,4 +439,5 @@ ms.author: tomfitz
 * 若要了解模板的章节，请参阅[创作 Azure Resource Manager 模板](./resource-group-authoring-templates.md)
 * 若要查看模板中可用的函数，请参阅 [Azure Resource Manager 模板函数](./resource-group-template-functions.md)
 
-<!---HONumber=Mooncake_1219_2016-->
+<!---HONumber=Mooncake_0227_2017-->
+<!--Update_Description: update meta properties; wording update -->

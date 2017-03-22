@@ -1,19 +1,20 @@
 ---
-title: 使用 Site Recovery 将 Azure IaaS 虚拟机从一个 Azure 区域迁移到另一个 Azure 区域 | Azure
+title: 在 Azure 区域之间迁移 Azure IaaS VM | Azure
 description: 使用 Azure Site Recovery 将 Azure IaaS 虚拟机从一个 Azure 区域迁移到另一个 Azure 区域。
 services: site-recovery
-documentationCenter: ''
-authors: rayne-wiselman
+documentationcenter: ''
+author: rayne-wiselman
 manager: jwhit
 editor: tysonn
 
+ms.assetid: 8a29e0d9-0010-4739-972f-02b8bdf360f6
 ms.service: site-recovery
 ms.workload: backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/21/2016
-wacn.date: 01/04/2017
+ms.date: 01/23/2017
+wacn.date: 03/10/2017
 ms.author: raynew
 ---
 
@@ -21,7 +22,7 @@ ms.author: raynew
 
 ## 概述
 
-欢迎使用 Azure Site Recovery！ 如果想要在 Azure 区域之间迁移 Azure VM，请参阅此文章。开始之前，请注意：
+欢迎使用 Azure Site Recovery！ 如果想要在 Azure 区域之间迁移 Azure VM，请参阅此文章。在开始之前，请注意：
 
 - **目前仅能从一个区域迁移到另一个区域。可以将 VM 从一个 Azure 区域故障转移到另一个 Azure 区域，但不能重新对其进行故障回复。**
 - 本文中的迁移说明以将物理计算机复制到 Azure 的说明为基础。
@@ -60,4 +61,4 @@ ms.author: raynew
 
 若要详细了解其他复制方案，请参阅[什么是 Azure Site Recovery？](./site-recovery-overview.md)
 
-<!---HONumber=Mooncake_Quality_Review_0104_2017-->
+<!---HONumber=Mooncake_0306_2017-->

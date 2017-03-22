@@ -2,18 +2,19 @@
 title: 使用 REST 将文件上传到媒体服务帐户 | Azure
 description: 了解如何通过创建和上传资产将媒体内容加入媒体服务。
 services: media-services
-documentationCenter: ''
-authors: Juliako
+documentationcenter: ''
+author: Juliako
 manager: erikre
 editor: ''
 
+ms.assetid: 41df7cbe-b8e2-48c1-a86c-361ec4e5251f
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/19/2016
-wacn.date: 12/12/2016
+ms.date: 02/13/2017
+wacn.date: 03/10/2017
 ms.author: juliako
 ---
 
@@ -22,15 +23,17 @@ ms.author: juliako
  > [!div class="op_single_selector"]
  - [.NET](./media-services-dotnet-upload-files.md)
  - [REST](./media-services-rest-upload-files.md)
+ - [经典管理门户](./media-services-manage-content.md#upload)
 
 在媒体服务中，可以将数字文件上传到资产中。[资产](https://docs.microsoft.com/zh-cn/rest/api/media/operations/asset)实体可以包含视频、音频、图像、缩略图集合、图文轨迹和隐藏式字幕文件（以及有关这些文件的元数据。） 将文件上传到资产后，相关内容即安全地存储在云中供后续处理和流式处理。
 
 >[!NOTE]
 >选择资产文件名时需考虑下列事项：
 >
->- 构建流内容的 URL 时，媒体服务会使用 IAssetFile.Name 属性的值（如 http://{AMSAccount}.origin.mediaservices.chinacloudapi.cn/{GUID}/{IAssetFile.Name}/streamingParameters.）。出于此原因，不允许使用百分号编码。**Name** 属性的值不能含有任何以下[百分号编码保留字符](http://zh.wikipedia.org/wiki/百分号编码#.E4.BF.9D.E7.95.99.E5.AD.97.E7.AC.A6.E7.9A.84.E7.99.BE.E5.88.86.E5.8F.B7.E7.BC.96.E7.A0.81)：!*'();:@&=+$,/?%#"。此外，文件扩展名中只能含有一个“.”。
->
->- 名称长度不应超过 260 个字符。
+> * 构建流内容的 URL 时，媒体服务会使用 IAssetFile.Name 属性的值（如 http://{AMSAccount}.origin.mediaservices.chinacloudapi.cn/{GUID}/{IAssetFile.Name}/streamingParameters.）。出于此原因，不允许使用百分号编码。**Name** 属性的值不能含有任何以下[百分号编码保留字符](http://zh.wikipedia.org/wiki/百分号编码#.E4.BF.9D.E7.95.99.E5.AD.97.E7.AC.A6.E7.9A.84.E7.99.BE.E5.88.86.E5.8F.B7.E7.BC.96.E7.A0.81)：!*'();:@&=+$,/?%#"。此外，文件扩展名中只能含有一个“.”。
+> * 名称长度不应超过 260 个字符。
+> * 在媒体服务中进行处理时，系统支持的最大文件大小存在限制。有关文件大小限制的详细信息，请参阅[此](./media-services-quotas-and-limitations.md)主题。
+> 
 
 上传资产的基本工作流分为下列各节：
 
@@ -309,13 +312,12 @@ Date: Mon, 19 Jan 2015 03:01:29 GMT
 ```
 
 ### 将文件上传到 Blob 存储容器
-
-设置 AccessPolicy 和定位符后，即可使用 Azure 存储 REST API 将具体的文件上传到 Azure BLOB 存储容器。也可以按页或块 BLOB 来上传。
+设置 AccessPolicy 和定位符后，即可使用 Azure 存储 REST API 将具体的文件上传到 Azure BLOB 存储容器。必须将文件作为块 blob 上载。页 blob 不受 Azure 媒体服务支持。
 
 >[!NOTE]
 > 必须将要上传的文件的文件名添加到在上一节收到的定位符 **Path** 值中。例如，https://storagetestaccount001.blob.core.chinacloudapi.cn/asset-e7b02da4-5a69-40e7-a8db-e8f4f697aac0/BigBuckBunny.mp4? . . .
 
-有关使用 Azure 存储 blob 的详细信息，请参阅 [Blob 服务 REST API](http://msdn.microsoft.com/zh-cn/library/azure/dd135733.aspx)。
+有关使用 Azure 存储 blob 的详细信息，请参阅 [Blob 服务 REST API](https://docs.microsoft.com/rest/api/storageservices/fileservices/Blob-Service-REST-API)。
 
 ### 更新 AssetFile 
 
@@ -550,4 +552,4 @@ Host: wamsshaclus001rest-hs.chinacloudapp.cn
 
 [How to Get a Media Processor]: ./media-services-get-media-processor.md
 
-<!---HONumber=Mooncake_Quality_Review_1118_2016-->
+<!---HONumber=Mooncake_0306_2017-->

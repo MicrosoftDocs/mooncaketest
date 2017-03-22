@@ -1,5 +1,3 @@
-<!-- not suitable for Mooncake -->
-
 ---
 title: 使用 HDInsight .NET SDK 在 Linux 上的 HDInsight 中创建 Hadoop、HBase、Storm 或 Spark 群集 | Azure
 description: 了解如何使用 HDInsight .NET SDK 在 Linux 中为 HDInsight 创建 Hadoop、HBase、Storm 或 Spark 群集。
@@ -383,8 +381,10 @@ static void Main(string[] args)
 * [Deploy and monitor topologies with Storm on HDInsight（使用 Storm on HDInsight 部署和监视拓扑）](./hdinsight-storm-deploy-monitor-topology.md)
 
 ### Spark 群集
+* [使用 Scala 创建独立的应用程序](./hdinsight-apache-spark-create-standalone-application.md)
 * [使用 Livy 在 Spark 群集中远程运行作业](./hdinsight-apache-spark-livy-rest-interface.md)
 * [Spark 和 BI：使用 HDInsight 中的 Spark 和 BI 工具执行交互式数据分析](./hdinsight-apache-spark-use-bi-tools.md)
+* [Spark 和机器学习：使用 HDInsight 中的 Spark 预测食品检查结果](./hdinsight-apache-spark-machine-learning-mllib-ipython.md)
 * [Spark 流式处理：使用 HDInsight 中的 Spark 生成实时流式处理应用程序](./hdinsight-apache-spark-eventhub-streaming.md)
 
 ### 运行作业

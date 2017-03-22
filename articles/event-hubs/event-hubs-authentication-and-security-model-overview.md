@@ -26,7 +26,7 @@ Azure 事件中心安全模型满足以下要求：
 
 ## 设备身份验证
 
-事件中心安全模型基于[共享访问签名 (SAS)](../service-bus-messaging/service-bus-shared-access-signature-authentication.md) 令牌与发布者的组合。事件发布者定义事件中心的虚拟终结点。发布者只能用于将消息发送到事件中心。无法从发布者接收消息。
+事件中心安全模型基于[共享访问签名 (SAS)](../service-bus-messaging/service-bus-sas.md) 令牌与发布者的组合。事件发布者定义事件中心的虚拟终结点。发布者只能用于将消息发送到事件中心。无法从发布者接收消息。
 
 通常，事件中心为每个设备使用一个发布者。发送到事件中心的任何发布者的所有消息都将在该事件中心内排队。发布者允许进行精细的访问控制和限制。
 
@@ -111,7 +111,7 @@ Azure 事件中心安全模型满足以下要求：
 
 [事件中心概述]: ./event-hubs-overview.md
 [使用事件中心的完整示例应用程序]: https://code.msdn.microsoft.com/Service-Bus-Event-Hub-286fd097
-[SAS 概述]: ../service-bus-messaging/service-bus-sas-overview.md
+[SAS 概述]: /documentation/articles/service-bus-sas-overview/
 
 <!---HONumber=Mooncake_0116_2017-->
 <!--Update_Description:update wording-->

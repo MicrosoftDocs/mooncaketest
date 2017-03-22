@@ -8,15 +8,15 @@ manager: timlt
 editor: ''
 
 ms.service: service-bus
-ms.date: 10/03/2016
-wacn.date: 01/09/2017
+ms.date: 01/11/2017
+wacn.date: 02/20/2017
 ---
 
 # 如何使用 Service Bus 队列
 
 [!INCLUDE [service-bus-selector-queues](../../includes/service-bus-selector-queues.md)]
 
-本文介绍如何通过 Node.js 使用服务总线队列。示例用 JavaScript 编写并使用 Node.js Azure 模块。涉及的任务包括**创建队列**、**发送和接收消息**以及**删除队列**。有关队列的详细信息，请参阅 [后续步骤][] 部分。
+本文介绍如何通过 Node.js 使用服务总线队列。示例用 JavaScript 编写并使用 Node.js Azure 模块。涉及的任务包括**创建队列**、**发送和接收消息**以及**删除队列**。有关队列的详细信息，请参阅 [后续步骤](#next-steps) 部分。
 
 [!INCLUDE [howto-service-bus-queues](../../includes/howto-service-bus-queues.md)]
 
@@ -34,6 +34,7 @@ wacn.date: 01/09/2017
 
 2.  在命令窗口中键入 **npm install azure**，这应该产生类似如下的输出：
 
+    ```
     azure@0.7.5 node_modules\azure
         ├── dateformat@1.0.2-1.2.3
         ├── xmlbuilder@0.4.2
@@ -45,6 +46,7 @@ wacn.date: 01/09/2017
         ├── wns@0.5.3
         ├── xml2js@0.2.7 (sax@0.5.2)
         └── request@2.21.0 (json-stringify-safe@4.0.0, forever-agent@0.5.0, aws-sign@0.3.0, tunnel-agent@0.3.0, oauth-sign@0.3.0, qs@0.6.5, cookie-jar@0.3.0, node-uuid@1.4.0, http-signature@0.9.11, form-data@0.0.8, hawk@0.13.1)
+    ```
 
 3. 可以手动运行 **ls** 命令来验证是否创建了 **node\_modules** 文件夹。在该文件夹中，找到 **azure** 包，其中包含访问服务总线队列所需的库。
 
@@ -177,7 +179,7 @@ Service Bus 提供了相关功能来帮助你轻松地从应用程序错误或�
 
 如果应用程序在处理消息之后，调用 **deleteMessage** 方法之前崩溃，则在应用程序重新启动时会将该消息重新传送给它。此情况通常称作**至少处理一次**，即每条消息将至少被处理一次，但在某些情况下，同一消息可能会被重新传送。如果方案无法容忍重复处理，则应用程序开发人员应向其应用程序添加更多逻辑以处理重复消息传送。这通常可以通过使用消息的 **MessageId** 属性来实现，该属性在多次传送尝试中保持不变。
 
-## 后续步骤
+## <a name="next-steps"></a> 后续步骤
 
 若要了解有关队列的详细信息，请参阅以下资源。
 
@@ -196,3 +198,4 @@ Service Bus 提供了相关功能来帮助你轻松地从应用程序错误或�
   [服务总线配额]: ./service-bus-quotas.md
 
 <!---HONumber=Mooncake_Quality_Review_0104_2017-->
+<!--Update_Description:update meta properties-->

@@ -1,8 +1,8 @@
 ---
-title: 为导入作业准备硬盘驱动器的示例工作流 | Azure
+title: 为 Azure 导入作业准备硬盘驱动器的示例工作流 | Azure
 description: 参阅为 Azure 导入/导出服务中的导入作业准备驱动器的整个过程演练
-author: renashahmsft
-manager: aungoo
+author: muralikk
+manager: syadav
 editor: tysonn
 services: storage
 documentationcenter: ''
@@ -13,9 +13,9 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/25/2015
-wacn.date: 12/29/2016
-ms.author: renash
+ms.date: 01/23/2017
+wacn.date: 03/20/2017
+ms.author: muralikk
 ---
 
 # 为导入作业准备硬盘驱动器的示例工作流
@@ -161,6 +161,8 @@ WAImportExport.exe PrepImport /j:SecondDrive.jrn /id:BlueRayIso /srcfile:K:\Temp
 复制会话完成后，可断开两个驱动器与复制计算机的连接，然后将其寄送到相应的 Microsoft Azure 数据中心。在 [Azure 管理门户](https://manage.windowsazure.CN/)中创建导入作业时，将上载两个日记文件：`FirstDrive.jrn` 和 `SecondDrive.jrn`。
 
 ## 另请参阅  
-[为导入作业准备硬盘驱动器](./storage-import-export-tool-preparing-hard-drives-import-v1.md) [常用命令快速参考](./storage-import-export-tool-quick-reference-v1.md)
 
-<!---HONumber=Mooncake_1226_2016-->
+- [为导入作业准备硬盘驱动器](./storage-import-export-tool-preparing-hard-drives-import-v1.md)  
+- [常用命令快速参考](./storage-import-export-tool-quick-reference-v1.md)
+
+<!---HONumber=Mooncake_0313_2017-->

@@ -70,7 +70,7 @@ ms.author: sethm
 
 连接字符串的格式与前面所用方法的 App.config 文件中显示的格式相同：
 
-```xml
+```
     Endpoint=sb://[namespace].servicebus.chinacloudapi.cn/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=[key]
 ```
 

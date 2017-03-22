@@ -15,7 +15,7 @@ ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 02/29/2016
-wacn.date: 12/05/2016
+wacn.date: 03/17/2017
 ms.author: riande
 ---
 
@@ -42,6 +42,8 @@ ms.author: riande
 <!-- the next line produces the "Set up the development environment" section as see at /documentation/articles/web-sites-dotnet-get-started/ -->
 
 [!INCLUDE [create-account-and-websites-note](../../includes/create-account-and-websites-note.md)]
+
+[!INCLUDE [azure-sdk-developer-differences](../../includes/azure-visual-studio-login-guide.md)]
 
 ### 创建项目
 1. 启动 Visual Studio 2013。

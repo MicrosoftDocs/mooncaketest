@@ -19,6 +19,10 @@ ms.author: adegeo
 
 # 为 Azure 云服务配置自定义域名
 
+> [!div class="op_single_selector"]
+- [Azure 门户预览](./cloud-services-custom-domain-name-portal.md)
+- [Azure 经典管理门户](./cloud-services-custom-domain-name.md)
+
 创建云服务时，Azure 会将其分配给 chinacloudapp.cn 的子域。例如，如果你的云服务名为“contoso”，则用户能够通过类似 http://contoso.chinacloudapp.cn 的 URL 访问你的应用程序。Azure 还将分配虚拟 IP 地址。
 
 但是，也可公开使用自己的域名（例如 contoso.com）的应用程序。此文章介绍了如何保留或配置云服务 Web 角色的自定义域名称。
@@ -67,7 +71,9 @@ A 记录将域（例如 **contoso.com** 或 **www.contoso.com**）*或通配符�
 
    * 安装并配置 [Azure Powershell](../powershell-install-configure.md)，然后使用以下命令：
 
+       ```powershell
         Get-AzureDeployment -ServiceName yourservicename | Select Url
+       ```
 
      保存任一方法返回的 URL 中所使用的域名，因为创建 CNAME 记录时需要它。
 
@@ -104,7 +110,9 @@ A 记录将域（例如 **contoso.com** 或 **www.contoso.com**）*或通配符�
 
    * 安装并配置 [Azure Powershell](../powershell-install-configure.md)，然后使用以下命令：
 
+       ```powershell
         get-azurevm -servicename yourservicename | get-azureendpoint -VM {$_.VM} | select Vip
+       ```
 
     如果有多个终结点与云服务相关联，将收到包含 IP 地址的多个行，但所有行都显示相同地址。
 

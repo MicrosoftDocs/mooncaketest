@@ -14,7 +14,7 @@ ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: big-compute
 ms.date: 08/25/2016
-wacn.date: 01/05/2017
+wacn.date: 03/17/2017
 ms.author: danlep
 ---
 
@@ -109,7 +109,7 @@ HPC Pack IaaS 部署脚本提供了另一种通用的方法来部署 HPC Pack �
         Add-PSSnapin Microsoft.HPC
 
     # set the Azure storage connection string for the cluster
-        Set-HpcClusterProperty -AzureStorageConnectionString 'DefaultEndpointsProtocol=https;AccountName=<yourstorageaccountname>;AccountKey=<yourstorageaccountkey>'
+        Set-HpcClusterProperty -AzureStorageConnectionString 'DefaultEndpointsProtocol=https;AccountName=<yourstorageaccountname>;AccountKey=<yourstorageaccountkey>;EndpointSuffix=core.chinacloudapi.cn'
 
         # remove the compute node role for head node to make sure the Excel workbook won't run on head node
         Get-HpcNode -GroupName HeadNodes | Set-HpcNodeState -State offline | Set-HpcNode -Role BrokerNode

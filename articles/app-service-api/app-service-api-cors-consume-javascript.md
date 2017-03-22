@@ -13,7 +13,7 @@ ms.tgt_pltfrm: dotnet
 ms.devlang: na
 ms.topic: get-started-article
 ms.date: 08/27/2016
-wacn.date: 01/05/2017
+wacn.date: 02/21/2017
 ms.author: rachelap
 ---
 
@@ -103,6 +103,8 @@ ms.author: rachelap
 ```
 
 ### 为 ToDoListAngular 项目创建新的 Web 应用
+
+[!INCLUDE [azure-sdk-developer-differences](../../includes/azure-visual-studio-login-guide.md)]
 
 创建新应用服务 Web 应用并向其部署项目的过程，与在[本系列教程的第一篇教程中所述的创建和部署 API 应用](./app-service-api-dotnet-get-started.md#createapiapp)的过程类似。唯一的差别在于，应用类型是 **Web 应用**而不是 **API 应用**。有关对话框的屏幕截图，请参阅
 

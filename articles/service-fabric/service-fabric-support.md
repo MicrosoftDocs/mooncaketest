@@ -1,5 +1,5 @@
 ---
-title: Azure Service Fabric 支持选项 | Azure
+title: 了解 Azure Service Fabric 支持选项 | Azure
 description: 支持的 Azure Service Fabric 群集版本和用于提交支持票证的链接。
 services: service-fabric
 documentationcenter: .net
@@ -12,8 +12,8 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 12/07/2016
-wacn.date: 01/20/2017
+ms.date: 02/10/2017
+wacn.date: 03/03/2017
 ms.author: chackdan
 ---
 
@@ -34,11 +34,9 @@ ms.author: chackdan
 | **Service Fabric 运行时群集** | **支持结束日期** |
 | --- | --- |
 | 5\.3.121 之前的所有群集版本 |2017 年 1 月 20 日 |
-| 5\.3.121.* |2017 年 2 月 24 日 |
-| 5\.3.204.* |2017 年 2 月 24 日 |
-| 5\.3.301.* |2017 年 2 月 24 日 |
-| 5\.3.311.* |2017 年 2 月 24 日 |
-| 5\.4. *. * |当前版本，因此无结束日期 |
+| 5\.3.* |2017 年 2 月 24 日 |
+| 5\.4.* |2017 年 4 月 17 日 |
+| 5\.5.* |当前版本，因此无结束日期
 
 ## 后续步骤
 
@@ -49,4 +47,5 @@ ms.author: chackdan
 
 [acom-docs]: /documentation/articles/service-fabric/
 
-<!---HONumber=Mooncake_0116_2017-->
+<!---HONumber=Mooncake_0227_2017-->
+<!--Update_Description: update supported version table-->

@@ -13,8 +13,8 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
-ms.date: 12/01/2016
-wacn.date: 01/11/2017
+ms.date: 02/06/2017
+wacn.date: 03/10/2017
 ms.author: raynew
 ---
 
@@ -91,4 +91,4 @@ Bitlocker | 不支持 | 保护虚拟机之前，必须先禁用 Bitlocker。
 - [将 Hyper-V VM 复制到辅助站点](./site-recovery-vmm-to-vmm.md)
 - [使用单个 VMM 服务器复制 Hyper-V VM](./site-recovery-single-vmm.md)
 
-<!---HONumber=Mooncake_1226_2016-->
+<!---HONumber=Mooncake_0306_2017-->

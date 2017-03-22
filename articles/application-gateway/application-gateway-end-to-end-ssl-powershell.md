@@ -14,7 +14,7 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/14/2016
-wacn.date: 01/25/2017
+wacn.date: 02/21/2017
 ms.author: gwallace
 ---
 
@@ -305,7 +305,6 @@ $gw | Set-AzureRmApplicationGateway
 Get-AzureRmPublicIpAddress -ResourceGroupName appgw-RG -Name publicIP01
 ```
 
-<br/>  
 
 ```
 Name                     : publicIP01
@@ -328,10 +327,6 @@ DnsSettings              : {
                                 "Fqdn": "00000000-0000-xxxx-xxxx-xxxxxxxxxxxx.chinacloudapp.cn"
                             }
 ```
-
-## 后续步骤
-
-请参阅 [Web 应用程序防火墙概述](./application-gateway-webapplicationfirewall-overview.md)，了解如何通过应用程序网关的 Web 应用程序防火墙强化 Web 应用程序的安全
 
 [scenario]: ./media/application-gateway-end-to-end-ssl-powershell/scenario.png
 

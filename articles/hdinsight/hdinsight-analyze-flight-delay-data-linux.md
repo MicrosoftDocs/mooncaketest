@@ -1,5 +1,3 @@
-<!-- not suitable for Mooncake -->
-
 ---
 title: 在基于 Linux 的 HDInsight 上使用 Hive 分析航班延误数据 | Azure
 description: 了解如何在基于 Linux 的 HDInsight 上使用 Hive 分析航班数据，然后使用 Sqoop 将数据导出到 SQL 数据库中。
@@ -96,7 +94,7 @@ ms.author: larryfr
 
     使用以下项作为此文件的内容：
 
-    ```
+    ```hiveql
     DROP TABLE delays_raw;
     -- Creates an external table over the csv file
     CREATE EXTERNAL TABLE delays_raw (
@@ -173,7 +171,7 @@ ms.author: larryfr
     ```
 5. 当你收到 `jdbc:hive2://localhost:10001/>` 提示时，请使用以下命令从导入的航班延误数据中检索数据。
 
-    ```
+    ```hiveql
     INSERT OVERWRITE DIRECTORY '/tutorials/flightdelays/output'
     ROW FORMAT DELIMITED FIELDS TERMINATED BY '\t'
     SELECT regexp_replace(origin_city_name, '''', ''),

@@ -34,12 +34,6 @@ Azure 虚拟网络站点到站点连接使用 VPN 网关通过 Ipsec/IKE 提供�
 
 有关详细信息，请参阅[配置 VNet 到 VNet 连接](../vpn-gateway/virtual-networks-configure-vnet-to-vnet-connection.md)。
 
-若要通过视频了解它：
-
-> [!VIDEO https://channel9.msdn.com/Series/Getting-started-with-Windows-Azure-HDInsight-Service/Configure-the-VPN-connectivity-between-two-Azure-virtual-networks/player]
-> 
-> 
-
 本教程是有关创建 HBase 异地复制的[系列][hdinsight-hbase-replication]教程的一部分。
 
 * 在两个虚拟网络之间配置 VPN 连接（本教程）
@@ -233,9 +227,9 @@ VNet 网关使用共享密钥对虚拟网络之间的连接进行身份验证。
 [hdinsight-hbase-replication]: ./hdinsight-hbase-geo-replication.md
 [hdinsight-hbase-dns]: ./hdinsight-hbase-geo-replication-configure-DNS.md
 
-[img-vnet-diagram]: ./media/hdinsight-hbase-geo-replication-configure-vnets/hdinsight-hbase-vpn-diagram.png
-[img-vnet-lnet-diagram]: ./media/hdinsight-hbase-geo-replication-configure-vnets/hdinsight-hbase-vpn-lnet-diagram.png
-[img-vpn-status]: ./media/hdinsight-hbase-geo-replication-configure-vnets/hdinsight-hbase-vpn-status.png
+[img-vnet-diagram]: ./media/hdinsight-hbase-geo-replication-configure-VNets/hdinsight-hbase-vpn-diagram.png
+[img-vnet-lnet-diagram]: ./media/hdinsight-hbase-geo-replication-configure-VNets/hdinsight-hbase-vpn-lnet-diagram.png
+[img-vpn-status]: ./media/hdinsight-hbase-geo-replication-configure-VNets/hdinsight-hbase-vpn-status.png
 
 <!---HONumber=Mooncake_0120_2017-->
 <!--Update_Description: update meta properties & wording update-->

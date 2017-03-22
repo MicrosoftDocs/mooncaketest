@@ -14,7 +14,7 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 06/06/2016
-wacn.date: 01/05/2017
+wacn.date: 03/17/2017
 ms.author: cephalin
 ---
 
@@ -25,6 +25,8 @@ Azure 提供内置诊断功能，可帮助调试[应用服务 Web 应用](./app-
 本文通过 [Azure 门户预览](https://portal.azure.cn)、Azure PowerShell 和 Azure 命令行接口 (Azure CLI) 使用诊断日志。有关通过 Visual Studio 使用诊断日志的信息，请参阅[在 Visual Studio 中对 Azure 进行故障排除](./web-sites-dotnet-troubleshoot-visual-studio.md)。
 
 [!INCLUDE [app-service-web-to-api-and-mobile](../../includes/app-service-web-to-api-and-mobile.md)]
+
+[!INCLUDE [azure-sdk-developer-differences](../../includes/azure-visual-studio-login-guide.md)]
 
 ## <a name="whatisdiag"></a>Web 服务器诊断和应用程序诊断
 应用服务 Web 应用为 Web 服务器和 Web 应用程序中的日志记录信息提供诊断功能。这些诊断功能按逻辑分为 **Web 服务器诊断**和**应用程序诊断**。
@@ -43,7 +45,7 @@ Azure 提供内置诊断功能，可帮助调试[应用服务 Web 应用](./app-
 System.Diagnostics.Trace.TraceError("If you're seeing this, something bad happened");
 ```
 
-在运行时，可以检索这些日志帮助进行故障排除。有关详细信息，请参阅[在 Visual Studio 中对 Azure Web 应用进行故障故障](./web-sites-dotnet-troubleshoot-visual-studio.md)。
+在运行时，可以检索这些日志帮助进行故障排除。有关详细信息，请参阅[在 Visual Studio 中对 Azure Web 应用进行故障排除](./web-sites-dotnet-troubleshoot-visual-studio.md)。
 
 将内容发布到某个 Web 应用时，应用服务 Web 应用还记录部署信息。此操作自动执行，不会对部署日志记录进行配置设置。部署日志记录允许你确定部署失败的原因。例如，如果使用自定义部署脚本，可能会使用部署日志记录确定该脚本失败的原因。
 

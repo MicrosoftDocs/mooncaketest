@@ -14,7 +14,7 @@ ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 01/12/2016
-wacn.date: 12/05/2016
+wacn.date: 03/17/2017
 ms.author: cephalin;riande
 ---
 
@@ -22,6 +22,8 @@ ms.author: cephalin;riande
 本教程介绍有关如何生成一个方便移动的 ASP.NET MVC 5 Web 应用并将其部署到 Azure 应用服务的基础知识。学习本教程需要安装 [Visual Studio Express 2013 for Web][Visual Studio Express 2013] 或者 Visual Studio 专业版（如果已有）。你可以使用 [Visual Studio 2015]，但屏幕截图可能有所不同，并且必须使用 ASP.NET 4.x 模板。
 
 [!INCLUDE [create-account-and-websites-note](../../includes/create-account-and-websites-note.md)]
+
+[!INCLUDE [azure-sdk-developer-differences](../../includes/azure-visual-studio-login-guide.md)]
 
 ## 所需操作
 在本教程，你将在[初学者项目][StarterProject]提供的简单会议列表应用程序中添加移动功能。以下屏幕截图显示了已完成的应用程序中的 ASP.NET 会话，如在 Internet Explorer 11 F12 开发人员工具的浏览器模拟器中所见。

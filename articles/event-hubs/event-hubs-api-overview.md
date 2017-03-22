@@ -27,7 +27,7 @@ ms.author: sethm
 
 ### 创建
 
-```csharp
+```
     // Create the Event Hub
     EventHubDescription ehd = new EventHubDescription(eventHubName);
     ehd.PartitionCount = SampleManager.numPartitions;
@@ -36,7 +36,7 @@ ms.author: sethm
 
 ### 更新
 
-```csharp
+```
     EventHubDescription ehd = await namespaceManager.GetEventHubAsync(eventHubName);
 
     // Create a customer SAS rule with Manage permissions
@@ -49,21 +49,21 @@ ms.author: sethm
 
 ### 删除
 
-```csharp
+```
     namespaceManager.DeleteEventHubAsync("Event Hub name").Wait();
 ```
 
 ## 运行时 API
 ### 创建发布者
 
-```csharp
+```
     // EventHubClient model (uses implicit factory instance, so all links on same connection)
     EventHubClient eventHubClient = EventHubClient.Create("Event Hub name");
 ```
 
 ### 发布消息
 
-```csharp
+```
     // Create the device/temperature metric
     MetricEvent info = new MetricEvent() { DeviceId = random.Next(SampleManager.NumDevices), Temperature = random.Next(100) };
     EventData data = new EventData(new byte[10]); // Byte array
@@ -82,7 +82,7 @@ ms.author: sethm
 
 ### 创建使用者
 
-```csharp
+```
     // Create the Event Hubs client
     EventHubClient eventHubClient = EventHubClient.Create(EventHubName);
 
@@ -101,7 +101,7 @@ ms.author: sethm
 
 ### 使用消息
 
-```csharp
+```
     var message = await consumer.ReceiveAsync();
 
     // Provide a serializer
@@ -115,7 +115,7 @@ ms.author: sethm
 ## 事件处理程序主机 API
 这些 API 通过在可用工作进程之间分布分片，为可能变为不可用的工作进程提供复原能力。
 
-```csharp
+```
     // Checkpointing is done within the SimpleEventProcessor and on a per-consumerGroup per-partition basis, workers resume from where they last left off.
     // Use the EventData.Offset value for checkpointing yourself, this value is unique per partition.
 
@@ -132,7 +132,7 @@ ms.author: sethm
 
 [IEventProcessor](https://msdn.microsoft.com/zh-cn/library/azure/microsoft.servicebus.messaging.ieventprocessor.aspx) 接口定义如下：
 
-```csharp
+```
     public class SimpleEventProcessor : IEventProcessor
     {
         IDictionary<string, string> map;

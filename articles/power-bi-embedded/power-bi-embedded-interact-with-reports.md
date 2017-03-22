@@ -2,27 +2,27 @@
 title: 使用 JavaScript API 与报表进行交互 | Azure
 description: Power BI Embedded, 使用 JavaScript API 与报表进行交互
 services: power-bi-embedded
-documentationCenter: ''
-authors: mgblythe
-manager: NA
+documentationcenter: ''
+author: guyinacube
+manager: erikre
 editor: ''
 tags: ''
 
+ms.assetid: bdd885d3-1b00-4dcf-bdff-531eb1f97bfb
 ms.service: power-bi-embedded
 ms.devlang: NA
 ms.topic: hero-article
 ms.tgt_pltfrm: NA
 ms.workload: powerbi
-ms.date: 10/04/2016
-ms.author: mblythe
-wacn.date: 02/06/2017
+ms.date: 01/06/2017
+wacn.date: 02/22/2017
+ms.author: asaxton
 ---
 
 # 使用 JavaScript API 与 Power BI 报表进行交互
+Power BI JavaScript API 可以轻松将 Power BI 报表嵌入到应用程序中。使用此 API，应用程序能够以编程方式与各种报表元素（例如页面和筛选器）进行交互。这种交互这种交互性使 Power BI 报表与应用程序的集成更紧密。
 
-Power BI JavaScript API 可以轻松将 Power BI 报表嵌入到应用程序中。使用此 API，应用程序能够以编程方式与各种报表元素（例如页面和筛选器）进行交互。此交互使 Power BI 报表成为应用程序更必不可少的部分。
-
-可以使用作为应用程序的一部分托管的 iframe 将 Power BI 报表嵌入到应用程序中。Iframe 充当应用程序与报表之间的边界，如下图中所示。
+通过使用作为应用程序一部分托管的 IFrame，可将 Power BI 报表嵌入到应用程序中。Iframe 充当应用程序与报表之间的边界，如下图中所示。
 
 ![不带 Javascript API 的 Power BI embedded iframe](./media/powerbi-embedded-interact-with-reports/powerbi-embedded-interact-report-1.png)  
 
@@ -134,4 +134,5 @@ const basicFilter: pbi.models.IBasicFilter = {
   - [Ember](https://github.com/Microsoft/powerbi-ember)
 - [直播演示](https://microsoft.github.io/PowerBI-JavaScript/demo/)
 
-<!---HONumber=Mooncake_1010_2016-->
+<!---HONumber=Mooncake_0213_2017-->
+<!---Update_Description: wording update -->

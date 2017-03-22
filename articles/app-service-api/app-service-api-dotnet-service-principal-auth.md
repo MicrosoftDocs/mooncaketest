@@ -13,7 +13,7 @@ ms.tgt_pltfrm: dotnet
 ms.devlang: na
 ms.topic: article
 ms.date: 06/30/2016
-wacn.date: 11/25/2016
+wacn.date: 02/21/2017
 ms.author: rachelap
 ---
 
@@ -174,6 +174,8 @@ ms.author: rachelap
 ### 配置 ToDoListAPI 项目以获取和发送 Azure AD 令牌
 
 在 Visual Studio 中对 ToDoListAPI 项目进行以下更改。
+
+[!INCLUDE [azure-sdk-developer-differences](../../includes/azure-visual-studio-login-guide.md)]
 
 1. 取消注释 *ServicePrincipal.cs* 文件中的所有代码。
 

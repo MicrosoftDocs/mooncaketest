@@ -13,9 +13,9 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 11/09/2016
+ms.date: 02/09/2017
+wacn.date: 03/07/2017
 ms.author: curtand
-wacn.date: 12/12/2016
 ---
 
 # Azure AD 服务限制和局限性
@@ -27,4 +27,5 @@ wacn.date: 12/12/2016
 - [以组织身份注册 Azure](./sign-up-organization.md)
 - [Azure 订阅与 Azure AD 的关联方式](./active-directory-how-subscriptions-associated-directory.md)
 
-<!---HONumber=Mooncake_1205_2016-->
+<!---HONumber=Mooncake_0227_2017-->
+<!--Update_Description: update meta properties -->

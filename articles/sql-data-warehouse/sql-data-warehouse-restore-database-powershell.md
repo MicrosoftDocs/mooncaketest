@@ -166,6 +166,6 @@ ms.author: lakshmir;barbkess;sonyama
 
 <!--Other Web references-->
 [Azure Portal]: https://portal.azure.cn/
-[Microsoft Web 平台安装程序]: https://aka.ms/webpi-azps
+[Microsoft Web 平台安装程序]: https://www.microsoft.com/web/downloads/platform.aspx
 
 <!---HONumber=Mooncake_1212_2016-->

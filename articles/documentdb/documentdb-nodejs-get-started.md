@@ -14,15 +14,16 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: node
 ms.topic: hero-article
-ms.date: 12/16/2016
-wacn.date: 01/23/2017
+ms.date: 12/25/2016
+wacn.date: 02/27/2017
 ms.author: anhoh
 ---
 
 # NoSQL Node.js 教程：DocumentDB Node.js 控制台应用程序
->[!div class="op_single_selector"]
+> [!div class="op_single_selector"]
 - [.NET](./documentdb-get-started.md)
 - [.NET Core](./documentdb-dotnetcore-get-started.md)
+- [Java](./documentdb-java-get-started.md)
 - [Node.js](./documentdb-nodejs-get-started.md)
 - [C++](./documentdb-cpp-get-started.md)
 
@@ -663,9 +664,7 @@ Press any key to exit
 - 在 [DocumentDB 文档页](./index.md)的“Develop”（开发）部分中了解有关编程模型的详细信息。
 
 [documentdb-create-account]: ./documentdb-create-account.md
-[documentdb-manage]: ./documentdb-manage.md
-
 [keys]: ./media/documentdb-nodejs-get-started/node-js-tutorial-keys.png
 
-<!---HONumber=Mooncake_0109_2017-->
-<!---Update_Description: wording update -->
+<!---HONumber=Mooncake_0220_2017-->
+<!--Update_Description: link update-->

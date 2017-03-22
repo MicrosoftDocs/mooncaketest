@@ -90,7 +90,7 @@ New-AzureRmResourceGroup -Name "ExpressRouteResourceGroup" -Location "China Nort
 下面是请求新的服务密钥的示例：
 
 ```
-    New-AzureRmExpressRouteCircuit -Name "ExpressRouteARMCircuit" -ResourceGroupName "ExpressRouteResourceGroup" -Location "China North" -SkuTier Standard -SkuFamily MeteredData -ServiceProviderName "Beijing Telecom Ethernet" -PeeringLocation "Beijing" -BandwidthInMbps 200
+New-AzureRmExpressRouteCircuit -Name "ExpressRouteARMCircuit" -ResourceGroupName "ExpressRouteResourceGroup" -Location "China North" -SkuTier Standard -SkuFamily MeteredData -ServiceProviderName "Beijing Telecom Ethernet" -PeeringLocation "Beijing" -BandwidthInMbps 200
 ```
 
 请确保指定合适的 SKU 层级和 SKU 系列。
@@ -105,7 +105,7 @@ New-AzureRmResourceGroup -Name "ExpressRouteResourceGroup" -Location "China Nort
 响应将包含服务密钥。你可以通过运行以下命令获取所有这些参数的详细说明。
 
 ```
-    Get-Help New-AzureRmExpressRouteCircuit -detailed 
+Get-Help New-AzureRmExpressRouteCircuit -detailed 
 ```
 
 ### 4\.列出所有 ExpressRoute 线路
@@ -145,7 +145,7 @@ Get-AzureRmExpressRouteCircuit -Name "ExpressRouteARMCircuit" -ResourceGroupName
 你可以随时使用 `Get-AzureRmExpressRouteCircuit` cmdlet 检索此信息。进行不带任何参数的调用将列出所有线路。你的服务密钥将在 *ServiceKey* 字段中列出：
 
 ```
-    Get-AzureRmExpressRouteCircuit
+Get-AzureRmExpressRouteCircuit
 ```
 
 响应将如以下示例中所示：
@@ -187,9 +187,8 @@ get-help Get-AzureRmExpressRouteCircuit -detailed
 当你创建新的 ExpressRoute 线路时，线路将是以下状态：
 
 ```
-    ServiceProviderProvisioningState : NotProvisioned
-
-    CircuitProvisioningState         : Enabled
+ServiceProviderProvisioningState : NotProvisioned
+CircuitProvisioningState         : Enabled
 ```
 
 当连接提供商正在为你启用线路时，线路将转为以下状态。
@@ -211,7 +210,7 @@ CircuitProvisioningState         : Enabled
 检查线路密钥的状态，你可以通过此状态了解提供商何时启用了你的线路。配置线路后，*ServiceProviderProvisioningState* 将显示为 *Provisioned*，如以下例所示：
 
 ```
-    Get-AzureRmExpressRouteCircuit -Name "ExpressRouteARMCircuit" -ResourceGroupName "ExpressRouteResourceGroup"
+Get-AzureRmExpressRouteCircuit -Name "ExpressRouteARMCircuit" -ResourceGroupName "ExpressRouteResourceGroup"
 ```
 
 响应将如以下示例中所示：
@@ -256,7 +255,7 @@ CircuitProvisioningState         : Enabled
 你可以随时使用 `Get-AzureRmExpressRouteCircuit` cmdlet 检索此信息。进行不带任何参数的调用将列出所有线路。
 
 ```
-    Get-AzureRmExpressRouteCircuit
+Get-AzureRmExpressRouteCircuit
 ```
 
 响应将如以下示例中所示：
@@ -288,7 +287,7 @@ CircuitProvisioningState         : Enabled
 可以通过将资源组名称和线路名称作为参数传递给调用来获取有关特定 ExpressRoute 线路的信息：
 
 ```
-    Get-AzureRmExpressRouteCircuit -Name "ExpressRouteARMCircuit" -ResourceGroupName "ExpressRouteResourceGroup"
+Get-AzureRmExpressRouteCircuit -Name "ExpressRouteARMCircuit" -ResourceGroupName "ExpressRouteResourceGroup"
 ```
 
 响应将如以下示例中所示：
@@ -341,12 +340,10 @@ get-help get-azurededicatedcircuit -detailed
 可以使用以下 PowerShell 代码段为现有线路启用 ExpressRoute 高级版外接程序：
 
 ```
-    $ckt = Get-AzureRmExpressRouteCircuit -Name "ExpressRouteARMCircuit" -ResourceGroupName "ExpressRouteResourceGroup"
-
+$ckt = Get-AzureRmExpressRouteCircuit -Name "ExpressRouteARMCircuit" -ResourceGroupName "ExpressRouteResourceGroup"
 $ckt.Sku.Tier = "Premium"
 $ckt.sku.Name = "Premium_MeteredData"
-
-    Set-AzureRmExpressRouteCircuit -ExpressRouteCircuit $ckt
+Set-AzureRmExpressRouteCircuit -ExpressRouteCircuit $ckt
 ```
 
 你的线路现已启用 ExpressRoute 高级版外接程序功能。请注意，该命令成功运行后，我们就会立即对高级版外接程序功能收费。

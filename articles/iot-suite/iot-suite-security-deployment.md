@@ -26,7 +26,7 @@ ms.author: yurid
 
 - [有关 IoT 套件的常见问题][lnk-faq]
 
-[lnk-predictive-overview]: /documentation/articles/iot-suite-predictive-overview/
+[lnk-predictive-overview]: ./iot-suite-predictive-overview.md
 [lnk-faq]: ./iot-suite-faq.md
 
 <!---HONumber=Mooncake_0829_2016-->

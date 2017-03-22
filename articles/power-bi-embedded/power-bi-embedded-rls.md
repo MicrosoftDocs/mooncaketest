@@ -2,38 +2,37 @@
 title: Power BI Embedded 的行级别安全性
 description: 有关 Power BI Embedded 的行级别安全性的详细信息
 services: power-bi-embedded
-documentationCenter: ''
-authors: mgblythe
-manager: NA
+documentationcenter: ''
+author: guyinacube
+manager: erikre
 editor: ''
 tags: ''
 
+ms.assetid: 7936ade5-2c75-435b-8314-ea7ca815867a
 ms.service: power-bi-embedded
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: powerbi
-ms.date: 10/04/2016
-ms.author: mblythe
-wacn.date: 02/06/2017
+ms.date: 01/06/2017
+wacn.date: 02/22/2017
+ms.author: asaxton
 ---
 
 # Power BI Embedded 的行级别安全性
-
 行级别安全性 (RLS) 可用于限制用户对报表或数据集内特定数据的访问，使多个不同的用户在查看不同数据的同时，能够使用相同的报表。Power BI Embedded 现在支持使用 RLS 配置的数据集。
 
 ![](./media/power-bi-embedded-rls/pbi-embedded-rls-flow-1.png)  
 
 若要利用 RLS，必须了解三个重要概念：用户、角色和规则。下面更详细地讲解每个概念：
 
-**用户** – 查看报表的实际最终用户。在 Power BI Embedded 中，用户按应用令牌中的用户名属性标识。
+**用户** - 查看报表的实际最终用户。在 Power BI Embedded 中，用户按应用令牌中的用户名属性标识。
 
-**角色** – 用户属于角色。角色是规则的容器，可命名为类似于“销售经理”或“销售代表”的名称。在 Power BI Embedded 中，用户按应用令牌中的角色属性标识。
+**角色** - 用户属于角色。角色是规则的容器，可命名为类似于“销售经理”或“销售代表”的名称。在 Power BI Embedded 中，用户按应用令牌中的角色属性标识。
 
-**规则** – 角色具有规则，这些规则是要应用到数据的实际筛选器。规则可以像“Country = USA”一样简单，也可以是更动态的对象。
+**规则** - 角色具有规则，这些规则是要应用到数据的实际筛选器。规则可以像“Country = USA”一样简单，也可以是更动态的对象。
 
 ### 示例
-
 本文的余下部分将提供编写 RLS，然后在嵌入式应用程序中使用 RLS 的示例。该本例使用[零售分析示例](http://go.microsoft.com/fwlink/?LinkID=780547) PBIX 文件。
 
 ![](./media/power-bi-embedded-rls/pbi-embedded-rls-scenario-2.png)  
@@ -51,7 +50,7 @@ RLS 是在 Power BI Desktop 中编写的。打开数据集和报表时，可以�
 - 关系线的箭头表示筛选器可以从一个表流向另一个表的方向。例如，如果筛选器是针对当前架构中的 **Time[Date]** 设置的，则它只向下筛选“销售”表中的值。其他表不受此筛选器的影响，因为关系线的所有箭头都指向销售表，未指向其他方向。
 - “区域”表指明谁是每个区域的经理：
 
-    ![](./media/power-bi-embedded-rls/pbi-embedded-rls-district-table-4.png)  
+  ![](./media/power-bi-embedded-rls/pbi-embedded-rls-district-table-4.png)  
 
 根据此架构，如果将筛选器应用到“区域”表中的“区域经理”列，并且该筛选器与查看报表的用户匹配，则该筛选器也向下筛选“商店”和“销售”表，只显示该特定区域经理的数据。
 
@@ -62,14 +61,12 @@ RLS 是在 Power BI Desktop 中编写的。打开数据集和报表时，可以�
 
 2. 创建名为“管理员”的新角色。
 ![](./media/power-bi-embedded-rls/pbi-embedded-rls-manager-role-6.png)
-
 3. 在“区域”表中输入以下 DAX 表达式：**[District Manager] = USERNAME()**
 ![](./media/power-bi-embedded-rls/pbi-embedded-rls-manager-role-7.png)
-
 4. 为确保规则正常运行，请在“建模”选项卡中单击“以角色身份查看”，然后输入以下内容：
 ![](./media/power-bi-embedded-rls/pbi-embedded-rls-view-as-roles-8.png)
 
-    报表随即会显示数据，与使用 **Andrew Ma** 登录时的情况一样。
+   报表随即会显示数据，与使用 **Andrew Ma** 登录时的情况一样。
 
 如前所述应用筛选器可向下筛选“区域”、“商店”和“销售”表中的所有记录。但是，由于对“销售”与“时间”之间的关系应用了筛选方向，因此，“销售”和“项”，以及“项”和“时间”表不会向下筛选。
 
@@ -91,10 +88,23 @@ RLS 是在 Power BI Desktop 中编写的。打开数据集和报表时，可以�
 若要了解有关双向交叉筛选的详细信息，请下载 [Bidirectional cross-filtering in SQL Server Analysis Services 2016 and Power BI Desktop]（SQL Server Analysis Services 2016 和 Power BI Desktop 中的双向交叉筛选）白皮书 (http://download.microsoft.com/download/2/7/8/2782DF95-3E0D-40CD-BFC8-749A2882E109/Bidirectional cross-filtering in Analysis Services 2016 and Power BI.docx)。
 
 这就是需要在 Power BI Desktop 中完成的所有工作，但要使定义的 RLS 规则能够在 Power BI Embedded 中正常运行，还有一个小问题需要解决。用户由应用程序进行身份验证和授权，应用令牌用于授予用户对特定 Power BI Embedded 报表的访问权限。Power BI Embedded 并不具体地知道谁是用户。要使 RLS 正常运行，需要将一些附加上下文作为应用令牌的一部分传递：
-- **username**（可选）- 与 RLS 一起使用，这是一个字符串，可以在应用 RLS 规则时帮助标识用户。请参阅“Using Row Level Security with Power BI Embedded”（在 Power BI Embedded 中使用行级别安全性）
-- **roles** – 一个字符串，包含当应用行级别安全性规则时可选择的角色。如果传递多个角色，则应当以字符串数组形式传递它们。
 
-如果提供 username 属性，则也必须在角色中至少传递一个值。
+- **username**（可选）- 与 RLS 配合使用，这是一个字符串，可以在应用 RLS 规则时帮助标识用户。请参阅“Using Row Level Security with Power BI Embedded”（在 Power BI Embedded 中使用行级别安全性）
+- **roles** - 一个字符串，包含应用行级别安全性规则时可选择的角色。如果传递多个角色，则应当以字符串数组形式传递它们。
+
+使用 [CreateReportEmbedToken](https://docs.microsoft.com/dotnet/api/microsoft.powerbi.security.powerbitoken?redirectedfrom=MSDN#Microsoft_PowerBI_Security_PowerBIToken_CreateReportEmbedToken_System_String_System_String_System_String_System_DateTime_System_String_System_Collections_Generic_IEnumerable_System_String__) 方法创建令牌。如果提供 username 属性，则也必须在角色中至少传递一个值。
+
+例如，可更改 EmbedSample。DashboardController 第 55 行无法执行以下更新：从
+
+```
+var embedToken = PowerBIToken.CreateReportEmbedToken(this.workspaceCollection, this.workspaceId, report.Id);
+```
+
+to
+
+```
+var embedToken = PowerBIToken.CreateReportEmbedToken(this.workspaceCollection, this.workspaceId, report.Id, "Andrew Ma", ["Manager"]);'
+```
 
 完整的应用令牌如下所示：
 
@@ -105,6 +115,7 @@ RLS 是在 Power BI Desktop 中编写的。打开数据集和报表时，可以�
 ![](./media/power-bi-embedded-rls/pbi-embedded-rls-dashboard-13.png)  
 
 ## 另请参阅
-[Row-level security (RLS) with Power](https://powerbi.microsoft.com/zh-CN/documentation/powerbi-admin-rls/)（Power 的行级别安全性 (RLS)）
+[Row-level security (RLS) with Power（Power 的行级别安全性 (RLS)）](https://powerbi.microsoft.com/zh-cn/documentation/powerbi-admin-rls/)
 
-<!---HONumber=Mooncake_1010_2016-->
+<!---HONumber=Mooncake_0213_2017-->
+<!---Update_Description: wording and code update -->

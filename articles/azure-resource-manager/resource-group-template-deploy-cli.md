@@ -197,7 +197,7 @@ azure group deployment create -f "c:\MyTemplates\example.json" -e "c:\MyTemplate
 ## 后续步骤
 * 有关通过 .NET 客户端库部署资源的示例，请参阅 [Deploy resources using .NET libraries and a template](../virtual-machines/virtual-machines-windows-csharp-template.md)（使用 .NET 库和模板部署资源）。
 * 若要在模板中定义参数，请参阅[创作模板](./resource-group-authoring-templates.md#parameters)。
-* 有关将解决方案部署到不同环境的指南，请参阅 [Development and test environments in Azure](./solution-dev-test-environments.md)（Azure 中的开发和测试环境）。
+<!--* 有关将解决方案部署到不同环境的指南，请参阅 [Development and test environments in Azure](./solution-dev-test-environments.md)（Azure 中的开发和测试环境）。-->
 * 有关使用 KeyVault 引用来传递安全值的详细信息，请参阅[在部署期间传递安全值](./resource-manager-keyvault-parameter.md)。
 * 如需了解企业如何使用 Resource Manager 对订阅进行有效管理，请参阅 [Azure 企业机架 - 规范性订阅管理](./resource-manager-subscription-governance.md)。
 * 有关自动化部署的四部分系列教程，请参阅[将应用程序自动部署到 Azure 虚拟机](../virtual-machines/virtual-machines-windows-dotnet-core-1-landing.md)。此系列教程介绍了应用程序体系结构、访问与安全性、可用性与缩放性，以及应用程序部署。

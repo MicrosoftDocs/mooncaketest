@@ -286,6 +286,7 @@ $myBlankDatabase = New-AzureRmSqlDatabase -DatabaseName $blankDatabaseName -Serv
 $myBlankDatabase
 ```
 
+<a id="complete-azure-powershell-script-to-create-a-server-firewall-rule-and-database"></a>
 ## 完成用于创建服务器、防火墙规则和数据库的 Azure PowerShell 脚本
 
 ```

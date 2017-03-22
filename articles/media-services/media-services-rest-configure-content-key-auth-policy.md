@@ -1,19 +1,20 @@
 ---
-title: 使用媒体服务 REST API 配置内容密钥授权策略 | Azure
+title: 使用 REST 配置内容密钥授权策略 - Azure | Azure
 description: 了解如何使用媒体服务 REST API 配置内容密钥的授权策略。
 services: media-services
-documentationCenter: ''
-authors: Juliako
+documentationcenter: ''
+author: Juliako
 manager: erikre
 editor: ''
 
+ms.assetid: 7af5f9e2-8ed8-43f2-843b-580ce8759fd4
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/19/2016
-wacn.date: 12/26/2016
+ms.date: 01/23/2017
+wacn.date: 03/10/2017
 ms.author: juliako
 ---
 
@@ -42,13 +43,13 @@ ms.author: juliako
 
 ###请注意以下事项：
 
-- 为了能够使用动态打包和动态加密，必须确保至少有一个流式处理保留单元。有关详细信息，请参阅[如何缩放媒体服务](./media-services-manage-origins.md#scale_streaming_endpoints)。
+- 若要使用动态打包和动态加密，请确保流式处理终结点（用于内容流式处理）处于“正在运行”状态。
 - 你的资产必须包含一组自适应比特率 MP4 或自适应比特率平滑流式处理文件。有关详细信息，请参阅[对资产进行编码](./media-services-encode-asset.md)。
 - 使用 **AssetCreationOptions.StorageEncrypted** 选项上传资产并对其进行编码。
 - 如果你打算创建需要相同策略配置的多个内容密钥，我们强烈建议你创建单个授权策略，并将其重复用于多个内容密钥。
 - 密钥传送服务将 ContentKeyAuthorizationPolicy 及其相关对象（策略选项和限制）缓存 15 分钟。如果你创建 ContentKeyAuthorizationPolicy 并指定使用“令牌”限制，然后对其进行测试，再将策略更新为“开放”限制，则现有策略切换到“开放”版本的策略需要大约 15 分钟。
 - 如果你添加或更新资产的传送策略，则必须删除现有定位符（如果有）并创建新定位符。
-- 目前，无法加密 HDS 流式处理格式或渐进式下载。
+* 目前，无法加密渐进式下载。
 
 ##AES-128 动态加密
 
@@ -500,4 +501,4 @@ public enum ContentKeyDeliveryType
 ##后续步骤
 现在已配置内容密钥的授权策略，请转到[如何配置资产传送策略](./media-services-rest-configure-asset-delivery-policy.md)主题。
 
-<!---HONumber=Mooncake_Quality_Review_1215_2016-->
+<!---HONumber=Mooncake_0306_2017-->

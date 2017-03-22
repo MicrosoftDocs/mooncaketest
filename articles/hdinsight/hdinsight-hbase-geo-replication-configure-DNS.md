@@ -112,7 +112,7 @@ DNS 服务器需要静态 IP 地址。不能从 Azure 经典管理门户完成�
 1. 打开 Windows PowerShell ISE。
 2. 运行以下 cmdlet：
 
-    ```powershell
+    ```
     Add-AzureAccount -Environment AzureChinaCloud
     Select-AzureSubscription [YourAzureSubscriptionName]
 

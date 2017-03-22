@@ -15,7 +15,7 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/15/2016
-wacn.date: 01/25/2017
+wacn.date: 03/17/2017
 ms.author: jgao
 ---
 
@@ -454,7 +454,7 @@ $sourceBlobName = "example/data/sample.log"
 $destBlobName = "tutorials/usesqoop/data/sample.log"
 
 # Define the connection string
-$storageConnectionString = "DefaultEndpointsProtocol=https;AccountName=$defaultStorageAccountName;AccountKey=$defaultStorageAccountKey"
+$storageConnectionString = "DefaultEndpointsProtocol=https;AccountName=$defaultStorageAccountName;AccountKey=$defaultStorageAccountKey;EndpointSuffix=core.chinacloudapi.cn"
 
 # Create block blob objects referencing the source and destination blob.
 $storageAccount = [Microsoft.WindowsAzure.Storage.CloudStorageAccount]::Parse($storageConnectionString)

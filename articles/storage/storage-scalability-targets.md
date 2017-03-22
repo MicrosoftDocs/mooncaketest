@@ -13,8 +13,8 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: storage
-ms.date: 12/08/2016
-wacn.date: 01/06/2017
+ms.date: 02/14/2017
+wacn.date: 03/20/2017
 ms.author: robinsh
 ---
 
@@ -44,11 +44,8 @@ ms.author: robinsh
 
 请参阅 [Windows VM 大小](../virtual-machines/virtual-machines-windows-sizes.md)或 [Linux VM 大小](../virtual-machines/virtual-machines-linux-sizes.md)了解其他详细信息。
 
-###<a name="standard-storage-accounts"></a> 标准存储帐户
-
+## 非托管虚拟机磁盘
 [!INCLUDE [azure-storage-limits-vm-disks-standard](../../includes/azure-storage-limits-vm-disks-standard.md)]
-
-###<a id="scalability-targets-for-premium-storage-accounts"></a><a name="premium-storage-accounts"></a> 高级存储帐户
 
 [!INCLUDE [azure-storage-limits-vm-disks-premium](../../includes/azure-storage-limits-vm-disks-premium.md)]
 
@@ -57,7 +54,6 @@ ms.author: robinsh
 [!INCLUDE [azure-storage-limits-azure-resource-manager](../../includes/azure-storage-limits-azure-resource-manager.md)]
 
 ## Azure 存储中的分区
-
 可容纳存储在 Azure 存储中的数据的每个对象（Blob、消息、实体和文件）都属于某个分区，可用分区键进行标识。分区决定了 Azure 存储如何在多个服务器之间实现 Blob、消息、实体和文件的负载均衡，以满足这些对象的流量需求。分区键是唯一的，用于查找 Blob、消息或实体。
 
 上面[标准存储帐户的可伸缩性目标](#standard-storage-accounts)中所示的表列出了每项服务在单个分区的性能目标。
@@ -87,4 +83,4 @@ ms.author: robinsh
 - [Azure 存储性能和可伸缩性清单](./storage-performance-checklist.md)
 - [Azure 存储：具有高度一致性的高可用云存储服务](http://blogs.msdn.com/b/windowsazurestorage/archive/2011/11/20/windows-azure-storage-a-highly-available-cloud-storage-service-with-strong-consistency.aspx)
 
-<!---HONumber=Mooncake_0103_2017-->
+<!---HONumber=Mooncake_0313_2017-->

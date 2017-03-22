@@ -13,8 +13,8 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/07/2016
-wacn.date: 12/26/2016
+ms.date: 01/11/2017
+wacn.date: 02/10/2017
 ms.author: tomfitz
 ---
 
@@ -63,7 +63,7 @@ $r.Headers["x-ms-ratelimit-remaining-subscription-reads"]
 Get-AzureRmResourceGroup -Debug
 ```
 
-这会返回大量的信息，包括以下响应值：
+这会返回许多值，包括以下响应值：
 
 ```powershell
 ...
@@ -84,7 +84,7 @@ x-ms-ratelimit-remaining-subscription-reads: 14999
 azure group list -vv --json
 ```
 
-这会返回大量的信息，包括以下对象：
+这会返回许多值，包括以下对象：
 
 ```azurecli
 ...
@@ -103,4 +103,10 @@ silly: returnObject
 ## 在发送下一请求之前等待
 达到请求限制时，Resource Manager 会返回 **429** HTTP 状态代码以及标头中的 **Retry-After** 值。**Retry-After** 值指定应用程序在发送下一请求之前应等待（或睡眠）的秒数。如果在重试值所对应的时间尚未用完之前发送请求，则系统不会处理该请求，而会返回新的重试值。
 
-<!---HONumber=Mooncake_1219_2016-->
+## 后续步骤
+
+* 有关限制和配额的详细信息，请参阅 [Azure 订阅和服务限制、配额与约束](../azure-subscription-service-limits.md)。
+* 若要了解如何处理异步 REST 请求，请参阅[跟踪异步 Azure 操作](./resource-manager-async-operations.md)。
+
+<!---HONumber=Mooncake_0206_2017-->
+<!-- Update_Description: meta data;wording update -->

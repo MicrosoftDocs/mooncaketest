@@ -3,7 +3,7 @@ title: 如何通过 iOS 使用 Azure Blob 存储 | Azure
 description: 使用 Azure Blob 存储（对象存储）将非结构化数据存储在云中。
 services: storage
 documentationcenter: ios
-author: micurd
+author: seguler
 manager: jahogg
 editor: tysonn
 
@@ -13,9 +13,9 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: objective-c
 ms.topic: article
-ms.date: 11/21/2016
-wacn.date: 01/06/2017
-ms.author: micurd
+ms.date: 01/30/2017
+wacn.date: 03/20/2017
+ms.author: seguler
 ---
 
 # 如何通过 iOS 使用 Blob 存储
@@ -371,4 +371,4 @@ https://nameofyourstorageaccount.blob.core.chinacloudapi.cn/containerpublic/samp
 
 如果你对此库有任何疑问，请随意将问题发布到我们的 [MSDN Azure 论坛](https://social.msdn.microsoft.com/forums/azure/zh-cn/home?forum=windowsazuredata)或[堆栈溢出](http://stackoverflow.com/questions/tagged/windows-azure-storage+or+windows-azure-storage+or+azure-storage-blobs+or+azure-storage-tables+or+azure-table-storage+or+windows-azure-queues+or+azure-storage-queues+or+azure-storage-emulator+or+azure-storage-files)。如果你有 Azure 存储空间的功能建议，请将建议发布到 [Azure 存储空间反馈](https://www.azure.cn/product-feedback)。
 
-<!---HONumber=Mooncake_0103_2017-->
+<!---HONumber=Mooncake_0313_2017-->

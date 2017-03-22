@@ -13,8 +13,8 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/09/2016
-wacn.date: 02/13/2017
+ms.date: 02/08/2017
+wacn.date: 03/13/2017
 ms.author: billmath
 ---
 
@@ -39,7 +39,7 @@ ms.author: billmath
 
 选择某一行时，底部将更新以显示该运行的详细信息。在底部的最左边，可能会有一份显示“步骤编号”的列表。仅当林中有多个域，而且每个域都以一个步骤表示时，才会显示此列表。你可以在“分区”标题下方找到域名。在“同步统计信息”下方，可以找到有关已处理更改次数的详细信息。可以单击链接获取已更改对象的列表。如果有对象发生错误，这些错误将显示在“同步错误”下方。
 
-## 排查“操作”选项卡中的错误
+## 排查“操作”选项卡中的错误 <a name="troubleshoot-errors-in-operations-tab"></a>
 ![Sync Service Manager](./media/active-directory-aadconnectsync-service-manager-ui/errorsync.png) 
 遇到错误时，发生错误的对象与错误本身都是链接，这些链接提供更多信息。
 
@@ -58,5 +58,5 @@ ms.author: billmath
 
 了解有关[将本地标识与 Azure Active Directory 集成](./active-directory-aadconnect.md)的详细信息。
 
-<!---HONumber=Mooncake_0206_2017-->
-<!--Update_Description: wording update-->
+<!---HONumber=Mooncake_0306_2017-->
+<!---Update_Description: update meta properties -->

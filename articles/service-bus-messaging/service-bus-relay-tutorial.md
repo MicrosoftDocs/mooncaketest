@@ -14,7 +14,7 @@ wacn.date: 01/09/2017
 
 # 服务总线中继消息传送教程
 
-本教程介绍了如何使用服务总线“中继”功能，构建简单的服务总线客户端应用程序和服务。有关使用服务总线[中转消息传送](./service-bus-messaging-overview.md#Brokered-messaging)的相应教程，请参阅[服务总线中转消息传送 .NET 教程](./service-bus-brokered-tutorial-dotnet.md)。
+本教程介绍了如何使用服务总线“中继”功能，构建简单的服务总线客户端应用程序和服务。有关使用服务总线[中转消息传送](./service-bus-messaging-overview.md#Brokered-messaging)的相应教程，请参阅[服务总线中转消息传送 .NET 教程](./service-bus-dotnet-get-started-with-queues.md)。
 
 通过此教程，你可以了解创建服务总线客户端和服务应用程序所需的步骤。正如其 WCF 对应项，服务是公开一个或多个终结点的构造，其中每个终结点都公开一个或多个服务操作。服务的终结点用于指定可在其中找到服务的地址、包含客户端必须与服务进行通信的信息的绑定，以及定义服务向其客户端提供的功能的协定。WCF 和服务总线服务之间的主要区别在于：终结点在云中公开，而不是在本地计算机中公开。
 
@@ -65,7 +65,7 @@ wacn.date: 01/09/2017
 
 4. 在文件的顶部添加以下 using 语句：
 
-    ```
+    ```csharp
     using System.ServiceModel;
     using Microsoft.ServiceBus;
     ```
@@ -77,7 +77,7 @@ wacn.date: 01/09/2017
 
 1. 直接在完成 `Microsoft.ServiceBus.Samples` 命名空间声明后，在命名空间内定义一个名为 `IEchoContract` 的新接口，然后将 `ServiceContractAttribute` 属性应用于该接口，其值为 **http://samples.microsoft.com/ServiceModel/Relay/**。该命名空间值不同于你在整个代码范围内使用的命名空间。相反，该命名空间值将用作此协定的唯一标识符。显式指定命名空间可防止将默认的命名空间值添加到约定名称中。
 
-    ```
+    ```csharp
     [ServiceContract(Name = "IEchoContract", Namespace = "http://samples.microsoft.com/ServiceModel/Relay/")]
     publicinterface IEchoContract
     {
@@ -89,14 +89,14 @@ wacn.date: 01/09/2017
 
 1. 在 `IEchoContract` 接口中，为 `IEchoContract` 约定在接口中公开的单个操作声明一个方法，然后将 `OperationContractAttribute` 属性应用到你希望将其作为公共服务总线约定的一部分进行公开的方法中。
 
-    ```
+    ```csharp
     [OperationContract]
     string Echo(string text);
     ```
 
 1. 直接在 `IEchoContract` 接口定义之后，声明从 `IEchoContract` 中继承，并可传承到 `IClientChannel` 接口的通道，如下所示：
 
-    ```
+    ```csharp
     public interface IEchoChannel : IEchoContract, IClientChannel { }
     ```
 
@@ -108,7 +108,7 @@ wacn.date: 01/09/2017
 
 以下代码显示了一个用于定义服务总线协定的基本接口。
 
-```
+```csharp
     using System;
     using System.ServiceModel;
 
@@ -140,7 +140,7 @@ wacn.date: 01/09/2017
 
 1. 在 `IEchoContract` 接口定义的正下方创建名为 `EchoService` 的新类。`EchoService` 类实现 `IEchoContract` 接口。 
 
-    ```
+    ```csharp
     class EchoService : IEchoContract
     {
     }
@@ -150,7 +150,7 @@ wacn.date: 01/09/2017
 
 1. 将 [ServiceBehaviorAttribute](https://msdn.microsoft.com/zh-cn/library/system.servicemodel.servicebehaviorattribute.aspx) 属性应用于 `IEchoContract` 接口。该属性指定服务名称和命名空间。完成后，`EchoService` 类将如下所示：
 
-    ```
+    ```csharp
     [ServiceBehavior(Name = "EchoService", Namespace = "http://samples.microsoft.com/ServiceModel/Relay/")]
     class EchoService : IEchoContract
     {
@@ -159,7 +159,7 @@ wacn.date: 01/09/2017
 
 3. 在 `EchoService` 类中，实现 `IEchoContract` 接口中定义的 `Echo` 方法。
 
-    ```
+    ```csharp
     public string Echo(string text)
     {
         Console.WriteLine("Echoing: {0}", text);
@@ -179,7 +179,7 @@ wacn.date: 01/09/2017
 
 1. 在 `<system.serviceModel>` 标记中，添加 `<services>` 元素。可以在单个配置文件中定义多个服务总线应用程序。但是，本教程只定义一个。
 
-    ```
+    ```xml
     <?xmlversion="1.0"encoding="utf-8"?>
     <configuration>
       <system.serviceModel>
@@ -192,14 +192,14 @@ wacn.date: 01/09/2017
 
 5. 在 `<services>` 元素中，添加 `<service>` 元素来定义服务名称。
 
-    ```
+    ```xml
     <servicename="Microsoft.ServiceBus.Samples.EchoService">
     </service>
     ```
 
 6. 在 `<service>` 元素中，定义终结点协定的位置，以及终结点绑定的类型。
 
-    ```
+    ```xml
     <endpointcontract="Microsoft.ServiceBus.Samples.IEchoContract"binding="netTcpRelayBinding"/>
     ```
 
@@ -211,7 +211,7 @@ wacn.date: 01/09/2017
 
 下面的代码显示服务协定的实现。
 
-```
+```csharp
     [ServiceBehavior(Name = "EchoService", Namespace = "http://samples.microsoft.com/ServiceModel/Relay/")]
 
         class EchoService : IEchoContract
@@ -226,7 +226,7 @@ wacn.date: 01/09/2017
 
 以下代码显示了与该服务主机关联的 App.config 文件的基本格式。
 
-```
+```xml
     <?xml version="1.0" encoding="utf-8" ?>
     <configuration>
       <system.serviceModel>
@@ -253,7 +253,7 @@ wacn.date: 01/09/2017
 
 1. 在 `Main()` 中，创建两个变量，将命名空间和从控制台窗口中读取的 SAS 密钥存储在其中。
 
-    ```
+    ```csharp
     Console.Write("Your Service Namespace: ");
     string serviceNamespace = Console.ReadLine();
     Console.Write("Your SAS key: ");
@@ -264,7 +264,7 @@ wacn.date: 01/09/2017
 
 4. 使用 [TransportClientEndpointBehavior](https://msdn.microsoft.com/zh-cn/library/microsoft.servicebus.transportclientendpointbehavior.aspx) 对象声明你将使用 SAS 密钥作为凭据类型。在最后一步中添加的代码后直接添加以下代码。
 
-    ```
+    ```csharp
     TransportClientEndpointBehavior sasCredential = new TransportClientEndpointBehavior();
     sasCredential.TokenProvider = TokenProvider.CreateSharedAccessSignatureTokenProvider("RootManageSharedAccessKey", sasKey);
     ```
@@ -273,7 +273,7 @@ wacn.date: 01/09/2017
 
 1. 在上一个步骤添加的代码后，为服务的基址创建 `Uri` 实例。此 URI 指定服务总线方案、命名空间，以及服务接口的路径。
 
-    ```
+    ```csharp
     Uri address = ServiceBusEnvironment.CreateServiceUri("sb", serviceNamespace, "EchoService");
     ```
 
@@ -285,7 +285,7 @@ wacn.date: 01/09/2017
 
 1. 将连接模式设置为 `AutoDetect`
 
-    ```
+    ```csharp
     ServiceBusEnvironment.SystemConnectivity.Mode = ConnectivityMode.AutoDetect;
     ```
 
@@ -293,7 +293,7 @@ wacn.date: 01/09/2017
 
 2. 使用之前在本部分中创建的 URI 创建服务主机。
 
-    ```
+    ```csharp
     ServiceHost host = new ServiceHost(typeof(EchoService), address);
     ```
 
@@ -301,14 +301,14 @@ wacn.date: 01/09/2017
 
 3. 在 Program.cs 文件的顶部，添加对 [System.ServiceModel.Description](https://msdn.microsoft.com/zh-cn/library/system.servicemodel.description.aspx) 和 [Microsoft.ServiceBus.Description](https://msdn.microsoft.com/zh-cn/library/microsoft.servicebus.description.aspx) 的引用。
 
-    ```
+    ```csharp
     using System.ServiceModel.Description;
     using Microsoft.ServiceBus.Description;
     ```
 
 4. 返回到 `Main()`，配置终结点以启用公开访问。
 
-    ```
+    ```csharp
     IEndpointBehavior serviceRegistrySettings = new ServiceRegistrySettings(DiscoveryType.Public);
     ```
 
@@ -316,7 +316,7 @@ wacn.date: 01/09/2017
 
 5. 将服务凭据应用到 App.config 文件中定义的服务终结点：
 
-    ```
+    ```csharp
     foreach (ServiceEndpoint endpoint in host.Description.Endpoints)
     {
         endpoint.Behaviors.Add(serviceRegistrySettings);
@@ -330,13 +330,13 @@ wacn.date: 01/09/2017
 
 1. 打开服务。
 
-    ```
+    ```csharp
     host.Open();
     ```
 
 2. 通知用户该服务正在运行，并说明如何关闭服务。
 
-    ```
+    ```csharp
     Console.WriteLine("Service address: " + address);
     Console.WriteLine("Press [Enter] to exit");
     Console.ReadLine();
@@ -344,7 +344,7 @@ wacn.date: 01/09/2017
 
 3. 完成后，关闭服务主机。
 
-    ```
+    ```csharp
     host.Close();
     ```
 
@@ -354,7 +354,7 @@ wacn.date: 01/09/2017
 
 下例包括本教程中前面步骤中使用的服务协定和实现，并将服务托管在控制台应用程序中。将以下编译到名为 EchoService.exe 的可执行文件。
 
-```
+```csharp
     using System;
     using System.ServiceModel;
     using System.ServiceModel.Description;
@@ -449,13 +449,13 @@ wacn.date: 01/09/2017
 
 5. 为 Program.cs 文件中的 [System.ServiceModel](https://msdn.microsoft.com/zh-cn/library/system.servicemodel.aspx) 命名空间添加 `using` 语句。
 
-    ```
+    ```csharp
     using System.ServiceModel;
     ```
 
 1. 如下面的示例中所示，将服务协定定义添加到命名空间。请注意，此定义等同于“服务”项目中所使用的定义。应将此代码添加到 `Microsoft.ServiceBus.Samples` 命名空间的顶部。
 
-    ```
+    ```csharp
     [ServiceContract(Name = "IEchoContract", Namespace = "http://samples.microsoft.com/ServiceModel/Relay/")]
     publicinterface IEchoContract
     {
@@ -472,7 +472,7 @@ wacn.date: 01/09/2017
 
 下面的代码显示了 EchoClient 项目中的 Program.cs 文件的当前状态。
 
-```
+```csharp
     using System;
     using Microsoft.ServiceBus;
     using System.ServiceModel;
@@ -508,7 +508,7 @@ wacn.date: 01/09/2017
 
 1. 在 system.serviceModel 元素中，添加 `<client>` 元素。
 
-    ```
+    ```xml
     <?xmlversion="1.0"encoding="utf-8"?>
     <configuration>
       <system.serviceModel>
@@ -522,7 +522,7 @@ wacn.date: 01/09/2017
 
 4. 在 `client` 元素中，定义终结点的名称、协定和绑定类型。
 
-    ```
+    ```xml
     <endpointname="RelayEndpoint"
                     contract="Microsoft.ServiceBus.Samples.IEchoContract"
                     binding="netTcpRelayBinding"/>
@@ -536,7 +536,7 @@ wacn.date: 01/09/2017
 
 下面的代码显示了 Echo 客户端的 App.config 文件。
 
-```
+```xml
     <?xml version="1.0" encoding="utf-8" ?>
     <configuration>
       <system.serviceModel>
@@ -579,13 +579,13 @@ wacn.date: 01/09/2017
 
 1. 将连接模式设置为 **AutoDetect**。在 **EchoClient** 应用程序的 `Main()` 方法中添加以下代码。
 
-    ```
+    ```csharp
     ServiceBusEnvironment.SystemConnectivity.Mode = ConnectivityMode.AutoDetect;
     ```
 
 2. 定义变量以保存用于服务命名空间的值，以及从控制台读取的 SAS 密钥。
 
-    ```
+    ```csharp
     Console.Write("Your Service Namespace: ");
     string serviceNamespace = Console.ReadLine();
     Console.Write("Your SAS Key: ");
@@ -594,20 +594,20 @@ wacn.date: 01/09/2017
 
 3. 创建用于定义服务总线项目中托管位置的 URI。
 
-    ```
+    ```csharp
     Uri serviceUri = ServiceBusEnvironment.CreateServiceUri("sb", serviceNamespace, "EchoService");
     ```
 
 4. 创建服务命名空间终结点的凭据对象。
 
-    ```
+    ```csharp
     TransportClientEndpointBehavior sasCredential = new TransportClientEndpointBehavior();
     sasCredential.TokenProvider = TokenProvider.CreateSharedAccessSignatureTokenProvider("RootManageSharedAccessKey", sasKey);
     ```
 
 5. 创建加载在 App.config 文件中所述的配置的通道工厂。
 
-    ```
+    ```csharp
     ChannelFactory<IEchoChannel> channelFactory = new ChannelFactory<IEchoChannel>("RelayEndpoint", new EndpointAddress(serviceUri));
     ```
 
@@ -615,20 +615,20 @@ wacn.date: 01/09/2017
 
 6. 应用服务总线凭据
 
-    ```
+    ```csharp
     channelFactory.Endpoint.Behaviors.Add(sasCredential);
     ```
 
 7. 创建并打开服务通道。
 
-    ```
+    ```csharp
     IEchoChannel channel = channelFactory.CreateChannel();
     channel.Open();
     ```
 
 8. 编写用于回显的基本用户界面和功能。
 
-    ```
+    ```csharp
     Console.WriteLine("Enter text to echo (or [Enter] to exit):");
     string input = Console.ReadLine();
     while (input != String.Empty)
@@ -649,7 +649,7 @@ wacn.date: 01/09/2017
 
 9. 关闭通道，然后关闭工厂。
 
-    ```
+    ```csharp
     channel.Close();
     channelFactory.Close();
     ```
@@ -710,7 +710,7 @@ wacn.date: 01/09/2017
 
 下面的示例演示了如何创建客户端应用程序、如何调用服务操作以及如何在完成操作调用后关闭客户端。
 
-```
+```csharp
     using System;
     using Microsoft.ServiceBus;
     using System.ServiceModel;
@@ -774,7 +774,7 @@ wacn.date: 01/09/2017
 
 ## 后续步骤
 
-本教程介绍了如何使用服务总线“中继”功能，构建服务总线客户端应用程序和服务。有关使用服务总线[中转消息传送](./service-bus-messaging-overview.md#Brokered-messaging)的类似教程，请参阅[服务总线中转消息传送 .NET 教程](./service-bus-brokered-tutorial-dotnet.md)。
+本教程介绍了如何使用服务总线“中继”功能，构建服务总线客户端应用程序和服务。有关使用服务总线[中转消息传送](./service-bus-messaging-overview.md#Brokered-messaging)的类似教程，请参阅[服务总线中转消息传送 .NET 教程](./service-bus-dotnet-get-started-with-queues.md)。
 
 若要了解有关服务总线的详细信息，请参阅以下主题。
 

@@ -13,8 +13,8 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/04/2017
-wacn.date: 01/25/2017
+ms.date: 01/31/2017
+wacn.date: 03/03/2017
 ms.author: yurid
 ---
 
@@ -36,7 +36,7 @@ ms.author: yurid
 
 - [有关 IoT 套件的常见问题][lnk-faq]
 
-[lnk-predictive-overview]: /documentation/articles/iot-suite-predictive-overview/
+[lnk-predictive-overview]: ./iot-suite-predictive-overview.md
 [lnk-faq]: ./iot-suite-faq.md
 
 <!---HONumber=Mooncake_0829_2016-->

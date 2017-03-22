@@ -9,7 +9,7 @@ editor: ''
 
 ms.service: cloud-services
 ms.date: ''
-wacn.date: 12/15/2016
+wacn.date: 02/21/2017
 ---
 
 #Azure 云服务操作手册
@@ -117,6 +117,8 @@ wacn.date: 12/15/2016
 - Azure 账户<br/>
 - Visual Studio 2013<br/>
 - 安装 [Azure SDK](/downloads/?sdk=net)
+
+[!INCLUDE [azure-sdk-developer-differences](../../includes/azure-visual-studio-login-guide.md)]
 
 1. 首先以管理员身份，运行 Visual Studio 2013；  
 2. 点击 File -> New -> Project；   

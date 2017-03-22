@@ -19,6 +19,10 @@ ms.author: adegeo
 
 # 如何创建和部署云服务
 
+> [!div class="op_single_selector"]
+- [Azure 门户预览](./cloud-services-how-to-create-deploy-portal.md)
+- [Azure 经典管理门户](./cloud-services-how-to-create-deploy.md)
+
 Azure 经典门户提供两种创建和部署云服务的方法：“快速创建”和“自定义创建”。
 
 本主题介绍如何使用“快速创建”方法创建新的云服务，然后使用“上传”在 Azure 中上传和部署云服务包。使用此方法时，Azure 经典管理门户将在用户操作时提供方便的链接以便满足所有要求。如果可以在创建云服务时对其进行部署，可使用“自定义创建”同时执行这两项操作。

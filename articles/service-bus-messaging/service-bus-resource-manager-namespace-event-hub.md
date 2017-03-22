@@ -151,8 +151,8 @@ azure group deployment create \<my-resource-group\> \<my-deployment-name\> --tem
 
 现在，你已使用 Azure Resource Manager 创建并部署了资源，请通过查看以下文章了解如何管理这些资源：
 
-- [使用 Azure 自动化管理 Azure Service Bus](./service-bus-automation-manage.md)
-- [使用 PowerShell 管理事件中心](./service-bus-powershell-how-to-provision.md)
+- [使用 Azure 自动化管理 Azure Service Bus](./service-bus-management-libraries.md)
+- [使用 PowerShell 管理事件中心](https://docs.microsoft.com/en-us/powershell/resourcemanager/azurerm.servicebus/v0.0.2/azurerm.servicebus/)
 - [使用服务总线资源管理器管理事件中心资源](https://code.msdn.microsoft.com/Service-Bus-Explorer-f2abca5a)
 
   [创作 Azure Resource Manager 模板]: ../azure-resource-manager/resource-group-authoring-templates.md

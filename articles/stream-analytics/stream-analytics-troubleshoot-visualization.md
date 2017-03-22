@@ -2,19 +2,20 @@
 title: 流分析作业的可视化和故障排除 | Azure
 description: 了解如何使用诊断关系图功能对自助服务的流分析作业管道的故障排除进行可视化。
 keywords: ''
-documentationCenter: ''
+documentationcenter: ''
 services: stream-analytics
-authors: jeffstokes72
+author: jeffstokes72
 manager: jhubbard
 editor: cgronlun
 
+ms.assetid: d87841cd-c59f-4a46-b46e-8b904fdc12e9
 ms.service: stream-analytics
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-services
-ms.date: 09/26/2016
-wacn.date: 12/05/2016
+ms.date: 01/24/2017
+wacn.date: 03/10/2017
 ms.author: jeffstok
 ---
 
@@ -37,10 +38,11 @@ ms.author: jeffstok
 ![stream-analytics-troubleshoot-visualization-intermediate-steps](./media/stream-analytics-troubleshoot-visualization/stream-analytics-troubleshoot-visualization-intermediate-steps.png)
 
 ## 后续步骤
-- [Azure 流分析简介](./stream-analytics-introduction.md)
-- [Azure 流分析入门](./stream-analytics-get-started.md)
-- [缩放 Azure 流分析作业](./stream-analytics-scale-jobs.md)
-- [Azure 流分析查询语言参考](https://msdn.microsoft.com/zh-cn/library/azure/dn834998.aspx)
-- [Azure 流分析管理 REST API 参考](https://msdn.microsoft.com/zh-cn/library/azure/dn835031.aspx)
+* [Azure 流分析简介](./stream-analytics-introduction.md)
+* [Azure 流分析入门](./stream-analytics-get-started.md)
+* [缩放 Azure 流分析作业](./stream-analytics-scale-jobs.md)
+* [Azure 流分析查询语言参考](https://msdn.microsoft.com/zh-cn/library/azure/dn834998.aspx)
+* [Azure 流分析管理 REST API 参考](https://docs.microsoft.com/zh-cn/rest/api/streamanalytics/)
 
-<!---HONumber=Mooncake_1128_2016-->
+<!---HONumber=Mooncake_0306_2017-->
+<!--Update_Description:update meta properties;wording update;update reference link-->

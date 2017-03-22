@@ -1,5 +1,5 @@
 ---
-title: 部署多个资源实例 | Azure
+title: 部署多个 Azure 资源实例 | Azure
 description: 在部署资源时使用 Azure 资源管理器模板中的复制操作和数组执行多次迭代。
 services: azure-resource-manager
 documentationcenter: na
@@ -14,11 +14,11 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/02/2016
-wacn.date: 12/26/2016
+wacn.date: 03/03/2017
 ms.author: tomfitz
 ---
 
-# 在 Azure 资源管理器中创建多个资源实例
+# 在 Azure Resource Manager 模板中部署多个资源实例
 本主题演示如何在您的 Azure 资源管理器模板中进行迭代操作，以创建多个资源实例。
 
 ## copy、copyIndex 和 length
@@ -83,7 +83,7 @@ ms.author: tomfitz
 
 * examplecopy-0
 * examplecopy-1
-* examplecopy-2。
+* examplecopy-2
 
 请使用以下模版：
 
@@ -131,7 +131,7 @@ ms.author: tomfitz
 "parameters": { 
   "org": { 
      "type": "array", 
-         "defaultValue": [ 
+     "defaultValue": [ 
          "Contoso", 
          "Fabrikam", 
          "Coho" 
@@ -179,13 +179,13 @@ ms.author: tomfitz
                  "count": 3 
               }
         },
-       {
-           "apiVersion": "2015-06-15", 
-           "type": "Microsoft.Compute/virtualMachines", 
-           "name": "[concat('VM', uniqueString(resourceGroup().id))]",  
-           "dependsOn": ["storagecopy"],
-           ...
-       }
+        {
+            "apiVersion": "2015-06-15", 
+            "type": "Microsoft.Compute/virtualMachines", 
+            "name": "[concat('VM', uniqueString(resourceGroup().id))]",  
+            "dependsOn": ["storagecopy"],
+            ...
+        }
     ],
     "outputs": {}
 }
@@ -569,4 +569,5 @@ ms.author: tomfitz
 * 如需可在模板中使用的所有函数，请参阅 [Azure Resource Manager 模板函数](./resource-group-template-functions.md)。
 * 若要了解如何部署模板，请参阅[使用 Azure 资源管理器模板部署应用程序](./resource-group-template-deploy.md)。
 
-<!---HONumber=Mooncake_1219_2016-->
+<!---HONumber=Mooncake_0227_2017-->
+<!--Update_Description: update meta properties; wording update -->

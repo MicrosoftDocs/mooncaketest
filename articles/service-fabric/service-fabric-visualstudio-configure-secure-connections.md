@@ -13,7 +13,7 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 10/08/2015
-wacn.date: 01/25/2017
+wacn.date: 02/21/2017
 ms.author: cawaMS
 ---
 
@@ -22,6 +22,8 @@ ms.author: cawaMS
 [!INCLUDE [azure-sdk-developer-differences](../../includes/azure-sdk-developer-differences.md)]
 
 了解如何使用 Visual Studio 安全访问已配置访问控制策略的 Azure Service Fabric 群集。
+
+[!INCLUDE [azure-sdk-developer-differences](../../includes/azure-visual-studio-login-guide.md)]
 
 ## 群集连接类型
 
@@ -55,13 +57,13 @@ Visual Studio Service Fabric 工具支持所有用于连接到群集来进行发
 
     如果你要发布到远程群集，需要指定该特定群集的相应参数。下面是连接到不安全群集的示例：
 
-    `<ClusterConnectionParameters ConnectionEndpoint="mycluster.chinaeast.chinacloudapp.cn:19000" />`
+    `<ClusterConnectionParameters ConnectionEndpoint="mycluster.chinaeast.cloudapp.chinacloudapi.cn:19000" />`
 
     下面是连接到基于 x509 证书的安全群集的示例：
 
     ```xml
     <ClusterConnectionParameters
-    ConnectionEndpoint="mycluster.chinaeast.chinacloudapp.cn:19000"
+    ConnectionEndpoint="mycluster.chinaeast.cloudapp.chinacloudapi.cn:19000"
     X509Credential="true"
     ServerCertThumbprint="0123456789012345678901234567890123456789"
     FindType="FindByThumbprint"

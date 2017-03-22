@@ -13,7 +13,7 @@ ms.tgt_pltfrm: dotnet
 ms.devlang: na
 ms.topic: article
 ms.date: 08/29/2016
-wacn.date: 11/25/2016
+wacn.date: 02/21/2017
 ms.author: rachelap
 ---
 
@@ -47,6 +47,8 @@ Swashbuckle 通过连接控制器名称与方法名称来生成 Swagger 操作�
 也可以扩展 Swashbuckle，使其自动生成唯一的操作 ID。
 
 以下步骤说明如何使用 Visual Studio API 应用预览项目模板包含在项目中的文件 *SwaggerConfig.cs* 来自定义 Swashbuckle。也可以在为部署配置的用作 API 应用的 Web API 项目中自定义 Swashbuckle。
+
+[!INCLUDE [azure-sdk-developer-differences](../../includes/azure-visual-studio-login-guide.md)]
 
 1. 创建自定义 `IOperationFilter` 实现
 

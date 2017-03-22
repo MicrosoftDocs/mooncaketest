@@ -8,8 +8,8 @@ manager: timlt
 editor: ''
 
 ms.service: service-bus
-ms.date: 09/29/2016
-wacn.date: 01/04/2017
+ms.date: 01/12/2017
+wacn.date: 03/20/2017
 ---
 
 # 服务总线的 AMQP 1.0 支持
@@ -95,10 +95,11 @@ Azure 服务总线中对 AMQP 1.0 的支持意味着现在可以通过一系列�
 
 [0]: ./media/service-bus-amqp-overview/service-bus-amqp-1.png
 [使用 AMQP 通过 .NET 使用服务总线]: ./service-bus-amqp-dotnet.md
-[使用 AMQP 通过 Java 使用服务总线]: ./service-bus-amqp-java.md
-[使用 AMQP 通过 Python 使用服务总线]: ./service-bus-amqp-python.md
-[使用 AMQP 通过 PHP 使用服务总线]: ./service-bus-amqp-php.md
-[在 Azure Linux VM 上安装 Apache Qpid Proton-C]: ./service-bus-amqp-apache.md
+[使用 AMQP 通过 Java 使用服务总线]: ./service-bus-java-how-to-use-jms-api-amqp.md
+[使用 AMQP 通过 Python 使用服务总线]: ./service-bus-python-how-to-use-queues.md
+[使用 AMQP 通过 PHP 使用服务总线]: ./service-bus-php-how-to-use-queues.md
+[在 Azure Linux VM 上安装 Apache Qpid Proton-C]: ./service-bus-amqp-overview.md
 [适用于 Windows Server 的服务总线中的 AMQP]: https://msdn.microsoft.com/zh-cn/library/dn574799.aspx
 
 <!---HONumber=Mooncake_Quality_Review_1230_2016-->
+<!--Update_Description:update meta properties-->

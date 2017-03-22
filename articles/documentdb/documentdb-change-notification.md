@@ -63,7 +63,7 @@ IT 部门表示他们可以轻松提供此通知。他们还表示可以将文�
 
     SQL
 
-    ```SQL
+    ```
     SELECT * FROM Patients p WHERE (p._ts >= @unixTimeStamp)
     ```
 
@@ -113,7 +113,7 @@ IT 部门表示他们可以轻松提供此通知。他们还表示可以将文�
 
 JSON
 
-```JSON
+```
    "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2015-08-01-preview/workflowdefinition.json#",
 "actions": {
     "Conversion": {
@@ -254,7 +254,7 @@ JSON
 
 C#
 
-```C#
+```
 =@{triggerBody()['Subject']}
 ```
 
@@ -267,7 +267,7 @@ C#
 
 JSON
 
-```JSON
+```
 "triggers": {
     "manual": {
         "inputs": {
@@ -304,7 +304,7 @@ JSON
 
 JSON
 
-```JSON
+```
 "GetUtcDate": {
         "conditions": [],
         "inputs": {
@@ -331,7 +331,7 @@ JSON
 
 JSON
 
-```JSON
+```
 {
     "uri": "https://docdbnotificationapi-debug.chinacloudsites.cn/api/Authorization",
     "method": "get",
@@ -345,7 +345,7 @@ JSON
 
 JSON
 
-```JSON
+```
 {
     "statusCode": 200,
     "headers": {
@@ -372,7 +372,7 @@ JSON
 
 JSON
 
-```JSON
+```
 "Conversion": {
     "conditions": [
     {
@@ -403,7 +403,7 @@ JSON
 
 JSON
 
-```JSON
+```
 {
     "uri": "https://docdbnotificationapi-debug.chinacloudsites.cn/api/Conversion",
     "method": "post",
@@ -417,7 +417,7 @@ JSON
 
 JSON
 
-```JSON
+```
 {
     "statusCode": 200,
     "headers": {
@@ -444,7 +444,7 @@ JSON
 
 JSON
 
-```JSON
+```
 "GetDocuments": {
     "conditions": [
     {
@@ -469,7 +469,7 @@ JSON
 
 C#
 
-```C#
+```
 unixTimeStamp=@{body('Conversion')}
 ```
 
@@ -483,7 +483,7 @@ QueryDocuments 操作会对 API 应用执行 HTTP POST 操作。
 
 JSON
 
-```JSON
+```
 {
     "uri": "https://docdbnotificationapi-debug.chinacloudsites.cn/api/Patient",
     "method": "post",
@@ -497,7 +497,7 @@ JSON
 
 JSON
 
-```JSON
+```
 {
     "statusCode": 200,
     "headers": {
@@ -570,7 +570,7 @@ JSON
 
 JSON
 
-```JSON
+```
 {
 "host": {
     "api": {
@@ -641,7 +641,7 @@ JSON
 
 JSON
 
-```JSON
+```
 "host": {
     "api": {
         "runtimeUrl": "https://logic-apis-ChinaNorth.azure-apim.net/apim/azureblob"
@@ -707,7 +707,7 @@ JSON
 
 JSON
 
-```JSON
+```
 {
     "statusCode": 200,
     "headers": {
@@ -747,7 +747,7 @@ JSON
 
 JSON
 
-```JSON
+```
 "sendMail": {
     "conditions": [
     {
@@ -776,7 +776,7 @@ HTTP 操作是一个 POST。
 
 JSON
 
-```JSON
+```
 },
     "sendgridPassword": {
          "type": "SecureString"
@@ -810,7 +810,7 @@ emailBody 会将查询所返回的文档数目（可能是“0”或更多）与
 ##### 请求
 JSON
 
-```JSON
+```
 {
     "uri": "https://api.sendgrid.com/api/mail.send.json",
     "method": "POST",
@@ -825,7 +825,7 @@ JSON
 
 JSON
 
-```JSON
+```
 {
     "statusCode": 200,
     "headers": {
@@ -845,7 +845,7 @@ JSON
 
 JSON
 
-```JSON
+```
 "outputs": {
     "Results": {
         "type": "String",
@@ -872,7 +872,7 @@ JSON
 
 JSON
 
-```JSON
+```
 {
     "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2015-08-01-preview/workflowdefinition.json#",
     "actions": {
@@ -920,7 +920,7 @@ JSON
 
 JSON
 
-```JSON
+```
 {
     "uri": "https://prod-01.ChinaNorth.logic.azure.com:443/workflows/12a1de57e48845bc9ce7a247dfabc887/triggers/manual/run?api-version=2015-08-01-preview&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=ObTlihr529ATIuvuG-dhxOgBL4JZjItrvPQ8PV6973c",
     "method": "POST",
@@ -938,7 +938,7 @@ JSON
 
 JSON
 
-```JSON
+```
 {
     "statusCode": 202,
     "headers": {
@@ -988,7 +988,7 @@ JSON
 
 C#
 
-```C#
+```
 /// <summary>
 /// Gets the current UTC Date value
 /// </summary>
@@ -1012,7 +1012,7 @@ public string GetUtcDate(
 
  C#
 
- ```C#
+ ```
     /// <summary>
     ///     Converts DateTime to double
     /// </summary>
@@ -1054,7 +1054,7 @@ public string GetUtcDate(
 
 C#
 
-```C#
+```
     /// <summary>
     ///     Query for new Patient Documents
     /// </summary>
@@ -1110,7 +1110,7 @@ C#
 
 powershell
 
-```powershell
+```
 ArmClient.exe post https://management.azure.com/subscriptions/[YOUR SUBSCRIPTION ID/resourcegroups/[YOUR RESOURCE GROUP]/providers/Microsoft.Logic/workflows/[YOUR LOGIC APP NAME/triggers/manual/listcallbackurl?api-version=2015-08-01-preview
 ```
 
@@ -1118,7 +1118,7 @@ ArmClient.exe post https://management.azure.com/subscriptions/[YOUR SUBSCRIPTION
 
 powershell
 
-```powershell
+```
 https://prod-02.ChinaNorth.logic.azure.com:443/workflows/12a1de57e48845bc9ce7a247dfabc887/triggers/manual/run?api-version=2015-08-01-prevaiew&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=XXXXXXXXXXXXXXXXXXX
 ```
 

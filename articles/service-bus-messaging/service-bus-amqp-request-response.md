@@ -1,14 +1,14 @@
 ---
 title: 服务总线基于请求/响应的操作中的 AMQP 1.0 | Azure
 description: Microsoft Azure 服务总线基于请求/响应的操作的列表。
-services: service-bus-messaging
+services: service-bus
 documentationcenter: na
 author: sethmanheim
 manager: timlt
 editor: ''
 
 ms.assetid: ''
-ms.service: service-bus-messaging
+ms.service: service-bus
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
@@ -619,6 +619,6 @@ sql-filter 映射必须包含以下条目。
 * [针对服务总线分区队列和主题的 AMQP 1.0 支持]
 
 [服务总线 AMQP 概述]: ./service-bus-amqp-overview.md
-[针对服务总线分区队列和主题的 AMQP 1.0 支持]: ./service-bus-partitioned-queues-and-topics-amqp-overview.md
+[针对服务总线分区队列和主题的 AMQP 1.0 支持]: ./service-bus-amqp-protocol-guide.md
 
 <!---HONumber=Mooncake_0116_2017-->

@@ -13,9 +13,9 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/09/2016
+ms.date: 02/13/2017
+wacn.date: 03/07/2017
 ms.author: curtand
-wacn.date: 12/09/2016
 ---
 
 # 已重置用户的密码
@@ -33,4 +33,5 @@ wacn.date: 12/09/2016
 - [管理 Azure AD](./active-directory-administer.md)
 - [在 Azure AD 中管理密码](./active-directory-manage-passwords.md)
 
-<!---HONumber=Mooncake_1128_2016-->
+<!---HONumber=Mooncake_0227_2017-->
+<!--Update_Description: update meta properties -->

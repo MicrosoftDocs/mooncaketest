@@ -1,5 +1,5 @@
 ---
-title: Azure AD Connect：将本地标识与 Azure Active Directory 集成 | Azure
+title: 将 Active Directory 与 Azure Active Directory 连接 | Azure
 description: Azure AD Connect 会将本地目录与 Azure Active Directory 集成。这样便可以为集成到 Azure AD 的 Office 365、Azure 和 SaaS 应用程序提供一个通用标识。
 keywords: Azure AD Connect 介绍, Azure AD Connect 概述, 什么是 Azure AD Connect, 安装 active directory
 services: active-directory
@@ -14,16 +14,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 12/13/2016
-wacn.date: 01/05/2017
+ms.date: 02/07/2017
+wacn.date: 03/07/2017
 ms.author: billmath
 ---
 
-# 将本地标识与 Azure Active Directory 集成
+# 将 Active Directory 与 Azure Active Directory 连接。
 Azure AD Connect 会将本地目录与 Azure Active Directory 集成。这样便可以为集成到 Azure AD 的 Office 365、Azure 和 SaaS 应用程序的用户提供一个通用标识。本主题将指导用户完成规划、部署和操作步骤。其中统合了与这些操作相关的主题的链接。
 
 > [!IMPORTANT]
-> [Azure AD Connect 是连接本地目录与 Azure AD 和 Office 365 的最佳方式。这是将 Azure AD Connect 从 Azure Active Directory Sync (DirSync) 或 Azure AD Sync 升级的最佳时机，由于这些工具现在已弃用，并在 2017 年 4 月 13 日结束支持。](./active-directory-aadconnect-dirsync-deprecated.md)
+> [Azure AD Connect 是连接本地目录与 Azure AD 和 Office 365 的最佳方式。现在是从 Azure Active Directory Sync (DirSync) 或 Azure AD Sync 升级到 Azure AD Connect 的绝佳时机，因为这些工具现已弃用，将于 2017 年 4 月 13 日终止提供支持。](./active-directory-aadconnect-dirsync-deprecated.md)
 > 
 > 
 
@@ -141,4 +141,5 @@ Azure AD Connect 同步随附一个适用于大部分客户和拓扑的默认配
 
 有关将本地目录扩展到云的 Ignite 2015 演示文稿。
 
-<!---HONumber=Mooncake_1226_2016-->
+<!---HONumber=Mooncake_0227_2017-->
+<!---Update_Description: wording update -->

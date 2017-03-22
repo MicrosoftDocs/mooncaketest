@@ -1,5 +1,5 @@
 ---
-title: 开始使用 PowerShell 在经典模式下创建面向 Internet 的负载均衡器 | Azure
+title: 创建面向 Internet 的负载均衡器 - Azure PowerShell 经典 | Azure
 description: 了解如何使用 PowerShell 在经典模式下创建面向 Internet 的负载均衡器
 services: load-balancer
 documentationcenter: na
@@ -13,8 +13,8 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 04/05/2016
-wacn.date: 01/13/2017
+ms.date: 01/23/2017
+wacn.date: 03/03/2017
 ms.author: kumud
 ---
 
@@ -71,5 +71,5 @@ Get-azureVM -ServiceName mytestcloud  -Name web1 |Remove-AzureEndpoint -Name htt
 
 如果应用程序需要始终保持对负载均衡器后面的服务器的连接，你可以详细了解[负载均衡器的空闲 TCP 超时设置](./load-balancer-tcp-idle-timeout.md)。该文章将有助于你了解使用 Azure Load Balancer 时的空闲连接行为。
 
-<!---HONumber=Mooncake_0109_2017-->
-<!--Update_Description: update meta properties & wording update & update link references-->
+<!---HONumber=Mooncake_0227_2017-->
+<!--Update_Description: update meta properties; wording update -->

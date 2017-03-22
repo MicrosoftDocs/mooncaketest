@@ -1,5 +1,3 @@
-<!-- not suitable for Mooncake -->
-
 ---
 title: 使用基于 Linux 的 HDInsight 进行脚本操作开发 | Azure
 description: 如何使用脚本操作自定义基于 Linux 的 HDInsight 群集。使用脚本操作可以通过指定群集配置设置，或者在群集上安装额外的服务、工具或其他软件，来自定义 Azure HDInsight 群集。
@@ -15,8 +13,8 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/14/2016
-wacn.date: 02/06/2017
+ms.date: 02/10/2017
+wacn.date: 03/10/2017
 ms.author: larryfr
 ---
 
@@ -24,10 +22,8 @@ ms.author: larryfr
 
 使用脚本操作可以通过指定群集配置设置，或者在群集上安装额外的服务、工具或其他软件，来自定义 Azure HDInsight 群集。你可以在创建群集期间或者在运行中的群集上使用脚本操作。
 
-> [!NOTE]
-本文档中的信息针对基于 Linux 的 HDInsight 群集。有关在基于 Windows 的群集上使用脚本操作的信息，请参阅 [Script action development with HDInsight (Windows)](./hdinsight-hadoop-script-actions.md)（使用 HDInsight 进行脚本操作开发 (Windows)）。
-> 
-> 
+> [!IMPORTANT]
+本文档中的步骤需要使用 Linux 的 HDInsight 群集。Linux 是在 HDInsight 3.4 版或更高版本上使用的唯一操作系统。有关详细信息，请参阅 [HDInsight 在 Windows 上弃用](./hdinsight-component-versioning.md#hdi-version-32-and-33-nearing-deprecation-date)。
 
 ## 什么是脚本操作？
 
@@ -37,7 +33,7 @@ ms.author: larryfr
 
 | 使用此方法来应用脚本... | 在创建群集期间... | 在运行中的群集上... |
 | --- |:---:|:---:|
-| Azure 门户 |✓ |✓ |
+| Azure 门户预览 |✓ |✓ |
 | Azure PowerShell |✓ |✓ |
 | Azure CLI |&nbsp; |✓ |
 | HDInsight .NET SDK |✓ |✓ |
@@ -77,7 +73,7 @@ HDInsight 3.4 和 3.5 的另一个重要区别在于 `JAVA_HOME` 现在能够指
 
 可通过使用 `lsb_release` 检查 OS 版本。色调安装脚本的以下代码片段演示如何确定该脚本是在 Ubuntu 14 上运行还是在 Ubuntu 16 上运行：
 
-```
+```bash
 OS_VERSION=$(lsb_release -sr)
 if [[ $OS_VERSION == 14* ]]; then
     echo "OS verion is $OS_VERSION. Using hue-binaries-14-04."
@@ -146,8 +142,8 @@ fi
 
 例如，以下脚本将 giraph-examples.jar 文件从本地文件系统复制到 WASB：
 
-```
-hadoop fs -copyFromLocal /usr/hdp/current/giraph/giraph-examples.jar /example/jars/
+```bash
+hdfs dfs -put /usr/hdp/current/giraph/giraph-examples.jar /example/jars/
 ```
 
 ### <a name="bPS7"></a>将信息写入 STDOUT 和 STDERR
@@ -159,13 +155,13 @@ hadoop fs -copyFromLocal /usr/hdp/current/giraph/giraph-examples.jar /example/ja
 
 大多数实用工具和安装包会将信息写入 STDOUT 和 STDERR，不过你可能想要添加更多日志记录。若要将文本发送到 STDOUT，可使用 `echo`。例如：
 
-```
+```bash
 echo "Getting ready to install Foo"
 ```
 
 默认情况下，`echo` 会将字符串发送到 STDOUT。若要将它定向到 STDERR，请在 `echo` 的前面添加 `>&2`。例如：
 
-```
+```bash
 >&2 echo "An error occurred installing Foo"
 ```
 
@@ -188,7 +184,7 @@ line 1: #!/usr/bin/env: No such file or directory
 
 若要使脚本能够从暂时性错误中恢复，可以实现重试逻辑。下面是一个示例函数，它将运行任何传入的命令，并且在命令失败时最多重试三次。每两次重试的间隔时间为两秒。
 
-```
+```bash
 #retry
 MAXATTEMPTS=3
 
@@ -214,7 +210,7 @@ retry() {
 
 下面是使用此函数的示例。
 
-```
+```bash
 retry ls -ltr foo
 
 retry wget -O ./tmpfile.sh https://hdiconfigactions.blob.core.windows.net/linuxhueconfigactionv02/install-hue-uber-v02.sh
@@ -224,7 +220,7 @@ retry wget -O ./tmpfile.sh https://hdiconfigactions.blob.core.windows.net/linuxh
 
 脚本操作帮助器方法是可以在编写自定义脚本时使用的实用工具。这些方法在 [https://hdiconfigactions.blob.core.windows.net/linuxconfigactionmodulev01/HDInsightUtilities-v01.sh](https://hdiconfigactions.blob.core.windows.net/linuxconfigactionmodulev01/HDInsightUtilities-v01.sh) 中定义，可以使用以下语法包括在你的脚本中：
 
-```
+```bash
 # Import the helper method module.
 wget -O /tmp/HDInsightUtilities-v01.sh -q https://hdiconfigactions.blob.core.windows.net/linuxconfigactionmodulev01/HDInsightUtilities-v01.sh && source /tmp/HDInsightUtilities-v01.sh && rm -f /tmp/HDInsightUtilities-v01.sh
 ```
@@ -275,7 +271,7 @@ PASSWORD=$1
 
 在脚本中设置的环境变量只在脚本范围内存在。在某些情况下，可能需要添加整个系统的环境变量，这些变量在脚本完成之后仍会保存。通常，这就是为何通过 SSH 连接到群集的用户可以使用脚本所安装的组件的原因。可以通过将环境变量添加 `/etc/environment` 来实现此目的。例如，以下语句添加了 **HADOOP\_CONF\_DIR**：
 
-```
+```bash
 echo "HADOOP_CONF_DIR=/etc/hadoop/conf" | sudo tee -a /etc/environment
 ```
 
@@ -302,7 +298,7 @@ echo "HADOOP_CONF_DIR=/etc/hadoop/conf" | sudo tee -a /etc/environment
 
 若要检查 OS 版本，请使用 `lsb_release`。例如，以下代码演示如何根据 OS 版本引用不同的 tar 文件：
 
-```
+```bash
 OS_VERSION=$(lsb_release -sr)
 if [[ $OS_VERSION == 14* ]]; then
     echo "OS verion is $OS_VERSION. Using hue-binaries-14-04."
@@ -324,14 +320,14 @@ fi
 
 ## <a name="runScriptAction"></a>如何运行脚本操作
 
-可以通过 Azure 门户、Azure PowerShell、Azure Resource Manager 模板或 HDInsight .NET SDK 使用脚本操作来自定义 HDInsight 群集。有关说明，请参阅 [How to use script action](./hdinsight-hadoop-customize-cluster-linux.md)（如何使用脚本操作）。
+可以通过 Azure 门户预览、Azure PowerShell、Azure Resource Manager 模板或 HDInsight .NET SDK 使用脚本操作来自定义 HDInsight 群集。有关说明，请参阅 [How to use script action](./hdinsight-hadoop-customize-cluster-linux.md)（如何使用脚本操作）。
 
 ## <a name="sampleScripts"></a>自定义脚本示例
 
 Microsoft 提供了在 HDInsight 群集上安装组件的示例脚本。示例脚本以及有关如何使用这些脚本的说明可以在以下链接上找到：
 
 * [Install and use Hue on HDInsight clusters（在 HDInsight 群集上安装并使用 Hue）](./hdinsight-hadoop-hue-linux.md)
-* [在 HDInsight Hadoop 群集上安装并使用 R](./hdinsight-hadoop-r-scripts.md)
+* [在 HDInsight Hadoop 群集上安装并使用 R](./hdinsight-hadoop-r-scripts-linux.md)
 * [在 HDInsight 群集上安装并使用 Solr](./hdinsight-hadoop-solr-install-linux.md)
 * [在 HDInsight 群集上安装并使用 Giraph](./hdinsight-hadoop-giraph-install-linux.md)
 
@@ -378,4 +374,5 @@ awk 'NR==1{sub(/^\xef\xbb\xbf/,"")}{print}' INFILE > OUTFILE
 * 使用 [HDInsight .NET SDK reference](https://msdn.microsoft.com/zh-cn/library/mt271028.aspx)（HDInsight.NET SDK 参考）详细了解如何创建用于管理 HDInsight 的 .NET 应用程序
 * 使用 [HDInsight REST API](https://msdn.microsoft.com/zh-cn/library/azure/mt622197.aspx) 了解如何通过 REST 在 HDInsight 群集上执行管理操作。
 
-<!---HONumber=Mooncake_1205_2016-->
+<!---HONumber=Mooncake_0306_2017-->
+<!--Update_Description: add information about HDInsight Windows is going to be abandoned-->

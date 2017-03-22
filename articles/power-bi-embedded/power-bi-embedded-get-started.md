@@ -14,8 +14,8 @@ ms.devlang: NA
 ms.topic: hero-article
 ms.tgt_pltfrm: NA
 ms.workload: powerbi
-ms.date: 12/19/2016
-wacn.date: 01/24/2017
+ms.date: 02/06/2017
+wacn.date: 03/16/2017
 ms.author: asaxton
 ---
 
@@ -40,7 +40,7 @@ ms.author: asaxton
     ![](./media/power-bi-embedded-get-started/create-workspace-1.png)  
 
 3. 在“数据 + 分析”下单击“Power BI Embedded”。
-4. 在“创建”边栏选项卡上输入所需的信息。有关**定价**信息，请参阅 [Power BI Embedded 定价](https://www.azure.cn/pricing/details/power-bi-embedded/)。
+4. 在“工作区集合”边栏选项卡中输入所需的信息。有关**定价**信息，请参阅 [Power BI Embedded 定价](https://www.azure.cn/pricing/details/power-bi-embedded/)。
 
     ![](./media/power-bi-embedded-get-started/create-workspace-2.png)  
 
@@ -48,12 +48,11 @@ ms.author: asaxton
 
 **工作区集合**将花费一些时间进行预配。完成后将转到“工作区集合”边栏选项卡。
 
-![](./media/power-bi-embedded-get-started/create-workspace-3.png)  
+   ![](./media/power-bi-embedded-get-started/create-workspace-3.png)  
 
 “创建”边栏选项卡包含调用创建工作区并向其部署内容的 API 所需的信息。
 
-## 查看 Power BI API 访问密钥 <a name="view-access-keys"></a>
-
+## 查看 Power BI API 访问密钥 <a name="view-power-bi-api-access-keys"></a>
 调用 Power BI REST API 所需的最重要信息之一是**访问密钥**。这些访问密钥用于生成对 API 请求进行身份验证的**应用令牌**。要查看**访问密钥**，请单击“设置”边栏选项卡上的“访问密钥”。若要了解关于**应用令牌**的详细信息，请参阅[通过 Power BI Embedded 进行身份验证和授权](./power-bi-embedded-app-token-flow.md)。
 
    ![](./media/power-bi-embedded-get-started/access-keys.png)  
@@ -67,6 +66,10 @@ ms.author: asaxton
 虽然列出了两个密钥，但是一次只需要一个密钥。提供第二个密钥以便定期重新生成密钥，且无需中断对服务的访问。
 
 现在，应用程序具有一个 Power BI 实例和**访问密钥**，可以将报表导入自己的应用程序中。在了解如何导入报表之前，下一节介绍了如何创建要嵌入到应用程序中的 Power BI 数据集和报表。
+
+## 使用工作区
+
+创建工作区集合后，需要创建一个用于容装报表和数据集的工作区。若要创建工作区，需要使用[发布工作区 REST API](https://msdn.microsoft.com/zh-cn/library/azure/mt711503.aspx)。
 
 ## 创建要嵌入到应用程序中的 Power BI 数据集和报表
 在创建应用程序的 Power BI 实例并具有**访问密钥**后，将需要创建要嵌入的 Power BI 数据集和报表。可以使用 **Power BI Desktop** 创建数据集和报表。可以下载 [Power BI Desktop](https://go.microsoft.com/fwlink/?LinkId=521662) 进行试用。或者，若要快速开始使用，可以下载[零售分析示例 PBIX](http://go.microsoft.com/fwlink/?LinkID=780547)。
@@ -87,7 +90,7 @@ ms.author: asaxton
 在 **Power BI Desktop** 中保存工作后，将创建一个 PBIX 文件。此文件包含你的报表。此外，如果导入数据，则 PBIX 包含完整数据集；而如果使用 **DirectQuery**，PBIX 只包含数据集架构。使用 [Power BI 导入 API](https://msdn.microsoft.com/zh-cn/library/mt711504.aspx) 以编程方式将 PBIX 部署到工作区。
 
 > [!NOTE]
-> **Power BI Embedded** 具有其他一些 API，用于更改数据集所指向的服务器和数据库，以及设置数据集将用于连接数据库的服务帐户凭据。请参阅 [Post SetAllConnections](https://msdn.microsoft.com/zh-cn/library/mt711505.aspx)（发布 SetAllConnections）和 [Patch Gateway Datasource](https://msdn.microsoft.com/zh-cn/library/mt711498.aspx)（修补网关数据源）。
+**Power BI Embedded** 具有其他一些 API，用于更改数据集所指向的服务器和数据库，以及设置数据集将用于连接数据库的服务帐户凭据。请参阅 [Post SetAllConnections](https://msdn.microsoft.com/zh-cn/library/mt711505.aspx)（发布 SetAllConnections）和 [Patch Gateway Datasource](https://msdn.microsoft.com/zh-cn/library/mt711498.aspx)（修补网关数据源）。
 
 ## 后续步骤
 在前面的步骤中你创建了工作区集合以及第一个报表和数据集。现在是时候了解如何为 **Power BI Embedded** 编写代码了。为了帮助用户入门，已创建了一个示例 Web 应用程序：[示例入门](./power-bi-embedded-get-started-sample.md)。此示例介绍了如何执行以下操作：
@@ -105,5 +108,5 @@ ms.author: asaxton
 
 有更多问题？ [试用 Power BI 社区](http://community.powerbi.com/)
 
-<!---HONumber=Mooncake_0116_2017-->
+<!---HONumber=Mooncake_0306_2017-->
 <!---Update_Description: wording update -->

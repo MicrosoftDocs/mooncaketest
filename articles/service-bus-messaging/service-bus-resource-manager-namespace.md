@@ -12,9 +12,9 @@ ms.devlang: tbd
 ms.topic: article
 ms.tgt_pltfrm: dotnet
 ms.workload: na
-ms.date: 10/04/2016
+ms.date: 01/10/2017
 ms.author: sethm;shvija
-wacn.date: 12/30/2016
+wacn.date: 03/20/2017
 ---
 
 # 使用 Azure Resource Manager 模板创建服务总线命名空间
@@ -52,7 +52,7 @@ wacn.date: 12/30/2016
 
 要创建的服务总线命名空间的名称。
 
-```
+```json
 "serviceBusNamespaceName": {
 "type": "string",
 "metadata": { 
@@ -65,7 +65,7 @@ wacn.date: 12/30/2016
 
 要创建的服务总线 [SKU](https://www.azure.cn/pricing/details/messaging/) 的名称。
 
-```
+```json
 "serviceBusSku": { 
     "type": "string", 
     "allowedValues": [ 
@@ -76,7 +76,6 @@ wacn.date: 12/30/2016
     "metadata": { 
         "description": "The messaging tier for service Bus namespace" 
     } 
-
 ```
 
 模板定义此参数允许的值（Basic 或 Standard），如果未指定任何值，则分配默认值 (Standard)。
@@ -87,7 +86,7 @@ wacn.date: 12/30/2016
 
 模板的服务总线 API 版本。
 
-```
+```json
 "serviceBusApiVersion": { 
        "type": "string", 
        "defaultValue": "2015-08-01", 
@@ -102,7 +101,7 @@ wacn.date: 12/30/2016
 
 创建类型为“Messaging”的标准服务总线命名空间。
 
-```
+```json
 "resources": [
     {
         "apiVersion": "[parameters('serviceBusApiVersion')]",
@@ -126,13 +125,13 @@ wacn.date: 12/30/2016
 
 ### PowerShell
 
-```
+```powershell
 New-AzureRmResourceGroupDeployment -ResourceGroupName <resource-group-name> -TemplateFile https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/101-servicebus-create-namespace/azuredeploy.json
 ```
 
 ### Azure CLI
 
-```
+```CLI
 azure config mode arm
 
 azure group deployment create <my-resource-group> <my-deployment-name> --template-uri https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/101-servicebus-create-namespace/azuredeploy.json
@@ -141,7 +140,7 @@ azure group deployment create <my-resource-group> <my-deployment-name> --templat
 ## 后续步骤
 现在，已使用 Azure Resource Manager 创建并部署了资源，请阅读以下文章了解如何管理这些资源：
 
-- [使用 PowerShell 管理服务总线](./service-bus-powershell-how-to-provision.md)
+- [使用 PowerShell 管理服务总线](https://docs.microsoft.com/en-us/powershell/resourcemanager/azurerm.servicebus/v0.0.2/azurerm.servicebus/)
 - [使用服务总线资源管理器管理服务总线资源](https://code.msdn.microsoft.com/Service-Bus-Explorer-f2abca5a)
 
   [创作 Azure Resource Manager 模板]: ../azure-resource-manager/resource-group-authoring-templates.md
@@ -152,3 +151,4 @@ azure group deployment create <my-resource-group> <my-deployment-name> --templat
   [Using the Azure CLI for Mac, Linux, and Windows with Azure Resource Management]: ../azure-resource-manager/xplat-cli-azure-resource-manager.md
 
 <!---HONumber=Mooncake_1219_2016-->
+<!--Update_Description:update meta properties-->

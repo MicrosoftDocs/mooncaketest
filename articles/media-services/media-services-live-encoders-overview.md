@@ -1,19 +1,20 @@
 ---
-title: 如何在使用 Azure 媒体服务时配置本地编码器以创建多比特率流 | Azure
+title: 在使用 Azure 媒体服务时配置本地编码器以创建多比特率流 | Azure
 description: 本主题列出的本地实时编码器可用于捕获实时事件，并将单比特率实时流发送到 AMS 通道（已启用实时编码）以供进一步处理。本主题列出了演示如何配置所列编码器的教程链接。
 services: media-services
-documentationCenter: ''
-authors: juliako
+documentationcenter: ''
+author: juliako
 manager: erikre
 editor: ''
 
+ms.assetid: 0ec6f046-0841-4673-9057-883bdbc30d5c
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/26/2016
-wacn.date: 11/21/2016
+ms.date: 01/23/2016
+wacn.date: 03/10/2017
 ms.author: juliako
 ---
 
@@ -41,4 +42,4 @@ ms.author: juliako
 
 [使用 Azure 媒体服务执行实时流式处理以创建多比特率流](./media-services-manage-live-encoder-enabled-channels.md)。
 
-<!---HONumber=Mooncake_1114_2016-->
+<!---HONumber=Mooncake_0306_2017-->

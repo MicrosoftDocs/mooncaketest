@@ -1,5 +1,3 @@
-<!-- need to be verified -->
-
 ---
 title: 为 Linux VM 创建 SSH 密钥对 | Azure
 description: 以安全方式为 Linux VM 创建 SSH 公钥和私钥对。
@@ -42,7 +40,7 @@ ssh-keygen \
 
 现在，`~/.ssh` 目录中包含 `id_rsa` 和 `id_rsa.pub` SSH 密钥对。
 
-```bash
+```
 ls -al ~/.ssh
 ```
 
@@ -66,7 +64,7 @@ ssh-copy-id -i ~/.ssh/id_rsa.pub ahmet@myserver
 
 使用密钥而不是密码测试登录：
 
-```bash
+```
 ssh -o PreferredAuthentications=publickey -o PubkeyAuthentication=yes -i ~/.ssh/id_rsa ahmet@myserver
 Last login: Tue April 12 07:07:09 2016 from 66.215.22.201
 $

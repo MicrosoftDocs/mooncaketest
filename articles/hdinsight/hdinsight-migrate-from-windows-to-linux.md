@@ -1,5 +1,3 @@
-<!-- not suitable for Mooncake -->
-
 ---
 title: 从基于 Windows 的 HDInsight 迁移到基于 Linux 的 HDInsight | Azure
 description: 了解如何从基于 Windows 的 HDInsight 群集迁移到基于 Linux 的 HDInsight 群集。
@@ -48,7 +46,7 @@ HDInsight 群集使用 Ubuntu 长期支持 (LTS) 作为群集中节点的操作�
 4. 导入任何已备份的暂时性数据。
 5. 使用新群集启动作业/继续处理。
 
-### 将数据复制到测试环境
+### <a name="copy-data-to-the-test-environment"></a> 将数据复制到测试环境
 复制数据和作业的方法有很多，不过，本部分所述的两种方法是将文件直接移到测试群集的最简单方法。
 
 #### HDFS DFS 复制
@@ -176,7 +174,7 @@ find / -name FILENAME 2>/dev/null
 
 | 对于基于 Windows 的群集，我使用... | 对于基于 Linux 的群集... |
 | --- | --- |
-| **Hive 编辑器** |Ambari 中的 Hive 视图 |
+| **Hive 编辑器** |[Ambari 中的 Hive 视图](./hdinsight-hadoop-use-hive-ambari-view.md) |
 | 运行 `set hive.execution.engine=tez;` 以启用 Tez |Tez 是基于 Linux 的群集的默认执行引擎，因此不再需要 set 语句。 |
 | 服务器上的 CMD 文件或脚本作为 Hive 作业的一部分调用 |使用 Bash 脚本 |
 | 从远程桌面运行 `hive` 命令 |使用 [Beeline](./hdinsight-hadoop-use-hive-beeline.md)，或者[从 SSH 会话使用 Hive](./hdinsight-hadoop-use-hive-ssh.md) |

@@ -14,7 +14,7 @@ ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 12/8/2016
-wacn.date: 01/20/2017
+wacn.date: 03/01/2017
 ms.author: iainfou
 ---
 
@@ -26,6 +26,9 @@ ms.author: iainfou
 
 - [Azure CLI 1.0](./virtual-machines-linux-nsg-quickstart-nodejs.md)：用于经典部署模型和资源管理部署模型的 CLI
 - [Azure CLI 2.0（预览版）](#quick-commands)：用于资源管理部署模型（本文）的下一代 CLI
+
+> [!NOTE]
+> 因为 API 版本的问题， CLI 2.0 在 Azure 中国还不弄用来管理 Azure 虚拟机，不过管理 Azure 网络是没有问题的。
 
 [!INCLUDE [azure-cli-2-azurechinacloud-environment-parameter](../../includes/azure-cli-2-azurechinacloud-environment-parameter.md)]
 
@@ -80,4 +83,3 @@ az network vnet subnet update --resource-group myResourceGroup \
 * [Azure Resource Manager 中负载均衡器的概述](../load-balancer/load-balancer-arm.md)
 
 <!---HONumber=Mooncake_0116_2017-->
-<!--Update_Description: change the steps from Azure CLI to Azure CLI 2.0-->

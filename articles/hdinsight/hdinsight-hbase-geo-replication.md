@@ -82,7 +82,7 @@ Azure 经典管理门户不支持使用自定义配置选项预配 HDInsight 群
 1. 在工作站上打开 Windows PowerShell ISE。
 2. 设置脚本开头位置的变量，然后运行该脚本。
 
-    ```powershell
+    ```
     # create hbase cluster with replication enabled
 
     $azureSubscriptionName = "[AzureSubscriptionName]"
@@ -143,7 +143,7 @@ Azure 经典管理门户不支持使用自定义配置选项预配 HDInsight 群
 
 * 使用包含以下值的同一个脚本：
 
-    ```powershell
+    ```
     $hbaseClusterName = "Contoso-HBase-CE" # This is the HBase cluster name to be used.
     $vNetName = "Contoso-VNet-CE"  # This name must match your Europe virtual network name.
     $storageAccountName = 'ContosoStoreCE'    
@@ -151,7 +151,7 @@ Azure 经典管理门户不支持使用自定义配置选项预配 HDInsight 群
 
     由于已连接到 Azure 帐户，因此不再需要运行以下 cmdlet：
 
-    ```powershell
+    ```
     Add-AzureAccount -Environment AzureChinaCloud
     Select-AzureSubscription $azureSubscriptionName
     ```

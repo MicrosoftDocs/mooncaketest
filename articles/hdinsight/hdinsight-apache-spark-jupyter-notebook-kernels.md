@@ -1,5 +1,3 @@
-<!-- not suitable for Mooncake -->
-
 ---
 title: Linux 上的 HDInsight Spark 群集所包含的 Jupyter 笔记本可用的内核 | Azure
 description: 了解 HDInsight Linux 上的 Spark 群集可用的其他 Jupyter 笔记本内核。
@@ -16,7 +14,7 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 10/05/2016
-wacn.date: 02/14/2017
+wacn.date: 03/16/2017
 ms.author: nitinme
 ---
 
@@ -36,7 +34,7 @@ ms.author: nitinme
 - Azure 订阅。请参阅[获取 Azure 试用版](https://www.azure.cn/pricing/1rmb-trial/)。
 - HDInsight Linux 上的 Apache Spark 群集。有关说明，请参阅 [Create Apache Spark clusters in Azure HDInsight](./hdinsight-apache-spark-jupyter-spark-sql.md)（在 Azure HDInsight 中创建 Apache Spark 群集）。
 
-## 如何使用内核？ 
+## <a name="choose-between-the-kernels"></a> 如何使用内核？ 
 
 1. 在 [Azure 门户预览](https://portal.azure.cn/)上的启动板中，单击 Spark 群集的磁贴（如果已将它固定到启动板）。也可以单击“全部浏览”>“HDInsight 群集”导航到你的群集。
 
@@ -82,11 +80,11 @@ ms.author: nitinme
     |-----------|---------------------------------|--------------|
     | help | `%%help` | 生成所有可用 magic 的表，其中包含示例和说明 |
     | info | `%%info` | 输出当前 Livy 终结点的会话信息 |
-    | 配置 | `%%configure -f`<br>`{"executorMemory": "1000M"`,<br>`"executorCores": 4`} | 配置用于创建会话的参数。如果已创建会话并且要删除然后重新创建该会话，则 force 标志 (-f) 是必需的。有关有效参数的列表，请查看 [Livy's POST /sessions Request Body](https://github.com/cloudera/livy#request-body)（Livy 的 POST /sessions 请求正文）。参数必须以 JSON 字符串传入，并且必须位于 magic 后面的下一行，如示例列中所示。 |
+    | configure | `%%configure -f`<br>`{"executorMemory": "1000M"`,<br>`"executorCores": 4`} | 配置用于创建会话的参数。如果已创建会话并且要删除然后重新创建该会话，则 force 标志 (-f) 是必需的。有关有效参数的列表，请查看 [Livy's POST /sessions Request Body](https://github.com/cloudera/livy#request-body)（Livy 的 POST /sessions 请求正文）。参数必须以 JSON 字符串传入，并且必须位于 magic 后面的下一行，如示例列中所示。 |
     | sql | `%%sql -o <variable name>`<br> `SHOW TABLES` | 针对 sqlContext 执行 Hive 查询。如果传递了 `-o` 参数，则查询的结果将以 [Pandas](http://pandas.pydata.org/) 数据帧的形式保存在 %%local Python 上下文中。 |
     | local | `%%local`<br>`a=1` | 后续行中的所有代码将在本地执行。代码必须是有效的 Python 代码。 |
-    | 日志 | `%%logs` | 输出当前 Livy 会话的日志。 |
-    | 删除 | `%%delete -f -s <session number>` | 删除当前 Livy 终结点的特定会话。请注意，无法删除针对内核本身启动的会话。 |
+    | logs | `%%logs` | 输出当前 Livy 会话的日志。 |
+    | delete | `%%delete -f -s <session number>` | 删除当前 Livy 终结点的特定会话。请注意，无法删除针对内核本身启动的会话。 |
     | cleanup | `%%cleanup -f` | 删除当前 Livy 终结点的所有会话，包括此笔记本的会话。force 标志 -f 是必需的。 |
 
     >[!NOTE]
@@ -164,9 +162,15 @@ Google Chrome 仅支持针对 HDInsight Spark 群集运行的 Jupyter 笔记本�
 
 * [Spark 和机器学习：使用 HDInsight 中的 Spark 对使用 HVAC 数据生成温度进行分析](./hdinsight-apache-spark-ipython-notebook-machine-learning.md)
 
+* [Spark 和机器学习：使用 HDInsight 中的 Spark 预测食品检查结果](./hdinsight-apache-spark-machine-learning-mllib-ipython.md)
+
 * [Spark 流式处理：使用 HDInsight 中的 Spark 生成实时流式处理应用程序](./hdinsight-apache-spark-eventhub-streaming.md)
 
+* [使用 HDInsight 中的 Spark 分析网站日志](./hdinsight-apache-spark-custom-library-website-log-analysis.md)
+
 ### 创建和运行应用程序
+
+* [使用 Scala 创建独立的应用程序](./hdinsight-apache-spark-create-standalone-application.md)
 
 * [使用 Livy 在 Spark 群集中远程运行作业](./hdinsight-apache-spark-livy-rest-interface.md)
 

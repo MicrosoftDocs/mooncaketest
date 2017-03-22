@@ -13,13 +13,19 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/13/2016
-wacn.date: 01/20/2017
+ms.date: 01/05/2017
+wacn.date: 02/20/2017
 ms.author: seanmck
 ---
 
 # 使用 Service Fabric Explorer 可视化群集
 Service Fabric Explorer 是一个用于检验和管理 Azure Service Fabric 群集中应用程序和节点的基于 Web 的工具。Service Fabric Explorer 直接托管在群集内，因此，无论群集在何处运行，它都始终可供使用。
+
+## 视频教程
+
+若要了解如何使用 Service Fabric Explorer，请观看下面的 Microsoft 虚拟大学视频：
+
+[<center><img src="./media/service-fabric-visualizing-your-cluster/SfxVideo.png" WIDTH="360" HEIGHT="244"></center>](https://mva.microsoft.com/training-courses/building-microservices-applications-on-azure-service-fabric-16747?l=bBTFg46yC_9806218965)
 
 ## 连接到 Service Fabric Explorer
 
@@ -59,7 +65,7 @@ Service Fabric 群集中的节点横跨容错域和升级域的二维网格放�
 
 Service Fabric Explorer 提供用于对群集中的节点、应用程序和服务快速调用操作的方式。
 
-例如，若要删除某个应用程序实例，只需从左侧树中选择该应用程序，然后依次选择“操作”>“删除应用程序”。
+例如，若要删除某个应用程序实例，请从左侧树中选择该应用程序，然后依次选择“操作”\>“删除应用程序”。
 
 ![在 Service Fabric Explorer 中删除应用程序][sfx-delete-application]
 
@@ -78,6 +84,7 @@ Service Fabric Explorer 提供用于对群集中的节点、应用程序和服�
 | 停用（重新启动） |从节点中安全删除所有内存中服务，并关闭永久性服务。通常在需要重新启动主机进程或计算机时使用。 | |
 | 停用（删除数据） |在生成足够的备用副本之后，安全关闭节点上运行的所有服务。通常在永久性淘汰某个节点（或至少其存储）时使用。 | |
 | 删除节点状态 |从群集中删除节点副本的信息。通常在发生故障的节点肯定无法恢复时使用。 | |
+| 节点 | 重新启动 | 通过重新启动节点模拟节点故障。[此处](https://docs.microsoft.com/zh-cn/powershell/servicefabric/vlatest/Restart-ServiceFabricNode)提供更多信息 ||
 
 由于许多操作都具有破坏性，因此在完成该操作之前，系统可能会请求你确认意图。
 
@@ -92,10 +99,10 @@ Service Fabric Explorer 提供用于对群集中的节点、应用程序和服�
 > 当前无法对通过 Service Fabric Explorer 创建的应用程序实例进行参数化。它们是使用默认参数值创建的。
 
 ## 连接到远程 Service Fabric 群集
-由于 Service Fabric Explorer 是基于 Web 的工具并且在群集内部运行，因此你只要知道群集的终结点且有足够的访问权限，就可以从任何浏览器访问它。
+如果知道群集的终结点且有足够的权限，则可从任何浏览器访问 Service Fabric Explorer。这是因为，Service Fabric Explorer 就是在群集中运行的另一服务。
 
 ### 发现远程群集的 Service Fabric Explorer 终结点
-若要连接到给定群集的 Service Fabric Explorer，只需将浏览器指向：
+若要连接到给定群集的 Service Fabric Explorer，请将浏览器指向：
 
 http://&lt;your-cluster-endpoint&gt;:19080/Explorer  
 
@@ -119,5 +126,5 @@ http://&lt;your-cluster-endpoint&gt;:19080/Explorer
 [sfx-delete-application]: ./media/service-fabric-visualizing-your-cluster/SfxDeleteApplication.png
 [sfx-create-app-instance]: ./media/service-fabric-visualizing-your-cluster/SfxCreateAppInstance.png
 
-<!---HONumber=Mooncake_0116_2017-->
-<!--update: wording update-->
+<!---HONumber=Mooncake_0213_2017-->
+<!--update: add one MVA video; update the table-->

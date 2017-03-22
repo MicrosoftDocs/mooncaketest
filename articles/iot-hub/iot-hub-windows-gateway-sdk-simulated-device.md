@@ -1,9 +1,9 @@
 ---
-title: 使用网关 SDK 模拟设备 | Azure
+title: 使用 Azure IoT 网关 SDK 模拟设备 (Windows) | Azure
 description: 如何在 Windows 上使用 Azure IoT 网关 SDK 创建模拟设备，从而将遥测数据通过网关发送到 IoT 中心
 services: iot-hub
 documentationCenter: ''
-authors: chipalost
+author: chipalost
 manager: timlt
 editor: ''
 
@@ -12,8 +12,8 @@ ms.devlang: cpp
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/29/2016
-wacn.date: 02/06/2017
+ms.date: 02/08/2017
+wacn.date: 03/10/2017
 ms.author: andbuc
 ---
 
@@ -27,13 +27,13 @@ ms.author: andbuc
 
 - [设置开发环境][lnk-setupdevbox]，以便在 Windows 上使用 SDK。
 - 若要在 Azure 订阅中[创建 IoT 中心][lnk-create-hub]，需要中心的名称来完成本演练。如果没有帐户，只需花费几分钟就能创建一个[帐户][lnk-free-trial]。
-- 将两个设备添加到 IoT 中心，并记下其 ID 和设备密钥。可使用设备资源管理器或 iothub-explorer 工具来将设备添加到在上一步中创建的 IoT 中心，并检索其密钥。
+- 将两个设备添加到 IoT 中心，并记下其 ID 和设备密钥。可使用[设备资源管理器][lnk-device-explorer]或 [iothub-explorer][lnk-iothub-explorer] 工具，将设备添加到在上一步创建的 IoT 中心并检索其密钥。
 
 生成示例：
 
 1. 打开 **VS2015 开发人员命令提示**命令提示符。
 2. 浏览到本地 **azure-iot-gateway-sdk** 存储库副本中的根文件夹。
-3. 运行 **tools\\build.cmd** 脚本。此脚本创建 Visual Studio 解决方案文件，生成解决方案，并运行测试。你可以在本地 **azure-iot-gateway-sdk** 存储库副本的 **build** 文件夹中找到 Visual Studio 解决方案。
+3. 运行 **tools\\build.cmd** 脚本。此脚本创建 Visual Studio 解决方案文件，并生成解决方案。你可以在本地 **azure-iot-gateway-sdk** 存储库副本的 **build** 文件夹中找到 Visual Studio 解决方案。可以为脚本添加其他参数，以便生成和运行单元测试和端到端测试。这些参数分别为 **--run-unittests** 和 **--run-e2e-tests**。
 
 运行示例：
 
@@ -142,7 +142,7 @@ ms.author: andbuc
     build\samples\simulated_device_cloud_upload\Debug\simulated_device_cloud_upload_sample.exe samples\simulated_device_cloud_upload\src\simulated_device_cloud_upload_win.json
     ```
 
-3. 可使用设备资源管理器或 iothub-explorer 工具来监视 IoT 中心从网关接收的消息。
+3. 可使用[设备资源管理器][lnk-device-explorer]或 [iothub-explorer][lnk-iothub-explorer] 工具来监视 IoT 中心从网关接收的消息。
 
 ## 后续步骤
 如果想要深入了解 IoT 网关 SDK 并尝试一些代码示例，请访问以下开发人员教程和资源：
@@ -157,9 +157,9 @@ ms.author: andbuc
 <!-- Links -->
 
 [lnk-setupdevbox]: https://github.com/Azure/azure-iot-gateway-sdk/blob/master/doc/devbox_setup.md
-[lnk-create-hub]: ./iot-hub-manage-through-portal.md
 [lnk-free-trial]: https://www.azure.cn/pricing/1rmb-trial/
-
+[lnk-device-explorer]: https://github.com/Azure/azure-iot-sdk-csharp/tree/master/tools/DeviceExplorer
+[lnk-iothub-explorer]: https://github.com/Azure/iothub-explorer/blob/master/readme.md
 [lnk-gateway-sdk]: https://github.com/Azure/azure-iot-gateway-sdk/
 
 [lnk-physical-device]: ./iot-hub-gateway-sdk-physical-device.md
@@ -167,5 +167,5 @@ ms.author: andbuc
 [lnk-devguide]: ./iot-hub-devguide.md
 [lnk-create-hub]: ./iot-hub-create-through-portal.md
 
-<!---HONumber=Mooncake_Quality_Review_0125_2017-->
+<!---HONumber=Mooncake_0306_2017-->
 <!--Update_Description:update wording-->

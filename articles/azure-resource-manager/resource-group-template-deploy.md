@@ -14,7 +14,7 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/16/2016
-wacn.date: 01/25/2017
+wacn.date: 03/03/2017
 ms.author: tomfitz
 ---
 
@@ -47,21 +47,23 @@ New-AzureRmResourceGroupDeployment -Name ExampleDeployment -ResourceGroupName Ex
 
 [!INCLUDE [resource-manager-deployments](../../includes/resource-manager-deployments.md)]
 
-## 部署
+## <a name="deploy"></a> 部署
 1. 登录到你的 Azure 帐户。
 
     ```powershell
     Add-AzureRmAccount -EnvironmentName AzureChinaCloud
     ```
 
-     将返回你的帐户的摘要。
+    将返回你的帐户的摘要。
 
-        Environment           : AzureChinaCloud
-        Account               : someone@example.partner.onmschina.cn
-        TenantId              : {guid}
-        SubscriptionId        : {guid}
-        SubscriptionName      : Example Subscription
-        CurrentStorageAccount :
+    ```powershell
+    Environment           : AzureChinaCloud
+    Account               : someone@example.partner.onmschina.cn
+    TenantId              : {guid}
+    SubscriptionId        : {guid}
+    SubscriptionName      : Example Subscription
+    CurrentStorageAccount :
+    ```
 
 2. 如果有多个订阅，请使用 **Set-AzureRmContext** 命令提供要用于部署的订阅 ID。
 
@@ -101,7 +103,7 @@ New-AzureRmResourceGroupDeployment -Name ExampleDeployment -ResourceGroupName Ex
 
     前面的两个示例不包括参数值。可以在[参数](#parameters)部分了解传递参数值的选项。现在，可通过以下语法提示用户提供参数值：
 
-    ```poweshell
+    ```powershell
     cmdlet New-AzureRmResourceGroupDeployment at command pipeline position 1
     Supply values for the following parameters:
     (Type !? for Help.)
@@ -110,7 +112,7 @@ New-AzureRmResourceGroupDeployment -Name ExampleDeployment -ResourceGroupName Ex
 
     部署资源组后，将看到部署摘要。摘要包含 **ProvisioningState**，指示部署是否成功。
 
-    ```poweshell
+    ```powershell
     DeploymentName    : ExampleDeployment
     ResourceGroupName : ExampleResourceGroup
     ProvisioningState : Succeeded
@@ -232,9 +234,9 @@ New-AzureRmResourceGroupDeployment -Name ExampleDeployment -ResourceGroupName Ex
 ## 后续步骤
 * 有关通过 .NET 客户端库部署资源的示例，请参阅 [Deploy resources using .NET libraries and a template](../virtual-machines/virtual-machines-windows-csharp-template.md)（使用 .NET 库和模板部署资源）。
 * 若要在模板中定义参数，请参阅[创作模板](./resource-group-authoring-templates.md#parameters)。
-* 有关将解决方案部署到不同环境的指南，请参阅 [Development and test environments in Azure](./solution-dev-test-environments.md)（Azure 中的开发和测试环境）。
+<!--* 有关将解决方案部署到不同环境的指南，请参阅 [Development and test environments in Azure](./solution-dev-test-environments.md)（Azure 中的开发和测试环境）。-->
 * 如需了解企业如何使用 Resource Manager 对订阅进行有效管理，请参阅 [Azure 企业机架 - 规范性订阅管理](./resource-manager-subscription-governance.md)。
 * 有关自动化部署的四部分系列教程，请参阅[将应用程序自动部署到 Azure 虚拟机](../virtual-machines/virtual-machines-windows-dotnet-core-1-landing.md)。此系列教程介绍了应用程序体系结构、访问与安全性、可用性与缩放性，以及应用程序部署。
 
-<!---HONumber=Mooncake_0120_2017-->
-<!-- Update_Description: update meta properties ; wording update ; update link reference -->
+<!---HONumber=Mooncake_0227_2017-->
+<!-- Update_Description: update meta properties; wording update -->

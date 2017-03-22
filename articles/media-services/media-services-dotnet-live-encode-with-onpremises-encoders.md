@@ -2,18 +2,19 @@
 title: 如何使用 .NET 通过本地编码器执行实时传送视频流 | Azure
 description: 本主题演示如何使用 .NET 通过本地编码器执行实时编码。
 services: media-services
-documentationCenter: ''
-authors: Juliako
+documentationcenter: ''
+author: Juliako
 manager: erikre
 editor: ''
 
+ms.assetid: 15908152-d23c-4d55-906a-3bfd74927db5
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 08/31/2016
-wacn.date: 12/27/2016
+ms.date: 01/05/2017
+wacn.date: 02/24/2017
 ms.author: cenkdin;juliako
 ---
 
@@ -25,8 +26,7 @@ ms.author: cenkdin;juliako
 
 本教程将逐步演示如何使用 Azure 媒体服务 .NET SDK 创建为实现直通传送而配置的**频道**。
 
-##先决条件
-
+## 先决条件
 以下是完成本教程所需具备的条件：
 
 - 一个 Azure 帐户。
@@ -54,6 +54,9 @@ ms.author: cenkdin;juliako
 - 更新流式处理终结点
 - 获取所有流式处理终结点的定位符
 - 关闭资源
+
+>[!NOTE]
+请确保流式处理终结点（用于内容流式处理）处于“正在运行”状态。
 
 有关如何配置实时编码器的信息，请参阅 [Azure 媒体服务 RTMP 支持和实时编码器](https://azure.microsoft.com/blog/2014/09/18/azure-media-services-rtmp-support-and-live-encoders/)。
 
@@ -398,4 +401,5 @@ ms.author: cenkdin;juliako
     }
 ```
 
-<!---HONumber=Mooncake_Quality_Review_1202_2016-->
+<!---HONumber=Mooncake_0220_2017-->
+<!--Update_Description: add one note for streaming endpoint-->

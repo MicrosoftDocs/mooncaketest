@@ -14,7 +14,7 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 11/30/2016
-wacn.date: 01/03/2017
+wacn.date: 03/17/2017
 ms.author: v-six
 ---
 
@@ -59,7 +59,7 @@ Azure 是一个 64 位的环境。因此，针对 32 位目标编译的 .NET 程
 - 连接字符串是使用以下[格式](../storage/storage-configure-connection-string.md)指定的。（协议必须指定为 HTTPS。） 将 *MyAccountName* 替换为你的存储帐户名称，将 *MyAccountKey* 替换为你的访问密钥：
 
     ```
-    DefaultEndpointsProtocol=https;AccountName=MyAccountName;AccountKey=MyAccountKey
+    DefaultEndpointsProtocol=https;AccountName=MyAccountName;AccountKey=MyAccountKey;EndpointSuffix=core.chinacloudapi.cn
     ```
 
   如果使用 Azure Tools for Microsoft Visual Studio 开发应用程序，则可使用[属性页](https://msdn.microsoft.com/zh-cn/library/ee405486)设置此值。

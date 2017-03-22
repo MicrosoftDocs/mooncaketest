@@ -10,7 +10,7 @@ tags: ''
 
 ms.service: application-gateway-aog
 ms.date: 12/05/2016
-wacn.date: 01/18/2017
+wacn.date: 03/01/2017
 ---
 
 # 如何解决当 Web 应用绑定了主机名而无法使用应用程序网关的问题 #
@@ -110,6 +110,12 @@ Frame: Number = 895, Captured Frame Length = 131, MediaType = ETHERNET
 
 >注意：请使用最新版本的 Azure PowerShell 来进行配置，如果使用的 PowerShell 版本较老可能会导致该操作不成功。
 
-对于使用 ARM 模式创建的应用程序网关，我们可以直接在 Portal 直接进行配置。如下图所示，点击探测，然后添加探测规则并进行配置即可。
+对于使用 ARM 模式创建的应用程序网关，我们可以直接在 Portal 直接进行配置。
 
-![Portal-ARMAppGw](./media/aog-web-apps-bind-host-name-gateway-unusable/Portal-ARMAppGw.png)
+1. 如下图所示，点击“运行状况探测”，添加自定义探测并指定自定义探测的名称和主机名。
+
+    ![Portal-ARMAppGw](./media/aog-web-apps-bind-host-name-gateway-unusable/status-detection.png)
+
+2. 点击 “HTTP 设置”，找到对应的 HTTP 设置然后勾选 “使用自定义探测” 并选择刚才定义的探测规则，保存设置即可。
+
+    ![Portal-ARMAppGw](./media/aog-web-apps-bind-host-name-gateway-unusable/HTTP-setting.png)

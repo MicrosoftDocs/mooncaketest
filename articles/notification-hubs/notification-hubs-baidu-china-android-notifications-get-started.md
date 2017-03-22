@@ -402,15 +402,15 @@ ms.author: wesmc
 13. 打开 **MainActivity.java**，并将以下内容添加到 **onCreate** 方法中：
 
     ```
-        PushManager.startWork(getApplicationContext(),
-                PushConstants.LOGIN_TYPE_API_KEY, ConfigurationSettings.API_KEY);
+    PushManager.startWork(getApplicationContext(),
+        PushConstants.LOGIN_TYPE_API_KEY, ConfigurationSettings.API_KEY);
     ```
 
 14. 打开顶部的以下 import 语句：
 
     ```
-        import com.baidu.android.pushservice.PushConstants;
-        import com.baidu.android.pushservice.PushManager;
+    import com.baidu.android.pushservice.PushConstants;
+    import com.baidu.android.pushservice.PushManager;
     ```
 
 ##向应用程序发送通知
@@ -443,7 +443,9 @@ ms.author: wesmc
 
 2. 在“包管理器控制台”窗口中，将“默认项目”设置为新的控制台应用程序项目，然后在控制台窗口中执行以下命令：
 
+    ```
     Install-Package Microsoft.Azure.NotificationHubs
+    ```
 
     这将使用 <a href="http://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/">Microsoft.Azure.Notification Hubs NuGet 包</a>添加对 Azure 通知中心 SDK 的引用。
 
@@ -451,21 +453,27 @@ ms.author: wesmc
 
 3. 打开文件 **Program.cs** 并添加以下 using 语句：
 
+    ```
     using Microsoft.Azure.NotificationHubs;
+    ```
 
 4. 在 `Program` 类中添加以下方法，并将 *DefaultFullSharedAccessSignatureSASConnectionString* 和 *NotificationHubName* 替换为你的值。
 
+    ```
     private static async void SendNotificationAsync()
     {
         NotificationHubClient hub = NotificationHubClient.CreateClientFromConnectionString("DefaultFullSharedAccessSignatureSASConnectionString", "NotificationHubName");
         string message = "{\"title\":\"((Notification title))\",\"description\":\"Hello from Azure\"}";
         var result = await hub.SendBaiduNativeNotificationAsync(message);
     }
+    ```
 
 5. 在 **Main** 方法中添加下列行：
 
+    ```
     SendNotificationAsync();
     Console.ReadLine();
+    ```
 
 ##测试应用程序
 

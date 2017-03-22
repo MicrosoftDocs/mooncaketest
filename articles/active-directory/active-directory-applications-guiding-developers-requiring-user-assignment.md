@@ -1,24 +1,24 @@
 ---
-title: Azure AD 和应用程序：要求进行用户分配 | Azure
+title: 要求进行用户分配 - Azure AD | Azure
 description: 如何要求对 Azure 应用程序进行用户分配。
 services: active-directory
-documentationCenter: ''
-authors: IHenkel
-manager: stevenpo
+documentationcenter: ''
+author: IHenkel
+manager: femila
 editor: ''
 
+ms.assetid: 30b78cba-1e0f-472f-8314-f2250a9b91c3
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/09/2015
-wacn.date: 06/24/2016
+ms.date: 02/06/2017
+wacn.date: 03/07/2017
 ms.author: inhenk
 ---
 
 # Azure AD 和应用程序：要求进行用户分配
-
 ## 要求进行用户分配
 1. 使用管理员帐户登录到 Azure 门户预览。
 2. 在主菜单中单击“所有项”。
@@ -29,9 +29,10 @@ ms.author: inhenk
 7. 将“访问应用需要进行用户分配”切换为“是”。
 8. 单击屏幕底部的“保存”按钮。
 
-现在，必须将用户和/或组分配到应用程序。请参阅[将用户分配到应用程序](./active-directory-applications-guiding-developers-assigning-users.md)和将组分配到应用程序。
+现在，必须将用户分配到应用程序。请参阅[将用户分配到应用程序](./active-directory-applications-guiding-developers-assigning-users.md)。
 
 ## 后续步骤
 [!INCLUDE [active-directory-applications-guiding-developers-for-lob-applications-toc](../../includes/active-directory-applications-guiding-developers-for-lob-applications-toc.md)]
 
-<!---HONumber=Mooncake_0613_2016-->
+<!---HONumber=Mooncake_0227_2017-->
+<!---Update_Description: wording update -->

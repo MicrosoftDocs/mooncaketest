@@ -12,8 +12,8 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 12/14/2016
-wacn.date: 01/03/2017
+ms.date: 01/12/2017
+wacn.date: 03/03/2017
 ms.author: cherylmc
 ---
 
@@ -22,7 +22,7 @@ ms.author: cherylmc
 
 ## <a name="partners"></a>ExpressRoute 连接服务提供商
 
-所有的 Azure 区域和位置都支持 ExpressRoute。以下地图提供了 Azure 区域和 ExpressRoute 位置的列表。ExpressRoute 位置是指 Microsoft 与多个服务提供商对等互连的位置。
+所有的 Azure 区域和位置都支持 ExpressRoute。以下地图提供了 Azure 区域和 ExpressRoute 位置的列表。ExpressRoute 位置是指 Azure 与多个服务提供商对等互连的位置。
 
 ![](./media/expressroute-locations/expressroute-locations-map.png)
 

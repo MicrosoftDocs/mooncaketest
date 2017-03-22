@@ -13,7 +13,7 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/27/2016
-wacn.date: 12/12/2016
+wacn.date: 02/21/2017
 ms.author: tdykstra
 ---
 
@@ -24,6 +24,8 @@ ms.author: tdykstra
 ## 概述
 
 本主题介绍如何使用 Visual Studio 将控制台应用程序项目作为 [Azure Web 作业](./websites-webjobs-resources.md)部署到[应用服务](./app-service-changes-existing-services.md)中的 Web 应用。有关如何使用 [Azure 门户预览](https://portal.azure.cn)部署 Web 作业的信息，请参阅[使用 Web 作业运行后台任务](./web-sites-create-web-jobs.md)。
+
+[!INCLUDE [azure-sdk-developer-differences](../../includes/azure-visual-studio-login-guide.md)]
 
 当 Visual Studio 部署启用 Web 作业的控制台应用程序项目时，它会执行两个任务：
 

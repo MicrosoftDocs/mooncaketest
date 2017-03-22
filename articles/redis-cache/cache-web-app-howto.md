@@ -13,8 +13,8 @@ ms.workload: tbd
 ms.tgt_pltfrm: cache-redis
 ms.devlang: na
 ms.topic: hero-article
-ms.date: 12/19/2016
-wacn.date: 01/06/2017
+ms.date: 01/06/2017
+wacn.date: 03/01/2017
 ms.author: sdanie
 ---
 
@@ -29,6 +29,8 @@ ms.author: sdanie
 [!INCLUDE [azure-sdk-developer-differences](../../includes/azure-sdk-developer-differences.md)]
 
 本教程介绍如何使用 Visual Studio 2015 创建 ASP.NET Web 应用程序并将其部署到 Azure App Service 中的 Web 应用。该示例应用程序显示了数据库中的团队统计信息列表，并显示了使用 Azure Redis 缓存通过缓存存储和检索数据的不同方式。完成本教程后，你将有一个运行的 Web 应用，该应用可以对数据库执行读写操作，已通过 Azure Redis 缓存进行优化，并且托管在 Azure 中。
+
+[!INCLUDE [azure-sdk-developer-differences](../../includes/azure-visual-studio-login-guide.md)]
 
 学习内容：
 

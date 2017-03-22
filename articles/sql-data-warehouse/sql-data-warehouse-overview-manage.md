@@ -13,7 +13,7 @@ ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-services
 ms.date: 10/31/2016
-wacn.date: 01/04/2017
+wacn.date: 02/21/2017
 ms.author: barbkess;sonyama;
 ---
 
@@ -44,6 +44,9 @@ SQL 数据仓库自动执行管理数据库的许多方面的操作。例如，�
 若要开始使用 Azure 门户预览，请参阅[创建 SQL 数据仓库（Azure 门户预览）][]。
 
 ### Visual Studio 中的 SQL Server Data Tools
+
+[!INCLUDE [azure-sdk-developer-differences](../../includes/azure-visual-studio-login-guide.md)]
+
 使用 Visual Studio 中的 [SQL Server Data Tools][] (SSDT)，可以连接到你的数据库并对其进行管理和开发。如果你是熟悉 Visual Studio 或其他集成开发环境 (IDE) 的应用程序开发人员，请尝试使用 Visual Studio 中的 SSDT。
 
 使用 SSDT 包含的 SQL Server 对象资源管理器，可以针对 SQL 数据仓库数据库进行可视化、连接和执行脚本。若要快速连接到 SQL 数据仓库，只需在 Azure 经典管理门户中查看数据库详细信息时，单击命令栏中的“在 Visual Studio 中打开”按钮。

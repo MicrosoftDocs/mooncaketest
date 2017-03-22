@@ -2,18 +2,19 @@
 title: 在 Linux 上设置开发环境 | Azure
 description: 在 Linux 上安装运行时和 SDK 并创建本地开发群集。完成此设置后，你就可以开始生成应用程序。
 services: service-fabric
-documentationCenter: .net
-authors: seanmck
+documentationcenter: .net
+author: seanmck
 manager: timlt
 editor: ''
 
+ms.assetid: d552c8cd-67d1-45e8-91dc-871853f44fc6
 ms.service: service-fabric
 ms.devlang: dotNet
 ms.topic: get-started-article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 09/26/2016
-wacn.date: 11/28/2016
+ms.date: 01/05/2017
+wacn.date: 02/20/2017
 ms.author: seanmck
 ---
 
@@ -27,10 +28,11 @@ ms.author: seanmck
  若要在 Linux 开发计算机上部署和运行 [Azure Service Fabric 应用程序](./service-fabric-application-model.md)，请安装运行时和通用 SDK。还可以安装适用于 Java 和 .NET Core 的可选 SDK。
 
 ## 先决条件
+
 ### 支持的操作系统版本
 支持使用以下操作系统版本进行开发：
 
-- Ubuntu 16.04 (Xenial Xerus)
+* Ubuntu 16.04（“Xenial Xerus”）
 
 ## 更新 apt 源
 
@@ -59,7 +61,7 @@ ms.author: seanmck
 
 更新源后，可以安装 SDK。
 
-1. 安装 Service Fabric SDK 包。系统将请求确认安装并同意许可协议。
+1. 安装 Service Fabric SDK 包。系统会请求用户确认安装并同意许可协议。
 
     ```bash
     sudo apt-get install servicefabricsdkcommon
@@ -81,7 +83,7 @@ ms.author: seanmck
     git clone https://github.com/Azure/azure-xplat-cli.git
     ```
 
-2. 切换到克隆的存储库，然后使用 Node Package Manager (npm) 安装 CLI 的依赖项。
+2. 切换到克隆的存储库，然后使用 Node Package Manager \(npm\) 安装 CLI 的依赖项。
 
     ```bash
     cd azure-xplat-cli
@@ -102,6 +104,9 @@ ms.author: seanmck
     source ~/azure.completion.sh
     ```
 
+> [!NOTE]
+Service Fabric 命令目前在 Azure CLI 2.0 中不可用。
+
 ## 设置本地群集
 
 如果所有组件都已成功安装，应该能够启动本地群集。
@@ -116,9 +121,14 @@ ms.author: seanmck
 
     ![Linux 上的 Service Fabric Explorer][sfx-linux]  
 
-现在，可以根据来宾容器或来宾可执行文件，部署预先构建的 Service Fabric 应用程序包或新包。若要使用 Java 或 .NET Core SDK 构建新服务，请遵循以下可选设置步骤。
+现在，可以根据来宾容器或来宾可执行文件，部署预先构建的 Service Fabric 应用程序包或新包。若要使用 Java 或 .NET Core SDK 构建新服务，请按后续部分提供的可选设置步骤操作。
 
-## 安装 Java SDK 和 Eclipse Neon 插件（可选）
+> [!NOTE]
+Linux 不支持独立群集 - 预览版仅支持单机群集和 Azure Linux 多计算机群集。
+>
+>
+
+##<a name="install-the-java-sdk-and-eclipse-neon-plugin-optional"></a> 安装 Java SDK 和 Eclipse Neon 插件（可选）
 
 Java SDK 提供所需的库和模板用于通过 Java 构建 Service Fabric 服务。
 
@@ -136,9 +146,9 @@ Java SDK 提供所需的库和模板用于通过 Java 构建 Service Fabric 服�
 
 可以从 Eclipse Neon IDE 安装适用于 Service Fabric 的 Eclipse 插件。
 
-1. 在 Eclipse 中，请确保已安装 Buildship 1.0.17 或更高版本。可以选择“帮助”>“安装详细信息”检查已安装的组件版本。可以使用[此处][buildship-update]的说明更新 Buildship。
+1. 在 Eclipse 中，请确保已安装 Buildship 1.0.17 或更高版本。可以选择“帮助”\>“安装详细信息”检查已安装的组件版本。可以使用[此处][buildship-update]的说明更新 Buildship。
 
-2. 若要安装 Service Fabric 插件，请选择“帮助”>“安装新软件...”
+2. 若要安装 Service Fabric 插件，请选择“帮助”\>“安装新软件...”
 
 3. 在“使用”文本框中，输入：http://dl.windowsazure.com/eclipse/servicefabric
 
@@ -166,11 +176,23 @@ Java SDK 提供所需的库和模板用于通过 Java 构建 Service Fabric 服�
     sudo /opt/microsoft/sdk/servicefabric/csharp/sdkcsharpsetup.sh
     ```
 
+## 更新 SDK 和运行时
+
+若要更新到最新版的 SDK 和运行时，请运行以下步骤（从列表中删除不需更新或安装的 SDK）：
+
+```bash
+   sudo apt-get update
+   sudo apt-get install servicefabric, servicefabricsdkcommon, servicefabricsdkcsharp, servicefabricsdkjava
+```
+
+若要更新 CLI，请导航到克隆 CLI 的目录，然后运行 `git pull` 进行更新。
+
 ## 后续步骤
 
 - [在 Linux 上创建第一个 Java 应用程序](./service-fabric-create-your-first-linux-application-with-java.md)
-
+- [在 Linux 上创建第一个 CSharp 应用程序](./service-fabric-create-your-first-linux-application-with-csharp.md)
 - [在 OSX 上准备开发环境](./service-fabric-get-started-mac.md)
+- [使用 Azure CLI 管理 Service Fabric 应用程序](./service-fabric-azure-cli.md)
 
 <!-- Links -->
 
@@ -183,4 +205,5 @@ Java SDK 提供所需的库和模板用于通过 Java 构建 Service Fabric 服�
 [sf-eclipse-plugin]: ./media/service-fabric-get-started-linux/service-fabric-eclipse-plugin.png
 [sfx-linux]: ./media/service-fabric-get-started-linux/sfx-linux.png
 
-<!---HONumber=Mooncake_1121_2016-->
+<!---HONumber=Mooncake_0213_2017-->
+<!--Update_Description: wording update; add azure cli 2.0 reference-->

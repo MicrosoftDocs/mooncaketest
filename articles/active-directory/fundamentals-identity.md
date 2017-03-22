@@ -1,5 +1,5 @@
 ---
-title: Azure Identity | Azure
+title: Azure 标识 | Azure
 description: 了解如何使用 Azure Active Directory。
 services: active-directory
 documentationcenter: .net
@@ -13,12 +13,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/01/2016
+ms.date: 02/13/2017
+wacn.date: 03/07/2017
 ms.author: curtand
-wacn.date: 12/12/2016
 ---
 
 # Azure 标识管理基础知识
-[!INCLUDE [identity](../../includes/identity.md)]
+[!INCLUDE [标识](../../includes/identity.md)]
 
-<!---HONumber=Mooncake_1205_2016-->
+<!---HONumber=Mooncake_0227_2017-->
+<!--Update_Description: update meta properties -->

@@ -1,5 +1,5 @@
 ---
-title: 编码错误代码 | Azure
+title: Azure 媒体服务编码错误代码 | Azure
 description: 本主题列出了在执行编码任务期间发生错误时可能返回的错误代码。
 services: media-services
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/19/2016
-wacn.date: 01/13/2017
+ms.date: 01/23/2017
+wacn.date: 03/10/2017
 ms.author: juliako
 ---
 
-## 编码错误代码
+# 编码错误代码
 
 下表列出了在执行编码任务期间发生错误的情况下可能返回的错误代码。若要获取 .NET 代码中的错误详细信息，请使用 [ErrorDetails](http://msdn.microsoft.com/zh-cn/library/microsoft.windowsazure.mediaservices.client.errordetail.aspx) 类。若要获取 REST 代码中的错误详细信息，请使用 [ErrorDetail](https://docs.microsoft.com/zh-cn/rest/api/media/operations/errordetail) REST API。
 
@@ -43,4 +43,4 @@ ms.author: juliako
 
 [1]: https://www.azure.cn/pricing/details/media-services/
 
-<!---HONumber=Mooncake_0109_2017-->
+<!---HONumber=Mooncake_0306_2017-->

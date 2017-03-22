@@ -14,7 +14,7 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/04/2017
-wacn.date: 02/10/2017
+wacn.date: 03/10/2017
 ms.author: dobett
 ---
 
@@ -136,7 +136,7 @@ SharedAccessSignature sig={signature-string}&se={expiry}&skn={policyName}&sr={UR
 
 ```
 var generateSasToken = function(resourceUri, signingKey, policyName, expiresInMins) {
-    resourceUri = encodeURIComponent(resourceUri.toLowerCase()).toLowerCase();
+    resourceUri = encodeURIComponent(resourceUri);
 
     // Set expiration in seconds
     var expires = (Date.now() / 1000) + expiresInMins * 60;
@@ -227,7 +227,7 @@ SharedAccessSignature sr=myhub.azure-devices.cn%2fdevices%2fdevice1&sig=13y8ejUk
 ```
 
 > [!NOTE]
-> 可使用 .NET [设备资源管理器][lnk-device-explorer]工具生成 SAS 令牌。
+> 可以使用 .NET [设备资源管理器][lnk-device-explorer]工具或跨平台基于节点的 [iothub-explorer][lnk-iothub-explorer] 命令行实用工具生成 SAS 令牌。
 > 
 > 
 
@@ -445,6 +445,7 @@ IoT 中心开发人员指南中的其他参考主题包括：
 [lnk-service-sdk]: https://github.com/Azure/azure-iot-sdk-csharp/tree/master/service
 [lnk-client-sdk]: https://github.com/Azure/azure-iot-sdk-csharp/tree/master/device
 [lnk-device-explorer]: https://github.com/Azure/azure-iot-sdk-csharp/blob/master/tools/DeviceExplorer
+[lnk-iothub-explorer]: https://github.com/azure/iothub-explorer
 
 [lnk-getstarted-tutorial]: ./iot-hub-csharp-csharp-getstarted.md
 [lnk-c2d-tutorial]: ./iot-hub-csharp-csharp-c2d.md

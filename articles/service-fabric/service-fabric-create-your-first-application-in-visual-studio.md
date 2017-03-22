@@ -14,7 +14,7 @@ ms.topic: hero-article
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 12/14/2016
-wacn.date: 01/20/2017
+wacn.date: 02/21/2017
 ms.author: ryanwi
 ---
 
@@ -28,6 +28,8 @@ ms.author: ryanwi
 - [C# - Linux](./service-fabric-create-your-first-linux-application-with-csharp.md)
 
 Service Fabric SDK 包含一个用于 Visual Studio 的外接程序，它可提供用于创建、部署和调试 Service Fabric 应用程序的模板和工具。本主题会指导您完成在 Visual Studio 中创建您的第一个应用程序的过程。
+
+[!INCLUDE [azure-sdk-developer-differences](../../includes/azure-visual-studio-login-guide.md)]
 
 ## 先决条件
 开始之前，请确保已[设置开发环境](./service-fabric-get-started.md)。

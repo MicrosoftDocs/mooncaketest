@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 12/12/2016
-wacn.date: 01/03/2017
+ms.date: 01/03/2017
+wacn.date: 03/03/2017
 ms.author: ganesr
 ---
 
 # ExpressRoute 路由要求  
 
-若要使用 ExpressRoute 连接到 Microsoft 云服务，需要设置并管理路由。某些连接服务提供商以托管服务形式提供路由的设置和管理。请咨询连接服务提供商，以确定他们是否提供此类服务。如果不提供，则必须遵守以下要求。
+若要使用 ExpressRoute 连接到 Azure 云服务，需要设置并管理路由。某些连接服务提供商以托管服务形式提供路由的设置和管理。请咨询连接服务提供商，以确定他们是否提供此类服务。如果不提供，则必须遵守以下要求。
 
 有关需要在设置后才能建立连接的路由会话的说明，请参阅[线路和路由域](./expressroute-circuit-peerings.md)一文。
 

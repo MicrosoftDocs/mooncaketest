@@ -2,19 +2,20 @@
 title: Service Fabric 反向代理 | Azure
 description: 使用 Service Fabric 的反向代理从群集内部和外部与微服务通信
 services: service-fabric
-documentationCenter: .net
-authors: BharatNarasimman
+documentationcenter: .net
+author: BharatNarasimman
 manager: timlt
 editor: vturecek
 
+ms.assetid: 47f5c1c1-8fc8-4b80-a081-bc308f3655d3
 ms.service: service-fabric
 ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: required
-ms.date: 10/04/2016
-wacn.date: 11/28/2016
-ms.author: vturecek
+ms.date: 01/04/2017
+wacn.date: 02/20/2017
+ms.author: bharatn
 ---
 
 # Service Fabric 反向代理
@@ -29,8 +30,7 @@ Service Fabric 中的微服务通常在群集的一部分 VM 中运行，并且�
 2. 连接到服务。
 3. 确定连接失败的原因，必要时重新解析服务位置。
 
-此过程通常涉及将客户端通信库包装到重试循环中，以便执行服务解析和重试策略。
-有关本主题的详细信息，请参阅[与服务通信](./service-fabric-connect-and-communicate-with-services.md)。
+此过程通常涉及将客户端通信库包装到重试循环中，以便执行服务解析和重试策略。有关本主题的详细信息，请参阅[与服务通信](./service-fabric-connect-and-communicate-with-services.md)。
 
 ### 通过 SF 反向代理进行通信
 Service Fabric 反向代理在群集的所有节点上运行。它会代表客户端执行整个服务解析流程，然后再转发客户端请求。因此，在群集上运行的客户端可以通过在同一节点上以本地方式运行的 SF 反向代理，直接使用任何客户端 HTTP 通信库与目标服务通信。
@@ -41,8 +41,7 @@ Service Fabric 反向代理在群集的所有节点上运行。它会代表客�
 微服务的默认外部通信模型为“选择加入”，即默认情况下，不能直接从外部客户端访问每个服务。[Azure 负载均衡器](../load-balancer/load-balancer-overview.md) 充当微服务和外部客户端之间的网络边界，可以进行网络地址转换并将外部请求转发到内部的 **IP:端口**终结点。若要允许外部客户端直接访问微服务的终结点，必须先将 Azure Load Balancer 配置为将流量转发到群集中服务使用的每个端口。另外，大多数微服务（尤其是有状态微服务）并不是位于群集的所有节点上，这些微服务在故障转移时可以在节点之间移动，因此在这样的情况下，Azure Load Balancer 无法有效地确定副本的目标节点的位置，无法向其转发流量。
 
 ### 从群集外部通过 SF 反向代理访问微服务
-
-可以在 Azure Load Balancer 中直接配置 SF 反向代理端口，不需配置各个服务的端口。因此，群集外部的客户端可以通过反向代理访问群集内部的服务，不需额外进行配置。
+可以在 Azure 负载均衡器中直接配置 SF 反向代理端口，不需配置各个服务的端口。因此，群集外部的客户端可以通过反向代理访问群集内部的服务，不需额外进行配置。
 
 ![外部通信][0]
 
@@ -58,7 +57,7 @@ http(s)://<Cluster FQDN | internal IP>:Port/<ServiceInstanceName>/<Suffix path>?
 ```
 
  - **http(s):** 可以将反向代理配置为接受 HTTP 或 HTTPS 流量。如果为 HTTPS 流量，则会在反向代理中出现 SSL 终止的情况。由反向代理转发到群集中服务的请求是通过 HTTP 进行的。
- - **群集 FQDN| internal IP:** For external clients, the reverse proxy can be configured so that it is reachable through the cluster domain (e.g., mycluster.chinaeast.chinacloudapp.cn). By default the reverse proxy runs on every node, so for internal traffic it can be reached on localhost or on any internal node IP (e.g., 10.0.0.1).
+ - **群集 FQDN| internal IP:** For external clients, the reverse proxy can be configured so that it is reachable through the cluster domain (e.g., mycluster.chinaeast.cloudapp.chinacloudapi.cn). By default the reverse proxy runs on every node, so for internal traffic it can be reached on localhost or on any internal node IP (e.g., 10.0.0.1).
  - **Port:** 为反向代理指定的端口。例如：19008。
  - **ServiceInstanceName:** 这是要在不使用“fabric:/”方案的情况下访问的服务的完全限定式已部署服务实例名称。例如，若要访问服务 *fabric:/myapp/myservice/*，可使用 *myapp/myservice*。
  - **Suffix path:** 这是要连接到的服务的实际 URL 路径。例如，*myapi/values/add/3*
@@ -81,17 +80,17 @@ http://10.0.05:10592/3f0d39ad-924b-4233-b4a7-02617c6308a6-130834621071472715/
 
 如果服务使用单独分区方案，则 *PartitionKey* 和 *PartitionKind* 查询字符串参数不是必需的，可以通过网关访问服务，如下所示：
 
- - 外部访问方式：`http://mycluster.chinaeast.chinacloudapp.cn:19008/MyApp/MyService`
+ - 外部访问方式：`http://mycluster.chinaeast.cloudapp.chinacloudapi.cn:19008/MyApp/MyService`
  - 内部访问方式：`http://localhost:19008/MyApp/MyService`
 
 如果服务使用“统一 Int64”分区方案，则必须使用 *PartitionKey* 和 *PartitionKind* 查询字符串来访问服务的分区：
 
- - 外部访问方式：`http://mycluster.chinaeast.chinacloudapp.cn:19008/MyApp/MyService?PartitionKey=3&PartitionKind=Int64Range`
+ - 外部访问方式：`http://mycluster.chinaeast.cloudapp.chinacloudapi.cn:19008/MyApp/MyService?PartitionKey=3&PartitionKind=Int64Range`
  - 内部访问方式：`http://localhost:19008/MyApp/MyService?PartitionKey=3&PartitionKind=Int64Range`
 
 若要访问服务所公开的资源，可直接在 URL 中将资源路径置于服务名称之后：
 
- - 外部访问方式：`http://mycluster.chinaeast.chinacloudapp.cn:19008/MyApp/MyService/index.html?PartitionKey=3&PartitionKind=Int64Range`
+ - 外部访问方式：`http://mycluster.chinaeast.cloudapp.chinacloudapi.cn:19008/MyApp/MyService/index.html?PartitionKey=3&PartitionKind=Int64Range`
  - 内部访问方式：`http://localhost:19008/MyApp/MyService/api/users/6?PartitionKey=3&PartitionKind=Int64Range`
 
 然后，网关会将这些请求转发到服务的 URL：
@@ -293,4 +292,5 @@ http://10.0.05:10592/3f0d39ad-924b-4233-b4a7-02617c6308a6-130834621071472715/
 [0]: ./media/service-fabric-reverseproxy/external-communication.png
 [1]: ./media/service-fabric-reverseproxy/internal-communication.png
 
-<!---HONumber=Mooncake_1121_2016-->
+<!---HONumber=Mooncake_0213_2017-->
+<!--Update_Description: wording udpate-->

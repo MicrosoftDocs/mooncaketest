@@ -159,7 +159,7 @@ HDInsight 可以使用各种方法运行 HiveQL 作业。使用下表来确定�
 
 | **使用此方法**，如果想要... | ...**交互式** shell | ...**批处理** | ...使用此**群集操作系统** | ...从此**客户端操作系统** |
 |:--- |:---:|:---:|:--- |:--- |
-| Hive 视图 |✔ |✔ |Linux |任何（基于浏览器） |
+| [Hive 视图](./hdinsight-hadoop-use-hive-ambari-view.md) |✔ |✔ |Linux |任何（基于浏览器） |
 | [Beeline 命令（来自 SSH 会话）](./hdinsight-hadoop-use-hive-beeline.md) |✔ |✔ |Linux |Linux、Unix、Mac OS X 或 Windows |
 | [Hive 命令（来自 SSH 会话）](./hdinsight-hadoop-use-hive-ssh.md) |✔ |✔ |Linux |Linux、Unix、Mac OS X 或 Windows |
 | [Curl](./hdinsight-hadoop-use-hive-curl.md) |&nbsp; |✔ |Linux 或 Windows |Linux、Unix、Mac OS X 或 Windows |

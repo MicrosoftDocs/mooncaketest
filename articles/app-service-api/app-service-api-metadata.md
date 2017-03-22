@@ -13,7 +13,7 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 08/30/2016
-wacn.date: 01/05/2017
+wacn.date: 03/17/2017
 ms.author: rachelap
 ---
 
@@ -26,6 +26,8 @@ ms.author: rachelap
 可以指定一个终结点，为 API 应用提供 Swagger 2.0 JSON 元数据作为该 API 应用的属性。终结点可以相对于 API 应用的基 URL 或绝对 URL。绝对 URL 可以指向 API 应用外部。
 
 对于许多下游客户端（例如，Visual Studio 代码生成和 PowerApps 的“添加 API”流）而言，此 URL 必须可公开访问（不受用户或服务身份验证的保护）。这意味着，如果使用了应用服务身份验证并想要从应用本身内部公开 API 定义，则需要使用身份验证选项，允许匿名流量进入 API。有关详细信息，请参阅 [Authentication and authorization for App Service API Apps](./app-service-api-authentication.md)（应用服务 API 应用的身份验证和授权）。
+
+[!INCLUDE [azure-sdk-developer-differences](../../includes/azure-visual-studio-login-guide.md)]
 
 ### 门户边栏选项卡
 

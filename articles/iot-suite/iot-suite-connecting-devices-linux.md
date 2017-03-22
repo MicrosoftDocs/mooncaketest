@@ -440,5 +440,5 @@ int main(void)
 
 [!INCLUDE [iot-suite-visualize-connecting](../../includes/iot-suite-visualize-connecting.md)]
 
-<!---HONumber=Mooncake_0120_2017-->
+<!---HONumber=Mooncake_0306_2017-->
 <!--Update_Description:update wording-->

@@ -1,5 +1,3 @@
-<!-- not suitable for Mooncake -->
-
 ---
 title: 使用 Azure 事件中心和 HDInsight 中的 Apache Spark 处理流数据 | Azure
 description: 逐步说明如何向 Azure 事件中心发送数据流，然后使用 scala 应用程序在 Spark 接收这些事件
@@ -52,7 +50,7 @@ Spark Streaming 可以扩展核心 Spark API，以生成可缩放、高吞吐量
 
 ## 创建 Azure 事件中心
 
-1. 在 [Azure 门户](https://manage.windowsazure.cn)中，选择“新建”>“服务总线”>“事件中心”>“自定义创建”。
+1. 在 [Azure 经典管理门户](https://manage.windowsazure.cn)中，选择“新建”>“服务总线”>“事件中心”>“自定义创建”。
 
 2. 在“添加新事件中心”屏幕中，输入“事件中心名称”，选择要在其中创建中心的“区域”，然后创建新的命名空间或选择现有的命名空间。单击**箭头**继续。
 
@@ -377,7 +375,13 @@ SELECT * FROM EventCount
 
 * [Spark 和机器学习：使用 HDInsight 中的 Spark 对使用 HVAC 数据生成温度进行分析](./hdinsight-apache-spark-ipython-notebook-machine-learning.md)
 
+* [Spark 和机器学习：使用 HDInsight 中的 Spark 预测食品检查结果](./hdinsight-apache-spark-machine-learning-mllib-ipython.md)
+
+* [使用 HDInsight 中的 Spark 分析网站日志](./hdinsight-apache-spark-custom-library-website-log-analysis.md)
+
 ### 创建和运行应用程序
+
+* [使用 Scala 创建独立的应用程序](./hdinsight-apache-spark-create-standalone-application.md)
 
 * [使用 Livy 在 Spark 群集中远程运行作业](./hdinsight-apache-spark-livy-rest-interface.md)
 

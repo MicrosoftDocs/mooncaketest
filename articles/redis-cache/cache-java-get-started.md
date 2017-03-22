@@ -13,8 +13,8 @@ ms.devlang: java
 ms.topic: hero-article
 ms.tgt_pltfrm: cache-redis
 ms.workload: tbd
-ms.date: 01/06/2017
-wacn.date: 02/10/2017
+ms.date: 02/10/2017
+wacn.date: 03/03/2017
 ms.author: sdanie
 ---
 
@@ -53,6 +53,11 @@ JedisShardInfo shardInfo = new JedisShardInfo("<name>.redis.cache.chinacloudapi.
 shardInfo.setPassword("<key>"); /* Use your access key. */
 ```
 
+> [!NOTE]
+为新的 Azure Redis 缓存实例禁用了非 SSL 端口。如果使用的是不支持 SSL 的不同客户端，请参阅[如何启用非 SSL 端口](./cache-configure.md#access-ports)。
+> 
+> 
+
 ## 在缓存中添加一些内容并检索此内容
 ```
 package com.mycompany.app;
@@ -78,5 +83,5 @@ public class App
 * [启用缓存诊断](./cache-how-to-monitor.md#EnableDiagnostics)，以便可以[监视](./cache-how-to-monitor.md)缓存的运行状况。
 * 阅读官方 [Redis 文档](http://redis.io/documentation)。
 
-<!---HONumber=Mooncake_0206_2017-->
-<!--Update_Description: change the python code to use ssl instead of nonssl-->
+<!---HONumber=Mooncake_0227_2017-->
+<!--Update_Description: add a note about non-ssl port-->

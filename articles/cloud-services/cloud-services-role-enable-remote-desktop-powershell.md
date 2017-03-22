@@ -20,6 +20,8 @@ ms.author: adegeo
 # 使用 PowerShell 为 Azure 云服务中的角色启用远程桌面连接
 
 >[!div class="op_single_selector"]
+
+- [Azure 门户预览](./cloud-services-role-enable-remote-desktop-new-portal.md)
 - [Azure 经典管理门户](./cloud-services-role-enable-remote-desktop.md)
 - [PowerShell](./cloud-services-role-enable-remote-desktop-powershell.md)
 

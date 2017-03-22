@@ -1,6 +1,6 @@
 ---
-title: 使用 Azure 多重身份验证时的 Azure MFA 登录体验
-description: 本页将提供有关在何处查看 Azure MFA 支持的各种登录方法的指导。
+title: 使用双重验证的 Azure MFA 登录体验 | Azure
+description: 本页提供有关在何处查看 Azure MFA 支持的各种登录方法的指导。
 keywords: 用户身份验证, 登录体验, 使用手机登录, 使用办公电话登录
 services: multi-factor-authentication
 documentationcenter: ''
@@ -14,8 +14,8 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/23/2016
-wacn.date: 01/13/2017
+ms.date: 02/02/2016
+wacn.date: 03/14/2017
 ms.author: kgremban
 ---
 
@@ -64,7 +64,7 @@ ms.author: kgremban
 
 ## 使用验证码通过 Microsoft Authenticator 应用登录  <a name="signing-in-with-the-microsoft-authenticator-app-using-verification-code"></a>
 
-以下信息介绍当你使用验证码执行身份验证时，在 Microsoft Authenticator 应用上使用多重身份验证的体验。
+以下信息介绍在使用验证码执行身份验证时，通过 Microsoft Authenticator 应用使用多重身份验证的体验。
 
 ### 使用验证码通过 Microsoft Authenticator 应用登录
 - 使用用户名和密码登录到 Office 365 等应用程序或服务。
@@ -89,4 +89,13 @@ ms.author: kgremban
 
 - 选择替代方法并登录。
 
-<!---HONumber=Mooncake_0103_2017-->
+## 后续步骤
+
+如果使用双重验证登录时遇到问题，请在[使用 Azure 多重身份验证时遇到问题](./multi-factor-authentication-end-user-troubleshoot.md)中获取详细信息。
+
+了解如何[管理双重验证设置](./multi-factor-authentication-end-user-manage-settings.md)。
+
+了解如何[开始使用 Microsoft 验证器应用](./microsoft-authenticator-app-how-to.md)，以便使用通知（而不是短信和电话呼叫）登录。
+
+<!---HONumber=Mooncake_0306_2017-->
+<!---Update_Description: wording update -->

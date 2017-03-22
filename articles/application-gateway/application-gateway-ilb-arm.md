@@ -223,7 +223,6 @@ $getgw =  Get-AzureRmApplicationGateway -Name appgwtest -ResourceGroupName appgw
 Stop-AzureRmApplicationGateway -ApplicationGateway $getgw  
 ```
 
-<br/>  
 
 ```
 VERBOSE: 9:49:34 PM - Begin Operation: Stop-AzureApplicationGateway
@@ -239,7 +238,6 @@ Successful OK                   ce6c6c95-77b4-2118-9d65-e29defadffb8
 Remove-AzureRmApplicationGateway -Name appgwtest -ResourceGroupName appgw-rg -Force
 ```
 
-<br/>  
 
 ```
 VERBOSE: 10:49:34 PM - Begin Operation: Remove-AzureApplicationGateway
@@ -258,7 +256,6 @@ Successful OK                   055f3a96-8681-2094-a304-8d9a11ad8301
 Get-AzureRmApplicationGateway -Name appgwtest -ResourceGroupName appgw-rg
 ```
 
-<br/>  
 
 ```
 VERBOSE: 10:52:46 PM - Begin Operation: Get-AzureApplicationGateway

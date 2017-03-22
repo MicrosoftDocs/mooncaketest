@@ -64,6 +64,8 @@ Azure HDInsight 中的每个 Hadoop 群集都有用作默认文件系统的 Azur
 ### 用于访问日志的工具
 可以使用多个工具访问这些表中的数据：
 
+[!INCLUDE [azure-sdk-developer-differences](../../includes/azure-visual-studio-login-guide.md)]
+
 * Visual Studio
 * Azure 存储空间资源管理器
 * Power Query for Excel
@@ -112,6 +114,8 @@ Power Query 可以从 [www.microsoft.com/download/details.aspx?id=39379](http://
 
 ## 写入 Azure Blob 存储的日志
 通过[写入 Azure 表的日志](#log-written-to-azure-tables)，可在一定程度上了解 HDInsight 群集中发生的事件。但是，这些表不提供任务级日志，这些日志在问题发生时可以用于进一步分析问题。为了更进一步详细了解发生的问题，可以对 HDInsight 群集进行配置，将通过 Templeton 提交的任何作业的任务日志写入 Blob 存储帐户。实际上，这是指通过 Azure PowerShell cmdlet 或 .NET 作业提交 API 提交的作业，而不是指通过 RDP 提交或通过命令行访问群集时提交的作业。
+
+若要查看日志，请参阅[在基于 Linux 的 HDInsight 上访问 YARN 应用程序日志](./hdinsight-hadoop-access-yarn-app-logs-linux.md)。
 
 有关应用程序日志的详细信息，请参阅[简化 YARN 中的用户日志管理和访问](http://hortonworks.com/blog/simplifying-user-logs-management-and-access-in-yarn/)。
 

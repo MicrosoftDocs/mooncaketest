@@ -81,7 +81,6 @@ New-AzureApplicationGateway -Name AppGwTest -VnetName testvnet1 -Subnets @("Subn
 Get-AzureApplicationGateway AppGwTest
 ```
 
-<br/>  
 
 ```
 Name          : AppGwTest
@@ -376,7 +375,6 @@ Start-AzureApplicationGateway AppGwTest
 Get-AzureApplicationGateway AppGwTest
 ```
 
-<br/>  
 
 ```
 VERBOSE: 8:09:28 PM - Begin Operation: Get-AzureApplicationGateway
@@ -418,7 +416,6 @@ Successful OK                   ce6c6c95-77b4-2118-9d65-e29defadffb8
 Remove-AzureApplicationGateway AppGwTest
 ```
 
-<br/>  
 
 ```
 VERBOSE: 10:49:34 PM - Begin Operation: Remove-AzureApplicationGateway
@@ -434,7 +431,6 @@ Successful OK                   055f3a96-8681-2094-a304-8d9a11ad8301
 Get-AzureApplicationGateway AppGwTest
 ```
 
-<br/>  
 
 ```
 VERBOSE: 10:52:46 PM - Begin Operation: Get-AzureApplicationGateway

@@ -13,7 +13,7 @@ ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 10/06/2016
-wacn.date: 01/04/2017
+wacn.date: 02/21/2017
 ms.author: karolz@microsoft.com
 ---
 
@@ -22,6 +22,8 @@ ms.author: karolz@microsoft.com
 [!INCLUDE [azure-sdk-developer-differences](../../includes/azure-sdk-developer-differences.md)]
 
 本文介绍如何使用 Visual Studio 和 Azure Resource Manager 模板设置 Azure Service Fabric 群集。我们将使用 Visual Studio Azure 资源组项目来创建模板。创建模板后，可以从 Visual Studio 直接将它部署到 Azure。也可以通过脚本使用它，或者将它用作连续集成 (CI) 工具的一部分。
+
+[!INCLUDE [azure-sdk-developer-differences](../../includes/azure-visual-studio-login-guide.md)]
 
 ## 使用 Azure 资源组项目创建 Service Fabric 群集模板
 若要开始，请打开 Visual Studio 并创建 Azure 资源组项目（位于“云”文件夹中）：
@@ -52,7 +54,7 @@ ms.author: karolz@microsoft.com
 Visual Studio Service Fabric Resource Manager 模板将创建一个受证书保护的安全群集。此证书以最后三个模板参数标识（`certificateThumbprint`、`sourceVaultValue` 和 `certificateUrlValue`），并且必须在 **Azure 密钥保管库**中存在。有关如何创建群集安全证书的详细信息，请参阅 [Service Fabric 群集安全方案](./service-fabric-cluster-security.md#x509-certificates-and-service-fabric)一文。
 
 ## 可选：更改群集名称
-每个 Service Fabric 群集都有一个名称。在 Azure 中创建结构群集时，群集名称（连同 Azure 区域）确定了群集的域名系统 (DNS) 名称。例如，如果将群集命名为 `myBigCluster`，需托管新群集的资源组的位置（Azure 区域）为“中国东部”，则群集的 DNS 名称为 `myBigCluster.chinaeast.chinacloudapp.cn`。
+每个 Service Fabric 群集都有一个名称。在 Azure 中创建结构群集时，群集名称（连同 Azure 区域）确定了群集的域名系统 (DNS) 名称。例如，如果将群集命名为 `myBigCluster`，需托管新群集的资源组的位置（Azure 区域）为“中国东部”，则群集的 DNS 名称为 `myBigCluster.chinaeast.cloudapp.chinacloudapi.cn`。
 
 默认情况下，系统会自动生成群集名称，并在“群集”前缀后面附加一个随机后缀，使该名称唯一。这样便可以轻松使用模板作为**持续集成** (CI) 系统的一部分。如果想要为群集使用特定的名称，有效的方法之一是将 Resource Manager 模板文件 (`ServiceFabricCluster.json`) 中的 `clusterName` 变量的值设置为所选的名称。该名称是该文件中定义的第一个变量。
 

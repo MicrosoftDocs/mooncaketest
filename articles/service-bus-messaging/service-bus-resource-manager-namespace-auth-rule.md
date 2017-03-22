@@ -12,9 +12,9 @@ ms.devlang: tbd
 ms.topic: article
 ms.tgt_pltfrm: dotnet
 ms.workload: na
-ms.date: 10/14/2016
+ms.date: 01/18/2017
 ms.author: sethm;shvija
-wacn.date: 12/26/2016
+wacn.date: 03/20/2017
 ---
 
 # 使用 Azure Resource Manager 模板为命名空间和队列创建服务总线授权规则
@@ -37,7 +37,7 @@ wacn.date: 12/26/2016
 
 利用此模板，你将为命名空间和消息传送实体（在此情况下为队列）部署服务总线授权规则。
 
-此模板使用[共享访问签名 (SAS)](./service-bus-sas-overview.md) 进行身份验证。SAS 使应用程序能够使用在命名空间或在关联了特定权限的消息传送实体（队列或主题）上配置的访问密钥向服务总线进行身份验证。然后可以使用此密钥生成 SAS 令牌，客户端反过来可用它向服务总线进行身份验证。
+此模板使用[共享访问签名 (SAS)](./service-bus-sas.md) 进行身份验证。SAS 使应用程序能够使用在命名空间或在关联了特定权限的消息传送实体（队列或主题）上配置的访问密钥向服务总线进行身份验证。然后可以使用此密钥生成 SAS 令牌，客户端反过来可用它向服务总线进行身份验证。
 
 若要自动运行部署，请单击以下按钮：
 
@@ -53,7 +53,7 @@ wacn.date: 12/26/2016
 
 要创建的服务总线命名空间的名称。
 
-```
+```json
     "serviceBusNamespaceName": {
     "type": "string"
     }
@@ -63,7 +63,7 @@ wacn.date: 12/26/2016
 
 命名空间的授权规则的名称。
 
-```
+```json
     "namespaceAuthorizationRuleName ": {
     "type": "string"
     }
@@ -73,7 +73,7 @@ wacn.date: 12/26/2016
 
 服务总线命名空间中的队列的名称。
 
-```
+```json
     "serviceBusQueueName": {
     "type": "string"
     }
@@ -83,7 +83,7 @@ wacn.date: 12/26/2016
 
 模板的服务总线 API 版本。
 
-```
+```json
     "serviceBusApiVersion": {
     "type": "string"
     }
@@ -92,7 +92,7 @@ wacn.date: 12/26/2016
 
 创建**消息传送**类型的标准服务总线命名空间，以及命名空间和实体的服务总线授权规则。
 
-```
+```json
     "resources": [
             {
                 "apiVersion": "[variables('sbVersion')]",
@@ -149,13 +149,13 @@ wacn.date: 12/26/2016
 
 ### PowerShell
 
-```
+```powershell
     New-AzureRmResourceGroupDeployment -ResourceGroupName <resource-group-name> -TemplateFile <https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/301-servicebus-create-authrule-namespace-and-queue/azuredeploy.json>
 ```
 
 ## Azure CLI
 
-```
+```cli
     azure config mode arm
 
     azure group deployment create <my-resource-group> <my-deployment-name> --template-uri <https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/301-servicebus-create-authrule-namespace-and-queue/azuredeploy.json>
@@ -165,7 +165,7 @@ wacn.date: 12/26/2016
 
 现在，你已使用 Azure Resource Manager 创建并部署了资源，请通过查看以下文章了解如何管理这些资源：
 
-- [使用 PowerShell 管理服务总线](./service-bus-powershell-how-to-provision.md)
+- [使用 PowerShell 管理服务总线](https://docs.microsoft.com/en-us/powershell/resourcemanager/azurerm.servicebus/v0.0.2/azurerm.servicebus/)
 - [使用服务总线资源管理器管理服务总线资源](https://code.msdn.microsoft.com/Service-Bus-Explorer-f2abca5a)
 - [服务总线身份验证和授权](./service-bus-authentication-and-authorization.md)
 

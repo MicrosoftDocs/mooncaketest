@@ -13,9 +13,9 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 11/09/2016
+ms.date: 02/13/2017
+wacn.date: 03/07/2017
 ms.author: curtand
-wacn.date: 12/13/2016
 ---
 
 # 什么是 Azure 的自助服务注册？
@@ -129,7 +129,7 @@ wacn.date: 12/13/2016
    需要执行以下步骤以使用 Windows PowerShell 执行验证。
 
    | 步骤 | 要使用的 Cmdlet | 
-   | ---- | ---- | 
+   | --- | --- | 
    | 创建凭据对象 |Get-Credential | 
    | 连接到 Azure AD |Connect-MsolService | 
    | 获取域列表 |Get-MsolDomain | 
@@ -221,4 +221,5 @@ Set-MsolCompanySettings -AllowEmailVerifiedUsers $false -AllowAdHocSubscriptions
 
 [1]: ./media/active-directory-self-service-signup/SelfServiceSignUpControls.png
 
-<!---HONumber=Mooncake_1205_2016-->
+<!---HONumber=Mooncake_0227_2017-->
+<!--Update_Description: update meta properties -->

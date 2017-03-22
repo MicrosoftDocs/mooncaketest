@@ -13,7 +13,7 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 10/10/2016
-wacn.date: 11/21/2016
+wacn.date: 03/17/2017
 ms.author: juliako
 ---
 
@@ -44,6 +44,8 @@ ms.author: juliako
     - Storm 支持。现在可通过用于 Visual Studio 的 HDInsight 工具在 C# 中开发 Storm 拓扑/Spout/Bolt。然后即可将已开发拓扑提交到 Storm 群集，并查看拓扑/bolt/spout 状态。可以通过系统日志和客户日志对 Storm 拓扑/Bolt/Spout 进行故障排除。也可使用 Storm on HDInsight 中的现有 JAVA 资产。
 
     有关详细信息，请参阅 [用于 Visual Studio 的 HDInsight Hadoop 工具入门](../hdinsight/hdinsight-hadoop-visual-studio-tools-get-started.md)。
+
+[!INCLUDE [azure-sdk-developer-differences](../../includes/azure-visual-studio-login-guide.md)]
 
 ##<a id="known_issues_2_5_1"></a> 用于 .NET 2.5.1 的 Azure SDK 的已知问题和限制
 

@@ -1,5 +1,5 @@
 ---
-title: H264 单比特率 4x3 SD | Azure
+title: H264 单比特率 4x3 SD Media Encoder Standard 预设 - Azure | Azure
 description: 本主题概述了 **H264 单比特率 4x3 SD** 任务预设。
 author: Juliako
 manager: erikre
@@ -13,8 +13,8 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/23/2016
-wacn.date: 01/13/2017
+ms.date: 01/23/2017
+wacn.date: 03/10/2017
 ms.author: juliako
 ---
 
@@ -23,7 +23,7 @@ ms.author: juliako
 
  本主题演示 XML 和 JSON 格式的 `H264 Single Bitrate 4x3 SD` 预设。
 
- 此预设将生成单个 MP4 文件，其比特率为 18000 kbps，并且带有立体声 AAC 音频。若要深入了解此预设的配置文件、比特率、采样率等，请检查下面定义的 XML 或 JSON。有关这些预设中每个元素含义的说明以及每个元素的有效值，请参阅 [Media Encoder Standard 架构](./media-services-mes-schema.md)主题。
+ 此预设将生成单个 MP4 文件，其比特率为 1800 kbps，并且带有立体声 AAC 音频。若要深入了解此预设的配置文件、比特率、采样率等，请检查下面定义的 XML 或 JSON。有关这些预设中每个元素含义的说明以及每个元素的有效值，请参阅 [Media Encoder Standard 架构](./media-services-mes-schema.md)主题。
 
  XML
 
@@ -110,4 +110,4 @@ ms.author: juliako
       ]  
     }  
 
-<!---HONumber=Mooncake_0109_2017-->
+<!---HONumber=Mooncake_0306_2017-->

@@ -1,6 +1,6 @@
 ---
-title: 创作 Azure Resource Manager 模板 | Azure
-description: 使用声明性 JSON 语法创建 Azure 资源管理器模板，以将应用程序部署到 Azure。
+title: 为 Azure 部署创建模板 | Azure
+description: 使用声明性 JSON 语法描述 Azure Resource Manager 模板的结构和属性。
 services: azure-resource-manager
 documentationcenter: na
 author: tfitzmac
@@ -14,7 +14,7 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/03/2017
-wacn.date: 01/25/2017
+wacn.date: 03/03/2017
 ms.author: tomfitz
 ---
 
@@ -69,7 +69,7 @@ ms.author: tomfitz
 
 有关模板函数的完整列表，请参阅 [Azure 资源管理器模板函数](./resource-group-template-functions.md)。
 
-## <a name="parameters"></a> 参数
+## <a name="parameters"></a> Parameters
 在模板的 parameters 节中，你可以指定在部署资源时能够输入的值。提供针对特定环境（例如开发、测试和生产环境）定制的参数值可以自定义部署。无需在模板中提供参数，但如果没有参数，模板始终部署具有相同名称、位置和属性的相同资源。
 
 你可以在整个模板中使用这些参数值，来为部署的资源设置值。在模板的其他节中，只能使用 parameters 节中声明的参数。
@@ -239,7 +239,7 @@ ms.author: tomfitz
      "copy": {
        "name": "<name-of-copy-loop>",
        "count": "<number-of-iterations>"
-     }
+     },
      "resources": [
        "<array-of-child-resources>"
      ]
@@ -389,7 +389,7 @@ resources 节包含要部署的资源数组。在每个资源内，还可以定�
 ]
 ```
 
-## 输出
+## Outputs
 在 Outputs 节中，可以指定从部署返回的值。例如，可能会返回用于访问已部署资源的 URI。
 
 以下示例演示了输出定义的结构：
@@ -430,5 +430,5 @@ resources 节包含要部署的资源数组。在每个资源内，还可以定�
 
 [deployment2cmdlet]: https://docs.microsoft.com/powershell/resourcemanager/azurerm.resources/v3.2.0/new-azurermresourcegroupdeployment
 
-<!---HONumber=Mooncake_0120_2017-->
-<!-- Update_Description: update meta properties ; wording update ; update link references -->
+<!---HONumber=Mooncake_0227_2017-->
+<!-- Update_Description: update meta properties; wording update -->

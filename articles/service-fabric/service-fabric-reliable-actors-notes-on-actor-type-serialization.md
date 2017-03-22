@@ -13,8 +13,8 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 10/19/2016
-wacn.date: 12/26/2016
+ms.date: 02/10/2017
+wacn.date: 03/03/2017
 ms.author: vturecek
 ---
 
@@ -93,4 +93,4 @@ public class VoicemailBox
  - [执行组件多态性和面向对象的设计模式](./service-fabric-reliable-actors-polymorphism.md)
  - [执行组件诊断和性能监视](./service-fabric-reliable-actors-diagnostics.md)
 
-<!---HONumber=Mooncake_1219_2016-->
+<!---HONumber=Mooncake_0227_2017-->

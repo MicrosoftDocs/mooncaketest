@@ -68,7 +68,7 @@ sqlcmd -S <Server Name>.database.chinacloudapi.cn -I -U <User> -P <Password> -Q 
 [load]: ./sql-data-warehouse-overview-load.md
 [load sample data]: ./sql-data-warehouse-load-sample-databases.md
 [使用 Azure 门户预览创建 Azure SQL 数据库逻辑服务器]: ../sql-database/sql-database-get-started.md#create-an-azure-sql-database-logical-server
-[使用 PowerShell 创建 Azure SQL 数据库逻辑服务器]: ../sql-database/sql-database-get-started-powershell.md#database-setup-create-a-resource-group-server-and-firewall-rule
+[使用 PowerShell 创建 Azure SQL 数据库逻辑服务器]: ../sql-database/sql-database-get-started-powershell.md#complete-azure-powershell-script-to-create-a-server-firewall-rule-and-database
 [如何创建资源组]: ../azure-resource-manager/resource-group-template-deploy-portal.md#create-resource-group
 [Installing Visual Studio and SSDT]: ./sql-data-warehouse-install-visual-studio.md
 [sqlcmd]: ./sql-data-warehouse-get-started-connect-sqlcmd.md

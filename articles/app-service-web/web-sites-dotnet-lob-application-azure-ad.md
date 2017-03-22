@@ -14,7 +14,7 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: web
 ms.date: 09/01/2016
-wacn.date: 12/05/2016
+wacn.date: 03/17/2017
 ms.author: cephalin
 ---
 
@@ -41,6 +41,8 @@ ms.author: cephalin
 * 在 Azure Active Directory 租户上创建应用程序的权限
 * Visual Studio 2013 Update 4 或更高版本
 * [Azure SDK 2.8.1 或更高版本](/downloads/)
+
+[!INCLUDE [azure-sdk-developer-differences](../../includes/azure-visual-studio-login-guide.md)]
 
 ## <a name="bkmk_deploy"></a>创建 Web 应用并将其部署到 Azure
 1. 在 Visual Studio 中，单击“文件”>“新建”>“项目”。

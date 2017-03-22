@@ -12,9 +12,9 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/04/2016
+ms.date: 01/13/2017
 ms.author: sethm
-wacn.date: 01/09/2017
+wacn.date: 02/20/2017
 ---
 
 # 异步消息传送模式和高可用性
@@ -175,3 +175,4 @@ Azure 中的其他组件可能偶尔会发生服务问题。例如，当服务�
   [成对命名空间]: ./service-bus-paired-namespaces.md
 
 <!---HONumber=Mooncake_Quality_Review_0104_2017-->
+<!--Update_Description:update meta properties-->

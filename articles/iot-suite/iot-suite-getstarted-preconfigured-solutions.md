@@ -249,4 +249,4 @@ Azure IoT 套件[预配置解决方案][lnk-preconfigured-solutions]结合了多
 [lnk-connect-rm]: ./iot-suite-connecting-devices.md
 [lnk-permissions]: ./iot-suite-permissions.md
 
-<!---HONumber=Mooncake_0815_2016-->
+<!---HONumber=Mooncake_0306_2017-->

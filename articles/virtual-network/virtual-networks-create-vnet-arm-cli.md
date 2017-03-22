@@ -44,7 +44,7 @@ Azure 有两个部署模型：Azure Resource Manager 和经典模型。Azure 建
 
 2. 运行以下命令创建 VNet 和子网：
 
-    ```azurecli
+    ```
     azure network vnet create --vnet TestVNet -e 192.168.0.0 -i 16 -n FrontEnd -p 192.168.1.0 -r 24 -l "China North"
     ```
 
@@ -69,7 +69,7 @@ Azure 有两个部署模型：Azure Resource Manager 和经典模型。Azure 建
    * **-l（或 --location）**。要在其中创建 VNet 的 Azure 区域 。在我们的方案中为中国北部。
 3. 运行以下命令创建子网：
 
-    ```azurecli
+    ```
     azure network vnet subnet create -t TestVNet -n BackEnd -a 192.168.2.0/24
     ```
 

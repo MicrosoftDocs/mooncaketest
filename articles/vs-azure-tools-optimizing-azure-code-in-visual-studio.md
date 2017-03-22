@@ -40,7 +40,7 @@ AP0000
 
 ### 原因
 
-默认情况下，在 web.config 文件中指定的会话状态模式为进程内。此外，如果配置文件中没有指定任何条目，将会话状态模式默认为进程内。进程内模式将会话状态存储在 Web 服务器的内存中。当重新启动某个实例或使用新实例来支持负载平衡或故障转移时，存储在 Web 服务器内存中的会话状态并不保存。这种情况会导致应用程序无法在云上缩放。
+默认情况下，在 web.config 文件中指定的会话状态模式为进程内。此外，如果配置文件中没有指定任何条目，将会话状态模式默认为进程内。进程内模式将会话状态存储在 Web 服务器的内存中。当重新启动某个实例或使用新实例来支持负载均衡或故障转移时，存储在 Web 服务器内存中的会话状态并不保存。这种情况会导致应用程序无法在云上缩放。
 
 ASP.NET 会话状态支持多种不同的会话状态数据存储选项：InProc、StateServer、SQLServer、Custom 和 Off。建议使用 Custom 模式在外部会话状态存储（例如，[适用于 Redis 的 Azure 会话状态提供程序](http://go.microsoft.com/fwlink/?LinkId=401521)）中托管数据。
 
@@ -126,9 +126,9 @@ BrokeredMessage receivedMessage = sc.Receive();
 
 有关更多信息，请参阅以下主题。
 
-- 有关概述，请参阅 [服务总线的共享访问签名身份验证](./service-bus-messaging/service-bus-shared-access-signature-authentication.md)
+- 有关概述，请参阅 [服务总线的共享访问签名身份验证](/documentation/articles/service-bus-shared-access-signature-authentication/)
 
-- [如何使用服务总线的共享访问签名身份验证](./service-bus-messaging/service-bus-shared-access-signature-authentication.md)
+- [如何使用服务总线的共享访问签名身份验证](/documentation/articles/service-bus-shared-access-signature-authentication/)
 
 ## 考虑使用 OnMessage 方法来避免“receive 循环”
 

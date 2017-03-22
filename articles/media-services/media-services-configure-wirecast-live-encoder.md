@@ -1,19 +1,20 @@
 ---
-title: 将 Telestream Wirecast 编码器配置为发送单比特率实时流 
+title: 将 Telestream Wirecast 编码器配置为发送单比特率实时流 | Azure
 description: 本主题说明了如何配置 Wirecast 实时编码器，以便将单比特率流发送到 AMS 频道进行实时编码。
 services: media-services
-documentationCenter: ''
-authors: Juliako
+documentationcenter: ''
+author: Juliako
 manager: erikre
 editor: ''
 
+ms.assetid: 0d2f1e81-51a6-4ca9-894a-6dfa51ce4c70
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 10/12/2016
-wacn.date: 12/16/2016
+ms.date: 01/05/2017
+wacn.date: 02/24/2017
 ms.author: juliako;cenkdin;anilmur
 ---
 
@@ -27,12 +28,12 @@ ms.author: juliako;cenkdin;anilmur
 
 本主题说明了如何配置 [Telestream Wirecast](http://www.telestream.net/wirecast/overview.htm) 实时编码器，以便将单比特率流发送到 AMS 频道进行实时编码。有关详细信息，请参阅[使用能够通过 Azure 媒体服务执行实时编码的频道](./media-services-manage-live-encoder-enabled-channels.md)。
 
-本教程演示了如何通过 Azure 媒体服务浏览器 (AMSE) 工具管理 Azure 媒体服务 (AMS)。此工具仅在 Windows 电脑上运行。如果使用的是 Mac 或 Linux，则可使用 Azure 经典管理门户创建[频道](./media-services-portal-creating-live-encoder-enabled-channel.md#create-a-channel)和[节目](./media-services-portal-creating-live-encoder-enabled-channel.md#create-and-manage-a-program)。
+本教程演示了如何通过 Azure 媒体服务浏览器 (AMSE) 工具管理 Azure 媒体服务 (AMS)。此工具仅在 Windows 电脑上运行。如果使用的是 Mac 或 Linux，则可使用 Azure 经典管理门户创建[频道](./media-services-portal-creating-live-encoder-enabled-channel.md#create-a-channel)和[节目](./media-services-portal-creating-live-encoder-enabled-channel.md)。
 
 ##先决条件
 
 - [创建 Azure 媒体服务帐户](./media-services-create-account.md)
-- 确保在运行流式处理终结点时，至少为其分配了一个流式处理单元。有关详细信息，请参阅[在媒体服务帐户中管理流式处理终结点](./media-services-manage-origins.md)
+- 确保运行流式处理终结点。有关详细信息，请参阅[在媒体服务帐户中管理流式处理终结点](./media-services-manage-origins.md)
 - 安装最新版本的 [AMSE](https://github.com/Azure/Azure-Media-Services-Explorer) 工具。
 - 启动该工具并连接到 AMS 帐户。
 
@@ -161,7 +162,8 @@ ms.author: juliako;cenkdin;anilmur
 3. 选中“立即启动节目”框。
 4. 单击“创建节目”。
 
-    注意：创建节目需要的时间比创建频道需要的时间少。
+   >[!NOTE]
+   创建节目需要的时间比创建频道需要的时间少。
 
 5. 节目运行后，可通过下述方式来确认其是否能够播放：右键单击该节目，导航到“播放节目”，然后选择“使用 Azure Media Player”。
 6. 确认以后，再次右键单击该节目，然后选择“将输出 URL 复制到剪贴板”（也可通过菜单从“节目信息和设置”选项检索此信息）。
@@ -172,4 +174,5 @@ ms.author: juliako;cenkdin;anilmur
 
 请参阅[故障排除](./media-services-troubleshooting-live-streaming.md)主题以获取相关指导。
 
-<!---HONumber=Mooncake_Quality_Review_1202_2016-->
+<!---HONumber=Mooncake_0220_2017-->
+<!--Update_Description: wording update-->

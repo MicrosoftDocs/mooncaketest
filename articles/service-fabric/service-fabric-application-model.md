@@ -13,8 +13,8 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 12/01/2016
-wacn.date: 01/20/2017
+ms.date: 1/05/2017
+wacn.date: 02/20/2017
 ms.author: ryanwi
 ---
 
@@ -48,7 +48,7 @@ ms.author: ryanwi
 ## 描述服务
 服务清单以声明方式定义服务类型和版本。它指定服务元数据，例如服务类型、运行状况属性、负载均衡度量值、服务二进制文件和配置文件。换言之，它描述了组成一个服务包以支持一个或多个服务类型的代码、配置和数据包。下面是服务清单的简单示例：
 
-```
+```xml
 <?xml version="1.0" encoding="utf-8" ?>
 <ServiceManifest Name="MyServiceManifest" Version="SvcManifestVersion1" xmlns="http://schemas.microsoft.com/2011/01/fabric" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <Description>An example service manifest</Description>
@@ -66,6 +66,10 @@ ms.author: ryanwi
         <Program>MyServiceHost.exe</Program>
       </ExeHost>
     </EntryPoint>
+    <EnvironmentVariables>
+      <EnvironmentVariable Name="MyEnvVariable" Value=""/>
+      <EnvironmentVariable Name="HttpGatewayPort" Value="19080"/>
+    </EnvironmentVariables>
   </CodePackage>
   <ConfigPackage Name="MyConfig" Version="ConfigVersion1" />
   <DataPackage Name="MyData" Version="DataVersion1" />
@@ -77,6 +81,8 @@ ms.author: ryanwi
 **ServiceTypes** 声明此清单中的 **CodePackages** 支持哪些服务类型。当一种服务针对这些服务类型之一进行实例化时，可激活此清单中声明的所有代码包，方法是运行这些代码包的入口点。生成的进程应在运行时注册所支持的服务类型。请注意，在清单级别而不是代码包级别声明服务类型。因此，当存在多个代码包时，每当系统查找任何一种声明的服务类型时，都将激活所有代码包。
 
 **SetupEntryPoint** 是特权入口点，以与 Service Fabric（通常是 *LocalSystem* 帐户）相同的凭据先于任何其他入口点运行。**EntryPoint** 指定的可执行文件通常是长时间运行的服务主机。提供单独的设置入口点可避免长时间使用高特权运行服务主机。由 **EntryPoint** 指定的可执行文件在 **SetupEntryPoint** 成功退出后运行。如果总是终止或出现故障，则将监视并重启所产生的过程（再次从 **SetupEntryPoint** 开始）。
+
+**EnvironmentVariables** 提供为此代码包设置的环境变量的列表。可在 `ApplicationManifest.xml` 中替代这些变量，为不同的服务实例提供不同的值。
 
 **DataPackage** 声明一个由 **Name** 特性命名的文件夹，该文件夹中包含进程将在运行时使用的静态数据。
 
@@ -110,7 +116,7 @@ For more information about other features supported by service manifests, refer 
 
 因此，应用程序清单在应用程序级别描述元素，并引用一个或多个服务清单，以组成应用程序类型。下面是应用程序清单的简单示例：
 
-```
+```xml
 <?xml version="1.0" encoding="utf-8" ?>
 <ApplicationManifest
       ApplicationTypeName="MyApplicationType"
@@ -120,6 +126,8 @@ For more information about other features supported by service manifests, refer 
   <Description>An example application manifest</Description>
   <ServiceManifestImport>
     <ServiceManifestRef ServiceManifestName="MyServiceManifest" ServiceManifestVersion="SvcManifestVersion1"/>
+    <ConfigOverrides/>
+    <EnvironmentOverrides CodePackageRef="MyCode"/>
   </ServiceManifestImport>
   <DefaultServices>
      <Service Name="MyService">
@@ -133,7 +141,7 @@ For more information about other features supported by service manifests, refer 
 
 类似于服务清单，**Version** 特性是未结构化的字符串，并且不由系统进行分析。这些特性也用于对每个组件进行版本控制，以进行升级。
 
-**ServiceManifestImport** 包含对组成此应用程序类型的服务清单的引用。导入的服务清单将确定此应用程序类型中有效的服务类型。
+**ServiceManifestImport** 包含对组成此应用程序类型的服务清单的引用。导入的服务清单将确定此应用程序类型中有效的服务类型。在 ServiceManifestImport 内，可替代 Settings.xml 中的配置值和 ServiceManifest.xml 文件中的环境变量。
 
 **DefaultServices** 声明每当一个应用程序依据此应用程序类型进行实例化时自动创建的服务实例。默认服务只是提供便利，创建后，其行为皆如常规服务。它们与应用程序实例中的任何其他服务一起升级，也可将其删除。
 
@@ -183,8 +191,10 @@ D:\TEMP\MYAPPLICATIONTYPE
 
 - 通过安装安全证书设置访问控制。
 
-### 使用 Visual Studio 生成包
+有关如何配置 **SetupEntryPoint** 的详细信息，请参阅[配置服务设置入口点的策略](./service-fabric-application-runas-security.md)
 
+### 配置 
+### 使用 Visual Studio 生成包
 如果使用 Visual Studio 2015 创建应用程序，可以使用 Package 命令自动创建符合上述布局的包。
 
 若要创建包，请在解决方案资源管理器中右键单击应用程序项目，并选择 Package 命令，如下所示：
@@ -232,11 +242,11 @@ PS D:\temp>
 正确打包应用程序并通过验证后，应用程序即已准备就绪，可供部署。
 
 ## 后续步骤
-[部署和删除应用程序][10]
+[部署和删除应用程序][10]介绍如何使用 PowerShell 来管理应用程序实例
 
-[管理多个环境的应用程序参数][11]
+[管理多个环境的应用程序参数][11]介绍如何为不同的应用程序实例配置参数和环境变量。
 
-[RunAs：使用不同的安全权限运行 Service Fabric 应用程序][12]
+[配置应用程序的安全策略][12]介绍如何根据安全策略运行服务，从而限制访问。
 
 <!--Image references-->
 [appmodel-diagram]: ./media/service-fabric-application-model/application-model.png
@@ -249,5 +259,5 @@ PS D:\temp>
 [11]: ./service-fabric-manage-multiple-environment-app-configuration.md
 [12]: ./service-fabric-application-runas-security.md
 
-<!---HONumber=Mooncake_0116_2017-->
-<!--update: wording update-->
+<!---HONumber=Mooncake_0213_2017-->
+<!--update: update code(add EnvironmentVariables parameter)-->

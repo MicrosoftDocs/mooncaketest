@@ -1,33 +1,35 @@
 ---
-title: 常见问题 | Azure
+title: Azure 媒体服务常见问题 | Azure
 description: 常见问题 (FAQ)
 services: media-services
-documentationCenter: ''
-authors: Juliako
+documentationcenter: ''
+author: Juliako
 manager: erikre
 editor: ''
 
+ms.assetid: 5374f7f4-c189-43ef-8b7f-f2f4141e2748
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/19/2016
-wacn.date: 01/24/2017
+ms.date: 01/23/2017
+wacn.date: 03/10/2017
 ms.author: juliako
 ---
 
-#常见问题  
+# 常见问题
 
-##一般性的 AMS 常见问题 
+本文解答由 Azure 媒体服务 \(AMS\) 用户社区提出的常见问题。
 
+## 一般性的 AMS 常见问题
 问：如何缩放索引？
 
 答：编码任务和索引任务的保留单元相同。请遵循[如何缩放编码保留单元](./media-services-scale-media-processing-overview.md)中的说明。**请注意**，保留单元类型不影响索引器性能。
 
 问：我已经上传、编码并发布了视频。为什么在尝试对视频进行流式处理时，它不播放？
 
-答：最常见的原因之一是，你没有在尝试播放的流式处理终结点上分配至少一个保留流式处理单位。请遵循[如何缩放流式处理保留单元](./media-services-how-to-scale.md)中的说明。
+答：最常见的原因之一是，尝试播放的流式处理终结点没有处于“正在运行”状态。
 
 问：是否可以在实时流上进行合成操作？
 
@@ -55,7 +57,7 @@ ms.author: juliako
 
 问：如何在编码过程中旋转视频。
 
-答：[Media Encoder Standard](./media-services-dotnet-encode-with-media-encoder-standard.md)支持旋转 90/180/270 度。默认行为是“自动”，即尝试在传入的 MP4/MOV 文件中检测旋转元数据并对其进行补偿。包含[此处](http://msdn.microsoft.com/zh-cn/library/azure/mt269960.aspx)定义的 json 预设之一的以下 **Sources** 元素：
+答：[Media Encoder Standard](./media-services-dotnet-encode-with-media-encoder-standard.md)支持旋转 90/180/270 度。默认行为是“自动”，即尝试在传入的 MP4/MOV 文件中检测旋转元数据并对其进行补偿。包含[此处](./media-services-mes-presets-overview.md)定义的 json 预设之一的以下 **Sources** 元素：
 
 ```
 "Version": 1.0,
@@ -72,4 +74,4 @@ ms.author: juliako
 ...
 ```
 
-<!---HONumber=Mooncake_Quality_Review_1202_2016-->
+<!---HONumber=Mooncake_0306_2017-->

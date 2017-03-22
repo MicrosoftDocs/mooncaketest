@@ -128,7 +128,7 @@ httpClient.DefaultRequestHeaders.Authorization = new HttpCredentialsHeaderValue(
 
 C#
 
-```C#
+```
 // Update the Page UI to represent the signed in user
 ActiveUser.Text = result.UserInfo.DisplayableId;
 ```

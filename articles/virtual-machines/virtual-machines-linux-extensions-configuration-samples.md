@@ -1,5 +1,3 @@
-<!-- ARM: tested -->
-
 ---
 title: Linux VM 扩展的示例配置 | Azure
 description: 使用扩展为 Linux VM 创作模板的示例配置
@@ -65,7 +63,7 @@ ms.author: kundanap
   }
 ```
 
-## 适用于包含 VM 缩放集的 VM 扩展的示例模板代码段。
+## 适用于包含 VM 规模集的 VM 扩展的示例模板代码段。
 
 ```
       {

@@ -2,19 +2,20 @@
 title: 向你的流分析作业添加数据输入 | Azure
 description: 了解如何通过事件中心将数据源作为流数据挂接到流分析作业，或者通过 Blob 存储挂接引用数据。
 keywords: 数据输入、流式数据
-documentationCenter: ''
+documentationcenter: ''
 services: stream-analytics
-authors: jeffstokes72
+author: jeffstokes72
 manager: jhubbard
 editor: cgronlun
 
+ms.assetid: 9e59bd24-2a80-4ecb-b6b2-309a07c70bcd
 ms.service: stream-analytics
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-services
-ms.date: 09/26/2016
-wacn.date: 11/14/2016
+ms.date: 01/24/2017
+wacn.date: 03/10/2017
 ms.author: jeffstok
 ---
 
@@ -28,12 +29,12 @@ Azure 流分析作业可以连接到一个或多个数据输入，每个数据�
 
 流分析中有两种不同类型的输入：数据流和引用数据。
 
-- **数据流**：流分析作业须至少包含一种可供作业使用和转换的数据流输入。Azure Blob 存储和 Azure 事件中心均可作为数据流输入源。Azure 事件中心用于从连接的设备、服务和应用程序收集事件流。Azure Blob 存储可用作按流的形式引入大量数据的输入源。
-- **引用数据**：流分析支持辅助输入的另一种类型，称为引用数据。与运动的数据相反，该数据是静态的或变化缓慢。它通常用于执行查找以及与数据流关联创建更丰富的数据集。目前只支持使用 Azure Blob 存储作为引用数据的输入源。
+* **数据流**：流分析作业须至少包含一种可供作业使用和转换的数据流输入。Azure Blob 存储和 Azure 事件中心均可作为数据流输入源。Azure 事件中心用于从连接的设备、服务和应用程序收集事件流。Azure Blob 存储可用作按流的形式引入大量数据的输入源。
+* **引用数据**：流分析支持辅助输入的另一种类型，称为引用数据。与运动的数据相反，该数据是静态的或变化缓慢。它通常用于执行查找以及与数据流关联创建更丰富的数据集。目前只支持使用 Azure Blob 存储作为引用数据的输入源。
 
 若要向你的流分析作业添加输入：
 
-1. 在 Azure 经典管理门户中，单击“输入”，然后在流分析作业中单击“添加输入”。
+1. 在 Azure 门户中，单击“输入”，然后在流分析作业中单击“添加输入”。
 
     ![Azure 经典管理门户 - 添加输入。](./media/stream-analytics-add-inputs/1-stream-analytics-add-inputs.png)  
 
@@ -60,8 +61,8 @@ Azure 流分析作业可以连接到一个或多个数据输入，每个数据�
     ![添加事件中心数据输入](./media/stream-analytics-add-inputs/4-stream-analytics-add-inputs.png)  
 
 5. 指定输入数据的序列化设置：
-    - 要确保查询按你期望的方式进行，请指定传入数据的**事件序列化格式**。支持的序列化格式为 JSON、CSV 和 Avro。
-    - 验证数据的**编码**。目前只支持 UTF-8 这种编码格式。
+    * 要确保查询按你期望的方式进行，请指定传入数据的**事件序列化格式**。支持的序列化格式为 JSON、CSV 和 Avro。
+    * 验证数据的**编码**。目前只支持 UTF-8 这种编码格式。
 
     ![针对数据输入的数据序列化设置](./media/stream-analytics-add-inputs/5-stream-analytics-add-inputs.png)  
 
@@ -78,10 +79,11 @@ Azure 流分析作业可以连接到一个或多个数据输入，每个数据�
 
 ## 后续步骤
 
-- [Azure 流分析简介](./stream-analytics-introduction.md)
-- [Azure 流分析入门](./stream-analytics-get-started.md)
-- [缩放 Azure 流分析作业](./stream-analytics-scale-jobs.md)
-- [Azure 流分析查询语言参考](https://msdn.microsoft.com/zh-cn/library/azure/dn834998.aspx)
-- [Azure 流分析管理 REST API 参考](https://msdn.microsoft.com/zh-cn/library/azure/dn835031.aspx)
+* [Azure 流分析简介](./stream-analytics-introduction.md)
+* [Azure 流分析入门](./stream-analytics-get-started.md)
+* [缩放 Azure 流分析作业](./stream-analytics-scale-jobs.md)
+* [Azure 流分析查询语言参考](https://msdn.microsoft.com/zh-cn/library/azure/dn834998.aspx)
+* [Azure 流分析管理 REST API 参考](https://msdn.microsoft.com/zh-cn/library/azure/dn835031.aspx)
 
-<!---HONumber=Mooncake_1107_2016-->
+<!---HONumber=Mooncake_0306_2017-->
+<!--Update_Description:update meta properties; wording update -->

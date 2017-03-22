@@ -1,6 +1,6 @@
 ---
 title: 服务总线与 .NET 和 AMQP 1.0 | Azure
-description: 使用 AMQP 通过 .NET 使用服务总线
+description: 使用 AMQP 通过 .NET 使用 Azure 服务总线
 services: service-bus
 documentationCenter: na
 authors: sethmanheim
@@ -12,13 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/03/2016
-wacn.date: 01/04/2017
+ms.date: 01/13/2017
+ms.author: sethm
+wacn.date: 03/20/2017
 ---
 
 # 使用 AMQP 1.0 通过 .NET 使用服务总线
-
-[!INCLUDE [service-bus-selector-amqp](../../includes/service-bus-selector-amqp.md)]
 
 ## 下载服务总线 SDK
 
@@ -52,7 +51,7 @@ Endpoint=sb://[namespace].servicebus.chinacloudapi.cn/;SharedAccessKeyName=RootM
 
 其中 `[namespace]` 和 `SharedAccessKey` 从 [Azure 门户预览][]获取。有关详细信息，请参阅[服务总线队列入门][]。
 
-使用 AMQP 时，在连接字符串后面追加 `;TransportType=Amqp`。此表示法将通知客户端库使用 AMQP 1.0 连接到服务总线。
+使用 AMQP 时，在连接字符串后面追加 `;TransportType=Amqp`。此表示法将指示客户端库使用 AMQP 1.0 连接到服务总线。
 
 ## 消息序列化
 
@@ -112,16 +111,12 @@ Endpoint=sb://[namespace].servicebus.chinacloudapi.cn/;SharedAccessKeyName=RootM
 -    通过锁定令牌完成消息只能由最初收到消息的消息接收方完成。
 
 ## 控制 AMQP 协议设置
+[.NET API](https://docs.microsoft.com/dotnet/api/) 公开了几项设置以控制 AMQP 协议的行为：
 
-.NET API 公开了几项设置以控制 AMQP 协议的行为：
-
--   **MessageReceiver.PrefetchCount**：控制应用于链接的初始信用额度。默认值为 0。
-
--   **MessagingFactorySettings.AmqpTransportSettings.MaxFrameSize**：控制在打开连接时协商期间提供的最大 AMQP 帧大小。默认值为 65,536 字节。
-
--   **MessagingFactorySettings.AmqpTransportSettings.BatchFlushInterval**：如果传输可以分批进行，此值确定发送处置的最大延迟。默认情况下由发送方/接收方继承。单个发送方/接收方可以覆盖默认值（即 20 毫秒）。
-
--   **MessagingFactorySettings.AmqpTransportSettings.UseSslStreamSecurity**：控制是否通过 SSL 连接建立 AMQP 连接。默认值为 **true**。
+* **[MessageReceiver.PrefetchCount](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.messagereceiver#Microsoft_ServiceBus_Messaging_MessageReceiver_PrefetchCount)**：控制应用于链接的初始信用额度。默认值为 0。
+* **[MessagingFactorySettings.AmqpTransportSettings.MaxFrameSize](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.amqp.amqptransportsettings#Microsoft_ServiceBus_Messaging_Amqp_AmqpTransportSettings_MaxFrameSize)**：控制在打开连接时协商期间提供的最大 AMQP 帧大小。默认值为 65,536 字节。
+* **[MessagingFactorySettings.AmqpTransportSettings.BatchFlushInterval](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.amqp.amqptransportsettings#Microsoft_ServiceBus_Messaging_Amqp_AmqpTransportSettings_BatchFlushInterval)**：如果传输可以分批进行，此值确定发送处置的最大延迟。默认情况下由发送方/接收方继承。单个发送方/接收方可以覆盖默认值（即 20 毫秒）。
+* **[MessagingFactorySettings.AmqpTransportSettings.UseSslStreamSecurity](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.amqp.amqptransportsettings#Microsoft_ServiceBus_Messaging_Amqp_AmqpTransportSettings_UseSslStreamSecurity)**：控制是否通过 SSL 连接建立 AMQP 连接。默认值为 **true**。
 
 ## 后续步骤
 
@@ -140,7 +135,8 @@ Endpoint=sb://[namespace].servicebus.chinacloudapi.cn/;SharedAccessKeyName=RootM
 [NuGet]: http://nuget.org/packages/WindowsAzure.ServiceBus/
 [Azure 门户预览]: https://portal.azure.cn
 [服务总线 AMQP 概述]: ./service-bus-amqp-overview.md
-[针对服务总线分区队列和主题的 AMQP 1.0 支持]: ./service-bus-partitioned-queues-and-topics-amqp-overview.md
+[针对服务总线分区队列和主题的 AMQP 1.0 支持]: ./service-bus-amqp-protocol-guide.md
 [适用于 Windows Server 的服务总线中的 AMQP]: https://msdn.microsoft.com/zh-cn/library/dn574799.aspx
 
-<!---HONumber=Mooncake_Quality_Review_1230_2016-->
+<!---HONumber=Mooncake_0313_2017-->
+<!--Update_Description:update meta properties-->

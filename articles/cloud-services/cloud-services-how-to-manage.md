@@ -19,6 +19,10 @@ ms.author: adegeo
 
 # 如何管理云服务
 
+> [!div class="op_single_selector"]
+- [Azure 门户预览](./cloud-services-how-to-manage-portal.md)
+- [Azure 经典管理门户](./cloud-services-how-to-manage.md)
+
 在 Azure 经典管理门户的“云服务”区域中，可以更新服务角色或部署、将预留部署升级到生产环境、将资源链接到云服务，以便查看资源依赖关系并对资源进行整体缩放，以及删除云服务或部署。
 
 ## 如何：更新云服务角色或部署

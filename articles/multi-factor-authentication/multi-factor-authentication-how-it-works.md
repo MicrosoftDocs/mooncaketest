@@ -13,7 +13,7 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 08/04/2016
-wacn.date: 09/28/2016
+wacn.date: 03/16/2017
 ms.author: kgremban
 ---
 
@@ -152,7 +152,7 @@ Azure 多重身份验证有两个不同的版本。下表较详细地描述了�
   </tr>
 </table>
 
-##如何获取多重身份验证
+##如何获取多重身份验证 <a name="how-to-get-azure-multi-factor-authentication"></a>
 
 如果你是 Office 365 用户或 Azure 订户，并想要充分利用多重身份验证提供的其他功能，请继续阅读其他部分。
 

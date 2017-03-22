@@ -1,24 +1,25 @@
 ---
-title: Power BI Embedded 疑难解答
-description: Power BI Embedded 疑难解答
+title: Power BI Embedded 故障排除
+description: Power BI Embedded 故障排除
 services: power-bi-embedded
-documentationCenter: ''
-authors: mgblythe
-manager: NA
+documentationcenter: ''
+author: guyinacube
+manager: erikre
 editor: ''
 tags: ''
 
+ms.assetid: c8aee652-ed8b-4c66-9c63-f798b7a655b4
 ms.service: power-bi-embedded
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: powerbi
-ms.date: 10/04/2016
-ms.author: mblythe
-wacn.date: 02/06/2017
+ms.date: 01/06/2017
+wacn.date: 02/22/2017
+ms.author: asaxton
 ---
 
-# Power BI Embedded 疑难解答
+# Power BI Embedded 故障排除
 本文提供了有关如何解决 **Power BI Embedded** 问题的信息。
 
 ## 设置 SQL Server 连接字符串 <a name="connection-string"/>
@@ -40,4 +41,5 @@ wacn.date: 02/06/2017
 - [示例入门](./power-bi-embedded-get-started-sample.md)
 - [什么是 Power BI Embedded](./power-bi-embedded-what-is-power-bi-embedded.md)
 
-<!---HONumber=Mooncake_1010_2016-->
+<!---HONumber=Mooncake_0213_2017-->
+<!---Update_Description: wording update -->

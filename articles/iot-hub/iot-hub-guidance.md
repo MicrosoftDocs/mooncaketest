@@ -135,6 +135,6 @@ IoT 解决方案存储有关单个设备的数据，例如：
 [lnk-gateway]: ./iot-hub-linux-gateway-sdk-simulated-device.md
 [lnk-portal-manage]: ./iot-hub-manage-through-portal.md
 [lnk-sas-token]: ./iot-hub-sas-tokens.md
-[lnk-securing]: /documentation/articles/iot-hub-security-ground-up/
+[lnk-securing]: ./iot-hub-security-ground-up.md
 
 <!---HONumber=Mooncake_Quality_Review_1230_2016-->

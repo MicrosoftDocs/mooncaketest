@@ -1,5 +1,5 @@
 ---
-title: 在 HDInsight 中使用 Apache Phoenix 和 SQuirreL | Azure
+title: 将 Apache Phoenix 和 SQuirreL 与基于 Windows 的 Azure HDInsight 配合使用 | Azure
 description: 了解如何在 HDInsight 中使用 Apache Phoenix，以及如何在工作站上安装和配置 SQuirreL 以连接到 HDInsight 中的 HBase 群集。
 services: hdinsight
 documentationcenter: ''
@@ -13,19 +13,20 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 09/02/2016
-wacn.date: 01/25/2017
+ms.date: 02/09/2017
+wacn.date: 03/10/2017
 ms.author: jgao
 ---
 
-# 将 Apache Phoenix 和 SQuirreL 与 HDinsight 中基于 Windows 的 HBase 配合使用
+# 将 Apache Phoenix 和 SQuirreL 与 HDInsight 中基于 Windows 的 HBase 群集配合使用
 了解如何在 HDInsight 中使用 [Apache Phoenix](http://phoenix.apache.org/)，以及如何在工作站上安装和配置 SQuirrel 以连接到 HDInsight 中的 HBase 群集。有关 Phoenix 的详细信息，请参阅[在 15 分钟或以下了解 Phoenix](http://phoenix.apache.org/Phoenix-in-15-minutes-or-less.html)。有关 Phoenix 语法，请参阅 [Phoenix 语法](http://phoenix.apache.org/language/index.html)。
 
 > [!NOTE]
 有关 HDInsight 中的 Phoenix 版本信息，请参阅 [HDInsight 提供的 Hadoop 群集版本有有何变化？](./hdinsight-component-versioning.md)。
-><p>
-> 此文档中的信息特定于基于 Windows 的 HDInsight 群集。有关在基于 Linux 的 HDInsight 上使用 Phoenix 的信息，请参阅 [Use Apache Phoenix with Linux-based HBase clusters in HDinsight](./hdinsight-hbase-phoenix-squirrel-linux.md)（将 Apache Phoenix 与 HDinsight 中基于 Linux 的 HBase 群集配合使用）。
 >
+
+> [!IMPORTANT]
+本文档中的步骤仅适用于基于 Windows 的 HDInsight 群集。低于 HDInsight 3.4 的 HDInsight 版本仅在 Windows 上提供。Linux 是在 HDInsight 3.4 版或更高版本上使用的唯一操作系统。有关详细信息，请参阅 [HDInsight 在 Windows 上弃用](./hdinsight-component-versioning.md#hdi-version-32-and-33-nearing-deprecation-date)。有关在基于 Linux 的 HDInsight 上使用 Phoenix 的信息，请参阅 [Use Apache Phoenix with Linux-based HBase clusters in HDInsight](./hdinsight-hbase-phoenix-squirrel-linux.md)（将 Apache Phoenix 与 HDInsight 中基于 Linux 的 HBase 群集配合使用）。
 >
 
 ## 使用 SQLLine
@@ -58,7 +59,7 @@ ms.author: jgao
     sqlline.py [The FQDN of one of the Zookeepers]
     ```
 
-    ![hdinsight hbase phoenix sqlline][hdinsight-hbase-phoenix-sqlline]  
+    ![HDInsight hbase phoenix sqlline][hdinsight-hbase-phoenix-sqlline]  
 
     示例中使用的命令：
 
@@ -84,10 +85,6 @@ ms.author: jgao
 
 * 已将一个 HBase 群集部署到包含 DNS 虚拟机的 Azure 虚拟网络。有关说明，请参阅[在 Azure 虚拟网络上创建 HBase 群集][hdinsight-hbase-provision-vnet]。
 
-    > [!IMPORTANT]
-    必须在虚拟网络中安装一个 DNS 服务器。有关说明，请参阅[在两个 Azure 虚拟网络之间配置 DNS](./hdinsight-hbase-geo-replication-configure-DNS.md)
-    >
-    >
 * 获取 HBase 群集的特定于连接的 DNS 后缀。若要获取该后缀，请与群集建立连接桌面连接 (RDP)，然后运行 IPConfig。DNS 后缀类似于：
 
     ```
@@ -158,7 +155,7 @@ ms.author: jgao
 * 从同一命令提示符（必须位于创建根证书的计算机上。必须从根证书生成客户端证书）运行以下命令：
 
     ```
-    makecert.exe -n "CN=HBaseVnetVPNClientCertificate" -pe -sky exchange -m 96 -ss My -in "HBaseVnetVPNRootCertificate" -is my -a sha1
+      makecert.exe -n "CN=HBaseVnetVPNClientCertificate" -pe -sky exchange -m 96 -ss My -in "HBaseVnetVPNRootCertificate" -is my -a sha1
     ```
 
     HBaseVnetVPNRootCertificate 是根证书名称。它必须与根证书名称匹配。
@@ -241,12 +238,12 @@ C:\apps\dist\phoenix-4.0.0.2.1.11.0-2316\phoenix-4.0.0.2.1.11.0-2316-client.jar
     * **示例 URL**：jdbc:phoenix:zookeeper2.contoso-hbase-eu.f5.internal.chinacloudapp.cn
     * **类名**：org.apache.phoenix.jdbc.PhoenixDriver
 
-    > [!WARNING]
-    在“示例 URL”中使用全小写。当其中一个主机关闭时，可以使用整个 zookeeper 仲裁。主机名为 zookeeper0、zookeeper1 和 zookeeper2。
-    >
-    >
+        > [!WARNING]
+        在“示例 URL”中使用全小写。当其中一个主机关闭时，可以使用整个 zookeeper 仲裁。主机名为 zookeeper0、zookeeper1 和 zookeeper2。
+        >
+        >
 
-    ![HDInsight HBase Phoenix SQuirreL 驱动程序][img-squirrel-driver]  
+        ![HDInsight HBase Phoenix SQuirreL 驱动程序][img-squirrel-driver]  
 
 5. 单击**“确定”**。
 
@@ -262,7 +259,7 @@ C:\apps\dist\phoenix-4.0.0.2.1.11.0-2316\phoenix-4.0.0.2.1.11.0-2316-client.jar
     * **用户名**：可以是任何文本。由于此处使用 VPN 连接，因此根本不使用用户名。
     * **密码**：可以是任何文本。
 
-    ![HDInsight HBase Phoenix SQuirreL 驱动程序][img-squirrel-alias]  
+        ![HDInsight HBase Phoenix SQuirreL 驱动程序][img-squirrel-alias]  
 
 4. 单击“测试”。
 5. 单击“连接”。在建立连接时，SQuirreL 类似于：
@@ -291,8 +288,8 @@ C:\apps\dist\phoenix-4.0.0.2.1.11.0-2316\phoenix-4.0.0.2.1.11.0-2316-client.jar
 * [在 Azure 虚拟网络上设置 HBase 群集][hdinsight-hbase-provision-vnet]：通过虚拟网络集成，可以将 HBase 群集部署到应用程序所在的虚拟网络，以便应用程序直接与 HBase 进行通信。
 * [在 HDInsight 中配置 HBase 地域复制](./hdinsight-hbase-replication.md)：了解如何跨两个 Azure 数据中心配置 HBase 复制。
 
-[azure-portal]: https://portal.azure.cn
-[vnet-point-to-site-connectivity]: https://msdn.microsoft.com/zh-cn/library/azure/09926218-92ab-4f43-aa99-83ab4d355555#BKMK_VNETPT
+[azure-portal]: https://manage.windowsazure.cn/
+[vnet-point-to-site-connectivity]: ../vpn-gateway/vpn-gateway-howto-point-to-site-classic-azure-portal.md
 
 [hdinsight-versions]: ./hdinsight-component-versioning.md
 [hdinsight-hbase-get-started]: ./hdinsight-hbase-tutorial-get-started.md
@@ -308,5 +305,5 @@ C:\apps\dist\phoenix-4.0.0.2.1.11.0-2316\phoenix-4.0.0.2.1.11.0-2316-client.jar
 [img-squirrel]: ./media/hdinsight-hbase-phoenix-squirrel/hdinsight-hbase-squirrel.png
 [img-squirrel-sql]: ./media/hdinsight-hbase-phoenix-squirrel/hdinsight-hbase-squirrel-sql.png
 
-<!---HONumber=Mooncake_0120_2017-->
-<!--Update_Description: update from ASM to ARM-->
+<!---HONumber=Mooncake_0306_2017-->
+<!--Update_Description: add information about HDInsight Windows is going to be abandoned-->

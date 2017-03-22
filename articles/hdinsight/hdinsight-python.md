@@ -319,7 +319,7 @@ return date, time, classname, level, detail
 #### Hive
 以下脚本将运行 **streaming.py** 脚本。在运行前，它将提示你输入 HDInsight 群集的 HTTPs/Admin 帐户信息。
 
-```powershell
+```
 # Replace 'YourHDIClusterName' with the name of your cluster
 $clusterName = YourHDIClusterName
 $creds=Get-Credential
@@ -392,7 +392,7 @@ Get-AzureRmHDInsightJobOutput `
 > [!NOTE]
 使用 PowerShell 远程提交作业时，无法使用 C Python 作为解释器。
 
-```powershell
+```
 # Replace 'YourHDIClusterName' with the name of your cluster
 $clusterName = YourHDIClusterName
 
@@ -480,7 +480,7 @@ $text = [IO.File]::ReadAllText($original_file) -replace "`r`n", "`n"
 ### PowerShell 脚本
 用于运行示例的两个示例 PowerShell 脚本都包含一个带注释的行，该行将显示作业的错误输出。如果你未看到作业的预期输出，请取消注释以下行，并查看错误信息中是否指明了问题。
 
-```powershell
+```
 # Get-AzureRmHDInsightJobOutput `
         -Clustername $clusterName `
         -JobId $job.JobId `

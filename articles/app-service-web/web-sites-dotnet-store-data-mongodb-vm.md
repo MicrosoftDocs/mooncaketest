@@ -15,7 +15,7 @@ ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 02/29/2016
-wacn.date: 12/26/2016
+wacn.date: 03/17/2017
 ms.author: cephalin
 ---
 
@@ -36,6 +36,8 @@ ms.author: cephalin
 * 一个有效的 Azure 订阅
 
 [!INCLUDE [create-account-and-websites-note](../../includes/create-account-and-websites-note.md)]
+
+[!INCLUDE [azure-sdk-developer-differences](../../includes/azure-visual-studio-login-guide.md)]
 
 <a id="virtualmachine"></a>
 

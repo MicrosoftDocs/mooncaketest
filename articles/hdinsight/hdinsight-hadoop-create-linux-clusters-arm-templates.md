@@ -1,5 +1,3 @@
-<!-- not suitable for Mooncake -->
-
 ---
 title: 使用 Azure Resource Manager 模板在 HDInsight 中创建基于 Linux 的 Hadoop 群集 | Azure
 description: 了解如何使用 Azure Resource Manager 模板创建 Azure HDInsight 的群集。
@@ -157,7 +155,7 @@ azure group deployment create --resource-group "hdi1229rg" --name "hdi1229" --te
 
 - 有关通过 .NET 客户端库部署资源的示例，请参阅 [Deploy resources using .NET libraries and a template](../virtual-machines/virtual-machines-windows-csharp-template.md)（使用 .NET 库和模板部署资源）。
 - 有关部署应用程序的详细示例，请参阅 [Provision and deploy microservices predictably in Azure](../app-service-web/app-service-deploy-complex-application-predictably.md)（按可预见的方式在 Azure 中预配和部署微服务）。
-- 有关将解决方案部署到不同环境的指南，请参阅 [Development and test environments in Azure](../azure-resource-manager/solution-dev-test-environments.md)（Azure 中的开发和测试环境）。
+<!--- 有关将解决方案部署到不同环境的指南，请参阅 [Development and test environments in Azure](../azure-resource-manager/solution-dev-test-environments.md)（Azure 中的开发和测试环境）。-->
 - 若要了解 Azure Resource Manager 模板的节，请参阅 [Authoring templates](../azure-resource-manager/resource-group-authoring-templates.md)（创作模板）。
 - 有关可在 Azure Resource Manager 模板中使用的函数列表，请参阅 [Template functions](../azure-resource-manager/resource-group-template-functions.md)（模板函数）。
 

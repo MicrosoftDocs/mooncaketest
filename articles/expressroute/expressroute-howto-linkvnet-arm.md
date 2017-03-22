@@ -68,9 +68,9 @@ $connection = New-AzureRmVirtualNetworkGatewayConnection -Name "ERConnection" -R
 
 ### 管理
 
-*线路所有者*是 ExpressRoute 线路资源的已授权超级用户。线路所有者可以创建可供*线路用户*兑现的授权。*线路用户*是虚拟网络网关的所有者（这些网关与 ExpressRoute 线路位于不同的订阅中）。*线路用户*可以兑现授权（每个虚拟网络需要一个授权）。
+*线路所有者* 是 ExpressRoute 线路资源的已授权超级用户。线路所有者可以创建可供*线路用户*兑现的授权。*线路用户*是虚拟网络网关的所有者（这些网关与 ExpressRoute 线路位于不同的订阅中）。*线路用户*可以兑现授权（每个虚拟网络需要一个授权）。
 
-*线路所有者*有权随时修改和撤消授权。撤消授权会导致从已撤消访问权限的订阅中删除所有链路连接。
+*线路所有者* 有权随时修改和撤消授权。撤消授权会导致从已撤消访问权限的订阅中删除所有链路连接。
 
 ### 线路所有者操作 
 
@@ -85,7 +85,7 @@ $circuit = Get-AzureRmExpressRouteCircuit -Name "MyCircuit" -ResourceGroupName "
 Add-AzureRmExpressRouteCircuitAuthorization -ExpressRouteCircuit $circuit -Name "MyAuthorization1"
 Set-AzureRmExpressRouteCircuit -ExpressRouteCircuit $circuit
 
-    $circuit = Get-AzureRmExpressRouteCircuit -Name "MyCircuit" -ResourceGroupName "MyRG"
+$circuit = Get-AzureRmExpressRouteCircuit -Name "MyCircuit" -ResourceGroupName "MyRG"
 $auth1 = Get-AzureRmExpressRouteCircuitAuthorization -ExpressRouteCircuit $circuit -Name "MyAuthorization1"
 ```
 

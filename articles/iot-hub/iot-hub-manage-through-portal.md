@@ -187,5 +187,5 @@ Azure IoT 中心自动显示用户帐户所链接的订阅列表。可以在此�
 [lnk-design]: ./iot-hub-guidance.md
 [lnk-devguide]: ./iot-hub-devguide.md
 [lnk-gateway]: ./iot-hub-linux-gateway-sdk-simulated-device.md
-[lnk-securing]: /documentation/articles/iot-hub-security-ground-up/
+[lnk-securing]: ./iot-hub-security-ground-up.md
 <!---HONumber=Mooncake_Quality_Review_0104_2017-->

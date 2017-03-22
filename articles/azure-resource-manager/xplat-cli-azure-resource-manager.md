@@ -14,16 +14,16 @@ ms.tgt_pltfrm: vm-multiple
 ms.devlang: na
 ms.topic: article
 ms.date: 08/22/2016
-wacn.date: 12/26/2016
+wacn.date: 02/10/2017
 ms.author: tomfitz
 ---
 
 # 使用 Azure CLI 管理 Azure 资源和资源组
 >[!div class="op_single_selector"]
-[Portal](./resource-group-portal.md)
-[Azure CLI](./xplat-cli-azure-resource-manager.md)
-[Azure PowerShell](./powershell-azure-resource-manager.md)
-[REST API](./resource-manager-rest-api.md)
+- [门户](./resource-group-portal.md)
+- [Azure CLI](./xplat-cli-azure-resource-manager.md)
+- [Azure PowerShell](./powershell-azure-resource-manager.md)
+- [REST API](./resource-manager-rest-api.md)
 
 Azure 命令行接口 (Azure CLI) 是可以配合 Resource Manager 部署和管理资源的多种工具之一。本文介绍在 Resource Manager 模式下使用 Azure CLI 管理 Azure 资源和资源组的常见方式。有关使用 CLI 部署资源的信息，请参阅 [Deploy resources with Resource Manager templates and Azure CLI](./resource-group-template-deploy-cli.md)（使用 Resource Manager 模板和 Azure CLI 部署资源）。有关 Azure 资源和 Resource Manager 的背景信息，请参阅 [Azure Resource Manager Overview](./resource-group-overview.md)（Azure Resource Manager 概述）。
 
@@ -41,9 +41,11 @@ azure group list
 ```
 
 ### 资源
- 若要列出组中的所有资源，例如名为 *testRG* 的资源，请使用以下命令。
+若要列出组中的所有资源，例如名为 *testRG* 的资源，请使用以下命令。
 
-    azure resource list testRG
+```
+azure resource list testRG
+```
 
 若要查看组中的单个资源，例如名为 *MyUbuntuVM* 的 VM，请使用如下命令。
 
@@ -78,7 +80,7 @@ azure resource show testRG MyUbuntuVM Microsoft.Compute/virtualMachines -o "2015
 若要将存储帐户等资源添加到资源组，请运行如下所示的命令：
 
 ```
-azure resource create testRG MyStorageAccount "Microsoft.Storage/storageAccounts" "chinanorth" -o "2015-06-15" -p "{"accountType": "Standard_LRS"}"
+azure resource create testRG MyStorageAccount "Microsoft.Storage/storageAccounts" "chinanorth" -o "2015-06-15" -p "{\"accountType\": \"Standard_LRS\"}"
 ```
 
 除了使用 **-o** 参数指定资源的 API 版本以外，请使用 **-p** 参数传递包含任何必需或其他属性的 JSON 格式字符串。
@@ -98,19 +100,19 @@ azure resource move -i "/subscriptions/{guid}/resourceGroups/OldRG/providers/Mic
 ## 控制对资源的访问
 可以使用 Azure CLI 来创建和管理策略，控制对 Azure 资源的访问。有关策略定义以及将策略分配给资源的背景信息，请参阅 [Use policy to manage resources and control access](./resource-manager-policy.md)（使用策略来管理资源和控制访问）。
 
-例如，定义以下策略来拒绝所有位置不在中国东部或中国北部的请求，并将该策略保存到策略定义文件 policy.json 中：
+例如，定义以下策略来拒绝所有位置不在中国北部或中国东部的请求，并将该策略保存到策略定义文件 policy.json 中：
 
 ```
 {
-"if" : {
+  "if" : {
     "not" : {
     "field" : "location",
     "in" : ["chinanorth" ,  "chinaeast"]
     }
-},
-"then" : {
+  },
+  "then" : {
     "effect" : "deny"
-}
+  }
 }
 ```
 
@@ -133,9 +135,11 @@ data:    Description:            undefined
 data:    PolicyRule:             field=location, in=[chinanorth, chinaeast], effect=deny
 ```
 
- 若要在所需的范围内分配策略，请使用前一命令返回的 **PolicyDefinitionId**。在以下示例中，此范围是订阅，但可以将范围设置为资源组或单个资源：
+若要在所需的范围内分配策略，请使用前一命令返回的 **PolicyDefinitionId**。在以下示例中，此范围是订阅，但可以将范围设置为资源组或单个资源：
 
-    azure policy assignment create MyPolicyAssignment -p /subscriptions/########-####-####-####-############/providers/Microsoft.Authorization/policyDefinitions/MyPolicy -s /subscriptions/########-####-####-####-############/
+```
+azure policy assignment create MyPolicyAssignment -p /subscriptions/########-####-####-####-############/providers/Microsoft.Authorization/policyDefinitions/MyPolicy -s /subscriptions/########-####-####-####-############/
+```
 
 可以使用 **policy definition show**、**policy definition set** 和 **policy definition delete** 命令来获取、更改或删除策略定义。
 
@@ -170,8 +174,9 @@ data:    PolicyRule:             field=location, in=[chinanorth, chinaeast], eff
 > 
 
 ## 后续步骤
-* 若要获取部署操作的详细信息并使用 Azure CLI 排查部署错误，请参阅 [View deployment operations with Azure CLI](./resource-manager-troubleshoot-deployments-cli.md)（使用 Azure CLI 查看部署操作）。
+* 若要获取部署操作的详细信息并使用 Azure CLI 排查部署错误，请参阅[查看部署操作](./resource-manager-deployment-operations.md)。
 * 若要使用 CLI 设置一个应用程序或脚本来访问资源，请参阅 [Use Azure CLI to create a service principal to access resources](./resource-group-authenticate-service-principal-cli.md)（使用 Azure CLI 创建服务主体来访问资源）。
 * 如需了解企业如何使用 Resource Manager 对订阅进行有效管理，请参阅 [Azure 企业机架 - 规范性订阅管理](./resource-manager-subscription-governance.md)。
 
-<!---HONumber=Mooncake_1219_2016-->
+<!---HONumber=Mooncake_0206_2017-->
+<!-- Update_Description: wording update; meta data -->

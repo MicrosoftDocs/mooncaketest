@@ -137,7 +137,7 @@ https://login.microsoftonline.com/common/v2.0/.well-known/openid-configuration
 
 有关应用应执行的声明验证的完整列表，请参阅 [OpenID Connect 规范](http://openid.net/specs/openid-connect-core-1_0.html#IDTokenValidation)。
 
-上面的 [ID 令牌](# ID 令牌) 部分包含了这些声明的预期值详细信息。
+上面的 [ID 令牌](#id_tokens) 部分包含了这些声明的预期值详细信息。
 
 ## 令牌生存期
 下面提供的令牌生存期仅供参考。开发和调试应用时，这些信息可能会有所帮助。不应将应用编写成预期其中任何一个生存期都会维持不变。令牌生存期可以并且将会随时更改。

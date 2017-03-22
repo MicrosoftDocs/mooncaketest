@@ -222,5 +222,5 @@ EXECUTE_COMMAND_RESULT SetHumidity(Thermostat* thermostat, int humidity)
 [lnk-mbed-pcconnect]: https://developer.mbed.org/platforms/FRDM-K64F/#pc-configuration
 [lnk-serializer]: ../iot-hub/iot-hub-device-sdk-c-intro.md#serializer
 
-<!---HONumber=Mooncake_0120_2017-->
+<!---HONumber=Mooncake_0306_2017-->
 <!--Update_Description:update wording-->

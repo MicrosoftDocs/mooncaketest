@@ -8,8 +8,8 @@ manager: timlt
 editor: ''
 
 ms.service: service-bus
-ms.date: 10/04/2016
-wacn.date: 01/04/2017
+ms.date: 01/12/2017
+wacn.date: 02/20/2017
 ---
 
 # 如何使用服务总线主题和订阅
@@ -181,3 +181,4 @@ Service Bus 提供了相关功能来帮助你轻松地从应用程序错误或�
 [服务总线配额]: ./service-bus-quotas.md
 
 <!---HONumber=Mooncake_Quality_Review_1230_2016-->
+<!--Update_Description:update meta properties-->

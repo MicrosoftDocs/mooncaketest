@@ -15,7 +15,7 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/12/2016
-wacn.date: 01/03/2017
+wacn.date: 02/21/2017
 ms.author: gwallace
 ---
 
@@ -168,8 +168,6 @@ Azure 应用程序网关需要自己的子网。在创建虚拟网络时，请�
 访问[创建自定义运行状况探测](./application-gateway-create-probe-portal.md)，了解如何创建自定义运行状况探测
 
 访问[配置 SSL 卸载](./application-gateway-ssl-portal.md)，了解如何配置 SSL 卸载并从 Web 服务器中剥离开销较高的 SSL 解密
-
-了解如何使用应用程序网关的 [Web 应用程序防火墙](./application-gateway-webapplicationfirewall-overview.md)功能保护应用程序。
 
 <!--Image references-->
 

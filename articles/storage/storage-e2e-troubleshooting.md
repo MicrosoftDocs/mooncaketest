@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure 存储度量值和日志记录、AzCopy 和 Message Analyzer 进行端到端故障排除 | Azure
+title: 使用诊断和 Message Analyzer 排查 Azure 存储的问题 | Azure
 description: 本教程演示如何使用 Azure 存储分析、AzCopy 和 Microsoft Message Analyzer 进行端到端故障排除
 services: storage
 documentationcenter: dotnet
@@ -12,8 +12,8 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 12/08/2016
-wacn.date: 01/06/2017
+ms.date: 01/23/2017
+wacn.date: 03/20/2017
 ms.author: robinsh
 ---
 
@@ -379,4 +379,4 @@ Message Analyzer 将查找并选择搜索条件匹配客户端请求 ID 的第�
 - [使用 AzCopy 命令行实用程序传输数据](./storage-use-azcopy.md)
 - [Microsoft Message Analyzer 操作指南](http://technet.microsoft.com/zh-cn/library/jj649776.aspx)
 
-<!---HONumber=Mooncake_0103_2017-->
+<!---HONumber=Mooncake_0313_2017-->

@@ -35,14 +35,14 @@ ms.author: narayanannamalai; annahar
 
 2. 读取虚拟网络对象：
 
-    ```
+    ```powershell
     $vnet1 = Get-AzureRmVirtualNetwork -ResourceGroupName vnet101 -Name vnet1
     $vnet2 = Get-AzureRmVirtualNetwork -ResourceGroupName vnet101 -Name vnet2
     ```
 
 3. 若要建立 VNet 对等互连，需要创建两个链接，每个方向各一个。下一步将首先创建从 VNet1 到 VNet2 的 VNet 对等互连链接：
 
-    ```
+    ```powershell
     Add-AzureRmVirtualNetworkPeering -name LinkToVNet2 -VirtualNetwork $vnet1 -RemoteVirtualNetworkId $vnet2.id
     ```
 
@@ -68,7 +68,7 @@ ms.author: narayanannamalai; annahar
 
 4. 此步骤将创建 VNet2 到 VNet1 的 VNet 对等互连链接：
 
-    ```
+    ```powershell
     Add-AzureRmVirtualNetworkPeering -name LinkToVNet1 -VirtualNetwork $vnet2 -RemoteVirtualNetworkId $vnet1.id
     ```
 
@@ -94,7 +94,7 @@ ms.author: narayanannamalai; annahar
 
 5. 创建 VNet 对等互连链接后，可以看到下方的链接状态：
 
-    ```
+    ```powershell
     Get-AzureRmVirtualNetworkPeering -VirtualNetworkName vnet1 -ResourceGroupName vnet101 -Name linktovnet2
     ```
 
@@ -129,7 +129,7 @@ ms.author: narayanannamalai; annahar
 
     VNet 对等互连中的每个链接都有上述属性集。例如，可针对 VNet1 到 VNet2 的 VNet 对等互连链接将“允许虚拟网络访问”设置为“Ture”，而针对另一方向的 VNet 对等互连链接设置为“False”。
 
-    ```
+    ```powershell
     $LinktoVNet2 = Get-AzureRmVirtualNetworkPeering -VirtualNetworkName vnet1 -ResourceGroupName vnet101 -Name LinkToVNet2
     $LinktoVNet2.AllowForwardedTraffic = $true
     Set-AzureRmVirtualNetworkPeering -VirtualNetworkPeering $LinktoVNet2
@@ -163,7 +163,7 @@ ms.author: narayanannamalai; annahar
 
 1. 使用订阅 A 的特权用户 A 帐户登录到 Azure，并运行以下 cmdlet：
 
-    ```
+    ```powershell
     New-AzureRmRoleAssignment -SignInName <UserB ID> -RoleDefinitionName "Network Contributor" -Scope /subscriptions/<Subscription-A-ID>/resourceGroups/<ResourceGroupName>/providers/Microsoft.Network/VirtualNetwork/VNet5
     ```
 
@@ -171,13 +171,13 @@ ms.author: narayanannamalai; annahar
 
 2. 使用订阅 B 的特权用户 B 帐户登录到 Azure，并运行以下 cmdlet：
 
-    ```
+    ```powershell
     New-AzureRmRoleAssignment -SignInName <UserA ID> -RoleDefinitionName "Network Contributor" -Scope /subscriptions/<Subscription-B-ID>/resourceGroups/<ResourceGroupName>/providers/Microsoft.Network/VirtualNetwork/VNet3
     ```
 
 3. 在用户 A 的登录会话中，运行以下 cmdlet：
 
-    ```
+    ```powershell
     $vnet3 = Get-AzureRmVirtualNetwork -ResourceGroupName hr-vnets -Name vnet3
 
     Add-AzureRmVirtualNetworkPeering -name LinkToVNet5 -VirtualNetwork $vnet3 -RemoteVirtualNetworkId "/subscriptions/<Subscriptoin-B-Id>/resourceGroups/<ResourceGroupName>/providers/Microsoft.Network/virtualNetworks/VNet5" -BlockVirtualNetworkAccess
@@ -185,7 +185,7 @@ ms.author: narayanannamalai; annahar
 
 4. 在用户 B 的登录会话中，运行以下 cmdlet：
 
-    ```
+    ```powershell
     $vnet5 = Get-AzureRmVirtualNetwork -ResourceGroupName vendor-vnets -Name vnet5
 
     Add-AzureRmVirtualNetworkPeering -name LinkToVNet3 -VirtualNetwork $vnet5 -RemoteVirtualNetworkId "/subscriptions/<Subscriptoin-A-Id>/resourceGroups/<ResourceGroupName>/providers/Microsoft.Network/virtualNetworks/VNet3" -BlockVirtualNetworkAccess
@@ -197,7 +197,7 @@ ms.author: narayanannamalai; annahar
 
 1. 在此方案中，可以运行以下 PowerShell cmdlet 以建立 VNet 对等互连。需要将“允许转发的流量”属性设置为“True”，并将 VNET1 链接到 HubVnet，该属性允许来自对等互连 Vnet 以外的地址空间的入站流量。
 
-    ```
+    ```powershell
     $hubVNet = Get-AzureRmVirtualNetwork -ResourceGroupName vnet101 -Name HubVNet
     $vnet1 = Get-AzureRmVirtualNetwork -ResourceGroupName vnet101 -Name vnet1
 
@@ -208,7 +208,7 @@ ms.author: narayanannamalai; annahar
 
 2. 对等互连建立后，可以参考此[文章](./virtual-network-create-udr-arm-ps.md)，定义用户定义的路由 (UDR)，以便通过虚拟设备重定向 VNet1 流量以使用其功能。在路由中指定下一个跃点地址时，可以在对等 VNet HubVNet 中将其设置为虚拟装置的 IP 地址。下面是一个示例：
 
-    ```
+    ```powershell
     $route = New-AzureRmRouteConfig -Name TestNVA -AddressPrefix 10.3.0.0/16 -NextHopType VirtualAppliance -NextHopIpAddress 192.0.1.5
 
     $routeTable = New-AzureRmRouteTable -ResourceGroupName VNet101 -Location brazilsouth -Name TestRT -Route $route
@@ -237,7 +237,7 @@ ms.author: narayanannamalai; annahar
 
     可通过以下命令实现此目的：
 
-    ```
+    ```powershell
     Add-AzureRmVirtualNetworkPeering -name LinkToVNet2 -VirtualNetwork $vnet1 -RemoteVirtualNetworkId /subscriptions/xxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxx/resourceGroups/MyResourceGroup/providers/Microsoft.ClassicNetwork/virtualNetworks/VNET2
     ```
 

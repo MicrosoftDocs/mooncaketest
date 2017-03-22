@@ -374,7 +374,7 @@ Azure Active Directory 应用程序已创建且安装了身份验证库。现可
 
 ## 后续步骤
 
-- 如果部署出现问题，请参阅[使用 Azure 门户预览排除资源组部署故障](../azure-resource-manager/resource-manager-troubleshoot-deployments-portal.md)。
+- 如果部署出现问题，请参阅[使用 Azure 门户预览排除资源组部署故障](../azure-resource-manager/resource-manager-deployment-operations.md)。
 - 若要了解如何管理刚创建的虚拟机，请参阅[使用 Azure Resource Manager 和 PowerShell 管理虚拟机](./virtual-machines-windows-csharp-manage.md)。
 
 <!---HONumber=Mooncake_Quality_Review_1202_2016-->

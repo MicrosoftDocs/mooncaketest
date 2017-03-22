@@ -64,7 +64,7 @@ wacn.date: 02/14/2017
 
 1. 编辑__pom.xml__ 文件，并在 `<dependencies>` 节中添加以下代码。
 
-    ```
+    ```xml
     <dependency>
       <groupId>org.apache.hadoop</groupId>
       <artifactId>hadoop-mapreduce-examples</artifactId>
@@ -91,7 +91,7 @@ wacn.date: 02/14/2017
 
 2. 将以下代码添加到 __pom.xml__ 文件。它必须位于文件中的 `<project>...</project>` 标记内，例如 `</dependencies>` 和 `</project>` 之间。
 
-    ```
+    ```xml
     <build>
         <plugins>
         <plugin>
@@ -137,7 +137,7 @@ wacn.date: 02/14/2017
 
 2. 在文本编辑器中打开 __WordCount.java__ 文件，然后将其内容替换为以下内容：
 
-    ```
+    ```java
     package org.apache.hadoop.examples;
 
     import java.io.IOException;

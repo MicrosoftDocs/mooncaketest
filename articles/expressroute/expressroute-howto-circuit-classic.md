@@ -94,9 +94,7 @@ Get-AzureDedicatedCircuitServiceProvider
 
 ### 3\.创建 ExpressRoute 线路
 
-```
 以下示例演示如何通过北京的 Beijing Telecom Ethernet 创建 200 Mbps 的 ExpressRoute 线路。如果你使用的是其他提供商和其他设置，请在发出请求时替换该信息。
-```
 
 >[!IMPORTANT]
 > 从发布服务密钥的那一刻起，将对 ExpressRoute 线路进行计费。确保连接服务提供商准备好预配线路后就执行此操作。
@@ -332,10 +330,12 @@ Status                           : Enabled
 
 >[!IMPORTANT]
 > 但是，你无法在不中断的情况下降低 ExpressRoute 线路的带宽。带宽降级需要取消对 ExpressRoute 线路的预配，然后重新预配新的 ExpressRoute 线路。
+
 确定所需的大小后，即可使用以下命令调整线路的大小：
-        PS C:\> Set-AzureDedicatedCircuitProperties -ServiceKey ********************************* -Bandwidth 1000
 
 ```
+    PS C:\> Set-AzureDedicatedCircuitProperties -ServiceKey ********************************* -Bandwidth 1000
+
     Bandwidth                        : 1000
     CircuitName                      : TestCircuit
     Location                         : Beijing 

@@ -1,5 +1,5 @@
 ---
-title: 动态打包概述 | Azure
+title: Azure 媒体服务动态打包概述 | Azure
 description: 本主题概述动态打包。
 author: Juliako
 manager: erikre
@@ -13,8 +13,8 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/24/2016
-wacn.date: 12/12/2016
+ms.date: 01/25/2017
+wacn.date: 03/10/2017
 ms.author: juliako
 ---
 
@@ -31,9 +31,6 @@ Azure 媒体服务可用于向多种客户端技术（例如，iOS、XBOX、Silv
 下图显示了动态打包工作流。
 
 ![动态编码](./media/media-services-dynamic-packaging-overview/media-services-dynamic-packaging.png)
-
->[!NOTE]
->若要利用动态打包，首先必须获取你计划从中传送内容的流式处理终结点的至少一个点播流单元。有关详细信息，请参阅[如何缩放媒体服务](./media-services-manage-origins.md#scale_streaming_endpoints)。
 
 ##常见方案
 
@@ -58,4 +55,5 @@ Azure 媒体服务可用于向多种客户端技术（例如，iOS、XBOX、Silv
 * Dolby Digital MP4 文件。
 * Dolby Digital 平滑流文件。
 
-<!---HONumber=Mooncake_1205_2016-->
+<!---HONumber=Mooncake_0306_2017-->
+<!--Update_Description: remove azure.note for scaling steaming endpoint-->

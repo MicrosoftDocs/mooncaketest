@@ -2,19 +2,20 @@
 title: 在 Azure VM 中创建 HPC Pack 头节点 | Azure
 description: 了解如何使用 Azure 经典管理门户和经典部署模型在 Azure VM 中创建 Microsoft HPC Pack 头节点。
 services: virtual-machines-windows
-documentationCenter: ''
-authors: dlepow
+documentationcenter: ''
+author: dlepow
 manager: timlt
 editor: ''
 tags: azure-service-management,hpc-pack
 
+ms.assetid: e6a13eaf-9124-47b4-8d75-2bc4672b8f21
 ms.service: virtual-machines-windows
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: big-compute
-ms.date: 08/17/2016
-wacn.date: 12/26/2016
+ms.date: 12/29/2016
+wacn.date: 02/24/2017
 ms.author: danlep
 ---
 
@@ -98,4 +99,5 @@ ms.author: danlep
 <!--Image references-->
 [headnode]: ./media/virtual-machines-windows-hpcpack-cluster-headnode/headnode.png
 
-<!---HONumber=Mooncake_Quality_Review_1215_2016-->
+<!---HONumber=Mooncake_0220_2017-->
+<!--Update_Description: meta update-->

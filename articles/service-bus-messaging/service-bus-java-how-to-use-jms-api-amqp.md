@@ -12,9 +12,9 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: Java
 ms.topic: article
-ms.date: 10/04/2016
+ms.date: 01/11/2017
 ms.author: sethm
-wacn.date: 01/09/2017
+wacn.date: 02/20/2017
 ---
 
 # 如何将 Java 消息服务 (JMS) API 用于服务总线和 AMQP 1.0
@@ -23,13 +23,13 @@ wacn.date: 01/09/2017
 
 在 Service Bus 中支持 AMQP 1.0 意味着可以通过一系列使用有效的二进制协议的平台利用队列和发布/订阅中转消息传送功能。此外，你还可以生成由结合使用多个语言、框架和操作系统构建的组件组成的应用程序。
 
-本文说明如何从使用常用 Java 消息服务 (JMS) API 标准的 Java 应用程序使用服务总线消息传送功能（队列和发布/订阅主题）。有一个[配套文章](./service-bus-dotnet-advanced-message-queuing.md)，该文说明如何使用服务总线 .NET API 执行相同的操作。使用 AMQP 1.0，可以同时使用以下两个指南来了解跨平台消息。
+本文说明如何从使用常用 Java 消息服务 (JMS) API 标准的 Java 应用程序使用服务总线消息传送功能（队列和发布/订阅主题）。有一个[配套文章](./service-bus-amqp-dotnet.md)，该文说明如何使用服务总线 .NET API 执行相同的操作。使用 AMQP 1.0，可以同时使用以下两个指南来了解跨平台消息。
 
 ## 服务总线入门
 
 此指南假定你已有包含名为“queue1”的队列的服务总线命名空间。如果没有，则可以使用 [Azure 经典管理门户](http://manage.windowsazure.cn)创建命名空间和队列。有关如何创建服务总线命名空间和队列的详细信息，请参阅[如何使用服务总线队列](./service-bus-dotnet-get-started-with-queues.md)。
 > [!NOTE]
->分区队列和主题也支持 AMQP。有关详细信息，请参阅[分区消息实体](./service-bus-partitioning.md)和[针对服务总线分区队列和主题的 AMQP 1.0 支持](./service-bus-partitioned-queues-and-topics-amqp-overview.md)。
+>分区队列和主题也支持 AMQP。有关详细信息，请参阅[分区消息实体](./service-bus-partitioning.md)和[针对服务总线分区队列和主题的 AMQP 1.0 支持](./service-bus-amqp-protocol-guide.md)。
 
 ## 下载 AMQP 1.0 JMS 客户端库
 
@@ -250,7 +250,7 @@ JNDI 环境是通过将配置信息的哈希表传入到 javax.naming.InitialCon
 
 本指南说明了如何使用 JMS 向 Service Bus 发送消息以及从 Service Bus 接收消息。但是，AMQP 1.0 的关键优势之一是它支持通过以不同语言编写的组件生成应用程序，从而能够可靠和完全无损地交换消息。
 
-通过使用前面所述的示例 JMS 应用程序和从随附的指南[如何将 AMQP 1.0 用于 .NET 服务总线 .NET API](./service-bus-dotnet-advanced-message-queuing.md) 中选取的类似 .NET 应用程序，你可以在 .NET 和 Java 之间交换消息。
+通过使用前面所述的示例 JMS 应用程序和从随附的指南[如何将 AMQP 1.0 用于 .NET 服务总线 .NET API](./service-bus-amqp-dotnet.md) 中选取的类似 .NET 应用程序，你可以在 .NET 和 Java 之间交换消息。
 
 有关使用服务总线和 AMQP 1.0 的跨平台消息传送的详细信息，请参阅[服务总线 AMQP 1.0 开发人员指南](./service-bus-amqp-dotnet.md)。
 
@@ -335,9 +335,10 @@ JNDI 环境是通过将配置信息的哈希表传入到 javax.naming.InitialCon
 ## 后续步骤
 
 * [Azure Service Bus 中的 AMQP 1.0 支持](./service-bus-amqp-overview.md)
-* [如何将 AMQP 1.0 与服务总线 .NET API 一起使用](./service-bus-dotnet-advanced-message-queuing.md)
+* [如何将 AMQP 1.0 与服务总线 .NET API 一起使用](./service-bus-amqp-dotnet.md)
 * [服务总线 AMQP 1.0 开发人员指南](./service-bus-amqp-dotnet.md)
 * [如何使用 Service Bus 队列](./service-bus-dotnet-get-started-with-queues.md)
 * [Java 开发人员中心](/develop/java/)。
 
 <!---HONumber=Mooncake_Quality_Review_0104_2017-->
+<!--Update_Description:update meta properties-->

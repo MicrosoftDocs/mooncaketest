@@ -1,5 +1,5 @@
 ---
-title: 使用 Resource Manager 锁定资源 | Azure
+title: 阻止对关键 Azure 资源进行更改 | Azure
 description: 通过对所有用户和角色应用限制，来防止用户更新或删除特定的资源。
 services: azure-resource-manager
 documentationcenter: ''
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 12/14/2016
-wacn.date: 01/06/2017
+wacn.date: 03/03/2017
 ms.author: tomfitz
 ---
 
-# 使用 Azure 资源管理器锁定资源
+# 锁定资源，以防止意外更改 
 作为管理员，你可能需要锁定订阅、资源组或资源，以防止组织中的其他用户意外删除或修改关键资源。可以将锁定级别设置为 **CanNotDelete** 或 **ReadOnly**。
 
 * **CanNotDelete** 味着经授权的用户仍可读取和修改资源，但不能删除资源。
@@ -103,4 +103,5 @@ Azure PowerShell 提供了其他用于使用锁的命令，如 **Set-AzureRmReso
 * 可以使用自定义策略对订阅应用限制和约定。有关详细信息，请参阅[使用策略来管理资源和控制访问](./resource-manager-policy.md)。
 * 如需了解企业如何使用 Resource Manager 对订阅进行有效管理，请参阅 [Azure 企业机架 - 规范性订阅管理](./resource-manager-subscription-governance.md)。
 
-<!---HONumber=Mooncake_0103_2017-->
+<!---HONumber=Mooncake_0227_2017-->
+<!--Update_Description:update meta properties; wording update-->

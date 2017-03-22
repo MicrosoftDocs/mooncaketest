@@ -19,7 +19,7 @@ ms.author: robmcm
 
 # 在 Azure 云服务中使用 Socket.IO 生成 Node.js 聊天应用程序
 
-Socket.IO 在 node.js 服务器和客户端之间提供实时通信。本教程指导你如何在 Azure 上托管一个基于 socket.IO 的聊天应用程序。有关 Socket.IO 的详细信息，请参阅 <http://socket.io/>。
+Socket.IO 在 node.js 服务器和客户端之间提供实时通信。本教程指导你如何在 Azure 上托管一个基于 socket.IO 的聊天应用程序。
 
 以下是已完成应用程序的屏幕截图：
 
@@ -132,7 +132,7 @@ Socket.IO 在 node.js 服务器和客户端之间提供实时通信。本教程�
     PS C:\node\chatapp\WorkerRole1> Start-AzureEmulator -Launch
     ```
 
-2.  打开浏览器并导航到 ****http://127.0.0.1**。
+2.  打开浏览器并导航到 **http://127.0.0.1**。
 
 3.  浏览器窗口打开后，输入昵称，然后按 Enter。这样，你就可以以特定昵称发布消息。要测试多用户功能，请使用同一 URL 打开其他浏览器窗口但输入不同的昵称。
 

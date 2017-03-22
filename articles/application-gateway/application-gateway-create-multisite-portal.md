@@ -14,7 +14,7 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/12/2016
-wacn.date: 01/03/2017
+wacn.date: 02/21/2017
 ms.author: gwallace
 ---
 
@@ -118,10 +118,6 @@ ms.author: gwallace
 ![添加基本规则边栏选项卡][10]  
 
 通过 Azure 门户预览，此方案为现有应用程序网关配置多站点支持至此操作完毕。
-
-## 后续步骤
-
-通过[应用程序网关 - Web 应用程序防火墙](./application-gateway-webapplicationfirewall-overview.md)了解如何保护网站
 
 <!--Image references-->
 

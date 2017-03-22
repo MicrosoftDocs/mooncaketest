@@ -31,7 +31,7 @@ wacn.date: 01/09/2017
 
 解决方案架构师开始使用云来轻松地处理缩放需求和降低运营成本。在此过程中，他们发现希望用作其解决方案的构建基块的现有服务资产位于企业防火墙内，无法通过云解决方案轻松访问。许多内部服务的构建或托管方式使得它们无法在企业网络边缘轻松公开。
 
-服务总线中继的设计考虑到如何利用现有的 Windows Communication Foundation (WCF) Web 服务，使得位于企业外部的解决方案能够安全地访问这些服务，而无需对企业网络基础结构进行彻底的更改。虽然此类服务总线中继服务仍托管在现有环境中，但它们会将侦听传入会话和请求这一任务委托给云托管的服务总线。服务总线还会通过使用[共享访问签名](./service-bus-sas-overview.md) (SAS) 身份验证来保护这些服务，以阻止未经授权的访问。
+服务总线中继的设计考虑到如何利用现有的 Windows Communication Foundation (WCF) Web 服务，使得位于企业外部的解决方案能够安全地访问这些服务，而无需对企业网络基础结构进行彻底的更改。虽然此类服务总线中继服务仍托管在现有环境中，但它们会将侦听传入会话和请求这一任务委托给云托管的服务总线。服务总线还会通过使用[共享访问签名](./service-bus-sas.md) (SAS) 身份验证来保护这些服务，以阻止未经授权的访问。
 
 ## 解决方案应用场景
 
@@ -138,7 +138,7 @@ wacn.date: 01/09/2017
 
 11. 在“ProductsContract.cs”中，将命名空间定义替换为以下代码，以定义服务的协定。
 
-    ```
+    ```csharp
         namespace ProductsServer
         {
             using System.Collections.Generic;
@@ -175,7 +175,7 @@ wacn.date: 01/09/2017
 
 14. 在 Program.cs 中，将命名空间定义替换为以下代码，以为其添加配置文件服务和主机。
 
-    ```
+    ```csharp
         namespace ProductsServer
         {
             using System;
@@ -230,7 +230,7 @@ wacn.date: 01/09/2017
 
 13. 在解决方案资源管理器中，双击“App.config”文件以在 Visual Studio 编辑器中将其打开。在 **&lt;system.ServiceModel&gt;** 元素的底部（但仍在 &lt;system.ServiceModel&gt; 内），添加以下 XML 代码。确保将 *yourServiceNamespace* 替换为命名空间的名称，并将 *yourKey* 替换为之前从门户中检索到的 SAS 密钥：
 
-    ```
+    ```xml
     <system.serviceModel>
     ...
       <services>
@@ -254,7 +254,7 @@ wacn.date: 01/09/2017
 
 14. 仍在 App.config 中，将 **&lt;appSettings&gt;** 元素中的连接字符串值替换为之前从门户获取的连接字符串。
 
-    ```
+    ```xml
     <appSettings>
        <!-- Service Bus specific app settings for messaging connections -->
        <add key="Microsoft.ServiceBus.ConnectionString"
@@ -304,7 +304,7 @@ wacn.date: 01/09/2017
 
 1.  在 Visual Studio 的 Product.cs 文件中将现有命名空间定义替换为以下代码。
 
-    ```
+    ```csharp
         // Declare properties for the products inventory.
         namespace ProductsWeb.Models
         {
@@ -321,7 +321,7 @@ wacn.date: 01/09/2017
 
 3. 在 **HomeController.cs** 中，将现有命名空间定义替换为以下代码。
 
-    ```
+    ```csharp
         namespace ProductsWeb.Controllers
         {
             using System.Collections.Generic;
@@ -352,7 +352,7 @@ wacn.date: 01/09/2017
 
 7.  在解决方案资源管理器中，展开 Views\\Home 文件夹，然后双击“Index.cshtml”以在 Visual Studio 编辑器中将其打开。将文件的全部内容替换为以下代码。
 
-    ```
+    ```html
     @model IEnumerable<ProductsWeb.Models.Product>
 
     @{
@@ -416,7 +416,7 @@ wacn.date: 01/09/2017
 
 6.  现在，在 Visual Studio 编辑器中打开 **HomeController.cs** 文件，并将命名空间定义替换为以下代码。确保将 yourServiceNamespace 替换为你的服务命名空间的名称，并将 yourKey 替换为你的 SAS 密钥。这将使客户端能够调用本地服务，并返回调用的结果。
 
-    ```
+    ```csharp
         namespace ProductsWeb.Controllers
         {
             using System.Linq;

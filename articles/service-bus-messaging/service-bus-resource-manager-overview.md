@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure Resource Manager 模板创建服务总线资源 | Azure
+title: 使用模板创建 Azure 服务总线资源 | Azure
 description: 使用 Azure Resource Manager 模板自动创建服务总线资源
 services: service-bus
 documentationCenter: .net
@@ -12,9 +12,9 @@ ms.devlang: tbd
 ms.topic: article
 ms.tgt_pltfrm: dotnet
 ms.workload: na
-ms.date: 10/14/2016
+ms.date: 01/18/2017
 ms.author: sethm
-wacn.date: 12/26/2016
+wacn.date: 03/20/2017
 ---
 
 # 使用 Azure Resource Manager 模板创建服务总线资源
@@ -25,7 +25,7 @@ Azure Resource Manager 模板可帮助你定义要为解决方案部署的资源
 >[!NOTE]
 > 本文中的示例演示如何使用 Azure Resource Manager 来创建服务总线命名空间和消息实体（队列）。
 
-## 服务总线和事件中心 Resource Manager 模板
+## 服务总线 Resource Manager 模板
 这些服务总线 Azure Resource Manager 模板可供下载和部署。单击以下链接可获得有关每个链接的详细信息，其中包含指向 GitHub 上的模板的链接：
 
 - [创建服务总线命名空间](./service-bus-resource-manager-namespace.md)
@@ -56,7 +56,7 @@ Azure Resource Manager 模板可帮助你定义要为解决方案部署的资源
 
 从 GitHub 克隆或复制 [201-servicebus-create-queue](https://github.com/Azure/azure-quickstart-templates/blob/master/201-servicebus-create-queue/azuredeploy.json) 模板：
 
-```
+```json
     {
         "$schema": "http://schema.management.azure.com/schemas/2014-04-01-preview/deploymentTemplate.json#",
         "contentVersion": "1.0.0.0",
@@ -126,7 +126,7 @@ Azure Resource Manager 模板可帮助你定义要为解决方案部署的资源
 
 若要使用可选参数文件，请复制 [201-servicebus-create-queue](https://github.com/Azure/azure-quickstart-templates/blob/master/201-servicebus-create-queue/azuredeploy.parameters.json) 文件。将 `serviceBusNamespaceName` 的值替换为要在此部署中创建的服务总线命名空间的名称，并将 `serviceBusQueueName` 的值替换为要创建的队列的名称。
 
-```
+```json
     {
         "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
         "contentVersion": "1.0.0.0",
@@ -156,13 +156,13 @@ Azure Resource Manager 模板可帮助你定义要为解决方案部署的资源
 
 系统将提示你登录到 Azure 帐户。登录后，运行以下命令以查看可用订阅。
 
-```
+```powershell
     Get-AzureRMSubscription
 ```
 
 此命令返回可用 Azure 订阅的列表。通过运行以下命令为当前会话选择订阅。将 `<YourSubscriptionId>` 替换为要使用的 Azure 订阅的 GUID。
 
-```
+```powershell
     Set-AzureRmContext -SubscriptionID <YourSubscriptionId>
 ```
 
@@ -170,13 +170,13 @@ Azure Resource Manager 模板可帮助你定义要为解决方案部署的资源
 
 如果目前没有资源组，请使用“New-AzureRmResourceGroup”命令创建新的资源组。提供资源组的名称，以及要使用的位置。例如：
 
-```
+```powershell
     New-AzureRmResourceGroup -Name MyDemoRG -Location "China East"
 ```
 
 如果成功，则会显示新的资源组的摘要。
 
-```
+```powershell
     ResourceGroupName : MyDemoRG
     Location          : chinaeast
     ProvisioningState : Succeeded
@@ -188,7 +188,7 @@ Azure Resource Manager 模板可帮助你定义要为解决方案部署的资源
 
 通过运行 `Test-AzureRmResourceGroupDeployment` cmdlet 验证你的部署。测试部署时，请提供与执行部署时所提供的完全相同的参数。
 
-```
+```powershell
     Test-AzureRmResourceGroupDeployment -ResourceGroupName MyDemoRG -TemplateFile <path to template file>\azuredeploy.json
 ```
 
@@ -198,25 +198,25 @@ Azure Resource Manager 模板可帮助你定义要为解决方案部署的资源
 
 以下命令会提示你在 PowerShell 窗口中输入三个参数：
 
-```
+```powershell
     New-AzureRmResourceGroupDeployment -Name MyDemoDeployment -ResourceGroupName MyDemoRG -TemplateFile <path to template file>\azuredeploy.json
 ```
 
 若要改为指定参数文件，请使用以下命令。
 
-```
+```powershell
     New-AzureRmResourceGroupDeployment -Name MyDemoDeployment -ResourceGroupName MyDemoRG -TemplateFile <path to template file>\azuredeploy.json -TemplateParameterFile <path to parameters file>\azuredeploy.parameters.json
 ```
 
 运行部署 cmdlet 时，还可以使用内联参数。该命令如下所示：
 
-```
+```powershell
     New-AzureRmResourceGroupDeployment -Name MyDemoDeployment -ResourceGroupName MyDemoRG -TemplateFile <path to template file>\azuredeploy.json -parameterName "parameterValue"
 ```
 
 若要运行完整部署，请将 **Mode** 参数设置为 **Complete**：
 
-```
+```powershell
     New-AzureRmResourceGroupDeployment -Name MyDemoDeployment -Mode Complete -ResourceGroupName MyDemoRG -TemplateFile <path to template file>\azuredeploy.json 
 ```
 
@@ -224,7 +224,7 @@ Azure Resource Manager 模板可帮助你定义要为解决方案部署的资源
 
 如果资源已成功部署，将在 PowerShell 窗口中显示部署的摘要：
 
-```
+```powershell
     DeploymentName    : MyDemoDeployment
     ResourceGroupName : MyDemoRG
     ProvisioningState : Succeeded
@@ -250,4 +250,5 @@ Azure Resource Manager 模板可帮助你定义要为解决方案部署的资源
 [Azure 资源管理器概述]: ../azure-resource-manager/resource-group-overview.md
 [使用 Azure Resource Manager 模板部署资源]: ../azure-resource-manager/resource-group-template-deploy.md
 [Azure 快速入门模板库]: https://azure.microsoft.com/zh-cn/documentation/templates/?term=service+bus
-<!---HONumber=Mooncake_1219_2016-->
+<!---HONumber=Mooncake_0313_2017-->
+<!--Update_Description:update meta properties and wording-->

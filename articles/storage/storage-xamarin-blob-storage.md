@@ -3,7 +3,7 @@ title: 如何通过 Xamarin 使用 Blob 存储 | Azure
 description: 通过用于 Xamarin 的 Azure 存储客户端库，开发人员可以使用其本机用户界面创建 iOS、Android 和 Windows 应用商店应用。本教程演示了如何通过 Xamarin 来创建使用 Azure Blob 存储的应用程序。
 services: storage
 documentationcenter: xamarin
-author: micurd
+author: seguler
 manager: jahogg
 editor: tysonn
 
@@ -13,9 +13,9 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/28/2016
-wacn.date: 01/06/2017
-ms.author: micurd
+ms.date: 01/30/2017
+wacn.date: 03/20/2017
+ms.author: seguler
 ---
 
 # 如何通过 Xamarin 使用 Blob 存储
@@ -37,14 +37,11 @@ Xamarin 使开发人员能够通过共享的 C# 代码库来使用其本机用�
 请按以下步骤创建应用程序：
 
 1. 下载并安装 [Xamarin for Visual Studio](https://www.xamarin.com/download)（如果尚未这样做）。
-2. 打开 Visual Studio ，创建空白应用（本机共享）：“文件”>“新建”>“项目”>“跨平台”>“空白应用（本机共享）”。
+2. 打开 Visual Studio ，创建空白应用（可本机移植）：“文件”>“新建”>“项目”>“跨平台”>“空白应用（可本机移植）”。
 3. 右键单击“解决方案资源管理器”窗格中的解决方案，然后选择“为解决方案管理 NuGet 包”。搜索 **WindowsAzure.Storage**，并将最新稳定版本安装到解决方案中的所有项目。
 4. 生成并运行项目。
 
 现在，应该有了这样一个应用程序，单击其中某个按钮将使计数器递增。
-
-> [!NOTE]
-> 用于 Xamarin 的 Azure 存储客户端库当前支持以下项目类型：本机共享、Xamarin.Forms 共享、Xamarin.Android 和 Xamarin.iOS。
 
 ## 创建容器并上传 Blob
 
@@ -63,7 +60,7 @@ namespace XamarinApp
         {
         }
 
-        public static async Task createContainerAndUpload()
+            public static async Task performBlobOperation()
         {
             // Retrieve storage account from connection string.
             CloudStorageAccount storageAccount = CloudStorageAccount.Parse("DefaultEndpointsProtocol=https;AccountName=your_account_name_here;AccountKey=your_account_key_here;EndpointSuffix=core.chinacloudapi.cn");
@@ -87,7 +84,9 @@ namespace XamarinApp
 }
 ```
 
-确保将“your\_account\_name\_here”和“your\_account\_key\_here”替换为实际帐户名和帐户密钥。然后就可以在 iOS、Android 和 Windows Phone 应用程序中使用此共享类。可将 `MyClass.createContainerAndUpload()` 添加到每个项目。例如：
+确保将“your\_account\_name\_here”和“your\_account\_key\_here”替换为实际帐户名和帐户密钥。
+
+用户的 iOS、Android 和 Windows Phone 项目全都引用可移植项目 - 这意味着，用户在一个位置编写所有共享代码即可跨所有项目使用。现在可以向每个项目添加以下代码行，进行充分利用：`MyClass.performBlobOperation()`
 
 ### XamarinApp.Droid > MainActivity.cs
 
@@ -118,7 +117,7 @@ namespace XamarinApp.Droid
                 button.Text = string.Format ("{0} clicks!", count++);
             };
 
-            await MyClass.createContainerAndUpload();
+                    await MyClass.performBlobOperation();
         }
     }
 }
@@ -141,6 +140,14 @@ namespace XamarinApp.iOS
         }
 
         public override async void ViewDidLoad ()
+    {
+        int count = 1;
+
+        public ViewController (IntPtr handle) : base (handle)
+        {
+        }
+
+        public override async void ViewDidLoad ()
         {
             base.ViewDidLoad ();
             // Perform any additional setup after loading the view, typically from a nib.
@@ -150,8 +157,8 @@ namespace XamarinApp.iOS
                 Button.SetTitle (title, UIControlState.Normal);
             };
 
-            await MyClass.createContainerAndUpload();
-        }
+                    await MyClass.performBlobOperation();
+                }
 
         public override void DidReceiveMemoryWarning ()
         {
@@ -192,6 +199,22 @@ namespace XamarinApp.WinPhone
         /// <param name="e">Event data that describes how this page was reached.
         /// This parameter is typically used to configure the page.</param>
         protected override async void OnNavigatedTo(NavigationEventArgs e)
+    {
+        int count = 1;
+
+        public MainPage()
+        {
+            this.InitializeComponent();
+
+            this.NavigationCacheMode = NavigationCacheMode.Required;
+        }
+
+        /// <summary>
+        /// Invoked when this page is about to be displayed in a Frame.
+        /// </summary>
+        /// <param name="e">Event data that describes how this page was reached.
+        /// This parameter is typically used to configure the page.</param>
+        protected override async void OnNavigatedTo(NavigationEventArgs e)
         {
             // TODO: Prepare page for display here.
 
@@ -205,9 +228,10 @@ namespace XamarinApp.WinPhone
                 Button.Content = title;
             };
 
-            await MyClass.createContainerAndUpload();
+                await MyClass.performBlobOperation();
         }
     }
+}
 }
 ```
 
@@ -220,9 +244,11 @@ namespace XamarinApp.WinPhone
 ## 后续步骤
 
 在本入门指南中，你学习了如何使用 Azure 存储在 Xamarin 中创建跨平台应用程序。本入门指南着重介绍 Blob 存储的情况。但是，还对 Blob 存储、表存储、文件存储和队列存储进行更多操作。请参阅以下文章以了解更多信息：
+
 - [通过 .NET 开始使用 Azure Blob 存储](./storage-dotnet-how-to-use-blobs.md)
 - [通过 .NET 开始使用 Azure 表存储](./storage-dotnet-how-to-use-tables.md)
 - [通过 .NET 开始使用 Azure 队列存储](./storage-dotnet-how-to-use-queues.md)
 - [在 Windows 上开始使用 Azure 文件存储](./storage-dotnet-how-to-use-files.md)
 
-<!---HONumber=Mooncake_0103_2017-->
+<!---HONumber=Mooncake_0313_2017-->
+<!--Update_Description: update code sample-->

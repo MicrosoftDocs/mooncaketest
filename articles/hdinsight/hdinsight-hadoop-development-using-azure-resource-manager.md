@@ -1,5 +1,3 @@
-<!-- not suitable for Mooncake -->
-
 ---
 title: 迁移到适用于 HDInsight 群集的 Azure Resource Manager 开发工具 | Azure
 description: 如何迁移到适用于 HDInsight 群集的 Azure Resource Manager 开发工具
@@ -48,7 +46,7 @@ Azure CLI 提供的用于通过 Azure 服务管理 (ASM) 使用 HDInsight 的基
 * `azure hdinsight script-action` - 在群集上提供用于创建/管理脚本操作的命令
 * `azure hdinsight config` - 提供用于创建配置文件的命令，该配置文件可与 `hdinsight cluster create` 命令一起使用以提供配置信息。
 
-###已过时的命令
+### 已过时的命令
 
 如果使用 `azure hdinsight job` 命令将作业提交到 HDInsight 群集，则无法通过 ARM 命令使用这些作业。如果需要以编程方式通过脚本将作业提交到 HDInsight，应改用 HDInsight 提供的 REST API。有关如何使用 REST API 提交作业的详细信息，请参阅以下文档。
 
@@ -58,7 +56,7 @@ Azure CLI 提供的用于通过 Azure 服务管理 (ASM) 使用 HDInsight 的基
 
 有关以其他交互方式运行 MapReduce、Hive 和 Pig 的信息，请参阅 [Use MapReduce with Hadoop on HDInsight（将 MapReduce 与 HDInsight 上的 Hadoop 配合使用）](./hdinsight-use-mapreduce.md)、[Use Hive with Hadoop on HDInsight（将 Hive 与 Hadoop 配合使用）](./hdinsight-use-hive.md)和 [Use Pig with Hadoop on HDInsight（将 Pig 与 HDInsight 上的 Hadoop 配合使用）](./hdinsight-use-pig.md)。
 
-###示例
+### 示例
 
 __创建群集__
 
@@ -83,7 +81,7 @@ __显示群集信息__
 * 旧命令 (ASM) - `azure hdinsight cluster show myhdicluster`
 * 新命令 (ARM) - `azure hdinsight cluster show myhdicluster -g myresourcegroup`
 
-##将 Azure PowerShell 迁移到 Azure Resource Manager
+## 将 Azure PowerShell 迁移到 Azure Resource Manager
 
 有关处于 Azure Resource Manager (ARM) 模式的 Azure PowerShell 的一般信息，请参阅 [Using Azure PowerShell with Azure Resource Manager（将 Azure PowerShell 与 Azure Resource Manager 配合使用）](../azure-resource-manager/powershell-azure-resource-manager.md)。
 
@@ -94,7 +92,7 @@ Azure PowerShell ARM cmdlet 可与 ASM cmdlet 一同安装。两种模式下的 
 - Login-AzureRmAccount 或 [Select-AzureRmProfile](https://msdn.microsoft.com/zh-cn/library/mt619310.aspx)。请参阅 [Authenticating a service principal with Azure Resource Manager（使用 Azure Resource Manager 对服务主体进行身份验证）](../azure-resource-manager/resource-group-authenticate-service-principal.md)
 - [New-AzureRmResourceGroup](https://msdn.microsoft.com/zh-cn/library/mt603739.aspx)
 
-###已重命名的 cmdlet
+### 已重命名的 cmdlet
 
 在 Windows PowerShell 控制台中列出 HDInsight ASM cmdlet：
 
@@ -134,7 +132,7 @@ help *azurermhdinsight*
 | Use-AzureHDInsightCluster |[Use-AzureRmHDInsightCluster](https://msdn.microsoft.com/zh-cn/library/mt619442.aspx)|
 | Wait-AzureHDInsightJob |[Wait-AzureRmHDInsightJob](https://msdn.microsoft.com/zh-cn/library/mt603834.aspx)|
 
-###新 cmdlet
+### 新 cmdlet
 下面是只能在 ARM 模式下使用的新 cmdlet。
 
 **与脚本操作相关的 cmdlet：**
@@ -227,14 +225,14 @@ Get-AzureHDInsightCluster -Name $clusterName
 Get-AzureRmHDInsightCluster -ResourceGroupName $resourceGroupName -clusterName $clusterName
 ```
 
-####其他示例
+#### 其他示例
 
 - [创建 HDInsight 群集](./hdinsight-hadoop-create-linux-clusters-azure-powershell.md)
 - [提交 Hive 作业](./hdinsight-hadoop-use-hive-powershell.md)
 - [提交 Pig 作业](./hdinsight-hadoop-use-pig-powershell.md)
 - [提交 Sqoop 作业](./hdinsight-hadoop-use-sqoop-powershell.md)
 
-##迁移到基于 ARM 的 HDInsight .NET SDK
+## 迁移到基于 ARM 的 HDInsight .NET SDK
 
 [基于 Azure 服务管理 (ASM) 的 HDInsight.NET SDK](https://msdn.microsoft.com/zh-cn/library/azure/mt416619.aspx) 现已过时。建议使用[基于 Azure 资源管理 (ARM) 的 HDInsight .NET SDK](https://msdn.microsoft.com/zh-cn/library/azure/mt271028.aspx)。以下基于 ASM 的 HDInsight 包即将过时。
 

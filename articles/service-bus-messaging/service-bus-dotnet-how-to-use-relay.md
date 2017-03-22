@@ -105,7 +105,7 @@ wacn.date: 01/04/2017
 
 协定定义用于添加两个数字并返回相应结果的单个操作 `AddNumbers`。`IProblemSolverChannel` 接口使客户端能够更轻松地管理代理生存期。创建这样一个接口被认为是最佳实践。最好将此协定定义放入单独的文件中，以便可从你的“客户端”和“服务”两个项目中引用该文件，但也可以将代码复制到这两个项目中。
 
-```
+```csharp
     using System.ServiceModel;
 
     [ServiceContract(Namespace = "urn:ps")]
@@ -120,7 +120,7 @@ wacn.date: 01/04/2017
 
 协定到位后，实施起来就很简单了。
 
-```
+```csharp
     class ProblemSolver : IProblemSolver
     {
         public int AddNumbers(int a, int b)
@@ -134,7 +134,7 @@ wacn.date: 01/04/2017
 
 协定和实施完成后，你现在就可以托管服务了。托管发生在 [System.ServiceModel.ServiceHost](https://msdn.microsoft.com/zh-cn/library/azure/system.servicemodel.servicehost.aspx) 对象内，该对象负责管理服务实例并托管侦听消息的终结点。以下代码使用常规的本地终结点和服务总线终结点来配置服务，以便并列展示内部和外部终结点的外观。将字符串 *namespace* 替换为你的命名空间名称，并将 *yourKey* 替换为你在前面的设置步骤中获取的 SAS 密钥。
 
-```
+```csharp
     ServiceHost sh = new ServiceHost(typeof(ProblemSolver));
 
     sh.AddServiceEndpoint(
@@ -161,7 +161,7 @@ wacn.date: 01/04/2017
 
 你还可以使用 App.config 文件配置主机。在此情况下，服务托管代码如以下示例所示。
 
-```
+```csharp
     ServiceHost sh = new ServiceHost(typeof(ProblemSolver));
     sh.Open();
     Console.WriteLine("Press ENTER to close");
@@ -171,7 +171,7 @@ wacn.date: 01/04/2017
 
 终结点定义将移到 App.config 文件中。请注意，NuGet 包已向 App.config 文件添加一系列定义，这些定义是服务总线必需的配置扩展。以下示例（与前面的代码完全等效）应该紧靠在 **system.serviceModel** 元素的下面。此代码示例假设你的项目 C# 命名空间名为“Service”。将占位符替换为你的服务总线服务命名空间和密钥。
 
-```
+```xml
     <services>
         <service name="Service.ProblemSolver">
             <endpoint contract="Service.IProblemSolver"
@@ -208,7 +208,7 @@ wacn.date: 01/04/2017
 
 然后，替换客户端的 `Main` 方法中的代码，再次将占位符文本替换为服务总线命名空间和 SAS 密钥。
 
-```
+```csharp
     var cf = new ChannelFactory<IProblemSolverChannel>(
         new NetTcpRelayBinding(),
         new EndpointAddress(ServiceBusEnvironment.CreateServiceUri("sb", "namespace", "solver")));
@@ -228,7 +228,7 @@ wacn.date: 01/04/2017
 
 以下代码介绍了如何使用 App.config 文件配置客户端。
 
-```
+```csharp
     var cf = new ChannelFactory<IProblemSolverChannel>("solver");
     using (var ch = cf.CreateChannel())
     {
@@ -238,7 +238,7 @@ wacn.date: 01/04/2017
 
 终结点定义将移到 App.config 文件中。以下示例（与前面列出的代码相同）应该紧靠在 **system.serviceModel** 元素的下面。在此，与之前一样，你必须将占位符替换为服务总线命名空间和 SAS 密钥。
 
-```
+```xml
     <client>
         <endpoint name="solver" contract="Service.IProblemSolver"
                   binding="netTcpRelayBinding"
@@ -267,7 +267,7 @@ wacn.date: 01/04/2017
 - 从 [Azure 示例][]下载服务总线示例，或参阅[服务总线示例概述][]。
 
   [Azure 经典管理门户]: http://manage.windowsazure.cn
-  [使用服务总线进行共享访问签名身份验证]: ./service-bus-shared-access-signature-authentication.md
+  [使用服务总线进行共享访问签名身份验证]: ./service-bus-sas.md
   [Azure 示例]: https://code.msdn.microsoft.com/site/search?query=service%20bus&f%5B0%5D.Value=service%20bus&f%5B0%5D.Type=SearchText&ac=2
   [服务总线示例概述]: ./service-bus-samples.md
 

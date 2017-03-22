@@ -1,19 +1,20 @@
 ---
 title: 应用程序升级：数据序列化 | Azure
-description: 数据序列化的最佳实践和它如何影响应用程序的滚动升级。
+description: 介绍有关数据序列化的最佳实践，以及数据序列化如何影响应用程序滚动升级。
 services: service-fabric
-documentationCenter: .net
-authors: vturecek
+documentationcenter: .net
+author: vturecek
 manager: timlt
 editor: ''
 
+ms.assetid: a5f36366-a2ab-4ae3-bb08-bc2f9533bc5a
 ms.service: service-fabric
 ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 10/19/2016
-wacn.date: 12/26/2016
+ms.date: 02/10/2017
+wacn.date: 03/03/2017
 ms.author: vturecek
 ---
 
@@ -49,14 +50,14 @@ ms.author: vturecek
 
 ## 后续步骤
 
-[使用 Visual Studio 升级应用程序](./service-fabric-application-upgrade-tutorial.md)逐步讲解了如何使用 Visual Studio 进行应用程序升级。
+- [使用 Visual Studio 升级应用程序](./service-fabric-application-upgrade-tutorial.md)逐步讲解了如何使用 Visual Studio 进行应用程序升级。
 
-[使用 PowerShell 升级应用程序](./service-fabric-application-upgrade-tutorial-powershell.md)逐步讲解了如何使用 PowerShell 进行应用程序升级。
+- [使用 PowerShell 升级应用程序](./service-fabric-application-upgrade-tutorial-powershell.md)逐步讲解了如何使用 PowerShell 进行应用程序升级。
 
-使用[升级参数](./service-fabric-application-upgrade-parameters.md)来控制应用程序的升级方式。
+- 使用[升级参数](./service-fabric-application-upgrade-parameters.md)来控制应用程序的升级方式。
 
-参考[高级主题](./service-fabric-application-upgrade-advanced.md)，了解如何在升级应用程序时使用高级功能。
+- 参考[高级主题](./service-fabric-application-upgrade-advanced.md)，了解如何在升级应用程序时使用高级功能。
 
-参考[对应用程序升级进行故障排除](./service-fabric-application-upgrade-troubleshooting.md)中的步骤来解决应用程序升级时的常见问题。
+- 参考[对应用程序升级进行故障排除](./service-fabric-application-upgrade-troubleshooting.md)中的步骤来解决应用程序升级时的常见问题。
 
-<!---HONumber=Mooncake_1219_2016-->
+<!---HONumber=Mooncake_0227_2017-->

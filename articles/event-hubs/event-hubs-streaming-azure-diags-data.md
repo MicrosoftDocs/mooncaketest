@@ -13,7 +13,7 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/14/2016
-wacn.date: 02/06/2017
+wacn.date: 03/17/2017
 ms.author: sethm
 ---
 
@@ -49,7 +49,7 @@ Azure 诊断提供了灵活的方法用于收集来自云服务虚拟机 (VM) �
 ## 将 Azure 诊断连接到事件中心接收器
 默认情况下，Azure 诊断始终将日志和指标接收到 Azure 存储帐户。通过将一个新的 **Sinks** 节添加到 *.wadcfgx* 文件的 **PublicConfig** 节中的 **WadCfg** 元素，应用程序可以额外接收到事件中心。在 Visual Studio 中，*.wadcfgx* 文件存储于以下路径：“云服务项目”>“角色”>“(RoleName)”>“diagnostics.wadcfgx”文件。
 
-```
+```xml
   <SinksConfig>
     <Sink name="HotPath">
       <EventHub Url="https://diags-mycompany-ns.servicebus.chinacloudapi.cn/diageventhub" SharedAccessKeyName="SendRule" />
@@ -87,7 +87,7 @@ Azure 诊断提供了灵活的方法用于收集来自云服务虚拟机 (VM) �
 
 以下是一些示例配置。
 
-```
+```xml
     <PerformanceCounters scheduledTransferPeriod="PT1M" sinks="HotPath">
       <PerformanceCounterConfiguration counterSpecifier="\Memory\Available MBytes" sampleRate="PT3M" />
       <PerformanceCounterConfiguration counterSpecifier="\Web Service(_Total)\ISAPI Extension Requests/sec" sampleRate="PT3M" />
@@ -102,7 +102,7 @@ Azure 诊断提供了灵活的方法用于收集来自云服务虚拟机 (VM) �
 
 下例中，接收器将应用到层次结构中的 **PerformanceCounters** 父节点，这意味着所有 **PerformanceCounters** 子节点将发送到事件中心。
 
-```
+```xml
     <PerformanceCounters scheduledTransferPeriod="PT1M">
       <PerformanceCounterConfiguration counterSpecifier="\Memory\Available MBytes" sampleRate="PT3M" />
       <PerformanceCounterConfiguration counterSpecifier="\Web Service(_Total)\ISAPI Extension Requests/sec" sampleRate="PT3M" />
@@ -150,7 +150,7 @@ Visual Studio 提供最简单的路径供你部署应用程序和事件中心接
 
 请记住将 **Main** 函数中尖括号内的值替换为资源值。
 
-```
+```csharp
 //Console application code for EventHub test client
 using System;
 using System.Collections.Generic;
@@ -215,7 +215,7 @@ namespace EventHubListener
             string eventHubName = "<EventHub Name>";
             string storageAccountName = "<Storage Account Name>";
             string storageAccountKey = "<Storage Account Key>”;
-            string storageConnectionString = string.Format("DefaultEndpointsProtocol=https;AccountName={0};AccountKey={1}", storageAccountName, storageAccountKey);
+            string storageConnectionString = string.Format("DefaultEndpointsProtocol=https;AccountName={0};AccountKey={1};EndpointSuffix=core.chinacloudapi.cn", storageAccountName, storageAccountKey);
 
             string eventProcessorHostName = Guid.NewGuid().ToString();
             EventProcessorHost eventProcessorHost = new EventProcessorHost(eventProcessorHostName, eventHubName, EventHubConsumerGroup.DefaultGroupName, eventHubConnectionString, storageConnectionString);
@@ -250,7 +250,7 @@ namespace EventHubListener
 •	[了解有关事件中心的详细信息](./index.md)
 
 ## 附录：完整的 Azure 诊断配置文件 (.wadcfgx) 示例
-```
+```xml
 <?xml version="1.0" encoding="utf-8"?>
 <DiagnosticsConfiguration xmlns="http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration">
   <PublicConfig xmlns="http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration">
@@ -305,7 +305,7 @@ namespace EventHubListener
 
 本示例的补充 *ServiceConfiguration.Cloud.cscfg* 如下所示。
 
-```
+```xml
 <?xml version="1.0" encoding="utf-8"?>
 <ServiceConfiguration serviceName="MyFixItCloudService" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceConfiguration" osFamily="3" osVersion="*" schemaVersion="2015-04.2.6">
   <Role name="MyFixIt.WorkerRole">

@@ -1,23 +1,23 @@
 ---
-title: 使用跨平台命令行界面 (CLI) 为 Azure 服务创建警报 | Azure
-description: 使用命令行界面创建 Azure 警报，以便在满足指定的条件时触发通知或自动化操作。
+title: 为 Azure 服务创建警报 - 跨平台 CLI | Azure
+description: 满足指定的条件时，触发电子邮件、通知、调用网站 URL (webhook) 或自动执行。
 authors: rboucher
-manager: ''
+manager: carmonm
 editor: ''
 services: monitoring-and-diagnostics
 documentationCenter: monitoring-and-diagnostics
 
-ms.service: azure-portal
+ms.service: monitoring-and-diagnostics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 10/24/2016
-wacn.date: 12/05/2016
+wacn.date: 03/03/2017
 ms.author: robb
 ---
 
-# 使用跨平台命令行界面 (CLI) 为 Azure 服务创建警报 
+# 在 Azure Monitor 中为 Azure 服务创建警报 - 跨平台 CLI
 
 > [!div class="op_single_selector"]
 - [门户预览](./insights-alerts-portal.md)
@@ -25,8 +25,7 @@ ms.author: robb
 - [CLI](./insights-alerts-command-line-interface.md)
 
 ## 概述
-
-本文将展示如何使用命令行界面 (CLI) 设置 Azure 警报。
+本文说明如何使用跨平台命令行接口 (CLI) 设置 Azure 警报。
 
 > [!NOTE]
 > “Azure Insights”在 2016 年 9 月 25 日后称为 Azure Monitor。但是，命名空间和以下命令中仍然包含“insights”。
@@ -155,4 +154,5 @@ azure insights alerts actions email create -help
 * 详细了解 [Azure 自动化 Runbook](../automation/automation-starting-a-runbook.md)。
 * [大致了解指标收集](./insights-how-to-customize-monitoring.md)以确保你的服务可用且响应迅速。
 
-<!---HONumber=Mooncake_1107_2016-->
+<!---HONumber=Mooncake_0227_2017-->
+<!--Update_Description:update wording -->

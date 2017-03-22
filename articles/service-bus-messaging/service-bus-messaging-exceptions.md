@@ -12,9 +12,9 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/02/2016
+ms.date: 01/17/2017
 ms.author: sethm
-wacn.date: 02/06/2017
+wacn.date: 03/20/2017
 ---
 
 # 服务总线消息传送异常
@@ -130,3 +130,4 @@ Message: The maximum entity size has been reached or exceeded for Topic: ‘xxx-
 - [服务总线体系结构](./service-bus-architecture.md)
 
 <!---HONumber=Mooncake_Quality_Review_0125_2017-->
+<!--Update_Description:update meta properties-->

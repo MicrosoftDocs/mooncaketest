@@ -28,6 +28,8 @@ ms.author: jgao
 
 用于 Visual Studio 的 Data Lake 工具可用于访问 HDInsight。
 
+[!INCLUDE [azure-sdk-developer-differences](../../includes/azure-visual-studio-login-guide.md)]
+
 **先决条件**
 
 若要完成本教程并使用 Visual Studio 中的 Data Lake 工具，需要以下项：

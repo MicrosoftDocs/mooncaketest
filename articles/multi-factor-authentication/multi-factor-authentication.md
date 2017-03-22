@@ -1,5 +1,5 @@
 ---
-title: Azure MFA 概述 | Azure
+title: 了解 Azure MFA 中的多重身份验证 | Azure
 description: 本主题介绍什么是 Azure 多重身份验证，为何使用 MFA，有关多重身份验证客户端的更多信息，以及可用的不同方法和版本。
 keywords: MFA 简介, mfa 概述, 什么是 mfa
 services: multi-factor-authentication
@@ -14,12 +14,12 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/08/2016
-wacn.date: 01/13/2017
+ms.date: 01/23/2017
+wacn.date: 03/14/2017
 ms.author: kgremban
 ---
 
-# 什么是 Azure 多重身份验证？
+# 什么是多重身份验证？
 双重验证是需要多种验证方法的身份验证方法，可为用户登录和事务额外提供一层重要的安全保障。它的工作原理是需要以下两种或多种验证方法：
 
 - 用户知道的某样东西（通常为密码）
@@ -94,7 +94,7 @@ Azure 多重身份验证有三个不同版本。
 | MFA SDK | | |● 需要多重身份验证提供程序和完整的 Azure 订阅 |
 | 适用于本地应用程序的 MFA | | |● |
 
-## 如何获取 Azure 多重身份验证
+## 如何获取 Azure 多重身份验证 <a name="how-to-get-azure-multi-factor-authentication"></a>
 如果希望使用 Azure 多重身份验证提供的完整功能，有以下几种方法：
 
 1. 购买 Azure 多重身份验证许可证并将其分配给用户。
@@ -110,4 +110,5 @@ Azure 多重身份验证为云和服务器提供了可选择的验证方法。�
 ## 后续步骤
 若要开始使用 Azure 多重身份验证，第一步是选择云中的 MFA。
 
-<!---HONumber=Mooncake_0103_2017-->
+<!---HONumber=Mooncake_0306_2017-->
+<!---Update_Description: wording update -->

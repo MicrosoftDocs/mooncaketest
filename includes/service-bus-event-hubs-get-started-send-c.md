@@ -28,7 +28,7 @@
 
 5. 在工作目录中，创建一个包含以下内容的名为 **sender.c** 的新文件。请记得替换事件中心名称和命名空间名称（后者通常为 `{event hub name}-ns`）的值。还必须为之前创建的 **SendRule** 替换密钥的 URL 编码版本。可以在[此处](http://www.w3schools.com/tags/ref_urlencode.asp)对它进行 URL 编码。
 
-    ```c
+    ```
     #include "proton/message.h"
     #include "proton/messenger.h"
 

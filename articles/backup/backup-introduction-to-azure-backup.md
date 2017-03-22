@@ -1,11 +1,12 @@
 ---
 title: 什么是 Azure 备份？| Azure
-description: 使用 Azure 备份和恢复服务，可从 Windows Server、Windows 客户端计算机、System Center DPM 服务器和 Azure 虚拟机备份和还原数据与应用程序。
+description: 使用 Azure 备份和恢复服务，可从 Windows 服务器、Windows 计算机、System Center DPM 服务器和 Azure 虚拟机备份和还原数据与应用程序。
 services: backup
 documentationcenter: ''
 author: markgalioto
-manager: cfreeman
-editor: keywords: backup and restore; recovery services; backup solutions
+manager: carmonm
+editor: ''
+keywords: 备份和还原;恢复服务;备份解决方案
 
 ms.assetid: 0d2a7f08-8ade-443a-93af-440cbf7c36c4
 ms.service: backup
@@ -13,8 +14,8 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 12/7/2016
-wacn.date: 01/24/2017
+ms.date: 1/4/2017
+wacn.date: 02/21/2017
 ms.author: jimpark; trinadhk
 ---
 
@@ -48,8 +49,8 @@ Azure 备份是基于 Azure 的服务，可用于备份（或保护）和还原 
 | 组件 | 优点 | 限制 | 哪些内容受到保护？ | 备份存储在何处？ |
 | --- | --- | --- | --- | --- |
 | Azure 备份 (MARS) 代理 |<li>将文本和文件夹备份到物理或虚拟 Windows OS（VM 可以在本地或在 Azure 中）<li>无需单独的备份服务器。 |<li>每天备份三次<li>不感知应用程序；仅支持文件、文件夹和卷级别的还原，<li>不支持 Linux。 |<li>文件、<li>文件夹 |Azure 备份保管库 |
-| System Center DPM |<li>应用感知的快照 (VSS)<li>创建备份时提供充分的弹性<li>恢复粒度（全部）<li>可使用 Azure 备份保管库<li>Hyper-V 和 VMware VM 上的 Linux 支持<li>使用 DPM 2012 R2 保护 VMware VM |无法备份 Oracle 工作负荷。|<li>文件、<li>文件夹、<li>卷、<li>VM、<li>应用程序、<li>工作负荷 |<li>Azure 备份保管库、<li>本地附加的磁盘、<li>磁带（仅限本地） |
-| Azure 备份服务器 |<li>应用感知的快照 (VSS)<li>创建备份时提供充分的弹性<li>恢复粒度（全部）<li>可使用 Azure 备份保管库<li>Linux 支持（如果托管在 Hyper-V 上）<li>使用 DPM 2012 R2 保护 VMware VM<li>无需 System Center 许可证 |<li>无法备份 Oracle 工作负荷。<li>始终需要实时 Azure 订阅<li>不支持磁带备份 |<li>文件、<li>文件夹、<li>卷、<li>VM、<li>应用程序、<li>工作负荷 |<li>Azure 备份保管库、<li>本地附加的磁盘 |
+| System Center DPM |<li>应用程序感知的快照 (VSS)<li>创建备份时提供充分的灵活性<li>恢复粒度（全部）<li>可使用 Azure 备份保管库<li>Hyper-V 和 VMware VM 上的 Linux 支持<li>使用 DPM 2012 R2 备份和还原 VMware VM |无法备份 Oracle 工作负荷。|<li>文件、<li>文件夹、<li>卷、<li>VM、<li>应用程序、<li>工作负荷 |<li>Azure 备份保管库、<li>本地附加的磁盘、<li>磁带（仅限本地） |
+| Azure 备份服务器 |<li>应用感知的快照 (VSS)<li>创建备份时提供充分的灵活性<li>恢复粒度（全部）<li>可使用 Azure 备份保管库<li>Hyper-V 和 VMware VM 上的 Linux 支持<li>备份和还原 VMware VM<li>无需 System Center 许可证 |<li>无法备份 Oracle 工作负荷。<li>始终需要实时 Azure 订阅<li>不支持磁带备份 |<li>文件、<li>文件夹、<li>卷、<li>VM、<li>应用程序、<li>工作负荷 |<li>Azure 备份保管库、<li>本地附加的磁盘 |
 | Azure IaaS VM 备份 |<li>针对 Windows/Linux 的本机备份<li>不需要安装特定代理<li>无需使用备份基础结构进行结构级备份 |<li>每天备份 VM 一次<li>仅在磁盘级还原 VM<li>无法本地备份 |<li>VM、<li>所有磁盘（使用 PowerShell） |<p>Azure 备份保管库</p> |
 
 ## 每个组件适用于哪些部署方案？
@@ -57,7 +58,7 @@ Azure 备份是基于 Azure 的服务，可用于备份（或保护）和还原 
 | --- | --- | --- | --- |
 | Azure 备份 (MARS) 代理 |<p>**是**</p> <p>Azure 备份代理可以部署在 Azure 中运行的任何 Windows Server VM 上。</p> |<p>**是**</p> <p>该备份代理可以部署在任何 Windows Server VM 或物理计算机上。</p> |<p>Azure 备份保管库</p> |
 | System Center DPM |<p>**是**</p><p>详细了解[如何使用 System Center DPM 保护 Azure 中的工作负荷](./backup-azure-dpm-introduction-classic.md)。</p> |<p>**是**</p> <p>详细了解[如何保护数据中心的工作负荷和 VM](https://technet.microsoft.com/zh-cn/system-center-docs/dpm/data-protection-manager)。</p> |<p>本地附加的磁盘、</p><p>Azure 备份保管库、</p><p>磁带（仅限本地）</p> |
-| Azure 备份服务器 |<p>**是**</p><p>详细了解如何使用 Azure 备份服务器保护 Azure 中的工作负荷。</p> |<p>**是**</p><p>详细了解如何使用 Azure 备份服务器保护 Azure 中的工作负荷。</p> |<p>本地附加的磁盘、</p><p>Azure 备份保管库</p> |
+| Azure 备份服务器 |<p>**是**</p><p>详细了解[如何使用 Azure 备份服务器保护 Azure 中的工作负荷](./backup-azure-microsoft-azure-backup-classic.md)。</p> |<p>**是**</p> <p>详细了解[如何使用 Azure 备份服务器保护 Azure 中的工作负荷](./backup-azure-microsoft-azure-backup-classic.md)。</p> |<p>本地附加的磁盘、</p><p>Azure 备份保管库</p> |
 | Azure IaaS VM 备份 |<p>**是**</p><p>Azure 结构的一部分</p><p>专门用于[备份 Azure 基础结构即服务 (IaaS) 虚拟机](./backup-azure-vms-introduction.md)。</p> |<p>**否**</p> <p>使用 System Center DPM 备份数据中心的虚拟机。</p> |<p>Azure 备份保管库</p> |
 
 ## 可以备份哪些应用程序和工作负荷？
@@ -67,13 +68,13 @@ Azure 备份是基于 Azure 的服务，可用于备份（或保护）和还原 
 
 | 数据或工作负荷 | 源环境 | Azure 备份解决方案 |
 | --- | --- | --- |
-| 文件和文件夹 |Windows Server |<p>[Azure 备份代理](./backup-configure-vault.md)、</p><p>[System Center DPM](./backup-azure-dpm-introduction-classic.md)（+ Azure 备份代理）、</p><p>Azure 备份服务器（包括 Azure 备份代理）</p> |
-| 文件和文件夹 |Windows 计算机 |<p>[Azure 备份代理](./backup-configure-vault.md)、</p><p>[System Center DPM](./backup-azure-dpm-introduction-classic.md)（+ Azure 备份代理）、</p><p>Azure 备份服务器（包括 Azure 备份代理）</p> |
-| Hyper-V 虚拟机 (Windows) |Windows Server |<p>[System Center DPM](./backup-azure-backup-sql.md)（+ Azure 备份代理）、</p><p>Azure 备份服务器（包括 Azure 备份代理）</p> |
-| Hyper-V 虚拟机 (Linux) |Windows Server |<p>[System Center DPM](./backup-azure-backup-sql.md)（+ Azure 备份代理）、</p><p>Azure 备份服务器（包括 Azure 备份代理）</p> |
-| Microsoft SQL Server |Windows Server |<p>[System Center DPM](./backup-azure-backup-sql.md)（+ Azure 备份代理）、</p><p>Azure 备份服务器（包括 Azure 备份代理）</p> |
-| Microsoft SharePoint |Windows Server |<p>[System Center DPM](./backup-azure-backup-sql.md)（+ Azure 备份代理）、</p><p>Azure 备份服务器（包括 Azure 备份代理）</p> |
-| Microsoft Exchange |Windows Server |<p>[System Center DPM](./backup-azure-backup-sql.md)（+ Azure 备份代理）、</p><p>Azure 备份服务器（包括 Azure 备份代理）</p> |
+| 文件和文件夹 |Windows Server |<p>[Azure 备份代理](./backup-configure-vault.md)、</p><p>[System Center DPM](./backup-azure-dpm-introduction-classic.md)（+ Azure 备份代理）、</p><p>[Azure 备份服务器](./backup-azure-microsoft-azure-backup-classic.md)（包括 Azure 备份代理）</p> |
+| 文件和文件夹 |Windows 计算机 |<p>[Azure 备份代理](./backup-configure-vault.md)、</p><p>[System Center DPM](./backup-azure-dpm-introduction-classic.md)（+ Azure 备份代理）、</p><p>[Azure 备份服务器](./backup-azure-microsoft-azure-backup-classic.md)（包括 Azure 备份代理）</p> |
+| Hyper-V 虚拟机 (Windows) |Windows Server |<p>[System Center DPM](./backup-azure-backup-sql.md)（+ Azure 备份代理）、</p><p>[Azure 备份服务器](./backup-azure-microsoft-azure-backup-classic.md)（包括 Azure 备份代理）</p> |
+| Hyper-V 虚拟机 (Linux) |Windows Server |<p>[System Center DPM](./backup-azure-backup-sql.md)（+ Azure 备份代理）、</p><p>[Azure 备份服务器](./backup-azure-microsoft-azure-backup-classic.md)（包括 Azure 备份代理）</p> |
+| Microsoft SQL Server |Windows Server |<p>[System Center DPM](./backup-azure-backup-sql.md)（+ Azure 备份代理）、</p><p>[Azure 备份服务器](./backup-azure-microsoft-azure-backup-classic.md)（包括 Azure 备份代理）</p> |
+| Microsoft SharePoint |Windows Server |<p>[System Center DPM](./backup-azure-backup-sql.md)（+ Azure 备份代理）、</p><p>[Azure 备份服务器](./backup-azure-microsoft-azure-backup-classic.md)（包括 Azure 备份代理）</p> |
+| Microsoft Exchange |Windows Server |<p>[System Center DPM](./backup-azure-backup-sql.md)（+ Azure 备份代理）、</p><p>[Azure 备份服务器](./backup-azure-microsoft-azure-backup-classic.md)（包括 Azure 备份代理）</p> |
 | Azure IaaS VM (Windows) |在 Azure 中运行 |[Azure 备份（VM 扩展）](./backup-azure-vms-introduction.md) |
 | Azure IaaS VM (Linux) |在 Azure 中运行 |[Azure 备份（VM 扩展）](./backup-azure-vms-introduction.md) |
 
@@ -87,7 +88,7 @@ Azure 备份是基于 Azure 的服务，可用于备份（或保护）和还原 
 | Azure 备份服务器 |文件一致性备份仅支持 Hyper-V<br/>（不适用于 Azure VM） |
 | Azure IaaS VM 备份 |是 |
 
-## 结合使用高级存储 VM 和 Azure 备份
+## 结合使用高级存储 VM 和 Azure 备份 <a name="using-premium-storage-vms-with-azure-backup"></a>
 Azure 备份可保护高级存储 VM。Azure 高级存储是基于固态硬盘 (SSD) 的存储，用于支持 I/O 密集型工作负荷。高级存储很适合虚拟机 (VM) 工作负荷。有关高级存储的详细信息，请参阅[高级存储：Azure 虚拟机工作负荷的高性能存储](../storage/storage-premium-storage.md)一文
 
 ### 备份高级存储 VM <a name="back-up-and-restore-premium-storage-vms"></a>
@@ -110,9 +111,9 @@ Azure 备份可保护高级存储 VM。Azure 高级存储是基于固态硬盘 (
 | 功能 | Azure 备份代理 | System Center DPM | Azure 备份服务器 | Azure IaaS VM 备份 |
 | --- | --- | --- | --- | --- |
 | Azure 备份保管库 |![是][green] |![是][green] |![是][green] |![是][green] |
-| 磁盘存储 | |![是][green]  |![是][green] | |
+| 磁盘存储 | |![是][green] |![是][green] | |
 | 表存储 | |![是][green] | | |
-| 压缩<br/>（在备份保管库中） |![是][green]|![是][green] |![是][green] | |
+| 压缩<br/>（在备份保管库中） |![是][green] |![是][green] |![是][green] | |
 | 增量备份 |![是][green] |![是][green] |![是][green] |![是][green] |
 | 磁盘重复数据删除 | |![部分][yellow] |![部分][yellow] | |
 
@@ -184,7 +185,7 @@ Azure 备份代理提供网络限制功能，可用于控制数据传输期间�
 | 本地磁盘上的恢复点 |不适用 |<li>对于文件服务器为 64，<li>对于应用程序服务器为 448 |<li>对于文件服务器为 64，<li>对于应用程序服务器为 448 |不适用 |
 | 磁带上的恢复点 |不适用 |不受限制 |不适用 |不适用 |
 
-## 受保护实例是什么
+## 受保护实例是什么 <a name="what-is-a-protected-instance"></a>
 受保护实例通常指配置为备份到 Azure 的 Windows 计算机、物理或虚拟服务器，或者 SQL 数据库。为计算机、服务器或数据库设置备份策略，并为数据创建副本后，实例即受到保护。该受保护实例的备份数据后续副本（称为恢复点）将增加使用的存储量。可为每个受保护实例创建最多 9999 个恢复点。如果从存储中删除恢复点，则不计入 9999 个总恢复点数。受保护实例的一些常见示例包括运行 Windows 操作系统的虚拟机、应用程序服务器、数据库和个人计算机。例如：
 
 - 运行 Hyper-V 或 Azure IaaS 虚拟机监控程序结构的虚拟机。此虚拟机的来宾操作系统可以是 Windows Server 或 Linux。
@@ -223,5 +224,5 @@ Azure 备份保护本地和云中的数据。Azure Site Recovery 可以协调虚
 [yellow]: ./media/backup-introduction-to-azure-backup/yellow.png
 [red]: ./media/backup-introduction-to-azure-backup/red.png
 
-<!---HONumber=Mooncake_0116_2017-->
+<!---HONumber=Mooncake_0213_2017-->
 <!---Update_Description: wording update -->

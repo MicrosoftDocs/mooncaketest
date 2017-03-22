@@ -1,5 +1,3 @@
-<!-- not suitable for Mooncake -->
-
 ---
 title: 在 HDInsight 中使用交互式 Hive | Azure
 description: 了解如何在 HDInsight 中使用交互式 Hive（基于 LLAP 的 Hive）。
@@ -17,7 +15,7 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 10/27/2016
-wacn.date: 02/14/2017
+wacn.date: 03/16/2017
 ms.author: jgao
 ---
 
@@ -40,6 +38,8 @@ ms.author: jgao
 
 - 使用 Ambari Hive 视图运行 Hive
 
+    有关使用 Hive 视图的信息，请参阅[在 HDInsight 中将 Hive 视图与 Hadoop 配合使用](./hdinsight-hadoop-use-hive-ambari-view.md)。
+
 - 使用 Beeline 运行 Hive
 
     有关在 HDInsight 上使用 Beeline 的信息，请参阅[在 HDInsight 中通过 Beeline 使用 Hive 和 Hadoop](./hdinsight-hadoop-use-hive-beeline.md)。
@@ -52,7 +52,7 @@ ms.author: jgao
 
 **若要查找 JDBC 连接字符串：**
 
-1. 使用以下 URL 登录到 Ambari：https://<ClusterName>.AzureHDInsight.net。
+1. 使用以下 URL 登录到 Ambari：https://\<ClusterName\>.AzureHDInsight.net。
 2. 在左侧菜单中，单击“Hive”。
 3. 单击突出显示图标以复制 URL：
 

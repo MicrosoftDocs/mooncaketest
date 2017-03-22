@@ -13,7 +13,7 @@ ms.tgt_pltfrm: dotnet
 ms.devlang: na
 ms.topic: article
 ms.date: 06/30/2016
-wacn.date: 11/25/2016
+wacn.date: 02/21/2017
 ms.author: rachelap
 ---
 
@@ -75,6 +75,8 @@ ms.author: rachelap
 ## <a id="tutorialstart"></a>继续学习 .NET API 应用教程
 
 如果要遵循适用于 API 应用的 Node.js 或 Java 教程，请跳到下一篇文章：[service principal authentication for API apps](./app-service-api-dotnet-service-principal-auth.md)（API 应用的服务主体身份验证）。
+
+[!INCLUDE [azure-sdk-developer-differences](../../includes/azure-visual-studio-login-guide.md)]
 
 如果要遵循适用于 API 应用的 .NET 系列教程，并已根据[第一篇](./app-service-api-dotnet-get-started.md)和[第二篇](./app-service-api-cors-consume-javascript.md)教程中的说明部署示例应用程序，请跳到[在应用服务和 Azure AD 中设置身份验证](#azureauth)部分。
 

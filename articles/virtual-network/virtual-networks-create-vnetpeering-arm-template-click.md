@@ -35,7 +35,7 @@ ms.author: narayanannamalai;annahar
 
 2. 以下文本显示基于上述方案的从 VNet1 到 VNet2 的 VNet 对等互连链接定义。复制以下内容并将其保存到名为 VNetPeeringVNet1.json 的文件中。
 
-    ```
+    ```json
     {
     "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
@@ -65,7 +65,7 @@ ms.author: narayanannamalai;annahar
 
 3. 以下部分显示基于上述方案从 VNet2 到 VNet1 的 VNet 对等互连链接定义。复制以下内容并将其保存到名为 VNetPeeringVNet2.json 的文件中。
 
-    ```
+    ```json
     {
     "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
@@ -106,7 +106,7 @@ ms.author: narayanannamalai;annahar
 
 4. 若要部署模板文件，可以运行 New-AzureRmResourceGroupDeployment cmdlet 来创建或更新部署。有关使用 Resource Manager 模板的详细信息，请参阅此[文章](../azure-resource-manager/resource-group-template-deploy.md)。
 
-    ```
+    ```powershell
     New-AzureRmResourceGroupDeployment -ResourceGroupName <resource group name> -TemplateFile <template file path> -DeploymentDebugLogLevel all
     ```
 
@@ -115,7 +115,7 @@ ms.author: narayanannamalai;annahar
 
     以下是一个基于上述方案的示例：
 
-    ```
+    ```powershell
     New-AzureRmResourceGroupDeployment -ResourceGroupName VNet101 -TemplateFile .\VNetPeeringVNet1.json -DeploymentDebugLogLevel all
     ```
 
@@ -151,7 +151,7 @@ ms.author: narayanannamalai;annahar
 
 5. 完成部署后，可以运行以下 cmdlet 以查看对等互连状态：
 
-    ```
+    ```powershell
     Get-AzureRmVirtualNetworkPeering -VirtualNetworkName VNet1 -ResourceGroupName VNet101 -Name linktoVNet2
     ```
 
@@ -183,7 +183,7 @@ ms.author: narayanannamalai;annahar
 
 1. 使用订阅 A 的特权用户 A 帐户登录到 Azure，并运行以下 cmdlet：
 
-    ```
+    ```powershell
     New-AzureRmRoleAssignment -SignInName <UserB ID> -RoleDefinitionName "Network Contributor" -Scope /subscriptions/<Subscription-A-ID>/resourceGroups/<ResourceGroupName>/providers/Microsoft.Network/VirtualNetwork/VNet5
     ```
 
@@ -191,19 +191,19 @@ ms.author: narayanannamalai;annahar
 
 2. 使用订阅 B 的特权用户 B 帐户登录到 Azure，并运行以下 cmdlet：
 
-    ```
+    ```powershell
     New-AzureRmRoleAssignment -SignInName <UserA ID> -RoleDefinitionName "Network Contributor" -Scope /subscriptions/<Subscription-B-ID>/resourceGroups/<ResourceGroupName>/providers/Microsoft.Network/VirtualNetwork/VNet3
     ```
 
 3. 在用户 A 的登录会话中，运行以下 cmdlet：
 
-    ```
+    ```powershell
     New-AzureRmResourceGroupDeployment -ResourceGroupName VNet101 -TemplateFile .\VNetPeeringVNet3.json -DeploymentDebugLogLevel all
     ```
 
     以下是定义 JSON 文件的方法。
 
-    ```
+    ```json
     {
     "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
@@ -233,13 +233,13 @@ ms.author: narayanannamalai;annahar
 
 4. 在用户 B 的登录会话中，运行以下 cmdlet：
 
-    ```
+    ```powershell
     New-AzureRmResourceGroupDeployment -ResourceGroupName VNet101 -TemplateFile .\VNetPeeringVNet5.json -DeploymentDebugLogLevel all
     ```
 
     以下是定义 JSON 文件的方法：
 
-    ```
+    ```json
     {
     "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
@@ -275,7 +275,7 @@ ms.author: narayanannamalai;annahar
 
     以下模板用于创建从 HubVNet 到 VNet1 的 VNet 对等互连。请注意将 AllowForwardedTraffic 设置为 false。
 
-    ```
+    ```json
     {
     "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
@@ -306,7 +306,7 @@ ms.author: narayanannamalai;annahar
 
 2. 以下模板用于创建从 VNet1 到 HubVnet 的 VNet 对等互连。请注意将 AllowForwardedTraffic 设置为 true。
 
-    ```
+    ```json
     {
     "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",

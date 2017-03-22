@@ -14,8 +14,8 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 11/15/2016
-wacn.date: 01/25/2017
+ms.date: 01/19/2017
+wacn.date: 03/10/2017
 ms.author: larryfr
 ---
 
@@ -31,10 +31,12 @@ ms.author: larryfr
 
 要完成本文中的步骤，需要：
 
-* **Azure HDInsight（HDInsight 上的 Hadoop）群集（基于 Windows 或 Linux）**
-* **配备 Azure PowerShell 的工作站**。
+* **Azure HDInsight（HDInsight 上的 Hadoop）群集**
 
-[!INCLUDE [upgrade-powershell](../../includes/hdinsight-use-latest-powershell.md)]
+    > [!IMPORTANT]
+    Linux 是在 HDInsight 3.4 版或更高版本上使用的唯一操作系统。有关详细信息，请参阅 [HDInsight 在 Windows 上弃用](./hdinsight-component-versioning.md#hdi-version-32-and-33-nearing-deprecation-date)。
+
+* **配备 Azure PowerShell 的工作站**。
 
 ## <a id="powershell"></a>使用 Azure PowerShell 运行 MapReduce 作业
 
@@ -42,7 +44,7 @@ Azure PowerShell 提供 *cmdlet*，可让你在 HDInsight 上远程运行 MapRed
 
 在远程 HDInsight 群集上运行 MapReduce 作业时，将使用以下 Cmdlet。
 
-* **Login-AzureRmAccount -EnvironmentName AzureChinaCloud**：向 Azure 订阅进行 Azure PowerShell 身份验证。
+* **Login-AzureRmAccount**：对 Azure 订阅进行 Azure PowerShell 身份验证。
 
 * **New-AzureRmHDInsightMapReduceJobDefinition**：使用指定的 MapReduce 信息创建新*作业定义*。
 
@@ -54,22 +56,21 @@ Azure PowerShell 提供 *cmdlet*，可让你在 HDInsight 上远程运行 MapRed
 
 以下步骤演示了如何使用这些 Cmdlet 在 HDInsight 群集上运行作业。
 
-1. 使用编辑器将以下代码保存为 **mapreducejob.ps1**。必须将 **CLUSTERNAME** 替换为 HDInsight 群集的名称。
+1. 使用编辑器将以下代码保存为 **mapreducejob.ps1**。
 
     ```powershell
-    #Specify the values
-    $clusterName = "CLUSTERNAME"
-
     # Login to your Azure subscription
     # Is there an active Azure subscription?
     $sub = Get-AzureRmSubscription -ErrorAction SilentlyContinue
     if(-not($sub))
     {
-        Login-AzureRmAccount -EnvironmentName AzureChinaCloud
+        Add-AzureRmAccount -EnvironmentName AzureChinaCloud
     }
 
-    #Get HTTPS/Admin credentials for submitting the job later
-    $creds = Get-Credential
+    # Get cluster info
+    $clusterName = Read-Host -Prompt "Enter the HDInsight cluster name"
+    $creds=Get-Credential -Message "Enter the login for the cluster"
+
     #Get the cluster info so we can get the resource group, storage, etc.
     $clusterInfo = Get-AzureRmHDInsightCluster -ClusterName $clusterName
     $resourceGroup = $clusterInfo.ResourceGroup
@@ -90,11 +91,11 @@ Azure PowerShell 提供 *cmdlet*，可让你在 HDInsight 上远程运行 MapRed
     # -ClassName = the class of the application
     # -Arguments = The input file, and the output directory
     $wordCountJobDefinition = New-AzureRmHDInsightMapReduceJobDefinition `
-        -JarFile "wasbs:///example/jars/hadoop-mapreduce-examples.jar" `
+        -JarFile "wasb:///example/jars/hadoop-mapreduce-examples.jar" `
         -ClassName "wordcount" `
         -Arguments `
-            "wasbs:///example/data/gutenberg/davinci.txt", `
-            "wasbs:///example/data/WordCountOutput"
+            "wasb:///example/data/gutenberg/davinci.txt", `
+            "wasb:///example/data/WordCountOutput"
 
     #Submit the job to the cluster
     Write-Host "Start the MapReduce job..." -ForegroundColor Green
@@ -115,13 +116,10 @@ Azure PowerShell 提供 *cmdlet*，可让你在 HDInsight 上远程运行 MapRed
         -Container $container `
         -Destination output.txt `
         -Context $context
-    # Print the output
+    # Print the output of the job.
     Get-AzureRmHDInsightJobOutput `
         -Clustername $clusterName `
         -JobId $wordCountJob.JobId `
-        -DefaultContainer $container `
-        -DefaultStorageAccountName $storageAccountName `
-        -DefaultStorageAccountKey $storageAccountKey `
         -HttpCredential $creds
     ```
 
@@ -131,7 +129,7 @@ Azure PowerShell 提供 *cmdlet*，可让你在 HDInsight 上远程运行 MapRed
     .\mapreducejob.ps1
     ```
 
-    运行脚本时，系统将提示对 Azure 订阅进行身份验证。还会要求你提供 HDInsight 群集的 HTTPS/Admin 帐户名称和密码。
+    运行脚本时，系统会提示输入 HDInsight 群集的名称和群集的 HTTPS/Admin 帐户名称和密码。还可能会提示向 Azure 订阅进行身份验证。
 
 3. 作业完成后，应显示如下输出：
 
@@ -171,9 +169,6 @@ Write-Host "Display the standard output ..." -ForegroundColor Green
 Get-AzureRmHDInsightJobOutput `
         -Clustername $clusterName `
         -JobId $wordCountJob.JobId `
-        -DefaultContainer $container `
-        -DefaultStorageAccountName $storageAccountName `
-        -DefaultStorageAccountKey $storageAccountKey `
         -HttpCredential $creds `
         -DisplayOutputType StandardError
 ```
@@ -195,5 +190,5 @@ Azure PowerShell 提供了一种简单方法，可让你在 HDInsight 群集上�
 * [将 Hive 与 HDInsight 上的 Hadoop 配合使用](./hdinsight-use-hive.md)
 * [将 Pig 与 HDInsight 上的 Hadoop 配合使用](./hdinsight-use-pig.md)
 
-<!---HONumber=Mooncake_0120_2017-->
-<!--Update_Description: update from ASM to ARM-->
+<!---HONumber=Mooncake_0306_2017-->
+<!--Update_Description: add information about HDInsight Windows is going to be abandoned-->

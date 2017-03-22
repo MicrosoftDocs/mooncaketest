@@ -1,9 +1,9 @@
 ---
-title: Azure 存储客户端工具 | Azure
+title: 适用于 Azure 存储的工具 | Azure
 description: 可用于查看 Azure 存储数据或与之交互的工具列表。
 services: storage
 documentationcenter: ''
-author: micurd
+author: seguler
 manager: jahogg
 editor: tysonn
 
@@ -13,9 +13,9 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/17/2016
-wacn.date: 12/26/2016
-ms.author: micurd
+ms.date: 01/30/2017
+wacn.date: 03/20/2017
+ms.author: seguler
 ---
 
 # Azure 存储客户端工具
@@ -43,7 +43,20 @@ Azure 存储用户经常要使用 Azure 存储客户端工具查看其数据或�
     <td>OSX</td>
     <td>Linux</td>
   </tr>
-
+  <tr>
+    <td><a href="https://www.azure.cn/home/features/azure-portal/">Azure 门户</a></td>
+    <td>X</td>
+    <td>X</td>
+    <td>X</td>
+    <td>X</td>
+    <td>X</td>
+    <td>X</td>
+    <td>Y</td>
+    <td>X</td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
   <tr>
     <td><a href="http://storageexplorer.com/">Azure 存储资源管理器</a></td>
     <td>X</td>
@@ -224,4 +237,5 @@ Azure 存储用户经常要使用 Azure 存储客户端工具查看其数据或�
   </tr>
 </table>
 
-<!---HONumber=Mooncake_Quality_Review_1215_2016-->
+<!---HONumber=Mooncake_0313_2017-->
+<!--Update_Description: add azure portal feature-->

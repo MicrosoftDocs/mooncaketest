@@ -13,7 +13,7 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/06/2016
-wacn.date: 11/25/2016
+wacn.date: 02/21/2017
 ms.author: cephalin
 ---
 
@@ -47,6 +47,8 @@ ms.author: cephalin
 有关 Azure 资源管理器模板的详细信息，请参阅[创作 Azure 资源管理器模板](../azure-resource-manager/resource-group-authoring-templates.md)。
 
 ### Azure SDK 2.6 for Visual Studio ###
+
+[!INCLUDE [azure-sdk-developer-differences](../../includes/azure-visual-studio-login-guide.md)]
 
 最新的 SDK 包含对 JSON 编辑器中资源管理器模板支持的改进。可以使用它快速从头开始创建资源组模板，或打开现有 JSON 模板（例如下载的库模板）以进行修改、填充参数文件，甚至直接从 Azure 资源组解决方案部署资源组。
 
@@ -272,6 +274,6 @@ Web 应用取决于两个不同的资源。这意味着只有在创建 App Servi
 - [Azure 资源管理器模板函数](../azure-resource-manager/resource-group-template-functions.md)
 - [使用 Azure 资源管理器模板部署应用程序](../azure-resource-manager/resource-group-template-deploy.md)
 - [将 Azure PowerShell 与 Azure 资源管理器配合使用](../azure-resource-manager/powershell-azure-resource-manager.md)
-- [Azure 中的资源组部署疑难解答](../azure-resource-manager/resource-manager-troubleshoot-deployments-portal.md)
+- [Azure 中的资源组部署疑难解答](../azure-resource-manager/resource-manager-deployment-operations.md)
 
 <!---HONumber=Mooncake_1107_2016-->

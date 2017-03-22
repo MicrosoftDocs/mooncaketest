@@ -13,7 +13,7 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/29/2016
-wacn.date: 12/26/2016
+wacn.date: 03/17/2017
 ms.author: robb
 ---
 
@@ -156,7 +156,7 @@ counterSpecifier 属性指定要收集的性能计数器。sampleRate 属性指�
 
     ```
     <ConfigurationSettings>
-       <Setting name="Microsoft.WindowsAzure.Plugins.Diagnostics.ConnectionString" value="DefaultEndpointsProtocol=https;AccountName=<name>;AccountKey=<key>"/>
+       <Setting name="Microsoft.WindowsAzure.Plugins.Diagnostics.ConnectionString" value="DefaultEndpointsProtocol=https;AccountName=<name>;AccountKey=<key>;EndpointSuffix=core.chinacloudapi.cn"/>
     </ConfigurationSettings>
     ```
 2. 保存 ServiceConfiguration.Cloud.cscfg 文件。

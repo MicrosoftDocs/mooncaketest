@@ -14,8 +14,8 @@ manager: ''
 editor: ''
 
 ms.service: mysql
-ms.date: 11/22/2016
-wacn.date: 11/22/2016
+ms.date: 03/09/2017
+wacn.date: 03/09/2017
 wacn.lang: cn
 ---
 
@@ -95,11 +95,11 @@ New-AzureRmResourceGroup -Name "resourcegroupChinaEast" -Location "chinaeast"
 编辑运行以下命令，定义您的服务器名称、位置、版本等信息来完成服务器创建。
 ### Azure PowerShell 0.9* 版本：
 ```
-New-AzureResource -ResourceType "Microsoft.MySql/servers" -ResourceName testPSH -ApiVersion 2015-09-01 -ResourceGroupName resourcegroupChinaEast -Location chinaeast -SkuObject @{name='MS4'} -PropertyObject @{version = '5.5'} 
+New-AzureResource -ResourceType "Microsoft.MySql/servers" -ResourceName testPSH -ApiVersion 2015-09-01 -ResourceGroupName resourcegroupChinaEast -Location chinaeast -PropertyObject @{version = '5.5'} 
 ```
 ### Azure PowerShell 1.0.0+版本：
 ```
-New-AzureRmResource -ResourceType "Microsoft.MySql/servers" -ResourceName testPSH -ApiVersion 2015-09-01 -ResourceGroupName resourcegroupChinaEast -Location chinaeast -PropertyObject @{version = '5.5'} 
+New-AzureRmResource -ResourceType "Microsoft.MySql/servers" -ResourceName testPSH -ApiVersion 2015-09-01 -ResourceGroupName resourcegroupChinaEast -Location chinaeast -SkuObject @{name='MS4'} -PropertyObject @{version = '5.5'} 
 ```
 >[!NOTE]
 > ** 注意:“-ApiVersion 2015-09-01”指定了API的版本，是必要的。另外，运行上述命令可以完成MySQL服务器的创建，但没有用户，须在后续步骤中创建用户设置权限，这一点和使用Azure管理门户创建稍有不同**

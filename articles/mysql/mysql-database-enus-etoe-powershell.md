@@ -14,8 +14,8 @@ manager: ''
 editor: ''
 
 ms.service: mysql_en
-ms.date: 11/22/2016
-wacn.date: 11/22/2016
+ms.date: 03/09/2016
+wacn.date: 03/09/2016
 wacn.lang: en
 ---
 
@@ -91,8 +91,13 @@ New-AzureResourceGroup -Name "resourcegroupChinaEast" -Location "chinaeast"
 ## <a id="step5"></a>Step 5: Create servers
 Edit and run the following commands to set information, including your server name, location, version, and other details, in order to finish creating the server.
 
+### Azure PowerShell 0.9*:
 ```
-New-AzureResource -ResourceType "Microsoft.MySql/servers" -ResourceName testPSH -ApiVersion 2015-09-01 -ResourceGroupName resourcegroupChinaEast -Location chinaeast -SkuObject @{name='MS4'} -PropertyObject @{version = '5.5'} 
+New-AzureResource -ResourceType "Microsoft.MySql/servers" -ResourceName testPSH -ApiVersion 2015-09-01 -ResourceGroupName resourcegroupChinaEast -Location chinaeast -PropertyObject @{version = '5.5'} 
+```
+### Azure PowerShell 1.0.0+:
+```
+New-AzureRmResource -ResourceType "Microsoft.MySql/servers" -ResourceName testPSH -ApiVersion 2015-09-01 -ResourceGroupName resourcegroupChinaEast -Location chinaeast -SkuObject @{name='MS4'} -PropertyObject @{version = '5.5'} 
 ```
 
 >[!NOTE]

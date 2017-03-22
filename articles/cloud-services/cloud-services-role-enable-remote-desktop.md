@@ -20,7 +20,9 @@ ms.author: saurabh
 # 为 Azure 云服务中的角色设置远程桌面连接
 
 >[!div class="op_single_selector"]
+- [Azure 门户预览](./cloud-services-role-enable-remote-desktop-new-portal.md)
 - [Azure 经典管理门户](./cloud-services-role-enable-remote-desktop.md)
+
 - [PowerShell](./cloud-services-role-enable-remote-desktop-powershell.md)
 
 你可以在开发过程中通过在服务定义中加入远程桌面模块来在角色中启用远程桌面连接，也可以通过远程桌面扩展选择启用远程桌面。首选方法是使用远程桌面扩展，因为即使在部署应用程序后，也能启用远程桌面，而不必重新部署应用程序。

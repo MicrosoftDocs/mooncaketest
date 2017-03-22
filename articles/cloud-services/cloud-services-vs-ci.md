@@ -14,7 +14,7 @@ ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 11/02/2016
-wacn.date: 12/05/2016
+wacn.date: 03/17/2017
 ms.author: cawa
 ---
 
@@ -45,7 +45,7 @@ ms.author: cawa
 ### 3\.选择诊断存储帐户
 * 单击“...”按钮，从启动的对话框中选择一个存储帐户。请注意，生成的存储连接字符串不会拥有存储帐户密钥。
 * 例如：
-  DefaultEndpointsProtocol=https;AccountName=contosostorage;AccountKey=$(*clouddiagstrg.key*)
+  DefaultEndpointsProtocol=https;AccountName=contosostorage;AccountKey=$(*clouddiagstrg.key*);EndpointSuffix=core.chinacloudapi.cn
 
 ### 4\.调试项目
 * 按 F5 在 Visual Studio 中开始调试。一切都应如以前一样运行。

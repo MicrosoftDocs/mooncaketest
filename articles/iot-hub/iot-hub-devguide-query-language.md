@@ -14,7 +14,7 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/30/2016
-wacn.date: 02/10/2017
+wacn.date: 03/10/2017
 ms.author: elioda
 ---
 
@@ -25,7 +25,7 @@ IoT 中心提供类似于 SQL 的强大语言用于检索有关[设备孪生][ln
 * IoT 中心查询语言的主要功能简介，以及
 * 语言的详细说明。
 
-## <a name="getting-started-with-twin-queries"></a> 设备孪生查询入门
+## <a name="getting-started-with-device-twin-queries"></a> 设备孪生查询入门
 [设备孪生][lnk-twins]可以包含标记和属性形式的任意 JSON 对象。通过 IoT 中心，可将设备孪生作为包含所有设备孪生信息的 JSON 文档进行查询。例如，假设 IoT 中心设备孪生采用以下结构：
 
 ```
@@ -263,10 +263,25 @@ IoT 中心允许使用任意条件检索设备孪生筛选结果。例如，
 
 ```
     {
+        "$messageId": "",
+        "$enqueuedTime": "",
+        "$to": "",
+        "$expiryTimeUtc": "",
+        "$correlationId": "",
+        "$userId": "",
+        "$ack": "",
+        "$connectionDeviceId": "",
+        "$connectionDeviceGenerationId": "",
+        "$connectionAuthMethod": "",
+        "$content-type": "",
+        "$content-encoding": ""
+
         "userProperty1": "",
         "userProperty2": ""
     }
 ```
+
+消息系统属性以 `'$'` 符号作为前缀。始终可以通过属性名称访问用户属性。如果用户属性名恰好与系统属性同名（例如 `$to`），则将使用 `$to` 表达式检索用户属性。始终可以使用方括号 (`{}`) 访问系统属性：例如，可以使用表达式 `{$to}` 访问系统属性 `to`。括在括号中的属性名称始终检索相应的系统属性。
 
 请记住，属性名称不区分大小写。
 
@@ -488,5 +503,5 @@ GROUP BY 的正式语法为：
 
 [lnk-hub-sdks]: ./iot-hub-devguide-sdks.md
 
-<!---HONumber=Mooncake_0206_2017-->
-<!--Update_Description:update wording-->
+<!---HONumber=Mooncake_0306_2017-->
+<!--Update_Description:update wording and code-->

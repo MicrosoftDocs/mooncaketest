@@ -14,7 +14,7 @@ ms.tgt_pltfrm: mobile-multiple
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 10/01/2016
-wacn.date: 11/21/2016
+wacn.date: 02/21/2017
 ms.author: adrianha
 ---
 
@@ -36,6 +36,8 @@ ms.author: adrianha
 ## <a name="create-app"></a>如何创建 .NET 移动应用后端
 
 如果正在开始新项目，可以使用 [Azure 门户预览]或 Visual Studio 创建应用服务应用程序。可以在本地运行应用服务应用程序，或将项目发布到基于云的应用服务移动应用。
+
+[!INCLUDE [azure-sdk-developer-differences](../../includes/azure-visual-studio-login-guide.md)]
 
 如果将移动功能添加到现有项目，请参阅[下载并初始化 SDK](#install-sdk) 部分。
 

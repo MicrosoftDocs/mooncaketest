@@ -13,8 +13,8 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/23/2016
-wacn.date: 01/13/2017
+ms.date: 01/05/2017
+wacn.date: 02/24/2017
 ms.author: juliako
 ---
 
@@ -65,7 +65,7 @@ ms.author: juliako
 
  [H264 单比特率 4x3 SD 音频 5.1](./media-services-mes-preset-H264-Single-Bitrate-4x3-SD-Audio-5.1.md) 将生成单个 MP4 文件，其比特率为 18000 kbps，并且带有 AAC 5.1 音频。
 
- [H264 单比特率 4x3 SD](./media-services-mes-preset-H264-Single-Bitrate-4x3-SD.md) 将生成单个 MP4 文件，其比特率为 18000 kbps，并且带有立体声 AAC 音频。
+ [H264 单比特率 4x3 SD](./media-services-mes-preset-H264-Single-Bitrate-4x3-SD.md) 将生成单个 MP4 文件，其比特率为 1800 kbps，并且带有立体声 AAC 音频。
 
  [H264 单比特率 16x9 SD 音频 5.1](./media-services-mes-preset-H264-Single-Bitrate-16x9-SD-Audio-5.1.md) 将生成单个 MP4 文件，其比特率为 2200 kbps，并且带有 AAC 5.1 音频。
 
@@ -83,4 +83,5 @@ ms.author: juliako
 
  若要了解媒体服务编码器的更多相关信息，请参阅[使用 Azure 媒体服务按需编码](./media-services-encode-asset.md)。
 
-<!---HONumber=Mooncake_0109_2017-->
+<!---HONumber=Mooncake_0220_2017-->
+<!--Update_Description: fix the typo "18000 kbps" to "1800 kbps" for H264 单比特率 4x3 SD-->

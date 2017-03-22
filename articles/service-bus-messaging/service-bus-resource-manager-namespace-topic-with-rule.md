@@ -1,15 +1,15 @@
 ---
-title: 使用 Azure Resource Manager 模板创建包含主题、订阅和规则的服务总线命名空间 
+title: 使用模板创建 Azure 服务总线主题订阅和规则
 description: 使用 Azure Resource Manager 模板创建包含主题、订阅和规则的服务总线命名空间
-services:  service-bus-messaging
+services:  service-bus
 documentationcenter:  .net
-authors: sethmanheim
+author: sethmanheim
 manager: timlt
 editor: ''
 
-ms.date: 10/25/2016
+ms.date: 01/18/2017
 ms.service: service-bus
-wacn.date: 12/26/2016
+wacn.date: 03/20/2017
 ---
 
 # 使用 Azure Resource Manager 模板创建包含主题、订阅和规则的服务总线命名空间
@@ -17,7 +17,7 @@ wacn.date: 12/26/2016
 
 有关创建模板的详细信息，请参阅[创作 Azure Resource Manager 模板][Authoring Azure Resource Manager templates]。
 
-有关 Azure 资源命名约定的实践和模式的详细信息，请参阅 [Azure 资源命名约定][Azure Resources Naming Conventions]。
+有关 Azure 资源命名约定的实践和模式的详细信息，请参阅 [Azure 资源的建议命名约定][Azure Resources Naming Conventions]。
 
 有关完整的模板，请参阅[包含主题、订阅和规则的服务总线命名空间][Service Bus namespace with topic, subscription, and rule]模板。
 
@@ -35,7 +35,7 @@ wacn.date: 12/26/2016
 [服务总线主题和订阅](./service-bus-queues-topics-subscriptions.md#topics-and-subscriptions)以“发布/订阅”模式提供一对多的通信形式。使用主题和订阅时，分布式应用程序的组件不直接相互通信，而是通过充当中介的主题交换消息。对主题的订阅类似于接收发送到主题的消息副本的虚拟队列。针对订阅的筛选器可以指定发送到主题的哪些消息应该在特定主题订阅中显示。
 
 ## 什么是规则（筛选器）？
-在许多情况下，必须以不同方式处理具有特定特征的消息。若要启用此功能，可以将订阅配置为查找具有所需属性的消息，然后执行对这些属性的特定修改。虽然服务总线订阅可以看到发送到主题的所有消息，但也可以仅将这些消息的一个子集复制到虚拟订阅队列。使用订阅筛选器完成此操作。若要了解有关规则（筛选器）的详细信息，请参阅[服务总线队列、主题和订阅][Service Bus queues, topics, and subscriptions]。
+在许多情况下，必须以不同方式处理具有特定特征的消息。若要启用此功能，你可以将订阅配置为查找具有所需属性的消息，然后执行这些属性的部分修改操作。虽然服务总线订阅可以看到发送到主题的所有消息，但你仅可以将这些消息的一个子集复制到虚拟订阅队列。使用订阅筛选器完成此操作。若要了解有关规则（筛选器）的详细信息，请参阅[服务总线队列、主题和订阅][Service Bus queues, topics, and subscriptions]。
 
 若要自动运行部署，请单击以下按钮：
 
@@ -49,7 +49,7 @@ wacn.date: 12/26/2016
 ### serviceBusNamespaceName
 要创建的服务总线命名空间的名称。
 
-```
+```json
     "serviceBusNamespaceName": {
     "type": "string"
     }
@@ -58,7 +58,7 @@ wacn.date: 12/26/2016
 ### serviceBusTopicName
 在服务总线命名空间中创建的主题的名称。
 
-```
+```json
     "serviceBusTopicName": {
     "type": "string"
     }
@@ -67,7 +67,7 @@ wacn.date: 12/26/2016
 ### serviceBusSubscriptionName
 在服务总线命名空间中创建的订阅的名称。
 
-```
+```json
     "serviceBusSubscriptionName": {
     "type": "string"
     }
@@ -88,7 +88,7 @@ wacn.date: 12/26/2016
 ## 要部署的资源
 创建类型为 **Messaging** 的包含主题、订阅和规则的标准服务总线命名空间。
 
-```
+```json
      "resources": [{
             "apiVersion": "[variables('sbVersion')]",
             "name": "[parameters('serviceBusNamespaceName')]",
@@ -141,12 +141,12 @@ wacn.date: 12/26/2016
 [!INCLUDE [app-service-deploy-commands](../../includes/app-service-deploy-commands.md)]
 
 ## PowerShell
-```
+```powershell
     New-AzureResourceGroupDeployment -Name <deployment-name> -ResourceGroupName <resource-group-name> -TemplateUri <https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/201-servicebus-create-topic-subscription-rule/azuredeploy.json>
 ```
 
 ## Azure CLI
-```
+```cli
     azure config mode arm
 
     azure group deployment create <my-resource-group> <my-deployment-name> --template-uri <https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/201-servicebus-create-topic-subscription-rule/azuredeploy.json>
@@ -155,9 +155,9 @@ wacn.date: 12/26/2016
 ## 后续步骤
 现在，你已使用 Azure Resource Manager 创建并部署了资源，请通过查看以下文章了解如何管理这些资源：
 
-* [使用 Azure 自动化管理 Azure Service Bus](./service-bus-automation-manage.md)
-* [使用 PowerShell 管理服务总线](./service-bus-powershell-how-to-provision.md)
-* [使用服务总线资源管理器管理服务总线资源](https://code.msdn.microsoft.com/Service-Bus-Explorer-f2abca5a)
+* [使用 Azure 自动化管理 Azure Service Bus](./service-bus-management-libraries.md)
+* [使用 PowerShell 管理服务总线](https://docs.microsoft.com/en-us/powershell/resourcemanager/azurerm.servicebus/v0.0.2/azurerm.servicebus/)
+* [使用服务总线资源管理器管理服务总线资源](https://github.com/paolosalvatori/ServiceBusExplorer/releases)
 
 [Authoring Azure Resource Manager templates]: ../azure-resource-manager/resource-group-authoring-templates.md
 [Learn more about Service Bus topics and subscriptions]: ./service-bus-queues-topics-subscriptions.md
@@ -167,4 +167,4 @@ wacn.date: 12/26/2016
 [Service Bus namespace with topic, subscription, and rule]: https://github.com/Azure/azure-quickstart-templates/blob/master/201-servicebus-create-topic-subscription-rule/
 [Service Bus queues, topics, and subscriptions]: ./service-bus-queues-topics-subscriptions.md
 
-<!---HONumber=Mooncake_1219_2016-->
+<!---HONumber=Mooncake_0313_2017-->

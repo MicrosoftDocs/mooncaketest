@@ -1,5 +1,3 @@
-<!-- not suitable for Mooncake -->
-
 ---
 title: HDInsight 中的 Apache Spark 概述 | Azure
 description: 介绍 HDInsight 中的 Apache Spark，以及可在应用程序中使用 HDInsight 上的 Spark 的情况。
@@ -17,7 +15,7 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
 ms.date: 01/03/2017
-wacn.date: 01/25/2017
+wacn.date: 03/16/2017
 ms.author: nitinme
 ---
 
@@ -40,11 +38,10 @@ Azure HDInsight 提供完全托管的 Spark 服务。在 HDInsight 上使用 Spa
 
 | 功能 | 说明 |
 | --- | --- |
-| 方便创建群集 |你可以使用 Azure 管理门户、Azure PowerShell 或 HDInsight .NET SDK，在几分钟之内于 HDInsight 上创建新的 Spark 群集。请参阅 [HDInsight 中的 Spark 群集入门](./hdinsight-apache-spark-jupyter-spark-sql.md) |
+| 方便创建群集 |你可以使用 Azure 门户预览、Azure PowerShell 或 HDInsight .NET SDK，在几分钟之内于 HDInsight 上创建新的 Spark 群集。请参阅 [HDInsight 中的 Spark 群集入门](./hdinsight-apache-spark-jupyter-spark-sql.md) |
 | 易于使用 |HDInsight 群集中的 Spark 包含预先配置的 Jupyter 笔记本。你可以使用这些笔记本执行交互式数据处理和可视化。Jupyter 笔记本的 URL 是 https://CLUSTERNAME.azurehdinsight.cn/jupyter。将 **CLUSTERNAME** 替换为 Spark HDInsight 群集的名称。 |
 | REST API |HDInsight 中的 Spark 包含 [Livy](https://github.com/cloudera/hue/tree/master/apps/spark/java#welcome-to-livy-the-rest-spark-server)，它是基于 REST-API 的 Spark 作业服务器，用于远程提交和监视正在运行的作业。 |
 | 与 Azure 服务集成 |HDInsight 上的 Spark 随附了 Azure 事件中心的连接器。客户还可以使用事件中心来生成流式处理应用程序。 |
-| 支持 R Server |可以在 HDInsight Spark 群集上设置 R Server，以 Spark 群集承诺的速度运行分布式 R 计算。有关详细信息，请参阅[开始使用 HDInsight 上的 R Server](./hdinsight-hadoop-r-server-get-started.md)。 |
 | 并发查询 |HDInsight 中的 Spark 支持并发查询。它允许一个用户运行多个查询，或者不同的用户运行多个查询，以及让应用程序共享相同的群集资源。 |
 | SSD 缓存 |你可以选择将数据缓存在内存中，或缓存在已附加到群集节点的 SSD 中。内存缓存提供最佳的查询性能，但可能费用不菲；SSD 缓存是改善查询性能的绝佳选项，而且你不需要根据内存中的整个数据集创建满足其需求的群集规模。 |
 | 与 BI 工具集成 |HDInsight 上的 Spark 提供用于数据分析的 BI 工具（如[Power BI](http://www.powerbi.com/) 和 [Tableau](http://www.tableau.com/products/desktop)）连接器。 |
@@ -62,6 +59,8 @@ HDInsight 中的 Apache Spark 将数据存储在 Azure Blob 内。商务专家�
 
 ### 迭代机器学习
 [查看教程：使用 HVAC 数据预测建筑物温度](./hdinsight-apache-spark-ipython-notebook-machine-learning.md)
+
+[查看教程：预测食品检测结果](./hdinsight-apache-spark-machine-learning-mllib-ipython.md)
 
 Apache Spark 随附 [MLlib](http://spark.apache.org/mllib/) - 构建在 Spark 基础之上的机器学习库。此外，HDInsight 上的 Spark 还包含 Anaconda - 为机器学习提供各种包的 Python 分发版。结合内置的 Jupyter 笔记本支持，你将拥有最先进的机器学习应用程序创建环境。
 
@@ -87,9 +86,12 @@ HDInsight 中的 Spark 还提供 [ODBC 驱动程序](http://go.microsoft.com/fwl
 ### 方案
 * [Spark 和 BI：使用 HDInsight 中的 Spark 和 BI 工具执行交互式数据分析](./hdinsight-apache-spark-use-bi-tools.md)
 * [Spark 和机器学习：使用 HDInsight 中的 Spark 对使用 HVAC 数据生成温度进行分析](./hdinsight-apache-spark-ipython-notebook-machine-learning.md)
+* [Spark 和机器学习：使用 HDInsight 中的 Spark 预测食品检查结果](./hdinsight-apache-spark-machine-learning-mllib-ipython.md)
 * [Spark 流式处理：使用 HDInsight 中的 Spark 生成实时流式处理应用程序](./hdinsight-apache-spark-eventhub-streaming.md)
+* [使用 HDInsight 中的 Spark 分析网站日志](./hdinsight-apache-spark-custom-library-website-log-analysis.md)
 
 ### 创建和运行应用程序
+* [使用 Scala 创建独立的应用程序](./hdinsight-apache-spark-create-standalone-application.md)
 * [使用 Livy 在 Spark 群集中远程运行作业](./hdinsight-apache-spark-livy-rest-interface.md)
 
 ### 工具和扩展

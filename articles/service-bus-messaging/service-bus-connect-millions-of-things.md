@@ -26,7 +26,7 @@ wacn.date: 01/04/2017
 ## 构建
 - [分区消息实体](./service-bus-partitioning.md)
 - [服务总线主题](./service-bus-dotnet-how-to-use-topics-subscriptions.md)
-- [在 Linux 和 Windows 上使用 Azure 服务总线安装 Apache Qpid Proton C](./service-bus-amqp-apache.md) 
+- [在 Linux 和 Windows 上使用 Azure 服务总线安装 Apache Qpid Proton C](./service-bus-amqp-overview.md) 
 
 ## 热门
 

@@ -14,7 +14,7 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/12/2016
-wacn.date: 01/03/2017
+wacn.date: 02/21/2017
 ms.author: amsriva
 ---
 
@@ -255,7 +255,6 @@ $appgw = New-AzureRmApplicationGateway -Name appgwtest -ResourceGroupName appgw-
 Get-AzureRmPublicIpAddress -ResourceGroupName appgw-RG -Name publicIP01
 ```
 
-<br/>
 
 ```
 Name                     : publicIP01
@@ -278,9 +277,5 @@ DnsSettings              : {
                                 "Fqdn": "00000000-0000-xxxx-xxxx-xxxxxxxxxxxx.chinacloudapp.cn"
                             }
 ```
-
-## 后续步骤
-
-通过[应用程序网关 - Web 应用程序防火墙](./application-gateway-webapplicationfirewall-overview.md)了解如何保护网站
 
 <!---HONumber=Mooncake_1226_2016-->

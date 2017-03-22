@@ -15,7 +15,7 @@ ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 12/14/2016
-wacn.date: 01/25/2017
+wacn.date: 03/16/2017
 ms.author: cgronlun
 ---
 
@@ -23,7 +23,7 @@ ms.author: cgronlun
  本文简单介绍了 Azure HDInsight 上的 Hadoop 及其生态系统和大数据。了解 Hadoop 组件、常用术语以及大数据分析方案。
 
 ## HDInsight 上的 Hadoop 是什么？
-Hadoop 是指一个由开源软件组成的生态系统，其所构成的框架适用于对计算机群集上的大数据集进行分布式处理、存储和分析。Azure HDInsight 使 **Hortonworks 数据平台 (HDP)** 分发中的 Hadoop 组件能够在云中使用，可部署具有高可靠性和可用性的托管群集，并使用 Active Directory 提供企业级安全性和监管。
+Hadoop 是指一个由开源软件组成的生态系统，其所构成的框架适用于对计算机群集上的大数据集进行分布式处理、存储和分析。Azure HDInsight 使 **Hortonworks 数据平台 (HDP)** 分发中的 Hadoop 组件能够在云中使用，可部署具有高可靠性和可用性的托管群集。
 
 Apache Hadoop 是进行大数据处理的原始开源项目。下面是被视为 Hadoop 技术堆栈一部分的相关软件和实用程序的开发情况，包括 Apache Hive、Apache HBase、Apache Spark 等。有关详细信息，请参阅 [HDInsight 中的 Hadoop 生态系统概述](#overview)。
 
@@ -41,7 +41,6 @@ HDInsight 提供以下群集类型：
 * **[Apache Hadoop](https://wiki.apache.org/hadoop)**：为可靠的数据存储提供了 [HDFS](#hdfs) 和一个简单的 [MapReduce](#mapreduce) 编程模型，以并行地处理和分析数据。
 * **[Apache Spark](http://spark.apache.org/)**：一种并行处理框架，支持内存中处理，以提升大数据分析应用程序的性能；Spark 适用于 SQL、流式数据处理和机器学习。请参阅[概述：什么是 HDInsight 中的 Apache Spark？](./hdinsight-apache-spark-overview.md)
 * **[Apache HBase](http://hbase.apache.org/)**：构建于 Hadoop 上的 NoSQL 数据库，用于为大量非结构化和半结构化数据（可能为数十亿行乘以数百万列）提供随机访问和高度一致性。请参阅 [HDInsight 中的 HBase 概述](./hdinsight-hbase-overview.md)。
-* **[Microsoft R Server](https://msdn.microsoft.com/microsoft-r/rserver)**：用于托管和管理并行分布式 R 进程的企业级服务器。它可让数据科研人员、统计人员和 R 程序员根据需要访问 HDInsight 上可缩放的分布式分析方法。请参阅 [HDInsight 上的 R Server 概述](./hdinsight-hadoop-r-server-overview.md)。
 * **[Apache Storm](https://storm.incubator.apache.org/)**：一个分布式实时计算系统，用于快速处理大型数据流。Storm 以 HDInsight 中的托管群集形式提供。请参阅[使用 Storm 和 Hadoop 分析实时传感器数据](./hdinsight-storm-sensor-data-analysis.md)。
 * **[Apache Interactive Hive 预览版（AKA：Live Long and Process）](https://cwiki.apache.org/confluence/display/Hive/LLAP)**：内存中缓存用于实现交互式且更快的 Hive 查询。请参阅[在 HDInsight 中使用 Interactive Hive](./hdinsight-hadoop-use-interactive-hive.md)。
 * **[使用脚本操作的自定义群集](./hdinsight-hadoop-customize-cluster-linux.md)**：使用在预配期间运行的脚本安装其他组件的群集。
@@ -53,7 +52,7 @@ HDInsight 提供以下群集类型：
 
 * [Hue](./hdinsight-hadoop-hue-linux.md)：一组 Web 应用程序，用来与群集交互。仅 Linux 群集。
 * [Giraph](./hdinsight-hadoop-giraph-install-linux.md)：通过图形处理对事物或人员之间的关系建模。
-* [R](./hdinsight-hadoop-r-scripts.md)：机器学习中用于统计计算的开源语言和环境。
+* [R](./hdinsight-hadoop-r-scripts-linux.md)：机器学习中用于统计计算的开源语言和环境。
 * [Solr](./hdinsight-hadoop-solr-install-linux.md)：允许对数据进行全文搜索的企业级搜索平台。
 
 有关开发你自己的脚本操作的信息，请参阅[使用 HDInsight 进行脚本操作开发](./hdinsight-hadoop-script-actions-linux.md)。
@@ -85,7 +84,7 @@ Apache Ambari 用于设置、管理和监视 Apache Hadoop 群集。它包括一
 请参阅[使用 Ambari 管理 HDInsight 群集](./hdinsight-hadoop-manage-ambari.md)（仅限 Linux）、[使用 Ambari API 监视 HDInsight 中的 Hadoop 群集](./hdinsight-monitor-use-ambari-api.md)和 <a target="_blank" href="https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md">Apache Ambari API 参考</a>。
 
 ### <a name="avro"></a>Avro (Microsoft .NET Library for Avro)
-Microsoft .NET Library for Avro 针对 Microsoft.NET 环境序列化实现了 Apache Avro 紧凑的二进制数据交换格式。它使用 <a target="_blank" href="http://www.json.org/">JavaScript 对象表示法 (JSON)</a> 定义与语言无关的架构，以支持语言互操作性，这意味着可以用一种语言读取以另一种语言序列化的数据。<a target=_"blank" href="http://avro.apache.org/docs/current/spec.html">Apache Avro 规范</a>中可找到有关格式的详细信息。Avro 文件格式支持分布式 MapReduce 编程模型。文件是“可拆分的”，这意味着可搜寻文件中的任意点，并可从某特定块开始读取。若要了解相关方法，请参阅[使用 Microsoft .NET Library for Avro 序列化数据](./hdinsight-dotnet-avro-serialization.md)。
+Microsoft .NET Library for Avro 针对 Microsoft.NET 环境序列化实现了 Apache Avro 紧凑的二进制数据交换格式。它使用 <a target="_blank" href="http://www.json.org/">JavaScript 对象表示法 (JSON)</a> 定义与语言无关的架构，以支持语言互操作性，这意味着可以用一种语言读取以另一种语言序列化的数据。<a target="_blank" href="http://avro.apache.org/docs/current/spec.html">Apache Avro 规范</a>中可找到有关格式的详细信息。Avro 文件格式支持分布式 MapReduce 编程模型。文件是“可拆分的”，这意味着可搜寻文件中的任意点，并可从某特定块开始读取。若要了解相关方法，请参阅[使用 Microsoft .NET Library for Avro 序列化数据](./hdinsight-dotnet-avro-serialization.md)。
 
 ### <a name="hdfs" id="HDFS"></a>HDFS
 Hadoop 分布式文件系统 (HDFS) 是一种分布式文件系统，采用 MapReduce 和 YARN，是 Hadoop 生态系统的核心。HDFS 是 HDInsight 上 Hadoop 群集的标准文件系统。
@@ -176,7 +175,6 @@ HDInsight 群集支持以下特定于 Hadoop 生态系统的语言：
 * [HDInsight 文档](./index.md)：Azure HDInsight 上的 Hadoop 文档页，包含文章、视频及其他资源的链接。
 * [HDInsight 中的 Hadoop 入门](./hdinsight-hadoop-linux-tutorial-get-started.md)：有关预配 HDInsight Hadoop 群集和运行示例 Hive 查询的快速入门教程。
 * [HDInsight 中的 Spark 入门](./hdinsight-apache-spark-jupyter-spark-sql.md)：介绍如何创建 Spark 群集和运行交互式 Spark SQL 查询的快速入门教程。
-* [在 HDInsight 上使用 R Server](./hdinsight-hadoop-r-server-get-started.md)：开始在 HDInsight 中使用 R Server。
 * [预配 HDInsight 群集](./hdinsight-hadoop-provision-linux-clusters.md)：了解如何通过 Azure 门户预览、Azure CLI 或 Azure PowerShell 预配 HDInsight Hadoop 群集。
 
 ### Apache Hadoop

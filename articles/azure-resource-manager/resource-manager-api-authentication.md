@@ -14,7 +14,7 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 12/27/2016
-wacn.date: 01/25/2017
+wacn.date: 03/03/2017
 ms.author: dugill;tomfitz
 ---
 
@@ -136,7 +136,7 @@ code=AAABAAAAiL****FDMZBUwZ8eCAA&session_state=2d16bbce-d5d1-443f-acdf-75f6b0ce8
 下面是一个示例 Open ID Connect 请求：
 
 ```
- https://login.chinacloudapi.cn/{tenant-id}/OAuth2/Authorize?client_id=a0448380-c346-4f9f-b897-c18733de9394&response_mode=form_post&response_type=code+id_token&redirect_uri=http%3a%2f%2fwww.vipswapper.com%2fcloudsense%2fAccount%2fSignIn&resource=https%3a%2f%2fgraph.chinacloudapi.cn%2f&scope=openid+profile&nonce=63567Dc4MDAw&domain_hint=live.com&state=M_12tMyKaM8
+https://login.chinacloudapi.cn/{tenant-id}/OAuth2/Authorize?client_id=a0448380-c346-4f9f-b897-c18733de9394&response_mode=form_post&response_type=code+id_token&redirect_uri=http%3a%2f%2fwww.vipswapper.com%2fcloudsense%2fAccount%2fSignIn&resource=https%3a%2f%2fgraph.chinacloudapi.cn%2f&scope=openid+profile&nonce=63567Dc4MDAw&domain_hint=live.com&state=M_12tMyKaM8
 ```
 
 Azure AD 对用户进行身份验证，并根据需要请求用户向应用授予权限。它会将授权代码返回到应用程序的回复 URL。Azure AD 根据请求的 response\_mode，将数据发回到查询字符串，或作为发布数据发送。
@@ -254,7 +254,7 @@ HTTP/1.1 200 OK
 你只有 Azure Resource Manager 的访问令牌 - 需要获取新的访问令牌来调用 Azure AD 图形 API。Azure AD 中的每个应用程序都有权查询其本身的服务主体对象，因此，仅限应用的访问令牌已足够。
 
 ### <a id="app-azure-ad-graph"></a> 获取 Azure AD 图形 API 的仅限应用的访问令牌
-若要对应用进行身份验证并获取 Azure AD 图形 API 的令牌，请向 Azure AD 令牌终结点发出客户端凭据授予 OAuth2.0 流令牌请求 (**https://login.chinacloudapi.cn/{directory\_domain\_name}/OAuth2/Token**)。
+若要对应用进行身份验证并获取 Azure AD 图形 API 的令牌，请向 Azure AD 令牌终结点发出客户端凭据授予 OAuth2.0 流令牌请求 (**https://login.chinacloudapi.cn/{directory_domain_name}/OAuth2/Token**)。
 
 ASP.net MVC 示例应用程序的 [GetObjectIdOfServicePrincipalInOrganization](https://github.com/dushyantgill/VipSwapper/blob/master/CloudSense/CloudSense/AzureADGraphAPIUtil.cs) 方法使用适用于 .NET 的 Active Directory 身份验证库来获取图形 API 的仅限应用的访问令牌。
 
@@ -411,7 +411,5 @@ ASP.net MVC 示例应用的 [RevokeRoleFromServicePrincipalOnSubscription 方法
 
 大功告成 - 用户现在可以使用应用程序来轻松连接和管理其 Azure 订阅。
 
-<!---HONumber=Mooncake_0120_2017-->
-<!-- Update_Description: update meta properties -->
-<!-- Update_Description: wording update -->
-<!-- Update_Description: update link reference -->
+<!---HONumber=Mooncake_0227_2017-->
+<!-- Update_Description: update meta properties; wording update -->

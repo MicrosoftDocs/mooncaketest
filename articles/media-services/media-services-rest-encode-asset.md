@@ -1,19 +1,20 @@
 ---
 title: 如何使用 Media Encoder Standard 对资产进行编码 | Azure
-description: 了解如何使用媒体编码器标准版对媒体服务上的媒体内容进行编码。代码示例使用 REST API。
+description: 了解如何使用媒体编码器标准版为媒体服务上的媒体内容编码。代码示例使用 REST API。
 services: media-services
-documentationCenter: ''
-authors: Juliako
-manager: dwrede
+documentationcenter: ''
+author: Juliako
+manager: erikre
 editor: ''
 
+ms.assetid: 2a7273c6-8a22-4f82-9bfe-4509ff32d4a4
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/19/2016
-wacn.date: 12/16/2016
+ms.date: 01/05/2017
+wacn.date: 02/24/2017
 ms.author: juliako
 ---
 
@@ -34,9 +35,9 @@ ms.author: juliako
 - 可通过 Job 实体上的 Tasks 导航属性，或
 - 通过 OData 批处理以内联形式定义任务。
 
-建议始终将夹层文件编码为自适应比特率 MP4 集，然后使用[动态打包](./media-services-dynamic-packaging-overview.md)将该集转换为所需的格式。若要利用动态打包，首先必须获取计划从中传送内容的流式处理终结点的至少一个点播流式传输单元。有关详细信息，请参阅[如何缩放媒体服务](./media-services-manage-origins.md#scale_streaming_endpoints)。
+建议始终将夹层文件编码为自适应比特率 MP4 集，然后使用[动态打包](./media-services-dynamic-packaging-overview.md)将该集转换为所需的格式。
 
-如果输出资产已经过存储加密，必须配置资产传送策略。有关详细信息，请参阅[配置资产传送策略](./media-services-rest-configure-asset-delivery-policy.md)。
+如果输出资产已经过存储加密，则必须配置资产传送策略。有关详细信息，请参阅[配置资产传送策略](./media-services-rest-configure-asset-delivery-policy.md)。
 
 >[!NOTE]
 >开始引用媒体处理器之前，请确认媒体处理器 ID 正确无误。有关详细信息，请参阅[获取媒体处理器](./media-services-rest-get-media-processor.md)。
@@ -259,4 +260,4 @@ HTTP/1.1 201 Created
 
 [获取媒体处理器](./media-services-rest-get-media-processor.md)
 
-<!---HONumber=Mooncake_Quality_Review_1202_2016-->
+<!---HONumber=Mooncake_0220_2017-->

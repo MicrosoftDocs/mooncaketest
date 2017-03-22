@@ -1,5 +1,3 @@
-<!-- not suitable for Mooncake -->
-
 ---
 title: 使用 Azure 门户预览管理 HDInsight 中基于 Linux 的 Hadoop 群集 | Azure
 description: 了解如何使用 Azure 门户预览创建和管理基于 Linux 的 HDInsight 群集。
@@ -17,7 +15,7 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 12/20/2016
-wacn.date: 01/25/2017
+wacn.date: 03/16/2017
 ms.author: jgao
 ---
 
@@ -84,7 +82,7 @@ HDInsight 使用各种 Hadoop 组件。有关已获得验证和支持的组件�
     * **属性**：查看群集属性。
     * **存储帐户**：查看存储帐户和密钥。存储帐户是在群集创建过程中进行配置。
     * **群集 AAD 标识**：
-    * **新建支持请求**：允许用户使用 Microsoft 支持创建支持票证。
+    * **新建支持请求**：允许用户使用 Azure.cn 支持创建支持票证。
 
 6. 单击“属性”：
 
@@ -93,7 +91,7 @@ HDInsight 使用各种 Hadoop 组件。有关已获得验证和支持的组件�
     * **主机名**：群集名称。
     * **群集 URL**。Ambari Web 界面的 URL。
     * **状态**：包括“已终止”、“已接受”、ClusterStorageProvisioned、AzureVMConfiguration、HDInsightConfiguration、“正常运行”、“正在运行”、“错误”、“正在删除”、“已删除”、“超时”、DeleteQueued、DeleteTimedout、DeleteError、PatchQueued、CertRolloverQueued、ResizeQueued、ClusterCustomization
-    * **区域**：Azure 位置。有关受支持的 Azure 位置的列表，请参阅 [HDInsight pricing](https://www.azure.cn/pricing/details/hdinsight/)（HDInsight 定价）中的 **Region**（区域）下拉列表框。
+    * **区域**：Azure 位置。有关受支持的 Azure 位置的列表，请参阅 [HDInsight pricing](https://www.azure.cn/pricing/details/hdinsight/)（HDInsight 定价）中的“上市地区”。
     * **创建日期**。
     * **操作系统**：**Windows** 或 **Linux**。
     * **类型**：Hadoop、HBase、Storm、Spark。
@@ -196,7 +194,7 @@ HDInsight 群集可以有两个用户帐户。HDInsight 群集用户帐户（即
 > 
 > 
 
-1. 使用 HDInsight 群集用户凭据登录到 Ambari Web UI。默认的用户名为 **admin**。URL 为 **https://&lt;HDInsight Cluster Name>azurehdinsight.cn**。
+1. 使用 HDInsight 群集用户凭据登录到 Ambari Web UI。默认的用户名为 **admin**。URL 为 **https://&lt;HDInsight Cluster Name>.azurehdinsight.cn**。
 2. 在顶部菜单中单击“管理”，然后单击“管理 Ambari”。
 3. 在左侧菜单中，单击“用户”。
 4. 单击“管理”。

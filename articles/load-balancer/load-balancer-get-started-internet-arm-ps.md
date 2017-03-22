@@ -1,37 +1,36 @@
 ---
-title: 使用 PowerShell 在 Resource Manager 中创建面向 Internet 的负载均衡器 | Azure
+title: 创建 Azure 面向 Internet 的负载均衡器 - PowerShell | Azure
 description: 了解如何使用 PowerShell 在 Resource Manager 中创建面向 Internet 的负载均衡器
 services: load-balancer
-documentationCenter: na
-authors: sdwheeler
-manager: carmonm
-editor: ''
+documentationcenter: na
+author: kumudd
+manager: timlt
 tags: azure-resource-manager
 
+ms.assetid: 8257f548-7019-417f-b15f-d004a1eec826
 ms.service: load-balancer
 ms.devlang: na
-ms.topic: article
+ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/24/2016
-ms.author: sewhee
-wacn.date: 12/12/2016
+ms.date: 01/23/2017
+wacn.date: 03/03/2017
+ms.author: kumud
 ---
 
-# <a name="get-started">  
-</a>使用 PowerShell 在 Resource Manager 中创建面向 Internet 的负载均衡器
+# <a name="get-started"></a> 使用 PowerShell 在 Resource Manager 中创建面向 Internet 的负载均衡器
 
 > [!div class="op_single_selector"]
-[Portal](./load-balancer-get-started-internet-portal.md)
-[PowerShell](./load-balancer-get-started-internet-arm-ps.md)
-[Azure CLI](./load-balancer-get-started-internet-arm-cli.md)
-[Template](./load-balancer-get-started-internet-arm-template.md)
+- [门户](./load-balancer-get-started-internet-portal.md)
+- [PowerShell](./load-balancer-get-started-internet-arm-ps.md)
+- [Azure CLI](./load-balancer-get-started-internet-arm-cli.md)
+- [模板](./load-balancer-get-started-internet-arm-template.md)
 
 [!INCLUDE [load-balancer-get-started-internet-intro-include.md](../../includes/load-balancer-get-started-internet-intro-include.md)]
 
 [!INCLUDE [azure-arm-classic-important-include](../../includes/azure-arm-classic-important-include.md)]
 
-本文介绍资源管理器部署模型。还可[了解如何使用经典部署模型创建面向 Internet 的负载均衡器](./load-balancer-get-started-internet-classic-cli.md)。
+本文介绍 Resource Manager 部署模型。还可[了解如何使用经典部署模型创建面向 Internet 的负载均衡器](./load-balancer-get-started-internet-classic-cli.md)。
 
 [!INCLUDE [load-balancer-get-started-internet-scenario-include.md](../../includes/load-balancer-get-started-internet-scenario-include.md)]
 
@@ -94,8 +93,9 @@ wacn.date: 12/12/2016
     $publicIP = New-AzureRmPublicIpAddress -Name PublicIp -ResourceGroupName NRP-RG -Location 'China East' –AllocationMethod Static -DomainNameLabel loadbalancernrp 
     ```
 
-    >[!IMPORTANT]
-    > 负载均衡器将公共 IP 的域标签用作 FQDN 的前缀。这不同于经典部署模型，后者将云服务用作负载均衡器 FQDN。
+    > [!IMPORTANT]
+    负载均衡器将公共 IP 的域标签用作其 FQDN 的前缀。这与经典部署模型不同，后者使用云服务作为负载均衡器 FQDN。> 在此示例中，FQDN 是 **loadbalancernrp.chinanorth.chinacloudapp.cn**。
+    >
 
 ## 创建前端 IP 池和后端地址池
 
@@ -230,7 +230,7 @@ wacn.date: 12/12/2016
     DnsSettings          : {
                         "DnsServers": [],
                         "AppliedDnsServers": [],
-                        "InternalDomainNameSuffix": "prcwibzcuvie5hnxav0yjks2cd.dx.internal.cloudapp.net"
+                        "InternalDomainNameSuffix": "prcwibzcuvie5hnxav0yjks2cd.dx.internal.chinacloudapp.cn"
                     }
     EnableIPForwarding   : False
     NetworkSecurityGroup : null
@@ -250,7 +250,7 @@ wacn.date: 12/12/2016
     将负载均衡器资源加载到变量中（如果你还没有这样做）。该变量称为 **$lb**。使用与先前创建的负载均衡器资源相同的名称。
 
     ```powershell
-    $lb= get-azurermloadbalancer –name NRP-LB -resourcegroupname NRP-RG
+    $lb= get-azurermloadbalancer -name NRP-LB -resourcegroupname NRP-RG
     ```
 
 2. 将后端配置加载到变量。
@@ -262,7 +262,7 @@ wacn.date: 12/12/2016
 3. 将创建好的网络接口加载到变量中。变量名为 **$nic**。网络接口名称与上例中的相同。
 
     ```powershell
-    $nic =get-azurermnetworkinterface –name lb-nic1-be -resourcegroupname NRP-RG
+    $nic =get-azurermnetworkinterface -name lb-nic1-be -resourcegroupname NRP-RG
     ```
 
 4. 更改网络接口上的后端配置。
@@ -307,8 +307,9 @@ wacn.date: 12/12/2016
 Remove-AzureRmLoadBalancer -Name NRPLB -ResourceGroupName NRP-RG
 ```
 
->[!NOTE]
-> 可选开关 **-Force** 可用于避免删除提示。
+> [!NOTE]
+可选开关 **-Force** 可用于避免删除提示。
+>
 
 ## 后续步骤
 
@@ -318,4 +319,5 @@ Remove-AzureRmLoadBalancer -Name NRPLB -ResourceGroupName NRP-RG
 
 [为负载均衡器配置空闲 TCP 超时设置](./load-balancer-tcp-idle-timeout.md)
 
-<!---HONumber=Mooncake_1128_2016-->
+<!---HONumber=Mooncake_0227_2017-->
+<!--Update_Description: update meta properties; wording update; update code with full-parameter format -->

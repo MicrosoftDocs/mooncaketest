@@ -27,7 +27,7 @@ wacn.date: 05/17/2016
 
 如果尚未创建云服务，请首先阅读[此文章](./cloud-services-how-to-create-deploy-portal.md)。
 
-[!INCLUDE [websites-cloud-services-css-guided-walkthrough](../includes/websites-cloud-services-css-guided-walkthrough.md)]
+[!INCLUDE [websites-cloud-services-css-guided-walkthrough](../../includes/websites-cloud-services-css-guided-walkthrough.md)]
 
 ## 步骤 1：获取 SSL 证书
 

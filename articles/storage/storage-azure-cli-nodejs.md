@@ -33,8 +33,6 @@ Azure CLI 提供了一组开源且跨平台的命令，这些命令可以用于 
 >
 >
 
-[!INCLUDE [storage-cli-versions](../../includes/storage-cli-versions.md)]
-
 ## 在 5 分钟内开始使用 Azure 存储空间和 Azure CLI
 本指南使用 Ubuntu 作为示例，但其他 OS 平台的操作应与此类似。
 

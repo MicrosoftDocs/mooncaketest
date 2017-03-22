@@ -2,8 +2,6 @@
 ## [Web Apps 概述](app-service-web-overview.md)
 ## [什么是应用服务](../app-service/app-service-value-prop-what-is.md?toc=%2fazure%2fapp-service-web%2ftoc.json)
 ## [应用服务计划](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md?toc=%2fazure%2fapp-service-web%2ftoc.json)
-## [Linux 应用服务](app-service-linux-intro.md)
-## [Linux 应用服务常见问题解答](app-service-linux-faq.md)
 
 # 入门
 
@@ -13,7 +11,6 @@
 ### [Node.js](app-service-web-get-started-nodejs.md)
 ### [Python](app-service-web-get-started-python.md)
 ### [Java](app-service-web-get-started-java.md)
-### [应用商店应用](web-sites-php-web-site-gallery.md)
 ### [PHP](app-service-web-get-started-php.md)	
 
 ## API Apps

@@ -21,6 +21,10 @@ ms.author: cephalin
 # Web Apps 概述
 *应用服务 Web 应用*是一个完全托管的计算平台，非常适合用来托管网站和 Web 应用程序。Azure 的这个[平台即服务](https://zh.wikipedia.org/wiki/平台即服务) (PaaS) 产品可让用户专注于业务逻辑，而让 Azure 负责处理用来运行和缩放应用的基础结构。
 
+>[!VIDEO https://channel9.msdn.com/Shows/Azure-Friday/Azure-App-Service-Web-Apps-with-Yochay-Kiriaty/player]
+>
+>
+
 ## 应用服务中的 Web 应用是什么？
 在应用服务中，*Web 应用*是 Azure 提供用来托管网站或 Web 应用程序的计算资源。
 

@@ -1,8 +1,8 @@
 ---
 title: 排查 Azure 导入/导出工具问题 | Azure
 description: 了解用户在使用导入/导出工具时遇到的常见问题及其解决方法。
-author: renashahmsft
-manager: aungoo
+author: muralikk
+manager: syadav
 editor: tysonn
 services: storage
 documentationcenter: ''
@@ -13,9 +13,9 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/25/2015
-wacn.date: 12/29/2016
-ms.author: renash
+ms.date: 01/15/2017
+wacn.date: 02/24/2017
+ms.author: muralikk
 ---
 
 # 排查 Azure 导入/导出工具问题
@@ -41,4 +41,4 @@ ms.author: renash
  [修复导入作业](./storage-import-export-tool-repairing-an-import-job-v1.md)
  [修复导出作业](./storage-import-export-tool-repairing-an-export-job-v1.md)
 
-<!---HONumber=Mooncake_1226_2016-->
+<!---HONumber=Mooncake_0220_2017-->

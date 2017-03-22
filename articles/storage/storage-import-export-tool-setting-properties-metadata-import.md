@@ -1,8 +1,8 @@
 ---
-title: 在执行 Azure 导入/导出服务的导入过程中设置属性和元数据 | Azure
+title: 使用 Azure 导入/导出设置属性和元数据 | Azure
 description: 了解如何在运行 Azure 导入/导出工具准备驱动器时，指定要对目标 Blob 设置的属性和元数据。
-author: renashahmsft
-manager: aungoo
+author: muralikk
+manager: syadav
 editor: tysonn
 services: storage
 documentationcenter: ''
@@ -12,9 +12,9 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/15/2016
-wacn.date: 12/29/2016
-ms.author: renash
+ms.date: 01/23/2017
+wacn.date: 03/20/2017
+ms.author: muralikk
 ---
 
 # 在导入过程中设置属性和元数据
@@ -22,7 +22,9 @@ ms.author: renash
 在运行 Azure 导入/导出工具准备驱动器时，可以指定要对目标 Blob 设置的属性和元数据。执行以下步骤：
 
 1.  若要设置 Blob 属性，请在本地计算机上创建一个指定属性名称和值的文本文件。
+
 2.  若要设置 Blob 元数据，请在本地计算机上创建一个指定元数据名称和值的文本文件。
+
 3.  在 `PrepImport` 操作过程中，需要将其中一个或两个文件的完整路径传递给 Azure 导入/导出工具。
 
 > [!NOTE]
@@ -72,4 +74,4 @@ K:\Temp\FavoriteVideo.ISO,https://mystorageaccount.blob.core.chinacloudapi.cn/fa
 
 [导入/导出服务元数据和属性文件格式](./storage-import-export-file-format-metadata-and-properties.md)
 
-<!---HONumber=Mooncake_1226_2016-->
+<!---HONumber=Mooncake_0313_2017-->

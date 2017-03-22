@@ -1,8 +1,6 @@
-<!-- need to be verified -->
-
 ---
-title: 将 Linux 故障排除 VM 与 CLI 配合使用 | Azure
-description: 了解如何通过使用 Azure CLI 将 OS 磁盘连接到恢复 VM 来排查 Linux VM 问题
+title: 将 Linux 故障排除 VM 与 Azure CLI 1.0 配合使用 | Azure
+description: 了解如何通过使用 Azure CLI 1.0 将 OS 磁盘连接到恢复 VM 来排查 Linux VM 问题
 services: virtual-machines-linux
 documentationCenter: ''
 authors: iainfoulds
@@ -14,15 +12,21 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 11/14/2016
-wacn.date: 01/20/2017
+ms.date: 02/09/2017
+wacn.date: 03/20/2017
 ms.author: iainfou
 ---
 
-# 通过使用 Azure CLI 将 OS 磁盘附加到恢复 VM 来对 Linux VM 进行故障排除
-如果 Linux 虚拟机 (VM) 遇到启动或磁盘错误，则可能需要对虚拟硬盘本身执行故障排除步骤。一个常见示例是 `/etc/fstab` 中存在无效条目，使 VM 无法成功启动。本文详细介绍如何使用 Azure CLI 将虚拟硬盘连接到另一个 Linux VM，以修复任何错误，然后重新创建原始 VM。
+# 通过使用 Azure CLI 1.0 将 OS 磁盘附加到恢复 VM 来对 Linux VM 进行故障排除
+如果 Linux 虚拟机 (VM) 遇到启动或磁盘错误，则可能需要对虚拟硬盘本身执行故障排除步骤。一个常见示例是 `/etc/fstab` 中存在无效条目，使 VM 无法成功启动。本文详细介绍如何使用 Azure CLI 1.0 将虚拟硬盘连接到另一个 Linux VM，以修复任何错误，然后重新创建原始 VM。
 
-## 恢复过程概述
+## 用于完成任务的 CLI 版本
+可使用以下 CLI 版本之一完成任务：
+
+- [Azure CLI 1.0](#recovery-process-overview)：用于经典部署模型和资源管理部署模型（本文）的 CLI
+- Azure CLI 2.0 - 不支持 Azure 中国区的虚拟机，因为 API 版本的缘故。
+
+## <a name="recovery-process-overview"></a> 恢复过程概述
 故障排除过程如下：
 
 1. 删除遇到问题的 VM，保留虚拟硬盘。
@@ -31,9 +35,9 @@ ms.author: iainfou
 4. 从故障排除 VM 卸载并分离虚拟硬盘。
 5. 使用原始虚拟硬盘创建 VM。
 
-确保已登录 [Azure CLI](../xplat-cli-install.md) 并使用 Resource Manager 模式：
+确保已安装并登录[最新的 Azure CLI 1.0](../xplat-cli-install.md)，同时使用 Resource Manager 模式：
 
-```azurecli
+```
 azure config mode arm
 ```
 
@@ -61,7 +65,7 @@ azure vm show --resource-group myResourceGroup --name myVM
 
 在上述命令的输出中查找 `Vhd URI`。以下截取的示例输出在最后一行显示 `Vhd URI`：
 
-```azurecli
+```
 info:    Executing command vm show
 + Looking up the VM "myVM"
 + Looking up the NIC "myNic"
@@ -95,7 +99,7 @@ azure vm delete --resource-group myResourceGroup --name myVM
 
 附加现有的虚拟硬盘时，指定在前面的 `azure vm show` 命令中获取的磁盘 URL。以下示例将现有的虚拟硬盘附加到名为 `myResourceGroup` 的资源组中名为 `myVMRecovery` 的故障排除 VM：
 
-```azurecli
+```
 azure vm disk attach --resource-group myResourceGroup --name myVMRecovery \
     --vhd-url https://mystorageaccount.blob.core.chinacloudapi.cn/vhds/myVM.vhd
 ```
@@ -136,7 +140,7 @@ azure vm disk attach --resource-group myResourceGroup --name myVMRecovery \
     ```
 
     > [!NOTE]
-    > 最佳做法是使用虚拟硬盘的全局唯一标识符 (UUID) 装载 Azure 中 VM 上的数据磁盘。对于此简短的故障排除方案，不必要使用 UUID 装载虚拟硬盘。但是，在正常使用时，编辑 `/etc/fstab` 以使用设备名称（而不是 UUID）装载虚拟硬盘可能会导致 VM 无法启动。
+    最佳做法是使用虚拟硬盘的全局唯一标识符 (UUID) 装载 Azure 中 VM 上的数据磁盘。对于此简短的故障排除方案，不必要使用 UUID 装载虚拟硬盘。但是，在正常使用时，编辑 `/etc/fstab` 以使用设备名称（而不是 UUID）装载虚拟硬盘可能会导致 VM 无法启动。
 
 ## 修复原始虚拟硬盘上的问题
 装载现有虚拟硬盘后，可以根据需要执行任何维护和故障排除步骤。解决问题后，请继续执行以下步骤。
@@ -158,13 +162,13 @@ azure vm disk attach --resource-group myResourceGroup --name myVMRecovery \
 
 2. 现在从 VM 中分离虚拟硬盘。退出故障排除 VM 的 SSH 会话。在 Azure CLI 中，首先列出附加到故障排除 VM 的数据磁盘。以下示例列出附加到名为 `myResourceGroup` 的资源组中名为 `myVMRecovery` 的 VM 的数据磁盘：
 
-    ```azurecli
+    ```
     azure vm disk list --resource-group myResourceGroup --vm-name myVMRecovery
     ```
 
     记下现有虚拟硬盘的 `Lun` 值。以下示例命令输出显示在 LUN 0 附加的现有虚拟磁盘：
 
-    ```azurecli
+    ```
     info:    Executing command vm disk list
     + Looking up the VM "myVMRecovery"
     data:    Name              Lun  DiskSizeGB  Caching  URI
@@ -175,26 +179,26 @@ azure vm disk attach --resource-group myResourceGroup --name myVMRecovery \
 
     使用适当的 `Lun` 值将数据磁盘从 VM 中分离：
 
-    ```azurecli
+    ```
     azure vm disk detach --resource-group myResourceGroup --vm-name myVMRecovery \
         --lun 0
     ```
 
 ## 从原始硬盘创建 VM
-若要从原始虚拟硬盘创建 VM，请使用[此 Azure Resource Manager 模板](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-specialized-vhd-existing-vnet)。实际的 JSON 模板位于以下链接中：
+若要从原始虚拟硬盘创建 VM，请使用[此 Azure Resource Manager 模板](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-specialized-vhd)。实际的 JSON 模板位于以下链接中：
 
-- https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-vm-specialized-vhd-existing-vnet/azuredeploy.json  
+- https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-vm-specialized-vhd/azuredeploy.json  
 
 该模板使用先前命令中的 VHD URL 将 VM 部署到现有虚拟网络中。以下示例将模板部署到名为 `myResourceGroup` 的资源组：
 
-```azurecli
+```
 azure group deployment create --resource-group myResourceGroup --name myDeployment \
-    --template-uri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-vm-specialized-vhd-existing-vnet/azuredeploy.json
+    --template-uri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-vm-specialized-vhd/azuredeploy.json
 ```
 
 响应有关模板的提示，例如 VM 名称（以下示例中为 `myDeployedVM`）、OS 类型 (`Linux`) 和 VM 大小 (`Standard_DS1_v2`)。`osDiskVhdUri` 与前面将现有虚拟硬盘附加到故障排除 VM 时使用的相同。命令输出和提示的示例如下所示：
 
-```azurecli
+```
 info:    Executing command group deployment create
 info:    Supply values for the following parameters
 vmName:  myDeployedVM
@@ -216,12 +220,12 @@ info:    Created template deployment "mydeployment"
 
 从现有虚拟硬盘创建 VM 时，启动诊断可能不会自动启用。以下示例在名为 `myResourceGroup` 的资源组中名为 `myDeployedVM` 的 VM 上启用诊断扩展：
 
-```azurecli
+```
 azure vm enable-diag --resource-group myResourceGroup --name myDeployedVM
 ```
 
 ## 后续步骤
 如果在连接到 VM 时遇到问题，请参阅 [Troubleshoot SSH connections to an Azure VM](./virtual-machines-linux-troubleshoot-ssh-connection.md)（排查 Azure VM 的 SSH 连接问题）。有关访问 VM 上运行的应用时遇到的问题，请参阅 [Troubleshoot application connectivity issues on a Linux VM](./virtual-machines-linux-troubleshoot-app-connection.md)（排查 Linux VM 上的应用程序连接问题）。
 
-<!---HONumber=Mooncake_0116_2017-->
-<!--Update_Description: wording update-->
+<!---HONumber=Mooncake_0313_2017-->
+<!--Update_Description: add information about CLI 2.0-->

@@ -14,8 +14,8 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
-ms.date: 11/30/2016
-wacn.date: 01/20/2017
+ms.date: 02/07/2017
+wacn.date: 03/20/2017
 ms.author: v-shysun
 ---
 
@@ -42,18 +42,22 @@ ms.author: v-shysun
     目前，对于在 Azure VM 中运行的 SQL Server，不提供就地升级。因此，请使用所需的 SQL Server 版本创建新的 Azure 虚拟机，然后使用标准[数据迁移技术](./virtual-machines-windows-migrate-sql.md)将数据库迁移到新的服务器。
 6. **如何在 Azure VM 上安装 SQL Server 的许可版本？**
 
-    将 SQL Server 安装媒体复制到 Windows Server VM，然后在该 VM 上安装 SQL Server。出于许可原因，必须提供 [Azure 上通过软件保障实现的许可移动性](https://www.azure.cn/pricing/license-mobility/)。
+    将 SQL Server 安装介质复制到 Windows Server VM 上，然后在 VM 上安装 SQL Server。出于许可原因，必须提供 [Azure 上通过软件保障实现的许可移动性](https://www.azure.cn/pricing/license-mobility/)。
 7. **如果 VM 是基于一个即用即付库映像创建的，是否可以将它更改为使用我自己的 SQL Server 许可证？**
 
-    不可以。
+    不可以。无法从按分钟付费许可证改为使用自己的许可证。请创建新的 Azure 虚拟机，然后使用标准[数据迁移技术](./virtual-machines-windows-migrate-sql.md)将数据库迁移到新服务器。
+
+7. **Azure VM 是否支持 SQL Server 故障转移群集实例 (FCI)？**
+
+    是的。可以[在 Windows Server 2016 上创建 Windows Server 故障转移群集 (WSFC)](./virtual-machines-windows-portal-sql-create-failover-cluster.md)，然后将存储空间直通 (S2D) 用于群集存储。也可以使用第三方群集或存储解决方案，详见 [Azure 虚拟机中 SQL Server 的高可用性和灾难恢复](./virtual-machines-windows-sql-high-availability-dr.md#azure-only-high-availability-solutions)。
 
 7. **如果 Azure VM 仅供备用/故障转移，是否必须支持该 VM 上的 SQL Server 许可费？**
 
-    对于用作 HA 部署中的被动辅助副本的 SQL Server，如果客户购买了软件保障并根据[虚拟机许可常见问题](https://azure.microsoft.com/zh-cn/pricing/licensing-faq/)中所述使用许可移动性，则不需要支付许可费。
+    对于用作 HA 部署中的被动辅助副本的 SQL Server，如果客户购买了软件保障并使用许可移动性，则不需要支付许可费。
 
 8. **如何将更新和服务包应用于 SQL Server VM？**
 
-    虚拟机允许你控制主机，包括应用更新的时间与方法。对于操作系统，可以手动应用 Windows 更新，或者启用名为[自动修补](./virtual-machines-windows-classic-sql-automated-patching.md)的计划服务。自动修补将安装任何标记为重要的更新，包括该类别中的 SQL Server 更新。必须手动安装其他可选的 SQL Server 更新。
+    虚拟机允许你控制主机，包括应用更新的时间与方法。对于操作系统，可以手动应用 Windows 更新，或者启用名为[自动修补](./virtual-machines-windows-sql-automated-patching.md)的计划服务。自动修补将安装任何标记为重要的更新，包括该类别中的 SQL Server 更新。必须手动安装其他可选的 SQL Server 更新。
 9. **是否可以设置虚拟机库中未显示的配置（例如 Windows 2008 R2 + SQL Server 2012）？**
 
     不可以。对于包含 SQL Server 的虚拟机库映像，必须选择提供的映像之一。
@@ -72,5 +76,5 @@ ms.author: v-shysun
 * [Azure 虚拟机中 SQL Server 的性能最佳实践](./virtual-machines-windows-sql-performance.md)
 * [Azure 虚拟机中 SQL Server 的应用程序模式和开发策略](./virtual-machines-windows-sql-server-app-patterns-dev-strategies.md)
 
-<!---HONumber=Mooncake_0116_2017-->
-<!--Update_Description: update meta properties & wording update-->
+<!---HONumber=Mooncake_0313_2017-->
+<!--Update_Description: wording update-->

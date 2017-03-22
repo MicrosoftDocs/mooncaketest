@@ -13,7 +13,7 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/27/2016
-wacn.date: 01/25/2017
+wacn.date: 03/17/2017
 ms.author: tdykstra
 ---
 
@@ -28,6 +28,8 @@ ms.author: tdykstra
 Azure WebJobs SDK 简化了许多 Web 作业编程任务。有关详细信息，请参阅[什么是 WebJobs SDK](./websites-dotnet-webjobs-sdk.md)。
 
 [!INCLUDE [app-service-web-to-api-and-mobile](../../includes/app-service-web-to-api-and-mobile.md)]
+
+[!INCLUDE [azure-sdk-developer-differences](../../includes/azure-visual-studio-login-guide.md)]
 
 ## <a name="acceptablefiles"></a>可接受的脚本或程序文件类型
 

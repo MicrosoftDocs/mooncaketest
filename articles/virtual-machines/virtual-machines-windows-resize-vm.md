@@ -1,5 +1,3 @@
-<!-- need to be verified -->
-
 ---
 title: 调整 Windows VM 的大小 | Azure
 description: 使用 Azure Powershell 调整在 Resource Manager 部署模型中创建的 Windows 虚拟机的大小。
@@ -17,7 +15,7 @@ ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
 ms.date: 10/19/2016
-wacn.date: 12/20/2016
+wacn.date: 03/06/2017
 ms.author: drewm
 ---
 
@@ -105,8 +103,5 @@ ms.author: drewm
         Start-AzureRmVM -ResourceGroupName $rg -Name $vmName
     }
     ```
-
-## 后续步骤
-* 若要提高可伸缩性，请运行多个 VM 实例并进行横向扩展。有关详细信息，请参阅[自动缩放虚拟机规模集中的 Windows 计算机](../virtual-machine-scale-sets/virtual-machine-scale-sets-windows-autoscale.md)。
 
 <!---HONumber=Mooncake_1212_2016-->

@@ -1,5 +1,3 @@
-<!-- need to be verified -->
-
 ---
 title: Azure VM 的特定 RDP 错误消息 | Azure
 description: 了解在尝试使用远程桌面连接到 Azure 中的 Windows 虚拟机时可能会收到的特定错误消息
@@ -17,8 +15,8 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: support-article
-ms.date: 10/14/2016
-wacn.date: 12/20/2016
+ms.date: 01/10/2017
+wacn.date: 03/01/2017
 ms.author: iainfou
 ---
 

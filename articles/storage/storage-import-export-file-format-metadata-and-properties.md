@@ -1,8 +1,8 @@
 ---
-title: 导入/导出服务元数据和属性文件格式 | Azure
+title: Azure 导入/导出元数据和属性文件格式 | Azure
 description: 了解如何为导入或导出作业包含的一个或多个 Blob 指定元数据和属性。
-author: renashahmsft
-manager: aungoo
+author: muralikk
+manager: syadav
 editor: tysonn
 services: storage
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/25/2015
-wacn.date: 12/29/2016
-ms.author: renash
+ms.date: 01/23/2017
+wacn.date: 03/20/2017
+ms.author: muralikk
 ---
 
-# 导入/导出服务元数据和属性文件格式
+# Azure 导入/导出服务元数据和属性文件格式
 可将一个或多个 Blob 的元数据和属性指定为导入作业或导出作业的一部分。若要设置将创建为导入作业一部分的 Blob 的元数据或属性，应在包含所要导入数据的硬盘驱动器上提供一个元数据或属性文件。对于导出作业，元数据和属性将写入到在返回的硬盘驱动器上包含的元数据或属性文件。
 
 ## 元数据文件格式  
@@ -35,10 +35,8 @@ ms.author: renash
 
 |XML 元素|类型|说明|  
 |-----------------|----------|-----------------|  
-|`Metadata`  
-|Root 元素|元数据文件的根元素。|  
-|`metadata-name`  
-|String|可选。XML 元素指定 Blob 的元数据名称，其值指定元数据设置值。|  
+|`Metadata`|Root 元素|元数据文件的根元素。|  
+|`metadata-name`|String|可选。XML 元素指定 Blob 的元数据名称，其值指定元数据设置值。|  
 
 ## 属性文件格式  
 属性文件的格式如下：
@@ -69,6 +67,6 @@ ms.author: renash
 |`Content-Language`|String|可选。Blob 的内容语言。|  
 |`Cache-Control`|String|可选。Blob 的缓存控制字符串。|  
 
- 有关设置 Blob 元数据和属性的详细规则，请参阅，请参阅[设置 Blob 属性](https://docs.microsoft.com/zh-CN/rest/api/storageservices/fileservices/set-blob-properties)、[设置 Blob 元数据](https://docs.microsoft.com/zh-CN/rest/api/storageservices/fileservices/set-blob-metadata)以及[设置和检索 Blob 资源的属性与元数据](https://docs.microsoft.com/zh-CN/rest/api/storageservices/fileservices/setting-and-retrieving-properties-and-metadata-for-blob-resources)。
+ 有关设置 Blob 元数据和属性的详细规则，请参阅，请参阅[设置 Blob 属性](https://docs.microsoft.com/zh-cn/rest/api/storageservices/fileservices/set-blob-properties)、[设置 Blob 元数据](https://docs.microsoft.com/zh-cn/rest/api/storageservices/fileservices/set-blob-metadata)以及[设置和检索 Blob 资源的属性与元数据](https://docs.microsoft.com/zh-cn/rest/api/storageservices/fileservices/setting-and-retrieving-properties-and-metadata-for-blob-resources)。
 
-<!---HONumber=Mooncake_1226_2016-->
+<!---HONumber=Mooncake_0313_2017-->

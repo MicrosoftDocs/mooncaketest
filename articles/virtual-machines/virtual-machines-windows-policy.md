@@ -1,5 +1,3 @@
-<!-- ARM: tested -->
-
 ---
 title: 将策略应用到 Azure Resource Manager 虚拟机 | Azure
 description: 如何将策略应用到 Azure Resource Manager Windows 虚拟机
@@ -100,12 +98,12 @@ ms.author: singhkay
 
 可以直接使用 REST API 或 PowerShell cmdlet 轻松创建策略。有关创建策略的信息，请参阅以下文章：
 
-* [创建策略](../azure-resource-manager/resource-manager-policy.md#create-and-assign-a-policy)
+* [创建策略](../azure-resource-manager/resource-manager-policy.md)
 
 ## 应用策略
 
 创建策略后，需要根据定义的范围来应用它。范围可以是订阅、资源组甚至资源。有关应用策略的信息，请参阅以下文章：
 
-* [创建策略](../azure-resource-manager/resource-manager-policy.md#create-and-assign-a-policy)
+* [创建策略](../azure-resource-manager/resource-manager-policy.md)
 
 <!---HONumber=Mooncake_0425_2016-->

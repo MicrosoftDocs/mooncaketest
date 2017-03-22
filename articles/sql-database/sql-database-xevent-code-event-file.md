@@ -68,7 +68,7 @@ ms.author: genemi
 
 ![装有 Azure 模块的 PowerShell ISE，可运行脚本。][30_powershell_ise]
 
-```
+```powershell
         ## TODO: Before running, find all 'TODO' and make each edit!
 
         #--------------- 1 -----------------------
@@ -247,7 +247,7 @@ PowerShell 脚本在结束时输出了几个命名值。必须编辑 Transact-SQ
         ---- TODO: First, run the PowerShell portion of this two-part code sample.
         ---- TODO: Second, find every 'TODO' in this Transact-SQL file, and edit each.
 
-```
+```tsql
     ---- Transact-SQL code for Event File target on Azure SQL Database.
 
     SET NOCOUNT ON;
@@ -426,7 +426,7 @@ PowerShell 脚本在结束时输出了几个命名值。必须编辑 Transact-SQ
 
 如果运行脚本时无法附加目标，必须停止再重新启动事件会话：
 
-```
+```tsql
 ALTER EVENT SESSION ... STATE = STOP;
 GO
 ALTER EVENT SESSION ... STATE = START;
@@ -439,7 +439,7 @@ Transact-SQL 脚本完成后，单击 **event\_data\_XML** 列标题下的单元
 
 下面是测试期间生成的一个 **<event>** 元素：
 
-```
+```xml
 <event name="sql_statement_starting" package="sqlserver" timestamp="2015-09-22T19:18:45.420Z">
   <data name="state">
     <value>0</value>

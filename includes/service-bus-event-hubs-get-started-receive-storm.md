@@ -83,7 +83,7 @@
 
 10. 使用以下代码创建名为 **LoggerBolt** 的新类：
 
-    ```java
+    ```
     import java.util.Map;
     import org.slf4j.Logger;
     import org.slf4j.LoggerFactory;
@@ -124,7 +124,7 @@
 
 11. 使用以下代码创建一个名为 **LogTopology** 的类：
 
-    ```java
+    ```
     import java.io.FileReader;
     import java.util.Properties;
     import backtype.storm.Config;

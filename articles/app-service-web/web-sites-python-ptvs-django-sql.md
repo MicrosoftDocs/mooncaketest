@@ -15,7 +15,7 @@ ms.tgt_pltfrm: na
 ms.devlang: python
 ms.topic: article
 ms.date: 07/07/2016
-wacn.date: 12/26/2016
+wacn.date: 03/17/2017
 ms.author: huguesv
 ---
 
@@ -35,6 +35,8 @@ ms.author: huguesv
 * Django 1.9 或更高版本
 
 [!INCLUDE [create-account-and-websites-note](../../includes/create-account-and-websites-note.md)]
+
+[!INCLUDE [azure-sdk-developer-differences](../../includes/azure-visual-studio-login-guide.md)]
 
 ## 创建项目
 在此部分中，我们使用样本模板创建 Visual Studio 项目。我们将创建虚拟环境并安装所需软件包。我们将创建一个使用 sqlite 的本地数据库。然后，我们将在本地运行 Web 应用。

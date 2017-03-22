@@ -1,14 +1,15 @@
-<properties
-    layout="LandingPage"
-    description="Learn SQL Database, a database-as-a-service in the cloud. Tutorials, videos, and other documentation show how to set up, connect, and manage a relational database." />
+---
+layout: LandingPage
+description: 了解 SQL 数据库（云中的数据库即服务）。教程、视频和其他文档介绍了如何设置、连接和管理关系数据库。
+---
 
-# SQL Database Documentation
+# SQL 数据库文档
 
-Learn how to use SQL Database, a relational database-as-a-service in the cloud built on the Microsoft SQL Server engine. Tutorials, videos, and other documentation show you how to set up, connect, and manage a SQL database.
+了解如何使用 SQL 数据库（云中基于 Microsoft SQL Server 引擎构建的关系数据库即服务）。教程、视频和其他文档介绍了如何设置、连接和管理 SQL 数据库。
 
 <ul class="panelContent cardsFTitle">
      <li>
-        <a href="/azure/sql-database/sql-database-technical-overview">
+        <a href="/articles	/sql-database/sql-database-technical-overview">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
@@ -18,25 +19,7 @@ Learn how to use SQL Database, a relational database-as-a-service in the cloud b
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Learn about Azure SQL Database</h3>
-                    </div>
-                </div>
-            </div>
-        </div>
-        </a>
-    </li>
-     <li>
-        <a href="https://azure.microsoft.com/documentation/videos/index/?services=sql-database">
-        <div class="cardSize">
-            <div class="cardPadding">
-                <div class="card">
-                    <div class="cardImageOuter">
-                        <div class="cardImage">
-                            <img src="media/index/video-library.svg" alt="" />
-                        </div>
-                    </div>
-                    <div class="cardText">
-                        <h3>Azure SQL Database Video Library</h3>
+                        <h3>了解 Azure SQL 数据库</h3>
                     </div>
                 </div>
             </div>
@@ -44,7 +27,7 @@ Learn how to use SQL Database, a relational database-as-a-service in the cloud b
         </a>
     </li>
     <li>
-        <a href="/azure/sql-database/sql-database-get-started">
+        <a href="/articles/sql-database/sql-database-get-started">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
@@ -54,15 +37,15 @@ Learn how to use SQL Database, a relational database-as-a-service in the cloud b
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Get started with Azure SQL Database</h3>
+                        <h3>Azure SQL 数据库入门</h3>
                     </div>
                 </div>
             </div>
         </div>
         </a>
-    </li>
+</li>
     <li>
-        <a href="/azure/sql-database/sql-database-elastic-scale-get-started">
+        <a href="/articles/sql-database/sql-database-elastic-scale-get-started">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
@@ -72,15 +55,15 @@ Learn how to use SQL Database, a relational database-as-a-service in the cloud b
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Get started with Elastic Tools</h3>
+                        <h3>弹性工具入门</h3>
                     </div>
                 </div>
             </div>
         </div>
         </a>
-    </li>
+</li>
      <li>
-        <a href="/azure/sql-database/sql-database-get-started-security">
+        <a href="/articles/sql-database/sql-database-get-started-security">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
@@ -90,27 +73,27 @@ Learn how to use SQL Database, a relational database-as-a-service in the cloud b
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Get Started managing access and permissions</h3>
+                        <h3>开始管理访问和权限</h3>
                     </div>
                 </div>
             </div>
         </div>
         </a>
-    </li>
+</li>
 </ul>
 
 ---
 
-<h2>Reference</h2>
+<h2>引用</h2>
 <ul class="panelContent cardsW">
     <li>
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardText">
-                        <h3>Command-Line</h3>
-                        <p><a href="/powershell/resourcemanager/azurerm.sql/v2.3.0/azurerm.sql">PowerShell</a></p>
-                        <p><a href="/powershell/elasticdatabasejobs/v0.8.33/elasticdatabasejobs">PowerShell (Elastic DB)</a></p>
+                        <h3>命令行</h3>
+                        <p><a href="docs.microsoft.com/powershell/resourcemanager/azurerm.sql/v2.3.0/azurerm.sql">PowerShell</a></p>
+                        <p><a href="docs.microsoft.com/powershell/elasticdatabasejobs/v0.8.33/elasticdatabasejobs">PowerShell（弹性 DB）</a></p>
                     </div>
                 </div>
             </div>
@@ -121,14 +104,14 @@ Learn how to use SQL Database, a relational database-as-a-service in the cloud b
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardText">
-                        <h3>Languages</h3>
-                        <p><a href="/dotnet/api/microsoft.azure.management.sql.models">.NET</a></p>
-                        <p><a href="/java/api/com.microsoft.azure.management.sql">Java</a></p>
-                        <p><a href="https://msdn.microsoft.com/library/mt652093.aspx">Node.js</a></p>
-                        <p><a href="https://msdn.microsoft.com/library/mt652092.aspx">Python</a></p>
-                        <p><a href="https://msdn.microsoft.com/library/mt691981.aspx">Ruby</a></p>
-                        <p><a href="https://msdn.microsoft.com/library/dn865013.aspx">PHP</a></p>
-                        <p><a href="https://msdn.microsoft.com/library/azure/bb510741.aspx">T-SQL</a></p>
+                        <h3>语言</h3>
+                        <p><a href="docs.microsoft.com/dotnet/api/microsoft.azure.management.sql.models">.NET</a></p>
+                        <p><a href="docs.microsoft.com/java/api/com.microsoft.azure.management.sql">Java</a></p>
+                        <p><a href="https://msdn.microsoft.com/zh-cn/library/mt652093.aspx">Node.js</a></p>
+                        <p><a href="https://msdn.microsoft.com/zh-cn/library/mt652092.aspx">Python</a></p>
+                        <p><a href="https://msdn.microsoft.com/zh-cn/library/mt691981.aspx">Ruby</a></p>
+                        <p><a href="https://msdn.microsoft.com/zh-cn/library/dn865013.aspx">PHP</a></p>
+                        <p><a href="https://msdn.microsoft.com/zh-cn/library/opsacndocsdemo/bb510741.aspx">T-SQL</a></p>
                     </div>
                 </div>
             </div>
@@ -140,7 +123,7 @@ Learn how to use SQL Database, a relational database-as-a-service in the cloud b
                 <div class="card">
                     <div class="cardText">
                         <h3>REST</h3>
-                        <p><a href="/rest/api/sql/">REST API Reference</a></p>
+                        <p><a href="docs.microsoft.com//rest/api/sql/">REST API 参考</a></p>
                     </div>
                 </div>
             </div>
@@ -148,11 +131,13 @@ Learn how to use SQL Database, a relational database-as-a-service in the cloud b
     </li>
 </ul>
 
-<div class="downloadHolder">
-    <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/sql-database.pdf">
-        <div class="img"></div>
+<div class="downloadHolder"><a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/zh-cn/Azure.azure-documents/live/sql-database.pdf">
+<div class="img"></div>
         <div class="text">
-            Download SQL Database Documentation
-        </div>
+            下载 SQL 数据库文档
+	</div>
     </a>
+
 </div>
+
+<!---HONumber=Mooncake_0120_2017-->

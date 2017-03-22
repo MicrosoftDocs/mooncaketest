@@ -12,8 +12,8 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-multiple
 ms.devlang: java
 ms.topic: article
-ms.date: 09/20/2016
-wacn.date: 11/21/2016
+ms.date: 12/22/2016
+wacn.date: 03/01/2017
 ms.author: robmcm
 ---
 

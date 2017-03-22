@@ -16,21 +16,21 @@
 
 4. 在 **Program.cs** 文件顶部添加以下 `using` 语句：
 
-    ```csharp
+    ```
     using System.Threading;
     using Microsoft.ServiceBus.Messaging;
     ```
 
 5. 将以下字段添加到 **Program** 类，并将占位符值分别替换为你在上一节中创建的事件中心的名称和前面保存的命名空间级别连接字符串。
 
-    ```csharp
+    ```
     static string eventHubName = "{Event Hub name}";
     static string connectionString = "{send connection string}";
     ```
 
 6. 将以下方法添加到 **Program** 类：
 
-    ```csharp
+    ```
     static void SendingRandomMessages()
     {
         var eventHubClient = EventHubClient.CreateFromConnectionString(connectionString, eventHubName);
@@ -58,7 +58,7 @@
 
 7. 最后，在 **Main** 方法中添加以下行：
 
-    ```csharp
+    ```
     Console.WriteLine("Press Ctrl-C to stop the sender process");
     Console.WriteLine("Press Enter to start now");
     Console.ReadLine();

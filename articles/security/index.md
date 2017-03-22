@@ -8,7 +8,7 @@ Learn how to use Azure Security to protect services and data in the cloud. Tutor
 
 <ul class="panelContent cardsFTitle">
     <li>
-        <a href="/azure/security/azure-security-services-technologies">
+        <a href="/opsacndocsdemo/security/azure-security-services-technologies">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
@@ -26,7 +26,7 @@ Learn how to use Azure Security to protect services and data in the cloud. Tutor
         </a>
     </li>
     <li>
-        <a href="/azure/security/azure-security-getting-started">
+        <a href="/opsacndocsdemo/security/azure-security-getting-started">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
@@ -44,7 +44,7 @@ Learn how to use Azure Security to protect services and data in the cloud. Tutor
         </a>
     </li>
     <li>
-        <a href="/azure/security/security-network-overview">
+        <a href="/opsacndocsdemo/security/security-network-overview">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
@@ -62,7 +62,7 @@ Learn how to use Azure Security to protect services and data in the cloud. Tutor
         </a>
     </li>
     <li>
-        <a href="/azure/security/security-storage-overview">
+        <a href="/opsacndocsdemo/security/security-storage-overview">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
@@ -80,7 +80,7 @@ Learn how to use Azure Security to protect services and data in the cloud. Tutor
         </a>
     </li>
     <li>
-        <a href="/azure/security/security-virtual-machines-overview">
+        <a href="/opsacndocsdemo/security/security-virtual-machines-overview">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">

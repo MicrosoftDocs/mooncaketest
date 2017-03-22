@@ -8,7 +8,7 @@ Learn how to run Virtual Machines on Azure using the Linux distribution of your 
 
 <ul class="panelContent cardsFTitle">
     <li>
-        <a href="/azure/virtual-machines/virtual-machines-linux-quick-create-cli?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json">
+        <a href="/opsacndocsdemo/virtual-machines/virtual-machines-linux-quick-create-cli?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
@@ -26,7 +26,7 @@ Learn how to run Virtual Machines on Azure using the Linux distribution of your 
         </a>
     </li>
     <li>
-        <a href="/azure/virtual-machines/virtual-machines-linux-quick-create-portal?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json">
+        <a href="/opsacndocsdemo/virtual-machines/virtual-machines-linux-quick-create-portal?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
@@ -44,7 +44,7 @@ Learn how to run Virtual Machines on Azure using the Linux distribution of your 
         </a>
     </li>
     <li>
-        <a href="/azure/virtual-machines/virtual-machines-linux-azure-overview?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json">
+        <a href="/opsacndocsdemo/virtual-machines/virtual-machines-linux-azure-overview?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
@@ -92,7 +92,7 @@ Learn how to run Virtual Machines on Azure using the Linux distribution of your 
                     <div class="cardText">
                         <h3>Command-Line</h3>
                         <p><a href="/powershell/azureps-cmdlets-docs">PowerShell</a></p>
-                        <p><a href="/cli/azure/vm">Azure CLI</a></p>
+                        <p><a href="/cli/opsacndocsdemo/vm">Azure CLI</a></p>
                     </div>
                 </div>
             </div>

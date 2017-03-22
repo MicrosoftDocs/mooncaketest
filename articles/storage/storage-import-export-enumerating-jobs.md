@@ -1,8 +1,8 @@
 ---
-title: 枚举 Azure 导入/导出服务中的作业 | Azure
-description: 了解如何枚举订阅中的所有 Azure 导入/导出服务作业。
-author: renashahmsft
-manager: aungoo
+title: 列出所有 Azure 导入/导出作业 | Microsoft 文档
+description: 了解如何列出订阅中的所有 Azure 导入/导出服务作业。
+author: muralikk
+manager: syadav
 editor: tysonn
 services: storage
 documentationcenter: ''
@@ -13,13 +13,13 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/16/2016
-wacn.date: 12/29/2016
-ms.author: renash
+ms.date: 01/23/2017
+wacn.date: 03/20/2017
+ms.author: muralikk
 ---
 
-# 枚举作业
-若要枚举某个订阅中的所有作业，请调用[列出作业](https://docs.microsoft.com/zh-CN/rest/api/storageimportexport/jobs#Jobs_List)操作。“`List Jobs`”将返回作业列表及以下属性：
+# 枚举 Azure 导入/导出服务中的作业
+若要枚举某个订阅中的所有作业，请调用[列出作业](https://docs.microsoft.com/zh-cn/rest/api/storageimportexport/jobs#Jobs_List)操作。“`List Jobs`”将返回作业列表及以下属性：
 
 -   作业的类型（导入或导出）
 
@@ -30,4 +30,5 @@ ms.author: renash
 ## 另请参阅
  [使用导入/导出服务 REST API](./storage-import-export-using-the-rest-api.md)
 
-<!---HONumber=Mooncake_1226_2016-->
+<!---HONumber=Mooncake_0313_2017-->
+<!--Update_Description: update page title-->

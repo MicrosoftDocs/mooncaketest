@@ -14,9 +14,9 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
-ms.date: 11/15/2016
-wacn.date: 12/21/2016
-ms.author: MikeRayMSFT
+ms.date: 02/07/2017
+wacn.date: 03/20/2017
+ms.author: mikeray
 ---
 
 # Azure 虚拟机中 SQL Server 的高可用性和灾难恢复
@@ -34,27 +34,27 @@ ms.author: MikeRayMSFT
 Azure 支持的 SQL Server HADR 技术包括：
 
 * [Always On 可用性组](https://technet.microsoft.com/zh-cn/library/hh510230.aspx)
-* [数据库镜像](https://technet.microsoft.com/zh-cn/library/ms189852.aspx)
-* [日志传送](https://technet.microsoft.com/zh-cn/library/ms187103.aspx)
-* [使用 Azure Blob 存储服务进行备份和还原](https://msdn.microsoft.com/zh-cn/library/jj919148.aspx)
 * [Always On 故障转移群集实例](https://technet.microsoft.com/zh-cn/library/ms189134.aspx)
+* [日志传送](https://technet.microsoft.com/zh-cn/library/ms187103.aspx)
+* [使用 Azure Blob 存储服务执行 SQL Server 备份和还原](https://msdn.microsoft.com/zh-cn/library/jj919148.aspx)
+* [数据库镜像](https://technet.microsoft.com/zh-cn/library/ms189852.aspx) - 在 SQL Server 2016 中已弃用
 
 可将多种技术配合使用，以实现具有高可用性和灾难恢复功能的 SQL Server 解决方案。根据所用技术的不同，混合部署可能需要使用 VPN 隧道连接 Azure 虚拟网络。以下部分显示了某些部署体系结构的示例。
 
-## 仅限 Azure：高可用性解决方案
-可使用 Always On 可用性组或数据库镜像，为 Azure 中的 SQL Server 数据库提供高可用性解决方案。
+## <a name="azure-only-high-availability-solutions"></a> 仅限 Azure：高可用性解决方案
+可使用 AlwaysOn 功能（包括可用性组或故障转移群集实例），为 Azure 中的 SQL Server 数据库提供高可用性解决方案。
 
 | 技术 | 示例体系结构 |
 | --- | --- |
-| **Always On 可用性组** |所有可用性副本均在同一区域内的 Azure VM 中运行以获得高可用性。你需要配置域控制器 VM，因为 Windows Server 故障转移群集 (WSFC) 需要 Active Directory 域。<br/> ![Always On 可用性组](./media/virtual-machines-windows-sql-high-availability-dr/azure_only_ha_always_on.gif)<br/>有关详细信息，请参阅[手动在 Azure 中配置 Always On 可用性组 (GUI)](./virtual-machines-windows-portal-sql-alwayson-availability-groups-manual.md)。 |
-| **Always On 故障转移群集实例** |需要共享存储的故障转移群集实例 (FCI)，可以通过 2 种不同方式创建。<br/><br/>1.在 Azure VM 中运行的双节点 WSFC 上创建 FCI，该 VM 使用的存储受第三方群集解决方案支持。有关使用 SIOS DataKeeper 的具体示例，请参阅[使用 WSFC 和第三方软件 SIOS Datakeeper 的文件共享的高可用性](https://azure.microsoft.com/blog/high-availability-for-a-file-share-using-wsfc-ilb-and-3rd-party-software-sios-datakeeper/)。<br/><br/>2.在 Azure VM 中运行的双节点 WSFC 上创建 FCI，该 VM 通过 ExpressRoute 使用远程 iSCSI 目标共享块存储。例如，NetApp Private Storage (NPS) 通过 Equinix 的 ExpressRoute 向 Azure VM 公开 iSCSI 目标。<br/><br/>有关第三方共享存储和数据复制解决方案，应联系供应商了解与在故障转移时访问数据相关的任何问题。<br/><br/>请注意，尚不支持在 [Azure 文件存储](https://www.azure.cn/home/features/storage/files/)之上使用 FCI，因为此解决方案不使用高级存储。我们正在不懈努力，很快就能支持此功能。 |
+| **Always On 可用性组** |在同一区域的 Azure VM 中运行的可用性副本提供高可用性。你需要配置域控制器 VM，因为 Windows Server 故障转移群集 (WSFC) 需要 Active Directory 域。<br/> ![Always On 可用性组](./media/virtual-machines-windows-sql-high-availability-dr/azure_only_ha_always_on.gif)<br/>有关详细信息，请参阅[在 Azure 中配置 AlwaysOn 可用性组（手册）](./virtual-machines-windows-portal-sql-alwayson-availability-groups-manual.md)。 |
+| **Always On 故障转移群集实例** |需要共享存储的故障转移群集实例 (FCI)，可以通过 3 种不同方式创建。<br/><br/>1.在 Azure VM 中运行一个双节点 WSFC，附加的存储使用 [Windows Server 2016 存储空间直通 (S2D)](./virtual-machines-windows-portal-sql-create-failover-cluster.md) 来提供基于软件的虚拟 SAN。<br/><br/>2.在 Azure VM 中运行双节点 WSFC，该 VM 使用的存储受第三方群集解决方案支持。有关使用 SIOS DataKeeper 的具体示例，请参阅[使用 WSFC 和第三方软件 SIOS Datakeeper 的文件共享的高可用性](https://azure.microsoft.com/blog/high-availability-for-a-file-share-using-wsfc-ilb-and-3rd-party-software-sios-datakeeper/)。<br/><br/>3.在 Azure VM 中运行双节点 WSFC，该 VM 通过 ExpressRoute 使用远程 iSCSI 目标共享块存储。例如，NetApp Private Storage (NPS) 通过 Equinix 的 ExpressRoute 向 Azure VM 公开 iSCSI 目标。<br/><br/>有关第三方共享存储和数据复制解决方案，应联系供应商了解与在故障转移时访问数据相关的任何问题。<br/><br/>请注意，尚不支持在 [Azure 文件存储](https://www.azure.cn/home/features/storage/files/)之上使用 FCI，因为此解决方案不使用高级存储。我们正在不懈努力，很快就能支持此功能。 |
 
 ## 仅限 Azure：灾难恢复解决方案
 可将 Always On 可用性组、数据库镜像或备份和还原与存储 Blob 配合使用，为 Azure 中的 SQL Server 数据库提供灾难恢复解决方案。
 
 | 技术 | 示例体系结构 |
 | --- | --- |
-| **Always On 可用性组** |可用性副本在 Azure VM 中跨多个数据中心运行以实现灾难恢复。这种跨区域解决方案可以防止站点完全中断。<br/> ![Always On 可用性组](./media/virtual-machines-windows-sql-high-availability-dr/azure_only_dr_alwayson.png)<br/>在一个区域内，所有副本应该位于同一云服务和同一 VNet 中。由于每个区域将有单独的 VNet，因此这些解决方案需要 VNet 到 VNet 连接。有关详细信息，请参阅[在 Azure 经典管理门户中配置站点到站点 VPN](../vpn-gateway/vpn-gateway-site-to-site-create.md)。 |
+| **Always On 可用性组** |可用性副本在 Azure VM 中跨多个数据中心运行以实现灾难恢复。这种跨区域解决方案可以防止站点完全中断。<br/> ![Always On 可用性组](./media/virtual-machines-windows-sql-high-availability-dr/azure_only_dr_alwayson.png)<br/>在一个区域内，所有副本应该位于同一云服务和同一 VNet 中。由于每个区域将有单独的 VNet，因此这些解决方案需要 VNet 到 VNet 连接。有关详细信息，请参阅[在 Azure 经典管理门户中配置站点到站点 VPN](../vpn-gateway/vpn-gateway-site-to-site-create.md)。如需详细的说明，请参阅[在不同区域中的 Azure 虚拟机上创建 SQL Server AlwaysOn 可用性组](./virtual-machines-windows-portal-sql-availability-group-dr.md)。|
 | **数据库镜像** |主体和镜像以及服务器在不同数据库中运行以实现灾难恢复。必须使用服务器证书进行部署，因为 Active Directory 域不能跨越多个数据中心。<br/>![数据库镜像](./media/virtual-machines-windows-sql-high-availability-dr/azure_only_dr_dbmirroring.gif) |
 | **使用 Azure Blob 存储服务进行备份和还原** |生产数据库直接备份到不同数据中心内的 Blob 存储以实现灾难恢复。<br/>![备份和还原](./media/virtual-machines-windows-sql-high-availability-dr/azure_only_dr_backup_restore.gif)<br/>有关详细信息，请参阅 [Azure 虚拟机中 SQL Server 的备份和还原](./virtual-machines-windows-sql-backup-recovery.md)。 |
 
@@ -88,7 +88,7 @@ Azure 中的 DHCP 服务不符合 RFC 标准，可能会导致创建某些 WSFC 
 
 可通过将未使用的静态 IP 地址（如 169.254.1.1 等链接本地 IP 地址）分配给群集网络名称，让群集网络名称联机，从而避免这种情况发生。若要简化此过程，请参阅[在 Azure 中针对 Always On 可用性组配置 Windows 故障转移群集](http://social.technet.microsoft.com/wiki/contents/articles/14776.configuring-windows-failover-cluster-in-windows-azure-for-alwayson-availability-groups.aspx)。
 
-有关详细信息，请参阅[手动在 Azure 中配置 Always On 可用性组 (GUI)](./virtual-machines-windows-portal-sql-alwayson-availability-groups-manual.md)。
+有关详细信息，请参阅[在 Azure 中配置 AlwaysOn 可用性组（手动）](./virtual-machines-windows-portal-sql-alwayson-availability-groups-manual.md)。
 
 ### 可用性组侦听器支持
 运行 Windows Server 2008 R2、Windows Server 2012、Windows Server 2012 R2 和 Windows Server 2016 的 Azure VM 支持可用性组侦听器。这种支持的实现，是借助于在 Azure VM 上启用的负载均衡终结点，它们都是可用性组节点。必须执行特殊的配置步骤，才能让侦听器对在 Azure 中运行和本地运行的客户端应用程序都有效。
@@ -136,4 +136,5 @@ Azure 磁盘中的异地复制不支持将同一数据库的数据文件和日�
 * [在 Azure 中安装新的 Active Directory 林](../active-directory/active-directory-new-forest-virtual-machine.md)
 * [在 Azure VM 中创建用于 Always On 可用性组的 WSFC 群集](http://gallery.technet.microsoft.com/scriptcenter/Create-WSFC-Cluster-for-7c207d3a)
 
-<!---HONumber=Mooncake_1212_2016-->
+<!---HONumber=Mooncake_0313_2017-->
+<!--Update_Description: wording update-->

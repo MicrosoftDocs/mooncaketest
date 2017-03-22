@@ -14,7 +14,7 @@ ms.tgt_pltfrm: na
 ms.devlang: python
 ms.topic: article
 ms.date: 07/07/2016
-wacn.date: 12/26/2016
+wacn.date: 03/17/2017
 ms.author: huvalo
 ---
 
@@ -35,6 +35,8 @@ ms.author: huvalo
 * [Python 2.7（32 位）]或 [Python 3.4（32 位）]
 
 [!INCLUDE [create-account-and-websites-note](../../includes/create-account-and-websites-note.md)]
+
+[!INCLUDE [azure-sdk-developer-differences](../../includes/azure-visual-studio-login-guide.md)]
 
 ## 创建项目
 在此部分中，我们使用样本模板创建 Visual Studio 项目。我们将创建虚拟环境并安装所需软件包。然后，我们使用默认内存中存储库在本地运行应用程序。

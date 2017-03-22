@@ -1,8 +1,8 @@
 ---
 title: 使用 Azure 导入/导出工具 - v1 | Azure
 description: 了解如何使用导入/导出工具为导入作业准备硬盘驱动器，以修复导入作业或导出作业。
-author: renashahmsft
-manager: aungoo
+author: muralikk
+manager: syadav
 editor: tysonn
 services: storage
 documentationcenter: ''
@@ -13,9 +13,9 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/19/2016
-wacn.date: 12/29/2016
-ms.author: renash
+ms.date: 01/15/2017
+wacn.date: 02/24/2017
+ms.author: muralikk
 ---
 
 # 使用 Azure 导入/导出工具 
@@ -33,4 +33,4 @@ ms.author: renash
 - 修复导出作业。
 - 排查在使用 Azure 导入/导出工具的过程中遇到的问题。
 
-<!---HONumber=Mooncake_1226_2016-->
+<!---HONumber=Mooncake_0220_2017-->

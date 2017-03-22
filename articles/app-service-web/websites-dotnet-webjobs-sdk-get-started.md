@@ -14,7 +14,7 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 10/28/2016
-wacn.date: 12/05/2016
+wacn.date: 03/17/2017
 ms.author: tdykstra
 ---
 
@@ -42,6 +42,8 @@ ms.author: tdykstra
 > * 可以[注册一个 Azure 帐户](https://www.azure.cn/pricing/1rmb-trial/?WT.mc_id=A261C142F)：获取用于试用付费版 Azure 服务的信用额度，甚至在用完信用额度后，仍可保留帐户并使用免费 Azure 服务（如网站）。不会收取任何费用，除非明确更改设置并要求收费。
 >
 >
+
+[!INCLUDE [azure-sdk-developer-differences](../../includes/azure-visual-studio-login-guide.md)]
 
 ## <a id="learn"></a>学习内容
 本教程介绍如何执行以下任务：
@@ -115,7 +117,7 @@ Azure 存储帐户可提供在云中存储队列和 Blob 数据的资源。并�
 
     <pre class="prettyprint">&lt;connectionStrings>
       &lt;add name="ContosoAdsContext" connectionString="Data Source=(localdb)\v11.0; Initial Catalog=ContosoAds; Integrated Security=True; MultipleActiveResultSets=True;" providerName="System.Data.SqlClient" />
-      &lt;add name="AzureWebJobsStorage" connectionString="DefaultEndpointsProtocol=https;AccountName=<mark>[accountname]</mark>;AccountKey=<mark>[accesskey]</mark>"/>
+      &lt;add name="AzureWebJobsStorage" connectionString="DefaultEndpointsProtocol=https;AccountName=<mark>[accountname]</mark>;AccountKey=<mark>[accesskey]</mark>;<mark>EndpointSuffix=core.chinacloudapi.cn</mark>"/>
     &lt;/connectionStrings></pre>
 
     存储连接字符串名为 AzureWebJobsStorage，因为这是 WebJobs SDK 默认使用的名称。在此处之所以使用同一名称，是因为在 Azure 环境中只能设置一个连接字符串值。
@@ -135,8 +137,8 @@ Azure 存储帐户可提供在云中存储队列和 Blob 数据的资源。并�
 
       <pre class="prettyprint">&lt;configuration>
       &lt;connectionStrings>
-          &lt;add name="AzureWebJobsDashboard" connectionString="DefaultEndpointsProtocol=https;AccountName=<mark>[accountname]</mark>;AccountKey=<mark>[accesskey]</mark>"/>
-          &lt;add name="AzureWebJobsStorage" connectionString="DefaultEndpointsProtocol=https;AccountName=<mark>[accountname]</mark>;AccountKey=<mark>[accesskey]</mark>"/>
+          &lt;add name="AzureWebJobsDashboard" connectionString="DefaultEndpointsProtocol=https;AccountName=<mark>[accountname]</mark>;AccountKey=<mark>[accesskey]</mark>;<mark>EndpointSuffix=core.chinacloudapi.cn</mark>"/>
+          &lt;add name="AzureWebJobsStorage" connectionString="DefaultEndpointsProtocol=https;AccountName=<mark>[accountname]</mark>;AccountKey=<mark>[accesskey]</mark>;<mark>EndpointSuffix=core.chinacloudapi.cn</mark>"/>
           &lt;add name="ContosoAdsContext" connectionString="Data Source=(localdb)\v11.0; Initial Catalog=ContosoAds; Integrated Security=True; MultipleActiveResultSets=True;"/>
       &lt;/connectionStrings>
           &lt;startup>

@@ -1,6 +1,6 @@
 ---
-title: 使用用于 C++ 的 Azure 存储客户端库列出 Azure 存储资源 | Azure
-description: 了解如何在用于 C++ 的 Azure 存储客户端库中使用列表 API 枚举容器、blob、队列、表和实体。
+title: 使用用于 C++ 的存储客户端库列出 Azure 存储资源 | Azure
+description: 了解如何在用于 C++ 的 Azure 存储客户端库中使用列表 API 来枚举容器、blob、队列、表和实体。
 documentationCenter: .net
 services: storage
 author: dineshmurthy
@@ -13,8 +13,8 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/17/2016
-wacn.date: 12/26/2016
+ms.date: 01/23/2017
+wacn.date: 03/20/2017
 ms.author: dineshm
 ---
 
@@ -62,7 +62,7 @@ list_blob_item_segment list_blobs_segmented(const continuation_token& token) con
 - <i>_segment</i>，其中包含针对列表 API 进行单个调用时返回的结果集。 
 - *continuation_token*，它将被传递给下一个调用，以获取下一页结果。当没有后续结果可以返回时，continuation_token为null。
 
-例如，进行典型调用以列出容器中的所有 blob 时，该调用的代码段可能如下所示。我们的[示例](https://github.com/Azure/azure-storage-cpp/blob/master/Microsoft.WindowsAzure.Storage/samples/BlobsGettingStarted/Application.cpp)中提供了该代码：
+例如，进行典型调用以列出容器中的所有 blob 时，该调用的代码片段可能如下所示。我们的[示例](https://github.com/Azure/azure-storage-cpp/blob/master/Microsoft.WindowsAzure.Storage/samples/BlobsGettingStarted/Application.cpp)中提供了该代码：
 
 ```cpp
 // List blobs in the blob container
@@ -200,4 +200,4 @@ for (auto it = container.list_blobs(); it != end_of_results; ++it)
 - [Azure 存储团队博客](http://blogs.msdn.com/b/windowsazurestorage/)
 - [Azure 存档文档](./index.md)
 
-<!---HONumber=Mooncake_Quality_Review_1215_2016-->
+<!---HONumber=Mooncake_0313_2017-->

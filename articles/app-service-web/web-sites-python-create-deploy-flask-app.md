@@ -14,7 +14,7 @@ ms.tgt_pltfrm: na
 ms.devlang: python
 ms.topic: article
 ms.date: 02/20/2016
-wacn.date: 12/12/2016
+wacn.date: 02/21/2017
 ms.author: huvalo
 ---
 
@@ -35,6 +35,8 @@ ms.author: huvalo
 - setuptools, pip, virtualenv（仅限 Python 2.7）
 - Git
 - [Python Tools for Visual Studio][] (PTVS) - 注意：这是可选的
+
+[!INCLUDE [azure-sdk-developer-differences](../../includes/azure-visual-studio-login-guide.md)]
 
 **注意**：Python 项目目前不支持 TFS 发布。
 

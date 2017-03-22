@@ -14,7 +14,7 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: web
 ms.date: 08/31/2016
-wacn.date: 12/05/2016
+wacn.date: 03/17/2017
 ms.author: cephalin
 ---
 
@@ -32,6 +32,8 @@ ms.author: cephalin
 * 根据 AD FS 对用户进行身份验证
 * 使用 `[Authorize]` 授权用户执行不同操作
 * 用于在 Visual Studio 中进行调试和发布到 App Service Web Apps 的静态配置（配置一次，随时调试和发布）
+
+[!INCLUDE [azure-sdk-developer-differences](../../includes/azure-visual-studio-login-guide.md)]
 
 ## <a name="bkmk_need"></a>所需条件
 [!INCLUDE [free-trial-note](../../includes/free-trial-note.md)]

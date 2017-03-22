@@ -1,8 +1,8 @@
 ---
-title: 为 Azure 导入/导出服务的导入作业准备硬盘驱动器的示例工作流 | Azure
+title: 为 Azure 导入作业准备硬盘驱动器的示例工作流 | Azure
 description: 参阅针对 Azure 导入/导出服务中的导入作业准备驱动器的整个过程演练
-author: renashahmsft
-manager: aungoo
+author: muralikk
+manager: syadav
 editor: tysonn
 services: storage
 documentationcenter: ''
@@ -12,9 +12,9 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/16/2016
-wacn.date: 12/29/2016
-ms.author: renash
+ms.date: 01/23/2017
+wacn.date: 03/20/2017
+ms.author: muralikk
 ---
 
 # 为导入作业准备硬盘驱动器的示例工作流
@@ -26,7 +26,7 @@ ms.author: renash
 本示例将以下数据导入到名为 `mystorageaccount` 的 Azure 存储帐户：
 
 |位置|说明|数据大小|
-|---|---|---|
+|--------------|-----------------|-----|
 |H:\\Video|视频集合|12 TB|
 |H:\\Photo|照片集合|30 GB|
 |K:\\Temp\\FavoriteMovie.ISO|Blu-Ray™ 磁盘映像|25 GB|
@@ -132,4 +132,4 @@ WAImportExport.exe PrepImport /j:JournalTest.jrn /id:session#2  /DataSet:dataset
 * [为导入作业准备硬盘驱动器](./storage-import-export-tool-preparing-hard-drives-import.md)
 * [常用命令快速参考](./storage-import-export-tool-quick-reference.md)
 
-<!---HONumber=Mooncake_1226_2016-->
+<!---HONumber=Mooncake_0313_2017-->

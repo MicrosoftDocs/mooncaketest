@@ -1,14 +1,15 @@
-<properties
-    layout="LandingPage"
-    description="Learn Hadoop on HDInsight. Documentation shows you how to use Hadoop, Spark, HBase, R-Server, and more to process, analyze, and gain insights from big data." />
+---
+layout: LandingPage"
+description: 了解 Hadoop on HDInsight。文档介绍如何使用 Hadoop、Spark、HBase、R-Server 等方式处理、分析大数据并获取见解。 
+---
 
-#Azure HDInsight Documentation
+#Azure HDInsight 文档
 
-Learn how to use Hadoop in the cloud on HDInsight to analyze streaming or historical data. Tutorials and other documentation show you how to create clusters, process and analyze big data, and develop solutions with Hadoop, Spark, HBase, R-Server, Storm, and other technologies in the Hadoop ecosystem.
+了解如何在 HDInsight 上使用云中的 Hadoop 分析流式处理数据或历史数据。教程和其他文档介绍了如何在 Hadoop 生态系统中使用 Hadoop、Spark、HBase、R-Server、Storm 等技术创建群集、处理和分析大数据，以及开发解决方案。
 
 <ul class="panelContent cardsFTitle">
     <li>
-        <a href="/azure/hdinsight/hdinsight-hadoop-introduction">
+        <a href="/opsacndocsdemo/hdinsight/hdinsight-hadoop-introduction">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
@@ -18,13 +19,13 @@ Learn how to use Hadoop in the cloud on HDInsight to analyze streaming or histor
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Learn about Azure HDInsight</h3>
+                        <h3>了解 Azure HDInsight</h3>
                     </div>
                 </div>
             </div>
         </div>
         </a>
-    </li>
+</li>
      <li>
         <a href="https://azure.microsoft.com/documentation/videos/index/?services=hdinsight">
         <div class="cardSize">
@@ -36,15 +37,15 @@ Learn how to use Hadoop in the cloud on HDInsight to analyze streaming or histor
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Azure HDInsight Video Library</h3>
+                        <h3>Azure HDInsight 视频库</h3>
                     </div>
                 </div>
             </div>
         </div>
         </a>
-    </li>
+</li>
     <li>
-        <a href="/azure/hdinsight/hdinsight-hadoop-linux-tutorial-get-started">
+        <a href="/opsacndocsdemo/hdinsight/hdinsight-hadoop-linux-tutorial-get-started">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
@@ -54,15 +55,15 @@ Learn how to use Hadoop in the cloud on HDInsight to analyze streaming or histor
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Get Started with HDInsight using a Linux-based Hadoop cluster</h3>
+                        <h3>通过基于 Linux 的 Hadoop 群集开始使用 HDInsight</h3>
                     </div>
                 </div>
             </div>
         </div>
         </a>
-    </li>
+</li>
     <li>
-        <a href="/azure/hdinsight/hdinsight-hadoop-r-server-get-started">
+        <a href="/opsacndocsdemo/hdinsight/hdinsight-hadoop-r-server-get-started">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
@@ -72,15 +73,15 @@ Learn how to use Hadoop in the cloud on HDInsight to analyze streaming or histor
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Get Started with HDInsight using a Spark cluster with R Server</h3>
+                        <h3>通过将 Spark 群集与 R Server 配合使用，开始使用 HDInsight</h3>
                     </div>
                 </div>
             </div>
         </div>
         </a>
-    </li>
+</li>
      <li>
-        <a href="/azure/hdinsight/hdinsight-hbase-tutorial-get-started-linux">
+        <a href="/opsacndocsdemo/hdinsight/hdinsight-hbase-tutorial-get-started-linux">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
@@ -90,15 +91,15 @@ Learn how to use Hadoop in the cloud on HDInsight to analyze streaming or histor
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Get Started with HDInsight using an HBase cluster</h3>
+                        <h3>通过 HBase 群集开始使用 HDInsight</h3>
                     </div>
                 </div>
             </div>
         </div>
         </a>
-    </li>
+</li>
     <li>
-        <a href="/azure/hdinsight/hdinsight-apache-storm-tutorial-get-started-linux">
+        <a href="/opsacndocsdemo/hdinsight/hdinsight-apache-storm-tutorial-get-started-linux">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
@@ -108,19 +109,19 @@ Learn how to use Hadoop in the cloud on HDInsight to analyze streaming or histor
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Get Started with HDInsight using an Apache Storm cluster</h3>
+                        <h3>通过 Apache Storm 群集开始使用 HDInsight</h3>
                     </div>
                 </div>
             </div>
         </div>
         </a>
-    </li>
+</li>
     <li>
 </ul>
 
 ---
- 
-<h2>Reference</h2>
+ 
+<h2>引用</h2>
 <ul class="panelContent cardsW">
     <li>
         <div class="cardSize">
@@ -164,10 +165,13 @@ Learn how to use Hadoop in the cloud on HDInsight to analyze streaming or histor
 </ul>
 
 <div class="downloadHolder">
-    <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/hdinsight.pdf">
-        <div class="img"></div>
+    <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/zh-cn/Azure.azure-documents/live/hdinsight.pdf">
+<div class="img"></div>
         <div class="text">
-            Download HDInsight Documentation
-        </div>
+            下载 HDInsight 文档
+	</div>
     </a>
+
 </div>
+
+<!---HONumber=Mooncake_0120_2017-->

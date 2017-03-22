@@ -1,2 +1,2 @@
 <properties
-    redirect_url="/azure/active-directory/connect-health/active-directory-aadconnect-health" />
+    redirect_url="/opsacndocsdemo/active-directory/connect-health/active-directory-aadconnect-health" />

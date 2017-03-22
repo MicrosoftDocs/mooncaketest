@@ -1,156 +1,139 @@
-<properties
-    layout="LandingPage"
-    description="Learn how to use Resource Manager to deploy and manage solution resources as a group and to create templates for consistent and repeatable resource deployment." />
+---
+title: Azure Resource Manager 文档 - 教程、API 参考 | Microsoft 文档
+description: 了解如何使用 Resource Manager 以组的方式部署和管理解决方案资源并创建模板，以便进行一致且可重复的资源部署。
+services: azure-resource-manager
+author: carolz
+manager: carolz
+layout: LandingPage
+ms.assetid: 
+ms.service: azure-resource-manager
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: 登录页
+ms.date: 01/23/2017
+ms.author: carolz
+---
+#Azure Resource Manager 文档
 
-#Azure Resource Manager Documentation
-
-Learn how to use Resource Manager to deploy, monitor, and manage solution resources as a group. Tutorials, API references, and other documentation show you how to set up resource groups and create templates for consistent and repeatable deployment.
+了解如何使用 Resource Manager 以组的形式部署、监视和管理解决方案资源。教程、API 参考和其他文档介绍了如何设置资源组并创建模板，以便进行一致且可重复的部署。
 
 <ul class="panelContent cardsFTitle">
-	<li>
-        <a href="/azure/Azure-Resource-Manager/resource-group-overview">
-        <div class="cardSize">
+	<li><a href="/opsacndocsdemo/Azure-Resource-Manager/resource-group-overview">
+<div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardImageOuter">
-                        <div class="cardImage">
-                            <img src="media/index/azure-resource-manager.svg" alt="" />
-                        </div>
+                        <div class="cardImage"><img src="media/index/azure-resource-manager.svg" alt="" /></div>
                     </div>
                     <div class="cardText">
-                        <h3>Learn about Azure Resource Manager</h3>
+                        <h3>了解 Azure Resource Manager</h3>
                     </div>
                 </div>
             </div>
-        </div>
-        </a>
-    </li>
-    <li>
-        <a href="https://azure.microsoft.com/documentation/videos/index/?services=azure-resource-manager">
-        <div class="cardSize">
+        </div></a>
+</li>
+    <li><a href="https://azure.microsoft.com/documentation/videos/index/?services=azure-resource-manager">
+<div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardImageOuter">
-                        <div class="cardImage">
-                            <img src="media/index/video-library.svg" alt="" />
-                        </div>
+                        <div class="cardImage"><img src="media/index/video-library.svg" alt="" /></div>
                     </div>
                     <div class="cardText">
-                        <h3>Azure Resource Manager Video Library</h3>
+                        <h3>Azure Resource Manager 视频库</h3>
                     </div>
                 </div>
             </div>
-        </div>
-        </a>
-    </li>
-	<li>
-        <a href="/azure/resource-manager-template-walkthrough">
-        <div class="cardSize">
+        </div></a>
+</li>
+	<li><a href="/opsacndocsdemo/resource-manager-template-walkthrough">
+<div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardImageOuter">
-                        <div class="cardImage">
-                            <img src="media/index/get-started.svg" alt="" />
-                        </div>
+                        <div class="cardImage"><img src="media/index/get-started.svg" alt="" /></div>
                     </div>
                     <div class="cardText">
-                        <h3>Get Started with Azure Resource Manager</h3>
+                        <h3>Azure Resource Manager 入门</h3>
                     </div>
                 </div>
             </div>
-        </div>
-        </a>
-    </li>
-	<li>
-        <a href="/azure/resource-group-define-dependencies">
-        <div class="cardSize">
+        </div></a>
+</li>
+	<li><a href="/opsacndocsdemo/resource-group-define-dependencies">
+<div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardImageOuter">
-                        <div class="cardImage">
-                            <img src="media/index/get-started.svg" alt="" />
-                        </div>
+                        <div class="cardImage"><img src="media/index/get-started.svg" alt="" /></div>
                     </div>
                     <div class="cardText">
-                        <h3>Get Started creating dependencies in Azure Resource Manager templates</h3>
+                        <h3>开始在 Azure Resource Manager 模板中创建依赖项</h3>
                     </div>
                 </div>
             </div>
-        </div>
-        </a>
-    </li>
-    <li>
-        <a href="/azure/resource-group-create-multiple">
-        <div class="cardSize">
+        </div></a>
+</li>
+    <li><a href="/opsacndocsdemo/resource-group-create-multiple">
+<div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardImageOuter">
-                        <div class="cardImage">
-                            <img src="media/index/get-started.svg" alt="" />
-                        </div>
+                        <div class="cardImage"><img src="media/index/get-started.svg" alt="" /></div>
                     </div>
                     <div class="cardText">
-                        <h3>Get Started with multiple resource instances in Azure Resource Manager</h3>
+                        <h3>开始在 Azure Resource Manager 中使用多个资源实例</h3>
                     </div>
                 </div>
             </div>
-        </div>
-        </a>
-    </li>
+        </div></a>
+</li>
 </ul>
 
 ---
- 
-<h2>Reference</h2>
+ 
+<h2>引用</h2>
 <ul class="panelContent cardsW">
     <li>
         <div class="cardSize">
-            <div class="cardPadding">
-                <div class="card">
-                    <div class="cardText">
-                        <h3>Command-Line</h3>
-                        <p><a href="/powershell/resourcemanager/azurerm.resources/v3.2.0/azurerm.resources">PowerShell</a></p>
-                        <p><a href="/cli/azure/resource">Azure CLI</a></p>
-                    </div>
-                </div>
-            </div>
-        </div>
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>命令行</h3>
+                        <p><a href="/powershell/resourcemanager/azurerm.resources/v3.5.0/azurerm.resources">PowerShell</a></p>
+                        <p><a href="/cli/opsacndocsdemo/resource">Azure CLI</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
     </li>
     <li>
-        <div class="cardSize">
-            <div class="cardPadding">
-                <div class="card">
-                    <div class="cardText">
-                        <h3>Languages</h3>
-                        <p><a href="/dotnet/api/microsoft.azure.management.resourcemanager">.NET</a></p>
-                        <p><a href="/java/api/com.microsoft.azure.management.resources">Java</a></p>
-                        <p><a href="http://azure-sdk-for-python.readthedocs.io/en/latest/resourcemanagement.html">Python</a></p>
-                        <p><a href="https://github.com/Azure/azure-resource-manager-schemas">Template schemas</a></p>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>语言</h3>
+                        <p><a href="/dotnet/api/microsoft.azure.management.resourcemanager">.NET</a></p>
+                        <p><a href="/java/api/com.microsoft.azure.management.resources">Java</a></p>
+                        <p><a href="http://azure-sdk-for-python.readthedocs.io/en/latest/resourcemanagement.html">Python</a></p>
+                        <p><a href="https://github.com/opsacndocsdemo/azure-resource-manager-schemas">模板架构</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
     </li>
     <li>
-        <div class="cardSize">
-            <div class="cardPadding">
-                <div class="card">
-                    <div class="cardText">
-                        <h3>REST</h3>
-                        <p><a href="/rest/api/resources/">REST API</a></p>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>REST</h3>
+                        <p><a href="/rest/api/resources/">REST API</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
     </li>
 </ul>
 
----
-<div class="downloadHolder">
-    <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/azure-resource-manager.pdf">
-        <div class="img"></div>
-        <div class="text">
-            Download Azure Resource Manager Documentation
-        </div>
-    </a>
-</div>
+<!---HONumber=Mooncake_0227_2017-->

@@ -64,7 +64,7 @@ ms.author: genemi
 - sys.dm\_xe**\_database**\_session\_targets
 - sys.dm\_xe\_session\_targets
 
-    ```
+    ```tsql
     GO
     ----  Transact-SQL.
     ---- Step set 1.
@@ -302,7 +302,7 @@ SELECT 'AFTER__Updates', EmployeeKudosCount, * FROM tabEmployee;
 
 处理完环形缓冲区后，可以发出 **ALTER** 将它删除并释放其资源，如下所示：
 
-```
+```tsql
 ALTER EVENT SESSION eventsession_gm_azuresqldb51
     ON DATABASE
     DROP TARGET package0.ring_buffer;
@@ -311,7 +311,7 @@ GO
 
 事件会话的定义将会更新，但不会删除。然后可以将环形缓冲区的另一个实例添加到事件会话：
 
-```
+```tsql
 ALTER EVENT SESSION eventsession_gm_azuresqldb51
     ON DATABASE
     ADD TARGET

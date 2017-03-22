@@ -1,14 +1,14 @@
-<properties
-    layout="LandingPage"
-    description="Tutorials, API references and other documentation show you how to use Cloud Services to host and run highly available and scalable cloud applications and APIs." />
+---
+layout: LandingPage
+description: 教程、API 参考和其他文档介绍了如何使用云服务托管和运行高度可用且可伸缩的云应用程序和 API。
+---
+# 云服务文档
 
-# Cloud Services Documentation
-
-Learn how to use Cloud Services to host and run highly available, scalable cloud applications and APIs.  Tutorials, API references and other documentation show you how to manage virtual machine hosts and configure, patch, and install software.
+了解如何使用云服务托管和运行高度可用和可伸缩的云应用程序和 API。教程、API 参考和其他文档介绍了如何管理虚拟机主机以及配置、修补和安装软件。
 
 <ul class="panelContent cardsFTitle">
     <li>
-        <a href="https:/azure/cloud-services/cloud-services-choose-me">
+        <a href="https:/opsacndocsdemo/cloud-services/cloud-services-choose-me">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
@@ -18,13 +18,13 @@ Learn how to use Cloud Services to host and run highly available, scalable cloud
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Learn about Cloud Services</h3>
+                        <h3>了解云服务</h3>
                     </div>
                 </div>
             </div>
         </div>
         </a>
-    </li>
+</li>
     <li>
         <a href="https://azure.microsoft.com/documentation/videos/index/?services=cloud-services">
         <div class="cardSize">
@@ -36,15 +36,15 @@ Learn how to use Cloud Services to host and run highly available, scalable cloud
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Cloud Services Video Library</h3>
+                        <h3>云服务视频库</h3>
                     </div>
                 </div>
             </div>
         </div>
         </a>
-    </li>
+</li>
     <li>
-        <a href="/azure/cloud-services/cloud-services-dotnet-get-started">
+        <a href="/opsacndocsdemo/cloud-services/cloud-services-dotnet-get-started">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
@@ -54,15 +54,15 @@ Learn how to use Cloud Services to host and run highly available, scalable cloud
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Get Started with Cloud Services using .NET</h3>
+                        <h3>开始通过 .NET 使用云服务</h3>
                     </div>
                 </div>
             </div>
         </div>
         </a>
-    </li>
+</li>
     <li>
-        <a href="/azure/cloud-services/cloud-services-python-ptvs">
+        <a href="/opsacndocsdemo/cloud-services/cloud-services-python-ptvs">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
@@ -72,18 +72,18 @@ Learn how to use Cloud Services to host and run highly available, scalable cloud
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Get Started with Cloud Services using Python</h3>
+                        <h3>开始通过 Python 使用云服务</h3>
                     </div>
                 </div>
             </div>
         </div>
         </a>
-    </li>
+</li>
  </ul>
 
 ---
 
-<h2>Reference</h2>
+<h2>引用</h2>
 <ul class="panelContent cardsW">
     <li>
         <div class="cardSize">
@@ -91,8 +91,8 @@ Learn how to use Cloud Services to host and run highly available, scalable cloud
                 <div class="card">
                     <div class="cardText">
                         <h3>Languages</h3>
-                        <p><a href="https://msdn.microsoft.com/library/azure/ee758711">.csdef XMLSchema</a></p>
-                        <p><a href="https://msdn.microsoft.com/library/azure/ee758710">.cscfg XMLSchema</a></p>
+                        <p><a href="https://msdn.microsoft.com/library/opsacndocsdemo/ee758711">.csdef XMLSchema</a></p>
+                        <p><a href="https://msdn.microsoft.com/library/opsacndocsdemo/ee758710">.cscfg XMLSchema</a></p>
                     </div>
                 </div>
             </div>
@@ -104,7 +104,7 @@ Learn how to use Cloud Services to host and run highly available, scalable cloud
                 <div class="card">
                     <div class="cardText">
                         <h3>REST</h3>
-                        <p><a href="https://msdn.microsoft.com/library/azure/ee460812">REST API</a></p>
+                        <p><a href="https://msdn.microsoft.com/library/opsacndocsdemo/ee460812">REST API</a></p>
                     </div>
                 </div>
             </div>
@@ -113,10 +113,13 @@ Learn how to use Cloud Services to host and run highly available, scalable cloud
 </ul>
 
 <div class="downloadHolder">
-    <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/cloud-services.pdf">
-        <div class="img"></div>
+    <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/zh-cn/Azure.azure-documents/live/cloud-services.pdf">
+<div class="img"></div>
         <div class="text">
-            Download Cloud Services Documentation
-        </div>
+            下载云服务文档
+	</div>
     </a>
+
 </div>
+
+<!---HONumber=Mooncake_0120_2017-->

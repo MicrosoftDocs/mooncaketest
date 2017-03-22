@@ -13,7 +13,7 @@ ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 04/25/2016
-wacn.date: 11/25/2016
+wacn.date: 02/21/2017
 ms.author: thmullan
 ---
 
@@ -34,6 +34,8 @@ ms.author: thmullan
 需要进行一项应用程序更改。由于所有应用程序用户都使用相同的连接字符串（即相同的 SQL 登录名）来连接到数据库，因此目前的 RLS 策略并不知道应该针对哪个用户进行筛选。这种方法在 Web 应用程序中很常见，因为它可以确保连接池的高效率，但也意味着我们需要使用其他方法来标识当前正在数据库中的应用程序用户。解决方法是让应用程序在打开连接之后、执行任何查询之前，先在 [SESSION\_CONTEXT](https://msdn.microsoft.com/zh-cn/library/mt590806) 中针对当前的 UserId 设置一个键-值对。SESSION\_CONTEXT 是一个会话范围的键/值存储空间，我们的 RLS 策略将使用存储在该空间的 UserId 来标识当前用户。
 
 我们将添加一个[拦截器](https://msdn.microsoft.com/data/dn469464.aspx)（具体而言，为 [DbConnectionInterceptor](https://msdn.microsoft.com/zh-cn/library/system.data.entity.infrastructure.interception.idbconnectioninterceptor)，这是 Entity Framework (EF) 6 中的新功能），以便每当 EF 打开连接时，通过执行一个 T-SQL 语句在 SESSION\_CONTEXT 中自动设置当前 UserId。
+
+[!INCLUDE [azure-sdk-developer-differences](../../includes/azure-visual-studio-login-guide.md)]
 
 1. 在 Visual Studio 中打开 ContactManager 项目。
 2. 右键单击解决方案资源管理器中的 Models 文件夹，然后选择“添加”>“类”。

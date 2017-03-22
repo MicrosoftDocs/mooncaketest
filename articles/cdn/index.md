@@ -8,7 +8,7 @@ Learn how to use Content Delivery Network (CDN) to deliver high-bandwidth conten
 
 <ul class="panelContent cardsFTitle">
     <li>
-        <a href="/azure/best-practices-CDN">
+        <a href="/opsacndocsdemo/best-practices-CDN">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
@@ -43,7 +43,7 @@ Learn how to use Content Delivery Network (CDN) to deliver high-bandwidth conten
         </div>
         </a>
     </li><li>
-        <a href="/azure/cdn/cdn-create-new-endpoint">
+        <a href="/opsacndocsdemo/cdn/cdn-create-new-endpoint">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">

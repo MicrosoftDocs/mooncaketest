@@ -1349,7 +1349,6 @@ SAP GUI 不会立即连接到运行中的任何 SAP 实例（端口 32xx），�
     $vm = New-AzureRmVM -ResourceGroupName $rgName -Location "China North" -VM $vmconfig
     ```
 
-    <br/>
 
     ```powershell
     #####
@@ -1429,7 +1428,6 @@ SAP GUI 不会立即连接到运行中的任何 SAP 实例（端口 32xx），�
     # azure vm create --resource-group $rgName --location "China North" --name SAPERPDemo --nic-name SAPERPDemoNIC --image-urn RedHat:RHEL:7.2:latest --os-type Linux --admin-username <username> --admin-password <password> --vm-size Standard_D11 --os-disk-vhd https://$rgNameLower.blob.core.chinacloudapi.cn/vhds/os.vhd --disable-boot-diagnostics
     ```
 
-    <br/>
 
     ```
     #####

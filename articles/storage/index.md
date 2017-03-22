@@ -1,14 +1,25 @@
-<properties
-    layout="LandingPage"
-    description="Learn how to use Azure Storage - Blob, Table, Queue, File, and Virtual Machine Disk storage in the cloud. Tutorials, API references, and other documentation." />
+---
+pageTitle: Azure 存储文档 - 教程、API 参考 | Azure
+description: 了解如何使用 Azure 存储 - 云中的 Blob、表、队列、文件和虚拟机磁盘存储。教程、API 参考和其他文档。
+services: storage
+author: carolz
+manager: carolz
+layout: LandingPage
+ms.service: storage
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: landing-page
+ms.date: 01/23/2017
+ms.author: carolz
+---
 
-# Storage Documentation
+# 存储文档
 
-Learn how to use Azure Storage, a cloud storage service that is durable, available, and scalable. Tutorials, API references, and other documentation show you how to set up and manage Blob, Table, Queue, File, and Virtual Machine Disk storage.
+了解如何使用 Azure 存储，一种持久、可用且可缩放的云存储服务。教程、API 参考和其他文档介绍如何设置和管理 Blob、表、队列、文件和虚拟机磁盘存储。
 
 <ul class="panelContent cardsFTitle">
     <li>
-        <a href="/azure/storage/storage-introduction">
+        <a href="/opsacndocsdemo/storage/storage-introduction">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
@@ -18,7 +29,7 @@ Learn how to use Azure Storage, a cloud storage service that is durable, availab
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Learn about Azure Storage</h3>
+                        <h3>了解 Azure 存储</h3>
                     </div>
                 </div>
             </div>
@@ -36,7 +47,7 @@ Learn how to use Azure Storage, a cloud storage service that is durable, availab
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Azure Storage Video Library</h3>
+                        <h3>Azure 存储视频库</h3>
                     </div>
                 </div>
             </div>
@@ -44,7 +55,7 @@ Learn how to use Azure Storage, a cloud storage service that is durable, availab
         </a>
     </li>
     <li>
-        <a href="/azure/storage/storage-getting-started-guide">
+        <a href="/opsacndocsdemo/storage/storage-getting-started-guide">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
@@ -54,7 +65,7 @@ Learn how to use Azure Storage, a cloud storage service that is durable, availab
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Get started with Storage</h3>
+                        <h3>存储入门</h3>
                     </div>
                 </div>
             </div>
@@ -62,7 +73,7 @@ Learn how to use Azure Storage, a cloud storage service that is durable, availab
         </a>
     </li>
     <li>
-        <a href="/azure/storage/storage-create-storage-account">
+        <a href="/opsacndocsdemo/storage/storage-create-storage-account">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
@@ -72,7 +83,7 @@ Learn how to use Azure Storage, a cloud storage service that is durable, availab
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Create a Storage account</h3>
+                        <h3>创建存储帐户</h3>
                     </div>
                 </div>
             </div>
@@ -81,65 +92,59 @@ Learn how to use Azure Storage, a cloud storage service that is durable, availab
     </li>   
 </ul>
 
----
- 
-<h2>Reference</h2>
+
+ 
+<h2>引用</h2>
 <ul class="panelContent cardsW">
     <li>
         <div class="cardSize">
-            <div class="cardPadding">
-                <div class="card">
-                    <div class="cardText">
-                        <h3>Command-Line</h3>
-                        <p><a href="/powershell/storage">PowerShell</a></p>
-                        <p><a href="/cli/azure/storage">Azure CLI</a></p>
-                    </div>
-                </div>
-            </div>
-        </div>
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>命令行</h3>
+                        <p><a href="/powershell/storage">PowerShell</a></p>
+                        <p><a href="/cli/opsacndocsdemo/storage">Azure CLI</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
     </li>
     <li>
-        <div class="cardSize">
-            <div class="cardPadding">
-                <div class="card">
-                    <div class="cardText">
-                        <h3>Languages</h3>
-                        <p><a href="/dotnet/api/microsoft.azure.management.storage">.NET: Resource manager</a></p>
-                        <p><a href="https://msdn.microsoft.com/en-us/library/azure/mt684990.aspx">.NET: Data movement</a></p>
-                        <p><a href="https://msdn.microsoft.com/library/azure/mt347887.aspx">.NET: Blobs, Queues, Tables, and Files</a></p>
-                        <p><a href="/java/api/">Java</a></p>
-                        <p><a href="http://azure.github.io/azure-storage-node">Node​.js</a></p>
-                        <p><a href="http://azure.github.io/azure-storage-ruby">Ruby</a></p>
-                        <p><a href="https://azure-storage.readthedocs.io/en/latest/index.html">Python</a></p>
-                        <p><a href="http://azure.github.io/azure-storage-cpp">C++</a></p>
-                        <p><a href="https://github.com/Azure/azure-storage-ios">iOS</a></p>
-                        <p><a href="http://azure.github.io/azure-storage-android">Android</a></p>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>语言</h3>
+                        <p><a href="/dotnet/api/microsoft.azure.management.storage">.NET：Resource Manager</a></p>
+                        <p><a href="https://msdn.microsoft.com/zh-cn/library/opsacndocsdemo/mt684990.aspx">.NET: Data movement（.NET：数据移动）</a></p>
+                        <p><a href="https://msdn.microsoft.com/library/opsacndocsdemo/mt347887.aspx">.NET: Blobs, Queues, Tables, and Files（.NET：Blob、队列、表和文件）</a></p>
+                        <p><a href="/java/api/">Java</a></p>
+                        <p><a href="http://azure.github.io/azure-storage-node">Node​.js</a></p>
+                        <p><a href="http://azure.github.io/azure-storage-ruby">Ruby</a></p>
+                        <p><a href="https://azure-storage.readthedocs.io/en/latest/index.html">Python</a></p>
+                        <p><a href="http://azure.github.io/azure-storage-cpp">C++</a></p>
+                        <p><a href="https://github.com/opsacndocsdemo/azure-storage-ios">iOS</a></p>
+                        <p><a href="http://azure.github.io/azure-storage-android">Android</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
     </li>
     <li>
-        <div class="cardSize">
-            <div class="cardPadding">
-                <div class="card">
-                    <div class="cardText">
-                        <h3>REST</h3>
-                        <p><a href="/rest/api/storageservices/fileservices/azure-storage-services-rest-api-reference">Blobs, Queues, Tables, and Files</a></p>
-                        <p><a href="/rest/api/storagerp">Resource provider</a></p>
-                        <p><a href="/rest/api/storageimportexport">Import/export</a></p>
-                   </div>
-                </div>
-            </div>
-        </div>
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>REST</h3>
+                        <p><a href="/rest/api/storageservices/fileservices/azure-storage-services-rest-api-reference">Blob、队列、表和文件</a></p>
+                        <p><a href="/rest/api/storagerp">资源提供程序</a></p>
+                        <p><a href="/rest/api/storageimportexport">导入/导出</a></p>
+                        <p><a href="/rest/api/storageservices/fileservices/azure-storage-services-rest-api-reference">存储数据 REST API</a></p>
+                   </div>
+                </div>
+            </div>
+        </div>
     </li>
 </ul>
 
-<div class="downloadHolder">
-    <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/storage.pdf">
-        <div class="img"></div>
-        <div class="text">
-            Download Storage Documentation
-        </div>
-    </a>
-</div>
+<!---HONumber=Mooncake_0313_2017-->

@@ -2,49 +2,43 @@
 title: 使用 Azure Resource Manager 和 C# 管理 VM | Azure
 description: 使用 Azure Resource Manager 和 C# 来管理虚拟机。
 services: virtual-machines-windows
-documentationCenter: ''
-authors: davidmu1
+documentationcenter: ''
+author: davidmu1
 manager: timlt
 editor: ''
 tags: azure-resource-manager
 
+ms.assetid: 93898bad-b861-4359-9a4b-348e1d491822
 ms.service: virtual-machines-windows
 ms.workload: na
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
 ms.date: 09/27/2016
-wacn.date: 12/16/2016
+wacn.date: 02/24/2017
 ms.author: davidmu
 ---
 
-# 使用 Azure Resource Manager 与 C 来管理 Azure 虚拟机#  
-
+# 使用 Azure Resource Manager 与 C\# 来管理 Azure 虚拟机 #
 本文中的任务显示了如何管理虚拟机，如启动、停止和更新。资源组中必须有虚拟机才能完成本文中的任务。
 
 若要完成本文中的任务，你需要：
 
-- [Visual Studio](http://msdn.microsoft.com/zh-cn/library/dd831853.aspx)
-- [身份验证令牌](../azure-resource-manager/resource-group-authenticate-service-principal.md)
+* [Visual Studio](http://msdn.microsoft.com/zh-cn/library/dd831853.aspx)
+* [身份验证令牌](../azure-resource-manager/resource-group-authenticate-service-principal.md)
 
 ## 创建 Visual Studio 项目并安装包
-
 使用 NuGet 包可以最轻松地安装本文中任务所需的库。针对本文安装的库是 Azure Active Directory 身份验证库和计算资源提供程序库。请完成以下步骤来获取 Visual Studio 中的库：
 
-1. 依次单击“文件”>“新建”>“项目”。
-
-2. 在“模板”>“Visual C#”中，选择“控制台应用程序”，输入项目的名称和位置，然后单击“确定”。
-
+1. 依次单击“文件”\>“新建”\>“项目”。
+2. 在“模板”\>“Visual C\#”中，选择“控制台应用程序”，输入项目的名称和位置，然后单击“确定”。
 3. 在解决方案资源管理器中右键单击项目名称，然后单击“管理 NuGet 包”。
-
-4. 在搜索框中键入 *Active Directory*，单击“Active Directory 身份验证库”包旁边的“安装”，然后根据说明安装该包。
-
+4. 在搜索框中键入 *Active Directory*，单击“Active Directory 身份验证库”包对应的“安装”，然后根据说明安装该包。
 5. 在页面顶部，选择“包括预发行版”。在搜索框中键入 *Microsoft.Azure.Management.Compute*，单击“计算 .NET 库”的“安装”，然后按照说明安装该包。
 
 现在，你已准备好开始使用这些库来管理虚拟机。
 
 ## 设置项目
-
 现已创建应用程序并安装了库，即可使用应用程序信息创建令牌。此令牌用于验证发至 Azure Resource Manager 的请求。
 
 1. 打开你为项目创建的 Program.cs 文件，然后在该文件的顶部添加以下 using 语句：
@@ -56,7 +50,6 @@ ms.author: davidmu
     using Microsoft.Azure.Management.Compute.Models;
     using Microsoft.Rest;
     ```
-
 2. 将变量添加到 Program 类的 Main 方法，指定资源组名称、虚拟机名称和订阅标识符：
 
     ```
@@ -66,7 +59,6 @@ ms.author: davidmu
     ```
 
     可以通过运行 Get-AzureRmSubscription 查找订阅标识符。
-
 3. 若要获取创建凭据所需的令牌，请将以下方法添加到 Program 类：
 
     ```
@@ -84,18 +76,15 @@ ms.author: davidmu
     ```
 
     将 {client-id} 替换为 Azure Active Directory 应用程序的标识符，将 {client-secret} 替换为 AD 应用程序的访问密钥，并将 {tenant-id} 替换为你的订阅的租户标识符。可以通过运行 Get-AzureRmSubscription 找到租户 ID。可使用 Azure 门户预览找到访问密钥。
-
 4. 若要创建凭据，请将以下代码添加到 Program.cs 中的 Main 方法：
 
     ```
     var token = GetAccessTokenAsync();
     var credential = new TokenCredentials(token.Result.AccessToken);
     ```
-
 5. 保存 Program.cs 文件。
 
 ## 显示有关虚拟机的信息
-
 1. 将以下方法添加到前面创建的项目中的 Program 类：
 
     ```
@@ -184,7 +173,6 @@ ms.author: davidmu
 
     }
     ```
-
 2. 若要调用刚添加的方法，请将以下代码添加到 Main 方法：
 
     ```
@@ -196,9 +184,7 @@ ms.author: davidmu
     Console.WriteLine("\nPress enter to continue...");
     Console.ReadLine();
     ```
-
 3. 保存 Program.cs 文件。
-
 4. 在 Visual Studio 中单击“启动”，然后使用订阅所用的相同用户名和密码登录到 Azure AD。
 
     运行此方法时，应会显示与下例类似的内容：
@@ -267,11 +253,9 @@ ms.author: davidmu
     ```
 
 ## 停止虚拟机
-
 可以使用两种方法停止虚拟机。可停止虚拟机并保留其所有设置，但需继续付费；还可停止虚拟机并解除分配。解除分配虚拟机时，也会解除分配与其关联的所有资源并将停止计费。
 
 1. 注释掉前面已添加到 Main 方法的任何代码（用于获得凭据的代码除外）。
-
 2. 将以下方法添加到 Program 类：
 
     ```
@@ -293,7 +277,6 @@ ms.author: davidmu
     ```
     computeManagementClient.VirtualMachines.Deallocate(groupName, vmName);
     ```
-
 3. 若要调用刚添加的方法，请将以下代码添加到 Main 方法：
 
     ```
@@ -305,17 +288,13 @@ ms.author: davidmu
     Console.WriteLine("\nPress enter to continue...");
     Console.ReadLine();
     ```
-
 4. 保存 Program.cs 文件。
-
 5. 在 Visual Studio 中单击“启动”，然后使用订阅所用的相同用户名和密码登录到 Azure AD。
 
-    虚拟机的状态应会显示更改为“已停止”。如果你运行了调用 Deallocate 的方法，则状态为已停止（已解除分配）。
+    你应会看到虚拟机的状态更改为“已停止”。如果你运行了调用 Deallocate 的方法，则状态为已停止（已解除分配）。
 
 ## 启动虚拟机
-
 1. 注释掉前面已添加到 Main 方法的任何代码（用于获得凭据的代码除外）。
-
 2. 将以下方法添加到 Program 类：
 
     ```
@@ -331,7 +310,6 @@ ms.author: davidmu
       await computeManagementClient.VirtualMachines.StartAsync(groupName, vmName);
     }
     ```
-
 3. 若要调用刚添加的方法，请将以下代码添加到 Main 方法：
 
     ```
@@ -343,17 +321,13 @@ ms.author: davidmu
     Console.WriteLine("\nPress enter to continue...");
     Console.ReadLine();
     ```
-
 4. 保存 Program.cs 文件。
-
 5. 在 Visual Studio 中单击“启动”，然后使用订阅所用的相同用户名和密码登录到 Azure AD。
 
     你应会看到虚拟机的状态更改为“正在运行”。
 
 ## 重新启动正在运行的虚拟机
-
 1. 注释掉前面已添加到 Main 方法的任何代码（用于获得凭据的代码除外）。
-
 2. 将以下方法添加到 Program 类：
 
     ```
@@ -369,7 +343,6 @@ ms.author: davidmu
       await computeManagementClient.VirtualMachines.RestartAsync(groupName, vmName);
     }
     ```
-
 3. 若要调用刚添加的方法，请将以下代码添加到 Main 方法：
 
     ```
@@ -381,17 +354,13 @@ ms.author: davidmu
     Console.WriteLine("\nPress enter to continue...");
     Console.ReadLine();
     ```
-
 4. 保存 Program.cs 文件。
-
 5. 在 Visual Studio 中单击“启动”，然后使用订阅所用的相同用户名和密码登录到 Azure AD。
 
 ## 重设虚拟机的大小
-
 本示例演示如何更改运行中虚拟机的大小。
 
 1. 注释掉前面已添加到 Main 方法的任何代码（用于获得凭据的代码除外）。
-
 2. 将以下方法添加到 Program 类：
 
     ```
@@ -409,7 +378,6 @@ ms.author: davidmu
       await computeManagementClient.VirtualMachines.CreateOrUpdateAsync(groupName, vmName, vmResult);
     }
     ```
-
 3. 若要调用刚添加的方法，请将以下代码添加到 Main 方法：
 
     ```
@@ -421,19 +389,15 @@ ms.author: davidmu
     Console.WriteLine("\nPress enter to continue...");
     Console.ReadLine();
     ```
-
 4. 保存 Program.cs 文件。
-
 5. 在 Visual Studio 中单击“启动”，然后使用订阅所用的相同用户名和密码登录到 Azure AD。
 
     虚拟机的大小应会显示更改为 Standard\_A1。
 
 ## 将数据磁盘添加到虚拟机
-
 此示例演示了如何向正在运行的虚拟机添加数据磁盘。
 
 1. 注释掉前面已添加到 Main 方法的任何代码（用于获得凭据的代码除外）。
-
 2. 将以下方法添加到 Program 类：
 
     ```
@@ -463,7 +427,6 @@ ms.author: davidmu
       await computeManagementClient.VirtualMachines.CreateOrUpdateAsync(groupName, vmName, vmResult);
     }
     ```
-
 3. 若要调用刚添加的方法，请将以下代码添加到 Main 方法：
 
     ```
@@ -475,15 +438,11 @@ ms.author: davidmu
     Console.WriteLine("\nPress enter to continue...");
     Console.ReadLine();
     ```
-
 4. 保存 Program.cs 文件。
-
 5. 在 Visual Studio 中单击“启动”，然后使用订阅所用的相同用户名和密码登录到 Azure AD。
 
 ## 删除虚拟机
-
 1. 注释掉前面已添加到 Main 方法的任何代码（用于获得凭据的代码除外）。
-
 2. 将以下方法添加到 Program 类：
 
     ```
@@ -499,7 +458,6 @@ ms.author: davidmu
       await computeManagementClient.VirtualMachines.DeleteAsync(groupName, vmName);
     }
     ```
-
 3. 若要调用刚添加的方法，请将以下代码添加到 Main 方法：
 
     ```
@@ -511,13 +469,11 @@ ms.author: davidmu
     Console.WriteLine("\nPress enter to continue...");
     Console.ReadLine();
     ```
-
 4. 保存 Program.cs 文件。
-
 5. 在 Visual Studio 中单击“启动”，然后使用订阅所用的相同用户名和密码登录到 Azure AD。
 
 ## 后续步骤
+如果部署出现问题，请参阅[排查使用 Azure Resource Manager 时的 Azure 常见部署错误](../azure-resource-manager/resource-manager-common-deployment-errors.md)
 
-如果部署出现问题，请参阅[使用 Azure 门户预览排除资源组部署故障](../azure-resource-manager/resource-manager-troubleshoot-deployments-portal.md)
-
-<!---HONumber=Mooncake_Quality_Review_1202_2016-->
+<!---HONumber=Mooncake_0220_2017-->
+<!--Update_Description: wording update-->

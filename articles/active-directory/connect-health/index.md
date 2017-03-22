@@ -1,2 +1,3 @@
-<properties
-    redirect_url="/opsacndocsdemo/active-directory/connect-health/active-directory-aadconnect-health" />
+---
+redirect_url: /opsacndocsdemo/active-directory/connect-health/active-directory-aadconnect-health
+---

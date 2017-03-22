@@ -1,35 +1,24 @@
 ---
-title: Azure Application Gateway Documentation - Tutorials, API Reference | Microsoft Docs
-description: Learn how to deploy a cloud application delivery controller. Documentation shows how to set up application-level routing and load balancing for a web front end.
-services: application-gateway
-author: carolz
-manager: carolz
 layout: LandingPage
-ms.assetid:
-ms.service: application-gateway
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: landing-page
-ms.date: 01/23/2017
-ms.author: carolz
+description: Learn how to use Network Watcher to monitor and diagnose conditions at a network level.
 ---
-# Application Gateway Documentation
+# Azure Network Watcher Documentation
 
-Learn how to deploy Application Gateway, an application delivery controller (ADC) as a service. Tutorials, API references, and other documentation show you how to set up application-level routing and load balancing services that let you build a scalable and highly-available web front end.
+Learn how to use Network Watcher, a service that enables you to monitor and diagnose conditions at a network scenario level. Tutorials, API references, and other documentation show you how to  gain insights into your Azure Network with tools like packet capture, topology, and more.
 
 <ul class="panelContent cardsFTitle">
     <li>
-        <a href="/opsacndocsdemo/application-gateway/application-gateway-introduction">
+        <a href="/opsacndocsdemo/network-watcher/network-watcher-monitoring-overview">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardImageOuter">
                         <div class="cardImage">
-                            <img src="media/index/application-gateway.svg" alt="" />
+                            <img src="media/index/network-watcher.svg" alt="" />
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Learn about Application Gateway</h3>
+                        <h3>Learn about Network Watcher</h3>
                     </div>
                 </div>
             </div>
@@ -37,7 +26,7 @@ Learn how to deploy Application Gateway, an application delivery controller (ADC
         </a>
     </li>
     <li>
-        <a href="https://azure.microsoft.com/documentation/videos/index/?services=application-gateway">
+        <a href="https://azure.microsoft.com/documentation/videos/index/?services=network-watcher">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
@@ -47,25 +36,7 @@ Learn how to deploy Application Gateway, an application delivery controller (ADC
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Application Gateway Video Library</h3>
-                    </div>
-                </div>
-            </div>
-        </div>
-        </a>
-    </li>
-        <li>
-        <a href="/opsacndocsdemo/application-gateway/application-gateway-create-gateway-portal">
-        <div class="cardSize">
-            <div class="cardPadding">
-                <div class="card">
-                    <div class="cardImageOuter">
-                        <div class="cardImage">
-                            <img src="media/index/get-started.svg" alt="" />
-                        </div>
-                    </div>
-                    <div class="cardText">
-                        <h3>Get Started with Application Gateway using the Azure portal</h3>
+                        <h3>Network Watcher video library</h3>
                     </div>
                 </div>
             </div>
@@ -73,7 +44,7 @@ Learn how to deploy Application Gateway, an application delivery controller (ADC
         </a>
     </li>
     <li>
-        <a href="/opsacndocsdemo/application-gateway/application-gateway-create-gateway-arm">
+        <a href="/opsacndocsdemo/network-watcher/network-watcher-packet-capture-overview">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
@@ -83,7 +54,25 @@ Learn how to deploy Application Gateway, an application delivery controller (ADC
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Get Started with Application Gateway using PowerShell</h3>
+                        <h3>Get started with packet capture</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </a>
+    </li> 
+     <li>
+        <a href="/opsacndocsdemo/network-watcher/network-watcher-security-group-view-overview">
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardImageOuter">
+                        <div class="cardImage">
+                            <img src="media/index/get-started.svg" alt="" />
+                        </div>
+                    </div>
+                    <div class="cardText">
+                        <h3>Get started with security group view</h3>
                     </div>
                 </div>
             </div>
@@ -91,7 +80,7 @@ Learn how to deploy Application Gateway, an application delivery controller (ADC
         </a>
     </li>
     <li>
-        <a href="/opsacndocsdemo/application-gateway/application-gateway-create-gateway-arm-template">
+        <a href="/opsacndocsdemo/network-watcher/network-watcher-ip-flow-verify-overview">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
@@ -101,13 +90,51 @@ Learn how to deploy Application Gateway, an application delivery controller (ADC
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Get Started with Application Gateway using a Resource Manager template</h3>
+                        <h3>Get started with IP flow verify</h3>
                     </div>
                 </div>
             </div>
         </div>
         </a>
     </li>
+    <li>
+        <a href="/opsacndocsdemo/network-watcher/network-watcher-next-hop-overview">
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardImageOuter">
+                        <div class="cardImage">
+                            <img src="media/index/get-started.svg" alt="" />
+                        </div>
+                    </div>
+                    <div class="cardText">
+                        <h3>Get started with next hop</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </a>
+    </li>
+   
+     <li>
+        <a href="/opsacndocsdemo/network-watcher/network-watcher-topology-overview">
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardImageOuter">
+                        <div class="cardImage">
+                            <img src="media/index/get-started.svg" alt="" />
+                        </div>
+                    </div>
+                    <div class="cardText">
+                        <h3>Get started with topology</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </a>
+    </li>
+   
 </ul>
 
 ---
@@ -120,8 +147,7 @@ Learn how to deploy Application Gateway, an application delivery controller (ADC
                 <div class="card">
                     <div class="cardText">
                         <h3>Command-Line</h3>
-                        <p><a href="/powershell/resourcemanager">PowerShell</a></p>
-                        <p><a href="/cli/azure/network/application-gateway">Azure CLI 2.0</a></p>
+                        <p><a href="/powershell/azureps-cmdlets-docs/">PowerShell</a></p>
                     </div>
                 </div>
             </div>
@@ -134,10 +160,6 @@ Learn how to deploy Application Gateway, an application delivery controller (ADC
                     <div class="cardText">
                         <h3>Languages</h3>
                         <p><a href="/dotnet/api">.NET</a></p>
-                        <p><a href="/java/api/com.microsoft.azure.management.network">Java</a></p>
-                        <p><a href="http://azure.github.io/azure-sdk-for-node/azure-arm-network/latest/ApplicationGateways">Node​.js</a></p>
-                        <p><a href="http://www.rubydoc.info/gems/azure_mgmt_network/0.8.0/Azure/ARM/Network/ApplicationGateways">Ruby</a></p>
-                        <p><a href="http://azure-sdk-for-python.readthedocs.io/en/latest/ref/azure.mgmt.network.operations.html#azure.mgmt.network.operations.ApplicationGatewaysOperations#azure.mgmt.network.operations.ApplicationGatewaysOperations">Python</a></p>
                     </div>
                 </div>
             </div>
@@ -149,13 +171,12 @@ Learn how to deploy Application Gateway, an application delivery controller (ADC
                 <div class="card">
                     <div class="cardText">
                         <h3>REST</h3>
-                        <p><a href="https://msdn.microsoft.com/library/mt684941">REST API Reference</a></p>
-                        <p><a href="https://msdn.microsoft.com/library/azure/mt299393">Classic REST API Reference</a></p>
+                        <p><a href="/rest/api/networkwatcher">REST API Reference</a></p>
                     </div>
                 </div>
             </div>
         </div>
     </li>
-</ul>	
+</ul>
 
 

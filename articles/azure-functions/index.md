@@ -1,43 +1,44 @@
 ---
-title: Azure Security Documentation - Tutorials | Microsoft Docs
-description: Learn how to customize security options in Azure services to meet the requirements of your deployments of services and data in the cloud.
-services: security
+title: Azure Functions Documentation - Tutorials | Microsoft Docs
+description: Learn how to develop and deploy functions in the language of your choice to run tasks in the background or on a schedule without special infrastructure.
+services: functions
 author: carolz
 manager: carolz
 layout: LandingPage
-ms.assetid: 
-ms.service: security
+ms.assetid:
+ms.service: functions
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
 ---
-# Security Documentation
+#Azure Functions Documentation
 
-Learn how to use Azure Security to protect services and data in the cloud. Tutorials and other documentation help you customize security options in Azure services to meet the requirements of your deployments.
+Learn how to use Functions to develop and deploy small pieces of code in the language of your choice and in the cloud without setting up infrastructure. Tutorials, templates, and other documentation show you how to create functions for tasks you want to run in a background thread or on a schedule.
 
 <ul class="panelContent cardsFTitle">
-    <li>
-        <a href="/opsacndocsdemo/security/azure-security-services-technologies">
+   <li>
+        <a href="/opsacndocsdemo/azure-functions/functions-overview">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardImageOuter">
                         <div class="cardImage">
-                            <img src="media/index/security.svg" alt="" />
+                            <img src="media/index/azure-functions.svg" alt="" />
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Learn about Azure Security</h3>
+                        <h3>Learn about Azure Functions</h3>
                     </div>
                 </div>
             </div>
         </div>
         </a>
     </li>
-    <li>
-        <a href="/opsacndocsdemo/security/azure-security-getting-started">
+
+   <li>
+        <a href="/opsacndocsdemo/azure-functions/functions-create-first-azure-function">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
@@ -47,7 +48,7 @@ Learn how to use Azure Security to protect services and data in the cloud. Tutor
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Get started with Azure Security</h3>
+                        <h3>Get started with Azure Functions</h3>
                     </div>
                 </div>
             </div>
@@ -55,7 +56,7 @@ Learn how to use Azure Security to protect services and data in the cloud. Tutor
         </a>
     </li>
     <li>
-        <a href="/opsacndocsdemo/security/security-network-overview">
+        <a href="/opsacndocsdemo/azure-functions/functions-create-a-web-hook-or-api-function">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
@@ -65,7 +66,7 @@ Learn how to use Azure Security to protect services and data in the cloud. Tutor
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Get started with Network Security</h3>
+                        <h3>Get Started with a webhook function</h3>
                     </div>
                 </div>
             </div>
@@ -73,7 +74,7 @@ Learn how to use Azure Security to protect services and data in the cloud. Tutor
         </a>
     </li>
     <li>
-        <a href="/opsacndocsdemo/security/security-storage-overview">
+        <a href="/opsacndocsdemo/azure-functions/functions-create-an-azure-connected-function">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
@@ -83,7 +84,7 @@ Learn how to use Azure Security to protect services and data in the cloud. Tutor
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Get started with Storage Security</h3>
+                        <h3>Get Started with an Azure connected function</h3>
                     </div>
                 </div>
             </div>
@@ -91,7 +92,7 @@ Learn how to use Azure Security to protect services and data in the cloud. Tutor
         </a>
     </li>
     <li>
-        <a href="/opsacndocsdemo/security/security-virtual-machines-overview">
+        <a href="/opsacndocsdemo/azure-functions/functions-create-an-event-processing-function">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
@@ -101,7 +102,7 @@ Learn how to use Azure Security to protect services and data in the cloud. Tutor
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Get started with Virtual Machines Security</h3>
+                        <h3>Get Started with an event processing function</h3>
                     </div>
                 </div>
             </div>
@@ -109,7 +110,4 @@ Learn how to use Azure Security to protect services and data in the cloud. Tutor
         </a>
     </li>
 </ul>
-
----
-
 

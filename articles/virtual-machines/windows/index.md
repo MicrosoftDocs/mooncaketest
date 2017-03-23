@@ -31,7 +31,7 @@ ms.author: carolz
 
 <ul class="panelContent cardsFTitle">
     <li>
-        <a href="/opsacndocsdemo/virtual-machines/virtual-machines-windows-overview?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json">
+        <a href="/opsacndocsdemo/virtual-machines/virtual-machines-windows-overview?toc=%2fopsacndocsdemo%2fvirtual-machines%2fwindows%2ftoc.json">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
@@ -67,7 +67,7 @@ ms.author: carolz
         </a>
     </li>
     <li>
-        <a href="/opsacndocsdemo/virtual-machines/virtual-machines-windows-hero-tutorial?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json">
+        <a href="/opsacndocsdemo/virtual-machines/virtual-machines-windows-hero-tutorial?toc=%2fopsacndocsdemo%2fvirtual-machines%2fwindows%2ftoc.json">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
@@ -85,7 +85,7 @@ ms.author: carolz
         </a>
     </li>
     <li>
-        <a href="/opsacndocsdemo/virtual-machines/virtual-machines-windows-ps-create?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json">
+        <a href="/opsacndocsdemo/virtual-machines/virtual-machines-windows-ps-create?toc=%2fopsacndocsdemo%2fvirtual-machines%2fwindows%2ftoc.json">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
@@ -103,7 +103,7 @@ ms.author: carolz
         </a>
     </li>
     <li>
-        <a href="/opsacndocsdemo/resource-manager-template-walkthrough?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json">
+        <a href="/opsacndocsdemo/resource-manager-template-walkthrough?toc=%2fopsacndocsdemo%2fvirtual-machines%2fwindows%2ftoc.json">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">

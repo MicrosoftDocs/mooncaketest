@@ -28,8 +28,8 @@
 ### [Azure 门户](vpn-gateway-connect-different-deployment-models-portal.md)
 ### [PowerShell](vpn-gateway-connect-different-deployment-models-powershell.md)
 ## 创建站点到站点与 ExpressRoute 共存连接
-### [PowerShell](../expressroute/expressroute-howto-coexist-resource-manager.md?toc=%2fazure%2fvpn-gateway%2ftoc.json)
-### [PowerShell（经典）](../expressroute/expressroute-howto-coexist-classic.md?toc=%2fazure%2fvpn-gateway%2ftoc.json)
+### [PowerShell](../expressroute/expressroute-howto-coexist-resource-manager.md?toc=%2fopsacndocsdemo%2fvpn-gateway%2ftoc.json)
+### [PowerShell（经典）](../expressroute/expressroute-howto-coexist-classic.md?toc=%2fopsacndocsdemo%2fvpn-gateway%2ftoc.json)
 ## 配置强制隧道
 ### [PowerShell](vpn-gateway-forced-tunneling-rm.md)
 ### [PowerShell（经典）](vpn-gateway-about-forced-tunneling.md)

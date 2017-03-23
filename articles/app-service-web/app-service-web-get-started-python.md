@@ -20,12 +20,12 @@ ms.author: cephalin
 
 # 在 5 分钟内将第一个 Python Web 应用部署到 Azure（CLI 2.0 预览版）
 > [!div class="op_single_selector"]
-- [第一个 HTML 站点](./app-service-web-get-started-html.md)
-- [第一个 .NET 应用](./app-service-web-get-started-dotnet.md)
-- [第一个 PHP 应用](./app-service-web-get-started-php.md)
-- [第一个 Node.js 应用](./app-service-web-get-started-nodejs.md)
-- [第一个 Python 应用](./app-service-web-get-started-python.md)
-- [第一个 Java 应用](./app-service-web-get-started-java.md)
+>- [第一个 HTML 站点](./app-service-web-get-started-html.md)
+>- [第一个 .NET 应用](./app-service-web-get-started-dotnet.md)
+>- [第一个 PHP 应用](./app-service-web-get-started-php.md)
+>- [第一个 Node.js 应用](./app-service-web-get-started-nodejs.md)
+>- [第一个 Python 应用](./app-service-web-get-started-python.md)
+>- [第一个 Java 应用](./app-service-web-get-started-java.md)
 
 本教程旨在帮助用户将第一个 Python Web 应用部署到 [Azure App Service](../app-service/app-service-value-prop-what-is.md)。应用服务可用于创建 Web 应用、[移动应用后端](../app-service-mobile/index.md)和 [API 应用](../app-service-api/app-service-api-apps-why-best-platform.md)。
 

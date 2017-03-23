@@ -5,7 +5,7 @@
     {
       "docset_name": "opsacndocsdemo",
       "build_source_folder": "articles",
-      "build_output_subfolder": "opsacndocsdemo",
+      "build_output_subfolder": "articles",
       "locale": "zh-cn",
       "monikers": [],
       "open_to_public_contributors": true,
@@ -21,7 +21,7 @@
     {
       "docset_name": "opsacndocsdemo-develop",
       "build_source_folder": "develop",
-      "build_output_subfolder": "opsacndocsdemo-develop",
+      "build_output_subfolder": "develop",
       "locale": "zh-cn",
       "monikers": [],
       "open_to_public_contributors": true,
@@ -37,7 +37,7 @@
     {
       "docset_name": "opsacndocsdemo-downloads",
       "build_source_folder": "downloads",
-      "build_output_subfolder": "opsacndocsdemo-downloads",
+      "build_output_subfolder": "downloads",
       "locale": "zh-cn",
       "monikers": [],
       "open_to_public_contributors": true,

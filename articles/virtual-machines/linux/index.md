@@ -31,7 +31,7 @@ ms.author: carolz
 
 <ul class="panelContent cardsFTitle">
     <li>
-        <a href="/opsacndocsdemo/virtual-machines/virtual-machines-linux-quick-create-cli?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json">
+        <a href="/opsacndocsdemo/virtual-machines/virtual-machines-linux-quick-create-cli?toc=%2fopsacndocsdemo%2fvirtual-machines%2flinux%2ftoc.json">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
@@ -49,7 +49,7 @@ ms.author: carolz
         </a>
     </li>
     <li>
-        <a href="/opsacndocsdemo/virtual-machines/virtual-machines-linux-quick-create-portal?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json">
+        <a href="/opsacndocsdemo/virtual-machines/virtual-machines-linux-quick-create-portal?toc=%2fopsacndocsdemo%2fvirtual-machines%2flinux%2ftoc.json">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
@@ -67,7 +67,7 @@ ms.author: carolz
         </a>
     </li>
     <li>
-        <a href="/opsacndocsdemo/virtual-machines/virtual-machines-linux-azure-overview?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json">
+        <a href="/opsacndocsdemo/virtual-machines/virtual-machines-linux-azure-overview?toc=%2fopsacndocsdemo%2fvirtual-machines%2flinux%2ftoc.json">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">

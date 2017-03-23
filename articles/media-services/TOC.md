@@ -169,7 +169,7 @@
 ### [筛选器和动态清单概述](media-services-dynamic-manifest-overview.md)
 #### [使用 .NET 创建筛选器](media-services-dotnet-dynamic-manifest.md)
 #### [使用 REST 创建筛选器](media-services-rest-dynamic-manifest.md)
-### [媒体服务扩展中的 CDN 缓存策略](../cdn/cdn-caching-policy.md?toc=%2fazure%2fmedia-services%2ftoc.json)
+### [媒体服务扩展中的 CDN 缓存策略](../cdn/cdn-caching-policy.md?toc=%2fopsacndocsdemo%2fmedia-services%2ftoc.json)
 ### 发布内容
 #### [门户](media-services-portal-publish.md)
 #### [.NET](media-services-deliver-streaming-content.md)

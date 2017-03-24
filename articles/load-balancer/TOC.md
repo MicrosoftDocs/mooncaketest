@@ -38,7 +38,7 @@
 ## [配置负载均衡器的分布模式](load-balancer-distribution-mode.md)
 ## [为 SQL AlwaysOn 配置内部负载均衡器](load-balancer-configure-sqlao.md)
 ## [为云服务配置多个 VIP](load-balancer-multivip.md)
-## [结合使用负载均衡服务](../traffic-manager/traffic-manager-load-balancing-azure.md?toc=%2fopsacndocsdemo%2fload-balancer%2ftoc.json)
+## [结合使用负载均衡服务](../traffic-manager/traffic-manager-load-balancing-azure.md?toc=%2fmooncaketest%2farticles%2fload-balancer%2ftoc.json)
 ## [使用多个 IP 配置](load-balancer-multiple-ip.md)
 ### [使用多个 IP 配置 (CLI)](load-balancer-multiple-ip-cli.md)
 ## [Azure 负载均衡器的 Log Analytics](load-balancer-monitor-log.md)

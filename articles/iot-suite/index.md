@@ -7,7 +7,7 @@ Microsoft Azure IoT 套件快速入门。使用预配置解决方案，并加快
 
 <ul class="panelContent cardsFTitle">
     <li>
-        <a href="/opsacndocsdemo/iot-suite/iot-suite-overview">
+        <a href="/mooncaketest/articles/iot-suite/iot-suite-overview">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
@@ -43,7 +43,7 @@ Microsoft Azure IoT 套件快速入门。使用预配置解决方案，并加快
         </a>
 </li>
     <li>
-        <a href="/opsacndocsdemo/iot-suite/iot-solution-get-started">
+        <a href="/mooncaketest/articles/iot-suite/iot-solution-get-started">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
@@ -72,10 +72,10 @@ Microsoft Azure IoT 套件快速入门。使用预配置解决方案，并加快
                 <div class="card">
                     <div class="cardText">
                         <h3>资源</h3>
-                        <p><a href="/opsacndocsdemo/iot-suite/iot-security-architecture">安全体系结构</a></p>
-                        <p><a href="/opsacndocsdemo/iot-suite/iot-security-best-practices">安全最佳实践</a></p>
-                        <p><a href="/opsacndocsdemo/iot-suite/iot-suite-security-deployment">保护你的 IoT 部署</a></p>
-                        <p><a href="/opsacndocsdemo/iot-suite/securing-iot-ground-up">安全基础知识</a></p>
+                        <p><a href="/mooncaketest/articles/iot-suite/iot-security-architecture">安全体系结构</a></p>
+                        <p><a href="/mooncaketest/articles/iot-suite/iot-security-best-practices">安全最佳实践</a></p>
+                        <p><a href="/mooncaketest/articles/iot-suite/iot-suite-security-deployment">保护你的 IoT 部署</a></p>
+                        <p><a href="/mooncaketest/articles/iot-suite/securing-iot-ground-up">安全基础知识</a></p>
                    </div>
                 </div>
             </div>

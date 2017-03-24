@@ -8,7 +8,7 @@ description: 教程、API 参考和其他文档介绍了如何使用云服务托
 
 <ul class="panelContent cardsFTitle">
     <li>
-        <a href="https:/opsacndocsdemo/cloud-services/cloud-services-choose-me">
+        <a href="https:/mooncaketest/articles/cloud-services/cloud-services-choose-me">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
@@ -44,7 +44,7 @@ description: 教程、API 参考和其他文档介绍了如何使用云服务托
         </a>
 </li>
     <li>
-        <a href="/opsacndocsdemo/cloud-services/cloud-services-dotnet-get-started">
+        <a href="/mooncaketest/articles/cloud-services/cloud-services-dotnet-get-started">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
@@ -62,7 +62,7 @@ description: 教程、API 参考和其他文档介绍了如何使用云服务托
         </a>
 </li>
     <li>
-        <a href="/opsacndocsdemo/cloud-services/cloud-services-python-ptvs">
+        <a href="/mooncaketest/articles/cloud-services/cloud-services-python-ptvs">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
@@ -91,8 +91,8 @@ description: 教程、API 参考和其他文档介绍了如何使用云服务托
                 <div class="card">
                     <div class="cardText">
                         <h3>Languages</h3>
-                        <p><a href="https://msdn.microsoft.com/library/opsacndocsdemo/ee758711">.csdef XMLSchema</a></p>
-                        <p><a href="https://msdn.microsoft.com/library/opsacndocsdemo/ee758710">.cscfg XMLSchema</a></p>
+                        <p><a href="https://msdn.microsoft.com/library/mooncaketest/articles/ee758711">.csdef XMLSchema</a></p>
+                        <p><a href="https://msdn.microsoft.com/library/mooncaketest/articles/ee758710">.cscfg XMLSchema</a></p>
                     </div>
                 </div>
             </div>
@@ -104,7 +104,7 @@ description: 教程、API 参考和其他文档介绍了如何使用云服务托
                 <div class="card">
                     <div class="cardText">
                         <h3>REST</h3>
-                        <p><a href="https://msdn.microsoft.com/library/opsacndocsdemo/ee460812">REST API</a></p>
+                        <p><a href="https://msdn.microsoft.com/library/mooncaketest/articles/ee460812">REST API</a></p>
                     </div>
                 </div>
             </div>

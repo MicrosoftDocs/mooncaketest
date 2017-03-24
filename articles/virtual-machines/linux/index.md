@@ -31,7 +31,7 @@ ms.author: carolz
 
 <ul class="panelContent cardsFTitle">
     <li>
-        <a href="/opsacndocsdemo/virtual-machines/virtual-machines-linux-quick-create-cli?toc=%2fopsacndocsdemo%2fvirtual-machines%2flinux%2ftoc.json">
+        <a href="/mooncaketest/articles/virtual-machines/virtual-machines-linux-quick-create-cli?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
@@ -49,7 +49,7 @@ ms.author: carolz
         </a>
     </li>
     <li>
-        <a href="/opsacndocsdemo/virtual-machines/virtual-machines-linux-quick-create-portal?toc=%2fopsacndocsdemo%2fvirtual-machines%2flinux%2ftoc.json">
+        <a href="/mooncaketest/articles/virtual-machines/virtual-machines-linux-quick-create-portal?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
@@ -67,7 +67,7 @@ ms.author: carolz
         </a>
     </li>
     <li>
-        <a href="/opsacndocsdemo/virtual-machines/virtual-machines-linux-azure-overview?toc=%2fopsacndocsdemo%2fvirtual-machines%2flinux%2ftoc.json">
+        <a href="/mooncaketest/articles/virtual-machines/virtual-machines-linux-azure-overview?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
@@ -114,7 +114,7 @@ ms.author: carolz
                 <div class="card">
                     <div class="cardText">
                         <h3>Command-Line</h3>
-                        <p><a href="/cli/opsacndocsdemo/vm">Azure CLI</a></p>
+                        <p><a href="/cli/mooncaketest/articles/vm">Azure CLI</a></p>
                         <p><a href="/powershell/azureps-cmdlets-docs">PowerShell</a></p>
                     </div>
                 </div>

@@ -18,7 +18,7 @@
 ## [测试设置](traffic-manager-testing-settings.md)
 ## [排查已降级终结点的问题](traffic-manager-troubleshooting-degraded.md)
 ## [结合使用负载均衡服务](traffic-manager-load-balancing-azure.md)
-## [使用网络资源](../virtual-network/resource-groups-networking.md?toc=%2fopsacndocsdemo%2ftraffic-manager%2ftoc.json)
+## [使用网络资源](../virtual-network/resource-groups-networking.md?toc=%2fmooncaketest%2farticles%2ftraffic-manager%2ftoc.json)
 
 # 引用
 ## [PowerShell](/powershell/resourcemanager/azurerm.trafficmanager/v2.3.0/azurerm.trafficmanager)

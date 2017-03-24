@@ -19,7 +19,7 @@ Learn how to deploy Application Gateway, an application delivery controller (ADC
 
 <ul class="panelContent cardsFTitle">
     <li>
-        <a href="/opsacndocsdemo/application-gateway/application-gateway-introduction">
+        <a href="/mooncaketest/articles/application-gateway/application-gateway-introduction">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
@@ -55,7 +55,7 @@ Learn how to deploy Application Gateway, an application delivery controller (ADC
         </a>
     </li>
         <li>
-        <a href="/opsacndocsdemo/application-gateway/application-gateway-create-gateway-portal">
+        <a href="/mooncaketest/articles/application-gateway/application-gateway-create-gateway-portal">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
@@ -73,7 +73,7 @@ Learn how to deploy Application Gateway, an application delivery controller (ADC
         </a>
     </li>
     <li>
-        <a href="/opsacndocsdemo/application-gateway/application-gateway-create-gateway-arm">
+        <a href="/mooncaketest/articles/application-gateway/application-gateway-create-gateway-arm">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
@@ -91,7 +91,7 @@ Learn how to deploy Application Gateway, an application delivery controller (ADC
         </a>
     </li>
     <li>
-        <a href="/opsacndocsdemo/application-gateway/application-gateway-create-gateway-arm-template">
+        <a href="/mooncaketest/articles/application-gateway/application-gateway-create-gateway-arm-template">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">

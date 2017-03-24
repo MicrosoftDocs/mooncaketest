@@ -31,7 +31,7 @@ ms.author: carolz
 
 <ul class="panelContent cardsFTitle">
     <li>
-        <a href="/opsacndocsdemo/virtual-machines/virtual-machines-windows-overview?toc=%2fopsacndocsdemo%2fvirtual-machines%2fwindows%2ftoc.json">
+        <a href="/mooncaketest/articles/virtual-machines/virtual-machines-windows-overview?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2fwindows%2ftoc.json">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
@@ -67,7 +67,7 @@ ms.author: carolz
         </a>
     </li>
     <li>
-        <a href="/opsacndocsdemo/virtual-machines/virtual-machines-windows-hero-tutorial?toc=%2fopsacndocsdemo%2fvirtual-machines%2fwindows%2ftoc.json">
+        <a href="/mooncaketest/articles/virtual-machines/virtual-machines-windows-hero-tutorial?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2fwindows%2ftoc.json">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
@@ -85,7 +85,7 @@ ms.author: carolz
         </a>
     </li>
     <li>
-        <a href="/opsacndocsdemo/virtual-machines/virtual-machines-windows-ps-create?toc=%2fopsacndocsdemo%2fvirtual-machines%2fwindows%2ftoc.json">
+        <a href="/mooncaketest/articles/virtual-machines/virtual-machines-windows-ps-create?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2fwindows%2ftoc.json">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
@@ -103,7 +103,7 @@ ms.author: carolz
         </a>
     </li>
     <li>
-        <a href="/opsacndocsdemo/resource-manager-template-walkthrough?toc=%2fopsacndocsdemo%2fvirtual-machines%2fwindows%2ftoc.json">
+        <a href="/mooncaketest/articles/resource-manager-template-walkthrough?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2fwindows%2ftoc.json">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
@@ -133,7 +133,7 @@ ms.author: carolz
                     <div class="cardText">
                         <h3>Command-Line</h3>
                         <p><a href="/powershell/azureps-cmdlets-docs">PowerShell</a></p>
-                        <p><a href="/cli/opsacndocsdemo/vm">Azure CLI</a></p>
+                        <p><a href="/cli/mooncaketest/articles/vm">Azure CLI</a></p>
                     </div>
                 </div>
             </div>

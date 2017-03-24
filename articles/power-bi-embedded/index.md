@@ -7,7 +7,7 @@ description: 了解如何将 Power BI 数据可视化效果和交互式报表嵌
 了解如何借助 Power BI Embedded 在应用程序中添加数据可视化效果和交互式报表。教程、API 参考以及其他文档说明如何无缝地将 Power BI 报表和仪表板嵌入应用。
 
 <ul class="panelContent cardsFTitle">
-    <li><a href="/opsacndocsdemo/power-bi-embedded/power-bi-embedded-what-is-power-bi-embedded">
+    <li><a href="/mooncaketest/articles/power-bi-embedded/power-bi-embedded-what-is-power-bi-embedded">
 <div class="cardSize"><div class="cardPadding"><div class="card"><div class="cardImageOuter"><div class="cardImage"><img src="media/index/power-bi-embedded.svg" alt="" /></div></div><div class="cardText"><h3>了解 Power BI Embedded</h3></div></div></div>
         </div></a>
 </li>
@@ -15,11 +15,11 @@ description: 了解如何将 Power BI 数据可视化效果和交互式报表嵌
 <div class="cardSize"><div class="cardPadding"><div class="card"><div class="cardImageOuter"><div class="cardImage"><img src="media/index/video-library.svg" alt="" /></div></div><div class="cardText"><h3>Azure Power BI Embedded 视频库</h3></div></div></div>
         </div></a>
 </li>
-    <li><a href="/opsacndocsdemo/power-bi-embedded/power-bi-embedded-get-started">
+    <li><a href="/mooncaketest/articles/power-bi-embedded/power-bi-embedded-get-started">
 <div class="cardSize"><div class="cardPadding"><div class="card"><div class="cardImageOuter"><div class="cardImage"><img src="media/index/get-started.svg" alt="" /></div></div><div class="cardText"><h3>Power BI Embedded 入门</h3></div></div></div>
         </div></a>
 </li>
-    <li><a href="/opsacndocsdemo/power-bi-embedded/power-bi-embedded-get-started-sample">
+    <li><a href="/mooncaketest/articles/power-bi-embedded/power-bi-embedded-get-started-sample">
 <div class="cardSize"><div class="cardPadding"><div class="card"><div class="cardImageOuter"><div class="cardImage"><img src="media/index/get-started.svg" alt="" /></div></div><div class="cardText"><h3>使用示例库创建 Power BI 报表入门</h3></div></div></div>
         </div></a>
 </li>

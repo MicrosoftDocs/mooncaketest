@@ -9,7 +9,7 @@ description: 了解如何在云中使用虚拟网络。文档演示如何部署 
 了解如何使用虚拟网络 (VNet)，即网络在云中的逻辑表示形式。文档演示如何设置和管理 VNet、使用它启动虚拟机或云服务、将 VNet 连接到本地网络以及将网络扩展到云，同时保持对资源进行控制。
 
 <ul class="panelContent cardsFTitle">
-    <li><a href="/opsacndocsdemo/Virtual-Network/virtual-networks-overview">
+    <li><a href="/mooncaketest/articles/Virtual-Network/virtual-networks-overview">
 <div class="cardSize"><div class="cardPadding"><div class="card"><div class="cardImageOuter"><div class="cardImage"><img src="media/index/virtual-network.svg" alt="" /></div></div><div class="cardText"><h3>了解虚拟网络</h3></div></div></div>
         </div></a>
 </li>
@@ -17,15 +17,15 @@ description: 了解如何在云中使用虚拟网络。文档演示如何部署 
 <div class="cardSize"><div class="cardPadding"><div class="card"><div class="cardImageOuter"><div class="cardImage"><img src="media/index/video-library.svg" alt="" /></div></div><div class="cardText"><h3>虚拟网络视频库</h3></div></div></div>
         </div></a>
 </li>
-    <li><a href="/opsacndocsdemo/Virtual-Network/virtual-networks-create-vnet-arm-pportal">
+    <li><a href="/mooncaketest/articles/Virtual-Network/virtual-networks-create-vnet-arm-pportal">
 <div class="cardSize"><div class="cardPadding"><div class="card"><div class="cardImageOuter"><div class="cardImage"><img src="media/index/portal.svg" alt="" /></div></div><div class="cardText"><h3>使用 Azure 门户设置虚拟网络入门</h3></div></div></div>
         </div></a>
 </li>
-    <li><a href="/opsacndocsdemo/Virtual-Network/virtual-networks-create-vnet-arm-ps">
+    <li><a href="/mooncaketest/articles/Virtual-Network/virtual-networks-create-vnet-arm-ps">
 <div class="cardSize"><div class="cardPadding"><div class="card"><div class="cardImageOuter"><div class="cardImage"><img src="media/index/powershell.svg" alt="" /></div></div><div class="cardText"><h3>使用 PowerShell 设置虚拟网络入门</h3></div></div></div>
         </div></a>
 </li>
-    <li><a href="/opsacndocsdemo/Virtual-Network/virtual-networks-create-vnet-arm-cli">
+    <li><a href="/mooncaketest/articles/Virtual-Network/virtual-networks-create-vnet-arm-cli">
 <div class="cardSize"><div class="cardPadding"><div class="card"><div class="cardImageOuter"><div class="cardImage"><img src="media/index/cli.svg" alt="" /></div></div><div class="cardText"><h3>使用 Azure CLI 设置虚拟网络入门</h3></div></div></div>
         </div></a>
 </li>

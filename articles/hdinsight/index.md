@@ -9,7 +9,7 @@ description: 了解 Hadoop on HDInsight。文档介绍如何使用 Hadoop、Spar
 
 <ul class="panelContent cardsFTitle">
     <li>
-        <a href="/opsacndocsdemo/hdinsight/hdinsight-hadoop-introduction">
+        <a href="/mooncaketest/articles/hdinsight/hdinsight-hadoop-introduction">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
@@ -45,7 +45,7 @@ description: 了解 Hadoop on HDInsight。文档介绍如何使用 Hadoop、Spar
         </a>
 </li>
     <li>
-        <a href="/opsacndocsdemo/hdinsight/hdinsight-hadoop-linux-tutorial-get-started">
+        <a href="/mooncaketest/articles/hdinsight/hdinsight-hadoop-linux-tutorial-get-started">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
@@ -63,7 +63,7 @@ description: 了解 Hadoop on HDInsight。文档介绍如何使用 Hadoop、Spar
         </a>
 </li>
     <li>
-        <a href="/opsacndocsdemo/hdinsight/hdinsight-hadoop-r-server-get-started">
+        <a href="/mooncaketest/articles/hdinsight/hdinsight-hadoop-r-server-get-started">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
@@ -81,7 +81,7 @@ description: 了解 Hadoop on HDInsight。文档介绍如何使用 Hadoop、Spar
         </a>
 </li>
      <li>
-        <a href="/opsacndocsdemo/hdinsight/hdinsight-hbase-tutorial-get-started-linux">
+        <a href="/mooncaketest/articles/hdinsight/hdinsight-hbase-tutorial-get-started-linux">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
@@ -99,7 +99,7 @@ description: 了解 Hadoop on HDInsight。文档介绍如何使用 Hadoop、Spar
         </a>
 </li>
     <li>
-        <a href="/opsacndocsdemo/hdinsight/hdinsight-apache-storm-tutorial-get-started-linux">
+        <a href="/mooncaketest/articles/hdinsight/hdinsight-apache-storm-tutorial-get-started-linux">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">

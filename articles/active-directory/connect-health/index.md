@@ -1,3 +1,3 @@
 ---
-redirect_url: /opsacndocsdemo/active-directory/connect-health/active-directory-aadconnect-health
+redirect_url: /mooncaketest/articles/active-directory/connect-health/active-directory-aadconnect-health
 ---

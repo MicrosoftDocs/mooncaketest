@@ -18,7 +18,7 @@ ms.author: carolz
 了解如何使用 Resource Manager 以组的形式部署、监视和管理解决方案资源。教程、API 参考和其他文档介绍了如何设置资源组并创建模板，以便进行一致且可重复的部署。
 
 <ul class="panelContent cardsFTitle">
-	<li><a href="/opsacndocsdemo/Azure-Resource-Manager/resource-group-overview">
+	<li><a href="/mooncaketest/articles/Azure-Resource-Manager/resource-group-overview">
 <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
@@ -46,7 +46,7 @@ ms.author: carolz
             </div>
         </div></a>
 </li>
-	<li><a href="/opsacndocsdemo/resource-manager-template-walkthrough">
+	<li><a href="/mooncaketest/articles/resource-manager-template-walkthrough">
 <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
@@ -60,7 +60,7 @@ ms.author: carolz
             </div>
         </div></a>
 </li>
-	<li><a href="/opsacndocsdemo/resource-group-define-dependencies">
+	<li><a href="/mooncaketest/articles/resource-group-define-dependencies">
 <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
@@ -74,7 +74,7 @@ ms.author: carolz
             </div>
         </div></a>
 </li>
-    <li><a href="/opsacndocsdemo/resource-group-create-multiple">
+    <li><a href="/mooncaketest/articles/resource-group-create-multiple">
 <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
@@ -101,7 +101,7 @@ ms.author: carolz
                     <div class="cardText">
                         <h3>命令行</h3>
                         <p><a href="/powershell/resourcemanager/azurerm.resources/v3.5.0/azurerm.resources">PowerShell</a></p>
-                        <p><a href="/cli/opsacndocsdemo/resource">Azure CLI</a></p>
+                        <p><a href="/cli/mooncaketest/articles/resource">Azure CLI</a></p>
                     </div>
                 </div>
             </div>
@@ -116,7 +116,7 @@ ms.author: carolz
                         <p><a href="/dotnet/api/microsoft.azure.management.resourcemanager">.NET</a></p>
                         <p><a href="/java/api/com.microsoft.azure.management.resources">Java</a></p>
                         <p><a href="http://azure-sdk-for-python.readthedocs.io/en/latest/resourcemanagement.html">Python</a></p>
-                        <p><a href="https://github.com/opsacndocsdemo/azure-resource-manager-schemas">模板架构</a></p>
+                        <p><a href="https://github.com/mooncaketest/articles/azure-resource-manager-schemas">模板架构</a></p>
                     </div>
                 </div>
             </div>

@@ -111,7 +111,7 @@ description: 了解 SQL 数据库（云中的数据库即服务）。教程、�
                         <p><a href="https://msdn.microsoft.com/zh-cn/library/mt652092.aspx">Python</a></p>
                         <p><a href="https://msdn.microsoft.com/zh-cn/library/mt691981.aspx">Ruby</a></p>
                         <p><a href="https://msdn.microsoft.com/zh-cn/library/dn865013.aspx">PHP</a></p>
-                        <p><a href="https://msdn.microsoft.com/zh-cn/library/opsacndocsdemo/bb510741.aspx">T-SQL</a></p>
+                        <p><a href="https://msdn.microsoft.com/zh-cn/library/mooncaketest/articles/bb510741.aspx">T-SQL</a></p>
                     </div>
                 </div>
             </div>

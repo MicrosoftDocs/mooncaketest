@@ -8,7 +8,7 @@ description: 了解如何管理传入流量，以获得最佳应用程序性能�
 了解如何使用流量管理器来路由传入流量，以获得最佳应用程序性能和可靠性。教程、API 参考以及其他文档说明如何管理 Azure 或外部服务终结点的流量。
 
 <ul class="panelContent cardsFTitle">
-    <li><a href="/opsacndocsdemo/traffic-manager/traffic-manager-overview">
+    <li><a href="/mooncaketest/articles/traffic-manager/traffic-manager-overview">
 <div class="cardSize"><div class="cardPadding"><div class="card"><div class="cardImageOuter"><div class="cardImage"><img src="media/index/traffic-manager.svg" alt="" /></div></div><div class="cardText"><h3>了解流量管理器</h3></div></div></div>
         </div></a>
 </li>
@@ -16,11 +16,11 @@ description: 了解如何管理传入流量，以获得最佳应用程序性能�
 <div class="cardSize"><div class="cardPadding"><div class="card"><div class="cardImageOuter"><div class="cardImage"><img src="media/index/video-library.svg" alt="" /></div></div><div class="cardText"><h3>Azure 流量管理器视频库</h3></div></div></div>
         </div></a>
 </li>
-    <li><a href="/opsacndocsdemo/traffic-manager/traffic-manager-how-traffic-manager-works">
+    <li><a href="/mooncaketest/articles/traffic-manager/traffic-manager-how-traffic-manager-works">
 <div class="cardSize"><div class="cardPadding"><div class="card"><div class="cardImageOuter"><div class="cardImage"><img src="media/index/get-started.svg" alt="" /></div></div><div class="cardText"><h3>Azure 流量管理器入门</h3></div></div></div>
         </div></a>
 </li>
-    <li><a href="/opsacndocsdemo/traffic-manager/traffic-manager-manage-endpoints">
+    <li><a href="/mooncaketest/articles/traffic-manager/traffic-manager-manage-endpoints">
 <div class="cardSize"><div class="cardPadding"><div class="card"><div class="cardImageOuter"><div class="cardImage"><img src="media/index/get-started.svg" alt="" /></div></div><div class="cardText"><h3>使用 Azure 门户管理流量管理器终结点入门</h3></div></div></div>
         </div></a>
 </li>
@@ -35,7 +35,7 @@ description: 了解如何管理传入流量，以获得最佳应用程序性能�
 <div class="cardSize"><div class="cardPadding"><div class="card"><div class="cardText"><h3>PowerShell</h3><p>Azure PowerShell</p></div></div></div>
         </div></a>
 </li>
-	<li><a href="https://msdn.microsoft.com/library/opsacndocsdemo/mt163667">
+	<li><a href="https://msdn.microsoft.com/library/mooncaketest/articles/mt163667">
 <div class="cardSize"><div class="cardPadding"><div class="card"><div class="cardText"><h3>REST</h3><p>流量管理器 REST API</p></div></div></div>
         </div></a>
 </li>

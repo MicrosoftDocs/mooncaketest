@@ -9,7 +9,7 @@ description: 了解如何使用应用服务 Web 应用生成和托管网站和 W
 
 <ul class="panelContent cardsFTitle">
     <li>
-        <a href="/opsacndocsdemo/app-service-web/app-service-web-overview">
+        <a href="/mooncaketest/articles/app-service-web/app-service-web-overview">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
@@ -63,7 +63,7 @@ description: 了解如何使用应用服务 Web 应用生成和托管网站和 W
         </a>
 </li>
     <li>
-        <a href="/opsacndocsdemo/app-service-web/web-sites-dotnet-get-started">
+        <a href="/mooncaketest/articles/app-service-web/web-sites-dotnet-get-started">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
@@ -81,7 +81,7 @@ description: 了解如何使用应用服务 Web 应用生成和托管网站和 W
         </a>
 </li> 
      <li>
-        <a href="/opsacndocsdemo/app-service-web/web-sites-java-get-started">
+        <a href="/mooncaketest/articles/app-service-web/web-sites-java-get-started">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
@@ -99,7 +99,7 @@ description: 了解如何使用应用服务 Web 应用生成和托管网站和 W
         </a>
 </li>
     <li>
-        <a href="/opsacndocsdemo/app-service-web/app-service-web-nodejs-get-started">
+        <a href="/mooncaketest/articles/app-service-web/app-service-web-nodejs-get-started">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
@@ -117,7 +117,7 @@ description: 了解如何使用应用服务 Web 应用生成和托管网站和 W
         </a>
 </li>
     <li>
-        <a href="/opsacndocsdemo/app-service-web/web-sites-python-ptvs-django-mysql">
+        <a href="/mooncaketest/articles/app-service-web/web-sites-python-ptvs-django-mysql">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
@@ -136,7 +136,7 @@ description: 了解如何使用应用服务 Web 应用生成和托管网站和 W
 </li>
    
      <li>
-        <a href="/opsacndocsdemo/app-service-web/app-service-web-php-get-started">
+        <a href="/mooncaketest/articles/app-service-web/app-service-web-php-get-started">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
@@ -154,7 +154,7 @@ description: 了解如何使用应用服务 Web 应用生成和托管网站和 W
         </a>
 </li>
     <li>
-        <a href="/opsacndocsdemo/app-service-web/web-sites-php-web-site-gallery">
+        <a href="/mooncaketest/articles/app-service-web/web-sites-php-web-site-gallery">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
@@ -184,7 +184,7 @@ description: 了解如何使用应用服务 Web 应用生成和托管网站和 W
                 <div class="card">
                     <div class="cardText">
                         <h3>命令行</h3>
-                        <p><a href="/cli/opsacndocsdemo/appservice">Azure CLI 2​.0 预览版</a></p>
+                        <p><a href="/cli/mooncaketest/articles/appservice">Azure CLI 2​.0 预览版</a></p>
                     </div>
                 </div>
             </div>

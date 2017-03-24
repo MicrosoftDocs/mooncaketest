@@ -19,7 +19,7 @@ ms.author: carolz
 
 <ul class="panelContent cardsFTitle">
     <li>
-        <a href="/opsacndocsdemo/storage/storage-introduction">
+        <a href="/mooncaketest/articles/storage/storage-introduction">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
@@ -55,7 +55,7 @@ ms.author: carolz
         </a>
     </li>
     <li>
-        <a href="/opsacndocsdemo/storage/storage-getting-started-guide">
+        <a href="/mooncaketest/articles/storage/storage-getting-started-guide">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
@@ -73,7 +73,7 @@ ms.author: carolz
         </a>
     </li>
     <li>
-        <a href="/opsacndocsdemo/storage/storage-create-storage-account">
+        <a href="/mooncaketest/articles/storage/storage-create-storage-account">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
@@ -103,7 +103,7 @@ ms.author: carolz
                     <div class="cardText">
                         <h3>命令行</h3>
                         <p><a href="/powershell/storage">PowerShell</a></p>
-                        <p><a href="/cli/opsacndocsdemo/storage">Azure CLI</a></p>
+                        <p><a href="/cli/mooncaketest/articles/storage">Azure CLI</a></p>
                     </div>
                 </div>
             </div>
@@ -116,14 +116,14 @@ ms.author: carolz
                     <div class="cardText">
                         <h3>语言</h3>
                         <p><a href="/dotnet/api/microsoft.azure.management.storage">.NET：Resource Manager</a></p>
-                        <p><a href="https://msdn.microsoft.com/zh-cn/library/opsacndocsdemo/mt684990.aspx">.NET: Data movement（.NET：数据移动）</a></p>
-                        <p><a href="https://msdn.microsoft.com/library/opsacndocsdemo/mt347887.aspx">.NET: Blobs, Queues, Tables, and Files（.NET：Blob、队列、表和文件）</a></p>
+                        <p><a href="https://msdn.microsoft.com/zh-cn/library/mooncaketest/articles/mt684990.aspx">.NET: Data movement（.NET：数据移动）</a></p>
+                        <p><a href="https://msdn.microsoft.com/library/mooncaketest/articles/mt347887.aspx">.NET: Blobs, Queues, Tables, and Files（.NET：Blob、队列、表和文件）</a></p>
                         <p><a href="/java/api/">Java</a></p>
                         <p><a href="http://azure.github.io/azure-storage-node">Node​.js</a></p>
                         <p><a href="http://azure.github.io/azure-storage-ruby">Ruby</a></p>
                         <p><a href="https://azure-storage.readthedocs.io/en/latest/index.html">Python</a></p>
                         <p><a href="http://azure.github.io/azure-storage-cpp">C++</a></p>
-                        <p><a href="https://github.com/opsacndocsdemo/azure-storage-ios">iOS</a></p>
+                        <p><a href="https://github.com/mooncaketest/articles/azure-storage-ios">iOS</a></p>
                         <p><a href="http://azure.github.io/azure-storage-android">Android</a></p>
                     </div>
                 </div>

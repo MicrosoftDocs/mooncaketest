@@ -18,7 +18,7 @@ ms.author: carolz
 了解如何使用 Service Fabric 来打包、部署和管理可缩放且可靠的微服务。教程、API 参考和代码示例说明如何使用此中间件平台生成和管理云规模应用程序。
 
 <ul class="panelContent cardsFTitle">
-    <li><a href="/opsacndocsdemo/service-fabric/service-fabric-overview">
+    <li><a href="/mooncaketest/articles/service-fabric/service-fabric-overview">
 <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
@@ -46,7 +46,7 @@ ms.author: carolz
             </div>
         </div></a>
 </li>
-    <li><a href="/opsacndocsdemo/service-fabric/service-fabric-create-your-first-application-in-visual-studio">
+    <li><a href="/mooncaketest/articles/service-fabric/service-fabric-create-your-first-application-in-visual-studio">
 <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
@@ -60,7 +60,7 @@ ms.author: carolz
             </div>
         </div></a>
 </li>
-    <li><a href="/opsacndocsdemo/service-fabric/service-fabric-create-your-first-linux-application-with-csharp">
+    <li><a href="/mooncaketest/articles/service-fabric/service-fabric-create-your-first-linux-application-with-csharp">
 <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
@@ -74,7 +74,7 @@ ms.author: carolz
             </div>
         </div></a>
 </li>
-    <li><a href="/opsacndocsdemo/service-fabric/service-fabric-create-your-first-linux-application-with-java">
+    <li><a href="/mooncaketest/articles/service-fabric/service-fabric-create-your-first-linux-application-with-java">
 <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">

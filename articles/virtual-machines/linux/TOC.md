@@ -5,15 +5,9 @@
 ### [端口、终结点和安全性](../virtual-machines-linux-endpoints-in-resource-manager.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
 ### [负载均衡器](../virtual-machines-linux-load-balance.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
 ## [VM 大小](../virtual-machines-linux-sizes.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
-### [计算密集型大小](../virtual-machines-linux-a8-a9-a10-a11-specs.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
 ### [计算基准评分](../virtual-machines-linux-compute-benchmark-scores.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
 ## [区域和可用性](../virtual-machines-linux-regions-and-availability.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
 ### [VM 可用性](../virtual-machines-linux-manage-availability.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
-## [安全中心](../../security-center/security-center-linux-virtual-machine.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
-## [Resource Manager](../../azure-resource-manager/resource-group-overview.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
-### [部署模型](../../azure-resource-manager/resource-manager-deployment-model.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
-## [VM 规模集](../../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
-## [容器](../virtual-machines-linux-containers.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
 ## [常见问题](../virtual-machines-linux-faq.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
 
 # 入门

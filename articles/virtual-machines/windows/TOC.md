@@ -1,19 +1,12 @@
 # 概述
 ## [关于 VM](../virtual-machines-windows-overview.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2fwindows%2ftoc.json)
-## [存储](../../storage/storage-about-disks-and-vhds-windows.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2fwindows%2ftoc.json)
-## [虚拟网络](../virtual-machines-windows-network-overview.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2fwindows%2ftoc.json)
+## 虚拟网络
 ### [端口、终结点和安全性](../virtual-machines-windows-endpoints-in-resource-manager.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2fwindows%2ftoc.json)
 ### [负载均衡器](../virtual-machines-windows-load-balance.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2fwindows%2ftoc.json)
 ## [VM 大小](../virtual-machines-windows-sizes.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2fwindows%2ftoc.json)
-### [计算密集型大小](../virtual-machines-windows-a8-a9-a10-a11-specs.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2fwindows%2ftoc.json)
 ### [计算基准评分](../virtual-machines-windows-compute-benchmark-scores.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2fwindows%2ftoc.json)
 ## [区域和可用性](../virtual-machines-windows-regions-and-availability.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2fwindows%2ftoc.json)
 ### [VM 可用性](../virtual-machines-windows-manage-availability.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2fwindows%2ftoc.json)
-## [安全中心](../../security-center/security-center-virtual-machine.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2fwindows%2ftoc.json)
-## [Resource Manager](../../azure-resource-manager/resource-group-overview.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2fwindows%2ftoc.json)
-### [部署模型](../../azure-resource-manager/resource-manager-deployment-model.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2fwindows%2ftoc.json)
-## [VM 规模集](../../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2fwindows%2ftoc.json)
-## [容器](../virtual-machines-windows-containers.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2fwindows%2ftoc.json)
 ## [常见问题](../virtual-machines-windows-faq.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2fwindows%2ftoc.json)
 
 # 入门

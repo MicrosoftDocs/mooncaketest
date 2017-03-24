@@ -7,7 +7,7 @@ description: 了解如何使用 DocumentDB，一种无架构的 NoSQL 文档数�
 了解如何在高性能的 Web、移动、游戏和 IoT 应用程序中使用 DocumentDB。教程和其他文档介绍了如何在此 NoSQL 数据库服务中存储 JSON 数据以及对灵活架构执行 SQL 查询。
 
 <ul class="panelContent cardsFTitle">
-     <li><a href="/opsacndocsdemo/documentdb/documentdb-introduction">
+     <li><a href="/mooncaketest/articles/documentdb/documentdb-introduction">
 <div class="cardSize"><div class="cardPadding"><div class="card"><div class="cardImageOuter"><div class="cardImage"><img src="media/index/documentdb.svg" alt="" /></div></div><div class="cardText"><h3>了解 Azure DocumentDB</h3></div></div></div>
         </div></a>
 </li>
@@ -15,31 +15,31 @@ description: 了解如何使用 DocumentDB，一种无架构的 NoSQL 文档数�
 <div class="cardSize"><div class="cardPadding"><div class="card"><div class="cardImageOuter"><div class="cardImage"><img src="media/index/video-library.svg" alt="" /></div></div><div class="cardText"><h3>Azure DocumentDB 视频库</h3></div></div></div>
         </div></a>
 </li>
-    <li><a href="/opsacndocsdemo/documentdb/documentdb-resources">
+    <li><a href="/mooncaketest/articles/documentdb/documentdb-resources">
 <div class="cardSize"><div class="cardPadding"><div class="card"><div class="cardImageOuter"><div class="cardImage"><img src="media/index/get-started.svg" alt="" /></div></div><div class="cardText"><h3>Azure DocumentDB 入门</h3></div></div></div>
         </div></a>
 </li>
-    <li><a href="/opsacndocsdemo/documentdb/documentdb-get-started">
+    <li><a href="/mooncaketest/articles/documentdb/documentdb-get-started">
 <div class="cardSize"><div class="cardPadding"><div class="card"><div class="cardImageOuter"><div class="cardImage"><img src="media/index/get-started.svg" alt="" /></div></div><div class="cardText"><h3>使用 .NET 的 DocumentDB 入门</h3></div></div></div>
         </div></a>
 </li>
-     <li><a href="/opsacndocsdemo/documentdb/documentdb-dotnet-application">
+     <li><a href="/mooncaketest/articles/documentdb/documentdb-dotnet-application">
 <div class="cardSize"><div class="cardPadding"><div class="card"><div class="cardImageOuter"><div class="cardImage"><img src="media/index/get-started.svg" alt="" /></div></div><div class="cardText"><h3>使用 ASP.NET MVC 的 DocumentDB 入门</h3></div></div></div>
         </div></a>
 </li>
-    <li><a href="/opsacndocsdemo/documentdb/documentdb-nodejs-get-started">
+    <li><a href="/mooncaketest/articles/documentdb/documentdb-nodejs-get-started">
 <div class="cardSize"><div class="cardPadding"><div class="card"><div class="cardImageOuter"><div class="cardImage"><img src="media/index/get-started.svg" alt="" /></div></div><div class="cardText"><h3>使用 Node.js 的 DocumentDB 入门</h3></div></div></div>
         </div></a>
 </li>
-    <li><a href="/opsacndocsdemo/documentdb/documentdb-nodejs-application">
+    <li><a href="/mooncaketest/articles/documentdb/documentdb-nodejs-application">
 <div class="cardSize"><div class="cardPadding"><div class="card"><div class="cardImageOuter"><div class="cardImage"><img src="media/index/get-started.svg" alt="" /></div></div><div class="cardText"><h3>使用 Node.js Express 的 DocumentDB 入门</h3></div></div></div>
         </div></a>
 </li>
-    <li><a href="/opsacndocsdemo/documentdb/documentdb-java-application">
+    <li><a href="/mooncaketest/articles/documentdb/documentdb-java-application">
 <div class="cardSize"><div class="cardPadding"><div class="card"><div class="cardImageOuter"><div class="cardImage"><img src="media/index/get-started.svg" alt="" /></div></div><div class="cardText"><h3>使用 Java JSP 应用的 DocumentDB 入门</h3></div></div></div>
         </div></a>
 </li>
-    <li><a href="/opsacndocsdemo/documentdb/documentdb-python-application">
+    <li><a href="/mooncaketest/articles/documentdb/documentdb-python-application">
 <div class="cardSize"><div class="cardPadding"><div class="card"><div class="cardImageOuter"><div class="cardImage"><img src="media/index/get-started.svg" alt="" /></div></div><div class="cardText"><h3>使用 Python Flask Web 应用的 DocumentDB 入门</h3></div></div></div>
         </div></a>
 </li>
@@ -50,7 +50,7 @@ description: 了解如何使用 DocumentDB，一种无架构的 NoSQL 文档数�
 <h2>引用</h2>
 <ul class="panelContent cardsW">
     <li>
-        <div class="cardSize"><div class="cardPadding"><div class="card"><div class="cardText"><h3>语言</h3><p><a href="/opsacndocsdemo/documentdb/documentdb-sdk-dotnet">.NET</a></p><p><a href="/opsacndocsdemo/documentdb/documentdb-sdk-dotnet-core">.NET Core</a></p><p><a href="/opsacndocsdemo/documentdb/documentdb-sdk-java">Java</a></p><p><a href="/opsacndocsdemo/documentdb/documentdb-sdk-node">Node.js</a></p><p><a href="/opsacndocsdemo/documentdb/documentdb-sdk-java">Python</a></p></div></div></div>
+        <div class="cardSize"><div class="cardPadding"><div class="card"><div class="cardText"><h3>语言</h3><p><a href="/mooncaketest/articles/documentdb/documentdb-sdk-dotnet">.NET</a></p><p><a href="/mooncaketest/articles/documentdb/documentdb-sdk-dotnet-core">.NET Core</a></p><p><a href="/mooncaketest/articles/documentdb/documentdb-sdk-java">Java</a></p><p><a href="/mooncaketest/articles/documentdb/documentdb-sdk-node">Node.js</a></p><p><a href="/mooncaketest/articles/documentdb/documentdb-sdk-java">Python</a></p></div></div></div>
         </div>
     </li>
     <li>

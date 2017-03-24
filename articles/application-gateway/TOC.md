@@ -7,7 +7,7 @@
 ## [多站点](application-gateway-multi-site-overview.md)
 ## [端到端 SSL](application-gateway-backend-ssl.md)
 ## [WebSocket](application-gateway-websocket.md)
-## [服务限制](../azure-subscription-service-limits.md#application-gateway-limits?toc=%2fopsacndocsdemo%2fapplication-gateway%2ftoc.json)
+## [服务限制](../azure-subscription-service-limits.md#application-gateway-limits?toc=%2fmooncaketest%2farticles%2fapplication-gateway%2ftoc.json)
 # 入门
 ## 创建应用程序网关
 ### 面向公众
@@ -38,7 +38,7 @@
 ### [门户](application-gateway-create-probe-portal.md)
 ### [PowerShell](application-gateway-create-probe-ps.md)
 ### [PowerShell（经典）](application-gateway-create-probe-classic-ps.md)
-## [结合使用负载均衡服务](../traffic-manager/traffic-manager-load-balancing-azure.md?toc=%2fopsacndocsdemo%2fapplication-gateway%2ftoc.json)
+## [结合使用负载均衡服务](../traffic-manager/traffic-manager-load-balancing-azure.md?toc=%2fmooncaketest%2farticles%2fapplication-gateway%2ftoc.json)
 ## 故障排除
 ### [排查应用程序网关中的错误](application-gateway-troubleshooting-502.md)
 ### [诊断日志记录和指标](application-gateway-diagnostics.md)

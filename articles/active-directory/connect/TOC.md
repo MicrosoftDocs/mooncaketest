@@ -43,7 +43,7 @@
 ### [计划程序](active-directory-aadconnectsync-feature-scheduler.md)
 ### [目录扩展](active-directory-aadconnectsync-feature-directory-extensions.md)
 ### [Synchronization Service Manager](active-directory-aadconnectsync-service-manager-ui.md)
-#### [操作](active-directory-aadconnectsync-service-manager-ui-operations.md?toc=%2fopsacndocsdemo%2factive-directory%2faad-connect%2ftoc.json)
+#### [操作](active-directory-aadconnectsync-service-manager-ui-operations.md?toc=%2fmooncaketest%2farticles%2factive-directory%2faad-connect%2ftoc.json)
 #### [连接器](active-directory-aadconnectsync-service-manager-ui-connectors.md)
 #### [Metaverse 设计器](active-directory-aadconnectsync-service-manager-ui-mvdesigner.md)
 #### [Metaverse 搜索](active-directory-aadconnectsync-service-manager-ui-mvsearch.md)

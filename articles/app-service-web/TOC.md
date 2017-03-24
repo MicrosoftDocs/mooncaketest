@@ -1,7 +1,7 @@
-# [概述](../app-service/app-service-how-works-readme.md?toc=%2fopsacndocsdemo%2fapp-service-web%2ftoc.json)
+# [概述](../app-service/app-service-how-works-readme.md?toc=%2fmooncaketest%2farticles%2fapp-service-web%2ftoc.json)
 ## [Web Apps 概述](app-service-web-overview.md)
-## [什么是应用服务](../app-service/app-service-value-prop-what-is.md?toc=%2fopsacndocsdemo%2fapp-service-web%2ftoc.json)
-## [应用服务计划](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md?toc=%2fopsacndocsdemo%2fapp-service-web%2ftoc.json)
+## [什么是应用服务](../app-service/app-service-value-prop-what-is.md?toc=%2fmooncaketest%2farticles%2fapp-service-web%2ftoc.json)
+## [应用服务计划](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md?toc=%2fmooncaketest%2farticles%2fapp-service-web%2ftoc.json)
 
 # 入门
 
@@ -34,22 +34,22 @@
 ## 规划和设计
 ### [有关 Azure App Service 的最佳实践](app-service-best-practices.md)
 ### [Azure App Service 和现有的 Azure 服务](app-service-changes-existing-services.md)
-### [本地缓存概述](../app-service/app-service-local-cache.md?toc=%2fopsacndocsdemo%2fapp-service-web%2ftoc.json)
-### [应用服务计划深度介绍](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md?toc=%2fopsacndocsdemo%2fapp-service-web%2ftoc.json)
+### [本地缓存概述](../app-service/app-service-local-cache.md?toc=%2fmooncaketest%2farticles%2fapp-service-web%2ftoc.json)
+### [应用服务计划深度介绍](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md?toc=%2fmooncaketest%2farticles%2fapp-service-web%2ftoc.json)
 ### [适用于企业的 Web 应用产品](web-sites-enterprise-offerings.md)
 ### [比较：应用服务、虚拟机、Service Fabric、云服务](choose-web-site-cloud-service-vm.md)
 ### [在应用服务上开发 WordPress 站点](develop-wordpress-on-app-service-web-apps.md)
-### [Linux 应用服务](../app-service/app-service-linux-readme.md?toc=%2fopsacndocsdemo%2fapp-service-web%2ftoc.json)
+### [Linux 应用服务](../app-service/app-service-linux-readme.md?toc=%2fmooncaketest%2farticles%2fapp-service-web%2ftoc.json)
 ### Azure 参考体系结构
-#### [基本 Web 应用程序](../guidance/guidance-web-apps-basic.md?toc=%2fopsacndocsdemo%2fapp-service-web%2ftoc.json)
-#### [可用性高的 Web 应用程序](../guidance/guidance-web-apps-multi-region.md?toc=%2fopsacndocsdemo%2fapp-service-web%2ftoc.json)
-### [高密度托管](../app-service/app-service-high-density-hosting.md?toc=%2fopsacndocsdemo%2fapp-service-web%2ftoc.json)
-### [提高可伸缩性](../guidance/guidance-web-apps-scalability.md?toc=%2fopsacndocsdemo%2fapp-service-web%2ftoc.json)
+#### [基本 Web 应用程序](../guidance/guidance-web-apps-basic.md?toc=%2fmooncaketest%2farticles%2fapp-service-web%2ftoc.json)
+#### [可用性高的 Web 应用程序](../guidance/guidance-web-apps-multi-region.md?toc=%2fmooncaketest%2farticles%2fapp-service-web%2ftoc.json)
+### [高密度托管](../app-service/app-service-high-density-hosting.md?toc=%2fmooncaketest%2farticles%2fapp-service-web%2ftoc.json)
+### [提高可伸缩性](../guidance/guidance-web-apps-scalability.md?toc=%2fmooncaketest%2farticles%2fapp-service-web%2ftoc.json)
 ### [操作系统功能](web-sites-available-operating-system-functionality.md)
 ### [有效使用 DevOps 环境](app-service-web-staged-publishing-realworld-scenarios.md)
-### [在 Azure 应用服务中使用 WebJobs](../app-service/app-service-webjobs-readme.md?toc=%2fopsacndocsdemo%2fapp-service-web%2ftoc.json)
+### [在 Azure 应用服务中使用 WebJobs](../app-service/app-service-webjobs-readme.md?toc=%2fmooncaketest%2farticles%2fapp-service-web%2ftoc.json)
 ### [应用服务环境](app-service-app-service-environment-intro.md)
-#### [应用服务环境文档](../app-service/app-service-app-service-environments-readme.md?toc=%2fopsacndocsdemo%2fapp-service-web%2ftoc.json)
+#### [应用服务环境文档](../app-service/app-service-app-service-environments-readme.md?toc=%2fmooncaketest%2farticles%2fapp-service-web%2ftoc.json)
 
 ## 开发
 ### [在第一个 Web 应用中添加功能](app-service-web-get-started-2.md)
@@ -78,7 +78,7 @@
 #### [开发用于应用服务的 PHP 应用](app-service-web-php-get-started.md)	
 #### [创建 PHP-SQL Web 应用并使用 Git 进行部署](web-sites-php-sql-database-deploy-use-git.md)
 #### [在 Azure App Service 中创建 WordPress Web 应用](web-sites-php-web-site-gallery.md)
-#### [在 Azure 中创建 MySQL 数据库并连接到它](../store-php-create-mysql-database.md?toc=%2fopsacndocsdemo%2fapp-service-web%2ftoc.json)
+#### [在 Azure 中创建 MySQL 数据库并连接到它](../store-php-create-mysql-database.md?toc=%2fmooncaketest%2farticles%2fapp-service-web%2ftoc.json)
 #### [Azure App Service 上的企业级 WordPress](web-sites-php-enterprise-wordpress.md)
 
 ### Java 应用
@@ -106,7 +106,7 @@
 ### [在 5 分钟内将第一个基本 Web 应用部署到 Azure](app-service-web-get-started-html.md)
 ### [在生产环境中 Web Apps 的测试入门](app-service-web-test-in-production-get-start.md)
 
-### [Web 作业](../app-service/app-service-webjobs-readme.md?toc=%2fopsacndocsdemo%2fapp-service-web%2ftoc.json)
+### [Web 作业](../app-service/app-service-webjobs-readme.md?toc=%2fmooncaketest%2farticles%2fapp-service-web%2ftoc.json)
 #### [什么是 Azure WebJobs SDK](websites-dotnet-webjobs-sdk.md)
 #### [创建 .NET Web 作业](websites-dotnet-webjobs-sdk-get-started.md)
 #### [如何通过 WebJobs SDK 使用 Azure Blob 存储](websites-dotnet-webjobs-sdk-storage-blobs-how-to.md)
@@ -120,7 +120,7 @@
 #### [如何使用 Azure Resource Manager 模板创建 ILB ASE](app-service-app-service-environment-create-ilb-ase-resourcemanager.md)
 #### [使用内部负载均衡器](app-service-environment-with-internal-load-balancer.md)
 
-## [部署](../app-service/app-service-deployment-readme.md?toc=%2fopsacndocsdemo%2fapp-service-web%2ftoc.json)
+## [部署](../app-service/app-service-deployment-readme.md?toc=%2fmooncaketest%2farticles%2fapp-service-web%2ftoc.json)
 ### [部署到应用服务](web-sites-deploy.md)
 ### [云同步部署](app-service-deploy-content-sync.md)
 ### [连续部署](app-service-continuous-deployment.md)
@@ -134,13 +134,13 @@
 ### [从 IIS 迁移](web-sites-migration-from-iis-server.md)
 ### [使用 Visual Studio 部署 Web 作业](websites-dotnet-deploy-webjobs.md)
 
-## [缩放](../app-service/app-service-scale-readme.md?toc=%2fopsacndocsdemo%2fapp-service-web%2ftoc.json)
+## [缩放](../app-service/app-service-scale-readme.md?toc=%2fmooncaketest%2farticles%2fapp-service-web%2ftoc.json)
 ### [扩展应用](web-sites-scale.md)
-### [应用服务环境](../app-service/app-service-app-service-environments-readme.md?toc=%2fopsacndocsdemo%2fapp-service-web%2ftoc.json)
+### [应用服务环境](../app-service/app-service-app-service-environments-readme.md?toc=%2fmooncaketest%2farticles%2fapp-service-web%2ftoc.json)
 #### [应用服务环境的异地分布式缩放](app-service-app-service-environment-geo-distributed-scale.md)
 #### [在应用服务环境中缩放应用](app-service-web-scale-a-web-app-in-an-app-service-environment.md)
-#### [在应用服务环境中自动缩放](../app-service/app-service-environment-auto-scale.md?toc=%2fopsacndocsdemo%2fapp-service-web%2ftoc.json)
-### [Azure CDN](../cdn/cdn-overview.md?toc=%2fopsacndocsdemo%2fapp-service-web%2ftoc.json)
+#### [在应用服务环境中自动缩放](../app-service/app-service-environment-auto-scale.md?toc=%2fmooncaketest%2farticles%2fapp-service-web%2ftoc.json)
+### [Azure CDN](../cdn/cdn-overview.md?toc=%2fmooncaketest%2farticles%2fapp-service-web%2ftoc.json)
 
 ## [管理](web-sites-manage-azure-website.md)
 ### [配置](web-sites-configure.md)
@@ -164,10 +164,10 @@
 ### [资源组](app-service-move-resources.md)
 ### [将 WordPress 转换为多站点](web-sites-php-convert-wordpress-multisite.md) 
 
-### [Web 作业](../app-service/app-service-webjobs-readme.md?toc=%2fopsacndocsdemo%2fapp-service-web%2ftoc.json)
+### [Web 作业](../app-service/app-service-webjobs-readme.md?toc=%2fmooncaketest%2farticles%2fapp-service-web%2ftoc.json)
 #### [使用 Web 作业运行后台任务](web-sites-create-web-jobs.md)
 
-### [应用服务环境](../app-service/app-service-app-service-environments-readme.md?toc=%2fopsacndocsdemo%2fapp-service-web%2ftoc.json)
+### [应用服务环境](../app-service/app-service-app-service-environments-readme.md?toc=%2fmooncaketest%2farticles%2fapp-service-web%2ftoc.json)
 #### [配置](app-service-web-configure-an-app-service-environment.md)
 #### [自定义配置设置](app-service-app-service-environment-custom-settings.md)
 #### [如何控制入站流量](app-service-app-service-environment-control-inbound-traffic.md)
@@ -183,15 +183,15 @@
 ### [启用诊断日志记录](web-sites-enable-diagnostic-log.md)
 ### [使用 Visual Studio 排除故障](web-sites-dotnet-troubleshoot-visual-studio.md)
 
-## [安全](../app-service/app-service-security-readme.md?toc=%2fopsacndocsdemo%2fapp-service-web%2ftoc.json)
+## [安全](../app-service/app-service-security-readme.md?toc=%2fmooncaketest%2farticles%2fapp-service-web%2ftoc.json)
 ### [在 Azure App Service 中保护应用安全](web-sites-security.md)
-### [身份验证和授权](../app-service/app-service-authentication-overview.md?toc=%2fopsacndocsdemo%2fapp-service-web%2ftoc.json)
+### [身份验证和授权](../app-service/app-service-authentication-overview.md?toc=%2fmooncaketest%2farticles%2fapp-service-web%2ftoc.json)
 ### 使用标识提供者进行身份验证
-#### [Azure Active Directory 身份验证](../app-service-mobile/app-service-mobile-how-to-configure-active-directory-authentication.md?toc=%2fopsacndocsdemo%2fapp-service-web%2ftoc.json)
-#### [Facebook 身份验证](../app-service-mobile/app-service-mobile-how-to-configure-facebook-authentication.md?toc=%2fopsacndocsdemo%2fapp-service-web%2ftoc.json)
-#### [Google 身份验证](../app-service-mobile/app-service-mobile-how-to-configure-google-authentication.md?toc=%2fopsacndocsdemo%2fapp-service-web%2ftoc.json)
-#### [Microsoft 帐户身份验证](../app-service-mobile/app-service-mobile-how-to-configure-microsoft-authentication.md?toc=%2fopsacndocsdemo%2fapp-service-web%2ftoc.json)
-#### [Twitter 身份验证](../app-service-mobile/app-service-mobile-how-to-configure-twitter-authentication.md?toc=%2fopsacndocsdemo%2fapp-service-web%2ftoc.json)
+#### [Azure Active Directory 身份验证](../app-service-mobile/app-service-mobile-how-to-configure-active-directory-authentication.md?toc=%2fmooncaketest%2farticles%2fapp-service-web%2ftoc.json)
+#### [Facebook 身份验证](../app-service-mobile/app-service-mobile-how-to-configure-facebook-authentication.md?toc=%2fmooncaketest%2farticles%2fapp-service-web%2ftoc.json)
+#### [Google 身份验证](../app-service-mobile/app-service-mobile-how-to-configure-google-authentication.md?toc=%2fmooncaketest%2farticles%2fapp-service-web%2ftoc.json)
+#### [Microsoft 帐户身份验证](../app-service-mobile/app-service-mobile-how-to-configure-microsoft-authentication.md?toc=%2fmooncaketest%2farticles%2fapp-service-web%2ftoc.json)
+#### [Twitter 身份验证](../app-service-mobile/app-service-mobile-how-to-configure-twitter-authentication.md?toc=%2fmooncaketest%2farticles%2fapp-service-web%2ftoc.json)
 ### [使用本地 Active Directory 进行身份验证](web-sites-authentication-authorization.md)
 
 ### HTTPS
@@ -218,11 +218,11 @@
 ### [Azure Resource Manager 部署](app-service-deploy-complex-application-predictably.md)
 #### [Web + GitHub](app-service-web-arm-from-github-provision.md)
 #### [Web + SQL](app-service-web-arm-with-sql-database-provision.md)
-#### [Web + Redis](../redis-cache/cache-web-app-arm-with-redis-cache-provision.md?toc=%2fopsacndocsdemo%2fapp-service-web%2ftoc.json)
-#### [Redis 缓存](../redis-cache/cache-redis-cache-arm-provision.md?toc=%2fopsacndocsdemo%2fapp-service-web%2ftoc.json)
+#### [Web + Redis](../redis-cache/cache-web-app-arm-with-redis-cache-provision.md?toc=%2fmooncaketest%2farticles%2fapp-service-web%2ftoc.json)
+#### [Redis 缓存](../redis-cache/cache-redis-cache-arm-provision.md?toc=%2fmooncaketest%2farticles%2fapp-service-web%2ftoc.json)
 #### [使用自定义主机名和 SSL 证书的 MSDeploy](app-service-web-arm-with-msdeploy-provision.md)
 ### Powershell
-#### [自动备份和还原](../app-service/app-service-powershell-backup.md?toc=%2fopsacndocsdemo%2fapp-service-web%2ftoc.json)
+#### [自动备份和还原](../app-service/app-service-powershell-backup.md?toc=%2fmooncaketest%2farticles%2fapp-service-web%2ftoc.json)
 #### [应用克隆](app-service-web-app-cloning.md)
 #### [SSL 证书绑定](app-service-web-app-powershell-ssl-binding.md)
 #### [将 Azure Resource Manager 与 PowerShell 配合使用](app-service-web-app-azure-resource-manager-powershell.md)
@@ -235,7 +235,7 @@
 ### [使用 Azure 流量管理器控制 Azure Web 应用流量](web-sites-traffic-manager.md)
 ### Redis 缓存
 #### [通过 Memcache 协议连接到 Redis 缓存](web-sites-connect-to-redis-using-memcache-protocol.md)
-#### [使用模板创建 Redis 缓存](../redis-cache/cache-redis-cache-arm-provision.md?toc=%2fopsacndocsdemo%2fapp-service-web%2ftoc.json)
+#### [使用模板创建 Redis 缓存](../redis-cache/cache-redis-cache-arm-provision.md?toc=%2fmooncaketest%2farticles%2fapp-service-web%2ftoc.json)
 #### [通过 Azure Redis 缓存管理会话状态](web-sites-dotnet-session-state-caching.md)
 ### [在 Azure 中创建连接到虚拟机上运行的 MongoDB 的 Web 应用](web-sites-dotnet-store-data-mongodb-vm.md)
 ### [如何使用 SendGrid 发送电子邮件](sendgrid-dotnet-how-to-send-email.md)
@@ -265,7 +265,7 @@
 ### [2\.8.X 版](azure-sdk-dotnet-release-notes-2-8.md)
 ### [2\.7.X 版](azure-sdk-dotnet-release-notes-2-7.md)
 ### [2\.6 版](azure-sdk-dotnet-release-notes-2-6.md)
-### [2\.5.1 版](../app-service/app-service-release-notes.md?toc=%2fopsacndocsdemo%2fapp-service-web%2ftoc.json)
+### [2\.5.1 版](../app-service/app-service-release-notes.md?toc=%2fmooncaketest%2farticles%2fapp-service-web%2ftoc.json)
 
 # 资源
 ## [最佳实践](app-service-best-practices.md)

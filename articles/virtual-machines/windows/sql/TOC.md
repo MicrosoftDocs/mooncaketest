@@ -1,51 +1,51 @@
-# ¸ÅÊö
-## [Azure VM ÉÏµÄ SQL Server ÊÇÊ²Ã´£¿](virtual-machines-windows-sql-server-iaas-overview.md) 
-## [¼Û¸ñ](https://azure.microsoft.com/pricing/details/virtual-machines/windows/)
-## [³£¼ûÎÊÌâ](virtual-machines-windows-sql-server-iaas-faq.md)
+# æ¦‚è¿°
+## [Azure VM ä¸Šçš„ SQL Server æ˜¯ä»€ä¹ˆï¼Ÿ](virtual-machines-windows-sql-server-iaas-overview.md) 
+## [ä»·æ ¼](https://azure.microsoft.com/pricing/details/virtual-machines/windows/)
+## [å¸¸è§é—®é¢˜](virtual-machines-windows-sql-server-iaas-faq.md)
  
-# ÈëÃÅ
-## [ÔÚ Azure ÃÅ»§ÖĞÔ¤Åä VM](virtual-machines-windows-portal-sql-server-provision.md)
-## [Ê¹ÓÃ Azure PowerShell Ô¤Åä VM](virtual-machines-windows-ps-sql-create.md)
-## [Á¬½Óµ½ VM](virtual-machines-windows-sql-connect.md)
-## [Ç¨ÒÆ SQL Server Êı¾İ¿â](virtual-machines-windows-migrate-sql.md)
+# å…¥é—¨
+## [åœ¨ Azure é—¨æˆ·ä¸­é¢„é… VM](virtual-machines-windows-portal-sql-server-provision.md)
+## [ä½¿ç”¨ Azure PowerShell é¢„é… VM](virtual-machines-windows-ps-sql-create.md)
+## [è¿æ¥åˆ° VM](virtual-machines-windows-sql-connect.md)
+## [è¿ç§» SQL Server æ•°æ®åº“](virtual-machines-windows-migrate-sql.md)
 
-# ÈçºÎ
-## ÅäÖÃ¸ß¿ÉÓÃĞÔ
-### [¸ß¿ÉÓÃĞÔÑ¡Ïî](virtual-machines-windows-sql-high-availability-dr.md) 
-### [Always On ¿ÉÓÃĞÔ×é](virtual-machines-windows-portal-sql-availability-group-overview.md)
-#### [×Ô¶¯ - Ê¹ÓÃÄ£°å](virtual-machines-windows-portal-sql-alwayson-availability-groups.md)
-#### [ÊÖ¶¯ - ÏÈ¾öÌõ¼ş](virtual-machines-windows-portal-sql-availability-group-prereq.md)
-#### [ÊÖ¶¯ - ½Ì³Ì](virtual-machines-windows-portal-sql-availability-group-tutorial.md)
-#### [¸ºÔØ¾ùºâÆ÷ - ÃÅ»§](virtual-machines-windows-portal-sql-alwayson-int-listener.md)
-#### [¸ºÔØ¾ùºâÆ÷ - PowerShell](virtual-machines-windows-portal-sql-ps-alwayson-int-listener.md)
-#### [¶à¸öÇøÓò](virtual-machines-windows-portal-sql-availability-group-dr.md)
-### ¹ÊÕÏ×ªÒÆÈº¼¯ÊµÀı
-#### [ÅäÖÃ](virtual-machines-windows-portal-sql-create-failover-cluster.md)
+# å¦‚ä½•
+## é…ç½®é«˜å¯ç”¨æ€§
+### [é«˜å¯ç”¨æ€§é€‰é¡¹](virtual-machines-windows-sql-high-availability-dr.md) 
+### [Always On å¯ç”¨æ€§ç»„](virtual-machines-windows-portal-sql-availability-group-overview.md)
+#### [è‡ªåŠ¨ - ä½¿ç”¨æ¨¡æ¿](virtual-machines-windows-portal-sql-alwayson-availability-groups.md)
+#### [æ‰‹åŠ¨ - å…ˆå†³æ¡ä»¶](virtual-machines-windows-portal-sql-availability-group-prereq.md)
+#### [æ‰‹åŠ¨ - æ•™ç¨‹](virtual-machines-windows-portal-sql-availability-group-tutorial.md)
+#### [è´Ÿè½½å‡è¡¡å™¨ - é—¨æˆ·](virtual-machines-windows-portal-sql-alwayson-int-listener.md)
+#### [è´Ÿè½½å‡è¡¡å™¨ - PowerShell](virtual-machines-windows-portal-sql-ps-alwayson-int-listener.md)
+#### [å¤šä¸ªåŒºåŸŸ](virtual-machines-windows-portal-sql-availability-group-dr.md)
+### æ•…éšœè½¬ç§»ç¾¤é›†å®ä¾‹
+#### [é…ç½®](virtual-machines-windows-portal-sql-create-failover-cluster.md)
 
-## ¹ÜÀí
-### [Ê¹ÓÃ SQL Server IaaS ´úÀíÀ©Õ¹](virtual-machines-windows-sql-server-agent-extension.md)
-### [×Ô¶¯ĞŞ²¹](virtual-machines-windows-sql-automated-patching.md)
-### [ÅäÖÃ Azure Key Vault ¼¯³É](virtual-machines-windows-ps-sql-keyvault.md)
-### [°²È«×¢ÒâÊÂÏî](virtual-machines-windows-sql-security.md)
-## ±¸·İºÍ»¹Ô­
-### [±¸·İºÍ»¹Ô­](virtual-machines-windows-sql-backup-recovery.md)
-### [×Ô¶¯±¸·İ](virtual-machines-windows-sql-automated-backup.md)
-### [½« Azure ´æ´¢ÓÃÓÚ±¸·İºÍ»¹Ô­](virtual-machines-windows-use-storage-sql-server-backup-restore.md)
-## [ĞÔÄÜ×î¼Ñ×ö·¨](virtual-machines-windows-sql-performance.md)
-## [ÅäÖÃ´æ´¢](virtual-machines-windows-sql-server-storage-configuration.md)
-## [Ó¦ÓÃ³ÌĞòÄ£Ê½](virtual-machines-windows-sql-server-app-patterns-dev-strategies.md)
+## ç®¡ç†
+### [ä½¿ç”¨ SQL Server IaaS ä»£ç†æ‰©å±•](virtual-machines-windows-sql-server-agent-extension.md)
+### [è‡ªåŠ¨ä¿®è¡¥](virtual-machines-windows-sql-automated-patching.md)
+### [é…ç½® Azure Key Vault é›†æˆ](virtual-machines-windows-ps-sql-keyvault.md)
+### [å®‰å…¨æ³¨æ„äº‹é¡¹](virtual-machines-windows-sql-security.md)
+## å¤‡ä»½å’Œè¿˜åŸ
+### [å¤‡ä»½å’Œè¿˜åŸ](virtual-machines-windows-sql-backup-recovery.md)
+### [è‡ªåŠ¨å¤‡ä»½](virtual-machines-windows-sql-automated-backup.md)
+### [å°† Azure å­˜å‚¨ç”¨äºå¤‡ä»½å’Œè¿˜åŸ](virtual-machines-windows-use-storage-sql-server-backup-restore.md)
+## [æ€§èƒ½æœ€ä½³åšæ³•](virtual-machines-windows-sql-performance.md)
+## [é…ç½®å­˜å‚¨](virtual-machines-windows-sql-server-storage-configuration.md)
+## [åº”ç”¨ç¨‹åºæ¨¡å¼](virtual-machines-windows-sql-server-app-patterns-dev-strategies.md)
 
-# ²Î¿¼
+# å‚è€ƒ
 ## [PowerShell](/powershell/resourcemanager)
 ## [Azure CLI](/cli/azure/)
 ## [T-SQL](https://msdn.microsoft.com/library/azure/bb510741.aspx)
-## [SQL Server Çı¶¯³ÌĞò](https://msdn.microsoft.com/library/mt654049.aspx)
+## [SQL Server é©±åŠ¨ç¨‹åº](https://msdn.microsoft.com/library/mt654049.aspx)
 ## [REST](/rest/api/)
 
-# ×ÊÔ´
-## [MSDN ÂÛÌ³](https://social.msdn.microsoft.com/Forums/zh-cn/home?forum=WAVirtualMachinesforWindows&filter=alltypes&brandIgnore=True&sort=relevancedesc&searchTerm=SQL+Server)
-## [¶ÑÕ»Òç³ö](http://stackoverflow.com/search?q=%5Bazure-virtual-machine%5D+sql+server)
-## [SQL Server ¹¤¾ß](https://msdn.microsoft.com/library/mt238365.aspx)
+# èµ„æº
+## [MSDN è®ºå›](https://social.msdn.microsoft.com/Forums/zh-cn/home?forum=WAVirtualMachinesforWindows&filter=alltypes&brandIgnore=True&sort=relevancedesc&searchTerm=SQL+Server)
+## [å †æ ˆæº¢å‡º](http://stackoverflow.com/search?q=%5Bazure-virtual-machine%5D+sql+server)
+## [SQL Server å·¥å…·](https://msdn.microsoft.com/library/mt238365.aspx)
 ## [SQL Server Management Studio (SSMS)](https://msdn.microsoft.com/library/mt238290.aspx)
 ## [SQL Server Data Tools (SSDT)](https://msdn.microsoft.com/library/mt204009.aspx)
 

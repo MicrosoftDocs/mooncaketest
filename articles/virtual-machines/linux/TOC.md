@@ -1,230 +1,230 @@
-# ¸ÅÊö
-## [¹ØÓÚ VM](../virtual-machines-linux-azure-overview.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
-## [´æ´¢](../virtual-machines-linux-azure-vm-storage-overview.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
-## [ĞéÄâÍøÂç](../virtual-machines-linux-azure-vm-network-overview.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
-### [¶Ë¿Ú¡¢ÖÕ½áµãºÍ°²È«ĞÔ](../virtual-machines-linux-endpoints-in-resource-manager.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
-### [¸ºÔØ¾ùºâÆ÷](../virtual-machines-linux-load-balance.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
-## [VM ´óĞ¡](../virtual-machines-linux-sizes.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
-### [¼ÆËãÃÜ¼¯ĞÍ´óĞ¡](../virtual-machines-linux-a8-a9-a10-a11-specs.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
-### [¼ÆËã»ù×¼ÆÀ·Ö](../virtual-machines-linux-compute-benchmark-scores.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
-## [ÇøÓòºÍ¿ÉÓÃĞÔ](../virtual-machines-linux-regions-and-availability.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
-### [VM ¿ÉÓÃĞÔ](../virtual-machines-linux-manage-availability.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
-## [°²È«ÖĞĞÄ](../../security-center/security-center-linux-virtual-machine.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
+# æ¦‚è¿°
+## [å…³äº VM](../virtual-machines-linux-azure-overview.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
+## [å­˜å‚¨](../virtual-machines-linux-azure-vm-storage-overview.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
+## [è™šæ‹Ÿç½‘ç»œ](../virtual-machines-linux-azure-vm-network-overview.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
+### [ç«¯å£ã€ç»ˆç»“ç‚¹å’Œå®‰å…¨æ€§](../virtual-machines-linux-endpoints-in-resource-manager.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
+### [è´Ÿè½½å‡è¡¡å™¨](../virtual-machines-linux-load-balance.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
+## [VM å¤§å°](../virtual-machines-linux-sizes.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
+### [è®¡ç®—å¯†é›†å‹å¤§å°](../virtual-machines-linux-a8-a9-a10-a11-specs.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
+### [è®¡ç®—åŸºå‡†è¯„åˆ†](../virtual-machines-linux-compute-benchmark-scores.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
+## [åŒºåŸŸå’Œå¯ç”¨æ€§](../virtual-machines-linux-regions-and-availability.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
+### [VM å¯ç”¨æ€§](../virtual-machines-linux-manage-availability.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
+## [å®‰å…¨ä¸­å¿ƒ](../../security-center/security-center-linux-virtual-machine.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
 ## [Resource Manager](../../azure-resource-manager/resource-group-overview.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
-### [²¿ÊğÄ£ĞÍ](../../azure-resource-manager/resource-manager-deployment-model.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
-## [VM ¹æÄ£¼¯](../../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
-## [ÈİÆ÷](../virtual-machines-linux-containers.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
-## [³£¼ûÎÊÌâ](../virtual-machines-linux-faq.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
+### [éƒ¨ç½²æ¨¡å‹](../../azure-resource-manager/resource-manager-deployment-model.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
+## [VM è§„æ¨¡é›†](../../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
+## [å®¹å™¨](../virtual-machines-linux-containers.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
+## [å¸¸è§é—®é¢˜](../virtual-machines-linux-faq.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
 
-# ÈëÃÅ
-## [Ê¹ÓÃÃÅ»§´´½¨ VM](../virtual-machines-linux-quick-create-portal.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
-## [ÔÚ Linux ºÍ Mac ÉÏ´´½¨ SSH ÃÜÔ¿](../virtual-machines-linux-mac-create-ssh-keys.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
-## [½«ÎÄ¼ş¸´ÖÆµ½ Linux VM](../virtual-machines-linux-copy-files-to-linux-vm-using-scp.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
-## ´´½¨ VM µÄ²»Í¬·½Ê½
+# å…¥é—¨
+## [ä½¿ç”¨é—¨æˆ·åˆ›å»º VM](../virtual-machines-linux-quick-create-portal.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
+## [åœ¨ Linux å’Œ Mac ä¸Šåˆ›å»º SSH å¯†é’¥](../virtual-machines-linux-mac-create-ssh-keys.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
+## [å°†æ–‡ä»¶å¤åˆ¶åˆ° Linux VM](../virtual-machines-linux-copy-files-to-linux-vm-using-scp.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
+## åˆ›å»º VM çš„ä¸åŒæ–¹å¼
 ### [Azure CLI 1.0](../virtual-machines-linux-creation-choices-nodejs.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
-### [Azure CLI 2.0£¨Ô¤ÀÀ°æ£©](../virtual-machines-linux-creation-choices.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
-## [°²×° Azure CLI](../../xplat-cli-install.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
-## Ê¹ÓÃ Azure CLI ´´½¨ VM
+### [Azure CLI 2.0ï¼ˆé¢„è§ˆç‰ˆï¼‰](../virtual-machines-linux-creation-choices.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
+## [å®‰è£… Azure CLI](../../xplat-cli-install.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
+## ä½¿ç”¨ Azure CLI åˆ›å»º VM
 ### [Azure CLI 1.0](../virtual-machines-linux-quick-create-cli-nodejs.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
-### [Azure CLI 2.0£¨Ô¤ÀÀ°æ£©](../virtual-machines-linux-quick-create-cli.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
-## [Ä£°åÑİÁ·](../../azure-resource-manager/resource-manager-template-walkthrough.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
-## [´´½¨²¢²¿Êğ¸´ÔÓµÄ VM Ä£°å](../virtual-machines-linux-dotnet-core-1-landing.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
-### [Ó¦ÓÃ³ÌĞòÌåÏµ½á¹¹](../virtual-machines-linux-dotnet-core-2-architecture.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
-### [·ÃÎÊÈ¨ÏŞºÍ°²È«ĞÔ](../virtual-machines-linux-dotnet-core-3-access-security.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
-### [¿ÉÓÃĞÔºÍ¹æÄ£](../virtual-machines-linux-dotnet-core-4-availability-scale.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
-### [Ó¦ÓÃ³ÌĞò²¿Êğ](../virtual-machines-linux-dotnet-core-5-app-deployment.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
+### [Azure CLI 2.0ï¼ˆé¢„è§ˆç‰ˆï¼‰](../virtual-machines-linux-quick-create-cli.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
+## [æ¨¡æ¿æ¼”ç»ƒ](../../azure-resource-manager/resource-manager-template-walkthrough.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
+## [åˆ›å»ºå¹¶éƒ¨ç½²å¤æ‚çš„ VM æ¨¡æ¿](../virtual-machines-linux-dotnet-core-1-landing.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
+### [åº”ç”¨ç¨‹åºä½“ç³»ç»“æ„](../virtual-machines-linux-dotnet-core-2-architecture.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
+### [è®¿é—®æƒé™å’Œå®‰å…¨æ€§](../virtual-machines-linux-dotnet-core-3-access-security.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
+### [å¯ç”¨æ€§å’Œè§„æ¨¡](../virtual-machines-linux-dotnet-core-4-availability-scale.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
+### [åº”ç”¨ç¨‹åºéƒ¨ç½²](../virtual-machines-linux-dotnet-core-5-app-deployment.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
 
-# ÈçºÎ
-## ¼ÆËã
-### [´Ó Azure Ä£°å´´½¨ VM](../virtual-machines-linux-create-ssh-secured-vm-from-template.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
-### Ê¹ÓÃ Azure CLI ´´½¨ÍêÕûµÄ»·¾³
+# å¦‚ä½•
+## è®¡ç®—
+### [ä» Azure æ¨¡æ¿åˆ›å»º VM](../virtual-machines-linux-create-ssh-secured-vm-from-template.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
+### ä½¿ç”¨ Azure CLI åˆ›å»ºå®Œæ•´çš„ç¯å¢ƒ
 #### [Azure CLI 1.0](../virtual-machines-linux-create-cli-complete-nodejs.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
-#### [Azure CLI 2.0£¨Ô¤ÀÀ°æ£©](../virtual-machines-linux-create-cli-complete.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
-### [Ê¹ÓÃ¹æÄ£¼¯´´½¨¶à¸ö VM](../virtual-machines-linux-cli-vmss-create.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
-### ´ò¿ª¶Ë¿ÚºÍÖÕ½áµã
+#### [Azure CLI 2.0ï¼ˆé¢„è§ˆç‰ˆï¼‰](../virtual-machines-linux-create-cli-complete.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
+### [ä½¿ç”¨è§„æ¨¡é›†åˆ›å»ºå¤šä¸ª VM](../virtual-machines-linux-cli-vmss-create.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
+### æ‰“å¼€ç«¯å£å’Œç»ˆç»“ç‚¹
 #### [Azure CLI 1.0](../virtual-machines-linux-nsg-quickstart-nodejs.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
-#### [Azure CLI 2.0£¨Ô¤ÀÀ°æ£©](../virtual-machines-linux-nsg-quickstart.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
-### µ÷Õû VM µÄ´óĞ¡
+#### [Azure CLI 2.0ï¼ˆé¢„è§ˆç‰ˆï¼‰](../virtual-machines-linux-nsg-quickstart.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
+### è°ƒæ•´ VM çš„å¤§å°
 #### [Azure CLI 1.0](../virtual-machines-linux-change-vm-size-nodejs.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
-#### [Azure CLI 2.0£¨Ô¤ÀÀ°æ£©](../virtual-machines-linux-change-vm-size.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
-### ½« VM ²¿Êğµ½ÏÖÓĞĞéÄâÍøÂç
+#### [Azure CLI 2.0ï¼ˆé¢„è§ˆç‰ˆï¼‰](../virtual-machines-linux-change-vm-size.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
+### å°† VM éƒ¨ç½²åˆ°ç°æœ‰è™šæ‹Ÿç½‘ç»œ
 #### [Azure CLI 1.0](../virtual-machines-linux-deploy-linux-vm-into-existing-vnet-using-cli-nodejs.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
-#### [Azure CLI 2.0£¨Ô¤ÀÀ°æ£©](../virtual-machines-linux-deploy-linux-vm-into-existing-vnet-using-cli.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
-#### [Azure ÃÅ»§](../virtual-machines-linux-deploy-linux-vm-into-existing-vnet-using-portal.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
-### [²éÕÒ VM Ó³Ïñ](../virtual-machines-linux-cli-ps-findimage.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
-### [Ê¹ÓÃ cloud-init](../virtual-machines-linux-using-cloud-init.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
-### ÖØÖÃ SSH ·ÃÎÊÈ¨ÏŞ¡¢¹ÜÀíÓÃ»§ºÍ¼ì²é´ÅÅÌ
+#### [Azure CLI 2.0ï¼ˆé¢„è§ˆç‰ˆï¼‰](../virtual-machines-linux-deploy-linux-vm-into-existing-vnet-using-cli.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
+#### [Azure é—¨æˆ·](../virtual-machines-linux-deploy-linux-vm-into-existing-vnet-using-portal.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
+### [æŸ¥æ‰¾ VM æ˜ åƒ](../virtual-machines-linux-cli-ps-findimage.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
+### [ä½¿ç”¨ cloud-init](../virtual-machines-linux-using-cloud-init.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
+### é‡ç½® SSH è®¿é—®æƒé™ã€ç®¡ç†ç”¨æˆ·å’Œæ£€æŸ¥ç£ç›˜
 #### [Azure CLI 1.0](../virtual-machines-linux-using-vmaccess-extension-nodejs.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
-#### [Azure CLI 2.0£¨Ô¤ÀÀ°æ£©](../virtual-machines-linux-using-vmaccess-extension.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
-### [Í¨¹ıÅäÖÃ SSHD ½ûÓÃ SSH ÃÜÂë](../virtual-machines-linux-mac-disable-ssh-password-usage.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
-### [½« RedHat VM ¼ÓÈë Azure Active Directory Óò·şÎñ](../virtual-machines-linux-join-redhat-linux-vm-to-azure-active-directory-domain-service.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
-### [ÔÚ Azure ÖĞÊ¹ÓÃ Docker ¼ÆËã»ú](../virtual-machines-linux-docker-machine.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
-### [Ê¹ÓÃ Azure Docker VM À©Õ¹´´½¨ Docker Ö÷»ú](../virtual-machines-linux-dockerextension.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
-### [ÔÚ Azure ÖĞÊ¹ÓÃ Docker Compose](../virtual-machines-linux-docker-compose-quickstart.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
-### [Ê¹ÓÃ Azure ÈİÆ÷×¢²á±í](/mooncaketest/articles/container-registry/?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
-### [°²×°ºÍÅäÖÃÔ¶³Ì×ÀÃæÒÔÁ¬½Óµ½ Linux VM](../virtual-machines-linux-use-remote-desktop.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
+#### [Azure CLI 2.0ï¼ˆé¢„è§ˆç‰ˆï¼‰](../virtual-machines-linux-using-vmaccess-extension.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
+### [é€šè¿‡é…ç½® SSHD ç¦ç”¨ SSH å¯†ç ](../virtual-machines-linux-mac-disable-ssh-password-usage.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
+### [å°† RedHat VM åŠ å…¥ Azure Active Directory åŸŸæœåŠ¡](../virtual-machines-linux-join-redhat-linux-vm-to-azure-active-directory-domain-service.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
+### [åœ¨ Azure ä¸­ä½¿ç”¨ Docker è®¡ç®—æœº](../virtual-machines-linux-docker-machine.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
+### [ä½¿ç”¨ Azure Docker VM æ‰©å±•åˆ›å»º Docker ä¸»æœº](../virtual-machines-linux-dockerextension.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
+### [åœ¨ Azure ä¸­ä½¿ç”¨ Docker Compose](../virtual-machines-linux-docker-compose-quickstart.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
+### [ä½¿ç”¨ Azure å®¹å™¨æ³¨å†Œè¡¨](/mooncaketest/articles/container-registry/?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
+### [å®‰è£…å’Œé…ç½®è¿œç¨‹æ¡Œé¢ä»¥è¿æ¥åˆ° Linux VM](../virtual-machines-linux-use-remote-desktop.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
 
-## ´æ´¢
-### [Azure VM ´ÅÅÌ³£¼ûÎÊÌâ½â´ğ](../../storage/storage-faq-for-disks.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
-### [Azure ÍĞ¹Ü´ÅÅÌ¸ÅÊö](../../storage/storage-managed-disks-overview.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
-### ¸½¼ÓÊı¾İ´ÅÅÌ
+## å­˜å‚¨
+### [Azure VM ç£ç›˜å¸¸è§é—®é¢˜è§£ç­”](../../storage/storage-faq-for-disks.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
+### [Azure æ‰˜ç®¡ç£ç›˜æ¦‚è¿°](../../storage/storage-managed-disks-overview.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
+### é™„åŠ æ•°æ®ç£ç›˜
 #### [Azure CLI](../virtual-machines-linux-add-disk.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
-#### [Azure ÃÅ»§](../virtual-machines-linux-attach-disk-portal.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
-### [ÅÄÉãÍĞ¹Ü´ÅÅÌµÄ¿ìÕÕ](virtual-machines-linux-snapshot-copy-managed-disk.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
-### [½«ÏÖÓĞ VM ×ª»»ÎªÍĞ¹Ü´ÅÅÌ](../virtual-machines-linux-convert-unmanaged-to-managed-disks.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
-### [À©Õ¹ OS Çı¶¯Æ÷](../virtual-machines-linux-expand-disks.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
-### [´ÅÅÌ¼ÓÃÜ](../virtual-machines-linux-encrypt-disks.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
-### [ÅäÖÃÈí¼ş RAID](../virtual-machines-linux-configure-raid.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
-### [ÅäÖÃ LVM](../virtual-machines-linux-configure-lvm.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
-### [Ê¹ÓÃ Azure ÎÄ¼ş](../../storage/storage-how-to-use-files-linux.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
-### Ê¹ÓÃ SMB ×°ÔØ Azure ÎÄ¼ş´æ´¢
+#### [Azure é—¨æˆ·](../virtual-machines-linux-attach-disk-portal.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
+### [æ‹æ‘„æ‰˜ç®¡ç£ç›˜çš„å¿«ç…§](virtual-machines-linux-snapshot-copy-managed-disk.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
+### [å°†ç°æœ‰ VM è½¬æ¢ä¸ºæ‰˜ç®¡ç£ç›˜](../virtual-machines-linux-convert-unmanaged-to-managed-disks.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
+### [æ‰©å±• OS é©±åŠ¨å™¨](../virtual-machines-linux-expand-disks.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
+### [ç£ç›˜åŠ å¯†](../virtual-machines-linux-encrypt-disks.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
+### [é…ç½®è½¯ä»¶ RAID](../virtual-machines-linux-configure-raid.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
+### [é…ç½® LVM](../virtual-machines-linux-configure-lvm.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
+### [ä½¿ç”¨ Azure æ–‡ä»¶](../../storage/storage-how-to-use-files-linux.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
+### ä½¿ç”¨ SMB è£…è½½ Azure æ–‡ä»¶å­˜å‚¨
 #### [Azure CLI 1.0](../virtual-machines-linux-mount-azure-file-storage-on-linux-using-smb-nodejs.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
-#### [Azure CLI 2.0£¨Ô¤ÀÀ°æ£©](../virtual-machines-linux-mount-azure-file-storage-on-linux-using-smb.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
+#### [Azure CLI 2.0ï¼ˆé¢„è§ˆç‰ˆï¼‰](../virtual-machines-linux-mount-azure-file-storage-on-linux-using-smb.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
 
-## [ÍøÂç](../virtual-machines-linux-azure-vm-network-overview.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
-### ÔÊĞíÊ¹ÓÃ CLI ·ÃÎÊ VM
+## [ç½‘ç»œ](../virtual-machines-linux-azure-vm-network-overview.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
+### å…è®¸ä½¿ç”¨ CLI è®¿é—® VM
 #### [Azure CLI 1.0](../virtual-machines-linux-nsg-quickstart-nodejs.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
-#### [Azure CLI 2.0£¨Ô¤ÀÀ°æ£©](../virtual-machines-linux-nsg-quickstart.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
-### Ê¹ÓÃÄÚ²¿ DNS ½øĞĞ VM Ãû³Æ½âÎö
+#### [Azure CLI 2.0ï¼ˆé¢„è§ˆç‰ˆï¼‰](../virtual-machines-linux-nsg-quickstart.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
+### ä½¿ç”¨å†…éƒ¨ DNS è¿›è¡Œ VM åç§°è§£æ
 #### [Azure CLI 1.0](../virtual-machines-linux-static-dns-name-resolution-for-linux-on-azure-nodejs.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
-#### [Azure CLI 2.0£¨Ô¤ÀÀ°æ£©](../virtual-machines-linux-static-dns-name-resolution-for-linux-on-azure.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
-### [Ê¹ÓÃÃÅ»§´´½¨ FQDN](../virtual-machines-linux-portal-create-fqdn.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
-### ´´½¨¾ßÓĞ¶à¸ö NIC µÄ VM
+#### [Azure CLI 2.0ï¼ˆé¢„è§ˆç‰ˆï¼‰](../virtual-machines-linux-static-dns-name-resolution-for-linux-on-azure.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
+### [ä½¿ç”¨é—¨æˆ·åˆ›å»º FQDN](../virtual-machines-linux-portal-create-fqdn.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
+### åˆ›å»ºå…·æœ‰å¤šä¸ª NIC çš„ VM
 #### [Azure CLI 1.0](../virtual-machines-linux-multiple-nics-nodejs.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
-#### [Azure CLI 2.0£¨Ô¤ÀÀ°æ£©](../virtual-machines-linux-multiple-nics.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
-### [Ê¹ÓÃ CLI ´´½¨ VNET](../../virtual-network/virtual-networks-create-vnet-arm-cli.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
-### [Ê¹ÓÃ CLI ´´½¨ NSG](../../virtual-network/virtual-networks-create-nsg-arm-cli.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
-### [´´½¨¸ºÔØ¾ùºâÆ÷](../../load-balancer/load-balancer-get-started-internet-arm-ps.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
-### [Ê¹ÓÃ CLI ´´½¨ÓÃ»§¶¨ÒåµÄÂ·ÓÉ](../../virtual-network/virtual-network-create-udr-arm-cli.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
-### [´´½¨¾²Ì¬¹«¹² IP](../../virtual-network/virtual-network-deploy-static-pip-arm-cli.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
-### [½«¾­µä VNet Á¬½Óµ½ Resource Manager VNet](../../vpn-gateway/vpn-gateway-connect-different-deployment-models-portal.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
-### [DNS Ãû³Æ½âÎöÑ¡Ïî](../virtual-machines-linux-azure-dns.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
-### [½« Azure DNS Óë VM ÅäºÏÊ¹ÓÃ](../../dns/dns-for-azure-services.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2fwindows%2ftoc.json)
-### [½« Azure Á÷Á¿¹ÜÀíÆ÷Óë VM ÅäºÏÊ¹ÓÃ](../../traffic-manager/traffic-manager-endpoint-types.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2fwindows%2ftoc.json)
+#### [Azure CLI 2.0ï¼ˆé¢„è§ˆç‰ˆï¼‰](../virtual-machines-linux-multiple-nics.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
+### [ä½¿ç”¨ CLI åˆ›å»º VNET](../../virtual-network/virtual-networks-create-vnet-arm-cli.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
+### [ä½¿ç”¨ CLI åˆ›å»º NSG](../../virtual-network/virtual-networks-create-nsg-arm-cli.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
+### [åˆ›å»ºè´Ÿè½½å‡è¡¡å™¨](../../load-balancer/load-balancer-get-started-internet-arm-ps.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
+### [ä½¿ç”¨ CLI åˆ›å»ºç”¨æˆ·å®šä¹‰çš„è·¯ç”±](../../virtual-network/virtual-network-create-udr-arm-cli.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
+### [åˆ›å»ºé™æ€å…¬å…± IP](../../virtual-network/virtual-network-deploy-static-pip-arm-cli.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
+### [å°†ç»å…¸ VNet è¿æ¥åˆ° Resource Manager VNet](../../vpn-gateway/vpn-gateway-connect-different-deployment-models-portal.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
+### [DNS åç§°è§£æé€‰é¡¹](../virtual-machines-linux-azure-dns.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
+### [å°† Azure DNS ä¸ VM é…åˆä½¿ç”¨](../../dns/dns-for-azure-services.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2fwindows%2ftoc.json)
+### [å°† Azure æµé‡ç®¡ç†å™¨ä¸ VM é…åˆä½¿ç”¨](../../traffic-manager/traffic-manager-endpoint-types.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2fwindows%2ftoc.json)
 
-## ²¿Êğ
-### ¸´ÖÆ VM
+## éƒ¨ç½²
+### å¤åˆ¶ VM
 #### [Azure CLI 1.0](../virtual-machines-linux-copy-vm-nodejs.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
-#### [Azure CLI 2.0£¨Ô¤ÀÀ°æ£©](../virtual-machines-linux-copy-vm.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
-### ²¶»ñ VM
+#### [Azure CLI 2.0ï¼ˆé¢„è§ˆç‰ˆï¼‰](../virtual-machines-linux-copy-vm.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
+### æ•è· VM
 #### [Azure CLI 1.0](../virtual-machines-linux-capture-image-nodejs.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
-#### [Azure CLI 2.0£¨Ô¤ÀÀ°æ£©](../virtual-machines-linux-capture-image.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
-### [Ê¹ÓÃÄ£°å´´½¨ VM](../virtual-machines-linux-cli-deploy-templates.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
-### Ó³Ïñ
-#### [Azure ÈÏ¿ÉµÄÓ³Ïñ](../virtual-machines-linux-endorsed-distros.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
-#### [×Ô¶¨ÒåÓ³Ïñ](../virtual-machines-linux-create-upload-generic.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
-#### ÉÏÔØ VM Ó³Ïñ
+#### [Azure CLI 2.0ï¼ˆé¢„è§ˆç‰ˆï¼‰](../virtual-machines-linux-capture-image.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
+### [ä½¿ç”¨æ¨¡æ¿åˆ›å»º VM](../virtual-machines-linux-cli-deploy-templates.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
+### æ˜ åƒ
+#### [Azure è®¤å¯çš„æ˜ åƒ](../virtual-machines-linux-endorsed-distros.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
+#### [è‡ªå®šä¹‰æ˜ åƒ](../virtual-machines-linux-create-upload-generic.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
+#### ä¸Šè½½ VM æ˜ åƒ
 ##### [Azure CLI 1.0](../virtual-machines-linux-upload-vhd-nodejs.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
-##### [Azure CLI 2.0£¨Ô¤ÀÀ°æ£©](../virtual-machines-linux-upload-vhd.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
-#### [Azure Linux ´úÀí](../virtual-machines-linux-agent-user-guide.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
+##### [Azure CLI 2.0ï¼ˆé¢„è§ˆç‰ˆï¼‰](../virtual-machines-linux-upload-vhd.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
+#### [Azure Linux ä»£ç†](../virtual-machines-linux-agent-user-guide.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
 #### [CentOS](../virtual-machines-linux-create-upload-centos.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
 #### [Ubuntu](../virtual-machines-linux-create-upload-ubuntu.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
 #### [Debian](../virtual-machines-linux-debian-create-upload-vhd.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
 #### [Red Hat](../virtual-machines-linux-redhat-create-upload-vhd.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
-#### [´ÓÄ£°å²¿ÊğÓ¦ÓÃ³ÌĞò¿ò¼Ü](../virtual-machines-linux-app-frameworks.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
-#### [Îª Azure ×¼±¸ Oracle Linux VM](../virtual-machines-linux-oracle-create-upload-vhd.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
+#### [ä»æ¨¡æ¿éƒ¨ç½²åº”ç”¨ç¨‹åºæ¡†æ¶](../virtual-machines-linux-app-frameworks.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
+#### [ä¸º Azure å‡†å¤‡ Oracle Linux VM](../virtual-machines-linux-oracle-create-upload-vhd.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
 
-## ÅäÖÃ
-### [ÔÚ¶©ÔÄÖ®¼äÒÆ¶¯ VM](../virtual-machines-linux-move-vm.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
-### [Ê¹ÓÃ±ê¼Ç](../../azure-resource-manager/resource-group-using-tags.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
-### [±ê¼Ç VM](../virtual-machines-linux-tag.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
+## é…ç½®
+### [åœ¨è®¢é˜…ä¹‹é—´ç§»åŠ¨ VM](../virtual-machines-linux-move-vm.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
+### [ä½¿ç”¨æ ‡è®°](../../azure-resource-manager/resource-group-using-tags.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
+### [æ ‡è®° VM](../virtual-machines-linux-tag.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
 
-## ¹ÜÀí
-### [³£ÓÃ Azure CLI ÃüÁî](../virtual-machines-linux-cli-manage.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
-### [ÓÅ»¯ Linux VM](../virtual-machines-linux-optimization.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
-### [Ê¹ÓÃ¸ùÈ¨ÏŞ](../virtual-machines-linux-use-root-privileges.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
-### [½«ÓÃ»§Ìí¼Óµ½ Azure VM](../virtual-machines-linux-add-user.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
-### [ÈçºÎÑ¡ÔñÓÃ»§Ãû](../virtual-machines-linux-usernames.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
-### [ÔÚ Azure AD ÖĞ´´½¨¹¤×÷»òÑ§Ğ£±êÊ¶](../virtual-machines-linux-create-aad-work-id.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
-### [¹ÜÀí·ÃÎÊÈ¨ÏŞ](../../active-directory/active-directory-accessmanagement-groups-with-advanced-rules.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
-### [½«²ßÂÔÓ¦ÓÃµ½ VM](../virtual-machines-linux-policy.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
-### [ÉèÖÃÃÜÔ¿±£¹Ü¿â](../virtual-machines-linux-key-vault-setup.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
-### [Ê¹ÓÃ»Ö¸´·şÎñ½øĞĞ±¸·İ](../../backup/backup-azure-vms-first-look-arm.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
-### [ÔÖÄÑ»Ö¸´Ö¸ÄÏ](../virtual-machines-disaster-recovery-guidance.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
-### [Ê¹ÓÃ CLI ¹ÜÀí VM](../virtual-machines-linux-cli-deploy-templates.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
-### [¶Ô VM Ê¹ÓÃÎ¨Ò» ID](../virtual-machines-linux-unique-vm-id.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
-### [Red Hat Enterprise Linux ¸üĞÂ»ù´¡½á¹¹](../virtual-machines-linux-update-infrastructure-redhat.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
-### [¸üĞÂ Azure Linux ´úÀí](../virtual-machines-linux-update-agent.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
-### [Azure FreeBSD ¼ò½é](../virtual-machines-freebsd-intro-on-azure.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
+## ç®¡ç†
+### [å¸¸ç”¨ Azure CLI å‘½ä»¤](../virtual-machines-linux-cli-manage.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
+### [ä¼˜åŒ– Linux VM](../virtual-machines-linux-optimization.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
+### [ä½¿ç”¨æ ¹æƒé™](../virtual-machines-linux-use-root-privileges.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
+### [å°†ç”¨æˆ·æ·»åŠ åˆ° Azure VM](../virtual-machines-linux-add-user.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
+### [å¦‚ä½•é€‰æ‹©ç”¨æˆ·å](../virtual-machines-linux-usernames.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
+### [åœ¨ Azure AD ä¸­åˆ›å»ºå·¥ä½œæˆ–å­¦æ ¡æ ‡è¯†](../virtual-machines-linux-create-aad-work-id.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
+### [ç®¡ç†è®¿é—®æƒé™](../../active-directory/active-directory-accessmanagement-groups-with-advanced-rules.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
+### [å°†ç­–ç•¥åº”ç”¨åˆ° VM](../virtual-machines-linux-policy.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
+### [è®¾ç½®å¯†é’¥ä¿ç®¡åº“](../virtual-machines-linux-key-vault-setup.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
+### [ä½¿ç”¨æ¢å¤æœåŠ¡è¿›è¡Œå¤‡ä»½](../../backup/backup-azure-vms-first-look-arm.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
+### [ç¾éš¾æ¢å¤æŒ‡å—](../virtual-machines-disaster-recovery-guidance.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
+### [ä½¿ç”¨ CLI ç®¡ç† VM](../virtual-machines-linux-cli-deploy-templates.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
+### [å¯¹ VM ä½¿ç”¨å”¯ä¸€ ID](../virtual-machines-linux-unique-vm-id.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
+### [Red Hat Enterprise Linux æ›´æ–°åŸºç¡€ç»“æ„](../virtual-machines-linux-update-infrastructure-redhat.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
+### [æ›´æ–° Azure Linux ä»£ç†](../virtual-machines-linux-update-agent.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
+### [Azure FreeBSD ç®€ä»‹](../virtual-machines-freebsd-intro-on-azure.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
 
-## [×Ô¶¯»¯](../virtual-machines-linux-extensions-features.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
-### [×Ô¶¨Òå½Å±¾À©Õ¹](../virtual-machines-linux-extensions-customscript.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
-### [OMS ´úÀíÀ©Õ¹](../virtual-machines-linux-extensions-oms.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
-### [¼àÊÓ VM](../virtual-machines-linux-vm-monitoring.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
-### [Ä£°åÖĞµÄÀ©Õ¹](../virtual-machines-linux-extensions-authoring-templates.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
-### [ÅäÖÃÊ¾Àı](../virtual-machines-linux-extensions-configuration-samples.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
-### [Ê¹ÓÃ Azure ×Ô¶¯»¯×İÏòËõ·Å VM](../virtual-machines-linux-vertical-scaling-automation.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
-### [ÅÅ²éÀ©Õ¹ÎÊÌâ](../virtual-machines-linux-extensions-troubleshoot.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
+## [è‡ªåŠ¨åŒ–](../virtual-machines-linux-extensions-features.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
+### [è‡ªå®šä¹‰è„šæœ¬æ‰©å±•](../virtual-machines-linux-extensions-customscript.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
+### [OMS ä»£ç†æ‰©å±•](../virtual-machines-linux-extensions-oms.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
+### [ç›‘è§† VM](../virtual-machines-linux-vm-monitoring.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
+### [æ¨¡æ¿ä¸­çš„æ‰©å±•](../virtual-machines-linux-extensions-authoring-templates.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
+### [é…ç½®ç¤ºä¾‹](../virtual-machines-linux-extensions-configuration-samples.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
+### [ä½¿ç”¨ Azure è‡ªåŠ¨åŒ–çºµå‘ç¼©æ”¾ VM](../virtual-machines-linux-vertical-scaling-automation.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
+### [æ’æŸ¥æ‰©å±•é—®é¢˜](../virtual-machines-linux-extensions-troubleshoot.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
 
-## Ç¨ÒÆ
-### [Ç¨ÒÆ¸ÅÊö](../virtual-machines-windows-migration-classic-resource-manager.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
-### [¹æ»®Ç¨ÒÆ](../virtual-machines-linux-migration-classic-resource-manager-deep-dive.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
-### [Ê¹ÓÃ CLI Ç¨ÒÆ](../virtual-machines-linux-cli-migration-classic-resource-manager.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
-### [³£¼ûµÄÇ¨ÒÆ´íÎó](../virtual-machines-migration-errors.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
+## è¿ç§»
+### [è¿ç§»æ¦‚è¿°](../virtual-machines-windows-migration-classic-resource-manager.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
+### [è§„åˆ’è¿ç§»](../virtual-machines-linux-migration-classic-resource-manager-deep-dive.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
+### [ä½¿ç”¨ CLI è¿ç§»](../virtual-machines-linux-cli-migration-classic-resource-manager.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
+### [å¸¸è§çš„è¿ç§»é”™è¯¯](../virtual-machines-migration-errors.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
 
-## ¼Æ»®
-### [ÔËĞĞ VM ×î¼ÑÊµ¼ù](../../guidance/guidance-compute-single-vm-linux.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
-### [»ù´¡½á¹¹Ö¸ÄÏ](../virtual-machines-linux-infrastructure-virtual-machine-guidelines.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
-### [¶©ÔÄºÍÕÊ»§](../virtual-machines-linux-infrastructure-subscription-accounts-guidelines.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
-### [ÃüÃû](../virtual-machines-linux-infrastructure-naming-guidelines.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
-### [×ÊÔ´×é](../virtual-machines-linux-infrastructure-resource-groups-guidelines.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
-### [´æ´¢](../virtual-machines-linux-infrastructure-storage-solutions-guidelines.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
-### [ÁªÍø](../virtual-machines-linux-infrastructure-networking-guidelines.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
-### [¿ÉÓÃĞÔ¼¯](../virtual-machines-linux-infrastructure-availability-sets-guidelines.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
-### [»ù´¡½á¹¹Ê¾Àı](../virtual-machines-linux-infrastructure-example.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
-### [Azure ¼Æ»®ÄÚÎ¬»¤](../virtual-machines-linux-planned-maintenance.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
-#### [¼Æ»®](../virtual-machines-linux-planned-maintenance-schedule.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
+## è®¡åˆ’
+### [è¿è¡Œ VM æœ€ä½³å®è·µ](../../guidance/guidance-compute-single-vm-linux.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
+### [åŸºç¡€ç»“æ„æŒ‡å—](../virtual-machines-linux-infrastructure-virtual-machine-guidelines.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
+### [è®¢é˜…å’Œå¸æˆ·](../virtual-machines-linux-infrastructure-subscription-accounts-guidelines.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
+### [å‘½å](../virtual-machines-linux-infrastructure-naming-guidelines.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
+### [èµ„æºç»„](../virtual-machines-linux-infrastructure-resource-groups-guidelines.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
+### [å­˜å‚¨](../virtual-machines-linux-infrastructure-storage-solutions-guidelines.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
+### [è”ç½‘](../virtual-machines-linux-infrastructure-networking-guidelines.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
+### [å¯ç”¨æ€§é›†](../virtual-machines-linux-infrastructure-availability-sets-guidelines.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
+### [åŸºç¡€ç»“æ„ç¤ºä¾‹](../virtual-machines-linux-infrastructure-example.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
+### [Azure è®¡åˆ’å†…ç»´æŠ¤](../virtual-machines-linux-planned-maintenance.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
+#### [è®¡åˆ’](../virtual-machines-linux-planned-maintenance-schedule.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
 
-## ¹ÜÀí¹¤×÷¸ººÉ
-### [SAP ÈëÃÅ](../virtual-machines-linux-sap-get-started.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
-### [SAP ¹æ»®](../virtual-machines-linux-sap-planning-guide.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
-### [²¿Êğ SAP](../virtual-machines-linux-sap-deployment-guide.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
-### [SAP DBMS Ö¸ÄÏ](../virtual-machines-linux-sap-dbms-guide.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
-### [SAP SUSE ¿ìËÙÈëÃÅ](../virtual-machines-linux-sap-on-suse-quickstart.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
-### [Êı¾İ¿ÆÑĞ VM ¸ÅÊö](../../machine-learning/machine-learning-data-science-virtual-machine-overview.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
+## ç®¡ç†å·¥ä½œè´Ÿè·
+### [SAP å…¥é—¨](../virtual-machines-linux-sap-get-started.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
+### [SAP è§„åˆ’](../virtual-machines-linux-sap-planning-guide.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
+### [éƒ¨ç½² SAP](../virtual-machines-linux-sap-deployment-guide.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
+### [SAP DBMS æŒ‡å—](../virtual-machines-linux-sap-dbms-guide.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
+### [SAP SUSE å¿«é€Ÿå…¥é—¨](../virtual-machines-linux-sap-on-suse-quickstart.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
+### [æ•°æ®ç§‘ç ” VM æ¦‚è¿°](../../machine-learning/machine-learning-data-science-virtual-machine-overview.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
 ### MongoDB
 #### [Azure CLI 1.0](../virtual-machines-linux-install-mongodb-nodejs.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
-#### [Azure CLI 2.0£¨Ô¤ÀÀ°æ£©](../virtual-machines-linux-install-mongodb.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
+#### [Azure CLI 2.0ï¼ˆé¢„è§ˆç‰ˆï¼‰](../virtual-machines-linux-install-mongodb.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
 ### [MySQL](../virtual-machines-linux-mysql-install.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
 ### [PostgreSQL](../virtual-machines-linux-postgresql-install.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
-### [²¿Êğ LAMP ¶ÑÕ»](../virtual-machines-linux-create-lamp-stack.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
-### [²¿ÊğÈı½Úµã Deis Èº¼¯](../virtual-machines-linux-deis-cluster.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
-### [¸ßĞÔÄÜ¼ÆËã (HPC)](../virtual-machines-linux-hpcpack-cluster-options.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
-#### [Ê¹ÓÃ Microsoft HPC Pack ÔËĞĞ NAMD](../virtual-machines-linux-classic-hpcpack-cluster-namd.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
+### [éƒ¨ç½² LAMP å †æ ˆ](../virtual-machines-linux-create-lamp-stack.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
+### [éƒ¨ç½²ä¸‰èŠ‚ç‚¹ Deis ç¾¤é›†](../virtual-machines-linux-deis-cluster.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
+### [é«˜æ€§èƒ½è®¡ç®— (HPC)](../virtual-machines-linux-hpcpack-cluster-options.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
+#### [ä½¿ç”¨ Microsoft HPC Pack è¿è¡Œ NAMD](../virtual-machines-linux-classic-hpcpack-cluster-namd.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
 
-## ÔËĞĞÓ¦ÓÃ³ÌĞò
-### [²¿Êğ Node.js Ó¦ÓÃ³ÌĞò](../../virtual-machines-linux-nodejs-deploy.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
-### [Django Web Ó¦ÓÃ](../virtual-machines-linux-python-django-web-app.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
-### [Jupyter ±Ê¼Ç±¾](../virtual-machines-linux-jupyter-notebook.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
+## è¿è¡Œåº”ç”¨ç¨‹åº
+### [éƒ¨ç½² Node.js åº”ç”¨ç¨‹åº](../../virtual-machines-linux-nodejs-deploy.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
+### [Django Web åº”ç”¨](../virtual-machines-linux-python-django-web-app.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
+### [Jupyter ç¬”è®°æœ¬](../virtual-machines-linux-jupyter-notebook.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
 
-## ¹ÊÕÏÅÅ³ı
-### [ÅÅ²é°²È«Íâ¿ÇÁ¬½ÓÎÊÌâ](../virtual-machines-linux-troubleshoot-ssh-connection.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
-#### [ÏêÏ¸¹ÊÕÏÅÅ³ı²½Öè](../virtual-machines-linux-detailed-troubleshoot-ssh-connection.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
-### [ÅÅ³ıÓ¦ÓÃ³ÌĞò·ÃÎÊ¹ÊÕÏ](../virtual-machines-linux-troubleshoot-app-connection.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
-### [ÅÅ³ı·ÖÅä¹ÊÕÏ](../virtual-machines-linux-allocation-failure.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
-### [ÅÅ²é²¿ÊğÎÊÌâ](../virtual-machines-linux-troubleshoot-deployment-new-vm.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
-### [½« VM ÖØĞÂ²¿Êğµ½ĞÂµÄ Azure ½Úµã](../virtual-machines-linux-redeploy-to-new-node.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
-### ½«ĞéÄâÓ²ÅÌ¸½¼Óµ½¹ÊÕÏÅÅ³ı VM
+## æ•…éšœæ’é™¤
+### [æ’æŸ¥å®‰å…¨å¤–å£³è¿æ¥é—®é¢˜](../virtual-machines-linux-troubleshoot-ssh-connection.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
+#### [è¯¦ç»†æ•…éšœæ’é™¤æ­¥éª¤](../virtual-machines-linux-detailed-troubleshoot-ssh-connection.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
+### [æ’é™¤åº”ç”¨ç¨‹åºè®¿é—®æ•…éšœ](../virtual-machines-linux-troubleshoot-app-connection.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
+### [æ’é™¤åˆ†é…æ•…éšœ](../virtual-machines-linux-allocation-failure.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
+### [æ’æŸ¥éƒ¨ç½²é—®é¢˜](../virtual-machines-linux-troubleshoot-deployment-new-vm.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
+### [å°† VM é‡æ–°éƒ¨ç½²åˆ°æ–°çš„ Azure èŠ‚ç‚¹](../virtual-machines-linux-redeploy-to-new-node.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
+### å°†è™šæ‹Ÿç¡¬ç›˜é™„åŠ åˆ°æ•…éšœæ’é™¤ VM
 #### [Azure CLI 1.0](../virtual-machines-linux-troubleshoot-recovery-disks-nodejs.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json) 
-#### [Azure CLI 2.0£¨Ô¤ÀÀ°æ£©](../virtual-machines-linux-troubleshoot-recovery-disks.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json) 
-#### [Azure ÃÅ»§](../virtual-machines-linux-troubleshoot-recovery-disks-portal.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
+#### [Azure CLI 2.0ï¼ˆé¢„è§ˆç‰ˆï¼‰](../virtual-machines-linux-troubleshoot-recovery-disks.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json) 
+#### [Azure é—¨æˆ·](../virtual-machines-linux-troubleshoot-recovery-disks-portal.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
 
-# ²Î¿¼
+# å‚è€ƒ
 ## [PowerShell](/powershell/azureps-cmdlets-docs)
-## [Azure CLI 2.0£¨Ô¤ÀÀ°æ£©](/cli/azure/vm)
+## [Azure CLI 2.0ï¼ˆé¢„è§ˆç‰ˆï¼‰](/cli/azure/vm)
 ## [.NET](/dotnet/api/microsoft.azure.management.compute)
 ## [Java](/java/api)
 ## [Node.js](https://azure.microsoft.com/zh-cn/develop/nodejs/#azure-sdk)
 ## [Python](http://azure-sdk-for-python.readthedocs.io/en/latest/ref/azure.mgmt.compute.html)
-## [¼ÆËã REST](/rest/api/compute)
-## [ÍĞ¹Ü´ÅÅÌ](/rest/api/manageddisks)
+## [è®¡ç®— REST](/rest/api/compute)
+## [æ‰˜ç®¡ç£ç›˜](/rest/api/manageddisks)
 
-# ×ÊÔ´
-## [´´½¨ Resource Manager Ä£°å](../../azure-resource-manager/resource-group-authoring-templates.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
-## [ÉçÇøÄ£°å](https://azure.microsoft.com/documentation/templates)
-## [¼Û¸ñ](https://azure.microsoft.com/pricing/details/#Linux)
-## [ÇøÓò¿ÉÓÃĞÔ](https://azure.microsoft.com/regions/services/)
-## [¶ÑÕ»Òç³ö](http://stackoverflow.com/questions/tagged/azure-virtual-machine)
-## [ÊÓÆµ](https://azure.microsoft.com/documentation/videos/index/?services=virtual-machines)
+# èµ„æº
+## [åˆ›å»º Resource Manager æ¨¡æ¿](../../azure-resource-manager/resource-group-authoring-templates.md?toc=%2fmooncaketest%2farticles%2fvirtual-machines%2flinux%2ftoc.json)
+## [ç¤¾åŒºæ¨¡æ¿](https://azure.microsoft.com/documentation/templates)
+## [ä»·æ ¼](https://azure.microsoft.com/pricing/details/#Linux)
+## [åŒºåŸŸå¯ç”¨æ€§](https://azure.microsoft.com/regions/services/)
+## [å †æ ˆæº¢å‡º](http://stackoverflow.com/questions/tagged/azure-virtual-machine)
+## [è§†é¢‘](https://azure.microsoft.com/documentation/videos/index/?services=virtual-machines)
 
 <!---HONumber=Mooncake_0320_2017-->

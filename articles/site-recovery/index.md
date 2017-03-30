@@ -7,11 +7,11 @@ description: 了解如何通过部署和管理复制来设置物理服务器和�
 了解如何使用 Site Recovery 实现业务连续性和私有云的灾难恢复策略。教程和其他文档演示了如何规划、部署和管理将本地物理服务器和虚拟机复制到云或辅助数据中心的业务流程。
 
 <ul class="panelContent cardsFTitle">
-    <li><a href="/mooncaketest/articles/site-recovery/site-recovery-overview">
+    <li><a href="/azure/site-recovery/site-recovery-overview">
 <div class="cardSize"><div class="cardPadding"><div class="card"><div class="cardImageOuter"><div class="cardImage"><img src="media/index/site-recovery.svg" alt="" /></div></div><div class="cardText"><h3>了解 Azure Site Recovery</h3></div></div></div>
         </div></a>
 </li>
-    <li><a href="/mooncaketest/articles/site-recovery/site-recovery-best-practices">
+    <li><a href="/azure/site-recovery/site-recovery-best-practices">
 <div class="cardSize"><div class="cardPadding"><div class="card"><div class="cardImageOuter"><div class="cardImage"><img src="media/index/get-started.svg" alt="" /></div></div><div class="cardText"><h3>Azure Site Recovery 入门</h3></div></div></div>
         </div></a>
 </li>

@@ -6,13 +6,13 @@
 ###[配置高可用性](https://azure.microsoft.com/pricing/details/cache/)
 ###[使用 SSL 进行安全连接](cache-dotnet-how-to-use-azure-redis-cache.md#connect-to-the-cache)
 ###[从托管缓存服务中迁移](cache-migrate-to-redis.md)
-###[缓存模式与实践指南](../best-practices-caching.md?toc=%2fmooncaketest%2farticles%2fredis-cache%2ftoc.json)
+###[缓存模式与实践指南](../best-practices-caching.md?toc=%2farticles%2fredis-cache%2ftoc.json)
 
 
 # 入门
 ##[ASP.NET](cache-web-app-howto.md)
 ##[.NET](cache-dotnet-how-to-use-azure-redis-cache.md)
-##[WordPress](../app-service-web/web-sites-connect-to-redis-using-memcache-protocol.md?toc=%2fmooncaketest%2farticles%2fredis-cache%2ftoc.json)
+##[WordPress](../app-service-web/web-sites-connect-to-redis-using-memcache-protocol.md?toc=%2farticles%2fredis-cache%2ftoc.json)
 ##[节点](cache-nodejs-get-started.md)
 ##[Java](cache-java-get-started.md)
 ##[Python](cache-python-get-started.md)

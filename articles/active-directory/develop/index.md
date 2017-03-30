@@ -1,3 +1,3 @@
 ---
-redirect_url: /mooncaketest/articles/active-directory/develop/active-directory-developers-guide
+redirect_url: /azure/active-directory/develop/active-directory-developers-guide
 ---

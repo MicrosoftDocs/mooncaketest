@@ -9,7 +9,7 @@ description: 了解如何同步目录并启用单一登录。文档介绍了如�
 
 <ul class="panelContent cardsFTitle">
     <li>
-        <a href="/mooncaketest/articles/active-directory/active-directory-whatis">
+        <a href="/azure/active-directory/active-directory-whatis">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
@@ -45,7 +45,7 @@ description: 了解如何同步目录并启用单一登录。文档介绍了如�
         </a>
     </li>
     <li>
-        <a href="/mooncaketest/articles/active-directory/active-directory-howto-tenant">
+        <a href="/azure/active-directory/active-directory-howto-tenant">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
@@ -63,7 +63,7 @@ description: 了解如何同步目录并启用单一登录。文档介绍了如�
         </a>
     </li>
     <li>
-        <a href="/mooncaketest/articles/active-directory/active-directory-get-started-premium">
+        <a href="/azure/active-directory/active-directory-get-started-premium">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
@@ -117,7 +117,7 @@ description: 了解如何同步目录并启用单一登录。文档介绍了如�
                 <div class="card">
                     <div class="cardText">
                         <h3>其他</h3>
-                        <p><a href="/mooncaketest/articles/active-directory/active-directory-service-limits-restrictions">服务限制和局限性</a></p>
+                        <p><a href="/azure/active-directory/active-directory-service-limits-restrictions">服务限制和局限性</a></p>
                     </div>
                 </div>
             </div>

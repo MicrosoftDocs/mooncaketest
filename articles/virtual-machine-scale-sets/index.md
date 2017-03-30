@@ -19,7 +19,7 @@ ms.author: carolz
 了解如何使用虚拟机规模集来部署和管理一组完全相同、自动调整规模的 Windows 或 Linux VM。文档演示了如何使用规模集支持面向大型计算、大数据和容器化解决方案的服务。
 
 <ul class="panelContent cardsFTitle">
-    <li><a href="/mooncaketest/articles/virtual-machine-scale-sets/virtual-machine-scale-sets-overview">
+    <li><a href="/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-overview">
 <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
@@ -47,7 +47,7 @@ ms.author: carolz
             </div>
         </div></a>
 </li>
-    <li><a href="/mooncaketest/articles/virtual-machine-scale-sets/virtual-machine-scale-sets-portal-create">
+    <li><a href="/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-portal-create">
 <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
@@ -75,7 +75,7 @@ ms.author: carolz
                     <div class="cardText">
                         <h3>命令行</h3>
                         <p><a href="/powershell/azureps-cmdlets-docs">PowerShell</a></p>
-                        <p><a href="/cli/mooncaketest/articles/vm">Azure CLI</a></p>
+                        <p><a href="/cli/azure/vm">Azure CLI</a></p>
                     </div>
                 </div>
             </div>

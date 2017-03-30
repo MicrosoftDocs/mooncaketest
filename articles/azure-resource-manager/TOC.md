@@ -27,7 +27,7 @@
 ### [Azure CLI](resource-group-template-deploy-cli.md)
 ### [门户](resource-group-template-deploy-portal.md)
 ### [REST API](resource-group-template-deploy-rest.md)
-### [与 Visual Studio Team Services 的持续集成](../vs-azure-tools-resource-groups-ci-in-vsts.md?toc=%2fmooncaketest%2farticles%2fazure-resource-manager%2ftoc.json)
+### [与 Visual Studio Team Services 的持续集成](../vs-azure-tools-resource-groups-ci-in-vsts.md?toc=%2farticles%2fazure-resource-manager%2ftoc.json)
 ## 管理
 ### [PowerShell](powershell-azure-resource-manager.md)
 ### [Azure CLI](xplat-cli-azure-resource-manager.md)
@@ -49,8 +49,8 @@
 ### [分配和管理策略](resource-manager-policy-create-assign.md)
 ### [资源标记策略](resource-manager-policy-tags.md)
 ### [存储策略](resource-manager-policy-storage.md)
-### [Linux VM 策略](../virtual-machines/virtual-machines-linux-policy.md?toc=%2fmooncaketest%2farticles%2fazure-resource-manager%2ftoc.json)
-### [Windows VM 策略](../virtual-machines/virtual-machines-windows-policy.md?toc=%2fmooncaketest%2farticles%2fazure-resource-manager%2ftoc.json)
+### [Linux VM 策略](../virtual-machines/virtual-machines-linux-policy.md?toc=%2farticles%2fazure-resource-manager%2ftoc.json)
+### [Windows VM 策略](../virtual-machines/virtual-machines-windows-policy.md?toc=%2farticles%2fazure-resource-manager%2ftoc.json)
 ## 审核和故障排除
 ### [排查常见的部署错误](resource-manager-common-deployment-errors.md)
 ### [查看活动日志](resource-group-audit.md)

@@ -19,7 +19,7 @@ ms.author: carolz
 了解如何使用流分析（完全托管的事件处理引擎）在云中运行物联网 (IoT) 分析。教程和其他文档介绍了如何实时分析来自应用程序、传感器、设备、社交媒体等的数据。
 
 <ul class="panelContent cardsFTitle">
-     <li><a href="/mooncaketest/articles/stream-analytics/stream-analytics-introduction">
+     <li><a href="/azure/stream-analytics/stream-analytics-introduction">
 <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
@@ -47,7 +47,7 @@ ms.author: carolz
             </div>
         </div></a>
 </li>
-    <li><a href="/mooncaketest/articles/Stream-Analytics/">
+    <li><a href="../Stream-Analytics/index.md">
 <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
@@ -61,7 +61,7 @@ ms.author: carolz
             </div>
         </div></a>
 </li>
-     <li><a href="/mooncaketest/articles/Stream-Analytics/stream-analytics-build-an-iot-solution-using-stream-analytics">
+     <li><a href="/azure/Stream-Analytics/stream-analytics-build-an-iot-solution-using-stream-analytics">
 <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
@@ -75,7 +75,7 @@ ms.author: carolz
             </div>
         </div></a>
 </li>
-     <li><a href="/mooncaketest/articles/Stream-Analytics/stream-analytics-twitter-sentiment-analysis-trends">
+     <li><a href="/azure/Stream-Analytics/stream-analytics-twitter-sentiment-analysis-trends">
 <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
@@ -89,7 +89,7 @@ ms.author: carolz
             </div>
         </div></a>
 </li>
-     <li><a href="/mooncaketest/articles/Stream-Analytics/stream-analytics-machine-learning-integration-tutorial">
+     <li><a href="/azure/Stream-Analytics/stream-analytics-machine-learning-integration-tutorial">
 <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
@@ -128,7 +128,7 @@ ms.author: carolz
                     <div class="cardText">
                         <h3>语言</h3>
                         <p><a href="/dotnet/api/streamanalytics.tests.operationtests">.NET</a></p>
-                        <p><a href="https://msdn.microsoft.com/zh-cn/library/mooncaketest/articles/dn834998">查询语言</a></p>
+                        <p><a href="https://msdn.microsoft.com/zh-cn/library/azure/dn834998">查询语言</a></p>
                     </div>
                 </div>
             </div>

@@ -1,5 +1,5 @@
 ---
-layout: LandingPage"
+layout: LandingPage
 description: 了解 Hadoop on HDInsight。文档介绍如何使用 Hadoop、Spark、HBase、R-Server 等方式处理、分析大数据并获取见解。 
 ---
 

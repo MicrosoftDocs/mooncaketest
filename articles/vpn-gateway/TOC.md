@@ -28,8 +28,8 @@
 ### [Azure 门户](vpn-gateway-connect-different-deployment-models-portal.md)
 ### [PowerShell](vpn-gateway-connect-different-deployment-models-powershell.md)
 ## 创建站点到站点与 ExpressRoute 共存连接
-### [PowerShell](../expressroute/expressroute-howto-coexist-resource-manager.md?toc=%2fmooncaketest%2farticles%2fvpn-gateway%2ftoc.json)
-### [PowerShell（经典）](../expressroute/expressroute-howto-coexist-classic.md?toc=%2fmooncaketest%2farticles%2fvpn-gateway%2ftoc.json)
+### [PowerShell](../expressroute/expressroute-howto-coexist-resource-manager.md?toc=%2farticles%2fvpn-gateway%2ftoc.json)
+### [PowerShell（经典）](../expressroute/expressroute-howto-coexist-classic.md?toc=%2farticles%2fvpn-gateway%2ftoc.json)
 ## 配置强制隧道
 ### [PowerShell](vpn-gateway-forced-tunneling-rm.md)
 ### [PowerShell（经典）](vpn-gateway-about-forced-tunneling.md)
@@ -51,12 +51,12 @@
 ## [REST（经典）](https://msdn.microsoft.com/library/jj154113)
 
 # 相关内容
-## [虚拟网络](/azure/virtual-network/)
-## [应用程序网关](/azure/application-gateway/)
+## [虚拟网络](../virtual-network/index.md)
+## [应用程序网关](../application-gateway/index.md)
 ## [Azure DNS](/azure/dns/)
-## [流量管理器](/azure/traffic-manager/)
-## [负载均衡器](/azure/load-balancer/)
-## [ExpressRoute](/azure/expressroute/)
+## [流量管理器](../traffic-manager/index.md)
+## [负载均衡器](../load-balancer/index.md)
+## [ExpressRoute](../expressroute/index.md)
 
 # 资源
 ## [博客](https://azure.microsoft.com/blog/topics/networking)

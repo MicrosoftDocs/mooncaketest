@@ -9,11 +9,11 @@ description: 了解如何创建、部署和管理 Windows 或 Linux 虚拟机。
 了解如何创建 Azure 虚拟机。教程、API 参考以及其他文档说明如何创建并部署 Windows 和 Linux 虚拟机，以及复杂的 VM 模板。
 
 <ul class="panelContent cardsFTitle">
-    <li><a href="/mooncaketest/articles/virtual-machines/windows">
+    <li><a href="./windows/index.md">
 <div class="cardSize"><div class="cardPadding"><div class="card"><div class="cardImageOuter"><div class="cardImage"><img src="media/index/virtual-machines.svg" alt="" /></div></div><div class="cardText"><h3>Windows 虚拟机入门</h3></div></div></div>
         </div></a>
 </li>
-    <li><a href="/mooncaketest/articles/virtual-machines/linux">
+    <li><a href="./linux/index.md">
 <div class="cardSize"><div class="cardPadding"><div class="card"><div class="cardImageOuter"><div class="cardImage"><img src="media/index/get-started.svg" alt="" /></div></div><div class="cardText"><h3>Linux 虚拟机入门</h3></div></div></div>
         </div></a>
 </li>    

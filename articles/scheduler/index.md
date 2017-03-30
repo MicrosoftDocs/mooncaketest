@@ -18,7 +18,7 @@ ms.author: carolz
 了解如何使用计划程序计划和自动调用云中的定期作业。教程、API 参考和其他文档介绍了如何计划和监视作业（例如定期应用程序操作以及日常维护）。
 
 <ul class="panelContent cardsFTitle">
-    <li><a href="/mooncaketest/articles/scheduler/scheduler-intro">
+    <li><a href="/azure/scheduler/scheduler-intro">
 <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
@@ -46,7 +46,7 @@ ms.author: carolz
             </div>
         </div></a>
 </li>
-    <li><a href="/mooncaketest/articles/scheduler/scheduler-get-started-portal">
+    <li><a href="/azure/scheduler/scheduler-get-started-portal">
 <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">

@@ -13,7 +13,7 @@
 
 # 入门
 ## [创建虚拟网络](virtual-networks-create-vnet-arm-pportal.md)
-## [将 VM 部署到虚拟网络](../virtual-machines/virtual-machines-windows-hero-tutorial.md?toc=%2fmooncaketest%2farticles%2fvirtual-network%2ftoc.json)
+## [将 VM 部署到虚拟网络](../virtual-machines/virtual-machines-windows-hero-tutorial.md?toc=%2farticles%2fvirtual-network%2ftoc.json)
 
 # 如何
 ## 规划和设计
@@ -81,16 +81,16 @@
 ##### [模板](virtual-network-multiple-ip-addresses-template.md)
 
 ### 连接方案
-#### [虚拟网络 (VNet) 到 VNet](../vpn-gateway/vpn-gateway-vnet-vnet-rm-ps.md?toc=%2fmooncaketest%2farticles%2fvirtual-network%2ftoc.json)
-#### [VNet (Resource Manager) 到 VNet（经典）](../vpn-gateway/vpn-gateway-connect-different-deployment-models-portal.md?toc=%2fmooncaketest%2farticles%2fvirtual-network%2ftoc.json)
-#### [VNet 到本地网络 (VPN)](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md?toc=%2fmooncaketest%2farticles%2fvirtual-network%2ftoc.json)
-#### [VNet 到本地网络 (ExpressRoute)](../expressroute/expressroute-howto-linkvnet-portal-resource-manager.md?toc=%2fmooncaketest%2farticles%2fvirtual-network%2ftoc.json)
-#### [高可用性混合网络体系结构](../guidance/guidance-hybrid-network-expressroute-vpn-failover.md?toc=%2fmooncaketest%2farticles%2fvirtual-network%2ftoc.json)
+#### [虚拟网络 (VNet) 到 VNet](../vpn-gateway/vpn-gateway-vnet-vnet-rm-ps.md?toc=%2farticles%2fvirtual-network%2ftoc.json)
+#### [VNet (Resource Manager) 到 VNet（经典）](../vpn-gateway/vpn-gateway-connect-different-deployment-models-portal.md?toc=%2farticles%2fvirtual-network%2ftoc.json)
+#### [VNet 到本地网络 (VPN)](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md?toc=%2farticles%2fvirtual-network%2ftoc.json)
+#### [VNet 到本地网络 (ExpressRoute)](../expressroute/expressroute-howto-linkvnet-portal-resource-manager.md?toc=%2farticles%2fvirtual-network%2ftoc.json)
+#### [高可用性混合网络体系结构](../guidance/guidance-hybrid-network-expressroute-vpn-failover.md?toc=%2farticles%2fvirtual-network%2ftoc.json)
 
 ### 安全方案
 #### [使用虚拟设备保护网络](virtual-network-scenario-udr-gw-nva.md)
-#### [Azure 与 Internet 之间的外围网络](../guidance/guidance-iaas-ra-secure-vnet-dmz.md?toc=%2fmooncaketest%2farticles%2fvirtual-network%2ftoc.json)
-#### [云服务和网络安全](../best-practices-network-security.md?toc=%2fmooncaketest%2farticles%2fvirtual-network%2ftoc.json)
+#### [Azure 与 Internet 之间的外围网络](../guidance/guidance-iaas-ra-secure-vnet-dmz.md?toc=%2farticles%2fvirtual-network%2ftoc.json)
+#### [云服务和网络安全](../best-practices-network-security.md?toc=%2farticles%2fvirtual-network%2ftoc.json)
 ##### [使用 NSG 的简单外围网络](virtual-networks-dmz-nsg-asm.md)
 ##### [使用防火墙和 NSG 的外围网络](virtual-networks-dmz-nsg-fw-asm.md)
 ##### [使用防火墙、UDR 和 NSG 的外围网络](virtual-networks-dmz-nsg-fw-udr-asm.md)
@@ -130,13 +130,13 @@
 
 
 # 相关内容
-## [虚拟机](/azure/virtual-machines/)
-## [应用程序网关](/azure/application-gateway/)
+## [虚拟机](../virtual-machines/index.md)
+## [应用程序网关](../application-gateway/index.md)
 ## [Azure DNS](/azure/dns/)
-## [流量管理器](/azure/traffic-manager/)
-## [负载均衡器](/azure/load-balancer/)
-## [VPN 网关](/azure/vpn-gateway/)
-## [ExpressRoute](/azure/expressroute/)
+## [流量管理器](../traffic-manager/index.md)
+## [负载均衡器](../load-balancer/index.md)
+## [VPN 网关](../vpn-gateway/index.md)
+## [ExpressRoute](../expressroute/index.md)
 
 # 资源
 ## [网络博客](http://azure.microsoft.com/blog/topics/networking)

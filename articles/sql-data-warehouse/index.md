@@ -20,7 +20,7 @@ ms.author: carolz
 
 <ul class="panelContent cardsFTitle">
     <li>
-        <a href="/mooncaketest/articles/sql-data-warehouse/sql-data-warehouse-overview-what-is">
+        <a href="/azure/sql-data-warehouse/sql-data-warehouse-overview-what-is">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
@@ -56,7 +56,7 @@ ms.author: carolz
         </a>
     </li>
      <li>
-        <a href="/mooncaketest/articles/sql-data-WArehouse/sql-data-warehouse-get-started-provision">
+        <a href="/azure/sql-data-WArehouse/sql-data-warehouse-get-started-provision">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
@@ -86,7 +86,7 @@ ms.author: carolz
                 <div class="card">
                     <div class="cardText">
                         <h3>命令行</h3>
-                        <p><a href="/mooncaketest/articles/sql-data-warehouse/sql-data-warehouse-reference-powershell-cmdlets">PowerShell cmdlet</a></p>
+                        <p><a href="/azure/sql-data-warehouse/sql-data-warehouse-reference-powershell-cmdlets">PowerShell cmdlet</a></p>
                     </div>
                 </div>
             </div>
@@ -98,10 +98,10 @@ ms.author: carolz
                 <div class="card">
                     <div class="cardText">
                         <h3>语言</h3>
-                        <p><a href="/mooncaketest/articles/sql-data-warehouse/sql-data-warehouse-service-capacity-limits">容量限制</a></p>
-                        <p><a href="/mooncaketest/articles/sql-data-warehouse/sql-data-warehouse-reference-tsql-language-elements">T-SQL 语言元素</a></p>
-                        <p><a href="/mooncaketest/articles/sql-data-warehouse/sql-data-warehouse-reference-tsql-statements">T-SQL 语句</a></p>
-                        <p><a href="/mooncaketest/articles/sql-data-warehouse/sql-data-warehouse-reference-tsql-system-views">T-SQL 系统视图</a></p>
+                        <p><a href="/azure/sql-data-warehouse/sql-data-warehouse-service-capacity-limits">容量限制</a></p>
+                        <p><a href="/azure/sql-data-warehouse/sql-data-warehouse-reference-tsql-language-elements">T-SQL 语言元素</a></p>
+                        <p><a href="/azure/sql-data-warehouse/sql-data-warehouse-reference-tsql-statements">T-SQL 语句</a></p>
+                        <p><a href="/azure/sql-data-warehouse/sql-data-warehouse-reference-tsql-system-views">T-SQL 系统视图</a></p>
                     </div>
                 </div>
             </div>

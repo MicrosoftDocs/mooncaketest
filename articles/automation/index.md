@@ -8,7 +8,7 @@ description: 了解如何使用自动化来自动执行过程和配置管理以�
 了解如何使用自动化节省时间并提高在云环境中执行的常规管理任务的可靠性。教程、API 参考和其他文档演示如何使用 Runbook 实现过程的自动化，或者使用 Desired State Configuration 实现配置管理的自动化。
 
 <ul class="panelContent cardsFTitle">
-    <li><a href="/mooncaketest/articles/automation/automation-intro">
+    <li><a href="/azure/automation/automation-intro">
 <div class="cardSize"><div class="cardPadding"><div class="card"><div class="cardImageOuter"><div class="cardImage"><img src="media/index/automation.svg" alt="" /></div></div><div class="cardText"><h3>了解 Azure 自动化</h3></div></div></div>
         </div></a>
 </li>
@@ -16,19 +16,19 @@ description: 了解如何使用自动化来自动执行过程和配置管理以�
 <div class="cardSize"><div class="cardPadding"><div class="card"><div class="cardImageOuter"><div class="cardImage"><img src="media/index/video-library.svg" alt="" /></div></div><div class="cardText"><h3>自动化视频库</h3></div></div></div>
         </div></a>
 </li>
-    <li><a href="/mooncaketest/articles/automation/automation-first-runbook-graphical">
+    <li><a href="/azure/automation/automation-first-runbook-graphical">
 <div class="cardSize"><div class="cardPadding"><div class="card"><div class="cardImageOuter"><div class="cardImage"><img src="media/index/tutorial.svg" alt="" /></div></div><div class="cardText"><h3>使用 Runbook 实现自动化入门</h3></div></div></div>
         </div></a>
 </li>
-    <li><a href="/mooncaketest/articles/automation/automation-first-runbook-textual-powershell">
+    <li><a href="/azure/automation/automation-first-runbook-textual-powershell">
 <div class="cardSize"><div class="cardPadding"><div class="card"><div class="cardImageOuter"><div class="cardImage"><img src="media/index/powershell.svg" alt="" /></div></div><div class="cardText"><h3>使用 PowerShell 实现自动化入门</h3></div></div></div>
         </div></a>
 </li>
-    <li><a href="/mooncaketest/articles/automation/automation-first-runbook-textual">
+    <li><a href="/azure/automation/automation-first-runbook-textual">
 <div class="cardSize"><div class="cardPadding"><div class="card"><div class="cardImageOuter"><div class="cardImage"><img src="media/index/powershell.svg" alt="" /></div></div><div class="cardText"><h3>创建第一个 PowerShell 工作流 Runbook</h3></div></div></div>
         </div></a>
 </li>
-    <li><a href="/mooncaketest/articles/automation/automation-role-based-access-control">
+    <li><a href="/azure/automation/automation-role-based-access-control">
 <div class="cardSize"><div class="cardPadding"><div class="card"><div class="cardImageOuter"><div class="cardImage"><img src="media/index/tutorial.svg" alt="" /></div></div><div class="cardText"><h3>使用 PowerShell 工作流实现自动化入门</h3></div></div></div>
         </div></a>
 </li>
@@ -48,7 +48,7 @@ description: 了解如何使用自动化来自动执行过程和配置管理以�
         </div>
     </li>
     <li>
-        <div class="cardSize"><div class="cardPadding"><div class="card"><div class="cardText"><h3>REST</h3><p><a href="https://msdn.microsoft.com/library/mooncaketest/articles/mt662285.aspx">REST API</a></p><p><a href="https://msdn.microsoft.com/library/mooncaketest/articles/mt163781">经典 REST API</a></p></div></div></div>
+        <div class="cardSize"><div class="cardPadding"><div class="card"><div class="cardText"><h3>REST</h3><p><a href="https://msdn.microsoft.com/library/azure/mt662285.aspx">REST API</a></p><p><a href="https://msdn.microsoft.com/library/azure/mt163781">经典 REST API</a></p></div></div></div>
         </div>
     </li>
 </ul>

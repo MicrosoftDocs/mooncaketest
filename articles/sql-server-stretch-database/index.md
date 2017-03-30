@@ -8,7 +8,7 @@ description: 了解如何使用 SQL Server Stretch Database 将冷数据安全�
 
 
 <ul class="panelContent cardsFTitle">
-    <li><a href="/mooncaketest/articles/sql-server-stretch-database/sql-server-stretch-database-overview">
+    <li><a href="/azure/sql-server-stretch-database/sql-server-stretch-database-overview">
 <div class="cardSize"><div class="cardPadding"><div class="card"><div class="cardImageOuter"><div class="cardImage"><img src="media/index/sql-server-stretch-database.svg" alt="" /></div></div><div class="cardText"><h3>了解 Azure SQL Server Stretch Database</h3></div></div></div>
         </div></a>
 </li>
@@ -16,11 +16,11 @@ description: 了解如何使用 SQL Server Stretch Database 将冷数据安全�
 <div class="cardSize"><div class="cardPadding"><div class="card"><div class="cardImageOuter"><div class="cardImage"><img src="media/index/video-library.svg" alt="" /></div></div><div class="cardText"><h3>Azure SQL Server Stretch Database 视频库</h3></div></div></div>
         </div></a>
 </li>
-    <li><a href="/mooncaketest/articles/sql-server-stretch-database/sql-server-stretch-database-identify-databases">
+    <li><a href="/azure/sql-server-stretch-database/sql-server-stretch-database-identify-databases">
 <div class="cardSize"><div class="cardPadding"><div class="card"><div class="cardImageOuter"><div class="cardImage"><img src="media/index/get-started.svg" alt="" /></div></div><div class="cardText"><h3>SQL Server Stretch Database 入门</h3></div></div></div>
         </div></a>
 </li>
-    <li><a href="/mooncaketest/articles/sql-server-stretch-database/sql-server-stretch-database-wizard">
+    <li><a href="/azure/sql-server-stretch-database/sql-server-stretch-database-wizard">
 <div class="cardSize"><div class="cardPadding"><div class="card"><div class="cardImageOuter"><div class="cardImage"><img src="media/index/get-started.svg" alt="" /></div></div><div class="cardText"><h3>SQL Server Stretch Database 向导入门</h3></div></div></div>
         </div></a>
 </li>

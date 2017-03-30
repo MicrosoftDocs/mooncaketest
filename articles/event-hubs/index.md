@@ -7,7 +7,7 @@ description: 了解如何使用事件中心从各种平台上的已连接 IoT �
 了解如何使用事件中心从连接的 IoT 设备和应用程序每秒收集和管理数百万事件。教程、API 参考和其他文档介绍了如何为各种平台上的事件设置可缩放引入。
 
 <ul class="panelContent cardsFTitle">
-     <li><a href="/mooncaketest/articles/event-hubs/event-hubs-what-is-event-hubs">
+     <li><a href="/azure/event-hubs/event-hubs-what-is-event-hubs">
 <div class="cardSize"><div class="cardPadding"><div class="card"><div class="cardImageOuter"><div class="cardImage"><img src="media/index/event-hubs.svg" alt="" /></div></div><div class="cardText"><h3>了解 Azure 事件中心</h3></div></div></div>
         </div></a>
 </li>
@@ -15,11 +15,11 @@ description: 了解如何使用事件中心从各种平台上的已连接 IoT �
 <div class="cardSize"><div class="cardPadding"><div class="card"><div class="cardImageOuter"><div class="cardImage"><img src="media/index/video-library.svg" alt="" /></div></div><div class="cardText"><h3>Azure 事件中心视频库</h3></div></div></div>
         </div></a>
 </li>
-     <li><a href="/mooncaketest/articles/Event-Hubs/event-hubs-programming-guide">
+     <li><a href="/azure/Event-Hubs/event-hubs-programming-guide">
 <div class="cardSize"><div class="cardPadding"><div class="card"><div class="cardImageOuter"><div class="cardImage"><img src="media/index/get-started.svg" alt="" /></div></div><div class="cardText"><h3>事件中心编程指南入门</h3></div></div></div>
         </div></a>
 </li>
-    <li><a href="/mooncaketest/articles/Event-Hubs/event-hubs-csharp-ephcs-getstarted">
+    <li><a href="/azure/Event-Hubs/event-hubs-csharp-ephcs-getstarted">
 <div class="cardSize"><div class="cardPadding"><div class="card"><div class="cardImageOuter"><div class="cardImage"><img src="media/index/tutorial.svg" alt="" /></div></div><div class="cardText"><h3>通过 Azure 门户使用事件中心入门</h3></div></div></div>
         </div></a>
 </li>

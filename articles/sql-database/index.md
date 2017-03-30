@@ -8,15 +8,12 @@ description: 了解 SQL 数据库（云中的数据库即服务）。教程、�
 了解如何使用 SQL 数据库（云中基于 Microsoft SQL Server 引擎构建的关系数据库即服务）。教程、视频和其他文档介绍了如何设置、连接和管理 SQL 数据库。
 
 <ul class="panelContent cardsFTitle">
-     <li>
-        <a href="/articles	/sql-database/sql-database-technical-overview">
-        <div class="cardSize">
+     <li><a href="./sql-database-technical-overview.md">
+<div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardImageOuter">
-                        <div class="cardImage">
-                            <img src="media/index/sql-database.svg" alt="" />
-                        </div>
+                        <div class="cardImage"><img src="media/index/sql-database.svg" alt="" /></div>
                     </div>
                     <div class="cardText">
                         <h3>了解 Azure SQL 数据库</h3>
@@ -26,59 +23,47 @@ description: 了解 SQL 数据库（云中的数据库即服务）。教程、�
         </div>
         </a>
     </li>
-    <li>
-        <a href="/articles/sql-database/sql-database-get-started">
-        <div class="cardSize">
+    <li><a href="./sql-database-get-started.md">
+<div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardImageOuter">
-                        <div class="cardImage">
-                            <img src="media/index/get-started.svg" alt="" />
-                        </div>
+                        <div class="cardImage"><img src="media/index/get-started.svg" alt="" /></div>
                     </div>
                     <div class="cardText">
                         <h3>Azure SQL 数据库入门</h3>
                     </div>
                 </div>
             </div>
-        </div>
-        </a>
+        </div></a>
 </li>
-    <li>
-        <a href="/articles/sql-database/sql-database-elastic-scale-get-started">
-        <div class="cardSize">
+    <li><a href="./sql-database-elastic-scale-get-started.md">
+<div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardImageOuter">
-                        <div class="cardImage">
-                            <img src="media/index/get-started.svg" alt="" />
-                        </div>
+                        <div class="cardImage"><img src="media/index/get-started.svg" alt="" /></div>
                     </div>
                     <div class="cardText">
                         <h3>弹性工具入门</h3>
                     </div>
                 </div>
             </div>
-        </div>
-        </a>
+        </div></a>
 </li>
-     <li>
-        <a href="/articles/sql-database/sql-database-get-started-security">
-        <div class="cardSize">
+     <li><a href="./sql-database-get-started-security.md">
+<div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardImageOuter">
-                        <div class="cardImage">
-                            <img src="media/index/tutorial.svg" alt="" />
-                        </div>
+                        <div class="cardImage"><img src="media/index/tutorial.svg" alt="" /></div>
                     </div>
                     <div class="cardText">
                         <h3>开始管理访问和权限</h3>
                     </div>
                 </div>
             </div>
-        </div>
-        </a>
+        </div></a>
 </li>
 </ul>
 
@@ -111,7 +96,7 @@ description: 了解 SQL 数据库（云中的数据库即服务）。教程、�
                         <p><a href="https://msdn.microsoft.com/zh-cn/library/mt652092.aspx">Python</a></p>
                         <p><a href="https://msdn.microsoft.com/zh-cn/library/mt691981.aspx">Ruby</a></p>
                         <p><a href="https://msdn.microsoft.com/zh-cn/library/dn865013.aspx">PHP</a></p>
-                        <p><a href="https://msdn.microsoft.com/zh-cn/library/mooncaketest/articles/bb510741.aspx">T-SQL</a></p>
+                        <p><a href="https://msdn.microsoft.com/zh-cn/library/azure/bb510741.aspx">T-SQL</a></p>
                     </div>
                 </div>
             </div>

@@ -1,5 +1,5 @@
 ---
-layout: LandingPage"
+layout: LandingPage
 description: 了解 Hadoop on HDInsight。文档介绍如何使用 Hadoop、Spark、HBase、R-Server 等方式处理、分析大数据并获取见解。 
 ---
 
@@ -9,7 +9,7 @@ description: 了解 Hadoop on HDInsight。文档介绍如何使用 Hadoop、Spar
 
 <ul class="panelContent cardsFTitle">
     <li>
-        <a href="/mooncaketest/articles/hdinsight/hdinsight-hadoop-introduction">
+        <a href="/azure/hdinsight/hdinsight-hadoop-introduction">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
@@ -45,7 +45,7 @@ description: 了解 Hadoop on HDInsight。文档介绍如何使用 Hadoop、Spar
         </a>
 </li>
     <li>
-        <a href="/mooncaketest/articles/hdinsight/hdinsight-hadoop-linux-tutorial-get-started">
+        <a href="/azure/hdinsight/hdinsight-hadoop-linux-tutorial-get-started">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
@@ -63,7 +63,7 @@ description: 了解 Hadoop on HDInsight。文档介绍如何使用 Hadoop、Spar
         </a>
 </li>
     <li>
-        <a href="/mooncaketest/articles/hdinsight/hdinsight-hadoop-r-server-get-started">
+        <a href="/azure/hdinsight/hdinsight-hadoop-r-server-get-started">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
@@ -81,7 +81,7 @@ description: 了解 Hadoop on HDInsight。文档介绍如何使用 Hadoop、Spar
         </a>
 </li>
      <li>
-        <a href="/mooncaketest/articles/hdinsight/hdinsight-hbase-tutorial-get-started-linux">
+        <a href="/azure/hdinsight/hdinsight-hbase-tutorial-get-started-linux">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
@@ -99,7 +99,7 @@ description: 了解 Hadoop on HDInsight。文档介绍如何使用 Hadoop、Spar
         </a>
 </li>
     <li>
-        <a href="/mooncaketest/articles/hdinsight/hdinsight-apache-storm-tutorial-get-started-linux">
+        <a href="/azure/hdinsight/hdinsight-apache-storm-tutorial-get-started-linux">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">

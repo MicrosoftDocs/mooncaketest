@@ -176,7 +176,7 @@ wacn.date: 11/25/2016
 </div>
 <div>
     <h3>存储资源管理器</h3>
-    <ul>
+    <ul> 
       <li><a href="http://go.microsoft.com/fwlink/?linkid=698844&clcid=0x804">Windows 安装</a></li>
       <li><a href="http://go.microsoft.com/fwlink/?linkid=698845&clcid=0x804">Mac 安装</a></li>
     </ul>

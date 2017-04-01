@@ -1,29 +1,58 @@
 ---
+title: Azure Virtual Machines Documentation - Tutorials, API Reference | Azure
+description: Learn how to create, deploy, and manage Windows or Linux virtual machines. Tutorials, API references, and other documentation.
+services: virtual-machines
+author: carolz
+manager: carolz
 layout: LandingPage
-toc_rel: breadcrumb.json
-description: 了解如何创建、部署和管理 Windows 或 Linux 虚拟机。教程、API 参考和其他文档。
+ms.assetid: 
+ms.service: virtual-machines
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: landing-page
+ms.date: 01/23/2017
+wacn.date: ''
+ms.author: carolz
 ---
+# Virtual Machines Documentation
 
-# 虚拟机文档
-
-了解如何创建 Azure 虚拟机。教程、API 参考以及其他文档说明如何创建并部署 Windows 和 Linux 虚拟机，以及复杂的 VM 模板。
+Learn how to create Azure virtual machines. Tutorials, API references, and other documentation show you how to create and deploy Windows and Linux virtual machines, as well as complex VM templates.
 
 <ul class="panelContent cardsFTitle">
-    <li><a href="./windows/index.md">
-<div class="cardSize"><div class="cardPadding"><div class="card"><div class="cardImageOuter"><div class="cardImage"><img src="media/index/virtual-machines.svg" alt="" /></div></div><div class="cardText"><h3>Windows 虚拟机入门</h3></div></div></div>
-        </div></a>
-</li>
-    <li><a href="./linux/index.md">
-<div class="cardSize"><div class="cardPadding"><div class="card"><div class="cardImageOuter"><div class="cardImage"><img src="media/index/get-started.svg" alt="" /></div></div><div class="cardText"><h3>Linux 虚拟机入门</h3></div></div></div>
-        </div></a>
-</li>    
+    <li>
+        <a href="/azure/virtual-machines/windows">
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardImageOuter">
+                        <div class="cardImage">
+                            <img src="media/index/virtual-machines.svg" alt="" />
+                        </div>
+                    </div>
+                    <div class="cardText">
+                        <h3>Getting started with Windows Virtual Machines</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </a>
+    </li>
+    <li>
+        <a href="/azure/virtual-machines/linux">
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardImageOuter">
+                        <div class="cardImage">
+                            <img src="media/index/get-started.svg" alt="" />
+                        </div>
+                    </div>
+                    <div class="cardText">
+                        <h3>Getting started with Linux Virtual Machines</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </a>
+    </li>    
 </ul>
-
-<div class="downloadHolder"><a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/zh-cn/Azure.azure-documents/live/virtual-machines.pdf">
-<div class="img"></div>
-        <div class="text">下载虚拟机文档</div>
-    </a>
-
-</div>
-
-<!---HONumber=Mooncake_0213_2017-->

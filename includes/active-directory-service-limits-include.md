@@ -1,15 +1,12 @@
-以下是 Azure Active Directory 服务的使用限制和其他服务限制。
+Here are the usage constraints and other service limits for the Azure Active Directory service.
 
-| 类别 | 限制 |
-|---|---|
-| 目录 | 单个用户只能与最多 20 个 Azure Active Directory 目录相关联。<br />可能的组合示例：<ul> <li>单个用户创建了 20 个目录。</li><li>单个用户以成员身份添加到 20 个目录。</li><li>单个用户创建了 10 个目录，之后其他人又将该用户添加到 10 个不同的目录。</li></ul> |  
-| 对象 | <ul><li>在使用 Azure Active Directory 免费版的单一目录中最多可以使用 500,000 个对象。</li><li>非管理员用户最多可以创建 250 个用户。</li></ul> |
-| 架构扩展 | <ul><li>String 类型扩展最多只能有 256 个字符。</li><li>Binary 类型扩展限制在 256 字节以内。</li><li>100 扩展值（在 ALL 类型和 ALL 应用程序中）可以编写到任何单一对象中。</li><li>只有“User”、“Group”、“TenantDetail”、“Device”、“Application”和“ServicePrincipal”实体可以用“String”类型或“Binary”类型单一值属性进行扩展。</li><li>架构扩展仅在图形 API 1.21 预览版中可用。必须授予应用程序编写访问注册扩展的权限。</li></ul> |
-| 应用程序 | 最多有 10 位用户可以是单一应用程序的所有者。 |
-| 组 | <ul><li>最多有 10 位用户可以是单一应用程序的所有者。</li><li>Azure Active Directory 中的单个组可以具有任意数量的对象。</li><li>使用 Azure Active Directory 目录同步 (DirSync) 时，一个组中可以从本地 Active Directory 同步到 Azure Active Directory 的成员数限制为 15000 个。</li><li>使用 Azure AD Connect 时，一个组中可以从本地 Active Directory 同步到 Azure Active Directory 的成员数限制为 50000 个。</li></ul> |
-| 访问面板 | <ul><li>对应用程序的数量没有限制，应用程序可在每位订阅 Azure AD Premium 或企业移动套件的最终用户的访问面板中查看。</li><li>最多 10 个应用磁贴（例如：Box、Salesforce 或 Dropbox）可在每位使用 Azure Active Directory 免费版或 Azure AD 基本版的最终用户的访问面板中查看。此限制不适用于管理员帐户。</li></ul> |
-| 报告 | 在报告中最多可查看或下载 1,000 行。系统会截断其他任何数据。 |
-| 管理单元 | 对象可以是不超出 30 个管理单位的成员。 |
-
-<!---HONumber=Mooncake_0227_2017-->
-<!---Update_Description: wording update -->
+| Category | Limits |
+| --- | --- |
+| Directories |A single user can only be associated with a maximum of 20 Azure Active Directory directories.<br />Examples of possible combinations: <ul> <li>A single user creates 20 directories.</li><li>A single user is added to 20 directories as a member.</li><li>A single user creates 10 directories and later is added by others to 10 different directories.</li></ul> |
+| Objects |<ul><li>A maximum of 500,000 objects can be used in a single directory by users of the Free edition of Azure Active Directory.</li><li>A non-admin user can create no more than 250 objects.</li></ul> |
+| Schema extensions |<ul><li>String type extensions can have maximum of 256 characters. </li><li>Binary type extensions are limited to 256 bytes.</li><li>100 extension values (across ALL types and ALL applications) can be written to any single object.</li><li>Only “User”, “Group”, “TenantDetail”, “Device”, “Application” and “ServicePrincipal” entities can be extended with “String” type or “Binary” type single-valued attributes.</li><li>Schema extensions are available only in Graph API-version 1.21-preview. The application must be granted write access to register an extension.</li></ul> |
+| Applications |A maximum of 10 users can be owners of a single application. |
+| Groups |<ul><li>A maximum of 10 users can be owners of a single group.</li><li>Any number of objects can be members of a single group in Azure Active Directory.</li><li>The number of members in a group you can synchronize from your on-premises Active Directory to Azure Active Directory is limited to 15K members, using Azure Active Directory Directory Synchronization (DirSync).</li><li>The number of members in a group you can synchronize from your on-premises Active Directory to Azure Active Directory using Azure AD Connect is limited to 50K members.</li></ul> |
+| Access Panel |<ul><li>There is no limit to the number of applications that can be seen in the Access Panel per end user, for users assigned licenses for Azure AD Premium or the Enterprise Mobility Suite.</li><li>A maximum of 10 app tiles (examples: Box, Salesforce, or Dropbox) can be seen in the Access Panel for each end user for users assigned licenses for Free or Azure AD Basic editions of Azure Active Directory. This limit does not apply to Administrator accounts.</li></ul> |
+| Reports | A maximum of 1,000 rows can be viewed or downloaded in any report. Any additional data is truncated. |
+| Administrative units | An object can be a member of no more than 30 administrative units. |

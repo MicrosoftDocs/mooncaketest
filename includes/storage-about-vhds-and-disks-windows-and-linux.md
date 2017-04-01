@@ -1,59 +1,65 @@
-### 数据保留 
+### Disk Persistence 
 
-下表说明 Azure VM 中不同磁盘的不同状态，以及每种状态下数据是否保留。
+The following table illustrates the different states for the different disks in an Azure VM and whether the data is persisted or not in each state.
 
-| 磁盘 | 开始 | 停止/<br>解除分配 | 暂停 | 重新<br>启动 | 关闭<br> | 删除 | 失败 | 调整大小 | 
+| Disk | Start | Stop/<br>Deallocate | Pause | Re-<br>boot | Shut-<br>down | Delete | Failure | Resize | 
 | ---- | ----- | ---- | ---- | ---- | ----  | ------ | ------- | ------ | 
-| OS 磁盘 | 是 | 是 | 是 | 是 | 是 | 否 | 否 | 是 | 
-| RAM | 是 | 是 | 是 | 是 | 否 | 否 | 否 | 否 | 
-| 本地临时磁盘 | 是 | 否 | 是 | 否 | 否 | 否 | 否 | 否 | 
-| 附加的数据磁盘 | 是 | 是 | 是 | 是 | 是 | 是 | 是 | 是 | 
+| OS Disk | Yes | Yes  | Yes | Yes | Yes  | No | No  | Yes | 
+| RAM  | Yes | Yes | Yes | Yes | No   | No | No | No | 
+| Local Temp Disk | Yes | No | Yes | No | No  | No | No | No | 
+| Attached Data Disk | Yes | Yes | Yes | Yes | Yes  | Yes | Yes | Yes | 
 
-## 关于 VHD
+## About VHDs
 
-Azure 中使用的 VHD 是在 Azure 的标准或高级存储帐户中作为页 Blob 存储的 .vhd 文件。有关页 blob 的详细信息，请参阅[了解块 blob 和页 blob](https://docs.microsoft.com/rest/api/storageservices/fileservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs/)。有关高级存储的详细信息，请参阅[高性能高级存储和 Azure VM](../articles/storage/storage-premium-storage.md)。
+The VHDs used in Azure are .vhd files stored as page blobs in a standard or premium storage account in Azure. For details about page blobs, see [Understanding block blobs and page blobs](https://docs.microsoft.com/rest/api/storageservices/fileservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs/). For details about premium storage, see [High-performance premium storage and Azure VMs](../articles/storage/storage-premium-storage.md).
 
-Azure 支持固定的磁盘 VHD 格式。固定格式在文件内对逻辑磁盘以线性方式布局，使磁盘偏移量 X 存储在 Blob 偏移量 X 的位置。在 Blob 末尾有一小段脚注，描述了 VHD 的属性。通常，由于大多数磁盘中都有较大的未使用区域，因此固定格式会浪费空间。但是，Azure 以稀疏格式存储 .vhd 文件，使用户可兼获固定和动态格式磁盘的优点。有关更多详细信息，请参阅[虚拟硬盘入门](https://technet.microsoft.com/zh-cn/library/dd979539.aspx)。
+Azure supports the fixed disk VHD format. The fixed format lays the logical disk out linearly within the file, so that disk offset X is stored at blob offset X. A small footer at the end of the blob describes the properties of the VHD. Often, the fixed format wastes space because most disks have large unused ranges in them. However, Azure stores .vhd files in a sparse format, so you receive the benefits of both the fixed and dynamic disks at the same time. For more details, see [Getting started with virtual hard disks](https://technet.microsoft.com/zh-cn/library/dd979539.aspx).
 
-Azure 中所有要用作创建磁盘或映像的源的 .vhd 文件都是只读文件。在创建磁盘或映像时，Azure 将生成 .vhd 文件的副本。这些副本可以是只读文件，也可以是读写文件，具体取决于使用 VHD 的方式。
+All .vhd files in Azure that you want to use as a source to create disks or images are read-only. When you create a disk or image, Azure makes copies of the .vhd files. These copies can be read-only or read-and-write, depending on how you use the VHD.
 
-在通过映像创建虚拟机时，Azure 将为虚拟机创建磁盘，该磁盘是源 .vhd 文件的副本。为避免被意外删除，Azure 对任何用于创建映像、操作系统磁盘或数据磁盘的源 .vhd 文件设置了租约。
+When you create a virtual machine from an image, Azure creates a disk for the virtual machine that is a copy of the source .vhd file. To protect against accidental deletion, Azure places a lease on any source .vhd file that’s used to create an image, an operating system disk, or a data disk.
 
-在删除源 .vhd 文件之前，需要先通过删除磁盘或映像来解除租约。若要删除当前由虚拟机用作操作系统磁盘的 .vhd 文件，可以通过删除虚拟机并删除所有关联的磁盘，一次性删除虚拟机、操作系统磁盘和源 .vhd 文件。但是，删除用作数据磁盘来源的 .vhd 文件需要按一定顺序执行几个步骤。首先从虚拟机分离该磁盘，再删除该磁盘，然后才能删除 .vhd 文件。
+Before you can delete a source .vhd file, you’ll need to remove the lease by deleting the disk or image. To delete a .vhd file that is being used by a virtual machine as an operating system disk, you can delete the virtual machine, the operating system disk, and the source .vhd file all at once by deleting the virtual machine and deleting all associated disks. However, deleting a .vhd file that’s a source for a data disk requires several steps in a set order. First you detach the disk from the virtual machine, then delete the disk, and then delete the .vhd file.
 
 > [!WARNING]
-如果从存储中删除了源 .vhd 文件或删除了存储帐户，则无法为用户恢复数据。
+> If you delete a source .vhd file from storage, or delete your storage account, Microsoft can't recover that data for you.
 > 
 
-## 磁盘类型 
+## Types of disks 
 
-创建磁盘时，有两种适用于存储的性能层可供选择 -- 标准存储和高级存储。另外还有两类磁盘 -- 非托管磁盘和托管磁盘 -- 这两类磁盘可以驻留在任一性能层中。注意：托管磁盘在中国还不支持。
+There are two performance tiers for storage that you can choose from when creating your disks -- Standard Storage and Premium Storage. Also, there are two types of disks -- unmanaged and managed -- and they can reside in either performance tier.  
 
-### 标准存储 
+### Standard storage 
 
-标准存储以 HDD 为基础，可以在确保性能的同时提供经济高效的存储。标准存储可在一个数据中心进行本地复制，也可以通过主要和辅助数据中心实现异地冗余。有关存储复制的详细信息，请参阅 [Azure 存储复制](../articles/storage/storage-redundancy.md)。
+Standard Storage is backed by HDDs, and delivers cost-effective storage while still being performant. Standard storage can be replicated locally in one datacenter, or be geo-redundant with primary and secondary data centers. For more information about storage replication, please see [Azure Storage replication](../articles/storage/storage-redundancy.md). 
 
-有关将标准存储与 VM 磁盘配合使用的详细信息，请参阅[标准存储和磁盘](../articles/storage/storage-standard-storage.md)。
+For more information about using Standard Storage with VM disks, please see [Standard Storage and Disks](../articles/storage/storage-standard-storage.md).
 
-### 高级存储 
+### Premium storage 
 
-高级存储以 SSD 为基础，为运行 I/O 密集型工作负荷的 VM 提供高性能、低延迟的磁盘支持。可将高级存储与 DS、DSv2、GS 或 FS 系列的 Azure VM 配合使用。有关详细信息，请参阅[高级存储](../articles/storage/storage-premium-storage.md)。
+Premium Storage is backed by SSDs, and delivers high-performance, low-latency disk support for VMs running I/O-intensive workloads. You can use Premium Storage with DS, DSv2, GS, or FS series Azure VMs. For more information, please see [Premium Storage](../articles/storage/storage-premium-storage.md).
 
-### 非托管磁盘
+### Unmanaged disks
 
-非托管磁盘是 VM 一直使用的传统类型的磁盘。使用非托管磁盘可创建自己的存储帐户并在创建磁盘时指定该存储帐户。请确保不要将过多磁盘置于同一存储帐户中，否则可能会超过存储帐户的[可伸缩性目标](../articles/storage/storage-scalability-targets.md)（例如 20,000 IOPS），导致 VM 受到限制。使用非托管磁盘时，必须确定如何最大程度地使用一个或多个存储帐户，以便充分利用 VM 的性能。
+Unmanaged disks are the traditional type of disks that have been used by VMs. With these, you create your own storage account and specify that storage account when you create the disk. You have to make sure you don't put too many disks in the same storage account, because you could exceed the [scalability targets](../articles/storage/storage-scalability-targets.md) of the storage account (20,000 IOPS, for example), resulting in the VMs being throttled. With unmanaged disks, you have to figure out how to maximize the use of one or more storage accounts to get the best performance out of your VMs.
 
-### 磁盘比较
+### Managed disks 
 
-下表对托管磁盘与非托管磁盘的高级和标准性能层做了比较，方便用户确定要使用哪个层。
+Managed Disks handles the storage account creation/management in the background for you, and ensures that you do not have to worry about the scalability limits of the storage account. You simply specify the disk size and the performance tier (Standard/Premium), and Azure creates and manages the disk for you. Even as you add disks or scale the VM up and down, you don't have to worry about the storage being used. 
 
-| | Azure 高级磁盘 | Azure 标准磁盘 |
+You can also manage your custom images in one storage account per Azure region, and use them to create hundreds of VMs in the same subscription. For more information about Managed Disks, please see the [Managed Disks Overview](../articles/storage/storage-managed-disks-overview.md).
+
+We recommend that you use Azure Managed Disks for new VMs, and that you convert your previous unmanaged disks to managed disks, to take advantage of the many features available in Managed Disks.
+
+### Disk comparison
+
+The following table provides a comparison of Premium vs Standard for both unmanaged and managed disks to help you decide what to use.
+
+|    | Azure Premium Disk | Azure Standard Disk |
 |--- | ------------------ | ------------------- |
-| 磁盘类型 | 固态硬盘 (SSD) | 机械硬盘 (HDD) |
-| 概述 | 基于 SSD 的高性能、低延迟磁盘支持，适用于运行 IO 密集型工作负荷或托管任务关键型生产环境的 VM | 基于 HDD 的经济高效型磁盘支持，适用于开发/测试 VM 方案 |
-| 方案 | 生产和性能敏感型工作负荷 | 开发/测试、非关键、<br>不经常访问的工作负荷 |
-| 磁盘大小 | P10：128 GB<br>P20：512 GB<br>P30：1024 GB | 非托管磁盘：1 GB – 1 TB |
-| 每个磁盘的最大吞吐量 | 200 MB/秒 | 60 MB/秒 |
-| 每个磁盘的最大 IOPS | 5000 IOPS | 500 IOPS |
-
-<!---HONumber=Mooncake_0313_2017-->
+| Disk Type | Solid State Drives (SSD) | Hard Disk Drives (HDD)  |
+| Overview  | SSD-based high-performance, low-latency disk support for VMs running IO-intensive workloads or hosting mission critical production environment | HDD-based cost effective disk support for Dev/Test VM scenarios |
+| Scenario  | Production and performance sensitive workloads | Dev/Test, non-critical, <br>Infrequent access |
+| Disk Size | P10: 128 GB<br>P20: 512 GB<br>P30: 1024 GB | Unmanaged Disks: 1 GB – 1 TB <br><br>Managed Disks:<br> S4: 32 GB <br>S6: 64 GB <br>S10: 128 GB <br>S20: 512 GB <br>S30: 1024 GB |
+| Max Throughput per Disk | 200 MB/s | 60 MB/s |
+| Max IOPS per Disk | 5000 IOPS | 500 IOPS |

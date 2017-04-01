@@ -1,8 +1,7 @@
-若要将资源部署到 Azure，必须登录到 Azure 帐户，并且必须使用 Azure Resource Manager 模块。若要了解配合使用 Azure Resource Manager 和 Azure PowerShell 或 Azure CLI 的相关信息，请参阅：
+To deploy the resources to Azure, you must be logged in to your Azure account and you must use the Azure Resource Manager module. To learn about using Azure Resource Manager with either Azure PowerShell or Azure CLI, 
+see:
 
-- [将 Azure PowerShell 与 Azure 资源管理器配合使用](../articles/azure-resource-manager/powershell-azure-resource-manager.md)
-- [将适用于 Mac、Linux 和 Windows 的 Azure CLI 与 Azure 资源管理配合使用](../articles/azure-resource-manager/xplat-cli-azure-resource-manager.md)。
+* [Using Azure PowerShell with Azure Resource Manager](../articles/azure-resource-manager/powershell-azure-resource-manager.md)
+* [Using the Azure CLI for Mac, Linux, and Windows with Azure Resource Management](../articles/azure-resource-manager/xplat-cli-azure-resource-manager.md).
 
-以下示例假定你的帐户中已具有一个指定名称的资源组。
-
-<!---HONumber=Mooncake_0919_2016-->
+The following examples assume you already have a resource group in your account with the specified name.

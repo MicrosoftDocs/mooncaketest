@@ -1,17 +1,15 @@
-下表显示网关类型和预计的网关 SKU 聚合吞吐量。此表适用于 Resource Manager 与经典部署模型。定价因网关 SKU 而异。有关详细信息，请参阅 [VPN 网关定价](https://www.azure.cn/pricing/details/vpn-gateway/)。
+The following table shows the gateway types and the estimated aggregate throughput by gateway SKU. This table applies to both the Resource Manager and classic deployment models. Pricing differs between gateway SKUs. For more information, see [VPN Gateway Pricing](https://www.azure.cn/pricing/details/vpn-gateway/).
 
-请注意，UltraPerformance 网关 SKU 未在此表中表示。有关 UltraPerformance SKU 的信息，请参阅 [ExpressRoute](../articles/expressroute/expressroute-about-virtual-network-gateways.md) 文档。
+Note that the UltraPerformance gateway SKU is not represented in this table. For information about the UltraPerformance SKU, see the [ExpressRoute](../articles/expressroute/expressroute-about-virtual-network-gateways.md) documentation.
 
-| | **VPN 网关吞吐量 (1)** | **VPN 网关最大 IPsec 隧道数 (2)** | **ExpressRoute 网关吞吐量** | **VPN 网关和 ExpressRoute 共存** |
+|  | **VPN Gateway throughput (1)** | **VPN Gateway max IPsec tunnels (2)** | **ExpressRoute Gateway throughput** | **VPN Gateway and ExpressRoute coexist** |
 | --- | --- | --- | --- | --- |
-| **基本 SKU (3)(5)** |100 Mbps |10 |500 Mbps |否 |
-| **标准 SKU (4)(5)** |100 Mbps |10 |1000 Mbps |是 |
-| **高性能 SKU (4)** |200 Mbps |30 |2000 Mbps |是 |
+| **Basic SKU (3)(5)** |100 Mbps |10 |500 Mbps |No |
+| **Standard SKU (4)(5)** |100 Mbps |10 |1000 Mbps |Yes |
+| **High Performance SKU (4)** |200 Mbps |30 |2000 Mbps |Yes |
 
-* (1) VPN 吞吐量是根据同一 Azure 区域 VNet 之间的度量进行的粗略估计。这不是 Internet 上跨地点连接的保证吞吐量。这是可能的最大吞吐量度量。
-* (2) 隧道数量是指 RouteBased VPN。PolicyBased VPN 只能支持一个站点到站点 VPN 隧道。
-* (3) 基本 SKU 不支持 BGP。
-* (4) 此 SKU 不支持 PolicyBased VPN。仅基本 SKU 支持它们。
-* (5) 此 SKU 不支持主动-主动 S2S VPN 网关连接。仅 HighPerformance SKU 支持主动-主动连接。
-
-<!---HONumber=Mooncake_1219_2016-->
+* (1) The VPN throughput is a rough estimate based on the measurements between VNets in the same Azure region. It is not a guaranteed throughput for cross-premises connections across the Internet. It is the maximum possible throughput measurement.
+* (2) The number of tunnels refer to RouteBased VPNs. A PolicyBased VPN can only support one Site-to-Site VPN tunnel.
+* (3) BGP is not supported for the Basic SKU.
+* (4) PolicyBased VPNs are not supported for this SKU. They are supported for the Basic SKU only.
+* (5) Active-active S2S VPN Gateway connections are not supported for this SKU. Active-active is supported on the HighPerformance SKU only.

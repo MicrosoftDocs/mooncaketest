@@ -1,23 +1,13 @@
-你必须为每个托管 Azure 副本的 VM 创建一个负载均衡的终结点。如果你在多个区域中拥有副本，该区域的每个副本必须位于同一个 VNet 的同一个云服务中。跨越多个 Azure 区域创建可用性组副本需要配置多个 Vnet。
+You must create a load-balanced endpoint for each VM hosting an Azure replica. If you have replicas in multiple regions, each replica for that region must be in the same cloud service in the same VNet. Creating Availability Group replicas that span multiple Azure regions requires configuring multiple VNets. For more information on configuring cross VNet connectivity, see  [Configure VNet to VNet Connectivity](../articles/vpn-gateway/virtual-networks-configure-vnet-to-vnet-connection.md).
 
-1. 在 Azure 经典管理门户中，导航到托管副本的每个 VM 并查看详细信息。
+1. In the Azure Classic Management Portal, navigate to each VM hosting a replica and view the details.
+2. Click the **Endpoints** tab for each of the VMs.
+3. Verify that the **Name** and **Public Port** of the listener endpoint you want to use is not already in use. In the example below, the name is "MyEndpoint" and the port is "1433".
+4. On your local client, download and install [the latest PowerShell module](https://www.azure.cn/downloads/).
+5. Launch **Azure PowerShell**. A new PowerShell session is opened with the Azure administrative modules loaded.
+6. Run **Get-AzurePublishSettingsFile**. This cmdlet directs you to a browser to download a publish settings file to a local directory. You may be prompted for your log-in credentials for your Azure subscription.
+7. Run the **Import-AzurePublishSettingsFile** command with the path of the publish settings file that you downloaded:
 
-1. 单击每个 VM 的“终结点”选项卡。
+        Import-AzurePublishSettingsFile -PublishSettingsFile <PublishSettingsFilePath>
 
-1. 验证你想要使用的侦听器终结点“名称”和“公用端口”是否已被使用。在下面的示例中，名称为“MyEndpoint”，端口为“1433”。
-
-1. 在你本地的客户端上，下载并安装[最新的 PowerShell 模块](/downloads/)。
-
-1. 启动 Azure PowerShell。将打开新的 PowerShell 会话，其中加载了 Azure 管理模块。
-
-1. 运行 Get-AzurePublishSettingsFile -Environment AzureChinaCloud。此 cmdlet 将你定向到浏览器，以将发布设置文件下载到本地目录。系统可能提示你输入 Azure 订阅的登录凭据。
-
-1. 运行 Import-azurepublishsettingsfile 命令以及你下载发布设置文件的路径：
-
-    ```
-    Import-AzurePublishSettingsFile -Environment AzureChinaCloud -PublishSettingsFile <PublishSettingsFilePath>
-    ```
-
-    导入发布设置文件后，你可以在 PowerShell 会话中管理 Azure 订阅。
-
-<!---HONumber=70-->
+    Once the publish settings file is imported, you can manage your Azure subscription in the PowerShell session.

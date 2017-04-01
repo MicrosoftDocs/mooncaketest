@@ -1,7 +1,5 @@
-有两种方式可从移动服务移至应用服务：迁移或升级。两种都可赋予访问应用服务中所有托管功能的权限：
+There are two options for moving from Mobile Services to App Service: migration or upgrade. Either option will give you access to all of the hosting capabilities of App Service:
 
-- *迁移* 服务仅会更改托管移动后端的基础环境。它要求移动客户端或移动服务器项目**无任何代码更改**。若使用自动迁移选项，这将保留 **service.azure-mobile.cn** URL。
+- *Migrating* a service just changes the underlying environment that hosts your mobile backend. It requires **no code changes** to either the mobile client or the mobile server project. If you use the automated migration option, this preserves your **service.azure-mobile.cn** URL. 
 
-- *升级* 服务要求服务器和客户端项目均**出现代码更改**，但允许使用新的移动 SDK 功能，例如改进后的身份验证和更灵活的服务器项目。
-
-<!---HONumber=Mooncake_0919_2016-->
+- *Upgrading* a service does **require code changes** to both your server and client project, but allows you to take advantage of new mobile SDK features, such as improvements to authentication and more flexibility for your server project.

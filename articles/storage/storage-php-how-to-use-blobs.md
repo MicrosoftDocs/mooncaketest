@@ -1,6 +1,6 @@
 ---
-title: 如何通过 PHP 使用 Blob 存储（对象存储）| Azure
-description: 使用 Azure Blob 存储（对象存储）将非结构化数据存储在云中。
+title: How to use blob storage (object storage) from PHP | Azure
+description: Store unstructured data in the cloud with Azure Blob storage (object storage).
 documentationcenter: php
 services: storage
 author: mmacy
@@ -14,74 +14,73 @@ ms.tgt_pltfrm: na
 ms.devlang: PHP
 ms.topic: article
 ms.date: 12/08/2016
-wacn.date: 01/06/2017
+wacn.date: ''
 ms.author: marsma
 ---
 
-# 如何通过 PHP 使用 Blob 存储
+# How to use blob storage from PHP
 [!INCLUDE [storage-selector-blob-include](../../includes/storage-selector-blob-include.md)]
 
-## 概述
-Azure Blob 存储是一种将非结构化数据作为对象/Blob 存储在云中的服务。Blob 存储可以存储任何类型的文本或二进制数据，例如文档、媒体文件或应用程序安装程序。Blob 存储也称为对象存储。
+[!INCLUDE [storage-try-azure-tools-queues](../../includes/storage-try-azure-tools-blobs.md)]
 
-本指南将演示如何使用 Azure Blob 服务执行常见方案。示例是用 PHP 编写的并使用了 [Azure SDK for PHP][download]。涉及的任务包括“上传”、“列出”、“下载”和“删除” Blob。有关 Blob 的详细信息，请参阅[后续步骤](#next-steps)部分。
+## Overview
+Azure Blob storage is a service that stores unstructured data in the cloud as objects/blobs. Blob storage can store any type of text or binary data, such as a document, media file, or application installer. Blob storage is also referred to as object storage.
+
+This guide shows you how to perform common scenarios using the Azure blob service. The samples are written in PHP and use the [Azure SDK for PHP][download]. The scenarios covered include **uploading**, **listing**, **downloading**, and **deleting** blobs. For more information on blobs, see the [Next steps](#next-steps) section.
 
 [!INCLUDE [storage-blob-concepts-include](../../includes/storage-blob-concepts-include.md)]
 
 [!INCLUDE [storage-create-account-include](../../includes/storage-create-account-include.md)]
 
-## 创建 PHP 应用程序
-创建访问 Azure Blob 服务的 PHP 应用程序的唯一要求是从代码中引用 Azure SDK for PHP 中的类。可以使用任何开发工具（包括“记事本”）创建应用程序。
+## Create a PHP application
+The only requirement for creating a PHP application that accesses the Azure blob service is the referencing of classes in the Azure SDK for PHP from within your code. You can use any development tools to create your application, including Notepad.
 
-在本指南中，将使用服务功能，可在 PHP 应用程序中本地调用这些功能，或在 Azure Web 角色、辅助角色或网站内运行的代码中调用。
+In this guide, you use service features, which can be called within a PHP application locally or in code running within an Azure web role, worker role, or website.
 
-##<a id="GetClientLibrary"></a>获取 Azure 客户端库
-
+## Get the Azure Client Libraries
 [!INCLUDE [get-client-libraries](../../includes/get-client-libraries.md)]
 
-##<a id="ConfigureStorage"></a>配置应用程序以访问 Blob 服务
+## Configure your application to access the blob service
+To use the Azure blob service APIs, you need to:
 
-若要使用 Azure Blob 服务 API，需要：
+1. Reference the autoloader file using the [require_once] statement, and
+2. Reference any classes you might use.
 
-1. 使用 [require\_once] 语句引用 autoloader 文件，并
-2. 引用所用的任意类。
-
-下面的示例演示了如何包括 autoloader 文件并引用 **ServicesBuilder** 类。
+The following example shows how to include the autoloader file and reference the **ServicesBuilder** class.
 
 > [!NOTE]
-> 本示例（以及本文中的其他示例）假定已通过 Composer 安装了用于 Azure 的 PHP 客户端库。如果已手动安装这些库，则需要引用 `WindowsAzure.php` autoloader 文件。
+> This example (and other examples in this article) assume you have installed the PHP Client Libraries for Azure via Composer. If you installed the libraries manually, you need to reference the `WindowsAzure.php` autoloader file.
 
 ```php
 require_once 'vendor/autoload.php';
 use WindowsAzure\Common\ServicesBuilder;
 ```
 
-在下面的示例中，将始终显示 `require_once` 语句，但只会引用执行该示例所需的类。
+In the examples below, the `require_once` statement will be shown always, but only the classes necessary for the example to execute are referenced.
 
-##<a id="ConnectionString"></a>设置 Azure 存储连接
+## Set up an Azure storage connection
+To instantiate an Azure blob service client, you must first have a valid connection string. The format for the blob service connection string is:
 
-若要实例化 Azure Blob 服务客户端，必须首先具有有效的连接字符串。Blob 服务连接字符串的格式为：
-
-对于访问实时服务：
+For accessing a live service:
 
 ```php
 DefaultEndpointsProtocol=[http|https];AccountName=[yourAccount];AccountKey=[yourKey];EndpointSuffix=core.chinacloudapi.cn
 ```
 
-访问存储模拟器：
+For accessing the storage emulator:
 
 ```php
 UseDevelopmentStorage=true
 ```
 
-若要创建任何 Azure 服务客户端，则需要使用 **ServicesBuilder** 类。方法：
+To create any Azure service client, you need to use the **ServicesBuilder** class. You can:
 
-* 将连接字符串直接传递给此类或
-* 使用 **CloudConfigurationManager (CCM)** 检查多个外部源以获取连接字符串：
-  * 默认情况下，它附带了对一个外部源的支持 - 环境变量。
-  * 可通过扩展 **ConnectionStringSource** 类来添加新源。
+* Pass the connection string directly to it or
+* Use the **CloudConfigurationManager (CCM)** to check multiple external sources for the connection string:
+  * By default, it comes with support for one external source - environmental variables.
+  * You can add new sources by extending the **ConnectionStringSource** class.
 
-在此处列出的示例中，将直接传递连接字符串。
+For the examples outlined here, the connection string will be passed directly.
 
 ```php
 require_once 'vendor/autoload.php';
@@ -91,10 +90,11 @@ use WindowsAzure\Common\ServicesBuilder;
 $blobRestProxy = ServicesBuilder::getInstance()->createBlobService($connectionString);
 ```
 
-##<a id="CreateContainer"></a>创建容器
+## Create a container
+
 [!INCLUDE [storage-container-naming-rules-include](../../includes/storage-container-naming-rules-include.md)]
 
-利用 **BlobRestProxy** 对象，可以使用 **createContainer** 方法创建 Blob 容器。创建容器时，可以在该容器上设置选项，但此操作不是必需的。（下面的示例演示了如何设置容器访问控制列表 (ACL) 和容器元数据。）
+A **BlobRestProxy** object lets you create a blob container with the **createContainer** method. When creating a container, you can set options on the container, but doing so is not required. (The example below shows how to set the container access control list (ACL) and container metadata.)
 
 ```php
 require_once 'vendor\autoload.php';
@@ -145,13 +145,12 @@ catch(ServiceException $e){
 }
 ```
 
-调用 **setPublicAccess(PublicAccessType::CONTAINER\_AND\_BLOBS)** 将使容器和 Blob 数据可通过匿名请求访问。通过调用 **setPublicAccess(PublicAccessType::BLOBS\_ONLY)**，仅使 Blob 数据可通过匿名请求访问。有关容器 ACL 的详细信息，请参阅 [设置容器 ACL (REST API)][container-acl]。
+Calling **setPublicAccess(PublicAccessType::CONTAINER\_AND\_BLOBS)** makes the container and blob data accessible via anonymous requests. Calling **setPublicAccess(PublicAccessType::BLOBS_ONLY)** makes only blob data accessible via anonymous requests. For more information about container ACLs, see [Set container ACL (REST API)][container-acl].
 
-有关 Blob 服务错误代码的详细信息，请参阅 [Blob 服务错误代码][error-codes]。
+For more information about Blob service error codes, see [Blob Service Error Codes][error-codes].
 
-##<a id="UploadBlob"></a>将 Blob 上传到容器中
-
-若要将文件作为 Blob 上传，请使用 **BlobRestProxy->createBlockBlob** 方法。此操作将创建 Blob（如果该 Blob 不存在），或者覆盖它（如果该 Blob 存在）。下面的代码示例假定已创建了容器，并使用 [fopen][fopen] 将文件作为流打开。
+## Upload a blob into a container
+To upload a file as a blob, use the **BlobRestProxy->createBlockBlob** method. This operation creates the blob if it doesn't exist, or overwrites it if it does. The code example below assumes that the container has already been created and uses [fopen][fopen] to open the file as a stream.
 
 ```php
 require_once 'vendor/autoload.php';
@@ -179,11 +178,10 @@ catch(ServiceException $e){
 }
 ```
 
-请注意，上面的示例将 Blob 作为流上传。但是，也可使用 [file\_get\_contents][file_get_contents] 函数将 Blob 作为字符串上传。若要使用前面的示例执行此操作，请将 `$content = fopen("c:\myfile.txt", "r");` 更改为 `$content = file_get_contents("c:\myfile.txt");`。
+Note that the previous sample uploads a blob as a stream. However, a blob can also be uploaded as a string using, for example, the [file\_get\_contents][file_get_contents] function. To do this using the previous sample, change `$content = fopen("c:\myfile.txt", "r");` to `$content = file_get_contents("c:\myfile.txt");`.
 
-##<a id="ListBlobs"></a>列出容器中的 Blob
-
-若要列出容器中的 Blob，请将 **BlobRestProxy->listBlobs** 方法与 **foreach** 循环一起使用来循环访问结果。以下代码将容器中的每个 Blob 的名称作为容器中的输出并将其 URI 显示到浏览器。
+## List the blobs in a container
+To list the blobs in a container, use the **BlobRestProxy->listBlobs** method with a **foreach** loop to loop through the result. The following code displays the name of each blob as output in a container and displays its URI to the browser.
 
 ```php
 require_once 'vendor/autoload.php';
@@ -214,9 +212,8 @@ catch(ServiceException $e){
 }
 ```
 
-##<a id="DownloadBlob"></a>下载 Blob
-
-若要下载 Blob，请调用 **BlobRestProxy->getBlob** 方法，然后对生成的 **GetBlobResult** 对象调用 **getContentStream** 方法。
+## Download a blob
+To download a blob, call the **BlobRestProxy->getBlob** method, then call the **getContentStream** method on the resulting **GetBlobResult** object.
 
 ```php
 require_once 'vendor/autoload.php';
@@ -242,11 +239,10 @@ catch(ServiceException $e){
 }
 ```
 
-请注意，上面的示例将 Blob 作为流资源获取（默认行为）。但是，可以使用 [stream\_get\_contents][stream-get-contents] 函数将返回的流转换为字符串。
+Note that the example above gets a blob as a stream resource (the default behavior). However, you can use the [stream\_get\_contents][stream-get-contents] function to convert the returned stream to a string.
 
-##<a id="DeleteBlob"></a>删除 Blob
-
-若要删除 Blob，请将容器名称和 Blob 名称传递到 **BlobRestProxy->deleteBlob**。
+## Delete a blob
+To delete a blob, pass the container name and blob name to **BlobRestProxy->deleteBlob**.
 
 ```php
 require_once 'vendor/autoload.php';
@@ -271,9 +267,8 @@ catch(ServiceException $e){
 }
 ```
 
-##<a id="DeleteContainer"></a>删除 Blob 容器
-
-最后，若要删除 Blob 容器，请将容器名称传递到 **BlobRestProxy->deleteContainer**。
+## Delete a blob container
+Finally, to delete a blob container, pass the container name to **BlobRestProxy->deleteContainer**.
 
 ```php
 require_once 'vendor/autoload.php';
@@ -298,23 +293,20 @@ catch(ServiceException $e){
 }
 ```
 
-##<a id="next-steps"></a>后续步骤
+## Next steps
+Now that you've learned the basics of the Azure blob service, follow these links to learn about more complex storage tasks.
 
-在了解了 Azure Blob 服务的基础知识后，可单击下面的链接以了解有关更复杂的存储任务的详细信息。
+- Visit the [Azure Storage team blog](http://blogs.msdn.com/b/windowsazurestorage/)
+- See the [PHP block blob example](https://github.com/WindowsAzure/azure-sdk-for-php-samples/blob/master/storage/BlockBlobExample.php).
+- See the [PHP page blob example](https://github.com/WindowsAzure/azure-sdk-for-php-samples/blob/master/storage/PageBlobExample.php).
+- [Transfer data with the AzCopy Command-Line Utility](./storage-use-azcopy.md)
 
-- 访问 [Azure 存储团队博客](http://blogs.msdn.com/b/windowsazurestorage/)
-- 参阅 [PHP 块 Blob 示例](https://github.com/WindowsAzure/azure-sdk-for-php-samples/blob/master/storage/BlockBlobExample.php)。
-- 参阅 [PHP 页 Blob 示例](https://github.com/WindowsAzure/azure-sdk-for-php-samples/blob/master/storage/PageBlobExample.php)。
-- [使用 AzCopy 命令行实用程序传输数据](./storage-use-azcopy.md)
-
-有关详细信息，另请参阅 [PHP 开发人员中心](/develop/php/)。
+For more information, see also the [PHP Developer Center](/develop/php/).
 
 [download]: ../php-download-sdk.md
 [container-acl]: http://msdn.microsoft.com/zh-cn/library/azure/dd179391.aspx
 [error-codes]: http://msdn.microsoft.com/zh-cn/library/azure/dd179439.aspx
 [file_get_contents]: http://php.net/file_get_contents
-[require\_once]: http://php.net/require_once
+[require_once]: http://php.net/require_once
 [fopen]: http://www.php.net/fopen
 [stream-get-contents]: http://www.php.net/stream_get_contents
-
-<!---HONumber=Mooncake_0103_2017-->

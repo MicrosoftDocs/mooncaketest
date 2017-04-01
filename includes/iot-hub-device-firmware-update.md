@@ -1,25 +1,23 @@
-## 创建模拟设备应用程序
-本部分的操作：
+## Create a simulated device app
+In this section, you:
 
-* 创建一个 Node.js 控制台应用，用于响应通过云调用的直接方法
-* 触发模拟的固件更新
-* 使用报告属性，允许通过设备孪生查询标识设备及其上次完成固件更新的时间
+* Create a Node.js console app that responds to a direct method called by the cloud
+* Trigger a simulated firmware update
+* Use the reported properties to enable device twin queries to identify devices and when they last completed a firmware update
 
-1. 创建名为 **manageddevice** 的空文件夹。在 **manageddevice** 文件夹的命令提示符处，使用以下命令创建 package.json 文件。接受所有默认值：
+1. Create an empty folder called **manageddevice**.  In the **manageddevice** folder, create a package.json file using the following command at your command prompt. Accept all the defaults:
 
     ```
     npm init
     ```
-
-2. 在 **manageddevice** 文件夹的命令提示符处，运行下述命令以安装 **azure-iot-device** 和 **azure-iot-device-mqtt** 设备 SDK 包：
+2. At your command prompt in the **manageddevice** folder, run the following command to install the **azure-iot-device** and **azure-iot-device-mqtt** Device SDK packages:
 
     ```
     npm install azure-iot-device azure-iot-device-mqtt --save
     ```
+3. Using a text editor, create a **dmpatterns_fwupdate_device.js** file in the **manageddevice** folder.
 
-3. 在 **manageddevice** 文件夹中，使用文本编辑器创建 **dmpatterns\_fwupdate\_device.js** 文件。
-
-4. 在 **dmpatterns\_fwupdate\_device.js** 文件开头添加以下“require”语句：
+4. Add the following 'require' statements at the start of the **dmpatterns_fwupdate_device.js** file:
 
     ```
     'use strict';
@@ -27,15 +25,13 @@
     var Client = require('azure-iot-device').Client;
     var Protocol = require('azure-iot-device-mqtt').Mqtt;
     ```
-
-5. 添加 **connectionString** 变量，并使用它创建**客户端**实例。将占位符 `{yourdeviceconnectionstring}` 替换为此前在“创建设备标识”部分记下的连接字符串：
+5. Add a **connectionString** variable and use it to create a **Client** instance. Replace the `{yourdeviceconnectionstring}` placeholder with the connection string you previously made a note of in the "Create a device identity" section previously:
 
     ```
     var connectionString = '{yourdeviceconnectionstring}';
     var client = Client.fromConnectionString(connectionString, Protocol);
     ```
-
-6. 添加以下函数，用于更新报告的属性：
+6. Add the following function that is used to update reported properties:
 
     ```
     var reportFWUpdateThroughTwin = function(twin, firmwareUpdateValue) {
@@ -51,8 +47,7 @@
       });
     };
     ```
-
-7. 添加以下函数，模拟固件映像的下载和应用：
+7. Add the following functions that simulate downloading and applying the firmware image:
 
     ```
     var simulateDownloadImage = function(imageUrl, callback) {
@@ -74,8 +69,7 @@
       callback(error);
     }
     ```
-
-8. 添加以下函数，通过报告的属性将固件更新状态更新为“正在等待”。通常情况下，设备会收到有关可用更新的通知，并且管理员定义的策略会强制设备开始下载和应用更新。此函数是用于启用该策略的逻辑应该运行的位置。为了简单起见，此示例会先显示 4 秒钟的时间，然后才开始下载固件映像：
+8. Add the following function that updates the firmware update status through the reported properties to **waiting**. Typically, devices are informed of an available update and an administrator defined policy causes the device to start downloading and applying the update. This function is where the logic to enable that policy should run. For simplicity, the sample deplays for four seconds before proceeding to download the firmware image:
 
     ```
     var waitToDownload = function(twin, fwPackageUriVal, callback) {
@@ -90,8 +84,7 @@
       setTimeout(callback, 4000);
     };
     ```
-
-9. 添加以下函数，通过报告的属性将固件更新状态更新为“正在下载”。然后，该函数会模拟固件下载，并最终将固件更新状态更新为“下载失败”或“下载完成”：
+9. Add the following function that updates the firmware update status through the reported properties to **downloading**. The function then simulates a firmware download and finally updates the firmware update status to either **downloadFailed** or **downloadComplete**:
 
     ```
     var downloadImage = function(twin, fwPackageUriVal, callback) {
@@ -128,8 +121,7 @@
       }, 4000);
     }
     ```
-
-10. 添加以下函数，通过报告的属性将固件更新状态更新为“正在应用”。然后，该函数会模拟固件映像的应用，并最终将固件更新状态更新为“应用失败”或“应用完成”：
+10. Add the following function that updates the firmware update status through the reported properties to **applying**. The function then simulates applying the firmware image and finally updates the firmware update status to either **applyFailed** or **applyComplete**:
 
     ```
     var applyImage = function(twin, imageData, callback) {
@@ -166,8 +158,7 @@
       }, 4000);
     }
     ```
-
-11. 添加以下函数，以便处理 **firmwareUpdate** 直接方法并启动多阶段固件更新过程：
+11. Add the following function that handles the **firmwareUpdate** direct method and initiates the multi-stage firmware update process:
 
     ```
     var onFirmwareUpdate = function(request, response) {
@@ -202,8 +193,7 @@
       });
     }
     ```
-
-12. 最后添加以下代码，以便连接到 IoT 中心：
+12. Finally, add the following code that connects to your IoT hub:
 
     ```
     client.open(function(err) {
@@ -218,10 +208,8 @@
     ```
 
 > [!NOTE]
-为简单起见，本教程不实现任何重试策略。在生产代码中，你应该按 MSDN 文章 [Transient Fault Handling][lnk-transient-faults]（暂时性故障处理）中所述实施重试策略（例如指数性的回退）。
+> To keep things simple, this tutorial does not implement any retry policy. In production code, you should implement retry policies (such as an exponential backoff), as suggested in the MSDN article [Transient Fault Handling][lnk-transient-faults].
 > 
 > 
 
 [lnk-transient-faults]: https://msdn.microsoft.com/library/hh675232.aspx
-
-<!---HONumber=Mooncake_0306_2017-->

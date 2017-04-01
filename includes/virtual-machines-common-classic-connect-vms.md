@@ -1,27 +1,24 @@
-![独立云服务中的虚拟机](./media/virtual-machines-common-classic-connect-vms/CloudServiceExample.png)
+![Virtual machines in a standalone cloud service](./media/virtual-machines-common-classic-connect-vms/CloudServiceExample.png)
 
-如果将虚拟机放在虚拟网络中，你可以决定要将多少云服务用于负载均衡和可用性集。此外，可以采用与本地网络相同的方式，在子网上组织虚拟机，并将虚拟网络连接到本地网络。下面是一个示例：
+If you place your virtual machines in a virtual network, you can decide how many cloud services you want to use for load balancing and availability sets. Additionally, you can organize the virtual machines on subnets in the same way as your on-premises network and connect the virtual network to your on-premises network. Here's an example:
 
-![虚拟网络中的虚拟机](./media/virtual-machines-common-classic-connect-vms/VirtualNetworkExample.png)
+![Virtual machines in a virtual network](./media/virtual-machines-common-classic-connect-vms/VirtualNetworkExample.png)
 
-若要在 Azure 中连接虚拟机，建议使用虚拟网络。最佳做法是在单独的云服务中配置应用程序的每一层。不过，你可能需要将不同应用程序层的部分虚拟机整合到相同的云服务中，以维持在每个订阅最多 200 个云服务的限制内。若要查看本限制和其他限制，请参阅 [Azure 订阅和服务限制、配额与约束](../articles/azure-subscription-service-limits.md)。
+Virtual networks are the recommended way to connect virtual machines in Azure. The best practice is to configure each tier of your application in a separate cloud service. However, you may need to combine some virtual machines from different application tiers into the same cloud service to remain within the maximum of 200 cloud services per subscription. To review this and other limits, see [Azure Subscription and Service Limits, Quotas, and Constraints](../articles/azure-subscription-service-limits.md).
 
-## 连接虚拟网络中的 VM
+## Connect VMs in a virtual network
+To connect virtual machines in a virtual network:
 
-若要连接虚拟网络中的虚拟机，请执行以下步骤：
+1. Create the virtual network in the [Azure portal preview](../articles/virtual-network/virtual-networks-create-vnet-classic-pportal.md).
+2. Create the set of cloud services for your deployment to reflect your design for availability sets and load balancing. In the Azure Classic Management Portal, click **New > Compute > Cloud Service > Custom Create** for each cloud service.
+3. To create each new virtual machine, click **New > Compute > Virtual Machine > From Gallery**. Choose the correct cloud service and virtual network for the VM. If the cloud service is already joined to a virtual network, its name will already be selected for you.
 
-1. 在 [Azure 经典管理门户](../articles/virtual-network/virtual-networks-create-vnet-classic-portal.md)中创建虚拟网络。
-2. 为部署创建一组云服务，以反映可用性集和负载均衡的设计。在 Azure 经典管理门户中，针对每一个云服务，单击“新建”>“计算”>“云服务”>“自定义创建”。
-3. 若要逐一创建新的虚拟机，请单击“新建”>“计算”>“虚拟机”>“从库中”。为 VM 选择正确的云服务和虚拟网络。如果云服务已加入虚拟网络，系统会为你选定服务名称。
+![Selecting a cloud service for a virtual machine](./media/virtual-machines-common-classic-connect-vms/VMConfig1.png)
 
-![为虚拟机选择云服务](./media/virtual-machines-common-classic-connect-vms/VMConfig1.png)
+## <a name="connect-vms-in-a-standalone-cloud-service"></a> Connect VMs in a standalone cloud service
+To connect virtual machines in a standalone cloud service:
 
-## <a name="connect-vms-in-a-standalone-cloud-service"></a> 连接独立云服务中的 VM
+1. Create the cloud service in the [Azure Classic Management Portal](http://manage.windowsazure.cn). Click **New > Compute > Cloud Service > Custom Create**. Or, you can create the cloud service for your deployment when you create your first virtual machine.
+2. When you create the virtual machines, choose the name of cloud service created in the previous step.
 
-若要连接独立云服务中的虚拟机，请执行以下步骤：
-
-1. 在 [Azure 经典管理门户](http://manage.windowsazure.cn)中创建云服务。单击“新建”>“计算”>“云服务”>“自定义创建”。或者，当你创建第一个虚拟机时，可以为你的部署创建云服务。
-
-2. 创建虚拟机时，请选择上一个步骤中创建的云服务名称。
-
-    ![将虚拟机添加到现有云服务](./media/virtual-machines-common-classic-connect-vms/Connect-VM-to-CS.png)
+    ![Add a virtual machine to an existing cloud service](./media/virtual-machines-common-classic-connect-vms/Connect-VM-to-CS.png)

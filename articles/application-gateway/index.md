@@ -1,5 +1,5 @@
 ---
-title: Azure Application Gateway Documentation - Tutorials, API Reference | Microsoft Docs
+title: Azure Application Gateway Documentation - Tutorials, API Reference | Azure
 description: Learn how to deploy a cloud application delivery controller. Documentation shows how to set up application-level routing and load balancing for a web front end.
 services: application-gateway
 author: carolz
@@ -11,6 +11,7 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
+wacn.date: ''
 ms.author: carolz
 ---
 # Application Gateway Documentation
@@ -65,7 +66,7 @@ Learn how to deploy Application Gateway, an application delivery controller (ADC
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Get Started with Application Gateway using the Azure portal</h3>
+                        <h3>Get Started with Application Gateway using the Azure portal preview</h3>
                     </div>
                 </div>
             </div>
@@ -120,8 +121,8 @@ Learn how to deploy Application Gateway, an application delivery controller (ADC
                 <div class="card">
                     <div class="cardText">
                         <h3>Command-Line</h3>
-                        <p><a href="/powershell/resourcemanager">PowerShell</a></p>
-                        <p><a href="/cli/azure/network/application-gateway">Azure CLI 2.0</a></p>
+                        <p><a href="https://docs.microsoft.com/powershell/resourcemanager">PowerShell</a></p>
+                        <p><a href="https://docs.microsoft.com/cli/azure/network/application-gateway">Azure CLI 2.0</a></p>
                     </div>
                 </div>
             </div>
@@ -149,13 +150,11 @@ Learn how to deploy Application Gateway, an application delivery controller (ADC
                 <div class="card">
                     <div class="cardText">
                         <h3>REST</h3>
-                        <p><a href="https://msdn.microsoft.com/library/mt684941">REST API Reference</a></p>
-                        <p><a href="https://msdn.microsoft.com/library/azure/mt299393">Classic REST API Reference</a></p>
+                        <p><a href="https://msdn.microsoft.com/zh-cn/library/mt684941">REST API Reference</a></p>
+                        <p><a href="https://msdn.microsoft.com/zh-cn/library/azure/mt299393">Classic REST API Reference</a></p>
                     </div>
                 </div>
             </div>
         </div>
     </li>
-</ul>	
-
-
+</ul>

@@ -1,6 +1,6 @@
-4. 在名为 `ToDoBroadcastReceiver` 的项目中创建一个新类。
+4. Create a new class in the project called `ToDoBroadcastReceiver`.
 
-5. 将以下 using 语句添加到 **ToDoBroadcastReceiver** 类：
+5. Add the following using statements to **ToDoBroadcastReceiver** class:
 
     ```
     using Gcm.Client;
@@ -8,7 +8,7 @@
     using Newtonsoft.Json.Linq;
     ```
 
-6. 在 **using** 语句和 **namespace** 声明之间添加以下权限请求：
+6. Add the following permission requests between the **using** statements and the **namespace** declaration:
 
     ```
     [assembly: Permission(Name = "@PACKAGE_NAME@.permission.C2D_MESSAGE")]
@@ -21,7 +21,7 @@
     [assembly: UsesPermission(Name = "android.permission.WAKE_LOCK")]
     ```
 
-7. 将现有的 **ToDoBroadcastReceiver** 类定义替换为以下代码：
+7. Replace the existing **ToDoBroadcastReceiver** class definition with the following:
 
     ```
     [BroadcastReceiver(Permission = Gcm.Client.Constants.PERMISSION_GCM_INTENTS)]
@@ -38,9 +38,9 @@
     }
     ```
 
-    在上述代码中，你必须将 _`<PROJECT_NUMBER>`_ 替换为你在 Google 开发人员门户中设置应用程序时 Google 分配的项目编号。
+    In the above code, you must replace _`<PROJECT_NUMBER>`_ with the project number assigned by Google when you provisioned your app in the Google developer portal. 
 
-8. 在 ToDoBroadcastReceiver.cs 项目文件中，添加定义 **PushHandlerService** 类的以下代码：
+8. In the ToDoBroadcastReceiver.cs project file, add the following code that defines the **PushHandlerService** class:
 
     ```
     // The ServiceAttribute must be applied to the class.
@@ -53,12 +53,12 @@
     }
     ```
 
-    请注意，此类派生自 **GcmServiceBase**，“服务”属性必须应用于此类。
+    Note that this class derives from **GcmServiceBase** and that the **Service** attribute must be applied to this class.
 
     >[!NOTE]
-    >**GcmServiceBase** 类实现 **OnRegistered()**、**OnUnRegistered()**、**OnMessage()** 和 **OnError()** 方法。必须在 **PushHandlerService** 类中重写这些方法。
+    >The **GcmServiceBase** class implements the **OnRegistered()**, **OnUnRegistered()**, **OnMessage()** and **OnError()** methods. You must override these methods in the **PushHandlerService** class.
 
-5. 将以下代码添加到 **PushHandlerService** 类，以便重写 **OnRegistered **事件处理程序。
+5. Add the following code to the **PushHandlerService** class that overrides the **OnRegistered** event handler. 
 
     ```
     protected override void OnRegistered(Context context, string registrationId)
@@ -99,9 +99,9 @@
     }
     ```
 
-    此方法使用返回的 GCM 注册 ID 向 Azure 注册以获取推送通知。仅能在创建注册后向其添加标记。有关详细信息，请参阅[如何：将标记添加到设备安装以启用“推送到标记”](../articles/app-service-mobile/app-service-mobile-dotnet-backend-how-to-use-server-sdk.md#how-to-add-tags-to-a-device-installation-to-enable-push-to-tags)。
+    This method uses the returned GCM registration ID to register with Azure for push notifications. Tags can only be added to the registration after it is created. For more information, see [How to: Add tags to a device installation to enable push-to-tags](../articles/app-service-mobile/app-service-mobile-dotnet-backend-how-to-use-server-sdk.md#tags).
 
-10. 在 **PushHandlerService** 中使用以下代码重写 **OnMessage** 方法：
+10. Override the **OnMessage** method in **PushHandlerService** with the following code:
 
     ```
     protected override void OnMessage(Context context, Intent intent)
@@ -139,7 +139,7 @@
     }
     ```
 
-12. 使用以下代码重写 **OnUnRegistered ()** 和 **OnError ()** 方法。
+12. Override the **OnUnRegistered()** and **OnError()** methods with the following code.
 
     ```
     protected override void OnUnRegistered(Context context, string registrationId)
@@ -153,5 +153,3 @@
             string.Format("Error occurred in the notification: {0}.", errorId));
     }
     ```
-
-<!---HONumber=Mooncake_0919_2016-->

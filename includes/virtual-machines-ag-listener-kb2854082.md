@@ -1,11 +1,12 @@
-接下来，如果群集中的任何服务器运行的是 Windows Server 2008 R2 或 Windows Server 2012，你必须验证群集中的每个本地服务器或 Azure VM 上是否安装了修补程序 [KB2854082](https://support.microsoft.com/zh-cn/kb/2854082)。位于群集中但不在可用性组中的任何服务器或 VM 也应安装此修补程序。
+Next, if any servers on the cluster are running Windows Server 2008 R2 or Windows Server 2012, you must verify that the hotfix [KB2854082](http://support.microsoft.com/zh-cn/kb/2854082) is installed on each of the on-premises servers or Azure VMs that are part of the cluster. Any server or VM that is in the cluster, but not in the availability group, should also have this hotfix installed.
 
-在每个群集节点的远程桌面会话中，将 [KB2854082](https://support.microsoft.com/zh-cn/kb/2854082) 下载到本地目录。然后，按顺序在每个群集节点上安装该修补程序。如果群集节点上当前运行了群集服务，修补程序安装结束后会重新启动服务器。
+In the remote desktop session for each of the cluster nodes, download [KB2854082](http://support.microsoft.com/zh-cn/kb/2854082) to a local directory. Then, install the hotfix on each of the cluster nodes sequentially. If the cluster service is currently running on the cluster node, the server is restarted at the end of the hotfix installation.
 
->[!WARNING]
->停止群集服务或重新启动服务器会影响群集和可用性组的仲裁运行状况，并可能导致群集进入脱机状态。若要在安装过程中维持群集的高可用性，请确保：
-><p> - 群集处于最佳仲裁运行状况， 
-><p> - 在任何节点上安装此修补程序之前，所有群集节点均处于联机状态，并且
-><p> - 允许在一个节点上完成此修补程序的整个安装过程，包括完全重启服务器，然后在集群中的任何其他节点上安装此修补程序。
-
-<!---HONumber=70-->
+> [!WARNING]
+> Stopping the cluster service or restarting the server affects the quorum health of your cluster and the availability group, and may cause your cluster to go offline. To maintain the high availability of your cluster during installation, make sure that:
+> 
+> * The cluster is in optimal quorum health, 
+> * All cluster nodes are online before installing the hotfix on any node, and
+> * Allow the hotfix installation to run to completion on one node, including fully restarting the server, before installing the hotfix on any other node in the cluster.
+> 
+>

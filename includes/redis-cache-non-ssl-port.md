@@ -1,5 +1,3 @@
-若要启用非 SSL 端口，请在[Azure 门户预览](https://portal.azure.cn)中[浏览](../articles/redis-cache/cache-configure.md#configure-redis-cache-settings)到缓存，然后单击“设置”>“高级设置”。对“高级设置”边栏选项卡中的“仅允许通过 SSL 访问”单击“否”，然后单击“保存”。
+To enable the non-SSL port, [browse](../articles/redis-cache/cache-configure.md#configure-redis-cache-settings) to your cache in the [Azure portal preview](https://portal.azure.cn) and click **Advanced settings**. Click **No** for **Allow access only via SSL** on the **Advanced settings** blade and then click **Save**.
 
-![Redis 缓存设置](./media/redis-cache-non-ssl-port/redis-cache-non-ssl-port.png)  
-
-<!---HONumber=Mooncake_1010_2016-->
+![Redis cache settings](./media/redis-cache-non-ssl-port/redis-cache-non-ssl-port.png)

@@ -1,18 +1,16 @@
-数据库事务单位 (DTU) 是 SQL 数据库中的度量单位，表示数据库基于实际度量（数据库事务）的相对性能。我们执行了针对联机事务处理 (OLTP) 请求通常需要执行的一组操作，然后度量了在全部加载的条件下每秒可以完成多少个事务（这是简短版本，你可以在[基准概述](../articles/sql-database/sql-database-benchmark-overview.md)中阅读底层详细信息）。
+The Database Transaction Unit (DTU) is the unit of measure in SQL Database that represents the relative power of databases based on a real-world measure: the database transaction. We took a set of operations that are typical for an online transaction processing (OLTP) request, and then measured how many transactions could be completed per second under fully loaded conditions (that’s the short version, you can read the gory details in the [Benchmark overview](../articles/sql-database/sql-database-benchmark-overview.md)). 
 
-例如，具有 1750 个 DTU 的高级 P11 数据库提供的 DTU 计算能力是具有 5 个 DTU 的基本数据库的 350 倍。
+For example, a Premium P11 database with 1750 DTUs provides 350x more DTU compute power than a Basic database with 5 DTUs. 
 
-![SQL 数据库简介：按层和级别统计的单个数据库 DTU。](./media/sql-database-understanding-dtus/single_db_dtus.png)
+![Intro to SQL Database: Single database DTUs by tier and level.](./media/sql-database-understanding-dtus/single_db_dtus.png)
 
 >[!NOTE]
-> 如果你要迁移现有的 SQL Server 数据库，则可使用第三方工具 [Azure SQL 数据库 DTU 计算器](http://dtucalculator.azurewebsites.net)对你的数据库在 Azure SQL 数据库中可能需要的性能级别和服务层进行估算。
+> If you are migrating an existing SQL Server database, you can use a third-party tool, [the Azure SQL Database DTU Calculator](http://dtucalculator.azurewebsites.net), to get an estimate of the performance level and service tier your database might require in Azure SQL Database.
 
-### DTU 与 eDTU
+### DTU vs. eDTU
 
-单个数据库的 DTU 可直接转换为弹性数据库的 eDTU。例如，基本弹性数据库池中的一个数据库最多提供 5 个 eDTU。这与单个基本数据库的性能相同。不同之处在于弹性数据库不会使用池中的任何 eDTU，直到必须这样做。
+The DTU for single databases translates directly to the eDTU for elastic databases. For example, a database in a Basic elastic database pool offers up to 5 eDTUs. That’s the same performance as a single Basic database. The difference is that the elastic database won’t consume any eDTUs from the pool until it has to. 
 
-![SQL 数据库简介：按层列出的弹性池。](./media/sql-database-understanding-dtus/sqldb_elastic_pools.png)
+![Intro to SQL Database: Elastic pools by tier.](./media/sql-database-understanding-dtus/sqldb_elastic_pools.png)
 
-一个简单的示例可帮助你理解。创建一个具有 1000 个 DTU 的基本弹性数据库池并在其中放置了 800 个数据库。只要在任一时间点只使用 800 个数据库中的 200 个数据库（5 DTU X 200 = 1000），就不会达到池的容量，因此数据库性能不会降低。为清楚起见，此示例进行了简化。涉及的真实数学有些复杂。门户会为你执行数学计算，并会根据历史数据库使用情况提出建议。若要了解建议的工作方式，或者要自己执行数学计算，请参阅[弹性数据库池的价格和性能注意事项](../articles/sql-database/sql-database-elastic-pool-guidance.md)。
-
-<!---HONumber=Mooncake_0530_2016-->
+A simple example helps. Take a Basic elastic database pool with 1000 DTUs and drop 800 databases in it. As long as only 200 of the 800 databases are being used at any point in time (5 DTU X 200 = 1000), you won’t hit capacity of the pool, and database performance won’t degrade. This example is simplified for clarity. The real math is a bit more involved. The portal does the math for you, and makes a recommendation based on historical database usage. See [Price and performance considerations for an elastic database pool](../articles/sql-database/sql-database-elastic-pool-guidance.md) to learn how the recommendations work, or to do the math yourself.

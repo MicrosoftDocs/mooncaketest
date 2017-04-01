@@ -1,4 +1,2 @@
 > [!NOTE]
->Azure 具有用于创建和处理资源的两个不同的部署模型：[资源管理器和经典部署](../articles/azure-resource-manager/resource-manager-deployment-model.md)。这篇文章介绍如何使用这两种模型，但 Azure 建议大多数最新部署使用资源管理器模型。
-
-<!---HONumber=79-->
+> Azure has two different deployment models for creating and working with resources:  [Resource Manager and classic](../articles/azure-resource-manager/resource-manager-deployment-model.md). This article covers using both models, but Azure recommends that most new deployments use the Resource Manager model.

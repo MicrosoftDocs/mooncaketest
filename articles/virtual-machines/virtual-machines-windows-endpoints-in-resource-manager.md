@@ -1,32 +1,31 @@
 ---
-title: 资源管理器中的经典终结点概述 | Azure
-description: 了解现在如何在资源管理器中使用网络安全组和 ACL 规则实施经典部署模型中的终结点
+title: Understand endpoints for Windows VMs in Azure | Azure
+description: Learn how endpoints from the Classic deployment model are now implemented in Resource Manager using Network Security Groups and ACL rules
 services: virtual-machines-windows
-documentationCenter: ''
-authors: iainfoulds
+documentationcenter: ''
+author: iainfoulds
 manager: timlt
 editor: ''
 
+ms.assetid: 5420a5e6-72a2-4c46-a786-2a2b21bcead4
 ms.service: virtual-machines-windows
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 10/27/2016
-wacn.date: 12/30/2016
+ms.date: 02/09/2017
+wacn.date: ''
 ms.author: iainfou
----
 
-# 资源管理器中的经典终结点
+---
+# Classic endpoints for Windows VMs with Azure Resource Manager
 [!INCLUDE [virtual-machines-common-endpoints-in-resource-manager](../../includes/virtual-machines-common-endpoints-in-resource-manager.md)]
 
-## 后续步骤
-以下文章更详细地介绍了这里讨论的技术，还包括有关如何使用网络安全组的快速入门指南：
+## Next steps
+You can read more detailed information on the technologies discussed here, along with quickstart guides for using Network Security Groups, in the following articles:
 
-- [快速入门 — 使用 Azure 门户预览创建网络安全组和 ACL 规则](./virtual-machines-windows-nsg-quickstart-portal.md)  
-- [快速入门 — 使用 Azure PowerShell 创建网络安全组和 ACL 规则](./virtual-machines-windows-nsg-quickstart-powershell.md)  
-- [Azure Resource Manager 概述](../azure-resource-manager/resource-group-overview.md)  
-- [什么是网络安全组 (NSG)？](../virtual-network/virtual-networks-nsg.md)
-- [负载均衡器的 Azure 资源管理器概述](../load-balancer/load-balancer-arm.md) 
-
-<!---HONumber=Mooncake_Quality_Review_1202_2016-->
+* [Quick-start - Create a Network Security Group and ACL rules using the Azure portal preview](virtual-machines-windows-nsg-quickstart-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)  
+* [Quick-start - Create a Network Security Group and ACL rules using the Azure PowerShell](virtual-machines-windows-nsg-quickstart-powershell.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)  
+* [Azure Resource Manager overview](../azure-resource-manager/resource-group-overview.md)  
+* [What is a Network Security Group (NSG)?](../virtual-network/virtual-networks-nsg.md)  
+* [Azure Resource Manager Overview for Load Balancers](../load-balancer/load-balancer-arm.md)

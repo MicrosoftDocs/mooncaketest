@@ -1,21 +1,19 @@
 <a name="application-gateway-limits"></a>
 
-| 资源 | 默认限制 | 注意 |
+| Resource | Default limit | Note |
 | --- | --- | --- |
-| 应用程序网关 |每个订阅 50 个 | |
-| 前端 IP 配置 |2 个 |公共和专用各 1 个 |
-| 前端端口 |20 个 | |
-| 后端地址池 |20 个 | |
-| 每个池的后端服务器 |100 个 | |
-| HTTP 侦听器 |20 个 | |
-| HTTP 负载均衡规则 |200 个 |HTTP 侦听器数乘以 n，n 默认为 10 |
-| 后端 HTTP 设置 |20 个 |每个后端地址池 1 个 |
-| 每个网关的实例 |10 个 | |
-| SSL 证书 |20 个 |每个 HTTP 侦听器 1 个 |
-| 身份验证证书 |5 | 最大值为 10 |
-| 请求超时最小值 |1 秒 | |
-| 请求超时最大值 |24 小时 | |
-| 站点数 |20 个 |每个 HTTP 侦听器 1 个 |
-| 每个侦听器的 URL 映射 |1 个 | |
-
-<!---HONumber=Mooncake_0227_2017-->
+| Application Gateway |50 per subscription | |
+| Frontend IP Configurations |2 |1 public and 1 private |
+| Frontend Ports |20 | |
+| Backend Address Pools |20 | |
+| Backend Servers per pool |100 | |
+| HTTP Listeners |20 | |
+| HTTP load balancing rules |200 |# of HTTP Listeners * n, n=10 Default |
+| Backend HTTP settings |20 |1 per Backend Address Pool |
+| Instances per gateway |10 | |
+| SSL certificates |20 |1 per HTTP Listeners |
+| Authentication certificates |5 | Maximum 10 |
+| Request timeout min |1 second | |
+| Request timeout max |24hrs | |
+| Number of sites |20 |1 per HTTP Listeners |
+| URL Maps per listener |1 | |

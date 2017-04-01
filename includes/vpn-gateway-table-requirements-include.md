@@ -1,12 +1,10 @@
-下表列出了基于策略和基于路由的 VPN 网关的要求。此表适用于 Resource Manager 与经典部署模型。对于经典模型，基于策略的 VPN 网关与静态网关相同，基于路由的网关与动态网关相同。
+The following table lists the requirements for PolicyBased and RouteBased VPN gateways. This table applies to both the Resource Manager and classic deployment models. For the classic model, PolicyBased VPN gateways are the same as Static gateways, and Route-based gateways are the same as Dynamic gateways.
 
-| | **基于策略的基本 VPN 网关** | **基于路由的基本 VPN 网关** | **基于路由的标准 VPN 网关** | **基于路由的高性能 VPN 网关** |
-|---|---------------------------------------|---------------------------------------|----------------------------|----------------------------------|
-| **站点到站点连接 (S2S)** | 基于策略的 VPN 配置 | 基于路由的 VPN 配置 | 基于路由的 VPN 配置 | 基于路由的 VPN 配置 |
-| **点到站点连接 (P2S)** | 不支持 | 支持（可与 S2S 共存） | 支持（可与 S2S 共存） | 支持（可与 S2S 共存） |
-| **身份验证方法** | 预共享密钥 | S2S 连接的预共享密钥，P2S 连接的证书 | S2S 连接的预共享密钥，P2S 连接的证书 | S2S 连接的预共享密钥，P2S 连接的证书 |
-| **S2S 连接的最大数目** | 1 | 10 | 10 | 30 |
-| **P2S 连接的最大数目** | 不支持 | 128 | 128 | 128 |
-|**活动路由支持 (BGP)** | 不支持 | 不支持 | 支持 | 支持 |
-
-<!---HONumber=Mooncake_0425_2016-->
+|  | **PolicyBased Basic VPN Gateway** | **RouteBased Basic VPN Gateway** | **RouteBased Standard VPN Gateway** | **RouteBased High Performance VPN Gateway** |
+| --- | --- | --- | --- | --- |
+| **Site-to-Site connectivity   (S2S)** |PolicyBased VPN configuration |RouteBased VPN configuration |RouteBased VPN configuration |RouteBased VPN configuration |
+| **Point-to-Site connectivity (P2S**) |Not supported |Supported (Can coexist with S2S) |Supported (Can coexist with S2S) |Supported (Can coexist with S2S) |
+| **Authentication method** |Pre-shared key |Pre-shared key for S2S connectivity, Certificates for P2S connectivity |Pre-shared key for S2S connectivity, Certificates for P2S connectivity |Pre-shared key for S2S connectivity, Certificates for P2S connectivity |
+| **Maximum number of S2S connections** |1 |10 |10 |30 |
+| **Maximum number of P2S connections** |Not supported |128 |128 |128 |
+| **Active routing support (BGP)** |Not supported |Not supported |Supported |Supported |

@@ -1,40 +1,39 @@
-资源|免费|共享（预览）|基本|标准|高级（预览）</th>
----|---|---|---|---|---
-每个 [App Service 计划](../articles/app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md)的 [Web 应用、移动应用或 API 应用](https://www.azure.cn/home/features/app-service/)数<sup>1</sup>|10|100|无限制<sup>2</sup>|无限制<sup>2</sup>|无限制<sup>2</sup>
-[App Service 计划](../articles/app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md)|每个区域 1 个|每个资源组 10 个|每个资源组 100 个|每个资源组 100 个|每个资源组 100 个
-计算实例类型|共享|共享|专用<sup>3</sup>|专用<sup>3</sup>|专用<sup>3</sup></p>
-[横向扩展](../articles/app-service-web/web-sites-scale.md)（最大实例数）|1 个共享|1 个共享|3 个专用<sup>3</sup>|10 个专用<sup>3</sup>|20 个专用<sup>3,4</sup>
-存储<sup>5</sup>|1 GB<sup>5</sup>|1 GB<sup>5</sup>|10 GB<sup>5</sup>|50 GB<sup>5</sup>|250 GB<sup>4,5</sup></p>
-CPU 时间（5 分钟）<sup>6</sup>|3 分钟|3 分钟|无限制，按标准[费率](https://www.azure.cn/pricing/details/app-service/)</a>付费|无限制，按标准费率付费|无限制，按标准费率付费
-CPU 时间（天）<sup>6</sup>|60 分钟|240 分钟|无限制，按标准[费率](https://www.azure.cn/pricing/details/app-service/)</a>付费|无限制，按标准费率付费|无限制，按标准费率付费
-内存（1 小时）|每个 App Service 计划 1024 MB|每个应用 1024 MB|不适用|不适用|不适用
-带宽|165 MB|无限制，收取[数据传输费率](https://www.azure.cn/pricing/details/data-transfer/)|无限制，收取数据传输费率|无限制，收取数据传输费率|无限制，收取数据传输费率
-应用程序体系结构|32 位|32 位|32 位/64 位|32 位/64 位|32 位/64 位
-每个实例的 Web 套接字数<sup>7</sup>|5|35|350|不受限制|不受限制
-[带 FTP/S 和 SSL 的 chinacloudsites.cn 子域](../articles/app-service-web/web-sites-configure-ssl-certificate.md)|X|X|X|X|X
-[自定义域](../articles/app-service-web/web-sites-custom-domain-name.md)支持||X|X|X|X
-自定义域 [SSL 支持](../articles/app-service-web/web-sites-configure-ssl-certificate.md)|||不受限制|无限制，包含 5 个 SNI SSL 和 1 个 IP SSL 连接|无限制，包含 5 个 SNI SSL 和 1 个 IP SSL 连接
-集成负载均衡器||X|X|X|X
-[始终打开](../articles/app-service-web/web-sites-configure.md)|||X|X|X
-[计划备份](../articles/app-service-web/web-sites-backup.md)||||每天一次|每天 50 次<sup>8</sup>
-[自动扩展](../articles/app-service-web/web-sites-scale.md)|||X|X|X
-[WebJobs](../articles/app-service-web/web-sites-create-web-jobs.md)<sup>9</sup>|X|X|X|X|X
-[Azure 计划程序](https://www.azure.cn/home/features/scheduler/)支持||X|X|X|X
-[终结点监视](../articles/app-service-web/web-sites-monitor.md)|||X|X|X
-[过渡槽（预览）](../articles/app-service-web/web-sites-staged-publishing.md)||||5|20
-每个应用的自定义域数</a>||500|500|500|500
-SLA||<p>  
-|99\.9%|99\.95%<sup>10</sup>|99\.95%<sup>10</sup>
+| Resource | Free | Shared (Preview) | Basic | Standard | Premium (Preview)</th> |
+| --- | --- | --- | --- | --- | --- |
+| [Web, mobile, or API apps](https://www.azure.cn/home/features/app-service/) per [App Service plan](../articles/app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md)<sup>1</sup> |10 |100 |Unlimited<sup>2</sup> |Unlimited<sup>2</sup> |Unlimited<sup>2</sup> |
+| [App Service plan](../articles/app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md) |1 per region |10 per resource group |100 per resource group |100 per resource group |100 per resource group |
+| Compute instance type |Shared |Shared |Dedicated<sup>3</sup> |Dedicated<sup>3</sup> |Dedicated<sup>3</sup></p> |
+| [Scale-Out](../articles/app-service-web/web-sites-scale.md) (max instances) |1 shared |1 shared |3 dedicated<sup>3</sup> |10 dedicated<sup>3</sup> |20 dedicated<sup>3,4</sup> |
+| Storage<sup>5</sup> |1 GB<sup>5</sup> |1 GB<sup>5</sup> |10 GB<sup>5</sup> |50 GB<sup>5</sup> |250 GB<sup>4,5</sup></p> |
+| CPU time (5 min)<sup>6</sup> |3 minutes |3 minutes |Unlimited, pay at standard [rates](https://www.azure.cn/pricing/details/app-service/)</a> |Unlimited, pay at standard rates |Unlimited, pay at standard rates |
+| CPU time (day)<sup>6</sup> |60 minutes |240 minutes |Unlimited, pay at standard [rates](https://www.azure.cn/pricing/details/app-service/)</a> |Unlimited, pay at standard rates |Unlimited, pay at standard rates |
+| Memory (1 hour) |1024 MB per App Service plan |1024 MB per app |N/A |N/A |N/A |
+| Bandwidth |165 MB |Unlimited, [data transfer rates](https://www.azure.cn/pricing/details/data-transfer/) apply |Unlimited, data transfer rates apply |Unlimited, data transfer rates apply |Unlimited, data transfer rates apply |
+| Application architecture |32-bit |32-bit |32-bit/64-bit |32-bit/64-bit |32-bit/64-bit |
+| Web Sockets per instance<sup>7</sup> |5 |35 |350 |Unlimited |Unlimited |
+| Concurrent [debugger connections](../articles/app-service-web/web-sites-dotnet-troubleshoot-visual-studio.md) per application |1 |1 |1 |5 |5 |
+| [chinacloudsites.cn subdomain with FTP/S and SSL](../articles/app-service-web/web-sites-configure-ssl-certificate.md) |X |X |X |X |X |
+| [Custom domain](../articles/app-service-web/web-sites-custom-domain-name.md) support | |X |X |X |X |
+| Custom domain [SSL support](../articles/app-service-web/web-sites-configure-ssl-certificate.md) | | |Unlimited |Unlimited, 5 SNI SSL and 1 IP SSL connections included |Unlimited, 5 SNI SSL and 1 IP SSL connections included |
+| Integrated Load Balancer | |X |X |X |X |
+| [Always On](../articles/app-service-web/web-sites-configure.md) | | |X |X |X |
+| [Scheduled Backups](../articles/app-service-web/web-sites-backup.md) | | | |Once per day |50 times per day<sup>8</sup> |
+| [Auto Scale](../articles/app-service-web/web-sites-scale.md) | | |X |X |X |
+| [WebJobs](../articles/app-service-web/web-sites-create-web-jobs.md)<sup>9</sup> |X |X |X |X |X |
+| [Azure Scheduler](https://www.azure.cn/home/features/scheduler/) support | |X |X |X |X |
+| [Endpoint monitoring](../articles/app-service-web/web-sites-monitor.md) | | |X |X |X |
+| [Staging Slots](../articles/app-service-web/web-sites-staged-publishing.md) | | | |5 |20 |
+| Custom domains per app</a> | |500 |500 |500 |500 |
+| SLA | |<p> |99.9% |99.95%<sup>10</sup> |99.95%<sup>10</sup> |
 
-<sup>1</sup>除非特别说明，否则应用和存储配额依每个 App Service 计划为准。  
-<sup>2</sup>你可以在这些计算机上托管的应用的实际数目取决于应用的活动、计算机实例的大小和相应的资源利用率。  
-<sup>3</sup>专用实例可有不同的大小。有关更多详细信息，请参阅 [App Service 定价](https://www.azure.cn/pricing/details/app-service/)。  
-<sup>4</sup>高级层在使用 App Service 环境时最多允许 50 个计算实例（取决于可用性）和 500 GB 的磁盘空间，否则为 20 个计算实例和 250 GB 的存储。然而，Azure 中国目前暂时还不支持 App Service 环境。  
-<sup>5</sup>存储限制是跨相同 App Service 计划中所有应用的内容总大小。  
-<sup>6</sup>这些资源受到专用实例上的物理资源（实例大小和实例数）的限制。  
-<sup>7</sup>如果你将基本层的某个应用扩展为两个实例，则其中每个实例有 350 个并发连接。  
-<sup>8</sup>使用 App Service 环境时，高级层允许将备份间隔下调为最多每隔 5 分钟，否则为每天 50 次。然而，Azure 中国目前暂时还不支持 App Service 环境。  
-<sup>9</sup>按需、按计划或作为 App Service 实例内的后台任务连续运行自定义可执行文件和/或脚本。连续执行 WebJob 需要使用“始终打开”。计划的 WebJob 需要使用 Azure 计划程序免费或标准版。可以在应用服务实例中运行的 WebJob 的数量没有预定义的限制，但是存在实际限制，这些限制取决于应用程序代码尝试执行的任务。  
-<sup>10</sup>向使用多个实例和为故障转移配置的 Azure 流量管理器的部署提供 99.95% 的 SLA。
-
-<!---HONumber=Mooncake_1114_2016-->
+<sup>1</sup>Apps and storage quotas are per App Service plan unless noted otherwise.  
+<sup>2</sup>The actual number of apps that you can host on these machines depends on the activity of the apps, the size of the machine instances, and the corresponding resource utilization.  
+<sup>3</sup>Dedicated instances can be of different sizes. See [App Service Pricing](https://www.azure.cn/pricing/details/app-service/) for more details.
+<sup>4</sup>Premium tier allows up to 50 computes instances (subject to availability) and 500 GB of disk space when using App Service Environments, and 20 compute instances and 250 GB storage otherwise. However, Azure China currently does not support App Service Environment yet.
+<sup>5</sup>The storage limit is the total content size across all apps in the
+same App Service plan.
+<sup>6</sup>These resources are constrained by physical resources on the dedicated instances (the instance size and the number of instances).  
+<sup>7</sup>If you scale an app in the Basic tier to two instances, you have 350 concurrent connections for each of the two instances.  
+<sup>8</sup>Premium tier allows backup intervals down up to every 5 minutes when using App Service Environments, and 50 times per day otherwise. However, Azure China currently does not support App Service Environment yet.
+<sup>9</sup>Run custom executables and/or scripts on demand, on a schedule, or continuously as a background task within your App Service instance. Always On is required for continuous WebJobs execution. Azure Scheduler Free or Standard is required for scheduled WebJobs. There is no predefined limit on the number of WebJobs that can run in an App Service instance, but there are practical limits that depend on what the application code is trying to do.   
+<sup>10</sup>SLA of 99.95% provided for deployments that use multiple instances with Azure Traffic Manager configured for failover.

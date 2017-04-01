@@ -1,7 +1,5 @@
-移动应用项目允许在本地运行新的移动应用后端。这让您能够在将服务代码发布到 Azure 之前，轻松地对其进行调试。
+The mobile app project lets you to run your new mobile app backend locally. This makes it easy to debug your service code before you even publish it to Azure.
 
-1. 在 Windows 电脑上，提取之前已下载的项目，在 Visual Studio 中将其打开。
+1. On your Windows PC, extract project you downloaded earlier, and then open it in Visual Studio.
 
-2. 选择位于底部的项目（其名称应该是移动应用名称后加 Service）。按 **CTRL-F5** 下载 nuget 包，在本地生成项目并启动移动应用后端。运行移动应用客户端时，指向 localhost 时，它将与本地后端进行通信。
-
-<!---HONumber=Mooncake_0919_2016-->
+2. Select the bottom project which should be your Mobile App name with Service at the end of it. Press **CTRL-F5** to download the nuget packages, build the project and start the mobile app backend locally. When you run your mobile app client, pointed at localhost, it will talk to your local backend.

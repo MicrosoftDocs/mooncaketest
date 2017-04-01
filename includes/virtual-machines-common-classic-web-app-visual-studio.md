@@ -1,40 +1,39 @@
-创建 Azure 的 Web 应用程序项目时，可以在 Azure 中设置虚拟机。可以然后使用其他软件来配置该虚拟机，或将虚拟机用于诊断或调试。
+When you create a web application project for Azure, you can provision a virtual machine in Azure. You can then configure the virtual machine with additional software, or use the virtual machine for diagnostic or debugging purposes.
 
-若要在创建 Web 应用程序时创建虚拟机，请执行以下步骤：
+To create a virtual machine when you create a web application, follow these steps:
 
-1. 在 Visual Studio 中，单击“文件”>“新建”>“项目”>“Web”，然后选择“ASP.NET Web 应用程序”（在“Visual C#”或“Visual Basic”节点下）。
-2. 在“新建 ASP.NET 项目”对话框中，选择所需的 Web 应用程序类型，然后在对话框的“Azure”部分（位于右下角）中，确保已选中“在云中托管”复选框（在某些安装中，此复选框标记为“创建远程资源”）。
+1. In Visual Studio, click **File** > **New** > **Project** > **Web**, and then choose **ASP.NET Web Application** (under the **Visual C#** or **Visual Basic** nodes).
+2. In the **New ASP.NET Project** dialog box, select the type of web application you want, and in the Azure section of the dialog box (in the lower-right corner), make sure that the **Host in the cloud** check box is selected (this check box is labeled **Create remote resources** in some installations).
 
-    ![][0]  
+    ![][0]
+3. For this example, in the drop-down list under Azure, choose **Virtual Machine (v1)**, and then click the **OK** button.
+4. Sign in to Azure if you're prompted. The **Create Virtual Machine** dialog box appears.
 
-3. 对于此示例，在 Azure 下的下拉列表中，选择“虚拟机(v1)”，然后单击“确定”按钮。
-4. 根据系统提示登录到 Azure。将显示“创建虚拟机”对话框。
+    ![][2]
+5. In the **DNS name** box, enter a name for the virtual machine. The DNS name must be unique in Azure. If the name you entered isn't available, a red exclamation point appears.
+6. In the **Image** list, choose the image you want to base the virtual machine on. You can choose any of the standard Azure virtual machine images or your image that you've uploaded to Azure.
+7. Leave the **Enable IIS and Web Deploy** check box selected unless you plan to install a different web server. You won't be able to publish from Visual Studio if you disable Web Deploy. You can add IIS and Web Deploy to any of the packaged Windows Server images, including your own custom images.
+8. In the **Size** list, choose the size of the virtual machine.
+9. Specify the sign-in credentials for this virtual machine. Make a note of them, because you'll need them to access the machine through Remote Desktop.
+10. In the **Location** list, choose the region to host the virtual machine.
+11. Click  the **OK** button to start creating the virtual machine. You can follow the progress of the operation in the **Output** window.
 
-    ![][2]  
+    ![][3]
+12. When the virtual machine is provisioned, published scripts are created in a **PublishScripts** node in your solution. The published script runs and provisions a virtual machine in Azure. The **Output** window shows the status. The script performs the following actions to set up the virtual machine:
 
-5. 在“DNS 名称”框中，输入虚拟机的名称。DNS 名称在 Azure 中必须唯一。如果输入的名称不可用，则会出现红色感叹号。
-6. 在“映像”列表中，选择要用作虚拟机基础的映像。你可以选择任何标准 Azure 虚拟机映像，或者已上载到 Azure 的自有映像。
-7. 除非你打算安装其他 Web 服务器，否则请保留选中“启用 IIS 和 Web 部署”复选框。如果禁用“Web 部署”，将无法从 Visual Studio 发布。可以将 IIS 和 Web 部署添加到任何打包的 Windows Server 映像，包括你自己的自定义映像。
-8. 在“大小”列表中，选择虚拟机的大小。
-9. 指定此虚拟机的登录凭据。请记下这些信息，因为在通过远程桌面访问计算机时需要这些信息。
-10. 在“位置”列表中，选择虚拟机的托管区域。
-11. 单击“确定”按钮开始创建虚拟机。可以在“输出”窗口中查看操作的进度。
+    * Creates the virtual machine if it doesn't already exist.
+    * Creates a storage account with a name that begins with `devtest`, but only if there isn't already such a storage account in the specified region.
+    * Creates a cloud service as a container for the virtual machine, and creates a web role for the web application.
+    * Configures Web Deploy on the virtual machine.
+    * Configures IIS and ASP.NET on the virtual machine.
 
-    ![][3]  
+    ![][4]
+13. (Optional) You can connect to the new virtual machine. In **Server Explorer**, expand the **Virtual Machines** node, choose the node for the virtual machine you created, and on its shortcut menu, choose **Connect with Remote Desktop**. Alternatively, in **Cloud Explorer** you can choose **Open in Portal** on the shortcut menu and connect to the virtual machine there.
 
-12. 预配虚拟机时，系统会在解决方案的 **PublishScripts** 节点中创建发布脚本。发布脚本在 Azure 中运行并设置虚拟机。“输出”窗口将显示状态。脚本将执行以下操作来设置虚拟机：
+    ![][5]
 
-    * 如果虚拟机尚不存在，则创建虚拟机。
-    * 仅当指定的区域中没有名称以 `devtest` 开头的存储帐户时，才创建具有此名称的存储帐户。
-    * 为虚拟机创建用作容器的云服务，并为 Web 应用程序创建 Web 角色。
-    * 在虚拟机上配置 Web 部署。
-    * 在虚拟机上配置 IIS 和 ASP.NET。
-
-    ![][4]  
-
-13. （可选）你可以连接到新的虚拟机。在“服务器资源管理器”中，展开“虚拟机”节点，选择你创建的虚拟机节点，然后在其快捷方式菜单中，选择“使用远程桌面连接”。或者，在“云资源管理器”中，你可以在快捷菜单中选择“在门户中打开”并连接到那里的虚拟机。
-
- ![][5]  
+## Next steps
+If you want to customize the published scripts you created, read more in-depth information at [Using Windows PowerShell Scripts to Publish to Dev and Test Environments](/azure/vs-azure-tools-publishing-using-powershell-scripts/).
 
 [0]: ./media/virtual-machines-common-classic-web-app-visual-studio/CreateVM_NewProject.PNG
 [1]: ./media/dotnet-visual-studio-create-virtual-machine/CreateVM_SignIn.PNG
@@ -42,5 +41,3 @@
 [3]: ./media/virtual-machines-common-classic-web-app-visual-studio/CreateVM_Provisioning.png
 [4]: ./media/virtual-machines-common-classic-web-app-visual-studio/CreateVM_SolutionExplorer.png
 [5]: ./media/virtual-machines-common-classic-web-app-visual-studio/VS_Create_VM_Connect.png
-
-<!---HONumber=Mooncake_1114_2016-->

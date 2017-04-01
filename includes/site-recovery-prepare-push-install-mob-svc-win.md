@@ -1,20 +1,18 @@
-### 准备在 Windows 计算机上执行推送安装
+### Prepare for push install on Windows machines
 
-1. 确保 Windows 计算机与进程服务器之间已建立网络连接。
-2. 创建可供进程服务器用来访问计算机的帐户。该帐户应具有管理员权限（本地或域），并且仅用于推送安装和代理更新。
+1. Ensure there’s network connectivity between the Windows machine and the process server.
+2. Create an account that can be used by the process server to access the machine. The account should have administrator privileges (local or domain), and is only used for the push installation and agent updates.
 
    > [!NOTE]
-   如果使用的不是域帐户，则需在本地计算机上禁用远程用户访问控制。可以通过在 HKEY\_LOCAL\_MACHINE\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\System 注册表项下面添加新的 DWORD **LocalAccountTokenFilterPolicy** 并将其值设置为 1，来禁用远程用户访问控制。在命令提示符下执行以下命令也可以实现相同的目的：**`REG ADD HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System /v LocalAccountTokenFilterPolicy /t REG_DWORD /d 1`**。
+   > If you're not using a domain account, you need to disable Remote User Access control on the local machine. You cdisable Remote User Access control on a computer by adding a new DWORD **LocalAccountTokenFilterPolicy** under HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System registry key, and set its value as 1. Here is the command to do the same from a command prompt **`REG ADD HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System /v LocalAccountTokenFilterPolicy /t REG_DWORD /d 1`**.
    >
    >
-2. 在要保护的计算机的 Windows 防火墙中，选择“允许应用或功能通过防火墙”。启用“文件和打印机共享”和“Windows Management Instrumentation”。对于属于某个域的计算机，可以使用 GPO 配置防火墙设置。
+2. On the Windows Firewall of the machine you want to protect, select **Allow an app or feature through Firewall**. Enable **File and Printer Sharing** and **Windows Management Instrumentation**. For machines that belong to a domain, you can configure the firewall settings with a GPO.
 
-   ![防火墙设置](./media/site-recovery-prepare-push-install-mob-svc-win/mobility1.png)  
+   ![Firewall settings](./media/site-recovery-prepare-push-install-mob-svc-win/mobility1.png)
 
-3. 添加在 CSPSConfigtool 中创建的帐户。
-    - 登录到配置服务器。
-    - 打开 **cspsconfigtool.exe**。（桌面上有该工具的快捷方式，也可以在 %ProgramData%\\home\\svsystems\\bin 文件夹中找到它）
-    - 在“管理帐户”选项卡中，单击“添加帐户”。
-    - 添加已创建的帐户。添加帐户后，在为计算机启用复制时，需要提供这些凭据。
-
-<!---HONumber=Mooncake_0206_2017-->
+3. Add the account you created in the CSPSConfigtool.
+    - Log in to your Configuration Server.
+    - Open **cspsconfigtool.exe**. (It's available as a shortcut on the desktop and under the %ProgramData%\home\svsystems\bin folder)
+    - In the **Manage Accounts** tab, click **Add Account**.
+    - Add the account you created. After adding the account, you need to provide the credentials when you enable replication for a machine.

@@ -1,29 +1,27 @@
-**高级非托管虚拟机磁盘：每个帐户的限制**
+**Premium unmanaged virtual machine disks: per account limits**
 
-| 资源 | 默认限制 |
+| Resource | Default Limit |
 | --- | --- |
-| 每个帐户的总磁盘容量 |35 TB |
-| 每个帐户的总快照容量 |10 TB |
-| 每个帐户的最大带宽（传入 + 传出<sup>1</sup>） |<=50 Gbps |
+| Total disk capacity per account |35 TB |
+| Total snapshot capacity per account |10 TB |
+| Max bandwidth per account (ingress + egress<sup>1</sup>) |<=50 Gbps |
 
-<sup>1</sup>*入口* 是指发送到存储帐户的所有数据（请求）。“出口”是指从存储帐户接收的所有数据（响应）。
+<sup>1</sup>*Ingress* refers to all data (requests) being sent to a storage account. *Egress* refers to all data (responses) being received from a storage account.
 
-**高级非托管虚拟机磁盘：每个磁盘的限制**
+**Premium unmanaged virtual machine disks: per disk limits**
 
-| 高级存储磁盘类型 | P10 | P20 | P30 |
+| Premium Storage Disk Type | P10 | P20 | P30 |
 | --- | --- | --- | --- |
-| 磁盘大小 |128 GiB |512 GiB |1024 GiB (1 TB) |
-| 每个磁盘的最大 IOPS |500 |2300 |5000 |
-| 每个磁盘的最大吞吐量 |100 MB/秒 | 150 MB/秒 |200 MB/秒 |
-| 每个存储帐户的磁盘的最大数目 |280 |70 |35 |
+| Disk size |128 GiB |512 GiB |1024 GiB (1 TB) |
+| Max IOPS per disk |500 |2300 |5000 |
+| Max throughput per disk |100 MB/s | 150 MB/s |200 MB/s |
+| Max number of disks per storage account |280 |70 |35 |
 
-**高级非托管虚拟机磁盘：每个 VM 的限制**
+**Premium unmanaged virtual machine disks: per VM limits**
 
-| 资源 | 默认限制 |
+| Resource | Default Limit |
 | --- | --- |
-| 每个 VM 的最大 IOPS |GS5 VM 为 80,000 IOPS<sup>1</sup> |
-| 每个 VM 的最大吞吐量 |GS5 VM 为 2,000 MB/秒<sup>1</sup> |
+| Max IOPS Per VM |80,000 IOPS with GS5 VM<sup>1</sup> |
+| Max throughput per VM |2,000 MB/s with GS5 VM<sup>1</sup> |
 
-<sup>1</sup>有关其他 VM 大小的限制，请参阅 [VM 大小](../articles/virtual-machines/virtual-machines-linux-sizes.md)。
-
-<!---HONumber=Mooncake_0313_2017-->
+<sup>1</sup>Refer to [VM Size](../articles/virtual-machines/virtual-machines-linux-sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) for limits on other VM sizes.

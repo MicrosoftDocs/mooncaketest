@@ -1,67 +1,66 @@
-<!-- need to be verified -->
+For more information about disks, see [About Disks and VHDs for Virtual Machines](../articles/storage/storage-about-disks-and-vhds-linux.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
-有关磁盘的详细信息，请参阅[关于虚拟机的磁盘和 VHD](../articles/virtual-machines/virtual-machines-linux-about-disks-vhds.md)。
-
-## <a id="attachempty"></a> 附加空磁盘
-1. 打开 Azure CLI 并[连接到 Azure 订阅](../articles/xplat-cli-connect.md)。确保你处于 Azure 服务管理模式 (`azure config mode asm`) 下。
-2. 输入 `azure vm disk attach-new` 以创建并附加新磁盘，如以下示例所示。将 myVM 替换为你的 Linux 虚拟机的名称，并以 GB 为单位指定磁盘大小，此示例中为 100 GB：
+## <a id="attachempty"></a> Attach an empty disk
+1. Open Azure CLI 1.0 and [connect to your Azure subscription](../articles/xplat-cli-connect.md). Make sure you are in Azure Service Management mode (`azure config mode asm`).
+2. Enter `azure vm disk attach-new` to create and attach a new disk as shown in the following example. Replace *myVM* with the name of your Linux Virtual Machine and specify the size of the disk in GB, which is *100GB* in this example:
 
     ```azurecli
     azure vm disk attach-new myVM 100
     ```
 
-3. 创建并附加数据磁盘后，它列出在 `azure vm disk list <virtual-machine-name>` 的输出中，如以下示例所示：
+3. After the data disk is created and attached, it's listed in the output of `azure vm disk list <virtual-machine-name>` as shown in the following example:
 
     ```azurecli
     azure vm disk list TestVM
     ```
 
-    输出类似于以下示例：
+    The output is similar to the following example:
 
     ```bash
     info:    Executing command vm disk list
-
+   
     * Fetching disk images
     * Getting virtual machines
     * Getting VM disks
-    data:    Lun  Size(GB)  Blob-Name                         OS
-    data:    ---  --------  --------------------------------  -----
-    data:         30        myVM-2645b8030676c8f8.vhd  Linux
-    data:    0    100       myVM-76f7ee1ef0f6dddc.vhd
-    info:    vm disk list command OK
+     data:    Lun  Size(GB)  Blob-Name                         OS
+     data:    ---  --------  --------------------------------  -----
+     data:         30        myVM-2645b8030676c8f8.vhd  Linux
+     data:    0    100       myVM-76f7ee1ef0f6dddc.vhd
+     info:    vm disk list command OK
     ```
 
-## <a id="attachexisting"></a> 附加现有磁盘
-附加现有磁盘需要存储帐户中具有可用的 .vhd。
+## <a id="attachexisting"></a> Attach an existing disk
+Attaching an existing disk requires that you have a .vhd available in a storage account.
 
-1. 打开 Azure CLI 并[连接到 Azure 订阅](../articles/xplat-cli-connect.md)。确保你处于 Azure 服务管理模式 (`azure config mode asm`) 下。
-2. 检查你想要附加的 VHD 是否已上载到你的 Azure 订阅：
+1. Open Azure CLI 1.0 and [connect to your Azure subscription](../articles/xplat-cli-connect.md). Make sure you are in Azure Service Management mode (`azure config mode asm`).
+2. Check if the VHD you want to attach is already uploaded to your Azure subscription:
 
     ```azurecli
     azure vm disk list
     ```
 
-    输出类似于以下示例：
+    The output is similar to the following example:
 
     ```azurecli
-    info:    Executing command vm disk list
-
+     info:    Executing command vm disk list
+   
     * Fetching disk images
-    data:    Name                                          OS
-    data:    --------------------------------------------  -----
-    data:    myTestVhd                                     Linux
-    data:    TestVM-ubuntuVMasm-0-201508060029150744  Linux
-    data:    TestVM-ubuntuVMasm-0-201508060040530369
-    info:    vm disk list command OK
+     data:    Name                                          OS
+     data:    --------------------------------------------  -----
+     data:    myTestVhd                                     Linux
+     data:    TestVM-ubuntuVMasm-0-201508060029150744  Linux
+     data:    TestVM-ubuntuVMasm-0-201508060040530369
+     info:    vm disk list command OK
     ```
 
-3. 如果没有找到你想要使用的磁盘，可以使用 `azure vm disk create` 或 `azure vm disk upload` 将一个本地 VHD 上载到你的订阅。以下是 `disk create` 的一个示例：
+3. If you don't find the disk that you want to use, you may upload a local VHD to your subscription by using
+   `azure vm disk create` or `azure vm disk upload`. An example of `disk create` would be as in the following example:
 
     ```azurecli
     azure vm disk create myVhd .\TempDisk\test.VHD -l "China East" -o Linux
     ```
 
-    输出类似于以下示例：
+    The output is similar to the following example:
 
     ```azurecli
     info:    Executing command vm disk create
@@ -75,41 +74,39 @@
     info:    vm disk create command OK
     ```
 
-    你也可以使用 `azure vm disk upload` 将 VHD 上载到特定存储帐户中。详细阅读命令，以管理你[在这里](../articles/virtual-machines-command-line-tools.md#commands-to-manage-your-azure-virtual-machine-data-disks)的 Azure 虚拟机数据磁盘。
+   You may also use `azure vm disk upload` to upload a VHD to a specific storage account. Read more about the commands to manage your Azure virtual machine data disks [over here](https://docs.microsoft.com/cli/azure/get-started-with-az-cli2).
 
-4. 现在将所需 VHD 附加到虚拟机：
+4. Now you attach the desired VHD to your virtual machine:
 
     ```azurecli
     azure vm disk attach myVM myVhd
     ```
 
-    请确保将 *myVM* 替换为你的虚拟机名称，并将 *myVHD* 替换为你所需的 VHD。
+   Make sure to replace *myVM* with the name of your virtual machine, and *myVHD* with your desired VHD.
 
-5. 可以使用 `azure vm disk list <virtual-machine-name>` 验证磁盘是否已附加到虚拟机：
+5. You can verify the disk is attached to the virtual machine with `azure vm disk list <virtual-machine-name>`:
 
     ```azurecli
     azure vm disk list myVM
     ```
 
-    输出类似于以下示例：
+    The output is similar to the following example:
 
-    ```bash
-    info:    Executing command vm disk list
-
+    ```azurecli
+     info:    Executing command vm disk list
+   
     * Fetching disk images
     * Getting virtual machines
     * Getting VM disks
-    data:    Lun  Size(GB)  Blob-Name                         OS
-    data:    ---  --------  --------------------------------  -----
-    data:         30        TestVM-2645b8030676c8f8.vhd  Linux
-    data:    1    10        test.VHD
-    data:    0    100        TestVM-76f7ee1ef0f6dddc.vhd
-    info:    vm disk list command OK
+     data:    Lun  Size(GB)  Blob-Name                         OS
+     data:    ---  --------  --------------------------------  -----
+     data:         30        TestVM-2645b8030676c8f8.vhd  Linux
+     data:    1    10        test.VHD
+     data:    0    100        TestVM-76f7ee1ef0f6dddc.vhd
+     info:    vm disk list command OK
     ```
 
 > [!NOTE]
-在添加数据磁盘后，你需要登录到虚拟机并初始化磁盘，以便虚拟机可以使用磁盘进行存储（有关如何初始化磁盘的详细信息，请参阅以下步骤）。
+> After you add a data disk, you'll need to log on to the virtual machine and initialize the disk so the virtual machine can use the disk for storage (see the following steps for more information on how to do initialize the disk).
 > 
-> 
-
-<!---HONumber=Mooncake_1212_2016-->
+>

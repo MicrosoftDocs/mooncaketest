@@ -1,23 +1,21 @@
-1. 登录到 [Azure 门户](https://portal.azure.cn)，然后单击屏幕左上角的“+新建”。
+1. Log on to the [Azure Portal](https://portal.azure.cn), and then click **+NEW** at the top left of the screen.
 
-2. 单击“新建”，然后单击“Web + 移动”。根据需要向下滚动，然后单击“通知中心”。
+2. Click on **New**, then **Web + Mobile**. Scroll down if necessary and click **Notification Hub**.
 
-       ![Azure 门户 - 创建通知中心](./media/notification-hubs-portal-create-new-hub/notification-hubs-azure-portal-create.png)
+       ![Azure Portal - Create Notification Hubs](./media/notification-hubs-portal-create-new-hub/notification-hubs-azure-portal-create.png)
 
-3. 确保在“通知中心”字段中指定唯一的名称。选择所需的“区域”、“订阅”和“资源组”（如果已经有一个）。
+3. Make sure you specify a unique name in the **Notification Hub** field. Select your desired **Region**, **Subscription** and **Resource Group** (if you have one already). 
 
-    如果你已经有想在其中创建中心的服务总线命名空间，则通过“命名空间”字段中的“选择现有”选项来选择它。否则，可以使用根据中心名称创建的默认名称，前提是该命名空间名称可用。
+    If you already have a service bus namespace that you want to create the hub in, select it through the **Select Existing** option in the **Namespace** field.  Otherwise, you can use the default name which will be created based on the hub name as long as the namespace name is available. 
 
-    准备就绪后，单击“创建”。
+    Once ready, click **Create**.
 
-       ![Azure 门户 - 设置通知中心属性](./media/notification-hubs-portal-create-new-hub/notification-hubs-azure-portal-settings.png)
+       ![Azure Portal - Set notification hub properties](./media/notification-hubs-portal-create-new-hub/notification-hubs-azure-portal-settings.png)
 
-4. 创建命名空间和通知中心后，就将进入相应的门户页。
+4. Once the namespace and notification hub are created, you will be taken to the respective portal page. 
 
-       ![Azure 门户 - 通知中心门户页面](./media/notification-hubs-portal-create-new-hub/notification-hubs-azure-portal-page.png)
+       ![Azure Portal - Notification hub portal page](./media/notification-hubs-portal-create-new-hub/notification-hubs-azure-portal-page.png)
 
-5. 单击“设置”和“访问策略”，记下都提供给你的两个连接字符串，随后将需要它们来处理推送通知。
+5. Click on **Settings** and then **Access Policies** - take note of the two connection strings that are made available to you, as you will need them to handle push notifications later.
 
-       ![Azure 门户 - 通知中心连接字符串](./media/notification-hubs-portal-create-new-hub/notification-hubs-connection-strings-portal.png)
-
-<!---HONumber=Mooncake_0725_2016-->
+       ![Azure Portal - Notification hub connection strings](./media/notification-hubs-portal-create-new-hub/notification-hubs-connection-strings-portal.png)

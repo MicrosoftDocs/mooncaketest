@@ -1,49 +1,40 @@
-1. 运行统一安装程序安装文件。
-2. 在“开始之前”中选择“安装配置服务器和进程服务器”。
-![开始之前](./media/site-recovery-add-configuration-server/combined-wiz1.png)
-3. 在“第三方软件许可证”中单击“我接受”，下载并安装 MySQL。
+1. Run the Unified Setup installation file.
+2. In **Before you begin**, select **Install the configuration server and process server**.
+    ![Before you start](./media/site-recovery-add-configuration-server/combined-wiz1.png)
+3. In **Third Party Software License**, click **I Accept** to download and install MySQL.
 
-    ![第三方软件](./media/site-recovery-add-configuration-server/combined-wiz105.PNG)  
+    ![Third=party software](./media/site-recovery-add-configuration-server/combined-wiz105.PNG)
+4. In **Registration**, select the registration key you downloaded from the vault.
 
-4. 在“注册”中，选择从保管库下载的注册密钥。
+    ![Registration](./media/site-recovery-add-configuration-server/combined-wiz3.png)
+5. In **Internet Settings**, specify how the Provider running on the configuration server connects to Azure Site Recovery over the internet.
 
-    ![注册](./media/site-recovery-add-configuration-server/combined-wiz3.png)  
+   * If you want to connect with the proxy that's currently set up on the machine, select **Connect with existing proxy settings**.
+   * If you want the Provider to connect directly, select **Connect directly without a proxy**.
+   * If the existing proxy requires authentication, or if you want to use a custom proxy for the Provider connection, select **Connect with custom proxy settings**.
 
-5. 在“Internet 设置”中，指定配置服务器上运行的提供程序如何通过 Internet 连接到 Azure Site Recovery。
+     * If you use a custom proxy, you need to specify the address, port, and credentials
+     * If you're using a proxy, you should have already allowed the URLs described in [prerequisites](#configuration-server-prerequisites).
 
-   * 如果希望使用当前已在计算机上设置的代理进行连接，请选择“使用现有代理设置进行连接”。
-   * 如果希望提供程序直接进行连接，请选择“不使用代理直接连接”。
-   * 如果现有代理要求身份验证，或者用户希望使用自定义代理进行提供程序连接，请选择“使用自定义代理设置进行连接”。
+     ![Firewall](./media/site-recovery-add-configuration-server/combined-wiz4.png)
+6. In **Prerequisites Check**, setup runs a check to make sure that installation can run. If a warning appears about the **Global time sync check**, verify that the time on the system clock (**Date and Time** settings) is the same as the time zone.
 
-     * 如果使用自定义代理，则需指定地址、端口和凭据
-     * 如果使用代理，应事先允许[先决条件](#configuration-server-prerequisites)中所述的 URL。
+    ![Prerequisites](./media/site-recovery-add-configuration-server/combined-wiz5.png)
+7. In **MySQL Configuration**, create credentials for logging on to the MySQL server instance that is installed.
 
-     ![防火墙](./media/site-recovery-add-configuration-server/combined-wiz4.png)  
+    ![MySQL](./media/site-recovery-add-configuration-server/combined-wiz6.png)
+8. In **Environment Details**, select whether you're going to replicate VMware VMs. If you are, then setup checks that PowerCLI 6.0 is installed.
 
-6. 在“先决条件检查”设置中运行检查，确保安装可以运行。如果看到有关**全局时间同步检查**的警告，请检查系统时钟的时间（“日期和时间”设置）是否与时区相同。
+    ![MySQL](./media/site-recovery-add-configuration-server/combined-wiz7.png)
+9. In **Install Location**, select where you want to install the binaries and store the cache. The drive you select must have at least 5 GB of disk space available, but we recommend a cache drive with at least 600 GB of free space.
 
-    ![先决条件](./media/site-recovery-add-configuration-server/combined-wiz5.png)  
+    ![Install location](./media/site-recovery-add-configuration-server/combined-wiz8.png)
+10. In **Network Selection**, specify the listener (network adapter and SSL port) on which the configuration server sends and receives replication data. Port 9443 is the default port used for sending and receiving replication traffic, but you can modify this port number to suit your environment's requirements. In addition to the port 9443, we also open port 443, which is used by a web server to orchestrate replication operations. Do not use Port 443 for sending or receiving replication traffic.
 
-7. 在“MySQL 配置”中，创建用于登录到要安装的 MySQL 服务器实例的凭据。
+    ![Network selection](./media/site-recovery-add-configuration-server/combined-wiz9.png)
 
-    ![MySQL](./media/site-recovery-add-configuration-server/combined-wiz6.png)  
+11. In **Summary**, review the information and click **Install**. When installation finishes, a passphrase is generated. You will need this when you enable replication, so copy it and keep it in a secure location.
 
-8. 在“环境详细信息”中，选择是否要复制 VMware VM。如果要复制，则安装程序会检查 PowerCLI 6.0 是否已安装。
+    ![Summary](./media/site-recovery-add-configuration-server/combined-wiz10.png)
 
-    ![MySQL](./media/site-recovery-add-configuration-server/combined-wiz7.png)  
-
-9. 在“安装位置”中，选择要安装二进制文件和存储缓存的位置。选择的驱动器必须至少有 5 GB 可用存储空间，但我们建议选择至少有 600 GB 可用空间的缓存驱动器。
-
-    ![安装位置](./media/site-recovery-add-configuration-server/combined-wiz8.png)  
-
-10. 在“网络选择”中，指定侦听器（网络适配器和 SSL 端口），以便配置服务器在其上发送和接收复制数据。端口 9443 是用于发送和接收复制流量的默认端口，但可以根据环境的要求修改此端口号。除了端口 9443 以外，还要打开端口 443，Web 服务器将使用该端口协调复制操作。请不要使用端口 443 来发送或接收复制流量。
-
-    ![网络选择](./media/site-recovery-add-configuration-server/combined-wiz9.png)  
-
-11. 在“摘要”中复查信息，然后单击“安装”。安装完成后，将生成通行短语。启用复制时需要用到它，因此请复制并将它保存在安全的位置。
-
-    ![摘要](./media/site-recovery-add-configuration-server/combined-wiz10.png)  
-
-注册完成后，服务器将显示在保管库的“设置”>“服务器”边栏选项卡中。
-
-<!---HONumber=Mooncake_0306_2017-->
+After registration finishes, the server is displayed on the **Settings** > **Servers** blade in the vault.

@@ -1,52 +1,50 @@
-## 下载、安装和注册 Azure 备份代理
+## Download, install, and register the Azure Backup Agent
 
-在创建 Azure 备份保管库后，应在每个 Windows 计算机（Windows Server、Windows 客户端、System Center Data Protection Manager 服务器或 Azure 备份服务器计算机）上安装代理，以便将数据和应用程序备份到 Azure。
+After creating the Azure Backup vault, an agent should be installed on each of your Windows machines (Windows Server, Windows client, System Center Data Protection Manager server, or Azure Backup Server machine) that enables back up of data and applications to Azure.
 
-1. 登录到[管理门户](https://manage.windowsazure.cn)
+1. Sign in to the [Management Portal](https://manage.windowsazure.cn)
 
-2. 单击“恢复服务”，然后选择你要向其注册服务器的备份保管库。随后将显示该备份保管库的“快速启动”页。
+2. Click **Recovery Services**, then select the backup vault that you want to register with a server. The Quick Start page for that backup vault appears.
 
-    ![快速启动](./media/backup-install-agent/quickstart.png)
+    ![Quick start](./media/backup-install-agent/quickstart.png)
 
-3. 在“快速启动”页上，单击“下载代理”下的“用于 Windows Server、System Center Data Protection Manager 或 Windows 客户端”选项。单击“保存”将安装文件复制到本地计算机。
+3. On the Quick Start page, click the **For Windows Server or System Center Data Protection Manager or Windows client** option under **Download Agent**. Click **Save** to copy it to the local machine.
 
-    ![保存代理](./media/backup-install-agent/agent.png)
+    ![Save agent](./media/backup-install-agent/agent.png)
 
-4. 安装代理后，双击 MARSAgentInstaller.exe 以启动 Azure 备份代理的安装。选择代理所需的安装文件夹和临时文件夹。指定的缓存位置必须至少有备份数据的 5% 的可用空间。
+4. Once the agent is installed, double click MARSAgentInstaller.exe to launch the installation of the Azure Backup Agent. Choose the installation folder and scratch folder required for the agent. The cache location specified must have free space which is at least 5% of the backup data.
 
-5. 如果使用代理服务器连接到 Internet，请在“代理配置”屏幕中，输入代理服务器详细信息。如果使用已经过身份验证的代理，请在此屏幕中输入用户名和密码详细信息。
+5. If you use a proxy server to connect to the internet, in the **Proxy configuration** screen, enter the proxy server details. If you use an authenticated proxy, enter the user name and password details in this screen.
 
-6. Azure 备份代理将安装 .NET Framework 4.5 和 Windows PowerShell（如果尚未可用）以完成安装。
+6. The Azure Backup Agent installs .NET Framework 4.5 and Windows PowerShell (if it’s not available already) to complete the installation.
 
-7. 安装代理后，单击“继续注册”按钮以继续运行工作流。
+7. Once the agent is installed, click the **Proceed to Registration** button to continue with the workflow.
 
-    ![注册](./media/backup-install-agent/register.png)
+    ![Register](./media/backup-install-agent/register.png)
 
-8. 在保管库凭据屏幕中，浏览到并选择前面下载的保管库凭据文件。
+8. In the vault credentials screen, browse to and select the vault credentials file which was previously downloaded.
 
-    ![保管库凭据](./media/backup-install-agent/vc.png)
+    ![Vault credentials](./media/backup-install-agent/vc.png)
 
-    保管库凭据文件只能生效 48 小时（从门户下载后算起）。如果此屏幕中显示任何错误（例如“提供的保管库凭据文件已过期”），请登录到 Azure 门户预览，并再次下载保管库凭据文件。
+    The vault credentials file is valid only for 48 hrs (after it’s downloaded from the portal). If you encounter any error in this screen (e.g “Vault credentials file provided has expired”), login to the Azure portal and download the vault credentials file again.
 
-    确保将保管库凭据文件放置在安装应用程序可访问的位置。如果你遇到访问相关的错误，请将保管库凭据文件复制到此计算机中的临时位置，然后重试操作。
+    Ensure that the vault credentials file is available in a location which can be accessed by the setup application. If you encounter access related errors, copy the vault credentials file to a temporary location in this machine and retry the operation.
 
-    如果遇到无效的保管库凭据错误（例如“所提供的保管库凭据无效”），则该文件已损坏，或者没有与恢复服务关联的最新凭据。请在从门户下载新的保管库凭据文件后重试该操作。如果用户在 Azure 门户预览中快速连续单击“下载保管库凭据”选项，则通常会出现此错误。在这种情况下，只有第二个保管库凭据文件有效。
+    If you encounter an invalid vault credential error (e.g “Invalid vault credentials provided") the file is either corrupted or does not have the latest credentials associated with the recovery service. Retry the operation after downloading a new vault credential file from the portal. This error is typically seen if the user clicks on the **Download vault credential** option in the Azure portal, in quick succession. In this case, only the second vault credential file is valid.
 
-9. 在“加密设置”屏幕中，你可以生成一个通行短语，或者提供一个通行短语（最少包含 16 个字符）。请记住将通行短语保存在安全位置。
+9. In the **Encryption setting** screen, you can either generate a passphrase or provide a passphrase (minimum of 16 characters). Remember to save the passphrase in a secure location.
 
-    ![加密](./media/backup-install-agent/encryption.png)
+    ![Encryption](./media/backup-install-agent/encryption.png)
 
     > [!WARNING]
-    >如果您丢失或忘记了通行短语，Microsoft 无法帮助您恢复备份的数据。加密通行短语由最终用户拥有，Microsoft 看不到最终用户所用的通行短语。请将该文件保存在安全位置，因为在恢复操作期间需要用到它。
+    > If the passphrase is lost or forgotten; Microsoft cannot help in recovering the backup data. The end user owns the encryption passphrase and Microsoft does not have visibility into the passphrase used by the end user. Please save the file in a secure location as it is required during a recovery operation.
 
-10. 单击“完成”按钮后，计算机即会成功注册到保管库，现在，您可以开始备份到 Azure。
+10. Once you click the **Finish** button, the machine is registered successfully to the vault and you are now ready to start backing up to Microsoft Azure.
 
-11. 单独使用 Azure 备份时，可以通过在 Azure 备份 mmc 管理单元中单击“更改属性”选项，来修改在注册工作流期间指定的设置。
+11. When using Microsoft Azure Backup standalone you can modify the settings specified during the registration workflow by clicking on the **Change Properties** option in the Azure Backup mmc snap in.
 
-    ![更改属性](./media/backup-install-agent/change.png)
+    ![Change Properties](./media/backup-install-agent/change.png)
 
-    或者，在使用 Data Protection Manager 时，可以通过在“管理”选项卡下选择“联机”，单击“配置”选项来修改在注册工作流期间指定的设置。
+    Alternatively, when using Data Protection Manager, you can modify the settings specified  during the registration workflow by clicking the **Configure** option by selecting **Online** under the **Management** Tab.
 
-    ![配置 Azure 备份](./media/backup-install-agent/configure.png)
-
-<!---HONumber=Mooncake_0104_2016-->
+    ![Configure Azure Backup](./media/backup-install-agent/configure.png)

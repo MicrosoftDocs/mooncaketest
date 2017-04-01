@@ -1,15 +1,13 @@
-若要连接到某个 Azure Redis 缓存实例，缓存客户端需要该缓存的主机名、端口和密钥。在某些客户端中，这些项的名称可能略有不同。若要检索这些项，请在 [Azure 门户预览](https://portal.azure.cn)中[浏览](../articles/redis-cache/cache-configure.md#configure-redis-cache-settings)到你的缓存，单击“资源”菜单中的所需项。
+To connect to an Azure Redis Cache instance, cache clients need the host name, ports, and keys of the cache. Some clients may refer to these items by slightly different names. To retrieve these items, [browse](../articles/redis-cache/cache-configure.md#configure-redis-cache-settings) to your cache in the [Azure portal preview](https://portal.azure.cn) and click the desired item in the **Resource menu**. 
 
-![Redis 缓存设置](./media/redis-cache-access-keys/redis-cache-settings.png)  
+![Redis cache settings](./media/redis-cache-access-keys/redis-cache-settings.png)
 
-### 主机名和端口
-若要访问主机名和端口，请单击“属性”。
+### Host name and ports
+To access the host name and ports click **Properties**.
 
-![Redis 缓存属性](./media/redis-cache-access-keys/redis-cache-properties.png)  
+![Redis cache properties](./media/redis-cache-access-keys/redis-cache-properties.png)
 
-### 访问密钥
-若要检索访问密钥，请单击“访问密钥”。
+### Access keys
+To retrieve the access keys, click **Access keys**.
 
-![Redis 缓存访问密钥](./media/redis-cache-access-keys/redis-cache-access-keys.png)
-
-<!---HONumber=Mooncake_0227_2017-->
+![Redis cache access keys](./media/redis-cache-access-keys/redis-cache-access-keys.png)

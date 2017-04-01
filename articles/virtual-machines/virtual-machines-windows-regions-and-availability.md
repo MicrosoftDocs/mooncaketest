@@ -1,22 +1,21 @@
 ---
-title: Azure 区域和 Windows VM 可用性 | Azure
-description: 了解能够在 Azure 中运行 Windows 虚拟机的区域和可用性功能
+title: Azure regions and availability for Windows VMs | Azure
+description: Learn about the regions and availability features for running Windows virtual machines in Azure
 services: virtual-machines-windows
-documentationCenter: ''
-authors: iainfoulds
+documentationcenter: ''
+author: iainfoulds
 manager: timlt
 editor: ''
 
+ms.assetid: dab44d62-d4b1-43ac-b40f-8fd8818e075b
 ms.service: virtual-machines-windows
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 01/10/2017
-wacn.date: 03/01/2017
+wacn.date: ''
 ms.author: iainfou
+
 ---
-
 [!INCLUDE [virtual-machines-common-regions-and-availability](../../includes/virtual-machines-common-regions-and-availability.md)]
-
-<!---HONumber=Mooncake_0829_2016-->

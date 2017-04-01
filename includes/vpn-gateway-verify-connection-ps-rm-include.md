@@ -1,39 +1,32 @@
-可使用 `Get-AzureRmVirtualNetworkGatewayConnection` cmdlet（无论是否有 `-Debug`）来验证连接是否已成功。
+You can verify that your connection succeeded by using the `Get-AzureRmVirtualNetworkGatewayConnection` cmdlet, with or without `-Debug`. 
 
-1. 使用以下 cmdlet 示例，配置符合自己需要的值。如果出现提示，请选择“A”运行“所有”。在此示例中，`-Name` 指所创建的，并要测试的连接的名称。
+1. Use the following cmdlet example, configuring the values to match your own. If prompted, select 'A' in order to run 'All'. In the example, `-Name` refers to the name of the connection that you created and want to test.
 
-    ```
-    Get-AzureRmVirtualNetworkGatewayConnection -Name MyGWConnection -ResourceGroupName MyRG
-    ```
+        Get-AzureRmVirtualNetworkGatewayConnection -Name MyGWConnection -ResourceGroupName MyRG
+2. After the cmdlet has finished, view the values. In the example below, the connection status shows as 'Connected' and you can see ingress and egress bytes.
 
-2. cmdlet 运行完毕后，查看该值。在以下示例中，连接状态显示为“已连接”，且可以看到入口和出口字节数。
-
-    ```
-    Body:
-    {
-      "name": "MyGWConnection",
-      "id":
-    "/subscriptions/086cfaa0-0d1d-4b1c-94544-f8e3da2a0c7789/resourceGroups/MyRG/providers/Microsoft.Network/connections/MyGWConnection",
-      "properties": {
-        "provisioningState": "Succeeded",
-        "resourceGuid": "1c484f82-23ec-47e2-8cd8-231107450446b",
-        "virtualNetworkGateway1": {
+        Body:
+        {
+          "name": "MyGWConnection",
           "id":
-    "/subscriptions/086cfaa0-0d1d-4b1c-94544-f8e3da2a0c7789/resourceGroups/MyRG/providers/Microsoft.Network/virtualNetworkGa
-    teways/vnetgw1"
-        },
-        "localNetworkGateway2": {
-          "id":
-    "/subscriptions/086cfaa0-0d1d-4b1c-94544-f8e3da2a0c7789/resourceGroups/MyRG/providers/Microsoft.Network/localNetworkGate
-    ways/LocalSite"
-        },
-        "connectionType": "IPsec",
-        "routingWeight": 10,
-        "sharedKey": "abc123",
-        "connectionStatus": "Connected",
-        "ingressBytesTransferred": 33509044,
-        "egressBytesTransferred": 4142431
-      }
-    ```
-
-<!---HONumber=Mooncake_1031_2016-->
+        "/subscriptions/086cfaa0-0d1d-4b1c-94544-f8e3da2a0c7789/resourceGroups/MyRG/providers/Microsoft.Network/connections/MyGWConnection",
+          "properties": {
+            "provisioningState": "Succeeded",
+            "resourceGuid": "1c484f82-23ec-47e2-8cd8-231107450446b",
+            "virtualNetworkGateway1": {
+              "id":
+        "/subscriptions/086cfaa0-0d1d-4b1c-94544-f8e3da2a0c7789/resourceGroups/MyRG/providers/Microsoft.Network/virtualNetworkGa
+        teways/vnetgw1"
+            },
+            "localNetworkGateway2": {
+              "id":
+        "/subscriptions/086cfaa0-0d1d-4b1c-94544-f8e3da2a0c7789/resourceGroups/MyRG/providers/Microsoft.Network/localNetworkGate
+        ways/LocalSite"
+            },
+            "connectionType": "IPsec",
+            "routingWeight": 10,
+            "sharedKey": "abc123",
+            "connectionStatus": "Connected",
+            "ingressBytesTransferred": 33509044,
+            "egressBytesTransferred": 4142431
+          }

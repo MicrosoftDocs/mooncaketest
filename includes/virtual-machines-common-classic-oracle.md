@@ -1,15 +1,14 @@
-## 基于 Windows 的虚拟机的注意事项
+## Oracle virtual machine images
+See [List of Oracle virtual machine images](../articles/virtual-machines/virtual-machines-linux-classic-oracle-images.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json) for the latest set of Windows-based and Linux-based virtual machine images.
 
-请参阅 [Oracle 虚拟机映像的其他注意事项](../articles/virtual-machines/virtual-machines-windows-classic-oracle-considerations.md)，了解基于 Windows Server 的 Azure 虚拟机上的 Oracle 软件限制。
+## Considerations for Windows-based virtual machines
+See [Miscellaneous considerations for Oracle virtual machine images](../articles/virtual-machines/virtual-machines-windows-classic-oracle-considerations.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json) to understand limitations for Oracle software on Windows Server-based Azure virtual machines.
 
-## 准备 Oracle Linux 虚拟机
+## Prepare an Oracle Linux virtual machine
+[Prepare an Oracle Linux virtual machine for Azure](../articles/virtual-machines/virtual-machines-linux-oracle-create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) steps you through the prerequisites and virtual machine creation for Oracle Linux 6.4+ and Oracle Linux 7.0+.
 
-[为 Azure 准备 Oracle Linux 虚拟机](../articles/virtual-machines/virtual-machines-linux-oracle-create-upload-vhd.md)将逐步引导你满足先决条件，并为 Oracle Linux 6.4 + 和 Oracle Linux 7.0 + 创建虚拟机。
-
-## Oracle 数据防护
-
-[为 Azure 配置 Oracle 数据防护](../articles/virtual-machines/virtual-machines-windows-classic-configure-oracle-data-guard.md)将逐步引导你完成待机环境和侦听程序的配置。
+## Oracle Data Guard
+[Configuring Oracle Data Guard for Azure](../articles/virtual-machines/virtual-machines-windows-classic-configure-oracle-data-guard.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json) steps you through configuration of the standby environment and the listener.
 
 ## Oracle GoldenGate
-
-[为 Azure 配置 Oracle GoldenGate](../articles/virtual-machines/virtual-machines-windows-classic-configure-oracle-goldengate.md) 将逐步引导你完成数据库与复制设置。
+[Configuring Oracle GoldenGate for Azure](../articles/virtual-machines/virtual-machines-windows-classic-configure-oracle-goldengate.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json) steps you through database and replication setup.

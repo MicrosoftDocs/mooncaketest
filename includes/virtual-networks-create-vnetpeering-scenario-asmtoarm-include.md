@@ -1,10 +1,4 @@
-## 从 RM 部署模型到经典部署模型的对等虚拟网络
+## <a name="x-model"></a>Peering virtual networks created through different deployment models
+In this scenario, you will create a peering between two VNets named **VNET1** and **VNET2**. VNET1 is created through the Resource Manager deployment model, while VNET2 is created through the classic deployment model.
 
-在此方案中，在名为 **VNET1** 和 **VNET2** 的两个 VNet 之间创建对等网络，这两个 VNet 分别属于 Azure Resource Manager 部署模型和经典部署模型。
-
-> [!NOTE]
-> 这两个虚拟网络必须位于同一订阅中。
-
-![asm 到 arm 部署方案](./media/virtual-networks-create-vnetpeering-scenario-asmtoarm-include/figure01.PNG)  
-
-<!---HONumber=Mooncake_1010_2016-->
+![asm to arm deployment scenario](./media/virtual-networks-create-vnetpeering-scenario-asmtoarm-include/figure01.PNG)

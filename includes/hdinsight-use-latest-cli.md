@@ -1,8 +1,6 @@
 > [!IMPORTANT]
-Azure CLI 支持使用 Azure Service Manager (ASM) 管理 HDInsight 资源，但**不建议使用**，而且将于 2017 年 1 月 1 日停止支持。本文档中的步骤使用的是与 Azure Resource Manager (ARM) 兼容的新 Azure CLI 命令。
+> Azure CLI support for managing HDInsight resources using Azure Service Manager (ASM) is **deprecated**, and was removed on January 1, 2017. The steps in this document use the new Azure CLI commands that work with Azure Resource Manager.
 ><p> 
-><p>请按照[安装和配置 Azure CLI](../articles/xplat-cli-install.md) 中的步骤安装最新版本的 Azure CLI。如果脚本需要修改后才能使用与 Azure Resource Manager 兼容的新命令，请参阅[迁移到适用于 HDInsight 群集的基于 Azure Resource Manager 的开发工具](../articles/hdinsight/hdinsight-hadoop-development-using-azure-resource-manager.md)，了解详细信息。
+><p> Please follow the steps in [Install and configure Azure CLI](../articles/cli-install-nodejs.md) to install the latest version of the Azure CLI. If you have scripts that need to be modified to use the new commands that work with Azure Resource Manager, see [Migrating to Azure Resource Manager-based development tools for HDInsight clusters](../articles/hdinsight/hdinsight-hadoop-development-using-azure-resource-manager.md) for more information.
 > 
 >
-
-<!---HONumber=Mooncake_0213_2017-->

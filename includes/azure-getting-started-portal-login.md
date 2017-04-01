@@ -7,26 +7,24 @@ As of circa 2016-04-11, the following topics might include this include:
 articles/sql-database/sql-database-get-started-tutorial.md
 
 -->
-## 使用订阅连接到 Azure 门户预览
+## Connecting to the Microsoft Azure portal with a subscription
 
-若要连接到 Azure 门户预览，你必须有一个订阅。
+To connect to the Microsoft Azure portal, you must have a subscription. 
 
-### 获取新帐户
+### Get a new account
 
-如果你目前没有 Azure 帐户，请单击以下链接之一来获取帐户：
+If you do not have an existing Microsoft Azure account, follow one of the links below to obtain an account:
 
-- 获取 [1 元试用帐户](https://www.azure.cn/pricing/1rmb-trial/)
+- Get a [1rmb-trial account](https://www.azure.cn/pricing/1rmb-trial/)
 
-###使用现有的帐户登录
+###Sign in using your existing account
 
-使用[现有的订阅](https://account.windowsazure.cn/Home/Index)，遵循以下步骤连接到 Azure 门户预览。
+Using your [existing subscription]( https://account.windowsazure.cn/Home/Index), follow the steps below to connect to the Azure portal. 
 
-1. 打开所选的浏览器并连接到 [Azure 门户预览](https://portal.azure.cn/)。
+1. Open your browser of choice and connect to the [Azure portal](https://manage.windowsazure.cn/).
 
-1. 登录到 [Azure 门户预览](https://portal.azure.cn/)。
+1. Sign in to the [Azure portal](https://manage.windowsazure.cn/).
 
-1. 登录页出现时，请提供订阅的凭据
+1. When the sign in page appears, provide the credentials for your subscription
 
-   ![登录](./media/azure-getting-started-portal-login/login.png)
-
-<!---HONumber=Mooncake_0425_2016-->
+   ![sign in](./media/azure-getting-started-portal-login/login.png)

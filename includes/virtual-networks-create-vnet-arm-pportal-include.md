@@ -1,39 +1,27 @@
-<!-- Ibiza portal: tested -->
+## How to create a VNet in the Azure portal preview
+To create a VNet based on the scenario above by using the Azure Portal Preview, follow the steps below.
 
-## 如何在 Azure 门户预览中创建 VNet
+1. From a browser, navigate to http://portal.azure.cn and, if necessary, sign in with your Azure account.
+2. Click **NEW** > **Networking** > **Virtual network**, then click **Resource Manager** from the **Select a deployment model** list, and then click **Create**, as seen in the figure below.
 
-若要通过 Azure 门户预览基于上述方案创建 VNet，请执行下面的步骤。
+    ![Create VNet in Azure portal preview](./media/virtual-networks-create-vnet-arm-pportal-include/vnet-create-arm-pportal-figure1.gif)
+3. On the **Create virtual network** blade, configure the VNet settings as shown in the figure below.
 
-1. 从浏览器导航到 http://portal.azure.cn ，如有必要，请使用 Azure 帐户登录。
-2. 单击“新建”>“网络”>“虚拟网络”，然后单击“选择部署模型”列表中的“Resource Manager”，再单击“创建”（如下图所示）。
+    ![Create virtual network blade](./media/virtual-networks-create-vnet-arm-pportal-include/vnet-create-arm-pportal-figure2.png)
+4. Click **Resource group** and select a resource group to add the VNet to, or click **Create new** to add the VNet to a new resource group. The figure below shows the resource group settings for a new resource group called **TestRG**. For more information about resource groups, visit [Azure Resource Manager Overview](../articles/azure-resource-manager/resource-group-overview.md#resource-groups).
 
-    ![在 Azure 门户预览中创建 VNet](./media/virtual-networks-create-vnet-arm-pportal-include/vnet-create-arm-pportal-figure1.gif)
+    ![Resource group](./media/virtual-networks-create-vnet-arm-pportal-include/vnet-create-arm-pportal-figure3.png)
+5. If necessary, change the **Subscription** and **Location** settings for your VNet. 
+6. If you do not want to see the VNet as a tile in the **Startboard**, disable **Pin to Startboard**. 
+7. Click **Create** and notice the tile named **Creating Virtual network** as shown in the figure below.
 
-3. 在“创建虚拟网络”边栏选项卡上，配置 VNet 设置（如下图所示）。
+    ![Creating virtual network tile](./media/virtual-networks-create-vnet-arm-pportal-include/vnet-create-arm-pportal-figure4.png)
+8. Wait for the VNet to be created, then in the **Virtual network** blade, click **All settings** > **Subnets** > **Add** as seen below.
 
-    ![创建虚拟网络边栏选项卡](./media/virtual-networks-create-vnet-arm-pportal-include/vnet-create-arm-pportal-figure2.png)
+    ![Adding subnet in the Azure portal preview](./media/virtual-networks-create-vnet-arm-pportal-include/vnet-create-arm-pportal-figure5.gif)
+9. Specify the subnet settings for the *BackEnd* subnet, as shown below, and then click **OK**. 
 
-4. 单击**“资源组”**并选择要将 VNet 添加到的资源组，或者单击**“新建”**将 VNet 添加到新资源组。下图显示了名为 **TestRG** 的新资源组的资源组设置。有关资源组的详细信息，请访问 [Azure Resource Manager 概述](../articles/azure-resource-manager/resource-group-overview.md#resource-groups)。
+    ![Subnet settings](./media/virtual-networks-create-vnet-arm-pportal-include/vnet-create-arm-pportal-figure6.png)
+10. Notice the list of subnets, as shown in the figure below.
 
-    ![资源组](./media/virtual-networks-create-vnet-arm-pportal-include/vnet-create-arm-pportal-figure3.png)
-
-5. 如有必要，更改你的 VNet 的**“订阅”**和**“位置”**设置。
-
-6. 如果你不想看到该 VNet 作为**启动板**中的磁贴，请禁用**“固定到启动板”**。
-
-7. 单击**“创建”**，注意名为**“创建虚拟网络”**的磁贴，如下图中所示。
-
-    ![创建虚拟网络磁贴](./media/virtual-networks-create-vnet-arm-pportal-include/vnet-create-arm-pportal-figure4.png)
-
-8. 等待创建 VNet，然后在“虚拟网络”边栏选项卡中，单击“所有设置”>“子网”>“添加”（如下所示）。
-
-    ![在 Azure 门户预览中添加子网](./media/virtual-networks-create-vnet-arm-pportal-include/vnet-create-arm-pportal-figure5.gif)
-
-9. 指定“后端”子网的子网设置，然后单击“确定”（如下所示）。
-
-    ![子网设置](./media/virtual-networks-create-vnet-arm-pportal-include/vnet-create-arm-pportal-figure6.png)
-
-10. 注意子网列表（如下图所示）。
-
-    ![VNet 中的子网列表](./media/virtual-networks-create-vnet-arm-pportal-include/vnet-create-arm-pportal-figure7.png)
-<!---HONumber=Mooncake_0418_2016-->
+    ![List of subnets in VNet](./media/virtual-networks-create-vnet-arm-pportal-include/vnet-create-arm-pportal-figure7.png)

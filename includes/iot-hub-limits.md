@@ -1,57 +1,58 @@
-下表列出了与不同服务层（S1、S2、S3、F1）关联的限制。有关每个层中每个单位的成本信息，请参阅 [IoT 中心定价](https://www.azure.cn/pricing/details/iot-hub/)。
+The following table lists the limits associated with the different service tiers (S1, S2, S3, F1). For information about the cost of each *unit* in each tier, see [IoT Hub Pricing](https://azure.microsoft.com/pricing/details/iot-hub/).
 
-| 资源 | S1 标准 | S2 标准 | S3 标准 | F1 免费 |
+| Resource | S1 Standard | S2 Standard | S3 Standard | F1 Free |
 | --- | --- | --- | --- | --- |
-| 消息/天 |400,000 |6,000,000 |300,000,000 |8,000 |
-| 最大单位数 |200 |200 个 |10 个 |1 |
+| Messages/day |400,000 |6,000,000 |300,000,000 |8,000 |
+| Maximum units |200 |200 |10 |1 |
 
 > [!NOTE]
-如果希望在 S1、S2 层的中心使用 200 多个单位，或者在 S3 层的中心使用 10 个单位，请联系 Azure 支持部门。
+> If you anticipate using more than 200 units with an S1 or S2 or 10 units with an S3 tier hub, contact Microsoft support.
 > 
 > 
 
-下表列出了适用于 IoT 中心资源的限制：
+The following table lists the limits that apply to IoT Hub resources:
 
-| 资源 | 限制 |
+| Resource | Limit |
 | --- | --- |
-| 每个 Azure 订阅的付费 IoT 中心数上限 |10 |
-| 每个 Azure 订阅的免费 IoT 中心数上限 |1 |
-| 单个调用中返回的<br/>设备标识数上限 |1000 |
-| IoT 中心消息的设备到云消息的最长保留期 |7 天 |
-| 设备到云消息的最大大小 |256 KB |
-| 设备到云消息批的最大大小 |256 KB |
-| 设备到云消息批中的消息数上限 |500 |
-| 云到设备的消息数上限 |64 KB |
-| 云到设备消息的最大 TTL |2 天 |
-| 云到设备消息的最大传送<br/>计数 |100 |
-| 响应云到设备消息时发出的<br/>反馈消息的最大传送计数 |100 |
-| 响应云到设备消息时发出的<br/>反馈消息的最大 TTL |2 天 |
-| 设备孪生 <br/> 的最大大小（标记、报告的属性、所需属性） | 8 KB |
-| 设备孪生字符串值的最大大小 | 512 字节 |
-| 设备孪生中对象的最大深度 | 5 |
-| 直接方法有效负载的最大大小 | 8 KB |
-| 作业历史记录最长保留期 | 30 天 |
-| 最大并发作业数 | 10（适用于 S3），5（适用于 S2），1（适用于 S1） |
-| 最大额外终结点数 | 10（适用于 S1、S2、S3) |
-| 最大消息路由规则数 | 100（适用于 S1、S2、S3) |
+| Maximum paid IoT hubs per Azure subscription |10 |
+| Maximum free IoT hubs per Azure subscription |1 |
+| Maximum number of device identities<br/> returned in a single call |1000 |
+| IoT Hub message maximum retention for device-to-cloud messages |7 days |
+| Maximum size of device-to-cloud message |256 KB |
+| Maximum size of device-to-cloud batch |256 KB |
+| Maximum messages in device-to-cloud batch |500 |
+| Maximum size of cloud-to-device message |64 KB |
+| Maximum TTL for cloud-to-device messages |2 days |
+| Maximum delivery count for cloud-to-device <br/> messages |100 |
+| Maximum delivery count for feedback messages <br/> in response to a cloud-to-device message |100 |
+| Maximum TTL for feedback messages in <br/> response to a cloud-to-device message |2 days |
+| Maximum size of device twin <br/> (tags, reported properties, and desired properties) | 8 KB |
+| Maximum size of device twin string value | 512 bytes |
+| Maximum depth of object in device twin | 5 |
+| Maximum size of direct method payload | 8 KB |
+| Job history maximum retention | 30 days |
+| Maximum concurrent jobs | 10 (for S3), 5 for (S2), 1 (for S1) |
+| Maximum additional endpoints | 10 (for S1, S2, S3) |
+| Maximum message routing rules | 100 (for S1, S2, S3) |
 
 > [!NOTE]
-> 如果需要在 Azure 订阅中有 10 个以上的付费 IoT 中心，请联系 Azure 支持。
+> If you need more than 10 paid IoT hubs in an Azure subscription, contact Microsoft support.
 
-超过以下配额时，IoT 中心服务将限制请求：
+> [!NOTE]
+> Currently, the maximum number of devices you can connect to a single IoT hub is 500,000. If you want to increase this limit, contact [Microsoft Support](https://azure.microsoft.com/en-us/support/options/).
 
-| 限制 | 每个中心的值 |
+The IoT Hub service throttles requests when the following quotas are exceeded:
+
+| Throttle | Per-hub value |
 | --- | --- |
-| 标识注册表操作<br/>（创建、检索、列出、更新、删除），<br/>单个或批量导入/导出 |5000/分钟/单位（适用于 S3）<br/> 100/分钟/单位（适用于 S1 和 S2）。 |
-| 设备连接 |6000/秒/单位（适用于 S3），120/秒/单位（适用于 S2），12/秒/单位（适用于 S1）。<br/>最小值为 100/秒。 |
-| 设备到云的发送 |6000/秒/单位（适用于 S3），120/秒/单位（适用于 S2），12/秒/单位（适用于 S1）。<br/>最小值为 100/秒。 |
-| 云到设备的发送 |5000/分钟/单位（适用于 S3），100/分钟/单位（适用于 S1 和 S2）。 |
-| 云到设备的接收 |50000/分钟/单位（适用于 S3），1000/分钟/单位（适用于 S1 和 S2）。 |
-| 文件上载操作 |5000 个文件上载通知/分钟/单位（适用于 S3），100 个文件上载通知/分钟/单位（适用于 S1 和 S2）。<br/> Azure 存储帐户一次可传出 10000 个 SAS URI。<br/> 一次可传出 10 个 SAS URI/设备。 |
-| 直接方法 | 1500/秒/单位（适用于 S3），30/秒/单位（适用于 S2），10/秒/单位（适用于 S1） |
-| 设备孪生读取 | 50/秒/单位（适用于 S3），1-10/秒/单位（适用于 S2），10/秒/单位（适用于 S1） |
-| 设备孪生更新 | 50/秒/单位（适用于 S3），1-10/秒/单位（适用于 S2），10/秒/单位（适用于 S1） |
-| 作业操作<br/>（创建、更新、列出、删除） | 5000/分钟/单位（适用于 S3），100/分钟/单位（适用于 S2），100/分钟/单位（适用于 S1） |
-| 作业每设备操作吞吐量 | 50/秒/单位（适用于 S3），1-10/秒/单位（适用于 S2），10/秒/单位（适用于 S1） |
-
-<!---HONumber=Mooncake_0306_2017-->
+| Identity registry operations <br/> (create, retrieve, list, update, delete), <br/> individual or bulk import/export |5000/min/unit (for S3) <br/> 100/min/unit (for S1 and S2). |
+| Device connections |6000/sec/unit (for S3), 120/sec/unit (for S2), 12/sec/unit (for S1). <br/>Minimum of 100/sec. |
+| Device-to-cloud sends |6000/sec/unit (for S3), 120/sec/unit (for S2), 12/sec/unit (for S1). <br/>Minimum of 100/sec. |
+| Cloud-to-device sends |5000/min/unit (for S3), 100/min/unit (for S1 and S2). |
+| Cloud-to-device receives |50000/min/unit (for S3), 1000/min/unit (for S1 and S2). |
+| File upload operations |5000 file upload notifications/min/unit (for S3), 100 file upload notifications/min/unit (for S1 and S2). <br/> 10000 SAS URIs can be out for an Azure Storage account at one time.<br/> 10 SAS URIs/device can be out at one time. |
+| Direct methods | 1500/sec/unit (for S3), 30/sec/unit (for S2), 10/sec/unit (for S1) |
+| Device twin reads | 50/sec/unit (for S3), Maximum of 10/sec or 1/sec/unit (for S2), 10/sec (for S1) |
+| Device twin updates | 50/sec/unit (for S3), Maximum of 10/sec or 1/sec/unit (for S2), 10/sec (for S1) |
+| Jobs operations <br/> (create, update, list, delete) | 5000/min/unit (for S3), 100/min/unit (for S2), 100/min/unit (for S1) |
+| Jobs per-device operation throughput | 50/sec/unit (for S3), Maximum of 10/sec or 1/sec/unit (for S2), 10/sec (for S1) |

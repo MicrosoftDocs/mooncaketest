@@ -1,2 +1,4 @@
 > [!NOTE]
-> 本教程使用一个不需要访问 Azure 资源的简单 Runbook。请参阅本教程的[后续步骤](#nextsteps)部分，以了解有关在 Azure Automation 中配置大多数 Runbook 所需的身份验证的信息。
+> This tutorial uses a simple runbook that does not require access to Azure resources.  See the [Next Steps](#nextsteps) section of this guide for information on configuring authentication in Azure Automation which is required for most runbooks. 
+> 
+>

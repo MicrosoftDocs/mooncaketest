@@ -1,4 +1,4 @@
 > [!WARNING]
-> 这篇文章参考应用服务 API 应用的原始预览版本。有关当前预览版本的 API 应用的信息，请参阅[应用服务 API 应用 - 发生的更改](../articles/app-service-api/app-service-api-whats-changed.md)。有关演示如何使用 API 应用当前预览版本的教程，请参阅 [API 应用入门](../articles/app-service-api/app-service-api-dotnet-get-started.md)。
-
-<!---HONumber=Mooncake_0919_2016-->
+> This article refers to the original preview release of App Service API Apps.  For information about the current preview release of API Apps, see [App Service API Apps - What's changed](../articles/app-service-api/app-service-api-whats-changed.md). For tutorials that show how to work with the current preview release of API Apps, see [Get started with API Apps](../articles/app-service-api/app-service-api-dotnet-get-started.md). 
+> 
+>

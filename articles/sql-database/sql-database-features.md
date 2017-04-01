@@ -1,6 +1,6 @@
 ---
-title: Azure SQL 数据库功能概述 | Azure
-description: 本页概述 Azure SQL 数据库逻辑服务器和数据库，并提供带有每个列出功能的链接的功能支持矩阵。
+title: Azure SQL Database Features Overview | Azure
+description: This page provides an overview of the Azure SQL Database logical servers and databases, and includes a feature support matrix with links each listed feature.
 services: sql-database
 documentationcenter: na
 author: CarlRabeler
@@ -14,141 +14,139 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: data-management
-ms.date: 11/28/2016
-wacn.date: 01/20/2017
+ms.date: 02/01/2017
+wacn.date: ''
 ms.author: carlrab; jognanay
 ---
 
-# Azure SQL 数据库功能
-本主题概述 Azure SQL 数据库逻辑服务器和数据库，并提供带有每个列出功能的链接的功能支持矩阵。
+# Azure SQL Database features
+This topic provides an overview of the Azure SQL Database logical servers and databases, and includes a feature support matrix with links each listed feature. 
 
-## 什么是 Azure SQL 数据库逻辑服务器？
-Azure SQL 数据库逻辑服务器充当多个数据库的中心管理点。在 SQL 数据库中，服务器是一个逻辑构造，它不同于在本地环境中可能很熟悉的 SQL Server 实例。具体而言，SQL 数据库服务对数据库相对于其逻辑服务器的位置不做出任何保证，并且不公开任何实例级访问权限或功能。有关 Azure SQL 逻辑服务器的详细信息，请参阅[逻辑服务器](./sql-database-server-overview.md)。
+## What is an Azure SQL Database logical server?
+An Azure SQL Database logical server acts as a central administrative point for multiple databases. In SQL Database, a server is a logical construct that is distinct from a SQL Server instance that you may be familiar with in the on-premises world. Specifically, the SQL Database service makes no guarantees regarding location of the databases in relation to their logical servers, and exposes no instance-level access or features. For more information about Azure SQL logical servers, see [Logical servers](./sql-database-server-overview.md). 
 
-## 什么是 Azure SQL 数据库？
-Azure SQL 数据库中的每个数据库都与逻辑服务器相关联。数据库可以是：
+## What is an Azure SQL database?
+Each database in Azure SQL Database is associated with a logical server. The database can be:
 
-- 单一数据库，具有其[自己的资源集](./sql-database-what-is-a-dtu.md#what-are-database-transaction-units-dtus) (DTU)
-- 属于[共享一组资源](./sql-database-what-is-a-dtu.md#what-are-elastic-database-transaction-units-edtus)的[数据库池](./sql-database-elastic-pool.md) (eDTU)
-- 属于[向外扩展的分片数据库集](./sql-database-elastic-scale-introduction.md#horizontal-and-vertical-scaling)，可以是单一数据库或入池数据库
-- 属于参与[多租户 SaaS 设计模式](./sql-database-design-patterns-multi-tenancy-saas-applications.md)的一组数据库，其数据库可以是单一数据库和/或入池数据库
+- A single database with its [own set of resources](./sql-database-what-is-a-dtu.md#what-are-database-transaction-units-dtus) (DTUs)
+- Part of a [pool of databases](./sql-database-elastic-pool.md) that [shares a set of resources](./sql-database-what-is-a-dtu.md#what-are-elastic-database-transaction-units-edtus) (eDTUs)
+- Part of a [scaled-out set of sharded databases](./sql-database-elastic-scale-introduction.md#horizontal-and-vertical-scaling), which can be either single or pooled databases
+- Part of a set of databases participating in a [multitenant SaaS design pattern](./sql-database-design-patterns-multi-tenancy-saas-applications.md), and whose databases can either be single or pooled databases (or both) 
 
-有关 Azure SQL 数据库的详细信息，请参阅 [SQL 数据库](./sql-database-overview.md)。
+For more information about Azure SQL databases, see [SQL databases](./sql-database-overview.md).
 
-## 支持哪些功能？
+## What features are supported?
 
-下表列出了 Azure SQL 数据库和 SQL Server 的主要功能，指定其可支持性，并提供每个平台上有关功能的详细信息的链接。对于 Transact-SQL 功能，请打开表中的链接了解功能的类别。另请参阅 [Azure SQL 数据库 Transact-SQL 差异](./sql-database-transact-sql-information.md)，了解关于不支持某些类型的功能的原因的更多背景资料。
+The following tables list the major features of Azure SQL Database and SQL Server, specifies its supportability, and provides a link to more information about the feature on each platform. For Transact-SQL features, follow the link in the table for the category of the feature. See also [Azure SQL Database Transact-SQL differences](./sql-database-transact-sql-information.md) for more background on the reasons for lack of support for certain types of features.
 
 > [!TIP]
-若要测试现有数据库与 Azure SQL 数据库的兼容性，请参阅[验证 Azure SQL 数据库兼容性](./sql-database-cloud-migrate-fix-compatibility-issues-ssdt.md)。
+> To test an existing database for compatibility with Azure SQL Database, see [Migrate a SQL Server database to Azure](./sql-database-cloud-migrate.md).
 >
 
-| **功能** | **SQL Server** | **Azure SQL 数据库** | 
+| **Feature** | **SQL Server** | **Azure SQL Database** | 
 | --- | :---: | :---: | 
-| 活动异地复制 | 不支持 - 请参阅 [AlwaysOn 可用性组](https://msdn.microsoft.com/zh-cn/library/hh510230.aspx) | [支持](./sql-database-geo-replication-overview.md)
-| 始终加密 | [支持](https://msdn.microsoft.com/zh-cn/library/mt163865.aspx) | [支持](./sql-database-always-encrypted.md) |
-| AlwaysOn 可用性组 | [支持](https://msdn.microsoft.com/zh-cn/library/hh510230.aspx) | 不支持 - 请参阅[活动异地复制](./sql-database-geo-replication-overview.md) |
-| 附加数据库 | [支持](https://msdn.microsoft.com/zh-cn/library/ms190209.aspx) | 不支持 |
-| 应用程序角色 | [支持](https://msdn.microsoft.com/zh-cn/library/ms190998.aspx) | [支持](https://msdn.microsoft.com/zh-cn/library/ms190998.aspx) |
-| 自动缩放 | 不支持 | [支持](./sql-database-scale-up.md) |
-| Azure Active Directory | 不支持 | [支持](./sql-database-aad-authentication.md) |
-| 审核 | [支持](https://msdn.microsoft.com/zh-cn/library/cc280386.aspx) | [支持](./sql-database-auditing-get-started.md) |
-| BACPAC 文件（导出） | [支持](https://msdn.microsoft.com/zh-cn/library/hh213241.aspx) | [支持](./sql-database-export.md) |
-| BACPAC 文件（导入） | [支持](https://msdn.microsoft.com/zh-cn/library/hh710052.aspx) | [支持](./sql-database-import.md) |
-| 备份和还原语句 | [支持](https://msdn.microsoft.com/zh-cn/library/ff848768.aspx) | 不支持 |
-| 内置函数 | [支持](https://msdn.microsoft.com/zh-cn/library/ms174318.aspx) | [大多数](https://msdn.microsoft.com/zh-cn/library/ms174318.aspx) |
-| 更改数据捕获 | [支持](https://msdn.microsoft.com/zh-cn/library/cc645937.aspx) | 不支持 |
-| 更改跟踪 | [支持](https://msdn.microsoft.com/zh-cn/library/bb933875.aspx) | [支持](https://msdn.microsoft.com/zh-cn/library/bb933875.aspx) |
-| 排序规则语句 | [支持](https://msdn.microsoft.com/zh-cn/library/ff848763.aspx) | [支持](https://msdn.microsoft.com/zh-cn/library/ff848763.aspx) |
-| 列存储索引 | [支持](https://msdn.microsoft.com/zh-cn/library/gg492088.aspx) | [仅限 Premium Edition](https://msdn.microsoft.com/zh-cn/library/gg492088.aspx) |
-| 公共语言运行时 (CLR) | [支持](https://msdn.microsoft.com/zh-cn/library/ms131102.aspx) | 不支持 |
-| 包含的数据库 | [支持](https://msdn.microsoft.com/zh-cn/library/ff929071.aspx) | 内置 |
-| 包含用户 | [支持](https://msdn.microsoft.com/zh-cn/library/ff929188.aspx) | [支持](./sql-database-manage-logins.md#non-administrator-users) |
-| 控制流语言关键字 | [支持](https://msdn.microsoft.com/zh-cn/library/ms174290.aspx) | [支持](https://msdn.microsoft.com/zh-cn/library/ms174290.aspx) |
-| 跨数据库查询 | [支持](https://msdn.microsoft.com/zh-cn/library/dn584627.aspx) | [弹性查询](./sql-database-elastic-query-overview.md) |
-| 游标 | [支持](https://msdn.microsoft.com/zh-cn/library/ms181441.aspx) | [支持](https://msdn.microsoft.com/zh-cn/library/ms181441.aspx) | 
-| 数据压缩 | [支持](https://msdn.microsoft.com/zh-cn/library/cc280449.aspx) | [支持](https://msdn.microsoft.com/zh-cn/library/cc280449.aspx) |
-| 数据库备份 | [已向用户公开](https://msdn.microsoft.com/zh-cn/library/ms187048.aspx) | [内置](./sql-database-automated-backups.md) |
-| 数据库邮件 | [支持](https://msdn.microsoft.com/zh-cn/library/ms189635.aspx) | 不支持 |
-| 数据库镜像 | [支持](https://msdn.microsoft.com/zh-cn/library/ms189852.aspx) | 不支持 |
-| 数据库配置选项 | [支持](https://msdn.microsoft.com/zh-cn/library/mt629158.aspx) | [支持](https://msdn.microsoft.com/zh-cn/library/mt629158.aspx) |
-| Data Quality Services (DQS) | [支持](https://msdn.microsoft.com/zh-cn/library/ff877925.aspx) | 不支持 |
-| 数据库快照 | [支持](https://msdn.microsoft.com/zh-cn/library/ms175158.aspx) | 不支持 |
-| 数据类型 | [支持](https://msdn.microsoft.com/zh-cn/library/ms187752.aspx) | [支持](https://msdn.microsoft.com/zh-cn/library/ms187752.aspx) |  
-| DBCC 语句 | [全部](https://msdn.microsoft.com/zh-cn/library/ms188796.aspx) | [某些](https://msdn.microsoft.com/zh-cn/library/ms188796.aspx) |
-| DDL 语句 | [支持](https://msdn.microsoft.com/zh-cn/library/ff848799.aspx) | [大多数](https://msdn.microsoft.com/zh-cn/library/ff848799.aspx)
-| DDL 触发器 | [支持](https://msdn.microsoft.com/zh-cn/library/ms175941.aspx) | [仅数据库](https://msdn.microsoft.com/zh-cn/library/ms175941.aspx) |
-| 分布式事务 | [MS DTC](https://msdn.microsoft.com/zh-cn/library/ms131665.aspx) | 仅限受限制的 SQL 数据库内方案 |
-| DML 语句 | [支持](https://msdn.microsoft.com/zh-cn/library/ff848766.aspx) | [大多数](https://msdn.microsoft.com/zh-cn/library/ff848766.aspx) |
-| DML 触发器 | [支持](https://msdn.microsoft.com/zh-cn/library/ms178110.aspx) | [支持](https://msdn.microsoft.com/zh-cn/library/ms178110.aspx) |
-| DMV | [全部](https://msdn.microsoft.com/zh-cn/library/ms188754.aspx) | [某些](https://msdn.microsoft.com/zh-cn/library/ms188754.aspx) |
-| 弹性池 | 不支持 | [支持](./sql-database-elastic-pool.md) |
-| 弹性作业 | 不支持 - 请参阅 [SQL Server 代理](https://msdn.microsoft.com/zh-cn/library/ms189237.aspx) | 不支持 | 
-| 弹性查询 | 不支持 - 请参阅[跨数据库查询](https://msdn.microsoft.com/zh-cn/library/dn584627.aspx) | [支持](./sql-database-elastic-query-overview.md) |
-| 事件通知 | [支持](https://msdn.microsoft.com/zh-cn/library/ms186376.aspx) | [支持](./sql-database-insights-alerts-portal.md) |
-| 表达式 | [支持](https://msdn.microsoft.com/zh-cn/library/ms190286.aspx) | [支持](https://msdn.microsoft.com/zh-cn/library/ms190286.aspx) |
-| 扩展的事件 | [支持](https://msdn.microsoft.com/zh-cn/library/bb630282.aspx) | [某些](./sql-database-xevent-db-diff-from-svr.md) |
-| 扩展的存储过程 | [支持](https://msdn.microsoft.com/zh-cn/library/ms164627.aspx) | 不支持 |
-| 文件组 | [支持](https://msdn.microsoft.com/zh-cn/library/ms189563.aspx#Anchor_2) | [仅限主要](https://msdn.microsoft.com/zh-cn/library/ms189563.aspx#Anchor_2) |
-| 文件流 | [支持](https://msdn.microsoft.com/zh-cn/library/gg471497.aspx) | 不支持 |
-| 全文搜索 | [支持](https://msdn.microsoft.com/zh-cn/library/ms142571.aspx) | [不支持第三方断字符](https://msdn.microsoft.com/zh-cn/library/ms142571.aspx) |
-| 函数 | [支持](https://msdn.microsoft.com/zh-cn/library/ms174318.aspx) | [大多数](https://msdn.microsoft.com/zh-cn/library/ms174318.aspx) |
-| 内存中优化 | [支持](https://msdn.microsoft.com/zh-cn/library/dn133186.aspx) | [仅限 Premium Edition](https://msdn.microsoft.com/zh-cn/library/dn133186.aspx) |
-| 作业 | [SQL Server 代理](https://msdn.microsoft.com/zh-cn/library/ms189237.aspx) | 不支持 |
-| JSON 数据支持 | [支持](https://msdn.microsoft.com/zh-cn/library/dn921897.aspx) | [支持](./sql-database-json-features.md) |
-| 语言元素 | [支持](https://msdn.microsoft.com/zh-cn/library/ff848807.aspx) | [大多数](https://msdn.microsoft.com/zh-cn/library/ff848807.aspx) |  
-| 链接的服务器 | [支持](https://msdn.microsoft.com/zh-cn/library/ms188279.aspx) | 不支持 - 请参阅[弹性查询](./sql-database-elastic-query-horizontal-partitioning.md) |
-| 日志传送 | [支持](https://msdn.microsoft.com/zh-cn/library/ms187103.aspx) | 不支持 - 请参阅[活动异地复制](./sql-database-geo-replication-overview.md) |
-| 管理命令 | [支持](https://msdn.microsoft.com/zh-cn/library/ms190286.aspx)| [不支持](https://msdn.microsoft.com/zh-cn/library/ms190286.aspx) |
-| Master Data Services (MDS) | [支持](https://msdn.microsoft.com/zh-cn/library/ff487003.aspx) | 不支持 |
-| 批量导入时的最小日志记录 | [支持](https://msdn.microsoft.com/zh-cn/library/ms190422.aspx) | 不支持 |
-| 修改系统数据 | [支持](https://msdn.microsoft.com/zh-cn/library/ms178028.aspx) | 不支持 |
-| 联机索引操作 | [支持](https://msdn.microsoft.com/zh-cn/library/ms177442.aspx) | [受服务层限制的事务大小](https://msdn.microsoft.com/zh-cn/library/ms177442.aspx) |
-| 运算符 | [支持](https://msdn.microsoft.com/zh-cn/library/ms174986.aspx) | [大多数](https://msdn.microsoft.com/zh-cn/library/ms174986.aspx) |
-| 数据库时间点还原 | [支持](https://msdn.microsoft.com/zh-cn/library/ms179451.aspx) | [支持](./sql-database-recovery-using-backups.md#point-in-time-restore) |
-| Polybase | [支持](https://msdn.microsoft.com/zh-cn/library/mt143171.aspx) | [不支持]
-| 基于策略的管理 | [支持](https://msdn.microsoft.com/zh-cn/library/bb510667.aspx) | 不支持 |
-| 谓词 | [支持](https://msdn.microsoft.com/zh-cn/library/ms189523.aspx) | [大多数](https://msdn.microsoft.com/zh-cn/library/ms189523.aspx)
-| 资源调控器 | [支持](https://msdn.microsoft.com/zh-cn/library/bb933866.aspx) | [内置](./sql-database-service-tiers.md) |
-| 从备份还原数据库 | [支持](https://msdn.microsoft.com/zh-cn/library/ms187048.aspx#anchor_6) | [仅限从内置备份](./sql-database-recovery-using-backups.md) |
-| 行级别安全性 | [支持](https://msdn.microsoft.com/zh-cn/library/dn765131.aspx) | [支持](https://msdn.microsoft.com/zh-cn/library/dn765131.aspx) |
-| 安全语句 | [支持](https://msdn.microsoft.com/zh-cn/library/ff848791.aspx) | [某些](https://msdn.microsoft.com/zh-cn/library/ff848791.aspx) |
-| 语义搜索 | [支持](https://msdn.microsoft.com/zh-cn/library/gg492075.aspx) | 不支持 |
-| 序列号 | [支持](https://msdn.microsoft.com/zh-cn/library/ff878058.aspx) | [支持](https://msdn.microsoft.com/zh-cn/library/ff878058.aspx) |
-| 服务中转站 | [支持](https://msdn.microsoft.com/zh-cn/library/bb522893.aspx) | 不支持 |
-| 服务器配置选项 | [支持](https://msdn.microsoft.com/zh-cn/library/ms189631.aspx) | 不支持 - 请参阅[数据库配置选项](https://msdn.microsoft.com/zh-cn/library/mt629158.aspx) |
-| Set 语句 | [支持](https://msdn.microsoft.com/zh-cn/library/ms190356.aspx) | [大多数](https://msdn.microsoft.com/zh-cn/library/ms190356.aspx) 
-| 空间 | [支持](https://msdn.microsoft.com/zh-cn/library/bb933790.aspx) | [支持](https://msdn.microsoft.com/zh-cn/library/bb933790.aspx) |
-| SQL Server 代理 | [支持](https://msdn.microsoft.com/zh-cn/library/ms189237.aspx) | 不支持 |
-| SQL Server Analysis Services (SSAS) | [支持](https://msdn.microsoft.com/zh-cn/library/bb522607.aspx) | 不支持 - 请参阅 [Azure Analysis Services](https://azure.microsoft.com/services/analysis-services/) |
-| SQL Server 集成服务 (SSIS) | [支持](https://msdn.microsoft.com/zh-cn/library/ms141026.aspx) | 不支持 - 请参阅 [Azure 数据工厂](https://azure.microsoft.com/services/data-factory/) |
-| SQL Server PowerShell | [支持](https://msdn.microsoft.com/zh-cn/library/hh245198.aspx) | [支持](https://msdn.microsoft.com/zh-cn/library/hh245198.aspx) |
-| SQL Server 事件探查器 | [支持](https://msdn.microsoft.com/zh-cn/library/ms181091.aspx) | 不支持 - 请参阅[扩展事件](https://msdn.microsoft.com/zh-cn/library/ms181091.aspx) |
-| SQL Server 复制 | [支持](https://msdn.microsoft.com/zh-cn/library/ms151198.aspx) | [仅限事务复制和快照复制订阅服务器](./sql-database-cloud-migrate-compatible-using-transactional-replication.md) |
-| SQL Server Reporting Services (SSRS) | [支持](https://msdn.microsoft.com/zh-cn/library/ms159106.aspx) | 不支持 |
-| 存储过程 | [支持](https://msdn.microsoft.com/zh-cn/library/ms190782.aspx) | [支持](https://msdn.microsoft.com/zh-cn/library/ms190782.aspx) |
-| 系统存储函数 | [支持](https://msdn.microsoft.com/zh-cn/library/ff848780.aspx) | [某些](https://msdn.microsoft.com/zh-cn/library/ff848780.aspx) |
-| 系统存储过程 | [支持](https://msdn.microsoft.com/zh-cn/library/ms187961.aspx) | [某些](https://msdn.microsoft.com/zh-cn/library/ms187961.aspx) |
-| 系统表 | [支持](https://msdn.microsoft.com/zh-cn/library/ms179932.aspx) | [某些](https://msdn.microsoft.com/zh-cn/library/ms179932.aspx) |
-| 系统视图 | [支持](https://msdn.microsoft.com/zh-cn/library/ms177862.aspx) | [某些](https://msdn.microsoft.com/zh-cn/library/ms177862.aspx)
-| 表分区 | [支持](https://msdn.microsoft.com/zh-cn/library/ms190787.aspx) | [仅限主文件组](https://msdn.microsoft.com/zh-cn/library/ms190787.aspx) |
-| 临时表 | [本地和全局](https://msdn.microsoft.com/zh-cn/library/ms174979.aspx#Anchor_4) | [仅限本地](https://msdn.microsoft.com/zh-cn/library/ms174979.aspx#Anchor_4) |
-| 临时表 | [支持](https://msdn.microsoft.com/zh-cn/library/dn935015.aspx) | [支持](./sql-database-temporal-tables.md) |
-| 事务语句 | [支持](https://msdn.microsoft.com/zh-cn/library/ms174377.aspx) | [支持](https://msdn.microsoft.com/zh-cn/library/ms174377.aspx) |
-| 变量 | [支持](https://msdn.microsoft.com/zh-cn/library/ff848809.aspx) | | [支持](https://msdn.microsoft.com/zh-cn/library/ff848809.aspx) | 
-| 透明数据加密 (TDE) | [支持](https://msdn.microsoft.com/zh-cn/library/bb934049.aspx) | [支持](https://msdn.microsoft.com/dn948096.aspx) |
-| Windows Server 故障转移群集 | [支持](https://msdn.microsoft.com/zh-cn/library/hh270278.aspx) | 不支持 - 请参阅[活动异地复制](./sql-database-geo-replication-overview.md) |
-| XML 索引 | [支持](http://msdn.microsoft.com/zh-cn/library/bb934097.aspx) | [支持](http://msdn.microsoft.com/zh-cn/library/bb934097.aspx) |
-| XML 语句 | [支持](https://msdn.microsoft.com/zh-cn/library/ff848798.aspx) | [支持](https://msdn.microsoft.com/zh-cn/library/ff848798.aspx) |
+| Active Geo-Replication | Not supported - see [AlwaysOn Availability Groups](https://msdn.microsoft.com/zh-cn/library/hh510230.aspx) | [Supported](./sql-database-geo-replication-overview.md)
+| Always Encrypted | [Supported](https://msdn.microsoft.com/zh-cn/library/mt163865.aspx) | [Supported](./sql-database-always-encrypted.md) |
+| AlwaysOn Availability Groups | [Supported](https://msdn.microsoft.com/zh-cn/library/hh510230.aspx) | Not supported - See [Active Geo-Replication](./sql-database-geo-replication-overview.md) |
+| Attach a database | [Supported](https://msdn.microsoft.com/zh-cn/library/ms190209.aspx) | Not supported |
+| Application roles | [Supported](https://msdn.microsoft.com/zh-cn/library/ms190998.aspx) | [Supported](https://msdn.microsoft.com/zh-cn/library/ms190998.aspx) |
+| Auto scale | Not supported | [Supported](./sql-database-scale-up.md) |
+| Azure Active Directory | Not supported | [Supported](./sql-database-aad-authentication.md) |
+| Auditing | [Supported](https://msdn.microsoft.com/zh-cn/library/cc280386.aspx) | [Supported](./sql-database-auditing-get-started.md) |
+| BACPAC file (export) | [Supported](https://msdn.microsoft.com/zh-cn/library/hh213241.aspx) | [Supported](./sql-database-export.md) |
+| BACPAC file (import) | [Supported](https://msdn.microsoft.com/zh-cn/library/hh710052.aspx) | [Supported](./sql-database-import.md) |
+| BACKUP and RESTORE statements | [Supported](https://msdn.microsoft.com/zh-cn/library/ff848768.aspx) | Not supported |
+| Built-in functions | [Supported](https://msdn.microsoft.com/zh-cn/library/ms174318.aspx) | [Most](https://msdn.microsoft.com/zh-cn/library/ms174318.aspx) |
+| Change data capture | [Supported](https://msdn.microsoft.com/zh-cn/library/cc645937.aspx) | Not supported |
+| Change tracking | [Supported](https://msdn.microsoft.com/zh-cn/library/bb933875.aspx) | [Supported](https://msdn.microsoft.com/zh-cn/library/bb933875.aspx) |
+| Collation statements | [Supported](https://msdn.microsoft.com/zh-cn/library/ff848763.aspx) | [Supported](https://msdn.microsoft.com/zh-cn/library/ff848763.aspx) |
+| Columnstore indexes | [Supported](https://msdn.microsoft.com/zh-cn/library/gg492088.aspx) | [Premium edition only](https://msdn.microsoft.com/zh-cn/library/gg492088.aspx) |
+| Common language runtime (CLR) | [Supported](https://msdn.microsoft.com/zh-cn/library/ms131102.aspx) | Not supported |
+| Contained databases | [Supported](https://msdn.microsoft.com/zh-cn/library/ff929071.aspx) | Built-in |
+| Contained users | [Supported](https://msdn.microsoft.com/zh-cn/library/ff929188.aspx) | [Supported](./sql-database-manage-logins.md#non-administrator-users) |
+| Control of flow language keywords | [Supported](https://msdn.microsoft.com/zh-cn/library/ms174290.aspx) | [Supported](https://msdn.microsoft.com/zh-cn/library/ms174290.aspx) |
+| Cross-database queries | [Supported](https://msdn.microsoft.com/zh-cn/library/dn584627.aspx) | [Elastic queries](./sql-database-elastic-query-overview.md) |
+| Cursors | [Supported](https://msdn.microsoft.com/zh-cn/library/ms181441.aspx) | [Supported](https://msdn.microsoft.com/zh-cn/library/ms181441.aspx) | 
+| Data compression | [Supported](https://msdn.microsoft.com/zh-cn/library/cc280449.aspx) | [Supported](https://msdn.microsoft.com/zh-cn/library/cc280449.aspx) |
+| Database backups | [Exposed for users](https://msdn.microsoft.com/zh-cn/library/ms187048.aspx) | [Built-in](./sql-database-automated-backups.md) |
+| Database mail | [Supported](https://msdn.microsoft.com/zh-cn/library/ms189635.aspx) | Not supported |
+| Database mirroring | [Supported](https://msdn.microsoft.com/zh-cn/library/ms189852.aspx) | Not supported |
+| Database configuration options | [Supported](https://msdn.microsoft.com/zh-cn/library/mt629158.aspx) | [Supported](https://msdn.microsoft.com/zh-cn/library/mt629158.aspx) |
+| Data Quality Services (DQS) | [Supported](https://msdn.microsoft.com/zh-cn/library/ff877925.aspx) | Not supported |
+| Database snapshots | [Supported](https://msdn.microsoft.com/zh-cn/library/ms175158.aspx) | Not supported |
+| Data types | [Supported](https://msdn.microsoft.com/zh-cn/library/ms187752.aspx) | [Supported](https://msdn.microsoft.com/zh-cn/library/ms187752.aspx) |  
+| DBCC statements | [All](https://msdn.microsoft.com/zh-cn/library/ms188796.aspx) | [Some](https://msdn.microsoft.com/zh-cn/library/ms188796.aspx) |
+| DDL statements | [Supported](https://msdn.microsoft.com/zh-cn/library/ff848799.aspx) | [Most](https://msdn.microsoft.com/zh-cn/library/ff848799.aspx)
+| DDL triggers | [Supported](https://msdn.microsoft.com/zh-cn/library/ms175941.aspx) | [Database only](https://msdn.microsoft.com/zh-cn/library/ms175941.aspx) |
+| Distributed transactions | [MS DTC](https://msdn.microsoft.com/zh-cn/library/ms131665.aspx) | Limited intra-SQL Database scenarios only |
+| DML statements | [Supported](https://msdn.microsoft.com/zh-cn/library/ff848766.aspx) | [Most](https://msdn.microsoft.com/zh-cn/library/ff848766.aspx) |
+| DML triggers | [Supported](https://msdn.microsoft.com/zh-cn/library/ms178110.aspx) | [Supported](https://msdn.microsoft.com/zh-cn/library/ms178110.aspx) |
+| DMVs | [All](https://msdn.microsoft.com/zh-cn/library/ms188754.aspx) | [Some](https://msdn.microsoft.com/zh-cn/library/ms188754.aspx) |
+| elastic pools | Not supported | [Supported](./sql-database-elastic-pool.md) |
+| Elastic jobs | Not supported - see [SQL Server Agent](https://msdn.microsoft.com/zh-cn/library/ms189237.aspx) | Not Supported | 
+| Elastic queries | Not supported - see [Cross-database queries](https://msdn.microsoft.com/zh-cn/library/dn584627.aspx) | [Supported](./sql-database-elastic-query-overview.md) |
+| Event notifications | [Supported](https://msdn.microsoft.com/zh-cn/library/ms186376.aspx) | [Supported](./sql-database-insights-alerts-portal.md) |
+| Expressions | [Supported](https://msdn.microsoft.com/zh-cn/library/ms190286.aspx) | [Supported](https://msdn.microsoft.com/zh-cn/library/ms190286.aspx) |
+| Extended events | [Supported](https://msdn.microsoft.com/zh-cn/library/bb630282.aspx) | [Some](./sql-database-xevent-db-diff-from-svr.md) |
+| Extended stored procedures | [Supported](https://msdn.microsoft.com/zh-cn/library/ms164627.aspx) | Not supported |
+| File groups | [Supported](https://msdn.microsoft.com/zh-cn/library/ms189563.aspx#Anchor_2) | [Primary only](https://msdn.microsoft.com/zh-cn/library/ms189563.aspx#Anchor_2) |
+| Filestream | [Supported](https://msdn.microsoft.com/zh-cn/library/gg471497.aspx) | Not supported |
+| Full-text search | [Supported](https://msdn.microsoft.com/zh-cn/library/ms142571.aspx) | [Not supported third-party word breakers](https://msdn.microsoft.com/zh-cn/library/ms142571.aspx) |
+| Functions | [Supported](https://msdn.microsoft.com/zh-cn/library/ms174318.aspx) | [Most](https://msdn.microsoft.com/zh-cn/library/ms174318.aspx) |
+| In-memory optimization | [Supported](https://msdn.microsoft.com/zh-cn/library/dn133186.aspx) | [Premium edition only](https://msdn.microsoft.com/zh-cn/library/dn133186.aspx) |
+| Jobs | [SQL Server Agent](https://msdn.microsoft.com/zh-cn/library/ms189237.aspx) | Not Supported |
+| JSON data support | [Supported](https://msdn.microsoft.com/zh-cn/library/dn921897.aspx) | [Supported](./sql-database-json-features.md) |
+| Language elements | [Supported](https://msdn.microsoft.com/zh-cn/library/ff848807.aspx) | [Most](https://msdn.microsoft.com/zh-cn/library/ff848807.aspx) |  
+| Linked servers | [Supported](https://msdn.microsoft.com/zh-cn/library/ms188279.aspx) | Not supported - see [Elastic query](./sql-database-elastic-query-horizontal-partitioning.md) |
+| Log shipping | [Supported](https://msdn.microsoft.com/zh-cn/library/ms187103.aspx) | Not supported - see [Active Geo-Replication](./sql-database-geo-replication-overview.md) |
+| Management commands | [Supported](https://msdn.microsoft.com/zh-cn/library/ms190286.aspx)| [Not supported](https://msdn.microsoft.com/zh-cn/library/ms190286.aspx) |
+| Master Data Services (MDS) | [Supported](https://msdn.microsoft.com/zh-cn/library/ff487003.aspx) | Not supported |
+| Minimal logging in bulk import | [Supported](https://msdn.microsoft.com/zh-cn/library/ms190422.aspx) | Not supported |
+| Modifying system data | [Supported](https://msdn.microsoft.com/zh-cn/library/ms178028.aspx) | Not supported |
+| Online index operations | [Supported](https://msdn.microsoft.com/zh-cn/library/ms177442.aspx) | [Transaction size limited by service tier](https://msdn.microsoft.com/zh-cn/library/ms177442.aspx) |
+| Operators | [Supported](https://msdn.microsoft.com/zh-cn/library/ms174986.aspx) | [Most](https://msdn.microsoft.com/zh-cn/library/ms174986.aspx) |
+| Point in time database restore | [Supported](https://msdn.microsoft.com/zh-cn/library/ms179451.aspx) | [Supported](./sql-database-recovery-using-backups.md#point-in-time-restore) |
+| Polybase | [Supported](https://msdn.microsoft.com/zh-cn/library/mt143171.aspx) | [Not supported]
+| Policy-based management | [Supported](https://msdn.microsoft.com/zh-cn/library/bb510667.aspx) | Not supported |
+| Predicates | [Supported](https://msdn.microsoft.com/zh-cn/library/ms189523.aspx) | [Most](https://msdn.microsoft.com/zh-cn/library/ms189523.aspx)
+| Resource governor | [Supported](https://msdn.microsoft.com/zh-cn/library/bb933866.aspx) | [Built-in](./sql-database-service-tiers.md) |
+| Restore database from backup | [Supported](https://msdn.microsoft.com/zh-cn/library/ms187048.aspx#anchor_6) | [From built-in backups only](./sql-database-recovery-using-backups.md) |
+| Row Level Security | [Supported](https://msdn.microsoft.com/zh-cn/library/dn765131.aspx) | [Supported](https://msdn.microsoft.com/zh-cn/library/dn765131.aspx) |
+| Security statements | [Supported](https://msdn.microsoft.com/zh-cn/library/ff848791.aspx) | [Some](https://msdn.microsoft.com/zh-cn/library/ff848791.aspx) |
+| Semantic search | [Supported](https://msdn.microsoft.com/zh-cn/library/gg492075.aspx) | Not supported |
+| Sequence numbers | [Supported](https://msdn.microsoft.com/zh-cn/library/ff878058.aspx) | [Supported](https://msdn.microsoft.com/zh-cn/library/ff878058.aspx) |
+| Service Broker | [Supported](https://msdn.microsoft.com/zh-cn/library/bb522893.aspx) | Not supported |
+| Server configuration options | [Supported](https://msdn.microsoft.com/zh-cn/library/ms189631.aspx) | Not supported - see [Database configuration options](https://msdn.microsoft.com/zh-cn/library/mt629158.aspx) |
+| Set statements | [Supported](https://msdn.microsoft.com/zh-cn/library/ms190356.aspx) | [Most](https://msdn.microsoft.com/zh-cn/library/ms190356.aspx) 
+| Spatial | [Supported](https://msdn.microsoft.com/zh-cn/library/bb933790.aspx) | [Supported](https://msdn.microsoft.com/zh-cn/library/bb933790.aspx) |
+| SQL Server Agent | [Supported](https://msdn.microsoft.com/zh-cn/library/ms189237.aspx) | Not supported |
+| SQL Server Analysis Services (SSAS) | [Supported](https://msdn.microsoft.com/zh-cn/library/bb522607.aspx) | Not supported - see [Azure Analysis Services](https://azure.microsoft.com/services/analysis-services/) |
+| SQL Server Integration Services (SSIS) | [Supported](https://msdn.microsoft.com/zh-cn/library/ms141026.aspx) | Not supported - see [Azure Data Factory](https://azure.microsoft.com/services/data-factory/) |
+| SQL Server PowerShell | [Supported](https://msdn.microsoft.com/zh-cn/library/hh245198.aspx) | [Supported](https://msdn.microsoft.com/zh-cn/library/hh245198.aspx) |
+| SQL Server Profiler | [Supported](https://msdn.microsoft.com/zh-cn/library/ms181091.aspx) | Not supported - see [Extended events](https://msdn.microsoft.com/zh-cn/library/ms181091.aspx) |
+| SQL Server Replication | [Supported](https://msdn.microsoft.com/zh-cn/library/ms151198.aspx) | [Transactional and snapshot replication subscriber only](./sql-database-cloud-migrate.md) |
+| SQL Server Reporting Services (SSRS) | [Supported](https://msdn.microsoft.com/zh-cn/library/ms159106.aspx) | Not supported |
+| Stored procedures | [Supported](https://msdn.microsoft.com/zh-cn/library/ms190782.aspx) | [Supported](https://msdn.microsoft.com/zh-cn/library/ms190782.aspx) |
+| System stored functions | [Supported](https://msdn.microsoft.com/zh-cn/library/ff848780.aspx) | [Some](https://msdn.microsoft.com/zh-cn/library/ff848780.aspx) |
+| System stored procedures | [Supported](https://msdn.microsoft.com/zh-cn/library/ms187961.aspx) | [Some](https://msdn.microsoft.com/zh-cn/library/ms187961.aspx) |
+| System tables | [Supported](https://msdn.microsoft.com/zh-cn/library/ms179932.aspx) | [Some](https://msdn.microsoft.com/zh-cn/library/ms179932.aspx) |
+| System views | [Supported](https://msdn.microsoft.com/zh-cn/library/ms177862.aspx) | [Some](https://msdn.microsoft.com/zh-cn/library/ms177862.aspx)
+| Table Partitioning | [Supported](https://msdn.microsoft.com/zh-cn/library/ms190787.aspx) | [Primary filegroup only](https://msdn.microsoft.com/zh-cn/library/ms190787.aspx) |
+| Temporary tables | [Local and global](https://msdn.microsoft.com/zh-cn/library/ms174979.aspx#Anchor_4) | [Local only](https://msdn.microsoft.com/zh-cn/library/ms174979.aspx#Anchor_4) |
+| Temporal tables | [Supported](https://msdn.microsoft.com/zh-cn/library/dn935015.aspx) | [Supported](./sql-database-temporal-tables.md) |
+| Transaction statements | [Supported](https://msdn.microsoft.com/zh-cn/library/ms174377.aspx) | [Supported](https://msdn.microsoft.com/zh-cn/library/ms174377.aspx) |
+| Variables | [Supported](https://msdn.microsoft.com/zh-cn/library/ff848809.aspx) | | [Supported](https://msdn.microsoft.com/zh-cn/library/ff848809.aspx) | 
+| Transparent data encryption (TDE)  | [Supported](https://msdn.microsoft.com/zh-cn/library/bb934049.aspx) | [Supported](https://msdn.microsoft.com/dn948096.aspx) |
+| Windows Server Failover clustering | [Supported](https://msdn.microsoft.com/zh-cn/library/hh270278.aspx) | Not supported - See [Active Geo-Replication](./sql-database-geo-replication-overview.md) |
+| XML indexes | [Supported](http://msdn.microsoft.com/zh-cn/library/bb934097.aspx) | [Supported](http://msdn.microsoft.com/zh-cn/library/bb934097.aspx) |
+| XML statements | [Supported](https://msdn.microsoft.com/zh-cn/library/ff848798.aspx) | [Supported](https://msdn.microsoft.com/zh-cn/library/ff848798.aspx) |
 
-## 后续步骤
+## Next steps
 
-- 有关 Azure SQL 数据库服务的信息，请参阅[什么是 SQL 数据库？](./sql-database-technical-overview.md)
-- 有关 Azure SQL 逻辑服务器的概述，请参阅 [SQL 数据库逻辑服务器概述](./sql-database-server-overview.md)
-- 有关 Azure SQL 数据库的概述，请参阅 [SQL 数据库概述](./sql-database-overview.md)
-- 有关 Transact-SQL 支持和差异的信息，请参阅 [Azure SQL 数据库 Transact-SQL 差异](./sql-database-transact-sql-information.md)。
-- 基于**服务层**，了解有关特定资源配额和限制的信息。有关服务层的概述，请参阅 [SQL 数据库服务层](./sql-database-service-tiers.md)。
-- 有关与安全相关的指导原则，请参阅 [Azure SQL 数据库安全指导原则和限制](./sql-database-security-guidelines.md)。
-- 有关驱动程序可用性和 SQL 数据库支持的信息，请参阅 [用于 SQL 数据库和 SQL Server 的连接库](./sql-database-libraries.md)。
-
-<!---HONumber=Mooncake_0116_2017-->
+- For information about the Azure SQL Database service, see [What is SQL Database?](./sql-database-technical-overview.md)
+- For an overview of Azure SQL logical servers, see [SQL Database logical server overview](./sql-database-server-overview.md)
+- For an overview of Azure SQL databases, see [SQL Database overview](./sql-database-overview.md)
+- For information about Transact-SQL support and differences, see [Azure SQL Database Transact-SQL differences](./sql-database-transact-sql-information.md).
+- For information about specific resource quotas and limitations based on your **service tier**. For an overview of service tiers, see [SQL Database service tiers](./sql-database-service-tiers.md).
+- For an overview of security, see [Azure SQL Database Security Overview](./sql-database-security-overview.md).
+- For information on driver availability and support for SQL Database, see [Connection Libraries for SQL Database and SQL Server](./sql-database-libraries.md).

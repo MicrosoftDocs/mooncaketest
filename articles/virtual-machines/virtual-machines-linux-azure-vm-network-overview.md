@@ -1,6 +1,6 @@
 ---
-title: Azure 和 Linux VM 网络概述 | Azure
-description: Azure 和 Linux VM 网络的概述。
+title: Azure and Linux VM Network Overview | Azure
+description: An overview of Azure and Linux VM networking.
 services: virtual-machines-linux
 documentationcenter: virtual-machines-linux
 author: vlivech
@@ -14,55 +14,53 @@ ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 10/25/2016
-wacn.date: 12/20/2016
+wacn.date: ''
 ms.author: v-livech
+
 ---
+# Azure and Linux VM Network Overview
+## Virtual Networks
+An Azure virtual network (VNet) is a representation of your own network in the cloud. It is a logical isolation of the Azure cloud dedicated to your subscription. You can fully control the IP address blocks, DNS settings, security policies, and route tables within this network. You can also further segment your VNet into subnets and launch Azure IaaS virtual machines (VMs) and/or Cloud services (PaaS role instances). Additionally, you can connect the virtual network to your on-premises network using one of the connectivity options available in Azure. In essence, you can expand your network to Azure, with complete control on IP address blocks with the benefit of enterprise scale Azure provides.
 
-# Azure 和 Linux VM 网络概述
-## 虚拟网络
-Azure 虚拟网络 (VNet) 是你自己的网络在云中的表示形式。它是对专用于你的订阅的 Azure 云进行的逻辑隔离。你可以完全控制该网络中的 IP 地址块、DNS 设置、安全策略和路由表。还可以进一步将 VNet 细分成各个子网，并启动 Azure IaaS 虚拟机 (VM) 和/或云服务（PaaS 角色实例）。此外，还可以使用 Azure 中提供的连接选项之一将虚拟网络连接到本地网络。实际上，你可以将网络扩展到 Azure，对 IP 地址块进行完全的控制，并享受企业级 Azure 带来的好处。
+* [Virtual Network Overview](../virtual-network/virtual-networks-overview.md)
 
-* [虚拟网络概述](../virtual-network/virtual-networks-overview.md)
+To create a VNet by using the Azure CLI, go here to follow the walk through.
 
-若要使用 Azure CLI 创建 VNet，请遵循以下文章中的详细步骤。
+* [How to create a VNet using the Azure CLI](../virtual-network/virtual-networks-create-vnet-arm-cli.md)
 
-* [如何使用 Azure CLI 创建 VNet](../virtual-network/virtual-networks-create-vnet-arm-cli.md)
+## Network Security Groups
+Network security group (NSG) contains a list of Access Control List (ACL) rules that allow or deny network traffic to your VM instances in a Virtual Network. NSGs can be associated with either subnets or individual VM instances within that subnet. When a NSG is associated with a subnet, the ACL rules apply to all the VM instances in that subnet. In addition, traffic to an individual VM can be restricted further by associating a NSG directly to that VM.
 
-## 网络安全组
-网络安全组 (NSG) 包含一系列访问控制列表 (ACL) 规则，这些规则可以允许或拒绝虚拟网络中流向 VM 实例的网络流量。NSG 可以与子网或该子网中的各个 VM 实例相关联。当 NSG 与某个子网相关联时，ACL 规则适用于该子网中的所有 VM 实例。另外，可以进一步通过将 NSG 直接关联到单个 VM 对流向该 VM 的流量进行限制。
+* [What is a Network Security Group (NSG)?](../virtual-network/virtual-networks-nsg.md)
+* [How to create NSGs in the Azure CLI](../virtual-network/virtual-networks-create-nsg-arm-cli.md)
 
-* [什么是网络安全组 (NSG)？](../virtual-network/virtual-networks-nsg.md)
-* [如何在 Azure CLI 中创建 NSG](../virtual-network/virtual-networks-create-nsg-arm-cli.md)
+## User Defined Routes
+When you add virtual machines (VMs) to a virtual network (VNet) in Azure, you will notice that the VMs are able to communicate with each other over the network, automatically. You do not need to specify a gateway, even though the VMs are in different subnets. The same is true for communication from the VMs to the public Internet, and even to your on-premises network when a hybrid connection from Azure to your own datacenter is present.
 
-## 用户定义的路由
-在 Azure 中将虚拟机 (VM) 添加到虚拟网络 (VNet) 时，VM 能够自动通过网络进行相互通信。你不需要指定网关，即使这些 VM 位于不同子网中。如果有从 Azure 到你的数据中心的混合连接，这同样适用于从 VM 到公共 Internet 的通信，甚至还适用于到本地网络的通信。
+* [What are User Defined Routes and IP Forwarding?](../virtual-network/virtual-networks-udr-overview.md)
+* [Create a UDR in the Azure CLI](../virtual-network/virtual-network-create-udr-arm-cli.md)
 
-* [什么是用户定义的路由和 IP 转发？](../virtual-network/virtual-networks-udr-overview.md)
-* [在 Azure CLI 中创建 UDR](../virtual-network/virtual-network-create-udr-arm-cli.md)
+## Associating a FQDN to your Linux VM
+When you create a virtual machine (VM) in the Azure portal preview using the Resource Manager deployment model, a public IP resource for the virtual machine is automatically created. You use this IP address to remotely access the VM. Although the portal does not create a fully qualified domain name, or FQDN, by default, you can add one once the VM is created.
 
-## 将 FQDN 关联到 Linux VM
-在 Azure 门户中使用 Resource Manager 部署模型创建虚拟机 (VM) 时，系统将为虚拟机自动创建一个公共 IP 资源。可以使用此 IP 地址远程访问 VM。默认情况下，该门户不会创建完全限定域名（简称 FQDN），但一旦创建 VM，就可以添加一个 FQDN。
+* [Create a Fully Qualified Domain Name in the Azure portal preview](virtual-machines-linux-portal-create-fqdn.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
-* [在 Azure 门户预览中创建完全限定的域名](./virtual-machines-linux-portal-create-fqdn.md)
+## Network interfaces
+A network interface (NIC) is the interconnection between a Virtual Machine (VM) and the underlying software network. This article explains what a network interface is and how it's used in the Azure Resource Manager deployment model.
 
-## 虚拟 NIC
-网络接口 (NIC) 是虚拟机 (VM) 与基础软件网络之间互相连接的桥梁。本文解释什么是网络接口，以及在 Azure Resource Manager 部署模型中如何使用它。
+* [Virtual Network Interfaces](../virtual-network/virtual-network-network-interface.md)
 
-* [虚拟网络接口概述](../virtual-network/virtual-network-network-interface-overview.md)
+## Virtual NICs and DNS labeling
+If you have a server that you need to be persistent, but that server is treated as cattle and is torn down and deployed frequently, you will want to use DNS labeling on your NIC to persist the name on the VNET.  With the following walk-through you will setup a persistently named NIC with a static IP.
 
-## 虚拟 NIC 和 DNS 标签
-如果你想要持久保留某台服务器，但该服务器充当过渡用的设备，经常被撤掉然后又重新部署，那么，可以在 NIC 上使用 DNS 标签，以便在 VNET 中持久保留其名称。使用以下文章中的详细步骤，可以创建一个使用静态 IP 的、名称持久保留的 NIC。
+* [Create a complete Linux environment by using the Azure CLI](virtual-machines-linux-create-cli-complete.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
-* [使用 Azure CLI 创建完整的 Linux 环境](./virtual-machines-linux-create-cli-complete.md)
+## Virtual Network Gateways
+A virtual network gateway is used to send network traffic between Azure virtual networks and on-premises locations and also between virtual networks within Azure (VNet-to-VNet). When you configure a VPN gateway, you must create and configure a virtual network gateway and a virtual network gateway connection.
 
-## 虚拟网络网关
-虚拟网络网关用于在 Azure 虚拟网络与本地位置之间以及 Azure 内的虚拟网络（VNet 到 VNet）之间发送网络流量。配置 VPN 网关时，必须创建并配置虚拟网络网关和虚拟网络网关连接。
+* [About VPN Gateway](../vpn-gateway/vpn-gateway-about-vpngateways.md)
 
-* [关于 VPN 网关](../vpn-gateway/vpn-gateway-about-vpngateways.md)
+## Internal Load Balancing
+An Azure load balancer is a Layer-4 (TCP, UDP) load balancer. The load balancer provides high availability by distributing incoming traffic among healthy service instances in cloud services or virtual machines in a load balancer set. Azure Load Balancer can also present those services on multiple ports, multiple IP addresses, or both.
 
-## 内部负载均衡
-Azure 负载均衡器是位于第 4 层 (TCP, UDP) 的负载均衡器。该负载均衡器可以在云服务或负载均衡器集的虚拟机中运行状况良好的服务实例之间分配传入流量，从而提供高可用性。Azure Load Balancer 还可以在多个端口和/或多个 IP 地址上显示这些服务。
-
-* [使用 Azure CLI 创建内部负载均衡器](../load-balancer/load-balancer-get-started-internet-arm-cli.md)
-
-<!---HONumber=Mooncake_1212_2016-->
+* [Creating an internal load balancer using the Azure CLI](../load-balancer/load-balancer-get-started-internet-arm-cli.md)

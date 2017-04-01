@@ -37,5 +37,3 @@ Time /t >> C:\Temp\logfile.log
         echo "Update" >> C:\Temp\logfile.log
         UnifiedAgent.exe /upgrade
     :ENDSCRIPT
-
-<!---HONumber=Mooncake_0206_2017-->

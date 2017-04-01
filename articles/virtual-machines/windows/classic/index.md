@@ -3,7 +3,7 @@
 layout: LandingPage
 description: Learn how to create Windows virtual machines using the Classic deployment.
 
-title: Azure Virtual Machines for Windows Documentation | Microsoft Docs
+title: Azure Virtual Machines for Windows Documentation | Azure
 services: virtual-machines
 author: carolz
 manager: carolz
@@ -15,6 +15,6 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
+wacn.date: ''
 ms.author: carolz
 ---
-

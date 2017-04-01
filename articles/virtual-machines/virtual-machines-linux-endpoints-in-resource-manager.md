@@ -1,31 +1,30 @@
 ---
-title: Resource Manager 中的经典终结点概述 | Azure
-description: 了解现在如何在 Resource Manager 中使用网络安全组和 ACL 规则实施经典部署模型中的终结点
+title: Understand endpoints for Linux VMs in Azure | Azure
+description: Learn how endpoints from the Classic deployment model are now implemented in Resource Manager using Network Security Groups and ACL rules
 services: virtual-machines-linux
-documentationCenter: ''
-authors: iainfoulds
+documentationcenter: ''
+author: iainfoulds
 manager: timlt
 editor: ''
 
+ms.assetid: b698debb-eed9-417d-a814-1a163ead6cae
 ms.service: virtual-machines-linux
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 10/27/2016
-wacn.date: 12/30/2016
+ms.date: 02/09/2017
+wacn.date: ''
 ms.author: iainfou
----
 
-# Resource Manager 中的经典终结点
+---
+# Classic endpoints for Linux VMs with Azure Resource Manager
 [!INCLUDE [virtual-machines-common-endpoints-in-resource-manager](../../includes/virtual-machines-common-endpoints-in-resource-manager.md)]
 
-## 后续步骤
-你可以从下列文章中，阅读与此处讨论的技术相关的更为详细的信息，以及有关如何使用网络安全组的快速入门指南：
+## Next steps
+You can read more detailed information on the technologies discussed here, along with quickstart guides for using Network Security Groups, in the following articles:
 
-- [快速入门 — 使用 Azure CLI 来创建网络安全组和 ACL 规则](./virtual-machines-linux-nsg-quickstart.md)  
-- [Azure 资源管理器概述](../azure-resource-manager/resource-group-overview.md)  
-- [什么是网络安全组 (NSG)？](../virtual-network/virtual-networks-nsg.md)
-- [负载均衡器的 Azure 资源管理器概述](../load-balancer/load-balancer-arm.md) 
-
-<!---HONumber=Mooncake_0704_2016-->
+* [Quick-start - Create a Network Security Group and ACL rules using the Azure CLI](virtual-machines-linux-nsg-quickstart.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)  
+* [Azure Resource Manager overview](../azure-resource-manager/resource-group-overview.md)  
+* [What is a Network Security Group (NSG)?](../virtual-network/virtual-networks-nsg.md)  
+* [Azure Resource Manager Overview for Load Balancers](../load-balancer/load-balancer-arm.md)

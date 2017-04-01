@@ -1,9 +1,9 @@
-| 计算选项 | 目标受众 |
-| ------------------ | --------   |
-| [web 应用] | 任何设备的可缩放 Web 应用 和 API Apps |
-| [云服务] | 对操作系统具有更高控制度的高可用、可缩放 n 层云应用程序 |
-| [虚拟机] | 可完全控制操作系统的自定义 Windows 和 Linux VM |
+| Compute Options             | Audience   |
+| --------------------------- | --------   |
+| [Web Apps][lnk_app]      | Scalable Web Apps and API Apps for any device |
+| [Cloud Services][lnk_cloud] | Highly available, scalable n-tier cloud apps with more control of the OS |
+| [Virtual Machines][lnk_vm]  | Customized Windows and Linux VMs with complete control of the OS |
 
-[web 应用]: ../articles/app-service-web/index.md
-[虚拟机]: ../articles/virtual-machines/virtual-machines-windows-about.md
-[云服务]: ../articles/cloud-services/cloud-services-choose-me.md
+[lnk_app]: ../articles/app-service-web/index.md
+[lnk_vm]: ../articles/virtual-machines/virtual-machines-windows-about.md
+[lnk_cloud]: /documentation/articles/cloud-services-choose-me

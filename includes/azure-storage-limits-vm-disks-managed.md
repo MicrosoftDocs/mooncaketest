@@ -1,26 +1,24 @@
-**标准托管虚拟机磁盘**
+**Standard managed virtual machine disks**
 
-| 标准磁盘类型 | S4 | S6 | S10 | S20 | S30 |
+| Standard Disk Type | S4 | S6 | S10 | S20 | S30 |
 | --- | --- |--- | --- | --- | --- |
-| 磁盘大小 | 30 GB | 64 GB | 128 GB | 512 GB | 1024 GB (1 TB)|
-| 每个磁盘的 IOPS | 500 |500 |500 |500 |500 |
-| 每个磁盘的吞吐量 | 60 MB/秒 | 60 MB/秒 | 60 MB/秒 | 60 MB/秒 | 60 MB/秒 | 
+| Disk Size | 30 GB | 64 GB | 128 GB | 512 GB | 1024 GB (1 TB)|
+| IOPS per disk | 500 |500 |500 |500 |500 |
+| Throughput per disk | 60 MB/sec | 60 MB/sec | 60 MB/sec | 60 MB/sec | 60 MB/sec | 
 
-**高级托管虚拟机磁盘：每个磁盘的限制**
+**Premium managed virtual machine disks: per disk limits**
 
-| 高级存储磁盘类型 | P10 | P20 | P30 |
+| Premium Storage Disk Type | P10 | P20 | P30 |
 | --- | --- | --- | --- |
-| 磁盘大小 |128 GiB |512 GiB |1024 GiB (1 TB) |
-| 每个磁盘的最大 IOPS |500 |2300 |5000 |
-| 每个磁盘的最大吞吐量 |100 MB/秒 |150 MB/秒 |200 MB/秒 |
+| Disk size |128 GiB |512 GiB |1024 GiB (1 TB) |
+| Max IOPS per disk |500 |2300 |5000 |
+| Max throughput per disk |100 MB/s |150 MB/s |200 MB/s |
 
-**高级托管虚拟机磁盘：每个 VM 的限制**
+**Premium managed virtual machine disks: per VM limits**
 
-| 资源 | 默认限制 |
+| Resource | Default Limit |
 | --- | --- |
-| 每个 VM 的最大 IOPS |GS5 VM 为 80,000 IOPS<sup>1</sup> |
-| 每个 VM 的最大吞吐量 |GS5 VM 为 2,000 MB/秒<sup>1</sup> |
+| Max IOPS Per VM |80,000 IOPS with GS5 VM<sup>1</sup> |
+| Max throughput per VM |2,000 MB/s with GS5 VM<sup>1</sup> |
 
-<sup>1</sup>有关其他 VM 大小的限制，请参阅 [VM 大小](../articles/virtual-machines/virtual-machines-linux-sizes.md)。
-
-<!---HONumber=Mooncake_0313_2017-->
+<sup>1</sup>Refer to [VM Size](../articles/virtual-machines/virtual-machines-linux-sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) for limits on other VM sizes.

@@ -1,13 +1,9 @@
-1. 将相关的安装程序复制到服务器并启动安装程序。
-2. 在“开始之前”中选择“移动服务”。
+1. Copy the relevant install on to the server and launch the installer.
+2. In **Before you begin**, select **Mobility service**.
 
-    ![移动服务](./media/site-recovery-install-mob-svc-gui/mobility3.png)  
+    ![Mobility service](./media/site-recovery-install-mob-svc-gui/mobility3.png)
+3. In **Configuration Server Details**, specify the IP address of the configuration server, and the configuration server passphrase.
 
-3. 在“配置服务器详细信息”中，指定配置服务器的 IP 地址和通行短语。
-
-    ![移动服务](./media/site-recovery-install-mob-svc-gui/mobility6.png)  
-
-4. 保留“安装位置”中的默认设置，然后单击“下一步”开始安装。
-5. 在“安装进度”中监视安装过程，然后根据提示重新启动计算机。安装该服务后，可能需要大约 15 分钟，状态才会在门户中更新。
-
-<!---HONumber=Mooncake_0206_2017-->
+    ![Mobility service](./media/site-recovery-install-mob-svc-gui/mobility6.png)
+4. In **Install Location**, keep the default settings, and click **Next** to begin installation.
+5. In **Installation Progress**, monitor installation and restart the machine if prompted. After installing the service, it can take around 15 minutes for status to update in the portal.

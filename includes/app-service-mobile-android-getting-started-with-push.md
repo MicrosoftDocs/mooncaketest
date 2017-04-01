@@ -1,5 +1,5 @@
-1. 在你的**应用**项目中，打开文件 `AndroidManifest.xml`。在随后两个步骤中，请将代码中的 *`**my_app_package**`* 替换为项目的应用程序包名称。该名称为 `manifest` 标记的 `package` 属性的值。
-2. 在现有 `uses-permission` 元素之后添加以下新权限：
+1. In your **app** project, open the file `AndroidManifest.xml`. In the code in the next two steps, replace *`**my_app_package**`* with the name of the app package for your project. This is the value of the `package` attribute of the `manifest` tag.
+2. Add the following new permissions after the existing `uses-permission` element:
 
     ```
     <permission android:name="**my_app_package**.permission.C2D_MESSAGE"
@@ -9,7 +9,7 @@
     <uses-permission android:name="android.permission.GET_ACCOUNTS" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
     ```
-3. 在 `application` 开始标记之后添加以下代码：
+3. Add the following code after the `application` opening tag:
 
     ```
     <receiver android:name="com.microsoft.windowsazure.notifications.NotificationsBroadcastReceiver"
@@ -20,32 +20,32 @@
         </intent-filter>
     </receiver>
     ```
-4. 打开文件“ToDoActivity.java”，并添加以下 import 语句：
+4. Open the file *ToDoActivity.java*, and add the following import statement:
 
     ```
     import com.microsoft.windowsazure.notifications.NotificationsManager;
     ```
-5. 将以下私有变量添加到类。将 *`<PROJECT_NUMBER>`* 替换为 Google 在前一个步骤中为应用程序分配的项目编号。
+5. Add the following private variable to the class. Replace *`<PROJECT_NUMBER>`* with the project number assigned by Google to your app in the preceding procedure.
 
     ```
     public static final String SENDER_ID = "<PROJECT_NUMBER>";
     ```
-6. 将 *MobileServiceClient* 的定义从 **private** 更改为 **public static**，如下所示：
+6. Change the definition of *MobileServiceClient* from **private** to **public static**, so it now looks like this:
 
     ```
     public static MobileServiceClient mClient;
     ```
-7. 添加一个新类用于处理通知。在项目资源管理器中打开“src”>“main”>“java”节点，然后右键单击包名称节点。单击“新建”，然后单击“Java 类”。
-8. 在“名称”中键入 `MyHandler`，然后单击“确定”。
+7. Add a new class to handle notifications. In Project Explorer, open the **src** > **main** > **java** nodes, and right-click the package name node. Click **New**, and then click **Java Class**.
+8. In **Name**, type `MyHandler`, and then click **OK**.
 
-    ![](./media/app-service-mobile-android-configure-push/android-studio-create-class.png)  
+    ![](./media/app-service-mobile-android-configure-push/android-studio-create-class.png)
 
-9. 在 MyHandler 文件中，将类声明替换为：
+9. In the MyHandler file, replace the class declaration with:
 
     ```
     public class MyHandler extends NotificationsHandler {
     ```
-10. 为 `MyHandler` 类添加以下 import 语句：
+10. Add the following import statements for the `MyHandler` class:
 
     ```
     import com.microsoft.windowsazure.notifications.NotificationsHandler;
@@ -57,12 +57,12 @@
     import android.os.Bundle;
     import android.support.v4.app.NotificationCompat;
     ```
-11. 接下来，将该成员添加到 `MyHandler`类：
+11. Next add this member to the `MyHandler` class:
 
     ```
     public static final int NOTIFICATION_ID = 1;
     ```
-12. 在 `MyHandler` 类中，添加以下代码以覆盖 **onRegistered** 方法，用于在移动服务通知中心中注册设备。
+12. In the `MyHandler` class, add the following code to override the **onRegistered** method, which registers your device with the mobile service notification hub.
 
     ```
     @Override
@@ -84,7 +84,7 @@
        }.execute();
     ```
        }
-13. 在 `MyHandler` 类中，添加以下代码以覆盖 **onReceive** 方法，这样可在收到通知时显示通知。
+13. In the `MyHandler` class, add the following code to override the **onReceive** method, which causes the notification to display when it is received.
 
     ```
     @Override
@@ -109,12 +109,10 @@
            notificationManager.notify(NOTIFICATION_ID, notification);
     ```
        }
-14. 回到 TodoActivity.java 文件中，更新 *ToDoActivity* 类的 **onCreate** 方法，以注册通知处理程序类。请确保在 *MobileServiceClient* 实例化之后再添加此代码。
+14. Back in the TodoActivity.java file, update the **onCreate** method of the *ToDoActivity* class to register the notification handler class. Make sure to add this code after the *MobileServiceClient* is instantiated.
 
     ```
     NotificationsManager.handleNotifications(this, SENDER_ID, MyHandler.class);
     ```
 
-    你的应用现已更新，可支持推送通知。
-
-<!---HONumber=Mooncake_0116_2017-->
+    Your app is now updated to support push notifications.

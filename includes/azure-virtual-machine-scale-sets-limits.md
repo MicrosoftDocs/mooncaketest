@@ -1,6 +1,4 @@
-资源|最大限制
----|---
-规模集中的 VM 的最大数目|100
-区域中规模集的最大数目|200
-
-<!---HONumber=Mooncake_0905_2016-->
+| Resource | Maximum Limit |
+| --- | --- |
+| Maximum number of VMs in a scale set |1000 |
+| Maximum number of scale sets in a region |200 |

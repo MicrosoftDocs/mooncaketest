@@ -1,64 +1,57 @@
 ---
-title: Linux VM 常见问题 | Azure
-description: 解答有关通过 Resource Manager 模型创建的 Linux 虚拟机的一些常见问题。
+title: Frequently asked questions for Linux VMs in Azure | Azure
+description: Provides answers to some of the common questions about Linux virtual machines created with the Resource Manager model.
 services: virtual-machines-linux
-documentationCenter: ''
-authors: cynthn
+documentationcenter: ''
+author: cynthn
 manager: timlt
 editor: ''
 tags: azure-resource-management
 
+ms.assetid: 3648e09c-1115-4818-93c6-688d7a54a353
 ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
 ms.date: 08/16/2016
-wacn.date: 12/26/2016
+wacn.date: ''
 ms.author: cynthn
+
 ---
+# Frequently asked question about Linux Virtual Machines
+This article addresses some common questions about Linux virtual machines created in Azure using the Resource Manager deployment model. For the Windows version of this topic, see [Frequently asked question about Windows Virtual Machines](virtual-machines-windows-faq.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 
-# 有关 Linux 虚拟机的常见问题 
+## What can I run on an Azure VM?
+All subscribers can run server software on an Azure virtual machine. For more information, see [Linux on Azure-Endorsed Distributions](virtual-machines-linux-endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
-本文讨论有关在 Azure 中使用 Resource Manager 部署模型创建的 Linux 虚拟机的一些常见问题。有关本主题的 Windows 版本，请参阅[有关 Windows 虚拟机的常见问题](./virtual-machines-windows-faq.md)
+## How much storage can I use with a virtual machine?
+Each data disk can be up to 1 TB. The number of data disks you can use depends on the size of the virtual machine. For details, see [Sizes for Virtual Machines](virtual-machines-linux-sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
-## 我可以在 Azure VM 上运行什么程序？
+An Azure storage account provides storage for the operating system disk and any data disks. Each disk is a .vhd file stored as a page blob. For pricing details, see [Storage Pricing Details](https://www.azure.cn/pricing/details/storage/).
 
-所有订户都可以在 Azure 虚拟机上运行服务器软件。有关详细信息，请参阅 [Azure 认可的分发中的 Linux](./virtual-machines-linux-endorsed-distros.md)
+## How can I access my virtual machine?
+Establish a remote connection to log on to the virtual machine, using Secure Shell (SSH). See the instructions on how to connect [from Windows](virtual-machines-linux-ssh-from-windows.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) or
+[from Linux and Mac](virtual-machines-linux-mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). By default, SSH allows a maximum of 10 concurrent connections. You can increase this number by editing the configuration file.
 
-## 使用虚拟机时，我可以使用多少存储？
+If you're having problems, check out [Troubleshoot Secure Shell (SSH) connections](virtual-machines-linux-troubleshoot-ssh-connection.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
-每个数据磁盘的容量高达 1 TB。你可以使用的数据磁盘的数目取决于虚拟机的大小。有关详细信息，请参阅[虚拟机大小](./virtual-machines-linux-sizes.md)。
+## Can I use the temporary disk (/dev/sdb1) to store data?
+Don't use the temporary disk (/dev/sdb1) to store data. It is only there for temporary storage. You risk losing data that can't be recovered.
 
-Azure 存储帐户提供可用于操作系统磁盘和任意数据磁盘的存储。每个磁盘都是一个 .vhd 文件，以页 blob 形式存储。有关定价详细信息，请参阅[存储定价详细信息](https://www.azure.cn/pricing/details/storage/)。
+## Can I copy or clone an existing Azure VM?
+Yes. For instructions, see [How to create a copy of a Linux virtual machine in the Resource Manager deployment model](virtual-machines-linux-copy-vm.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
-## 如何访问我的虚拟机？
+## Can I add a NIC to my VM after it's created?
+Yes, this is now possible. The VM first needs to be stopped deallocated. Then you can add or remove a NIC (unless it's the last NIC on the VM). 
 
-使用安全外壳 (SSH) 建立远程连接，以登录到虚拟机。请参阅如何[从 Windows](./virtual-machines-linux-ssh-from-windows.md) 或[从 Linux 和 Mac](./virtual-machines-linux-mac-create-ssh-keys.md) 进行连接的相关说明。默认情况下，SSH 允许的并发连接最多为 10 个。通过编辑配置文件，可以增大此数目。
+## Are there any computer name requirements?
+Yes. The computer name can be a maximum of 64 characters in length. See [Infrastructure naming guidelines](virtual-machines-linux-infrastructure-naming-guidelines.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) for more information around naming your resources.
 
-如果遇到问题，请查阅[排除安全外壳 (SSH) 连接故障](./virtual-machines-linux-troubleshoot-ssh-connection.md)。
+## What are the username requirements when creating a VM?
+Usernames must be 1 - 64 characters in length.
 
-## 我是否可以使用临时磁盘 (/dev/sdb1) 存储数据？
-
-不要使用临时磁盘 (/dev/sdb1) 存储数据。它只是用于临时存储。有丢失无法恢复的数据的风险。
-
-## 我是否可以复制或克隆现有的 Azure VM？
-
-可以。有关说明，请参阅[如何在 Resource Manager 部署模型中创建 Linux 虚拟机的副本](./virtual-machines-linux-copy-vm.md)。
-
-## 创建 VM 后能否向 VM 添加 NIC？
-
-否。添加 NIC 只能在创建时进行。
-
-## 是否有任何计算机名称要求？
-
-是的。计算机名称的最大长度为 64 个字符。有关命名资源的详细信息，请参阅[基础结构命名准则](./virtual-machines-linux-infrastructure-naming-guidelines.md)。
-
-## 创建 VM 时，用户名有什么要求？
-
-用户名的长度必须为 1 到 64 个字符。
-
-不允许使用以下用户名：
+The following usernames are not allowed:
 
 <table>
     <tr>
@@ -87,24 +80,29 @@ Azure 存储帐户提供可用于操作系统磁盘和任意数据磁盘的存�
     </tr>
 </table>
 
-## 创建 VM 时，密码有什么要求？
+## What are the password requirements when creating a VM?
+Passwords must be 6 - 72 characters in length and meet 3 out of the following 4 complexity requirements:
 
-密码的长度必须为 6 到 72 个字符，并满足以下 4 个复杂性要求中的 3 个要求：
+* Have lower characters
+* Have upper characters
+* Have a digit
+* Have a special character (Regex match [\W_])
 
-- 具有小写字符
-- 具有大写字符
-- 具有数字
-- 具有特殊字符（正则表达式匹配 [\W_]）
-
-不允许使用以下密码：
+The following passwords are not allowed:
 
 <table>
     <tr>
-        <td style="text-align:center">abc@123</td><td style="text-align:center">P@$$w0rd</td><td style="text-align:center">P@ssw0rd</td><td style="text-align:center">P@ssword123</td><td style="text-align:center">Pa$$word</td>
+        <td style="text-align:center">abc@123</td>
+        <td style="text-align:center">P@$$w0rd</td>
+        <td style="text-align:center">P@ssw0rd</td>
+        <td style="text-align:center">P@ssword123</td>
+        <td style="text-align:center">Pa$$word</td>
     </tr>
     <tr>
-        <td style="text-align:center">pass@word1</td><td style="text-align:center">Password!</td><td style="text-align:center">Password1</td><td style="text-align:center">Password22</td><td style="text-align:center">iloveyou!</td>
+        <td style="text-align:center">pass@word1</td>
+        <td style="text-align:center">Password!</td>
+        <td style="text-align:center">Password1</td>
+        <td style="text-align:center">Password22</td>
+        <td style="text-align:center">iloveyou!</td>
     </tr>
 </table>
-
-<!---HONumber=Mooncake_Quality_Review_1215_2016-->

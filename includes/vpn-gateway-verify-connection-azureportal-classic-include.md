@@ -1,17 +1,13 @@
-在 Azure 门户预览中，可通过导航到该连接来查看经典 VNet 网关的连接状态。有多种方法可执行此操作。以下步骤演示导航到连接并进行验证的一种方法。
+In the Azure portal preview, you can view the connection status for a classic VNet VPN Gateway by navigating to the connection. The following steps show one way to navigate to your connection and verify.
 
-1. 在 [Azure 门户预览](http://portal.azure.cn)中，单击“所有资源”，然后导航到经典虚拟网络。
-2. 在虚拟网络边栏选项卡上，单击“概览”访问边栏选项卡的“VPN 连接”部分。
-3. 在 VPN 连接图中，单击站点。
+1. In the [Azure portal preview](http://portal.azure.cn), click **All resources** and navigate to your classic virtual network.
+2. On the virtual network blade, click **Overview** to access the **VPN connections** section of the blade.
+3. On the VPN connections graphic, click the site.
 
-    ![本地站点](./media/vpn-gateway-verify-connection-azureportal-classic/localsitename.png "本地站点")  
+    ![Local site](./media/vpn-gateway-verify-connection-azureportal-classic/localsitename.png "local site")
+4. On the **Site-to-site VPN connections** blade, view the information about your site.
 
-4. 在“站点到站点 VPN 连接”边栏选项卡上，查看有关站点的信息。
+    ![Connection status](./media/vpn-gateway-verify-connection-azureportal-classic/siteconnectstatus.png "Connection status")
+5. To view more information about the connection, click the name of the connection to open the **Site-to-site VPN Connection** blade.
 
-    ![连接状态](./media/vpn-gateway-verify-connection-azureportal-classic/siteconnectstatus.png "连接状态")  
-
-5. 若要查看有关连接的详细信息，请单击连接名称，打开“站点到站点 VPN 连接”边栏选项卡。
-
-    ![连接状态 详细](./media/vpn-gateway-verify-connection-azureportal-classic/connections4.png "连接状态 详细信息")  
-
-<!---HONumber=Mooncake_0206_2017-->
+    ![Connection status more](./media/vpn-gateway-verify-connection-azureportal-classic/connections4.png "Connection status more info")

@@ -1,133 +1,101 @@
-<!-- ARM: tested -->
+## How to create a VNet using the Azure CLI
+You can use the Azure CLI to manage your Azure resources from the command prompt from any computer running Windows, Linux, or OSX. To create a VNet by using the Azure CLI, follow the steps below.
 
-## 如何使用 Azure CLI 创建 VNet
+1. If you have never used the Azure CLI, see [Install and Configure the Azure CLI](../articles/cli-install-nodejs.md) and follow the instructions up to the point where you select your Azure account and subscription.
+2. Run the **azure config mode** command to switch to Resource Manager mode, as shown below.
 
-可以使用 Azure CLI 从运行 Windows、Linux 或 OSX 的任何计算机上的命令提示符管理 Azure 资源。若要使用 Azure CLI 创建 VNet，请执行以下步骤。
+        azure config mode arm
 
-1. 如果你从未使用过 Azure CLI，请参阅[安装和配置 Azure CLI](../articles/xplat-cli-install.md)，并按照说明进行操作，直到选择 Azure 帐户和订阅。
-2. 运行 **azure config mode** 命令以切换到资源管理器模式，如下所示。
+    Here is the expected output for the command above:
 
-    ```
-    azure config mode arm
-    ```
+        info:    New mode is arm
+3. If necessary, run the **azure group create** to create a new resource group, as shown below. Notice the output of the command. The list shown after the output explains the parameters used. For more information about resource groups, visit [Azure Resource Manager Overview](../articles/azure-resource-manager/resource-group-overview.md#resource-groups).
 
-    下面是上述命令的预期输出：
+        azure group create -n TestRG -l chinaeast
 
-    ```
-    info:    New mode is arm
-    ```
+    Here is the expected output for the command above:
 
-3. 如有必要，请运行 **azure group create** 以创建新资源组，如下所示。请注意命令的输出。在输出后显示的列表说明了所用的参数。有关资源组的详细信息，请访问 [Azure 资源管理器概述](../articles/azure-resource-manager/resource-group-overview.md#resource-groups)。
+        info:    Executing command group create
+        + Getting resource group TestRG
+        + Creating resource group TestRG
+        info:    Created resource group TestRG
+        data:    Id:                  /subscriptions/628dad04-b5d1-4f10-b3a4-dc61d88cf97c/resourceGroups/TestRG
+        data:    Name:                TestRG
+        data:    Location:            chinaeast
+        data:    Provisioning State:  Succeeded
+        data:    Tags: null
+        data:
+        info:    group create command OK
 
-    ```
-    azure group create -n TestRG -l centralus
-    ```
+    * **-n (or --name)**. Name for the new resource group. For our scenario, *TestRG*.
+    * **-l (or --location)**. Azure region where the new resource group will be created. For our scenario, *chinaeast*.
+4. Run the **azure network vnet create** command to create a VNet and a subnet, as shown below. 
 
-    下面是上述命令的预期输出：
+        azure network vnet create -g TestRG -n TestVNet -a 192.168.0.0/16 -l chinaeast
 
-    ```
-    info:    Executing command group create
-    + Getting resource group TestRG
-    + Creating resource group TestRG
-    info:    Created resource group TestRG
-    data:    Id:                  /subscriptions/628dad04-b5d1-4f10-b3a4-dc61d88cf97c/resourceGroups/TestRG
-    data:    Name:                TestRG
-    data:    Location:            centralus
-    data:    Provisioning State:  Succeeded
-    data:    Tags: null
-    data:
-    info:    group create command OK
-    ```
+    Here is the expected output for the command above:
 
-    - **-n（或 --name）**。新资源组的名称。对于我们的方案，为 *TestRG*。
-    - **-l（或 --location）**。将在其中创建新资源组的 Azure 区域。对于我们的方案，为 *centralus*。
+        info:    Executing command network vnet create
+        + Looking up virtual network "TestVNet"
+        + Creating virtual network "TestVNet"
+        + Loading virtual network state
+        data:    Id                              : /subscriptions/628dad04-b5d1-4f10-b3a4-dc61d88cf97c/resourceGroups/TestRG/providers/Microsoft.Network/virtualNetworks/TestVNet2
+        data:    Name                            : TestVNet
+        data:    Type                            : Microsoft.Network/virtualNetworks
+        data:    Location                        : chinaeast
+        data:    ProvisioningState               : Succeeded
+        data:    Address prefixes:
+        data:      192.168.0.0/16
+        info:    network vnet create command OK
 
-4. 运行 **azure network vnet create** 命令以创建 VNet 和子网，如下所示。
+    * **-g (or --resource-group)**. Name of the resource group where the VNet will be created. For our scenario, *TestRG*.
+    * **-n (or --name)**. Name of the VNet to be created. For our scenario, *TestVNet*
+    * **-a (or --address-prefixes)**. List of CIDR blocks used for the VNet address space. For our scenario, *192.168.0.0/16*
+    * **-l (or --location)**. Azure region where the VNet will be created. For our scenario, *chinaeast*.
+5. Run the **azure network vnet subnet create** command to create a subnet as shown below. Notice the output of the command. The list shown after the output explains the parameters used.
 
-    ```
-    azure network vnet create -g TestRG -n TestVNet -a 192.168.0.0/16 -l centralus
-    ```
+        azure network vnet subnet create -g TestRG -e TestVNet -n FrontEnd -a 192.168.1.0/24
 
-    下面是上述命令的预期输出：
+    Here is the expected output for the command above:
 
-    ```
-    info:    Executing command network vnet create
-    + Looking up virtual network "TestVNet"
-    + Creating virtual network "TestVNet"
-    + Loading virtual network state
-    data:    Id                              : /subscriptions/628dad04-b5d1-4f10-b3a4-dc61d88cf97c/resourceGroups/TestRG/providers/Microsoft.Network/virtualNetworks/TestVNet2
-    data:    Name                            : TestVNet
-    data:    Type                            : Microsoft.Network/virtualNetworks
-    data:    Location                        : centralus
-    data:    ProvisioningState               : Succeeded
-    data:    Address prefixes:
-    data:      192.168.0.0/16
-    info:    network vnet create command OK
-    ```
+        info:    Executing command network vnet subnet create
+        + Looking up the subnet "FrontEnd"
+        + Creating subnet "FrontEnd"
+        + Looking up the subnet "FrontEnd"
+        data:    Id                              : /subscriptions/628dad04-b5d1-4f10-b3a4-dc61d88cf97c/resourceGroups/TestRG/providers/Microsoft.Network/virtualNetworks/TestVNet/subnets/FrontEnd
+        data:    Type                            : Microsoft.Network/virtualNetworks/subnets
+        data:    ProvisioningState               : Succeeded
+        data:    Name                            : FrontEnd
+        data:    Address prefix                  : 192.168.1.0/24
+        data:
+        info:    network vnet subnet create command OK
 
-    - **-g（或 --resource-group）**。将在其中创建 VNet 的资源组的名称。对于我们的方案，为 *TestRG*。
-    - **-n（或 --name）**。要创建的 VNet 的名称。对于我们的方案，为 *TestVNet*
-    - **-a（或 --address-prefixes）**。用于 VNet 地址空间的 CIDR 块的列表。对于我们的方案，为 *192.168.0.0/16*
-    - **-l（或 --location）**。要在其中创建 VNet 的 Azure 区域 。对于我们的方案，为 *centralus*。
+    * **-e (or --vnet-name**. Name of the VNet where the subnet will be created. For our scenario, *TestVNet*.
+    * **-n (or --name)**. Name of the new subnet. For our scenario, *FrontEnd*.
+    * **-a (or --address-prefix)**. Subnet CIDR block. Four our scenario, *192.168.1.0/24*.
+6. Repeat step 5 above to create other subnets, if necessary. For our scenario, run the command below to create the *BackEnd* subnet.
 
-5. 运行 **azure network vnet subnet create** 命令以创建子网，如下所示。请注意命令的输出。在输出后显示的列表说明了所用的参数。
+        azure network vnet subnet create -g TestRG -e TestVNet -n BackEnd -a 192.168.2.0/24
+7. Run the **azure network vnet show** command to view the properties of the new vnet, as shown below.
 
-    ```
-    azure network vnet subnet create -g TestRG -e TestVNet -n FrontEnd -a 192.168.1.0/24
-    ```
+        azure network vnet show -g TestRG -n TestVNet
 
-    下面是上述命令的预期输出：
+    Here is the expected output for the command above:
 
-    ```
-    info:    Executing command network vnet subnet create
-    + Looking up the subnet "FrontEnd"
-    + Creating subnet "FrontEnd"
-    + Looking up the subnet "FrontEnd"
-    data:    Id                              : /subscriptions/628dad04-b5d1-4f10-b3a4-dc61d88cf97c/resourceGroups/TestRG/providers/Microsoft.Network/virtualNetworks/TestVNet/subnets/FrontEnd
-    data:    Type                            : Microsoft.Network/virtualNetworks/subnets
-    data:    ProvisioningState               : Succeeded
-    data:    Name                            : FrontEnd
-    data:    Address prefix                  : 192.168.1.0/24
-    data:
-    info:    network vnet subnet create command OK
-    ```
-
-    - **-e（或 --vnet-name）**。将在其中创建子网的 VNet 的名称。对于我们的方案，为 *TestVNet*。
-    - **-n（或 --name）**。新子网的名称。对于我们的方案，为 *FrontEnd*。
-    - **-a（或 --address-prefix）**。子网 CIDR 块。对于我们的方案，为 *192.168.1.0/24*。
-
-6. 如有必要，重复执行上面的步骤 5 以创建其他子网。对于我们的方案，请运行以下命令以创建 *BackEnd* 子网。
-
-    ```
-    azure network vnet subnet create -g TestRG -e TestVNet -n BackEnd -a 192.168.2.0/24
-    ```
-
-4. 运行 **azure network vnet show** 命令以查看新 vnet 的属性，如下所示。
-
-    ```
-    azure network vnet show -g TestRG -n TestVNet
-    ```
-
-    下面是上述命令的预期输出：
-
-    ```
-    info:    Executing command network vnet show
-    + Looking up virtual network "TestVNet"
-    data:    Id                              : /subscriptions/628dad04-b5d1-4f10-b3a4-dc61d88cf97c/resourceGroups/TestRG/providers/Microsoft.Network/virtualNetworks/TestVNet
-    data:    Name                            : TestVNet
-    data:    Type                            : Microsoft.Network/virtualNetworks
-    data:    Location                        : centralus
-    data:    ProvisioningState               : Succeeded
-    data:    Address prefixes:
-    data:      192.168.0.0/16
-    data:    Subnets:
-    data:      Name                          : FrontEnd
-    data:      Address prefix                : 192.168.1.0/24
-    data:
-    data:      Name                          : BackEnd
-    data:      Address prefix                : 192.168.2.0/24
-    data:
-    info:    network vnet show command OK
-    ```
-
-<!---HONumber=76-->
+        info:    Executing command network vnet show
+        + Looking up virtual network "TestVNet"
+        data:    Id                              : /subscriptions/628dad04-b5d1-4f10-b3a4-dc61d88cf97c/resourceGroups/TestRG/providers/Microsoft.Network/virtualNetworks/TestVNet
+        data:    Name                            : TestVNet
+        data:    Type                            : Microsoft.Network/virtualNetworks
+        data:    Location                        : chinaeast
+        data:    ProvisioningState               : Succeeded
+        data:    Address prefixes:
+        data:      192.168.0.0/16
+        data:    Subnets:
+        data:      Name                          : FrontEnd
+        data:      Address prefix                : 192.168.1.0/24
+        data:
+        data:      Name                          : BackEnd
+        data:      Address prefix                : 192.168.2.0/24
+        data:
+        info:    network vnet show command OK

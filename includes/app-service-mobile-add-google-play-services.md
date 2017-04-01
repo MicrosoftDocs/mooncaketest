@@ -1,8 +1,8 @@
-1. 通过单击 Android Studio 工具栏上的图标，或者通过单击“工具”->“Android”->“SDK Manager”，打开 Android SDK Manager。按“启动独立 SDK 管理器”链接。
+1. Open the Android SDK Manager by clicking the icon on the toolbar of Android Studio or by clicking **Tools** -> **Android** -> **SDK Manager** on the menu. Press the **Launch Standalone SDK Manager** link.
 
-2. 找到项目中使用的目标版本的 Android SDK，并将其打开。如果还未安装“Google API”，将其选中并按“安装包...”。
+2. Locate the target version of the Android SDK that is used in your project , and open it. If **Google APIs** is not already installed then select it and press **Install packages...**.
 
-3. 在 Android Studio 中，依次选择“文件”>“项目结构”。按“通知”，选择“Google Cloud Messaging”，然后按“确定”。
+3. In Android Studio choose **File** > **Project Structure**. Press **Notifications**, select **Google Cloud Messaging** and then press **OK**.
 
 <!--
 3. Open **AndroidManifest.xml** and add this tag to the *application* tag.
@@ -12,5 +12,3 @@
         android:value="@integer/google_play_services_version" />
     ```
 -->
-
-<!---HONumber=Mooncake_0919_2016-->

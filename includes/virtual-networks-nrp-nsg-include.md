@@ -1,84 +1,77 @@
-## <a name="Network-Security-Group"></a> 网络安全组
+## <a name="Network-Security-Group"></a> Network Security Group
+An NSG resource enables the creation of security boundary for workloads, by implementing allow and deny rules. Such rules can be applied to a VM, a NIC, or a subnet.
 
-使用 NSG 资源可以通过实现允许和拒绝规则，为工作负载创建安全边界。可将此类规则应用到 VM、NIC 或子网。
+| Property | Description | Sample values |
+| --- | --- | --- |
+| **subnets** |List of subnet ids the NSG is applied to. |/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/TestRG/providers/Microsoft.Network/virtualNetworks/TestVNet/subnets/FrontEnd |
+| **securityRules** |List of security rules that make up the NSG |See [Security rule](#Security-rule) below |
+| **defaultSecurityRules** |List of default security rules present in every NSG |See [Default security rules](#Default-security-rules) below |
 
-|属性|说明|示例值|
-|---|---|---|
-|**子网**|NSG 应用到的子网 ID 的列表。|/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/TestRG/providers/Microsoft.Network/virtualNetworks/TestVNet/subnets/FrontEnd|
-|**securityRules**|构成 NSG 的安全规则的列表|请参阅下面的[安全规则](#Security-rule)|
-|**defaultSecurityRules**|每个 NSG 中存在的默认安全规则的列表|请参阅下面的[默认安全规则](#Default-security-rules)|
+* **Security rule** - An NSG can have multiple security rules defined. Each rule can allow or deny different types of traffic.
 
-- **安全规则** - 一个 NSG 可以有多个定义的安全规则。每个规则可以允许或拒绝不同类型的流量。
+### <a name="Security-rule"></a> Security rule
+A security rule is a child resource of an NSG containing the properties below.
 
-### <a name="Security-rule"></a> 安全规则
+| Property | Description | Sample values |
+| --- | --- | --- |
+| **description** |Description for the rule |Allow inbound traffic for all VMs in subnet X |
+| **protocol** |Protocol to match for the rule |TCP, UDP, or * |
+| **sourcePortRange** |Source port range to match for the rule |80, 100-200, * |
+| **destinationPortRange** |Destination port range to match for the rule |80, 100-200, * |
+| **sourceAddressPrefix** |Source address prefix to match for the rule |10.10.10.1, 10.10.10.0/24, VirtualNetwork |
+| **destinationAddressPrefix** |Destination address prefix to match for the rule |10.10.10.1, 10.10.10.0/24, VirtualNetwork |
+| **direction** |Direction of traffic to match for the rule |inbound or outbound |
+| **priority** |Priority for the rule. Rules are checked int he order of priority, once a rule applies, no more rules are tested for matching. |10, 100, 65000 |
+| **access** |Type of access to apply if the rule matches |allow or deny |
 
-安全规则是 NSG 的子资源，它包含以下属性。
+Sample NSG in JSON format:
 
-|属性|说明|示例值|
-|---|---|---|
-|**description**|规则的说明|允许子网 X 中所有 VM 的入站流量|
-|**protocol**|要与规则匹配的协议|TCP、UDP 或 *|
-|**sourcePortRange**|要与规则匹配的源端口范围|80、100-200、*| 
-|**destinationPortRange**|要与规则匹配的目标端口范围|80、100-200、*|
-|**sourceAddressPrefix**|要与规则匹配的源地址前缀|10\.10.10.1、10.10.10.0/24、VirtualNetwork|
-|**destinationAddressPrefix**|要与规则匹配的目标地址前缀|10\.10.10.1、10.10.10.0/24、VirtualNetwork|
-|**direction**|要与规则匹配的流量方向|inbound 或 outbound|
-|**priority**|规则的优先级。按优先顺序检查规则，只要应用了一个规则，就不会测试其他规则来进行匹配。|10、100、65000|
-|**access**|规则匹配时要应用的访问类型|allow 或 deny|
-
-采用 JSON 格式的示例 NSG：
-
-```
-{
-    "name": "NSG-BackEnd",
-    "id": "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/TestRG/providers/Microsoft.Network/networkSecurityGroups/NSG-BackEnd",
-    "etag": "W/"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"",
-    "type": "Microsoft.Network/networkSecurityGroups",
-    "location": "chinanorth",
-    "tags": {
-        "displayName": "NSG - Front End"
-    },
-    "properties": {
-        "provisioningState": "Succeeded",
-        "resourceGuid": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
-        "securityRules": [
-            {
-                "name": "rdp-rule",
-                "id": "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/TestRG/providers/Microsoft.Network/networkSecurityGroups/NSG-BackEnd/securityRules/rdp-rule",
-                "etag": "W/"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"",
-                "properties": {
-                    "provisioningState": "Succeeded",
-                    "description": "Allow RDP",
-                    "protocol": "Tcp",
-                    "sourcePortRange": "*",
-                    "destinationPortRange": "3389",
-                    "sourceAddressPrefix": "Internet",
-                    "destinationAddressPrefix": "*",
-                    "access": "Allow",
-                    "priority": 100,
-                    "direction": "Inbound"
+    {
+        "name": "NSG-BackEnd",
+        "id": "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/TestRG/providers/Microsoft.Network/networkSecurityGroups/NSG-BackEnd",
+        "etag": "W/\"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"",
+        "type": "Microsoft.Network/networkSecurityGroups",
+        "location": "chinanorth",
+        "tags": {
+            "displayName": "NSG - Front End"
+        },
+        "properties": {
+            "provisioningState": "Succeeded",
+            "resourceGuid": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+            "securityRules": [
+                {
+                    "name": "rdp-rule",
+                    "id": "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/TestRG/providers/Microsoft.Network/networkSecurityGroups/NSG-BackEnd/securityRules/rdp-rule",
+                    "etag": "W/\"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"",
+                    "properties": {
+                        "provisioningState": "Succeeded",
+                        "description": "Allow RDP",
+                        "protocol": "Tcp",
+                        "sourcePortRange": "*",
+                        "destinationPortRange": "3389",
+                        "sourceAddressPrefix": "Internet",
+                        "destinationAddressPrefix": "*",
+                        "access": "Allow",
+                        "priority": 100,
+                        "direction": "Inbound"
+                    }
                 }
-            }
-        ],
-        "defaultSecurityRules": [
-            { [...],
-        "subnets": [
-            {
-                "id": "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/TestRG/providers/Microsoft.Network/virtualNetworks/TestVNet/subnets/FrontEnd"
-            }
-        ]
+            ],
+            "defaultSecurityRules": [
+                { [...],
+            "subnets": [
+                {
+                    "id": "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/TestRG/providers/Microsoft.Network/virtualNetworks/TestVNet/subnets/FrontEnd"
+                }
+            ]
+        }
     }
-}
-```
 
-### <a name="Default-security-rules"></a> 默认安全规则
+### <a name="Default-security-rules"></a> Default security rules
 
-默认安全规则的属性与安全规则中提供的属性相同。默认安全规则的用途是在应用了 NSG 的资源之间提供基本连接。请确保知道存在哪些[默认安全规则](../articles/virtual-network/virtual-networks-nsg.md#Default-Rules)。
+Default security rules have the same properties available in security rules. They exist to provide basic connectivity between resources that have NSGs applied to them. Make sure you know which [default security rules](../articles/virtual-network/virtual-networks-nsg.md#default-rules) exist.
 
-### 其他资源
-
-- 获取有关 [NSG](../articles/virtual-network/virtual-networks-nsg.md) 的详细信息。
-- 阅读 NSG 的[ REST API 参考文档](https://msdn.microsoft.com/zh-cn/library/azure/mt163615.aspx)
-- 阅读 NSG 的[ REST API 参考文档](https://msdn.microsoft.com/zh-cn/library/azure/mt163580.aspx)
-
-<!---HONumber=82-->
+### Additional resources
+* Get more information about [NSGs](../articles/virtual-network/virtual-networks-nsg.md).
+* Read the [REST API reference documentation](https://msdn.microsoft.com/zh-cn/library/azure/mt163615.aspx) for NSGs.
+* Read the [REST API reference documentation](https://msdn.microsoft.com/zh-cn/library/azure/mt163580.aspx) for security rules.

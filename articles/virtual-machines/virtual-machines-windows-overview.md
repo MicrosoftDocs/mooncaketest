@@ -1,6 +1,6 @@
 ---
-title: Windows 虚拟机概述 | Azure
-description: 了解如何在 Azure 中创建和管理 Windows 虚拟机。
+title: Windows Virtual Machines Overview | Azure
+description: Learn about creating and managing Windows virtual machines in Azure.
 services: virtual-machines-windows
 documentationcenter: ''
 author: davidmu1
@@ -14,137 +14,135 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 10/20/2016
-wacn.date: 12/20/2016
+ms.date: 03/01/2017
+wacn.date: ''
 ms.author: davidmu
+
 ---
+# Overview of Windows virtual machines in Azure
+Azure Virtual Machines (VM) is one of several types of [on-demand, scalable computing resources](../app-service-web/choose-web-site-cloud-service-vm.md) that Azure offers. Typically, you choose a VM when you need more control over the computing environment than the other choices offer. This article gives you information about what you should consider before you create a VM, how you create it, and how you manage it.
 
-# Azure 中的 Windows 虚拟机概述
-Azure 虚拟机 (VM) 是 Azure 提供的多种[可缩放按需分配计算资源](../app-service-web/choose-web-site-cloud-service-vm.md)之一。通常情况下，如果需要以更大的力度（相对于其他控制选项）控制计算环境，则应选择 VM。本文介绍创建 VM 之前的注意事项，以及 VM 的创建方法和管理方式。
+An Azure VM gives you the flexibility of virtualization without having to buy and maintain the physical hardware that runs it. However, you still need to maintain the VM by performing tasks, such as configuring, patching, and installing the software that runs on it.
 
-使用 Azure VM 可以灵活进行虚拟化，而无需购买和维护运行 VM 的物理硬件。不过，仍然需要通过执行任务来维护 VM，例如，配置、修补和安装在 VM 上运行的软件。
+Azure virtual machines can be used in various ways. Some examples are:
 
-可通过多种方式使用 Azure 虚拟机。下面是一些示例：
+* **Development and test** - Azure VMs offer a quick and easy way to create a computer with specific configurations required to code and test an application.
+* **Applications in the cloud** - Because demand for your application can fluctuate, it might make economic sense to run it on a VM in Azure. You pay for extra VMs when you need them and shut them down when you don't.
+* **Extended datacenter** - Virtual machines in an Azure virtual network can easily be connected to your organization's network.
 
-* **开发和测试** – 在 Azure VM 上，可以快速轻松地创建具有特定配置的计算机来满足编程和应用程序测试的需要。
-* **云中的应用程序** – 由于应用程序的需求会不断变化，在 Azure 中的 VM 上运行应用程序可能会节省成本。使用 VM 时，需要支付额外的费用；关闭 VM 时，则无需付费。
-* **扩展的数据中心** – Azure 虚拟网络中的虚拟机可以轻松连接到组织的网络。
+The number of VMs that your application uses can scale up and out to whatever is required to meet your needs.
 
-可以根据需要，将应用程序使用的 VM 纵向和横向扩展为任意数目。
+## What do I need to think about before creating a VM?
+There are always a multitude of [design considerations](virtual-machines-windows-infrastructure-virtual-machine-guidelines.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) when you build out an application infrastructure in Azure. These aspects of a VM are important to think about before you start:
 
-## 在创建 VM 之前需要考虑哪些因素？
-在 Azure 中构建应用程序基础结构时，始终要全方位地考虑[设计注意事项](./virtual-machines-windows-infrastructure-virtual-machine-guidelines.md)。在开始之前，必须考虑到 VM 的以下重要方面：
+* The names of your application resources
+* The location where the resources are stored
+* The size of the VM
+* The maximum number of VMs that can be created
+* The operating system that the VM runs
+* The configuration of the VM after it starts
+* The related resources that the VM needs
 
-* 应用程序资源的名称
-* 资源的存储位置
-* VM 的大小
-* 可以创建的 VM 数目上限
-* VM 运行的操作系统
-* VM 在启动后的配置
-* VM 所需的相关资源
+### Naming
+A virtual machine has a [name](virtual-machines-windows-infrastructure-naming-guidelines.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) assigned to it and it has a computer name configured as part of the operating system. The name of a VM can be up to 15 characters.
 
-### 命名
-虚拟机有一个分配的[名称](./virtual-machines-windows-infrastructure-naming-guidelines.md)，另外，它还配置有一个在操作系统中使用的计算机名称。VM 的名称最多可包含 15 个字符。
+If you use Azure to create the operating system disk, the computer name and the virtual machine name are the same. If you [upload and use your own image](virtual-machines-windows-upload-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) that contains a previously configured operating system and use it to create a virtual machine, the names can be different. We recommend that when you upload your own image file, you make the computer name in the operating system and the virtual machine name the same.
 
-如果使用 Azure 创建操作系统磁盘，计算机名称与虚拟机名称相同。如果[上载包含以前配置的操作系统的自有映像](./virtual-machines-windows-upload-image.md)并使用它来创建虚拟机，则名称可以不同。建议在上载自己的映像文件时，使操作系统中的计算机名称与虚拟机名称保持相同。
+### Locations
+Usually, the region is called **location** when you create a VM. For a VM, the location specifies where the virtual hard disks are stored.
 
-### 位置
-创建 VM 时，区域通常称为**位置**。位置指定 VM 虚拟硬盘的存储位置。
+This table shows some of the ways you can get a list of available locations.
 
-下表显示了获取可用位置列表的一些方法。
-
-| 方法 | 说明 |
+| Method | Description |
 | --- | --- |
-| Azure 门户预览 |创建 VM 时，可从列表中选择位置。 |
-| Azure PowerShell |使用 [Get-AzureRmLocation](https://msdn.microsoft.com/zh-cn/library/mt619449.aspx) 命令。 |
-| REST API |使用“[列出位置](https://docs.microsoft.com/en-us/rest/api/resources/subscriptions#Subscriptions_ListLocations)”操作。 |
+| Azure portal preview |Select a location from the list when you create a VM. |
+| Azure PowerShell |Use the [Get-AzureRmLocation](https://docs.microsoft.com/powershell/resourcemanager/azurerm.resources/v3.5.0/get-azurermlocation) command. |
+| REST API |Use the [List locations](https://docs.microsoft.com/rest/api/resources/subscriptions#Subscriptions_ListLocations) operation. |
 
-### VM 大小
-VM 的[大小](./virtual-machines-windows-sizes.md)由所要运行的工作负荷决定。然后，选择的大小决定了处理能力、内存和存储容量等因素。Azure 提供各种大小来支持多种类型的用途。
+### VM size
+The [size](virtual-machines-windows-sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) of the VM that you use is determined by the workload that you want to run. The size that you choose then determines factors such as processing power, memory, and storage capacity. Azure offers a wide variety of sizes to support many types of uses.
 
-Azure 根据 VM 的大小和操作系统按[小时价格](https://www.azure.cn/pricing/details/virtual-machines/)计费。对于不足一小时的部分，Azure 仅根据使用的分钟数计费。存储将另行定价和收费。
+Azure charges an [hourly price](https://www.azure.cn/pricing/details/virtual-machines/) based on the VM's size and operating system. For partial hours, Azure charges only for the minutes used. Storage is priced and charged separately.
 
-### VM 限制
-订阅附带默认的[配额限制](../azure-subscription-service-limits.md)，在为项目部署大量 VM 时，这些限制可能会造成影响。每个订阅的当前限制是每区域 20 个 VM。可以开具支持票证来请求提高限制。
+### VM Limits
+Your subscription has default [quota limits](../azure-subscription-service-limits.md) in place that could impact the deployment of many VMs for your project. The current limit on a per subscription basis is 20 VMs per region. Limits can be raised by filing a support ticket requesting an increase.
 
-### 操作系统磁盘和映像
-虚拟机使用[虚拟硬盘 (VHD)](./virtual-machines-windows-about-disks-vhds.md) 来存储其操作系统 (OS) 和数据。VHD 还可用于存储映像，你可以选择某个映像来安装 OS。
+### Operating system disks and images
+Virtual machines use [virtual hard disks (VHDs)](../storage/storage-about-disks-and-vhds-windows.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) to store their operating system (OS) and data. VHDs are also used for the images you can choose from to install an OS. 
 
-Azure 提供许多应用商店映像，这些映像可配合各种版本和类型的 Windows Server 操作系统使用。应用商店映像由映像发布者、产品、SKU 和版本（通常指定为最新版本）标识。
+Azure provides many marketplace images to use with various versions and types of Windows Server operating systems. Marketplace images are identified by image publisher, offer, sku, and version (typically version is specified as latest). 
 
-下表显示了查找映像信息的一些方法。
+This table shows some ways that you can find the information for an image.
 
-| 方法 | 说明 |
+| Method | Description |
 | --- | --- |
-| Azure 门户预览 |选择要使用的映像时，系统会自动指定值。 |
-| Azure PowerShell |[Get-AzureRMVMImagePublisher](https://msdn.microsoft.com/zh-cn/library/mt603484.aspx) -Location "location"<BR>[Get-AzureRMVMImageOffer](https://msdn.microsoft.com/zh-cn/library/mt603824.aspx) -Location "location" -Publisher "publisherName"<BR>[Get-AzureRMVMImageSku](https://msdn.microsoft.com/zh-cn/library/mt619458.aspx) -Location "location" -Publisher "publisherName" -Offer "offerName" |
-| REST API |[列出映像发布者](https://docs.microsoft.com/zh-cn/rest/api/compute/platformimages/platformimages-list-publishers)<BR>[列出映像产品](https://docs.microsoft.com/zh-cn/rest/api/compute/platformimages/platformimages-list-publisher-offers)<BR>[列出映像 SKU](https://docs.microsoft.com/zh-cn/rest/api/compute/platformimages/platformimages-list-publisher-offer-skus) |
+| Azure portal preview |The values are automatically specified for you when you select an image to use. |
+| Azure PowerShell |[Get-AzureRMVMImagePublisher](https://docs.microsoft.com/powershell/resourcemanager/azurerm.compute/v2.5.0/get-azurermvmimagepublisher) -Location "location"<BR>[Get-AzureRMVMImageOffer](https://docs.microsoft.com/powershell/resourcemanager/azurerm.compute/v2.5.0/get-azurermvmimageoffer) -Location "location" -Publisher "publisherName"<BR>[Get-AzureRMVMImageSku](https://docs.microsoft.com/powershell/resourcemanager/azurerm.compute/v2.5.0/get-azurermvmimagesku) -Location "location" -Publisher "publisherName" -Offer "offerName" |
+| REST APIs |[List image publishers](https://docs.microsoft.com/rest/api/compute/platformimages/platformimages-list-publishers)<BR>[List image offers](https://docs.microsoft.com/rest/api/compute/platformimages/platformimages-list-publisher-offers)<BR>[List image skus](https://docs.microsoft.com/rest/api/compute/platformimages/platformimages-list-publisher-offer-skus) |
 
-可以选择[上载并使用自己的映像](./virtual-machines-windows-upload-image.md)，在这种情况下，无需使用发布者名称、产品和 SKU。
+You can choose to [upload and use your own image](virtual-machines-windows-upload-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) and when you do, the publisher name, offer, and sku aren't used.
 
-### 扩展
-VM [扩展](./virtual-machines-windows-extensions-features.md)通过部署后的配置和自动化任务来增加 VM 的功能。
+### Extensions
+VM [extensions](virtual-machines-windows-extensions-features.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) give your VM additional capabilities through post deployment configuration and automated tasks.
 
-可以使用扩展完成以下常见任务：
+These common tasks can be accomplished using extensions:
 
-* **运行自定义脚本** – 预配 VM 时，[自定义脚本扩展](./virtual-machines-windows-extensions-customscript.md)可以通过运行脚本，帮助在 VM 上配置工作负荷。
-* **部署和管理配置** – 可以借助 [PowerShell Desired State Configuration (DSC) 扩展](./virtual-machines-windows-extensions-dsc-overview.md)在 VM 上设置用于管理配置和环境的 DSC。
-* **收集诊断数据** – 可以借助 [Azure 诊断扩展](https://azure.microsoft.com/blog/windows-azure-virtual-machine-monitoring-with-wad-extension/)将 VM 配置为收集诊断数据，然后，可以使用这些数据监视应用程序的运行状况。
+* **Run custom scripts** - The [Custom Script Extension](virtual-machines-windows-extensions-customscript.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) helps you configure workloads on the VM by running your script when the VM is provisioned.
+* **Deploy and manage configurations** - The [PowerShell Desired State Configuration (DSC) Extension](virtual-machines-windows-extensions-dsc-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) helps you set up DSC on a VM to manage configurations and environments.
+* **Collect diagnostics data** - The [Azure Diagnostics Extension](virtual-machines-windows-extensions-diagnostics-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) helps you configure the VM to collect diagnostics data that can be used to monitor the health of your application.
 
-### 相关资源
-VM 使用下表中的资源，创建 VM 时，这些资源必须存在，否则要予以创建。
+### Related resources
+The resources in this table are used by the VM and need to exist or be created when the VM is created.
 
-| 资源 | 必选 | 说明 |
+| Resource | Required | Description |
 | --- | --- | --- |
-| [资源组](../azure-resource-manager/resource-group-overview.md) |是 |VM 必须包含在资源组中。 |
-| [存储帐户](../storage/storage-create-storage-account.md) |是 |VM 需要使用存储帐户来存储其虚拟硬盘。 |
-| [虚拟网络](../virtual-network/virtual-networks-overview.md) |是 |VM 必须是虚拟网络的成员。 |
-| [公共 IP 地址](../virtual-network/virtual-network-ip-addresses-overview-arm.md) |否 |可以向 VM 分配一个公共 IP 地址，以便远程访问它。 |
-| [网络接口](../virtual-network/virtual-network-network-interface-overview.md) |是 |VM 需要使用网络接口在网络中通信。 |
-| [数据磁盘数](./virtual-machines-windows-attach-disk-portal.md) |否 |VM 可以包含数据磁盘，以便扩展存储功能。 |
+| [Resource group](../azure-resource-manager/resource-group-overview.md) |Yes |The VM must be contained in a resource group. |
+| [Storage account](../storage/storage-create-storage-account.md) |Yes |The VM needs the storage account to store its virtual hard disks. |
+| [Virtual network](../virtual-network/virtual-networks-overview.md) |Yes |The VM must be a member of a virtual network. |
+| [Public IP address](../virtual-network/virtual-network-ip-addresses-overview-arm.md) |No |The VM can have a public IP address assigned to it to remotely access it. |
+| [Network interface](../virtual-network/virtual-network-network-interface.md) |Yes |The VM needs the network interface to communicate in the network. |
+| [Data disks](virtual-machines-windows-attach-disk-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) |No |The VM can include data disks to expand storage capabilities. |
 
-## 如何创建第一个 VM？
-可以选择多种方法创建 VM。选择哪种方法取决于所在的环境。
+## How do I create my first VM?
+You have several choices for creating your VM. The choice that you make depends on the environment you are in. 
 
-下表提供的信息可帮助你开始创建 VM。
+This table provides information to get you started creating your VM.
 
-| 方法 | 文章 |
+| Method | Article |
 | --- | --- |
-| Azure 门户预览 |[使用门户创建运行 Windows 的虚拟机](./virtual-machines-windows-hero-tutorial.md) |
-| 模板 |[使用 Resource Manager 模板创建 Windows 虚拟机](./virtual-machines-windows-ps-template.md) |
-| Azure PowerShell |[使用 PowerShell 创建 Windows VM](./virtual-machines-windows-ps-create.md) |
-| 客户端 SDK |[使用 C# 部署 Azure 资源](./virtual-machines-windows-csharp.md) |
-| REST API |[创建或更新 VM](https://docs.microsoft.com/zh-cn/rest/api/compute/virtualmachines/virtualmachines-create-or-update) |
+| Azure portal preview |[Create a virtual machine running Windows using the portal](virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) |
+| Templates |[Create a Windows virtual machine with a Resource Manager template](virtual-machines-windows-ps-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) |
+| Azure PowerShell |[Create a Windows VM using PowerShell](virtual-machines-windows-ps-create.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) |
+| Client SDKs |[Deploy Azure Resources using C#](virtual-machines-windows-csharp.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) |
+| REST APIs |[Create or update a VM](https://docs.microsoft.com/rest/api/compute/virtualmachines/virtualmachines-create-or-update) |
 
-问题偶尔会不期而至。如果遇到了问题，请查看 [Troubleshoot Resource Manager deployment issues with creating a Windows virtual machine in Azure](./virtual-machines-windows-troubleshoot-deployment-new-vm.md)（排查在 Azure 中创建 Windows 虚拟机时遇到的 Resource Manager 部署问题）。
+You hope it never happens, but occasionally something goes wrong. If this situation happens to you, look at the information in [Troubleshoot Resource Manager deployment issues with creating a Windows virtual machine in Azure](virtual-machines-windows-troubleshoot-deployment-new-vm.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 
-## 如何管理创建的 VM？
-可以使用基于浏览器的门户、支持脚本的命令行工具或直接通过 API 管理 VM。可能要执行的一些常见管理任务包括获取有关 VM 的信息、登录到 VM、管理可用性以及执行备份。
+## How do I manage the VM that I created?
+VMs can be managed using a browser-based portal, command-line tools with support for scripting, or directly through APIs. Some typical management tasks that you might perform are getting information about a VM, logging on to a VM, managing availability, and making backups.
 
-### 获取有关 VM 的信息
-下表显示了获取有关 VM 的信息的一些方法。
+### Get information about a VM
+This table shows you some of the ways that you can get information about a VM.
 
-| 方法 | 说明 |
+| Method | Description |
 | --- | --- |
-| Azure 门户预览 |在中心菜单中，单击“虚拟机”，然后从列表中选择 VM。在 VM 的边栏选项卡中，可以访问概述信息、设置值以及监视指标。 |
-| Azure PowerShell |有关使用 PowerShell 管理 VM 的信息，请参阅 [Manage Azure Virtual Machines using Resource Manager and PowerShell](./virtual-machines-windows-ps-manage.md)（使用 Resource Manager 与 PowerShell 来管理 Azure 虚拟机）。 |
-| REST API |使用“[获取 VM 信息](https://docs.microsoft.com/zh-cn/rest/api/compute/virtualmachines/virtualmachines-get)”操作获取有关 VM 的信息。|
-| 客户端 SDK |有关使用 C# 管理 VM 的信息，请参阅 [Manage Azure Virtual Machines using Azure Resource Manager and C#](./virtual-machines-windows-csharp-manage.md)（使用 Azure Resource Manager 与 C# 来管理 Azure 虚拟机）。 |
+| Azure portal preview |On the hub menu, click **Virtual Machines** and then select the VM from the list. On the blade for the VM, you have access to overview information, setting values, and monitoring metrics. |
+| Azure PowerShell |For information about using PowerShell to manage VMs, see [Manage Azure Virtual Machines using Resource Manager and PowerShell](virtual-machines-windows-ps-manage.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). |
+| REST API |Use the [Get VM information](https://docs.microsoft.com/rest/api/compute/virtualmachines/virtualmachines-get) operation to get information about a VM. |
+| Client SDKs |For information about using C# to manage VMs, see [Manage Azure Virtual Machines using Azure Resource Manager and C#](virtual-machines-windows-csharp-manage.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). |
 
-### 登录到 VM
-使用 Azure 门户预览中的“连接”按钮[启动远程桌面 (RDP) 会话](./virtual-machines-windows-connect-logon.md)。尝试使用远程连接时，有时可能会出错。如果遇到这种情况，请查看[对运行 Windows 的 Azure 虚拟机的远程桌面连接进行故障排除](./virtual-machines-windows-troubleshoot-rdp-connection.md)中的帮助信息。
+### Log on to the VM
+You use the Connect button in the Azure portal preview to [start a Remote Desktop (RDP) session](virtual-machines-windows-connect-logon.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). Things can sometimes go wrong when trying to use a remote connection. If this situation happens to you, check out the help information in [Troubleshoot Remote Desktop connections to an Azure virtual machine running Windows](virtual-machines-windows-troubleshoot-rdp-connection.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 
-### 管理可用性
-必须知道如何[确保应用程序的高可用性](./virtual-machines-windows-manage-availability.md)。此配置涉及到创建多个 VM，确保至少有一个 VM 在运行。
+### Manage availability
+It's important for you to understand how to [ensure high availability](virtual-machines-windows-manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) for your application. This configuration involves creating multiple VMs to ensure that at least one is running.
 
-为了使部署符合 VM 运行时间达到 99.95% 的服务级别协议，必须在[可用性集](./virtual-machines-windows-infrastructure-availability-sets-guidelines.md)中部署两个或更多个运行工作负荷的 VM。此配置可确保 VM 分布到多个容错域，并使用不同的维护时段部署到主机上。完整 [Azure SLA](https://www.azure.cn/support/sla/virtual-machines/) 说明了 Azure 作为整体的保证可用性。
+In order for your deployment to qualify for our 99.95 VM Service Level Agreement, you need to deploy two or more VMs running your workload inside an [availability set](virtual-machines-windows-infrastructure-availability-sets-guidelines.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). This configuration ensures your VMs are distributed across multiple fault domains and are deployed onto hosts with different maintenance windows. The full [Azure SLA](https://www.azure.cn/support/sla/virtual-machines/) explains the guaranteed availability of Azure as a whole.
 
-### 备份 VM
-[恢复服务保管库](../backup/backup-introduction-to-azure-backup.md)用于保护 Azure 备份和 Azure Site Recovery 服务中的数据与资产。可以使用恢复服务保管库，[通过 PowerShell 来部署和管理采用 Resource Manager 部署模型的 VM 的备份](../backup/backup-azure-vms-automation.md)。
+### Back up the VM
+A [Recovery Services vault](../backup/backup-introduction-to-azure-backup.md) is used to protect data and assets in both Azure Backup and Azure Site Recovery services. You can use a Recovery Services vault to [deploy and manage backups for Resource Manager-deployed VMs using PowerShell](../backup/backup-azure-vms-automation.md). 
 
-## 后续步骤
-* 如果有意使用 Linux VM，请查看 [Azure 和 Linux](./virtual-machines-linux-azure-overview.md)。
-* 在[示例 Azure 基础结构演练](./virtual-machines-windows-infrastructure-example.md)中查看有关设置基础结构的指导。
-* 请务必遵循 [Best Practices for running a Windows VM on Azure](./virtual-machines-windows-guidance-compute-single-vm.md)（在 Azure 上运行 Windows VM 的最佳实践）。
-
-<!---HONumber=Mooncake_1212_2016-->
+## Next steps
+* If your intent is to work with Linux VMs, look at [Azure and Linux](virtual-machines-linux-azure-overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+* Learn more about the guidelines around setting up your infrastructure in the [Example Azure infrastructure walkthrough](virtual-machines-windows-infrastructure-example.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+* Make sure you follow the [Best Practices for running a Windows VM on Azure](virtual-machines-windows-guidance-compute-single-vm.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).

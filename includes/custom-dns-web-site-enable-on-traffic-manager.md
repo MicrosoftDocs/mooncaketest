@@ -1,33 +1,30 @@
-在传播域名记录后，应可使用浏览器验证自定义域名能否用于访问 Azure App Service 中的 Web 应用。
+After the records for your domain name have propagated, you should be able to use your browser to verify that your custom domain name can be used to access your web app in Azure App Service.
 
 > [!NOTE]
-> CNAME 通过 DNS 系统向外传播可能需要一段时间。可使用 <a href="http://www.digwebinterface.com/">http://www.digwebinterface.com/</a> 等服务验证该 CNAME 是否可用。
+> It can take some time for your CNAME to propagate through the DNS system. You can use a service such as <a href="http://www.digwebinterface.com/">http://www.digwebinterface.com/</a> to verify that the CNAME is available.
+> 
+> 
 
-如果尚未将 Web 应用添加为流量管理器终结点，必须在解析名称前执行此操作，因为自定义域名将路由到流量管理器。然后，流量管理器路由到 Web 应用。根据[添加或删除终结点](../articles/traffic-manager/traffic-manager-endpoints.md)中的信息，在流量管理器配置文件中将 Web 应用添加为终结点。
+If you have not already added your web app as a Traffic Manager endpoint, you must do this before name resolution will work, as the custom domain name routes to Traffic Manager. Traffic Manager then routes to your web app. Use the information in [Add or Delete Endpoints](../articles/traffic-manager/traffic-manager-endpoints.md) to add your web app as an endpoint in your Traffic Manager profile.
 
 > [!NOTE]
-> 如果在添加终结点时 Web 应用未列出，请验证是否已将其配置为**标准**应用服务计划模式。必须将 Web 应用设为**标准**模式才可使用流量管理器。
+> If your web app is not listed when adding an endpoint, verify that it is configured for **Standard** App Service plan mode. You must use **Standard** mode for your web app in order to work with Traffic Manager.
+> 
+> 
 
-1. 在浏览器中，打开 [Azure 门户预览](https://portal.azure.cn)。
-
-1. 在“Web 应用”选项卡中，单击 Web 应用的名称，选择“设置”，然后选择“自定义域”
+1. In your browser, open the [Azure Portal Preview](https://portal.azure.cn).
+2. In the **Web Apps** tab, click the name of your web app, select **Settings**, and then select **Custom domains**
 
     ![](./media/custom-dns-web-site/dncmntask-cname-6.png)
-
-1. 在“自定义域”边栏选项卡上，单击“添加主机名”。
-
-1. 使用“主机名”文本框输入要与此 Web 应用相关联的流量管理器域名。
+3. In the **Custom domains** blade, click **Add hostname**.
+4. Use the **Hostname** text boxes to enter the Traffic Manager domain name to associate with this web app.
 
     ![](./media/custom-dns-web-site/dncmntask-cname-8.png)
+5. Click **Validate** to save the domain name configuration.
+6. Upon clicking **Validate** Azure will kick off Domain Verification workflow. This will check for Domain ownership as well as Hostname availability and report success or detailed error with prescriptive guidence on how to fix the error.    
+7. Upon successful validation **Add hostname** button will become active and you will be able to the assign hostname. Now navigate to your custom domain name in a browser. You should
+   now see your app running using your custom domain name. 
 
-1. 单击“验证”以保存域名配置。
+    Once configuration has completed, the custom domain name will be listed in the **domain names** section of your web app.
 
-7.  单击“验证”时，Azure 将启动域验证工作流。这将检查域的所有权和主机名的可用性，并报告成功或错误详情（附带解决错误的说明性指南）。
-
-8.  验证成功后，“添加主机名”按钮变为激活状态，就可以分配主机名了。导航到浏览器中的自定义域名。现在应该会看到应用正在使用自定义域名运行。
-
-    完成配置后，自定义域名将在 Web 应用的“域名”部分列出。
-
-此时，应可在浏览器中输入流量管理器域名，并查看它是否成功转至 Web 应用。
-
-<!---HONumber=Mooncake_0926_2016-->
+At this point, you should be able to enter the Traffic Manager domain name name in your browser and see that it successfully takes you to your web app.

@@ -1,21 +1,21 @@
-##<a name="grant-new-database-user-dbowner-permissions"></a> 授予新的数据库用户 db\_owner 权限
+## Grant new database user db_owner permissions
 
-使用以下步骤授予现有数据库用户 db\_owner 权限
+Use the following steps to grant an existing database user db_owner permissions
 
-以下步骤假设你已使用 SSMS 连接到对象资源管理器中的 SQL 数据库，并以服务器级主体管理员身份或使用有权授予用户权限的用户帐户连接到 SQL 数据库逻辑服务器。
+Theses steps assume that you are connected to SQL Database in Object Explorer in SSMS and are connected to your SQL Database logical server as a server-level principal administrator or with a user account with permissions to grant user permissions. 
 
-1. 在对象资源管理器中，展开“数据库”节点并选择包含你要为其授予 dbo 权限的用户的数据库。
+1. In Object Explorer, expand the Databases node and select the database with the user to which you wish to grant dbo permissions.
 
-     ![SQL Server Management Studio：连接到 SQL 数据库服务器](./media/sql-database-create-new-database-user/sql-database-create-new-database-user-1.png)  
+     ![SQL Server Management Studio: Connect to SQL Database server](./media/sql-database-create-new-database-user/sql-database-create-new-database-user-1.png)
 
-2. 右键单击选定的数据库，然后单击“查询”。
+2. Right-click the selected database and then click **Query**.
 
-     ![SQL Server Management Studio：连接到 SQL 数据库服务器](./media/sql-database-create-new-database-user/sql-database-create-new-database-user-2.png)
+     ![SQL Server Management Studio: Connect to SQL Database server](./media/sql-database-create-new-database-user/sql-database-create-new-database-user-2.png)
 
-3. 在查询窗口中，编辑并使用以下 Transact-SQL 语句向指定的用户授予 dbo 权限。
+3. In the query window, edit and use the following Transact-SQL statement to grant dbo permissions to a specified user. 
 
-    '''ALTER ROLE db\_owner ADD MEMBER user1;
+    ```
+    ALTER ROLE db_owner ADD MEMBER user1;
+    ```
 
-     ![SQL Server Management Studio：连接到 SQL 数据库服务器](./media/sql-database-grant-database-user-dbo-permissions/sql-database-grant-database-user-dbo-permissions-1.png)
-
-<!---HONumber=Mooncake_0815_2016-->
+     ![SQL Server Management Studio: Connect to SQL Database server](./media/sql-database-grant-database-user-dbo-permissions/sql-database-grant-database-user-dbo-permissions-1.png)

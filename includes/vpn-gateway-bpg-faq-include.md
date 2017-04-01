@@ -1,69 +1,67 @@
-### BGP 是否在所有 Azure VPN 网关 SKU 上受支持？
-否，BGP 在 Azure **标准** VPN 网关和**高性能** VPN 网关上受支持 。不支持**基本** SKU。
+### Is BGP supported on all Azure VPN Gateway SKUs?
+No, BGP is supported on Azure **Standard** and **HighPerformance** VPN gateways. **Basic** SKU is NOT supported.
 
-### 能否将 BGP 用于 Azure 基于策略的 VPN 网关？
-否，只有基于路由的 VPN 网关支持 BGP。
+### Can I use BGP with Azure Policy-Based VPN gateways?
+No, BGP is supported on Route-Based VPN gateways only.
 
-### 能否使用专用 ASN（自治系统编号）？
-能，你可以将自己的公共 ASN 或专用 ASN 同时用于本地网络和 Azure 虚拟网络。
+### Can I use private ASNs (Autonomous System Numbers)?
+Yes, you can use your own public ASNs or private ASNs for both your on-premises networks and Azure virtual networks.
 
-### 是否存在由 Azure 保留的 ASN？
-是，Azure 保留了以下 ASN 用于内部和外部的对等互连：
+### Are there ASNs reserved by Azure?
+Yes, the following ASNs are reserved by Azure for both internal and external peerings:
 
-* 公用 ASN：8075、8076、12076
-* 专用 ASN：65515、65517、65518、65519、65520
+* Public ASNs: 8075, 8076, 12076
+* Private ASNs: 65515, 65517, 65518, 65519, 65520
 
-连接到 Azure VPN 网关时，不能为本地 VPN 设备指定这些 ASN。
+You cannot specify these ASNs for your on premises VPN devices when connecting to Azure VPN gateways.
 
-### 能否将同一个 ASN 同时用于本地 VPN 网络和 Azure VNet？
-否，必须在本地网络和 Azure VNet 之间分配不同 ASN（如果你要使用 BGP 将它们连接在一起）。无论是否为跨界连接启用了 BGP，都会为 Azure VPN 网关分配默认 ASN（即 65515）。可以通过在创建 VPN 网关时分配不同 ASN，或者在创建网关后更改 ASN 来覆盖此默认值。你需要将本地 ASN 分配给相应的 Azure 本地网关。
+### Can I use the same ASN for both on-premises VPN networks and Azure VNets?
+No, you must assign different ASNs between your on-premises networks and your Azure VNets if you are connecting them together with BGP. Azure VPN Gateways have a default ASN of 65515 assigned, whether BGP is enabled for not for your cross-premises connectivity. You can override this default by assigning a different ASN when creating the VPN gateway, or change the ASN after the gateway is created. You will need to assign your on-premises ASNs to the corresponding Azure Local Network Gateways.
 
-### Azure VPN 网关将播发给我哪些地址前缀？
-Azure VPN 网关会将以下路由播发到本地 BGP 设备：
+### What address prefixes will Azure VPN gateways advertise to me?
+Azure VPN gateway will advertise the following routes to your on-premises BGP devices:
 
-* VNet 地址前缀
-* 已连接到 Azure VPN 网关的每个本地网关的地址前缀
-* 从连接到 Azure VPN 网关的其他 BGP 对等会话获知的路由，**默认路由或与任何 VNet 前缀重叠的路由除外**。
+* Your VNet address prefixes
+* Address prefixes for each Local Network Gateways connected to the Azure VPN gateway
+* Routes learned from other BGP peering sessions connected to the Azure VPN gateway, **except default route or routes overlapped with any VNet prefix**.
 
-### 能否将默认路由 (0.0.0.0/0) 播发给 Azure VPN 网关？
-是的。
+### Can I advertise default route (0.0.0.0/0) to Azure VPN gateways?
+Yes.
 
-### 能否播发与虚拟网络前缀完全相同的前缀？
+### Can I advertise the exact prefixes as my Virtual Network prefixes?
 
-不能，Azure 平台将阻止播发与任一虚拟网络地址前缀相同的前缀或对其进行筛选。但是，可播发属于虚拟网络内所拥有内容超集的前缀。
+No, advertising the same prefixes as any one of your Virtual Network address prefixes will be blocked or filtered by the Azure platform. However you can advertise a prefix that is a superset of what you have inside your Virtual Network. 
 
-例如，如果虚拟网络可使用地址空间 10.0.0.0/16，则可以播发 10.0.0.0/8，但不能播发 10.0.0.0/16 或 10.0.0.0/24。
+For example, if your virtual network used the address space 10.0.0.0/16, you could advertise 10.0.0.0/8. But you cannot advertise 10.0.0.0/16 or 10.0.0.0/24.
 
-### 能否将 BGP 用于 VNet 到 VNet 连接？
-能，可以将 BGP 同时用于跨界连接和 VNet 到 VNet 连接。
+### Can I use BGP with my VNet-to-VNet connections?
+Yes, you can use BGP for both cross-premises connections and VNet-to-VNet connections.
 
-### 能否将 BGP 连接与非 BGP 连接混合用于 Azure VPN 网关？
-能，你可以将 BGP 连接和非 BGP 连接混合用于同一 Azure VPN 网关。
+### Can I mix BGP with non-BGP connections for my Azure VPN gateways?
+Yes, you can mix both BGP and non-BGP connections for the same Azure VPN gateway.
 
-### Azure VPN 网关是否支持 BGP 传输路由？
-是，支持 BGP 传输路由，但例外是 Azure VPN 网关**不**会将默认路由播发到其他 BGP 对等节点。若要启用跨多个 Azure VPN 网关的传输路由，必须在所有中间 VNet 到 VNet 连接上启用 BGP。
+### Does Azure VPN gateway support BGP transit routing?
+Yes, BGP transit routing is supported, with the exception that Azure VPN gateways will **NOT** advertise default routes to other BGP peers. To enable transit routing across multiple Azure VPN gateways, you must enable BGP on all intermediate VNet-to-VNet connections.
 
-### 在 Azure VPN 网关和我的本地网络之间能否有多个隧道？
-能，你可以在 Azure VPN 网关和本地网络之间建立多个 S2S VPN 隧道。请注意，所有这些隧道都将计入 Azure VPN 网关的隧道总数，而且必须在两个隧道上启用 BGP。
+### Can I have more than one tunnel between Azure VPN gateway and my on-premises network?
+Yes, you can establish more than one S2S VPN tunnel between an Azure VPN gateway and your on-premises network. Please note that all these tunnels will be counted against the total number of tunnels for your Azure VPN gateways and you must enable BGP on both tunnels.
 
-例如，如果在 Azure VPN 网关与一个本地网络之间有两个冗余隧道，它们将占用 Azure VPN 网关的总配额（标准为 10 个，高性能为 30 个）中的 2 个隧道。
+For example, if you have two redundant tunnels between your Azure VPN gateway and one of your on-premises networks, they will consume 2 tunnels out of the total quota for your Azure VPN gateway (10 for Standard and 30 for HighPerformance).
 
-### 在两个使用 BGP 的 Azure VNet 之间能否有多个隧道？
-是，但其中至少一个虚拟网络网关必须采用主动-主动配置。
+### Can I have multiple tunnels between two Azure VNets with BGP?
+Yes, but at least one of the virtual network gateways must be in active-active configuration.
 
-### 能否在 ExpressRoute/S2S VPN 共存配置中对 S2S VPN 使用 BGP？
-是的。
+### Can I use BGP for S2S VPN in an ExpressRoute/S2S VPN co-existence configuration?
+Yes. 
 
-### Azure VPN 网关将哪个地址用于 BGP 对等节点 IP？
-Azure VPN 网关将从为虚拟网络定义的 GatewaySubnet 范围内分配单个 IP 地址。默认情况下，它是该范围的倒数第二个地址。例如，如果 GatewaySubnet 是 10.12.255.0/27（范围从 10.12.255.0 到 10.12.255.31），则 Azure VPN 网关上的 BGP 对等 IP 地址将是 10.12.255.30。当列出 Azure VPN 网关信息时，可以找到此信息。
+### What address does Azure VPN gateway use for BGP Peer IP?
+The Azure VPN gateway will allocate a single IP address from the GatewaySubnet range defined for the virtual network. By default, it is the second last address of the range. For example, if your GatewaySubnet is 10.12.255.0/27, ranging from 10.12.255.0 to 10.12.255.31, the BGP Peer IP address on the Azure VPN gateway will be 10.12.255.30. You can find this information when you list the Azure VPN gateway information.
 
-### VPN 设备上的 BGP 对等节点 IP 地址的要求是什么？
-本地 BGP 对等节点地址**不能**与 VPN 设备的公共 IP 地址相同。在 VPN 设备上对 BGP 对等节点 IP 使用不同的 IP 地址。它可以是分配给该设备上环回接口的地址。在表示该位置的相应本地网关中指定此地址。
+### What are the requirements for the BGP Peer IP addresses on my VPN device?
+Your on-premises BGP peer address **MUST NOT** be the same as the public IP address of your VPN device. Use a different IP address on the VPN device for your BGP Peer IP. It can be an address assigned to the loopback interface on the device. Specify this address in the corresponding Local Network Gateway representing the location.
 
-### 使用 BGP 时应将什么指定为本地网关的地址前缀？
-Azure 本地网关为本地网络指定初始地址前缀。使用 BGP 时，必须分配 BGP 对等节点 IP 地址的主机前缀（/32 前缀）作为本地网络的地址空间。如果你的 BGP 对等节点 IP 为 10.52.255.254，则应指定“10.52.255.254/32”作为表示此本地网络的本地网关的 localNetworkAddressSpace。这是为了确保 Azure VPN 网关通过 S2S VPN 隧道建立 BGP 会话。
+### What should I specify as my address prefixes for the Local Network Gateway when I use BGP?
+Azure Local Network Gateway specifies the initial address prefixes for the on-premises network. With BGP, you must allocate the host prefix (/32 prefix) of your BGP Peer IP address as the address space for that on-premises network. If your BGP Peer IP is 10.52.255.254, you should specify "10.52.255.254/32" as the localNetworkAddressSpace of the Local Network Gateway representing this on-premises network. This is to ensure that the Azure VPN gateway establishes the BGP session through the S2S VPN tunnel.
 
-### 应为 BGP 对等会话添加到本地 VPN 设备什么内容？
-你应在指向 IPsec S2S VPN 隧道的 VPN 设备上添加 Azure BGP 对等节点 IP 地址的主机路由。例如，如果 Azure VPN 对等节点 IP 为“10.12.255.30”，则应在 VPN 设备上添加“10.12.255.30”的主机路由（包含匹配的 IPsec 隧道接口的下一跃点接口）。
-
-<!---HONumber=Mooncake_0206_2017-->
+### What should I add to my on-premises VPN device for the BGP peering session?
+You should add a host route of the Azure BGP Peer IP address on your VPN device pointing to the IPsec S2S VPN tunnel. For example, if the Azure VPN Peer IP is "10.12.255.30", you should add a host route for "10.12.255.30" with a nexthop interface of the matching IPsec tunnel interface on your VPN device.

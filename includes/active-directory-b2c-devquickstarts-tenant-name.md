@@ -1,0 +1,2 @@
+> [!NOTE]
+> Your B2C tenant's name is the domain that you entered during tenant creation, and is displayed on the directory blade in the Azure preview portal.  It usually ends with the suffix `.partner.onmschina.cn`, for instance, `contosob2c.partner.onmschina.cn`.

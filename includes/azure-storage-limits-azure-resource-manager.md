@@ -1,9 +1,7 @@
-仅当使用 Azure 资源管理器和 Azure 资源组时，以下限制才适用。
+The following limits apply when using the Azure Resource Manager and Azure Resource Groups only.
 
-资源|默认限制
----|---
-存储帐户管理操作数（读取）|每 5 分钟 800 次
-存储帐户管理操作数（写入）|每小时 200 次
-存储帐户管理操作数（列出）|每 5 分钟 100 次
-
-<!---HONumber=Mooncake_1207_2015-->
+| Resource | Default Limit |
+| --- | --- |
+| Storage account management operations (read) |800 per 5 minutes |
+| Storage account management operations (write) |200 per hour |
+| Storage account management operations (list) |100 per 5 minutes |

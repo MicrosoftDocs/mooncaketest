@@ -1,6 +1,6 @@
 ---
-title: 如何通过 Xamarin 使用 Blob 存储 | Azure
-description: 通过用于 Xamarin 的 Azure 存储客户端库，开发人员可以使用其本机用户界面创建 iOS、Android 和 Windows 应用商店应用。本教程演示了如何通过 Xamarin 来创建使用 Azure Blob 存储的应用程序。
+title: How to use Blob Storage from Xamarin | Azure
+description: The Azure Storage Client Library for Xamarin enables developers to create iOS, Android, and Windows Store apps with their native user interfaces. This tutorial shows how to use Xamarin to create an application that uses Azure Blob storage.
 services: storage
 documentationcenter: xamarin
 author: seguler
@@ -14,38 +14,38 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/30/2017
-wacn.date: 03/20/2017
+wacn.date: ''
 ms.author: seguler
 ---
 
-# 如何通过 Xamarin 使用 Blob 存储
+# How to use Blob Storage from Xamarin
 
 [!INCLUDE [storage-selector-blob-include](../../includes/storage-selector-blob-include.md)]
 
-## 概述
+## Overview
 
-Xamarin 使开发人员能够通过共享的 C# 代码库来使用其本机用户界面创建 iOS、Android 和 Windows 应用商店应用程序。本教程演示了如何将 Azure Blob 存储用于 Xamarin 应用程序。如果要先详细了解 Azure 存储再深入分析代码，请参阅 [Azure 存储简介](./storage-introduction.md)。
+Xamarin enables developers to use a shared C# codebase to create iOS, Android, and Windows Store apps with their native user interfaces. This tutorial shows you how to use Azure Blob storage with a Xamarin application. If you'd like to learn more about Azure Storage, before diving into the code, see [Introduction to Azure Storage](./storage-introduction.md).
 
 [!INCLUDE [storage-create-account-include](../../includes/storage-create-account-include.md)]
 
-[!INCLUDE [存储移动身份验证指南](../../includes/storage-mobile-authentication-guidance.md)]
+[!INCLUDE [storage-mobile-authentication-guidance](../../includes/storage-mobile-authentication-guidance.md)]
 
-## 创建新的 Xamarin 应用程序
+## Create a new Xamarin Application
 
-对于本入门教程，我们将创建面向 Android、iOS 和 Windows 的应用。此应用将仅创建一个容器，并将 Blob 上传到此容器中。我们将通过 Windows 上 Visual Studio 开始入门，这些知识同样适用于通过 Mac OS 上的 Xamarin Studio 创建应用。
+For this getting started, we'll be creating an app that targets Android, iOS, and Windows. This app will simply create a container and upload a blob into this container. We'll be using Visual Studio on Windows for this getting started, but the same learnings can be applied when creating an app using Xamarin Studio on Mac OS.
 
-请按以下步骤创建应用程序：
+Follow these steps to create your application:
 
-1. 下载并安装 [Xamarin for Visual Studio](https://www.xamarin.com/download)（如果尚未这样做）。
-2. 打开 Visual Studio ，创建空白应用（可本机移植）：“文件”>“新建”>“项目”>“跨平台”>“空白应用（可本机移植）”。
-3. 右键单击“解决方案资源管理器”窗格中的解决方案，然后选择“为解决方案管理 NuGet 包”。搜索 **WindowsAzure.Storage**，并将最新稳定版本安装到解决方案中的所有项目。
-4. 生成并运行项目。
+1. If you haven't already, download and install [Xamarin for Visual Studio](https://www.xamarin.com/download).
+2. Open Visual Studio, and create a Blank App (Native Portable): **File > New > Project > Cross-Platform > Blank App(Native Portable)**.
+3. Right-click your solution in the Solution Explorer pane and select **Manage NuGet Packages for Solution**. Search for **WindowsAzure.Storage** and install the latest stable version to all projects in your solution.
+4. Build and run your project.
 
-现在，应该有了这样一个应用程序，单击其中某个按钮将使计数器递增。
+You should now have an application that allows you to click a button which increments a counter.
 
-## 创建容器并上传 Blob
+## Create container and upload blob
 
-接下来，将一些代码添加到共享类 `MyClass.cs` 以创建容器，然后将 Blob 上传到此容器。`MyClass.cs` 应如下所示：
+Next, you'll add some code to the shared class `MyClass.cs` that creates a container and uploads a blob into this container. `MyClass.cs` should look like the following:
 
 ```csharp
 using Microsoft.WindowsAzure.Storage;
@@ -60,10 +60,10 @@ namespace XamarinApp
         {
         }
 
-            public static async Task performBlobOperation()
+        public static async Task performBlobOperation()
         {
             // Retrieve storage account from connection string.
-            CloudStorageAccount storageAccount = CloudStorageAccount.Parse("DefaultEndpointsProtocol=https;AccountName=your_account_name_here;AccountKey=your_account_key_here;EndpointSuffix=core.chinacloudapi.cn");
+            CloudStorageAccount storageAccount = CloudStorageAccount.Parse("DefaultEndpointsProtocol=https;AccountName=your_account_name_here;AccountKey=your_account_key_here");
 
             // Create the blob client.
             CloudBlobClient blobClient = storageAccount.CreateCloudBlobClient();
@@ -84,9 +84,9 @@ namespace XamarinApp
 }
 ```
 
-确保将“your\_account\_name\_here”和“your\_account\_key\_here”替换为实际帐户名和帐户密钥。
+Make sure to replace "your_account_name_here" and "your_account_key_here" with your actual account name and account key. 
 
-用户的 iOS、Android 和 Windows Phone 项目全都引用可移植项目 - 这意味着，用户在一个位置编写所有共享代码即可跨所有项目使用。现在可以向每个项目添加以下代码行，进行充分利用：`MyClass.performBlobOperation()`
+Your iOS, Android, and Windows Phone projects all have references to your Portable project - meaning you can write all of your shared code in one place and use it across all of your projects. You can now add the following line of code to each project to start taking advantage: `MyClass.performBlobOperation()`
 
 ### XamarinApp.Droid > MainActivity.cs
 
@@ -235,20 +235,16 @@ namespace XamarinApp.WinPhone
 }
 ```
 
-## 运行应用程序
+## Run the application
 
-现在可以在 Android 或 Windows Phone 仿真程序中运行此应用程序。也可在 iOS 仿真程序中运行此应用程序，但需要使用 Mac。有关如何执行此操作的具体说明，请阅读 [connecting Visual Studio to a Mac](https://developer.xamarin.com/guides/ios/getting_started/installation/windows/connecting-to-mac/)（将 Visual Studio 连接到 Mac）文档
+You can now run this application in an Android or Windows Phone emulator. You can also run this application in an iOS emulator, but this will require a Mac. For specific instructions on how to do this, please read the documentation for [connecting Visual Studio to a Mac](https://developer.xamarin.com/guides/ios/getting_started/installation/windows/connecting-to-mac/)
 
-运行应用后，会在存储帐户中创建容器 `mycontainer`。它应该包含 Blob `myblob`，其中包含文本 `Hello, world!`。可以使用 [Azure 存储资源管理器](http://storageexplorer.com/)对此进行验证。
+Once you run your app, it will create the container `mycontainer` in your Storage account. It should contain the blob, `myblob`, which has the text, `Hello, world!`. You can verify this by using the [Microsoft Azure Storage Explorer](http://storageexplorer.com/).
 
-## 后续步骤
+## Next steps
 
-在本入门指南中，你学习了如何使用 Azure 存储在 Xamarin 中创建跨平台应用程序。本入门指南着重介绍 Blob 存储的情况。但是，还对 Blob 存储、表存储、文件存储和队列存储进行更多操作。请参阅以下文章以了解更多信息：
-
-- [通过 .NET 开始使用 Azure Blob 存储](./storage-dotnet-how-to-use-blobs.md)
-- [通过 .NET 开始使用 Azure 表存储](./storage-dotnet-how-to-use-tables.md)
-- [通过 .NET 开始使用 Azure 队列存储](./storage-dotnet-how-to-use-queues.md)
-- [在 Windows 上开始使用 Azure 文件存储](./storage-dotnet-how-to-use-files.md)
-
-<!---HONumber=Mooncake_0313_2017-->
-<!--Update_Description: update code sample-->
+In this getting started, you learned how to create a cross-platform application in Xamarin that uses Azure Storage. This getting started specifically focused on one scenario in Blob Storage. However, you can do a lot more with, not only Blob Storage, but also with Table, File, and Queue Storage. Please check out the following articles to learn more:
+- [Get started with Azure Blob Storage using .NET](./storage-dotnet-how-to-use-blobs.md)
+- [Get started with Azure Table Storage using .NET](./storage-dotnet-how-to-use-tables.md)
+- [Get started with Azure Queue Storage using .NET](./storage-dotnet-how-to-use-queues.md)
+- [Get started with Azure File Storage on Windows](./storage-dotnet-how-to-use-files.md)

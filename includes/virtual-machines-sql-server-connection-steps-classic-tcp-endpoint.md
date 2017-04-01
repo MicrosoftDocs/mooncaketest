@@ -1,26 +1,18 @@
-### <a name="create-a-tcp-endpoint-for-the-virtual-machine"></a> 为虚拟机创建 TCP 终结点
+### <a name="create-a-tcp-endpoint-for-the-virtual-machine"></a> Create a TCP endpoint for the virtual machine
+In order to access SQL Server from the internet, the virtual machine must have an endpoint to listen for incoming TCP communication. This Azure configuration step, directs incoming TCP port traffic to a TCP port that is accessible to the virtual machine.
 
-要从 Internet 访问 SQL Server，虚拟机必须具有终结点以侦听传入的 TCP 通信。此 Azure 配置步骤将传入 TCP 端口通信定向到虚拟机可以访问的 TCP 端口。
+> [!NOTE]
+> If you are connecting within the same cloud service or virtual network, you do not have to create a publically accessible endpoint. In that case, you could continue to the next step. For more information, see [Connection Scenarios](../articles/virtual-machines/windows/sqlclassic/virtual-machines-windows-classic-sql-connect.md#connection-scenarios).
+> 
+> 
 
->[!NOTE]
-> 如果你在同一云服务或虚拟网络中连接，则不需要创建一个公开访问的终结点。在这种情况下，你可以继续执行下一步。有关详细信息，请参阅[连接方案](../articles/virtual-machines/virtual-machines-windows-classic-sql-connect.md#connection-scenarios)。
+1. On the Azure Portal Preview, select **Virtual machines (classic)**.
+2. Then select you SQL Server virtual machine.
+3. Select **Endpoints**, and then click the **Add** button at the top of the Endpoints blade.
 
-1. 在 Azure 门户预览中，选择“虚拟机（经典）”。
-
-2. 然后选择 SQL Server 虚拟机。
-
-3. 选择“终结点”，然后单击终结点边栏选项卡顶部的“添加”按钮。
-
-    ![用于创建终结点的门户步骤](./media/virtual-machines-sql-server-connection-steps/portal-endpoint-creation.png)
-
-4. 在“添加终结点”边栏选项卡上，提供“名称”，例如 SQLEndpoint。
-
-5. 选择“TCP”作为“协议”。
-
-6. 为“公用端口”指定端口号，如“57500”。
-
-7. 为“专用端口”，指定 SQL Server 侦听端口，默认为“1433”。
-
-6. 单击“确定”以创建终结点。
-
-<!---HONumber=Mooncake_0808_2016-->
+    ![Portal Steps for Endpoint Creation](./media/virtual-machines-sql-server-connection-steps/portal-endpoint-creation.png)
+4. On the **Add Endpoint** blade, provide a **Name** such as SQLEndpoint.
+5. Select **TCP** for the **Protocol**.
+6. For **Public port**, specify a port number such as **57500**.
+7. For **Private port**, specify SQL Server's listening port, which defaults to **1433**.
+8. Click **Ok** to create the endpoint.

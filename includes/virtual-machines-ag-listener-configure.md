@@ -1,92 +1,92 @@
-可用性组侦听器是 SQL Server 可用性组侦听的 IP 地址和网络名称。若要创建可用性组侦听器，请执行以下步骤：
+The Availability Group listener is an IP address and network name that the SQL Server Availability Group listens on. To create the Availability Group listener, do the following steps:
 
-1. [获取群集网络资源的名称](#getnet)。
+1. [Get the name of the cluster network resource](#getnet).
 
-1. [添加客户端接入点](#addcap)。
+1. [Add the client access point](#addcap).
 
-1. [配置可用性组的 IP 资源](#congroup)。
+1. [Configure the IP resource for the Availability Group](#congroup).
 
-1. [使 SQL Server 可用性组资源依赖于该客户端接入点](#dependencyGroup)
+1. [Make the SQL Server availability group resource dependent on the client access point](#dependencyGroup)
 
-1. [使客户端接入点资源依赖于 IP 地址](#listname)。
+1. [Make the client access point resource dependent on the IP address](#listname).
 
-1. [在 PowerShell 中设置群集参数](#setparam)。
+1. [Set the cluster parameters in PowerShell](#setparam).
 
-以下部分提供其中每个步骤的详细说明。
+The following sections provide detailed instructions for each of these steps. 
 
-#### <a name="getnet"></a>获取群集网络资源的名称
+#### <a name="getnet"></a>Get the name of the cluster network resource
 
-1. 使用 RDP 连接到托管主副本的 Azure 虚拟机。
+1. Use RDP to connect to the Azure virtual machine that hosts the primary replica. 
 
-1. 打开故障转移群集管理器。
+1. Open Failover Cluster Manager.
 
-1. 选择“网络”节点，并记下群集网络名称。稍后在 PowerShell 脚本的 `$ClusterNetworkName` 变量中将要使用此名称。
+1. Select the **Networks** node, and note the cluster network name. Use this name in the `$ClusterNetworkName` variable in the PowerShell script.
 
-    在下图中，群集网络名称是“群集网络 1”：
+    In the following picture the cluster network name is **Cluster Network 1**:
 
-    ![群集网络名称](./media/virtual-machines-ag-listener-configure/90-clusternetworkname.png)  
+    ![Cluster Network Name](./media/virtual-machines-ag-listener-configure/90-clusternetworkname.png)
 
-#### <a name="addcap"></a>添加客户端接入点
+#### <a name="addcap"></a>Add the client access point
 
-客户端接入点是应用程序用来连接到可用性组中的数据库的网络名称。在故障转移群集管理器中创建客户端接入点。
+The client access point is the network name that applications use to connect to the databases in an availability group. Create the client access point in Failover Cluster Manager. 
 
-1. 展开群集名称，然后单击“角色”。
+1. Expand the cluster name, and then click **Roles**.
 
-1. 在“角色”窗格中，右键单击可用性组名称，然后选择“添加资源”\>“客户端接入点”。
+1. In the **Roles** pane, right-click the Availability Group name and then select **Add Resource** > **Client Access Point**.
 
-    ![客户端接入点](./media/virtual-machines-ag-listener-configure/92-addclientaccesspoint.png)  
+    ![Client Access Point](./media/virtual-machines-ag-listener-configure/92-addclientaccesspoint.png)
 
-1. 在“名称”框中，创建此新侦听器的名称。
+1. In the **Name** box, create a name for this new listener. 
 
-    新侦听器的名称是应用程序用来连接 SQL Server 可用性组中数据库的网络名称。
+    The name for the new listener is the network name that applications use to connect to databases in the SQL Server Availability Group.
 
-    若要完成创建侦听器，请单击“下一步”两次，然后单击“完成”。不要在此时使侦听器或资源联机。
+    To finish creating the listener, click **Next** twice, and then click **Finish**. Do not bring the listener or resource online at this point.
 
-#### <a name="congroup"></a>配置可用性组的 IP 资源
+#### <a name="congroup"></a>Configure the IP resource for the Availability Group
 
-1. 单击“资源”选项卡，然后展开创建的客户端接入点。客户端接入点处于脱机状态。
+1. Click the **Resources** tab, then expand the client access point you created. The client access point is offline.
 
-    ![客户端接入点](./media/virtual-machines-ag-listener-configure/94-newclientaccesspoint.png)  
+    ![Client Access Point](./media/virtual-machines-ag-listener-configure/94-newclientaccesspoint.png) 
 
-1. 右键单击 IP 资源，然后单击“属性”。记下 IP 地址的名称。稍后在 PowerShell 脚本的 `$IPResourceName` 变量中将要使用此名称。
+1. Right-click the IP resource and click properties. Note the name of the IP address. Use this name in the `$IPResourceName` variable in the PowerShell script.
 
-1. 在“IP 地址”下，单击“静态 IP 地址”。将 IP 地址设置为在 Azure 门户预览上设置负载均衡器地址时所用的相同地址。
+1. Under **IP Address**, click **Static IP Address**. Set the IP address to the same address that you used when you set the load balancer address on the Azure portal preview.
 
-    ![IP 资源](./media/virtual-machines-ag-listener-configure/96-ipresource.png)  
+    ![IP Resource](./media/virtual-machines-ag-listener-configure/96-ipresource.png) 
 
 <!-----------------------I don't see this option on server 2016
 1. Disable NetBIOS for this address and click **OK**. Repeat this step for each IP resource if your solution spans multiple Azure VNets. 
 ------------------------->
 
-#### <a name = "dependencyGroup"></a>使 SQL Server 可用性组资源依赖于该客户端接入点
+#### <a name = "dependencyGroup"></a>Make the SQL Server availability group resource dependent on the client access point
 
-1. 在故障转移群集管理器中单击“角色”，然后单击可用性组。
+1. In Failover Cluster Manager, click **Roles** and click your Availability Group.
 
-1. 在“资源”选项卡上，右键单击“服务器名称”下的可用性资源组，然后单击“属性”。
+1. On the **Resources** tab, right-click the availability resource group under **Server Name** and click **Properties**. 
 
-1. 在依赖项选项卡上添加名称资源。此资源是客户端接入点。
+1. On the dependencies tab, add the name resource. This resource is the client access point. 
 
-    ![IP 资源](./media/virtual-machines-ag-listener-configure/97-propertiesdependencies.png)  
+    ![IP Resource](./media/virtual-machines-ag-listener-configure/97-propertiesdependencies.png) 
 
-1. 单击“确定”。
+1. Click **OK**.
 
-#### <a name="listname"></a>使客户端接入点资源依赖于 IP 地址
+#### <a name="listname"></a>Make the client access point resource dependent on the IP address
 
-1. 在故障转移群集管理器中单击“角色”，然后单击可用性组。
+1. In Failover Cluster Manager, click **Roles** and click your Availability Group. 
 
-1. 在“资源”选项卡上，右键单击“服务器名称”下的客户端接入点资源，然后单击“属性”。
+1. On the **Resources** tab, right-click the client access point resource under **Server Name** and click **Properties**. 
 
-    ![IP 资源](./media/virtual-machines-ag-listener-configure/98-dependencies.png)  
+    ![IP Resource](./media/virtual-machines-ag-listener-configure/98-dependencies.png) 
 
-1. 选择“依赖项”选项卡。设置与侦听器资源名称之间的依赖关系。如果有多个资源列出，请验证 IP 地址具有 OR 而不是 AND 依赖项。单击**“确定”**。
+1. Click the **Dependencies** tab. Set a dependency on the listener resource name. If there are multiple resources listed, verify that the IP addresses have OR, not AND, dependencies. Click **OK**. 
 
-    ![IP 资源](./media/virtual-machines-ag-listener-configure/98-propertiesdependencies.png)  
+    ![IP Resource](./media/virtual-machines-ag-listener-configure/98-propertiesdependencies.png) 
 
-1. 右键单击侦听器名称，然后单击“联机”。
+1. Right-click the listener name and click **Bring Online**. 
 
-#### <a name="setparam"></a>在 PowerShell 中设置群集参数
+#### <a name="setparam"></a>Set the cluster parameters in PowerShell
 
-1. 将以下 PowerShell 脚本复制到一台 SQL Server。请更新环境的变量。
+1. Copy the following PowerShell script to one of your SQL Servers. Update the variables for your environment.     
 
     ```PowerShell
     $ClusterNetworkName = "<MyClusterNetworkName>" # the cluster network name (Use Get-ClusterNetwork on Windows Server 2012 of higher to find the name)
@@ -99,9 +99,7 @@
     Get-ClusterResource $IPResourceName | Set-ClusterParameter -Multiple @{"Address"="$ILBIP";"ProbePort"=$ProbePort;"SubnetMask"="255.255.255.255";"Network"="$ClusterNetworkName";"EnableDhcp"=0}
     ```
 
-2. 通过在某个群集节点上运行 PowerShell 脚本设置群集参数。
+2. Set the cluster parameters by running the PowerShell script on one of the cluster nodes.  
 
 > [!NOTE]
-如果 SQL Server 位于不同的区域，则需要运行 PowerShell 脚本两次。第一次请使用第一个区域中的 `$ILBIP` 和 `$ProbePort`。第二次请使用第二个区域中的 `$ILBIP` 和 `$ProbePort`。群集网络名称和群集 IP 资源名称相同。
-
-<!---HONumber=Mooncake_0213_2017-->
+> If your SQL Servers are in separate regions, you need to run the PowerShell script twice. The first time, use the `$ILBIP` and `$ProbePort` from the first region. The second time, use the `$ILBIP` and `$ProbePort` from the second region. The cluster network name, and the cluster IP resource name are the same.

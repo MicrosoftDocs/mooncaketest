@@ -1,10 +1,10 @@
-在本部分中，更新现有移动应用后端项目中的代码，以便在每次添加新项目时推送通知。此功能由 Azure 通知中心的[模板](../articles/notification-hubs/notification-hubs-templates-cross-platform-push-messages.md)功能提供支持，并且启用了跨平台推送。使用模板为推送通知注册了各种客户端，单个通用推送可到达所有客户端平台。
+In this section, you update code in your existing Mobile Apps back-end project to send a push notification every time a new item is added. This is powered by the [template](../articles/notification-hubs/notification-hubs-templates-cross-platform-push-messages.md) feature of Azure Notification Hubs, enabling cross-platform pushes. The various clients are registered for push notifications using templates, and a single universal push can get to all client platforms.
 
-选择以下与你的后端项目类型（[.NET 后端](#dotnet)或 [Node.js 后端](#nodejs)）匹配的一个过程。
+Choose one of the following procedures that matches your back-end project type&mdash;either [.NET back end](#dotnet) or [Node.js back end](#nodejs).
 
-### <a name="dotnet"></a>.NET 后端项目
-1. 在 Visual Studio 中，右键单击服务器项目并单击“管理 NuGet 包”。搜索 `Microsoft.Azure.NotificationHubs`，然后单击“安装”。这将安装通知中心库，以便从后端发送通知。
-2. 在服务器项目中，打开“控制器”>“TodoItemController.cs”，使用以下语句进行添加：
+### <a name="dotnet"></a>.NET back-end project
+1. In Visual Studio, right-click the server project and click **Manage NuGet Packages**. Search for `Microsoft.Azure.NotificationHubs`, and then click **Install**. This installs the Notification Hubs library for sending notifications from your back end.
+2. In the server project, open **Controllers** > **TodoItemController.cs**, and add the following using statements:
 
     ```
     using System.Collections.Generic;
@@ -12,7 +12,7 @@
     using Microsoft.Azure.Mobile.Server.Config;
     ```
 
-2. 在 **PostTodoItem** 方法中，在调用 **InsertAsync** 后添加如下代码：
+2. In the **PostTodoItem** method, add the following code after the call to **InsertAsync**:  
 
     ```
     // Get the settings for the server project.
@@ -50,15 +50,15 @@
     }
     ```
 
-    插入新项时，会发送包含 item.text 的模板通知。
+    This sends a template notification that contains the item.Text when a new item is inserted.
 
-4. 重新发布服务器项目。
+4. Republish the server project. 
 
-### <a name="nodejs"></a>Node.js 后端项目
+### <a name="nodejs"></a>Node.js back-end project
 
-1. 如果尚未执行此操作，请[下载快速入门后端项目](../articles/app-service-mobile/app-service-mobile-node-backend-how-to-use-server-sdk.md#download-quickstart)或使用 [Azure 门户预览中的在线编辑器](../articles/app-service-mobile/app-service-mobile-node-backend-how-to-use-server-sdk.md#online-editor)。
+1. If you haven't already done so, [download the quickstart backend project](../articles/app-service-mobile/app-service-mobile-node-backend-how-to-use-server-sdk.md#download-quickstart) or else use the [online editor in the Azure portal](../articles/app-service-mobile/app-service-mobile-node-backend-how-to-use-server-sdk.md#online-editor).
 
-2. 将 todoitem.js 文件中的现有代码替换为以下内容：
+2. Replace the existing code in todoitem.js with the following:
 
     ```
     var azureMobileApps = require('azure-mobile-apps'),
@@ -101,8 +101,6 @@
     module.exports = table;  
     ```
 
-    插入新项时，会发送包含 item.text 的模板通知。
+    This sends a template notification that contains the item.text when a new item is inserted.
 
-2. 编辑本地计算机上的文件时，请重新发布服务器项目。
-
-<!---HONumber=Mooncake_0116_2017-->
+2. When editing the file on your local computer, republish the server project.

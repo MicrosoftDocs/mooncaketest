@@ -1,5 +1,1 @@
-<!-- not suitable for Mooncake -->
-
-还可以不使用 VPN 网关连接 VNet。如果 VNet 位于同一区域，可能会考虑使用 VNet 对等互连进行连接。有关详细信息，请参阅文章 [VNet 对等互连](../articles/virtual-network/virtual-network-peering-overview.md)。
-
-<!---HONumber=Mooncake_1031_2016-->
+It's also possible to connect VNets without using a VPN gateway. If your VNets are in the same region, you may want to consider connecting them by using VNet peering. For more information, see the [VNet peering](../articles/virtual-network/virtual-network-peering-overview.md) article.

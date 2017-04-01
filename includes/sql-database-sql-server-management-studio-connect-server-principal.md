@@ -1,40 +1,39 @@
-##<a name="connect-to-azure-sql-database-using-a-server-level-principal-login"></a> 使用 SQL Server 身份验证连接到 Azure SQL 数据库
+## Connect to Azure SQL Database using SQL Server Authentication
 
-以下步骤演示了如何使用 SSMS 连接到 Azure SQL Server 和数据库。如果没有服务器和数据库，请参阅[在几分钟内创建一个 SQL 数据库](../articles/sql-database/sql-database-get-started.md)创建一个。
+The following steps show how to connect to an Azure SQL server and database with SSMS. If you don't have a server and database, see [Create a SQL database in minutes](../articles/sql-database/sql-database-get-started.md) to create one.
 
-1. 在 Windows 搜索框中键入“Microsoft SQL Server Management Studio”，然后单击桌面应用以启动 SSMS。
+1. Start SSMS by typing **Microsoft SQL Server Management Studio** in the Windows search box, and then click the desktop app.
 
-2. 在“连接到服务器”窗口中，输入以下信息（如果正在运行 SSMS，请单击“连接”>“数据库引擎”以打开“连接到服务器”窗口）：
+2. In the **Connect to Server** window, enter the following information (if SSMS is already running, click **Connect > Database Engine** to open the **Connect to Server** window):
 
- - **服务器类型**：默认为数据库引擎；请不要更改此值。
- - **服务器名称**：输入 Azure SQL 数据库服务器的完全限定名称，格式为 *&lt;服务器名称>*.**database.chinacloudapi.cn**
- - **身份验证类型**：本文介绍如何使用 **SQL Server 身份验证**进行连接。有关使用 Azure Active Directory 进行连接的详细信息，请参阅[使用 Active Directory 集成身份验证进行连接](../articles/sql-database/sql-database-aad-authentication.md#connect-using-active-directory-integrated-authentication)、[使用 Active Directory 密码身份验证进行连接](../articles/sql-database/sql-database-aad-authentication.md#connect-using-active-directory-password-authentication)。
- - **用户名**：输入有权访问服务器上的数据库的用户名称（例如，创建服务器时设置的“服务器管理员”）。
- - **密码**：输入指定用户的密码（例如，创建服务器时设置的“密码”）。
-   ![SQL Server Management Studio：连接到 SQL 数据库服务器](./media/sql-database-sql-server-management-studio-connect-server-principal/connect.png)  
+ - **Server type**: The default is database engine; do not change this value.
+ - **Server name**: Enter the fully qualified name of your Azure SQL Database server in the following format: *&lt;servername>*.**database.chinacloudapi.cn**
+ - **Authentication type**: This article shows you how to connect using **SQL Server Authentication**. For details on connecting with Azure Active Directory, see [Connect using Active Directory integrated authentication](../articles/sql-database/sql-database-aad-authentication.md#connect-using-active-directory-integrated-authentication), [Connect using Active Directory password authentication](../articles/sql-database/sql-database-aad-authentication.md#connect-using-active-directory-password-authentication), and [Connect using Active Directory Universal Authentication](../articles/sql-database/sql-database-ssms-mfa-authentication.md).
+ - **User name**: Enter the name of a user with access to a database on the server (for example, the *server admin* you set up when creating the server). 
+ - **Password**: Enter the password for the specified user (for example, the *password* you set up when creating the server).
 
-3. 单击“连接”。
+       ![SQL Server Management Studio: Connect to SQL Database server](./media/sql-database-sql-server-management-studio-connect-server-principal/connect.png)
 
-4. 默认情况下，新的服务器未定义[防火墙规则](../articles/sql-database/sql-database-firewall-configure.md)，因此最初阻止客户端进行连接。如果服务器尚不具有允许特定的 IP 地址进行连接的防火墙规则，那么 SSMS 会提示你创建服务器级防火墙规则。
+3. Click **Connect**.
 
-    单击“登录”并创建服务器级防火墙规则。必须是 Azure 管理员才能创建服务器级的防火墙规则。
+4. By default, new servers have no defined [firewall rules](../articles/sql-database/sql-database-firewall-configure.md) so clients are initially blocked from connecting. If your server does not yet have a firewall rule that allows your specific IP address to connect, SSMS prompts to create a server-level firewall rule for you.
 
-    ![SQL Server Management Studio：连接到 SQL 数据库服务器](./media/sql-database-sql-server-management-studio-connect-server-principal/newfirewallrule.png)  
+    Click **Sign in** and create a server-level firewall rule. You must be an Azure administrator to create a server-level firewall rule.
 
-5. 成功连接到 Azure SQL 数据库之后，打开**对象资源管理器**，现在可以访问数据库以[执行管理任务或查询数据](../articles/sql-database/sql-database-manage-azure-ssms.md)。
+       ![SQL Server Management Studio: Connect to SQL Database server](./media/sql-database-sql-server-management-studio-connect-server-principal/newfirewallrule.png)
 
-     ![新的服务器级防火墙](./media/sql-database-sql-server-management-studio-connect-server-principal/connect-server-principal-5.png)  
+5. After successfully connecting to your Azure SQL database, **Object Explorer** opens and you can now access your database to [perform administrative tasks or query data](../articles/sql-database/sql-database-manage-azure-ssms.md).
 
-## 对连接失败进行故障排除
+     ![new server-level firewall](./media/sql-database-sql-server-management-studio-connect-server-principal/connect-server-principal-5.png)
 
-连接失败的最常见原因是服务器名称错误和网络连接问题。请记住，<*servername*> 是服务器的名称，而不是数据库的名称，并且需要提供完全限定的服务器名称：`<servername>.database.chinacloudapi.cn`
+## Troubleshoot connection failures
 
-另外，请确认用户名和密码不包含任何错字或多余的空格（用户名称不区分大小写，但密码区分）。
+The most common reasons for connection failures are mistakes in the server name, and network connectivity issues. Remember, <*servername*> is the name of the server, not the database, and you need to provide the fully qualified server name: `<servername>.database.chinacloudapi.cn`
 
-你还可以显式设置带服务器名称的协议和端口号，例如：`tcp:servername.database.chinacloudapi.cn,1433`
+Also, verify the user name and password do not contain any typos or extra spaces (user names are not case-sensitive, but passwords are). 
 
-网络连接问题也可能导致连接错误和超时。只需重新尝试连接（如果知道服务器名称、凭据和防火墙规则正确）就可能成功。
+You can also explicitly set the protocol and port number with the server name like the following: `tcp:servername.database.chinacloudapi.cn,1433`
 
-有关连接问题的详细信息，请参阅[排查、诊断和防止 SQL 数据库中的 SQL 连接错误和暂时性错误](../articles/sql-database/sql-database-connectivity-issues.md)。
+Network connectivity issues can also cause connection errors and timeouts. Simply retrying to connect (when you know that the server name, credentials, and firewall rules are correct) can lead to success.
 
-<!---HONumber=Mooncake_1024_2016-->
+For details and more about connectivity issues, see [Troubleshoot, diagnose, and prevent SQL connection errors and transient errors for SQL Database](../articles/sql-database/sql-database-connectivity-issues.md).

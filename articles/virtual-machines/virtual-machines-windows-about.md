@@ -1,41 +1,38 @@
 ---
-title: 关于 Windows 虚拟机 | Azure
-description: 了解使用两种部署模型的 Azure 中 Windows 虚拟机的基本信息。
+title: About Windows Virtual Machines | Azure
+description: Learn about the basics of Windows virtual machines in Azure using both deployment models.
 services: virtual-machines-windows
-documentationCenter: ''
-authors: cynthn
+documentationcenter: ''
+author: cynthn
 manager: timlt
 editor: tysonn
 tags: azure-resource-manager,azure-service-management
 
+ms.assetid: 316883a8-e526-48f6-a20b-7f1490b24d6c
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 09/27/2016
-wacn.date: 11/21/2016
+ms.date: 01/20/2017
+wacn.date: ''
 ms.author: cynthn
+
 ---
+# About Windows virtual machines in Azure
+[!INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-both-include.md)]
 
-#关于 Azure 中的 Windows 虚拟机 
+Azure Virtual Machines is one of several types of on-demand, scalable computing resources that Azure offers. Typically, you'll choose a virtual machine if you need more control over the computing environment than the other choices offer.
 
-[!INCLUDE [了解部署模型](../../includes/learn-about-deployment-models-both-include.md)]
+An Azure virtual machine gives you the flexibility of virtualization without having to buy and maintain the physical hardware that runs the virtual machine. However, you still need to maintain the virtual machine -- configuring, patching, and maintaining the software that runs on the virtual machine. You can also learn [about Linux virtual machines in Azure](virtual-machines-linux-about.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
-Azure 虚拟机是 Azure 提供的按需分配可缩放的计算资源之一。通常情况下，如果你对于计算环境所需的控制权比其他选择可提供的还要多，你会选择虚拟机。
-
-Azure 虚拟机让你能够灵活地进行虚拟化，而无需购买和维护运行虚拟机的物理硬件。不过，你仍然需要维护虚拟机 — 配置、修补和维护操作系统，以及在虚拟机上运行的其他任何软件。你也可以学习 [关于 Azure 中的 Linux 虚拟机](./virtual-machines-linux-azure-overview.md).
-
-此表可帮助你比较由 Azure 提供的选择。
+This table helps you compare the choices offered by Azure.
 
 [!INCLUDE [compute-table](../../includes/compute-options-table.md)]
 
 [!INCLUDE [virtual-machines-choose-me-content](../../includes/virtual-machines-choose-me-content.md)]
 
-## 后续步骤
+## Next steps
+Try out a virtual machine by creating a simple virtual machine quickly. For instructions, see [Create a virtual machine running Windows in the Azure portal preview](virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 
-通过快速地创建一个简单的虚拟机来尝试虚拟机。有关说明，请参阅[在 Azure 门户预览中创建运行 Windows 的虚拟机](./virtual-machines-windows-hero-tutorial.md)。
-
-因为这些教程帮助你快速创建虚拟机，它们仅向你介绍一种方式，而不是说明可用于创建虚拟机的各种工具。有关这些工具和说明链接的摘要，请参阅[创建 Windows 虚拟机的不同方式](./virtual-machines-windows-creation-choices.md)。
-
-<!---HONumber=Mooncake_1207_2015-->
+Because the tutorial helps you create a virtual machine quickly, it only shows you one way to do it instead of describing the various tools you can use to create virtual machines. For a summary of these tools and links to instructions, see [Different ways to create a Windows virtual machine](virtual-machines-windows-creation-choices.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).

@@ -1,64 +1,58 @@
-有关 VM 代理以及它们如何工作以支持 VM 扩展的详细信息，请参阅 VM 代理和 VM 扩展概述：[Windows](../articles/virtual-machines/virtual-machines-windows-classic-manage-extensions.md) 或者 [Linux](../articles/virtual-machines/virtual-machines-linux-classic-manage-extensions.md)。
+For details about the VM Agents and how they work to support VM Extensions, see [VM Agent and VM Extensions Overview](../articles/virtual-machines/virtual-machines-windows-classic-manage-extensions.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json).
 
-##Azure VM 扩展
+## Azure VM Extensions
+VM Extensions implement most of the critical functionality that you want to use with your VMs, including basic functionality like resetting passwords, configuring RDP, and many, many others. Because new extensions are added all the time, the number of possible features your VMs support in Azure continues to increase. By default, several basic VM extensions are installed when you create your VM from the Image Gallery, including **IaaSDiagnostics** (currently Windows VMs only), **VMAccess**, and **BGInfo** (also currently Windows only). However, not all extensions are implemented on both Windows and Linux at any specific time, due to the constant flow of feature updates and new extensions.
 
-VM 扩展实现了你要用于 VM 的大多数关键功能，包括重置密码、配置 RDP 等基本功能以及其他许多功能。由于始终可添加新扩展，VM 在 Azure 中支持的可能功能的数量将不断增加。默认情况下，从映像库创建 VM 时，将安装几个基本 VM 扩展，包括 **IaaSDiagnostics**（当前仅限 Windows VM）、**VMAccess** 和 **BGInfo**（当前也仅限 Windows）。但是，由于功能更新和新扩展的不断流动，在任一特定时间并非所有扩展都同时在 Windows 和 Linux 上实现。
+## Connectivity and Basic Management
+The following extensions are critical to enabling, re-enabling, or disabling basic connectivity with your VMs once they are created and running.
 
-##连接和基本管理
+| VM Extension Name | Feature Description | More Information |
+| --- | --- | --- |
+| VMAccessAgent (Windows) |Create, update, and reset user information and RDP connection configurations. |[Windows](../articles/virtual-machines/virtual-machines-windows-classic-extensions-customscript.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json) |
+| VMAccessForLinux (Linux) |Create, update, and reset user information and SSH connection configurations. |[Linux](https://github.com/Azure/azure-linux-extensions/tree/master/VMAccess) |
 
-以下扩展在创建且运行后对于启用、重新启用或禁用与 VM 的基本连接至关重要。
+## Deployment and Configuration Management
+The following extensions support different kinds of deployment and configuration management scenarios and features. See also the section on VM Operations and Management, below.
 
-|VM 扩展名称|功能说明|更多信息
-|---|---|---|
-|VMAccessAgent (Windows)|创建、更新和重置用户信息以及 RDP 连接配置。|[Windows](../articles/virtual-machines/virtual-machines-windows-classic-extensions-customscript.md)
-|VMAccessForLinux (Linux)|创建、更新和重置用户信息以及 RDP 连接配置。|[Linux](https://github.com/Azure/azure-linux-extensions/tree/master/VMAccess)
+| VM Extension Name | Feature Description | More Information |
+| --- | --- | --- |
+| **Octopus Deploy** (DSC Extension-based) |Supports automated deployment of ASP.NET web applications and Windows Services into development, test, and production environments. |[Getting Started with Octopus Deploy](http://docs.octopusdeploy.com/display/OD/Getting%20started) |
+| **Visual Studio Release Manager** (DSC Extension-based) |Supports continuous deployment with Visual Studio. |[Automate deployments with Release Management](https://msdn.microsoft.com/Library/vs/alm/Release/overview) |
+| **DSC** |PowerShell DSC (Desired State Configuration) Extension. |[Azure PowerShell DSC (Desired State Configuration) extension](http://blogs.msdn.com/b/powershell/archive/2014/08/07/introducing-the-azure-powershell-dsc-desired-state-configuration-extension.aspx) |
+| **CustomScriptExtension** (Windows)**CustomScriptForLinux** (Linux) |Invokes custom scripts on the VM at any time: startup or during lifetime. |[Custom Script Extension](../articles/virtual-machines/virtual-machines-windows-classic-extensions-customscript.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json) |
+| **AzureCATExtensionHandler** |Consumes the diagnostic data collected by **IaaSDiagnostics** and few other data sources such as [Azure Storage Analytics Metrics](https://msdn.microsoft.com/zh-cn/library/azure/hh343270.aspx) and transforms it into an aggregated data set appropriate for SAP Host control process to consume |[Azure Enhanced Monitoring for SAP](https://azure.microsoft.com/blog/2014/06/04/azure-enhanced-monitoring-for-sap/) |
 
-##部署和配置管理
+## Security and Protection
+The extensions in this section provide critical security features for your Azure VMs.
 
-以下扩展支持不同类型的部署以及配置管理方案和功能。另请参阅下面的有关 VM 操作和管理的部分。
+| VM Extension Name | Feature Description | More Information |
+| --- | --- | --- |
+| **TrendMicroDSA** |Enables TrendMicro's Deep Security platform support to provide intrusion detection and prevention, firewall, anti-malware, web reputation, log inspection, and integrity monitoring. |[How to install and configure Trend Micro Deep Security as a Service on an Azure VM](../articles/virtual-machines/virtual-machines-windows-classic-install-trend.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json) |
+| **IaaSAntimalware** |Microsoft Antimalware for Azure Cloud Services and Virtual Machines is a real-time protection capability that helps identify and remove viruses, spyware, and other malicious software, with configurable alerts when known malicious or unwanted software attempts to install itself or run on your system. |[Antimalware for Azure Cloud Services and Virtual Machines](../articles/security/azure-security-antimalware.md) |
+| **SymantecEndpointProtection** |Symantec Endpoint Protection 12.1.4 enables security and performance across physical and virtual systems. |[How to install and configure Symantec Endpoint Protection on an Azure VM](../articles/virtual-machines/virtual-machines-windows-classic-install-symantec.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json) |
 
-|VM 扩展名称|功能说明|更多信息|
-|---|---|---|
-|**Octopus Deploy**（基于 DSC 扩展）|支持自动将 ASP.NET Web 应用程序和 Windows 服务部署到开发、测试和生产环境。|[Octopus Deploy 入门](http://docs.octopusdeploy.com/display/OD/Getting%20started)|
-|**Visual Studio 发布管理器**（基于 DSC 扩展）|使用 Visual Studio 支持连续部署。|[使用 Release Management 自动进行部署](https://msdn.microsoft.com/Library/vs/alm/Release/overview)|
-|**DSC**|PowerShell DSC（所需状态配置）扩展。|[Azure PowerShell DSC（所需状态配置）扩展](http://blogs.msdn.com/b/powershell/archive/2014/08/07/introducing-the-azure-powershell-dsc-desired-state-configuration-extension.aspx)|
-|**CustomScriptExtension** (Windows)**CustomScriptForLinux** (Linux)|在任何时候调用 VM 上的自定义脚本：启动时或在生存期内。|
-|**AzureCATExtensionHandler**|使用 **IaaSDiagnostics** 和少数其他数据源（如 [Azure 存储分析指标](https://msdn.microsoft.com/zh-cn/library/azure/hh343270.aspx)）收集的诊断数据，并将这些数据转换为适合 SAP 主机控制进程使用的聚合数据集|[适用于 SAP 的 Azure 增强型监视](http://azure.microsoft.com/blog/2014/06/04/azure-enhanced-monitoring-for-sap/)|
+## VM Operations and Management
+Supports common operations management features and behavior. See also the section on Deployment and Configuration Management, above.
 
-##安全和保护
+| **VM Extension Name** | Feature Description | More Information |
+| --- | --- | --- |
+| **AzureVmLogCollector** |You can use the **AzureVMLogCollector** Extension on-demand to perfom one-time collection of logs from one or more Cloud Service VMs (from both web roles and worker roles) and transfer the collected files to an Azure storage account - all without remotely logging on to any of the VMs. |[AzureLogCollector Extension](../articles/virtual-machines/virtual-machines-windows-log-collector-extension.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) |
+| **IaaSDiagnostics** |Enables, disables, and configures Azure Diagnostics, and is also used by the **AzureCATExtensionHandler** to support SAP monitoring. |[Azure Virtual Machine Monitoring with Azure Diagnostics Extension](https://azure.microsoft.com/blog/2014/09/02/windows-azure-virtual-machine-monitoring-with-wad-extension/) |
+| **OSPatchingForLinux** |Enables the Azure VM administrators to automate the VM OS updates with the customized configurations. You can use the OSPatching Extension to configure OS updates for your virtual machines, including: Specify how often and when to install OS patches, specify what patches to install, and configure the reboot behavior after updates |[OS Patching Extension Blog Post](https://azure.microsoft.com/blog/2014/10/23/automate-linux-vm-os-updates-using-ospatching-extension/). See also the readme and source on GitHub at [OS Patching Extension](https://github.com/Azure/azure-linux-extensions). |
 
-本部分中的扩展为 Azure VM 提供关键安全功能。
+## Developing and Debugging
+These VM Extensions are listed here for completeness, as they provide support for Visual Studio-related features and are not intended to be used directly.
 
-|VM 扩展名称|功能说明|更多信息|
-|---|---|---|
-|**TrendMicroDSA**|启用 TrendMicro 的 Deep Security 平台支持可提供入侵检测和防护、防火墙、防恶意软件、Web 信誉评估、日志检查和完整性监视。|[如何在 Azure VM 上安装和配置 Trend Micro Deep Security 即服务](../articles/virtual-machines/virtual-machines-windows-classic-install-trend.md)|
-|**IaaSAntimalware**|用于 Azure 云服务和虚拟机的 Microsoft 反恶意软件是一种实时保护功能，当已知恶意软件或不需要的软件试图在你的系统上安装自身或运行时，它可使用可配置的警报帮助识别和删除病毒、间谍软件和其他恶意软件。||
+| VM Extension Name | Feature Description | More Information |
+| --- | --- | --- |
+| **VS14CTPDebugger** |Supports remote debugging from VS using the Azure SDK 2.4 |[Remote Debugging in Visual Studio](https://msdn.microsoft.com/zh-cn/library/y7f5zaaa.aspx) |
+| **VS2013Debugger** |Supports remote debugging from VS using the Azure SDK 2.4 | |
+| **VS2012Debugger** |Supports remote debugging from VS using the Azure SDK 2.4 | |
+| **WebDeployForVSDevTest** |Installs and configures IIS and Web Deploy on Windows Server. Removing or disabling it is not supported. | |
 
-##VM 操作和管理
+## Miscellaneous Features
+These extensions provide support for other VM features that might be useful.
 
-支持常见的操作管理功能和行为。另请参阅上面的有关部署和配置管理的部分。
-
-|**VM 扩展名称**|功能说明|更多信息|
-|---|---|---|
-|**AzureVmLogCollector**|可以使用 **AzureVMLogCollector** 扩展按需从一个或多个云服务 VM（从 web 角色和辅助角色）执行一次性日志收集，并将收集到的文件传输到 Azure 存储帐户 - 所有这些操作都无需远程登录到任何 VM。 |[AzureLogCollector 扩展](../articles/virtual-machines/virtual-machines-windows-log-collector-extension.md)|
-|**IaaSDiagnostics**|启用、禁用和配置 Azure 诊断，也可由 **AzureCATExtensionHandler** 用于支持 SAP 监视。|[使用 Azure 诊断扩展监视 Azure 虚拟机](http://azure.microsoft.com/blog/2014/09/02/windows-azure-virtual-machine-monitoring-with-wad-extension/)|
-|**OSPatchingForLinux**|使 Azure VM 管理员能够使用自定义配置自动执行 VM OS 更新。可以使用 OSPatching 扩展为虚拟机配置 OS 更新，包括：指定安装 OS 修补程序的频率和时间，指定要安装哪些修补程序，并配置更新后的重新启动行为|[OS 修补扩展博客文章](http://azure.microsoft.com/blog/2014/10/23/automate-linux-vm-os-updates-using-ospatching-extension/)。另请参阅 Github 上 [OS 修补扩展](https://github.com/Azure/azure-linux-extensions)中的自述文件和源。|
-
-##开发和调试
-
-出于完整性考虑，在此处列出了这些 VM 扩展，因为它们为 Visual Studio 相关功能提供支持，但不应直接使用。
-
-|VM 扩展名称|功能说明|更多信息|
-|---|---|---|
-|**VS14CTPDebugger**|支持使用 Azure SDK 2.4 从 VS 进行远程调试|[在 Visual Studio 中进行远程调试](https://msdn.microsoft.com/zh-cn/library/y7f5zaaa.aspx)|
-|**VS2013Debugger**|支持使用 Azure SDK 2.4 从 VS 进行远程调试||
-|**VS2012Debugger**|支持使用 Azure SDK 2.4 从 VS 进行远程调试||
-|**WebDeployForVSDevTest**|在 Windows Server 上安装和配置 IIS 和 Web 部署。不支持删除或禁用它。|
-
-##其他功能
-
-以下扩展为其他可能会很有用的 VM 功能提供支持。
-
-|VM 扩展名称|功能说明|更多信息|
-|---|---|---|
-|**BGInfo**|使用 RDP 时在桌面上显示有用服务器信息的合并图片。|[BGInfo 扩展](https://msdn.microsoft.com/zh-cn/library/mt589195.aspx)|
+| VM Extension Name | Feature Description | More Information |
+| --- | --- | --- |
+| **BGInfo** |Presents a consolidated picture of useful server information on the desktop when using RDP. |[BGInfo Extension](https://msdn.microsoft.com/zh-cn/library/mt589195.aspx) |

@@ -1,54 +1,51 @@
-## 多实例和单实例 VM
-对于在 Azure 上运行的许多客户而言，在 VM 进行计划内维护时可以计划是非常重要的，因为这会导致停机约 15 分钟。可以在预配的 VM 接收计划内维护时，利用可用性集帮助控制。
+## Multi and Single Instance VMs
+For many customers running on Azure, it is critical that they are able to schedule when their VMs undergo planned maintenance, since this results in ~15 minutes of downtime. You can leverage availability sets to help control when provisioned VMs receive planned maintenance.
 
-有两个可能的 VM 配置在 Azure 上运行。VM 可配置为多实例或单实例。如果 VM 在可用性集中，它们将配置为多实例。请注意，即使单个 VM 也可以部署在可用性集中，并被视为多实例。如果 VM 不在可用性集中，它们将配置为单实例。有关可用性集的详细信息，请参阅 [Manage the Availability of your Windows Virtual Machines（管理 Windows 虚拟机的可用性）](../articles/virtual-machines/virtual-machines-windows-manage-availability.md)或 [Manage the Availability of your Linux Virtual Machines（管理 Linux 虚拟机的可用性）](../articles/virtual-machines/virtual-machines-linux-manage-availability.md)。
+There are two possible configurations for VMs running on Azure. VMs are either configured as multi-instance or single-instance. If VMs are in an availability set, then they are configured as multi-instance. Note, even single VMs can be deployed in an availability set and they will be treated as multi-instance. If VMs are NOT in an availability set, then they are configured as single-instance.  For details on availability sets, please see either [Manage the Availability of your Windows Virtual Machines](../articles/virtual-machines/virtual-machines-windows-manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) or [Manage the Availability of your Linux Virtual Machines](../articles/virtual-machines/virtual-machines-linux-manage-availability.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
-单实例和多实例的 VM 计划内维护更新单独发生。通过将 VM 重新配置为单实例（如果它们是多实例），或配置为多实例（如果它们是单实例），可以控制其 VM 收到计划内维护的时间。有关 Azure VM 计划内维护的详细信息，请参阅 [Planned maintenance for Azure Linux virtual machines（Azure Linux 虚拟机的计划内维护）](../articles/virtual-machines/virtual-machines-linux-planned-maintenance.md)或 [Planned maintenance for Azure Windows virtual machines（Azure Windows 虚拟机的计划内维护）](../articles/virtual-machines/virtual-machines-windows-planned-maintenance.md)。
+Planned maintenance updates to single-instance and multi-instance VMs happen separately. By reconfiguring your VMs to be single-instance (if they are multi-instance) or to be multi-instance (if they are single-instance), you can control when their VMs receive the planned maintenance. Please see either [Planned maintenance for Azure Linux virtual machines](../articles/virtual-machines/virtual-machines-linux-planned-maintenance.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) or [Planned maintenance for Azure Windows virtual machines](../articles/virtual-machines/virtual-machines-windows-planned-maintenance.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) for details on planned maintenance for Azure VMs.
 
-## 对于多实例配置
-可以通过将 VM 从可用性集删除，以选择计划内维护影响部署在可用性集设置中的 VM 的时间。
+## For Multi-instance Configuration
+You can select the time planned maintenance impacts your VMs that are deployed in an Availability Set configuration by removing these VMs from availability sets.
 
-1. 在计划内维护 7 天前，向多实例配置中的 VM 发送电子邮件。受影响多实例 VM 的订阅 ID 和名称将包含在电子邮件的正文中。
-2. 在这 7 天中，可以通过从可用性集删除该区域中的多实例 VM，以选择实例的更新时间。此设置中的更改导致重新启动，因为虚拟机正在从一部以维护为目标的实体主机，移到另一部不是以维护为目标的实体主机。 
-3. 可以在经典管理门户中从可用性集删除 VM。 
+1. An email will be sent to you 7 calendar days before the planned maintenance to your VMs in a Multi-instance configuration. The subscription IDs and names of the affected Multi-instance VMs will be included in the body of the email.
+2. During those 7 days, you can choose the time your instances are updated by removing your multi-instance VMs in that region from their availability set. This change in configuration will result in a reboot, as the Virtual Machine is moving from one physical host, targeted for maintenance, to another physical host that isn't targeted for maintenance. 
+3. You can remove the VM from its availability set in the Classic Management Portal. 
 
-    1. 在经典管理门户，点击 VM，然后选择 “配置”。 
+    1. In the Classic Management Portal, click on the VM and then select "configure." 
+    2. Under "settings", you can see which Availability Set the VM is in.
 
-    2. 在“设置”下，你会看到 VM 是在哪个可用性集。
+        ![Availability Set Selection](./media/virtual-machines-planned-maintenance-schedule/availabilitysetselection.png)
+    3. In the availability set dropdown menu, select "remove from availability set."
 
-        ![可用性集选择](./media/virtual-machines-planned-maintenance-schedule/availabilitysetselection.png)
+        ![Remove from Set](./media/virtual-machines-planned-maintenance-schedule/availabilitysetselectionconfiguration.png)
+    4. At the bottom, select "save." Select "yes" to acknowledge that this action will restart the VM.
+4. These VMs will be moved to Single-Instance hosts and will not be updated during the planned maintenance to Availability Set Configurations.
+5. Once the update to Availability Set VMs is complete (according to schedule outlined in the original email), you should add the VMs back into their availability sets, and they will be re-configured as multi-instance VMs. Moving the VMs from Single-instance back to Multi-instance will result in a reboot. Typically, once all multi-instance updates are completed across the entire Azure environment, single-instance maintenance follows.
 
-    3. 在可用性集的拉下菜单，选择"从可用性集删除"。
-
-        ![从集中删除](./media/virtual-machines-planned-maintenance-schedule/availabilitysetselectionconfiguration.png)
-
-    4. 在底部，选择“保存”。选择“是”确认这个动作将重启 VM。
-
-4. 这些 VM 将移到单实例主机，并且不在可用性集设置的计划内维护期间更新。
-5. 可用性集 VM 更新完成（根据原始电子邮件中所述的计划）之后，应该将 VM 添加回到其可用性集，它们将重新配置为多实例 VM。将 VM 从单实例移回多实例将导致重新启动。通常，跨整个 Azure 环境的所有多实例更新完成之后，将轮到单实例维护。
-
-请注意，也可以使用 Azure PowerShell：
-Get-AzureVM -ServiceName "<VmCloudServiceName>" -Name "<VmName>" | Remove-AzureAvailabilitySet | Update-AzureVM 来实现此目的。
-
-## 对于单实例配置
-可以通过将这些 VM 添加到可用性集，以选择计划内维护影响单实例设置中的 VM 的时间。
-分步指南
-1. 在计划内维护 7 天前，向单实例配置中的 VM 发送电子邮件。受影响单实例 VM 的订阅 ID 和名称将包含在电子邮件的正文中。 
-2. 在这 7 天中，可以通过移动单实例 VM（方法是将它们移到相同区域中的可用性集），来选择实例重新启动的时间。此设置中的更改导致重新启动，因为虚拟机正在从一部以维护为目标的实体主机，移到另一部不是以维护为目标的实体主机。
-3. 遵循此处的说明使用经典管理门户和 Azure PowerShell 将现有 VM 添加到可用性集（请参阅以下注释中的 Azure PowerShell 示例）。
-4. 将这些 VM 重新配置为多实例后，它们将从单实例 VM 的计划内维护中排除。
-5. 单实例 VM 更新完成（根据原始电子邮件中所述的计划）之后，可以从可用性集删除 VM，它们将重新配置为单实例 VM。
-
-请注意，也可以使用 Azure PowerShell 实现此目的：
+This can also be achieved using Azure PowerShell:
 
 ```
-Get-AzureVM -ServiceName "<VmCloudServiceName>" -Name "<VmName>" | Set-AzureAvailabilitySet -AvailabilitySetName "<AvSetName>" | Update-AzureVM
+Get-AzureVM -ServiceName "<VmCloudServiceName>" -Name "<VmName>" | Remove-AzureAvailabilitySet | Update-AzureVM
 ```
+
+## For Single-instance Configuration
+You can select the time planned maintenance impacts you VMs in a Single-instance configuration by adding these VMs into availability sets.
+
+Step-by-step
+
+1. An email will be sent to you 7 calendar days before the planned maintenance to VMs in a Single-instance configuration. The subscription IDs and names of the affected Single-Instance VMs will be included in the body of the email. 
+2. During those 7 days, you can choose the time your instance reboots by moving your Single-instance VMs into an availability set in that same region. This change in configuration will result in a reboot, as the Virtual Machine is moving from one physical host, targeted for maintenance, to another physical host that isn't targeted for maintenance.
+3. Follow instructions here to add existing VMs into availability sets using the Classic Management Portal and Azure PowerShell (see Azure PowerShell sample in the note below).
+4. Once these VMs are re-configured as Multi-instance, they will be excluded from the planned maintenance to Single-instance VMs.
+5. Once the update to single-instance VMs is complete (according to schedule outlined in the original email), you can remove the VMs from their availability sets, and they will be re-configured as single-instance VMs.
+
+This can also be achieved using Azure PowerShell:
+
+    Get-AzureVM -ServiceName "<VmCloudServiceName>" -Name "<VmName>" | Set-AzureAvailabilitySet -AvailabilitySetName "<AvSetName>" | Update-AzureVM
 
 <!--Anchors-->
 
 <!--Link references-->
-[Virtual Machines Manage Availability]: ../articles/virtual-machines/virtual-machines-windows-classic-tutorial.md
-[Understand planned versus unplanned maintenance]: ../articles/virtual-machines/virtual-machines-linux-manage-availability.md#Understand-planned-versus-unplanned-maintenance
-
-<!---HONumber=Mooncake_0425_2016-->
+[Virtual Machines Manage Availability]: virtual-machines-windows-tutorial.md
+[Understand planned versus unplanned maintenance]: virtual-machines-manage-availability.md#Understand-planned-versus-unplanned-maintenance/

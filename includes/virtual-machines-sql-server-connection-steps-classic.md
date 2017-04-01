@@ -1,33 +1,22 @@
-### <a name="determine-the-dns-name-of-the-virtual-machine"></a> 确定虚拟机的 DNS 名称
+### <a name="determine-the-dns-name-of-the-virtual-machine"></a> Determine the DNS name of the virtual machine
+To connect to the SQL Server Database Engine from another computer, you must know the Domain Name System (DNS) name of the virtual machine. (This is the name the internet uses to identify the virtual machine. You can use the IP address, but the IP address might change when Azure moves resources for redundancy or maintenance. The DNS name will be stable because it can be redirected to a new IP address.)  
 
-若要从另一台计算机连接到 SQL Server 数据库引擎，必须知道虚拟机的域名系统 (DNS) 名称。（这是 Internet 用于识别虚拟机的名称）。可以使用 IP 地址，但 IP 地址在 Azure 为冗余或维护而移动资源时可能会变更。DNS 名称将保持不变，因为可将该名称重定向到新的 IP 地址。）
+1. In the Azure Portal Preview (or from the previous step), select **Virtual machines (classic)**.
+2. Select your SQL VM.
+3. On the **Virtual machine** blade, copy the **DNS name** for the virtual machine.
 
-1. 在 Azure 门户预览中（或在完成前一步后），选择“虚拟机（经典）”。
+    ![DNS name](./media/virtual-machines-sql-server-connection-steps/sql-vm-dns-name.png)
 
-2. 选择 SQL VM。
+### <a name="connect-to-the-database-engine-from-another-computer"></a> Connect to the Database Engine from another computer
+1. On a computer connected to the internet, open SQL Server Management Studio.
+2. In the **Connect to Server** or **Connect to Database Engine** dialog box, in the **Server name** box, enter the DNS name of the virtual machine (determined in the previous task) and a public endpoint port number in the format of *DNSName,portnumber* such as **mysqlvm.chinacloudapp.cn,57500**.
 
-2. 在“虚拟机”边栏选项卡中，复制虚拟机的“DNS 名称”。
+    ![Connect using SSMS](./media/virtual-machines-sql-server-connection-steps/33Connect-SSMS.png)
 
-    ![DNS 名称](./media/virtual-machines-sql-server-connection-steps/sql-vm-dns-name.png)
+    If you don't remember the public endpoint port number you previously created, you can find it in the **Endpoints** area of the **Virtual machine** blade.
 
-### <a name="connect-to-the-database-engine-from-another-computer"></a> 从其他计算机连接到数据库引擎
-
-1. 在连接到 Internet 的计算机上，打开 SQL Server Management Studio。
-
-2. 在“连接到服务器”或“连接到数据库引擎”对话框的“服务器名称”框中，按“DNSName,portnumber”的格式输入虚拟机的 DNS 名称（在前一任务中确定）和公共终结点端口号，例如“mysqlvm.chinacloudapp.cn,57500”。
-
-    ![使用 SSMS 进行连接](./media/virtual-machines-sql-server-connection-steps/33Connect-SSMS.png)
-
-    如果你不记得之前创建的公共终结点端口号，可以在“虚拟机”边栏选项卡的“终结点”区域找到。
-
-    ![公用端口](./media/virtual-machines-sql-server-connection-steps/sql-vm-port-number.png)
-
-3. 在“身份验证”框中，选择“SQL Server 身份验证”。
-
-5. 在“登录名”框中，键入你在前面的任务中创建的登录名。
-
-6. 在“密码”框中，键入你在前面的任务中创建的登录名的密码。
-
-7. 单击“连接”。
-
-<!---HONumber=Mooncake_0808_2016-->
+    ![Public Port](./media/virtual-machines-sql-server-connection-steps/sql-vm-port-number.png)
+3. In the **Authentication** box, select **SQL Server Authentication**.
+4. In the **Login** box, type the name of a login that you created in an earlier task.
+5. In the **Password** box, type the password of the login that you create in an earlier task.
+6. Click **Connect**.

@@ -1,6 +1,6 @@
 ---
-title: Azure Linux 虚拟机文档 - 教程和 API 参考 | Microsoft Docs
-description: 了解如何使用所选的 Linux 分发版创建虚拟机。文档介绍了创建 VM 模板的不同方式。
+title: Azure Linux Virtual Machine Documentation - Tutorials, API Reference | Azure
+description: Learn how to create a virtual machine using the Linux distribution of your choice. Documentation shows different ways to create VM templates.
 services: virtual-machines\linux
 author: carolz
 manager: carolz
@@ -11,75 +11,142 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
+wacn.date: ''
 ms.author: carolz
 ---
-# Linux 虚拟机文档
+# Linux Virtual Machine Documentation
 
 <div class="introHolder">
-    <div class="intro">了解如何使用所选的 Linux 分发版在 Azure 上运行虚拟机。文档、API 参考和示例介绍了创建与部署 VM 模板的不同方式。</div>
+    <div class="intro">
+        Learn how to run Virtual Machines on Azure using the Linux distribution of your choice. Documentation, API references, and samples show you different ways to create and deploy VM templates.
+    </div>
     <div class="calloutHolder">
-        <div class="callout"><a href="https://azure.microsoft.com/community/training/courses/managing-infrastructure-microsoft-azure-getting-started/"> <img src="media/index/pluralsight.svg" /> 免费 PluralSight 视频培训 - 使用 Microsoft Azure 管理基础结构 </a></div>
+        <div class="callout">
+            <a href="https://azure.microsoft.com/community/training/courses/managing-infrastructure-microsoft-azure-getting-started/">
+                <img src="media/index/pluralsight.svg" />
+                Free PluralSight video training - Managing Infrastructure using Azure
+            </a>
+        </div>
     </div>
 </div>
 
 <ul class="panelContent cardsFTitle">
-    <li><a href="../virtual-machines-linux-quick-create-cli.md?toc=%2farticles%2fvirtual-machines%2flinux%2ftoc.json">
-<div class="cardSize">
+    <li>
+        <a href="/azure/virtual-machines/virtual-machines-linux-quick-create-cli?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json">
+        <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardImageOuter">
-                        <div class="cardImage"><img src="media/index/cli.svg" alt="" /></div>
+                        <div class="cardImage">
+                            <img src="media/index/cli.svg" alt="" />
+                        </div>
                     </div>
                     <div class="cardText">
-                        <h3>使用 Azure CLI 2.0 创建 Linux VM</h3>
+                        <h3>Create a Linux VM using the Azure CLI 2.0</h3>
                     </div>
                 </div>
             </div>
-        </div></a>
-</li>
-    <li><a href="../virtual-machines-linux-quick-create-portal.md?toc=%2farticles%2fvirtual-machines%2flinux%2ftoc.json">
-<div class="cardSize">
+        </div>
+        </a>
+    </li>
+    <li>
+        <a href="/azure/virtual-machines/virtual-machines-linux-quick-create-portal?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json">
+        <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardImageOuter">
-                        <div class="cardImage"><img src="media/index/portal.svg" alt="" /></div>
+                        <div class="cardImage">
+                            <img src="media/index/portal.svg" alt="" />
+                        </div>
                     </div>
                     <div class="cardText">
-                        <h3>使用门户创建 VM</h3>
+                        <h3>Create a VM using the Portal</h3>
                     </div>
                 </div>
             </div>
-        </div></a>
-</li>
-    <li><a href="../virtual-machines-linux-azure-overview.md?toc=%2farticles%2fvirtual-machines%2flinux%2ftoc.json">
-<div class="cardSize">
+        </div>
+        </a>
+    </li>
+    <li>
+        <a href="/azure/virtual-machines/virtual-machines-linux-azure-overview?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json">
+        <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardImageOuter">
-                        <div class="cardImage"><img src="media/index/virtual-machine.svg" alt="" /></div>
+                        <div class="cardImage">
+                            <img src="media/index/virtual-machine.svg" alt="" />
+                        </div>
                     </div>
                     <div class="cardText">
-                        <h3>了解 Linux 虚拟机</h3>
+                        <h3>Learn about Linux Virtual Machines</h3>
                     </div>
                 </div>
             </div>
-        </div></a>
-</li>
-    <li><a href="https://azure.microsoft.com/zh-cn/documentation/videos/index/?services=virtual-machines">
-<div class="cardSize">
+        </div>
+        </a>
+    </li>
+    <li>
+        <a href="https://azure.microsoft.com/documentation/videos/index/?services=virtual-machines">
+        <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardImageOuter">
-                        <div class="cardImage"><img src="media/index/video-library.svg" alt="" /></div>
+                        <div class="cardImage">
+                            <img src="media/index/video-library.svg" alt="" />
+                        </div>
                     </div>
                     <div class="cardText">
-                        <h3>虚拟机视频库</h3>
+                        <h3>Virtual Machines Video Library</h3>
                     </div>
                 </div>
             </div>
-        </div></a>
-</li>
+        </div>
+        </a>
+    </li>
 </ul>
 
+---
 
-<!---HONumber=Mooncake_0327_2017-->
+<h2>Reference</h2>
+<ul class="panelContent cardsW">
+    <li>
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>Command-Line</h3>
+                        <p><a href="https://docs.microsoft.com/cli/azure/vm">Azure CLI</a></p>
+                        <p><a href="https://docs.microsoft.com/powershell/azureps-cmdlets-docs">PowerShell</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </li>
+    <li>
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>Languages</h3>
+                        <p><a href="/dotnet/api/microsoft.azure.management.compute">.NET</a></p>
+                        <p><a href="/java/api">Java</a></p>
+                        <p><a href="https://azure.microsoft.com/develop/nodejs/#azure-sdk">Node​.js</a></p>
+                        <p><a href="http://azure-sdk-for-python.readthedocs.io/en/latest/ref/azure.mgmt.compute.html">Python</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </li>
+    <li>
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>REST</h3>
+                        <p><a href="https://docs.microsoft.com/rest/api/compute">REST API Reference</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </li>
+</ul>

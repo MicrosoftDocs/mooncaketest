@@ -8,27 +8,27 @@ editor: tysonn
 
 ms.service: virtual-machine
 ms.date: 04/13/2015
-wacn.date: 03/17/2016
+wacn.date: ''
 ---
 
-## 使用 Azure CLI
+## Using Azure CLI
 
-完成以下步骤即可轻松使用包含相应订阅的最新版 Azure CLI。如果你需要安装 Azure CLI 并首先连接到你的帐户，请参阅[Azure 命令行接口 (Azure CLI)](../articles/xplat-cli-install.md)。
+The following steps help you use Azure CLI easily with the most recent version and the proper subscription. If you need to install Azure CLI and connect it to your account first, see the [Azure Command-Line Interface (Azure CLI)](/documentation/articles/xplat-cli-install/).
 
-### 步骤 1：更新 Azure CLI 版本
+### Step 1: Update Azure CLI version
 
-若要将 Azure CLI 用于带服务管理模式的祈使性命令，应尽可能安装最新版。要验证你的版本，请键入 `azure --version`。你应看到类似如下的内容：
+To use Azure CLI for imperative commands with service management mode, you should have a recent version if possible. To verify your version, type `azure --version`. You should see something like:
 
 ```
 $ azure --version
 0.8.17 (node: 0.10.25)
 ```
 
-如果想要更新 Azure CLI 版本，请参阅 [Azure CLI](https://github.com/Azure/azure-xplat-cli)。
+If you want to update your version of Azure CLI, see [Azure CLI](https://github.com/Azure/azure-xplat-cli).
 
-### 步骤 2：设置 Azure 帐户和订阅
+### Step 2: Set the Azure account and subscription
 
-将 Azure CLI 与要使用的帐户连接后，你可能会有多个订阅。如果你有多个订阅，则需通过键入 `azure account list` 来查看你帐户可用的订阅，并通过键入 `azure account set <subscription id or name> true` 选择要使用的订阅。_订阅 ID 或名称_是你要在当前会话中使用的订阅 ID 或订阅名称。你会看到下面这样的内容：
+Once you have connected your Azure CLI with the account you want to use, you may have more than one subscription. If you do, you should review the subscriptions available for your account by typing `azure account list`, and then select the subscription you want to use by typing `azure account set <subscription id or name> true` where _subscription id or name_ is either the subscription id or the subscription name that you would like to work with in the current session. You should see something like the following:
 
 ```
 $ azure account set "Visual Studio Ultimate with MSDN" true
@@ -38,4 +38,5 @@ info:    Changes saved
 info:    account set command OK
 ```
 
-<!---HONumber=Mooncake_0307_2016-->
+> [!NOTE]
+> If you don't already have an Azure account but you do have a subscription to MSDN subscription, you can get free Azure credits by activating your [MSDN subscriber benefits here](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) -- or you can use the free account. Either will work for Azure access.

@@ -1,32 +1,32 @@
-此任务的步骤使用基于以下值的 VNet。此列表中也概述了其他设置和名称。尽管我们确实基于此列表中的值添加变量，但是我们在任何步骤中不会直接使用此列表。你可以复制列表作为参考，并将列表中的值替换为自己的值。
+The steps for this task use a VNet based on the values below. Additional settings and names are also outlined in this list. We don't use this list directly in any of the steps, although we do add variables based on the values in this list. You can copy the list to use as a reference, replacing the values with your own.
 
-配置参考列表：
+Configuration reference list:
 
-- 虚拟网络名称（VNetName） = “TestVNet”
-- 虚拟网络地址空间 = 192.168.0.0/16
-- 资源组（RG） = “TestRG”
-- Subnet1 名称 = “FrontEnd” 
-- Subnet1 地址空间 = “192.168.0.0/16”
-- 网关子网名称（GatewaySubnet）：“GatewaySubnet” 必须始终将网关子网命名为 *GatewaySubnet*。
-- 网关子网地址空间 = “192.168.200.0/26”
-- 区域（Location） =“中国东部”
-- 网关名称（GWName） = “GW”
-- 网关 IP 名称（GWIPName） = “GWIP”
-- 网关 IP 配置名称（GWIPconfName） = “gwipconf”
-- VPN 类型（VPNType） = “ExpressRoute” ExpressRoute 配置需要此 VPN 类型。
-- 网关公共 IP 名称（GWPIP） = “gwpip”
+- Virtual Network Name = "TestVNet"
+- Virtual Network address space = 192.168.0.0/16
+- Resource Group = "TestRG"
+- Subnet1 Name = "FrontEnd" 
+- Subnet1 address space = "192.168.0.0/16"
+- Gateway Subnet name: "GatewaySubnet" You must always name a gateway subnet *GatewaySubnet*.
+- Gateway Subnet address space = "192.168.200.0/26"
+- Region = "China East"
+- Gateway Name = "GW"
+- Gateway IP Name = "GWIP"
+- Gateway IP configuration Name = "gwipconf"
+-  Type = "ExpressRoute" This type is required for an ExpressRoute configuration.
+- Gateway Public IP Name = "gwpip"
 
-## 添加网关
+## Add a gateway
 
-1. 连接到 Azure 订阅。 
+1. Connect to your Azure Subscription. 
 
     ```
-    Login-AzureRmAccount -Environment $(Get-AzureRmEnvironment -Name AzureChinaCloud)
+    Login-AzureRmAccount
     Get-AzureRmSubscription 
     Select-AzureRmSubscription -SubscriptionName "Name of subscription"
     ```
 
-2. 声明此示例的变量。本示例将在以下例子中使用这些变量。请务必编辑此例子，以反映想要使用的设置。
+2. Declare your variables for this exercise. This example will use the use the variables in the sample below. Be sure to edit this to reflect the settings that you want to use. 
 
     ```
     $RG = "TestRG"
@@ -37,70 +37,72 @@
     $VNetName = "TestVNet"
     ```
 
-3. 将虚拟网络对象赋值。
+3. Store the virtual network object as a variable.
 
     ```
     $vnet = Get-AzureRmVirtualNetwork -Name $VNetName -ResourceGroupName $RG
     ```
 
-4. 将网关子网添加到虚拟网络中。网关子网必须命名为“GatewaySubnet”。想要创建 /27 或更大（/26、/25 等）的网关。
+4. Add a gateway subnet to your Virtual Network. The gateway subnet must be named "GatewaySubnet". You'll want to create a gateway that is /27 or larger (/26, /25, etc.).
 
     ```
     Add-AzureRmVirtualNetworkSubnetConfig -Name GatewaySubnet -VirtualNetwork $vnet -AddressPrefix 192.168.200.0/26
     ```
 
-5. 设置配置。
+5. Set the configuration.
 
     ```
         Set-AzureRmVirtualNetwork -VirtualNetwork $vnet
     ```
 
-6. 将网关子网赋值。
+6. Store the gateway subnet as a variable.
 
     ```
     $subnet = Get-AzureRmVirtualNetworkSubnetConfig -Name 'GatewaySubnet' -VirtualNetwork $vnet
     ```
 
-7. 请求公共 IP 地址。创建网关之前请求 IP 地址。你无法指定要使用的 IP 地址；它会进行动态分配。后面的配置部分将使用此 IP 地址。AllocationMethod 必须是动态的。
+7. Request a public IP address. The IP address is requested before creating the gateway. You cannot specify the IP address that you want to use; it’s dynamically allocated. You'll use this IP address in the next configuration section. The AllocationMethod must be Dynamic.
 
     ```
     $pip = New-AzureRmPublicIpAddress -Name gwpip -ResourceGroupName $RG -Location $Location -AllocationMethod Dynamic
     ```
 
-8. 创建网关配置。网关配置定义要使用的子网和公共 IP 地址。在此步骤中，你将指定创建网关时使用的配置。此步骤不会实际创建网关对象。使用下面的示例创建你的网关配置。
+8. Create the configuration for your gateway. The gateway configuration defines the subnet and the public IP address to use. In this step, you are specifying the configuration that will be used when you create the gateway. This step does not actually create the gateway object. Use the sample below to create your gateway configuration. 
 
     ```
     $ipconf = New-AzureRmVirtualNetworkGatewayIpConfig -Name $GWIPconfName -Subnet $subnet -PublicIpAddress $pip
     ```
 
-9. 创建网关。在此步骤中，**-GatewayType** 尤其重要。必须使用值 **ExpressRoute**。请注意，运行这些 cmdlet 后，可能需要 20 分钟或更多时间来创建网关。
+9. Create the gateway. In this step, the **-GatewayType** is especially important. You must use the value **ExpressRoute**. Note that after running these cmdlets, the gateway can take 20 minutes or more to create.
 
     ```
     New-AzureRmVirtualNetworkGateway -Name $GWName -ResourceGroupName $RG -Location $Location -IpConfigurations $ipconf -GatewayType Expressroute -GatewaySku Standard
     ```
 
-## 验证是否已创建网关
+## Verify the gateway was created
 
-使用以下命令来验证是否已创建网关。
+Use the command below to verify that the gateway has been created.
 
 ```
 Get-AzureRmVirtualNetworkGateway -ResourceGroupName $RG
 ```
 
-## 重设网关大小
+## Resize a gateway
 
-这里有许多[网关 SKU](../articles/expressroute/expressroute-about-virtual-network-gateways.md)。你可以使用以下命令随时更改网关 SKU。
+There are a number of [Gateway SKUs](../articles/expressroute/expressroute-about-virtual-network-gateways.md). You can use the following command to change the Gateway SKU at any time.
+
+>[!IMPORTANT]
+> This command doesn't work for UltraPerformance gateway. To change your gateway to an UltraPerformance gateway, first remove the existing ExpressRoute gateway, and then create a new UltraPerformance gateway. To downgrade your gateway from an UltraPerformance gateway, first remove the UltraPerformance gateway, and then create a new gateway.
 
 ```
 $gw = Get-AzureRmVirtualNetworkGateway -Name $GWName -ResourceGroupName $RG
 Resize-AzureRmVirtualNetworkGateway -VirtualNetworkGateway $gw -GatewaySku HighPerformance
 ```
 
-## 删除网关
+## Remove a gateway
 
-使用以下命令可删除网关
+Use the command below to remove a gateway
 
 ```
-Remove-AzureRmVirtualNetworkGateway -Name $GWName -ResourceGroupName $RG  
+Remove-AzureRmVirtualNetworkGateway -Name $GWName -ResourceGroupName $RG
 ```
-<!---HONumber=Mooncake_0509_2016-->

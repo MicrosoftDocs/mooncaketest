@@ -1,19 +1,11 @@
-1. 在门户预览中，从“所有资源”单击“+添加”。在“所有内容”边栏选项卡搜索框中键入“本地网络网关”，然后单击进行搜索。这会返回一个列表。单击“本地网络网关”打开边栏选项卡，然后单击“创建”打开“创建本地网络网关”边栏选项卡。
+1. In the portal, from **All resources**, click **+Add**. In the **Everything** blade search box, type **Local network gateway**, then click to search. This will return a list. Click **Local network gateway** to open the blade, then click **Create** to open the **Create local network gateway** blade.
 
-    ![创建局域网网关](./media/vpn-gateway-add-lng-rm-portal-include/addlng250.png)  
+    ![create local network gateway](./media/vpn-gateway-add-lng-rm-portal-include/newlng.png)
 
-2. 在“创建本地网关”边栏选项卡中，指定本地网关对象的“名称”。
-
-3. 为要连接到的 VPN 设备或虚拟网络网关指定一个有效的公共“IP 地址”。<br>如果此本地网络代表了本地位置，这就是要连接到的 VPN 设备的公共 IP 地址。它不能在 NAT 的后面，且必须可供 Azure 访问。<br>如果此本地网络代表其他的 VNet，则需指定已分配给那个 VNet 的虚拟网络网关的公共 IP 地址。<br>
-
-4. “地址空间”指的是此本地网络所代表的网络的地址范围。可以添加多个地址空间范围。请确保此处所指定的范围没有与要连接到的其他网络的范围相重叠。
-
-5. 对于“订阅”，请确保显示的是正确的订阅。
-
-6. 对于“资源组”，请选择要使用的资源组。你可以创建新的资源组或选择已创建的资源组。
-
-7. 对于“位置”，请选择将在其中创建此对象的位置。可选择您的 VNet 所在的位置，但这不是必须的。
-
-8. 单击“创建”以创建本地网关。
-
-<!---HONumber=Mooncake_1031_2016-->
+2. On the **Create local network gateway blade**, specify a **Name** for your local network gateway object.
+3. Specify a valid public **IP address** for the VPN device or virtual network gateway to which you want to connect.<br>If this local network represents an on-premises location, this is the public IP address of the VPN device that you want to connect to. It cannot be behind NAT and has to be reachable by Azure.<br>If this local network represents another VNet, you will specify the public IP address that was assigned to the virtual network gateway for that VNet.<br>
+4. **Address Space** refers to the address ranges for the network that this local network represents. You can add multiple address space ranges. Make sure that the ranges you specify here do not overlap with ranges of other networks that you want to connect to.
+5. For **Subscription**, verify that the correct subscription is showing.
+6. For **Resource Group**, select the resource group that you want to use. You can either create a new resource group, or select one that you have already created.
+7. For **Location**, select the location that this object will be created in. You may want to select the same location that your VNet resides in, but you are not required to do so.
+8. Click **Create** to create the local network gateway.

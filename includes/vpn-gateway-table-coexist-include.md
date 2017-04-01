@@ -1,7 +1,5 @@
-| | **经典部署** | **Resource Manager 部署**|
-|-----------------------------|-------------|---------------------|
-| **经典管理门户** | 不支持 | 不支持 |
-| **Azure 门户预览** | 不支持 | 不支持 |
-| **PowerShell** | [文章](../articles/expressroute/expressroute-howto-coexist-classic.md) | [文章](../articles/expressroute/expressroute-howto-coexist-resource-manager.md) |
-
-<!---HONumber=Mooncake_0425_2016-->
+|  | **Classic Deployment** | **Resource Manager Deployment** |
+| --- | --- | --- |
+| **Classic Management Portal** |Not Supported |Not Supported |
+| **Azure Portal Preview** |Not Supported |Not Supported |
+| **PowerShell** |[Article](../articles/expressroute/expressroute-howto-coexist-classic.md) |[Article](../articles/expressroute/expressroute-howto-coexist-resource-manager.md) |

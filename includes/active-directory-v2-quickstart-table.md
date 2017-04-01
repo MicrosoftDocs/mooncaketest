@@ -1,11 +1,9 @@
-| 移动和本机应用 | Web 应用和 Web API | 直接与协议集成 |
-| ----------------------- | ------------------------------- | --------------------- |
-| [向 iOS 应用添加登录](../articles/active-directory/active-directory-v2-devquickstarts-ios.md) | [向 AngularJS SPA 添加登录 (NodeJS)](../articles/active-directory/active-directory-v2-devquickstarts-angular-node.md) | [注册应用程序](../articles/active-directory/active-directory-v2-app-registration.md) |
-| [向 Android 应用添加登录](../articles/active-directory/active-directory-v2-devquickstarts-android.md) | [向 AngularJS SPA 添加登录 (.NET)](../articles/active-directory/active-directory-v2-devquickstarts-angular-dotnet.md) | [使用 OAuth 2.0 的 Mobile Apps](../articles/active-directory/active-directory-v2-protocols-oauth-code.md) |
-| [向 Windows 桌面应用添加登录](../articles/active-directory/active-directory-v2-devquickstarts-wpf.md) | [向 .NET MVC 应用添加登录](../articles/active-directory/active-directory-v2-devquickstarts-dotnet-web.md) | [使用 OpenID Connect 的 Web Apps](../articles/active-directory/active-directory-v2-protocols-oidc.md) |
-| [从应用调用 Office 365 Rest API](https://msdn.microsoft.com/office/office365/howto/authenticate-Office-365-APIs-using-v2) | [向 Node JS Web 应用添加登录](../articles/active-directory/active-directory-v2-devquickstarts-node-web.md) | [使用 OpenID Connect 的单页应用](../articles/active-directory/active-directory-v2-protocols-implicit.md)
-| | [保护 .NET Web API](../articles/active-directory/active-directory-v2-devquickstarts-dotnet-api.md) | [Daemon apps with the Client Credentials Flow](../articles/active-directory/active-directory-v2-protocols-oauth-client-creds.md)（具有客户端凭据流的守护程序应用） |
-| | [保护 NodeJS Web API](../articles/active-directory/active-directory-v2-devquickstarts-node-api.md) |
-| | [从 Web 调用 Office 365 REST API](https://msdn.microsoft.com/office/office365/howto/authenticate-Office-365-APIs-using-v2) |
-
-<!---HONumber=Mooncake_1024_2016-->
+| Mobile & Native Apps | Web Apps & Web APIs | Integrate Directly with Protocols |
+| --- | --- | --- |
+| [Add Sign-In to an iOS App](../articles/active-directory/active-directory-v2-devquickstarts-ios.md) |[Add Sign-In to an JS SPA](https://github.com/Azure-Samples/active-directory-javascript-graphapi-web-v2) |[Register an Application](../articles/active-directory/active-directory-v2-app-registration.md) |
+| [Add Sign-In to an Android App](../articles/active-directory/active-directory-v2-devquickstarts-android.md) |[Add Sign-In to a .NET MVC App](../articles/active-directory/active-directory-v2-devquickstarts-dotnet-web.md) |[Mobile Apps with OAuth 2.0](../articles/active-directory/active-directory-v2-protocols-oauth-code.md) |
+| [Add Sign-In to a Windows Desktop App](../articles/active-directory/active-directory-v2-devquickstarts-wpf.md) |[Add Sign-In to a Node JS Web App](../articles/active-directory/active-directory-v2-devquickstarts-node-web.md) |[Web Apps with OpenID Connect](../articles/active-directory/active-directory-v2-protocols-oidc.md) |
+| [Call Office 365 Rest APIs from an app](https://msdn.microsoft.com/office/office365/howto/authenticate-Office-365-APIs-using-v2) |[Daemon apps with the Client Credentials Flow](../articles/active-directory/active-directory-v2-protocols-oauth-client-creds.md) |[Single Page Apps with OpenID Connect](../articles/active-directory/active-directory-v2-protocols-implicit.md) |
+| [Secure a .NET Web API](../articles/active-directory/active-directory-v2-devquickstarts-dotnet-api.md) | | |
+| [Secure a NodeJS Web API](../articles/active-directory/active-directory-v2-devquickstarts-node-api.md) | | |
+| [Call Office 365 REST APIs from the web](https://msdn.microsoft.com/office/office365/howto/authenticate-Office-365-APIs-using-v2) | | |

@@ -1,5 +1,5 @@
 > [!TIP]
-> <p>**查看 Azure 存储代码示例存储库**
-> <p>若要获取能够下载和运行且易于使用的端到端 Azure 存储代码，请查看我们提供的 [Azure 存储示例](https://docs.microsoft.com/zh-cn/azure/storage/storage-samples-dotnet)列表。
-
-<!---HONumber=Mooncake_0313_2017-->
+> 
+> **Check out the Azure Storage code samples repository**
+> 
+> For easy-to-use end-to-end Azure Storage code samples that you can download and run, please check out our list of [Azure Storage Samples](https://docs.microsoft.com/en-us/azure/storage/storage-samples-dotnet).

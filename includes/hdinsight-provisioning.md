@@ -1,4 +1,4 @@
 > [!NOTE]
->本文中的步骤是使用基本配置设置来创建 HDInsight 群集。有关其他群集配置设置的信息（例如，使用 Azure 虚拟网络或者 Hive 和 Oozie 的元存储），请参阅[在 HDInsight 中预配 Hadoop 群集](../articles/hdinsight/hdinsight-provision-clusters.md)。
-
-<!---HONumber=76-->
+> The steps in this article create an HDInsight cluster by using basic configuration settings. For information about other cluster configuration settings (such as using Azure virtual network or a metastore for Hive and Oozie), see [Provision Hadoop clusters in HDInsight](../articles/hdinsight/hdinsight-provision-clusters.md).
+> 
+>

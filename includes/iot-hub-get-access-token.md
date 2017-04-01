@@ -1,15 +1,15 @@
-## 获取资源管理器令牌
+## Obtain a Resource Manager token
 
-Azure Active Directory 必须使用 Azure Resource Manager 来验证所有针对资源执行的任务。此处显示的示例使用密码身份验证，有关其他方法，请参阅[对 Azure Resource Manager 请求进行身份验证][lnk-authenticate-arm]。
+Azure Active Directory must authenticate all the tasks that you perform on resources using the Azure Resource Manager. The example shown here uses password authentication, for other approaches see [Authenticating Azure Resource Manager requests][lnk-authenticate-arm].
 
-1. 将以下代码添加到 Program.cs 中的 **Main** 方法，以使用应用程序 ID 和密码从 Azure AD 中检索令牌。
+1. Add the following code to the **Main** method in Program.cs to retrieve a token from Azure AD using the application id and password.
 
     ```
     var authContext = new AuthenticationContext(string.Format  
-      ("https://login.chinacloudapi.cn/{0}", tenantId));
+      ("https://login.windows.net/{0}", tenantId));
     var credential = new ClientCredential(applicationId, password);
     AuthenticationResult token = authContext.AcquireTokenAsync
-      ("https://management.core.chinacloudapi.cn/", credential).Result;
+      ("https://management.core.windows.net/", credential).Result;
 
     if (token == null)
     {
@@ -18,19 +18,19 @@ Azure Active Directory 必须使用 Azure Resource Manager 来验证所有针对
     }
     ```
 
-2. 创建一个 **ResourceManagementClient** 对象，该对象通过在 **Main** 方法的末尾添加以下代码来使用令牌：
+2. Create a **ResourceManagementClient** object that uses the token by adding the following code to the end of the **Main** method:
 
     ```
     var creds = new TokenCredentials(token.AccessToken);
-    var client = new ResourceManagementClient(new Uri("Https://management.chinacloudapi.cn"), creds);
+    var client = new ResourceManagementClient(creds);
     client.SubscriptionId = subscriptionId;
     ```
 
-3. 创建或获取对你使用的资源组的引用：
+3. Create, or obtain a reference to, the resource group you are using:
 
     ```
     var rgResponse = client.ResourceGroups.CreateOrUpdate(rgName,
-        new ResourceGroup("China East"));
+        new ResourceGroup("East US"));
     if (rgResponse.Properties.ProvisioningState != "Succeeded")
     {
       Console.WriteLine("Problem creating resource group");
@@ -39,5 +39,3 @@ Azure Active Directory 必须使用 Azure Resource Manager 来验证所有针对
     ```
 
 [lnk-authenticate-arm]: https://msdn.microsoft.com/zh-cn/library/azure/dn790557.aspx
-
-<!---HONumber=Mooncake_0321_2016-->

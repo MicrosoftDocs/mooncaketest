@@ -1,4 +1,6 @@
-如果要在部署期间使用参数文件传递参数值，需要使用类似于以下示例的格式创建一个 JSON 文件。
+## <a name="parameter-file"></a> Parameter file
+
+If you use a parameter file to pass parameter values during deployment, you need to create a JSON file with a format similar to the following example.
 
 ```json
 {
@@ -12,7 +14,7 @@
             "value": "DefaultPlan"
         },
         "webSiteLocation": {
-            "value": "China East"
+            "value": "West US"
         },
         "adminPassword": {
             "reference": {
@@ -26,8 +28,6 @@
 }
 ```
 
-如果需要为参数（如密码）提供敏感值，请将该值添加到密钥保管库。在部署过程中检索密钥保管库，如前面的示例所示。有关详细信息，请参阅[在部署期间传递安全值](../articles/azure-resource-manager/resource-manager-keyvault-parameter.md)。
+If you need to provide a sensitive value for a parameter (such as a password), add that value to a key vault. Retrieve the key vault during deployment as shown in the previous example. For more information, see [Pass secure values during deployment](../articles/azure-resource-manager/resource-manager-keyvault-parameter.md). 
 
-参数文件的大小不能超过 64 KB。
-
-<!---HONumber=Mooncake_1010_2016-->
+The size of the parameter file cannot be more than 64 KB.

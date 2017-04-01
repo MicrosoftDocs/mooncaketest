@@ -1,8 +1,6 @@
-活动日志包含针对资源执行的所有写入操作（PUT、POST、DELETE）。它不包含读取操作 (GET)。在进行故障排除或监视组织中的用户如何修改资源时，可以使用审核日志来查找错误。
+The activity log contains all write operations (PUT, POST, DELETE) performed on your resources. It does not include read operations (GET). You can use the audit logs to find an error when troubleshooting or to monitor how a user in your organization modified a resource.
 
-在使用活动日志时，需要记住两个重要限制：
+There are two important limitations to keep in mind when working with activity logs:
 
-1. 活动日志仅保留 90 天。
-2. 只能查询 15 天或更少天数内的日志。
-
-<!---HONumber=Mooncake_1114_2016-->
+1. Activity logs are only retained for 90 days.
+2. You can only query for a range of 15 days or less.

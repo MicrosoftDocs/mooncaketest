@@ -1,5 +1,3 @@
-### Azure 资源管理器和 Azure 服务管理
+### Azure Resource Manager and Azure Service Management
 
-本文适用于在资源管理器中创建的 Azure 资源。与服务管理相比，Microsoft 更建议在资源管理器中创建资源。若要对使用 Azure 服务管理创建的资源执行类似的任务，请参阅以下文章：
-
-<!---HONumber=Mooncake_0104_2016-->
+This article is for an Azure resource created in Resource Manager, which Azure recommends over a resource created in Service Management. For an explanation of the advantages of Resource Manager, see [Azure Compute, Network & Storage Providers under Azure Resource Manager](/documentation/articles/virtual-machines-azurerm-versus-azuresm/). To do the same task for a resource created with Azure Service Management, see the following article:

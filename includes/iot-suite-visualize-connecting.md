@@ -1,47 +1,39 @@
-## 在仪表板中查看设备遥测数据
+## View device telemetry in the dashboard
+The dashboard in the remote monitoring solution enables you to view the telemetry your devices send to IoT Hub.
 
-远程监视解决方案中的仪表板可让你查看设备发送到 IoT 中心的遥测数据。
+1. In your browser, return to the remote monitoring solution dashboard, click **Devices** in the left-hand panel to navigate to the **Devices list**.
+2. In the **Devices list**, you should see that the status of your device is **Running**. If not, click **Enable Device** in the **Device Details** panel.
 
-1. 在浏览器中，返回到远程监视解决方案仪表板，然后单击左侧面板中的“设备”导航到“设备列表”。
+    ![View device status][18]
+3. Click **Dashboard** to return to the dashboard, select your device in the **Device to View** drop-down to view its telemetry. The telemetry from the sample application is 50 units for internal temperature, 55 units for external temperature, and 50 units for humidity.
 
-2. 在“设备列表”中，你应会看到设备状态现在为“正在运行”。
+    ![View device telemetry][img-telemetry]
 
-    ![][18]
+## Invoke a method on your device
+The dashboard in the remote monitoring solution enables you to invoke methods on your devices through IoT Hub. For example, in the remote monitoring solution you can invoke a method to simulate rebooting a device.
 
-3. 单击“仪表板”返回到仪表板，然后在“要查看的设备”下拉列表中选择设备，以查看其遥测数据。示例应用程序的遥测数据是 50 个单位的内部温度、55 个单位的外部温度，以及 50 个单位的湿度。请注意，仪表板默认只显示温度和湿度的值。
+1. In the remote monitoring solution dashboard, click **Devices** in the left-hand panel to navigate to the **Devices list**.
+2. Click **Device ID** for your device in the **Devices list**.
+3. In the **Device details** panel, click **Methods**.
 
-    ![][img-telemetry]
+    ![Device methods][13]
+4. In the **Method** drop-down, select **InitiateFirmwareUpdate**, and then in **FWPACKAGEURI** enter a dummy URL. Click **Invoke Method** to call the method on the device.
 
-## 将命令发送到设备
+    ![Invoke a device method][14]
 
-远程监视解决方案中的仪表板可让你请求 IoT 中心向设备发送命令。例如，在远程监视解决方案中，你可以发送命令来设置设备的内部温度。
+5. You see a message in the console running your device code when the device handles the method. The results of the method are added to the history in the solution portal:
 
-1. 在远程监视解决方案仪表板中，单击左侧面板中的“设备”导航到“设备列表”。
+    ![View method history][img-method-history]
 
-2. 在“设备列表”中，单击设备的“设备 ID”。
+## Next steps
+The article [Customizing preconfigured solutions][lnk-customize] describes some ways you can extend this sample. Possible extensions include using real sensors and implementing additional commands.
 
-3. 在“设备详细信息”面板中，单击“命令”。
-
-    ![][13]
-
-4. 在“命令”下拉列表中选择“SetTemperature”，然后在“温度”中输入新的温度值。单击“发送命令”以将命令发送到设备。
-
-    ![][14]
-
-    > [!NOTE]
-    > 命令历史记录一开始将命令状态显示为“挂起”。设备确认命令后，状态将更改为“成功”。
-
-5. 在仪表板上检查该设备现在是否发送 75 作为新的温度值。
-
-## 后续步骤
-
-[自定义预配置解决方案][lnk-customize]一文介绍了扩展本示例的一些方法。可能的扩展包括使用真实传感器和实现其他命令。
+You can learn more about the [permissions on the azureiotsuite.com site][lnk-permissions].
 
 [13]: ./media/iot-suite-visualize-connecting/suite4.png
 [14]: ./media/iot-suite-visualize-connecting/suite7-1.png
 [18]: ./media/iot-suite-visualize-connecting/suite10.png
 [img-telemetry]: ./media/iot-suite-visualize-connecting/telemetry.png
-[lnk-customize]: ../articles/iot-suite/iot-suite-guidance-on-customizing-preconfigured-solutions.md
-[lnk-dev-messaging]: ../articles/iot-hub/iot-hub-devguide.md#messaging
-
-<!---HONumber=Mooncake_0523_2016-->
+[img-method-history]: ./media/iot-suite-visualize-connecting/history.png
+[lnk-customize]:/documentation/articles/iot-suite/iot-suite-guidance-on-customizing-preconfigured-solutions/
+[lnk-permissions]: /documentation/articles/iot-suite/iot-suite-permissions/

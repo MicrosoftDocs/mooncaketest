@@ -1,15 +1,38 @@
 ---
+title: Azure Web Apps Documentation - Tutorials, API Reference | Azure
+description: Learn how to use App Service Web Apps to build and host websites and web applications. Tutorials, videos, API references, and more.
+services: app-service
+author: carolz
+manager: carolz
 layout: LandingPage
-description: 了解如何使用应用服务 Web 应用生成和托管网站和 Web 应用程序。教程、视频、API 参考和更多内容。 
+ms.assetid:
+ms.service: app-service
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: landing-page
+ms.date: 01/23/2017
+wacn.date: ''
+ms.author: carolz
 ---
+# Azure Web Apps Documentation
 
-# Azure Web 应用文档
-
-了解如何使用应用服务 Web 应用生成和托管网站和 Web 应用程序。教程、视频、API 参考和其他文档演示如何在此全面管理计算平台上进行开发。
+<div class="introHolder">
+    <div class="intro">
+        Learn how to use App Service Web Apps to build and host websites and web applications. Tutorials, videos, API references, and other documentation show you how to develop on this fully manage compute platform.
+    </div>
+    <div class="calloutHolder">
+        <div class="callout">
+            <a href="https://azure.microsoft.com/community/training/courses/developing-dotnet-microsoft-azure-getting-started/">
+                <img src="media/index/pluralsight.svg" />
+                Free PluralSight video training - Developing with .NET on Azure
+            </a>
+        </div>
+    </div>
+</div>
 
 <ul class="panelContent cardsFTitle">
     <li>
-        <a href="./app-service-web-overview.md">
+        <a href="/azure/app-service-web/app-service-web-overview">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
@@ -19,13 +42,13 @@ description: 了解如何使用应用服务 Web 应用生成和托管网站和 W
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>了解 Web 应用</h3>
+                        <h3>Learn about Web Apps</h3>
                     </div>
                 </div>
             </div>
         </div>
         </a>
-</li>
+    </li>
     <li>
         <a href="https://azure.microsoft.com/get-started/">
         <div class="cardSize">
@@ -37,13 +60,13 @@ description: 了解如何使用应用服务 Web 应用生成和托管网站和 W
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Web 应用（视频）入门</h3>
+                        <h3>Get started with Web Apps (Video)</h3>
                     </div>
                 </div>
             </div>
         </div>
         </a>
-</li>
+    </li>
     <li>
         <a href="https://azure.microsoft.com/documentation/videos/index/?services=web-sites">
         <div class="cardSize">
@@ -55,15 +78,15 @@ description: 了解如何使用应用服务 Web 应用生成和托管网站和 W
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Web 应用视频库</h3>
+                        <h3>Web Apps Video Library</h3>
                     </div>
                 </div>
             </div>
         </div>
         </a>
-</li>
+    </li>
     <li>
-        <a href="./web-sites-dotnet-get-started.md">
+        <a href="/azure/app-service-web/app-service-web-get-started-dotnet">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
@@ -73,15 +96,15 @@ description: 了解如何使用应用服务 Web 应用生成和托管网站和 W
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>使用 ASP.NET 和 Visual Studio 构建 Web 应用入门</h3>
+                        <h3>Get Started with Web Apps using ASP.NET and Visual Studio</h3>
                     </div>
                 </div>
             </div>
         </div>
         </a>
-</li> 
+    </li> 
      <li>
-        <a href="./web-sites-java-get-started.md">
+        <a href="/azure/app-service-web/app-service-web-get-started-java">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
@@ -91,15 +114,15 @@ description: 了解如何使用应用服务 Web 应用生成和托管网站和 W
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>使用 Java 的 Web 应用入门</h3>
+                        <h3>Get Started with Web Apps using Java</h3>
                     </div>
                 </div>
             </div>
         </div>
         </a>
-</li>
+    </li>
     <li>
-        <a href="./app-service-web-nodejs-get-started.md">
+        <a href="/azure/app-service-web/app-service-web-get-started-nodejs">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
@@ -109,15 +132,15 @@ description: 了解如何使用应用服务 Web 应用生成和托管网站和 W
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>使用 Node.js 的 Web 应用入门</h3>
+                        <h3>Get started with Web Apps using Node.js </h3>
                     </div>
                 </div>
             </div>
         </div>
         </a>
-</li>
+    </li>
     <li>
-        <a href="./web-sites-python-ptvs-django-mysql.md">
+        <a href="/azure/app-service-web/app-service-web-get-started-python">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
@@ -127,16 +150,16 @@ description: 了解如何使用应用服务 Web 应用生成和托管网站和 W
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>使用 Python 工具 2.2 的 Web 应用入门</h3>
+                        <h3>Get Started with Web Apps using Python Tools 2.2</h3>
                     </div>
                 </div>
             </div>
         </div>
         </a>
-</li>
-   
+    </li>
+
      <li>
-        <a href="./app-service-web-php-get-started.md">
+        <a href="/azure/app-service-web/app-service-web-get-started-php">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
@@ -146,15 +169,15 @@ description: 了解如何使用应用服务 Web 应用生成和托管网站和 W
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>使用 PHP 的 Web 应用入门</h3>
+                        <h3>Get Started with Web Apps using PHP</h3>
                     </div>
                 </div>
             </div>
         </div>
         </a>
-</li>
+    </li>
     <li>
-        <a href="./web-sites-php-web-site-gallery.md">
+        <a href="/azure/app-service-web/web-sites-php-web-site-gallery">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
@@ -164,27 +187,27 @@ description: 了解如何使用应用服务 Web 应用生成和托管网站和 W
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>在 Azure 应用服务中使用 WordPress 入门</h3>
+                        <h3>Get Started with WordPress in Azure App Service</h3>
                     </div>
                 </div>
             </div>
         </div>
         </a>
-</li>
-   
+    </li>
+
 </ul>
 
 ---
 
-<h2>引用</h2>
+<h2>Reference</h2>
 <ul class="panelContent cardsW">
     <li>
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardText">
-                        <h3>命令行</h3>
-                        <p><a href="/cli/azure/appservice">Azure CLI 2​.0 预览版</a></p>
+                        <h3>Command-Line</h3>
+                        <p><a href="https://docs.microsoft.com/cli/azure/appservice">Azure CLI 2.0</a></p>
                     </div>
                 </div>
             </div>
@@ -195,7 +218,7 @@ description: 了解如何使用应用服务 Web 应用生成和托管网站和 W
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardText">
-                        <h3>语言</h3>
+                        <h3>Languages</h3>
                         <p><a href="/dotnet/api">.NET</a></p>
                         <p><a href="/java/api/">Java</a></p>
                     </div>
@@ -209,21 +232,10 @@ description: 了解如何使用应用服务 Web 应用生成和托管网站和 W
                 <div class="card">
                     <div class="cardText">
                         <h3>REST</h3>
-                        <p><a href="/rest/api/appservice">REST API</a></p>
+                        <p><a href="https://docs.microsoft.com/rest/api/appservice">REST API</a></p>
                     </div>
                 </div>
             </div>
         </div>
     </li>
 </ul>
-
-<div class="downloadHolder"><a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/zh-cn/Azure.azure-documents/live/app-service-web.pdf">
-<div class="img"></div>
-        <div class="text">
-            下载 Web 应用文档
-        </div>
-    </a>
-
-</div>
-
-<!---HONumber=Mooncake_0206_2017-->

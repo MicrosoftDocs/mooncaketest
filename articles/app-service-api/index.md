@@ -1,44 +1,130 @@
 ---
+title: Azure App Service - API Apps Documentation - Tutorials | Azure
+description: Learn how to use API Apps in Azure App Service to develop, host, and consume APIs in the cloud and on-premises. Tutorials, videos, and other documentation.
+services: app-service\api
+author: carolz
+manager: carolz
 layout: LandingPage
-description: 了解如何使用 Azure 应用服务中的 API 应用在云中和本地开发、托管和使用 API。教程、视频和其他文档。
+ms.assetid:
+ms.service: app-service\api
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: landing-page
+ms.date: 01/23/2017
+wacn.date: ''
+ms.author: carolz
 ---
+# App Service - API Apps Documentation
 
-# 应用服务 - API 应用文档
-
-了解如何使用 Azure 应用服务中的 API 应用在云中和本地开发、托管和使用 API。教程、视频和其他文档介绍了如何创建和部署 API 应用。
+Learn how to use API Apps in Azure App Service to develop, host, and consume APIs in the cloud and on-premises. Tutorials, videos, and other documentation show you how create and deploy API apps.
 
 <ul class="panelContent cardsFTitle">
-    <li><a href="/azure/app-service-api/app-service-api-apps-why-best-platform">
-<div class="cardSize"><div class="cardPadding"><div class="card"><div class="cardImageOuter"><div class="cardImage"><img src="media/index/app-service-api.svg" alt="" /></div></div><div class="cardText"><h3>了解 API 应用</h3></div></div></div>
-        </div></a>
-</li>
-    <li><a href="https://azure.microsoft.com/documentation/videos/index/?services=app-service">
-<div class="cardSize"><div class="cardPadding"><div class="card"><div class="cardImageOuter"><div class="cardImage"><img src="media/index/video-library.svg" alt="" /></div></div><div class="cardText"><h3>应用服务视频库</h3></div></div></div>
-        </div></a>
-</li>
-    <li><a href="/azure/app-service-api/app-service-api-dotnet-get-started">
-<div class="cardSize"><div class="cardPadding"><div class="card"><div class="cardImageOuter"><div class="cardImage"><img src="media/index/dotnet.svg" alt="" /></div></div><div class="cardText"><h3>Azure 应用服务中的 API 应用、ASP.NET 和 Swagger 入门</h3></div></div></div>
-        </div></a>
-</li>
-    <li><a href="/azure/app-service-api/app-service-api-java-api-app">
-<div class="cardSize"><div class="cardPadding"><div class="card"><div class="cardImageOuter"><div class="cardImage"><img src="media/index/java.svg" alt="" /></div></div><div class="cardText"><h3>在 Azure 应用服务中创建 Java API 应用入门</h3></div></div></div>
-        </div></a>
-</li>
-    <li><a href="/azure/app-service-api/app-service-api-nodejs-api-app">
-<div class="cardSize"><div class="cardPadding"><div class="card"><div class="cardImageOuter"><div class="cardImage"><img src="media/index/nodejs.svg" alt="" /></div></div><div class="cardText"><h3>创建 Node.js API 入门</h3></div></div></div>
-        </div></a>
-</li>
-    <li><a href="/azure/app-service-api/app-service-api-cors-consume-javascript">
-<div class="cardSize"><div class="cardPadding"><div class="card"><div class="cardImageOuter"><div class="cardImage"><img src="media/index/tutorial.svg" alt="" /></div></div><div class="cardText"><h3>借助 CORS 从 JavaScript 创建 API 应用入门</h3></div></div></div>
-        </div></a>
-</li>     
+    <li>
+        <a href="/azure/app-service-api/app-service-api-apps-why-best-platform">
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardImageOuter">
+                        <div class="cardImage">
+                            <img src="media/index/app-service-api.svg" alt="" />
+                        </div>
+                    </div>
+                    <div class="cardText">
+                        <h3>Learn about API Apps</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </a>
+    </li>
+    <li>
+        <a href="https://azure.microsoft.com/documentation/videos/index/?services=app-service">
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardImageOuter">
+                        <div class="cardImage">
+                            <img src="media/index/video-library.svg" alt="" />
+                        </div>
+                    </div>
+                    <div class="cardText">
+                        <h3>App Service Video Library</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </a>
+    </li>
+    <li>
+        <a href="/azure/app-service-api/app-service-api-dotnet-get-started">
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardImageOuter">
+                        <div class="cardImage">
+                            <img src="media/index/dotnet.svg" alt="" />
+                        </div>
+                    </div>
+                    <div class="cardText">
+                        <h3>Get started with API Apps, ASP.NET and Swagger in Azure App Service</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </a>
+    </li>
+    <li>
+        <a href="/azure/app-service-api/app-service-api-java-api-app">
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardImageOuter">
+                        <div class="cardImage">
+                            <img src="media/index/java.svg" alt="" />
+                        </div>
+                    </div>
+                    <div class="cardText">
+                        <h3>Get started creating a Java API app in Azure App Service</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </a>
+    </li>
+    <li>
+        <a href="/azure/app-service-api/app-service-api-nodejs-api-app">
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardImageOuter">
+                        <div class="cardImage">
+                            <img src="media/index/nodejs.svg" alt="" />
+                        </div>
+                    </div>
+                    <div class="cardText">
+                        <h3>Get started creating a Node.js API</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </a>
+    </li>
+    <li>
+        <a href="/azure/app-service-api/app-service-api-cors-consume-javascript">
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardImageOuter">
+                        <div class="cardImage">
+                            <img src="media/index/tutorial.svg" alt="" />
+                        </div>
+                    </div>
+                    <div class="cardText">
+                        <h3>Get started creating an API app from JavaScript using CORS</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </a>
+    </li>     
 </ul>
-
-<div class="downloadHolder"><a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/zh-cn/Azure.azure-documents/live/app-service-api.pdf">
-<div class="img"></div>
-        <div class="text">下载移动应用文档</div>
-    </a>
-
-</div>
-
-<!---HONumber=Mooncake_0220_2017-->

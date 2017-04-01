@@ -1,12 +1,10 @@
-准则的完整系列可帮助你了解在 Azure 中构建应用程序基础结构时的所有不同设计注意事项：
+The full series of guidelines helps you understand all the different design considerations for building our your application infrastructure in Azure:
 
-- [Azure 订阅和帐户准则](../articles/virtual-machines/virtual-machines-windows-infrastructure-subscription-accounts-guidelines.md)
-- [Azure 基础结构命名准则](../articles/virtual-machines/virtual-machines-windows-infrastructure-naming-guidelines.md)
-- [Azure 资源组准则](../articles/virtual-machines/virtual-machines-windows-infrastructure-resource-groups-guidelines.md)
-- [Azure 存储空间准则](../articles/virtual-machines/virtual-machines-windows-infrastructure-storage-solutions-guidelines.md)
-- [Azure 网络准则](../articles/virtual-machines/virtual-machines-windows-infrastructure-networking-guidelines.md)
-- [Azure 可用性集准则](../articles/virtual-machines/virtual-machines-windows-infrastructure-availability-sets-guidelines.md)
-- [Azure 虚拟机准则](../articles/virtual-machines/virtual-machines-windows-infrastructure-virtual-machine-guidelines.md)
-- [Azure 示例基础结构演练](../articles/virtual-machines/virtual-machines-windows-infrastructure-example.md)
-
-<!---HONumber=Mooncake_0801_2016-->
+* [Azure Subscription and Accounts Guidelines](../articles/virtual-machines/virtual-machines-windows-infrastructure-subscription-accounts-guidelines.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+* [Azure Infrastructure Naming Guidelines](../articles/virtual-machines/virtual-machines-windows-infrastructure-naming-guidelines.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+* [Azure Resource Groups Guidelines](../articles/virtual-machines/virtual-machines-windows-infrastructure-resource-groups-guidelines.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+* [Azure Storage Guidelines](../articles/virtual-machines/virtual-machines-windows-infrastructure-storage-solutions-guidelines.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+* [Azure Networking Guidelines](../articles/virtual-machines/virtual-machines-windows-infrastructure-networking-guidelines.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+* [Azure Availability Set Guidelines](../articles/virtual-machines/virtual-machines-windows-infrastructure-availability-sets-guidelines.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+* [Azure Virtual Machine Guidelines](../articles/virtual-machines/virtual-machines-windows-infrastructure-virtual-machine-guidelines.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+* [Azure Example Infrastructure Walkthrough](../articles/virtual-machines/virtual-machines-windows-infrastructure-example.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)

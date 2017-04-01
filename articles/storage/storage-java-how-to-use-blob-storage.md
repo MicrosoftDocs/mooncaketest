@@ -1,6 +1,6 @@
 ---
-title: 如何通过 Java 使用 Azure Blob 存储（对象存储）| Azure
-description: 使用 Azure Blob 存储（对象存储）将非结构化数据存储在云中。
+title: How to use Azure Blob storage (object storage) from Java | Azure
+description: Store unstructured data in the cloud with Azure Blob storage (object storage).
 services: storage
 documentationcenter: java
 author: mmacy
@@ -14,33 +14,35 @@ ms.tgt_pltfrm: na
 ms.devlang: java
 ms.topic: article
 ms.date: 12/08/2016
-wacn.date: 01/06/2017
+wacn.date: ''
 ms.author: marsma
 ---
 
-# 如何通过 Java 使用 Blob 存储
+# How to use Blob storage from Java
 [!INCLUDE [storage-selector-blob-include](../../includes/storage-selector-blob-include.md)]
 
-## 概述
-Azure Blob 存储是一种将非结构化数据作为对象/Blob 存储在云中的服务。Blob 存储可以存储任何类型的文本或二进制数据，例如文档、媒体文件或应用程序安装程序。Blob 存储也称为对象存储。
+[!INCLUDE [storage-try-azure-tools-queues](../../includes/storage-try-azure-tools-blobs.md)]
 
-本文介绍如何使用 Azure Blob 存储执行常见任务。这些示例用 Java 编写并使用 [Azure Storage SDK for Java][Azure Storage SDK for Java]。涉及的任务包括**上传**、**列出**、**下传**和**删除** Blob。有关 Blob 的详细信息，请参阅[后续步骤](#NextSteps)部分。
+## Overview
+Azure Blob storage is a service that stores unstructured data in the cloud as objects/blobs. Blob storage can store any type of text or binary data, such as a document, media file, or application installer. Blob storage is also referred to as object storage.
+
+This article will show you how to perform common scenarios using the Azure Blob storage. The samples are written in Java and use the [Azure Storage SDK for Java][Azure Storage SDK for Java]. The scenarios covered include **uploading**, **listing**, **downloading**, and **deleting** blobs. For more information on blobs, see the [Next Steps](#Next-Steps) section.
 
 > [!NOTE]
-> SDK 提供给在 Android 设备上使用 Azure 存储空间的开发人员。有关详细信息，请参阅 [Azure Storage SDK for Android][Azure Storage SDK for Android]。
+> An SDK is available for developers who are using Azure Storage on Android devices. For more information, see the [Azure Storage SDK for Android][Azure Storage SDK for Android].
 
 [!INCLUDE [storage-blob-concepts-include](../../includes/storage-blob-concepts-include.md)]
 
 [!INCLUDE [storage-create-account-include](../../includes/storage-create-account-include.md)]
 
-## <a name="CreateApplication"> </a>创建 Java 应用程序
+## <a name="CreateApplication"> </a>Create a Java application
 
-在本文中，你将使用存储功能，这些功能可在本地 Java 应用程序中运行，或在 Azure 的 Web 角色或辅助角色中通过运行的代码来运行。
+In this article, you will use storage features which can be run within a Java application locally, or in code running within a web role or worker role in Azure.
 
-为此，你将需要安装 Java 开发工具包 (JDK)，并在你的 Azure 订阅中创建一个 Azure 存储帐户。完成此操作后，你将需要验证开发系统满足最低要求和 GitHub 上的 [Azure Storage SDK for Java][Azure Storage SDK for Java] 存储库中列出的依赖项。如果系统满足这些要求，可以按照说明下载和安装系统中该存储库的 Azure Storage Libraries for Java。完成这些任务后，您将能够创建一个 Java 应用程序，以便使用本文中的示例。
+To do so, you will need to install the Java Development Kit (JDK) and create an Azure Storage account in your Azure subscription. Once you have done so, you will need to verify that your development system meets the minimum requirements and dependencies which are listed in the [Azure Storage SDK for Java][Azure Storage SDK for Java] repository on GitHub. If your system meets those requirements, you can follow the instructions for downloading and installing the Azure Storage Libraries for Java on your system from that repository. Once you have completed those tasks, you will be able to create a Java application which uses the examples in this article.
 
-## 配置你的应用程序以访问 Blob 存储
-将下列导入语句添加到要在其中使用 Azure 存储 API 以访问 Blob 的 Java 文件的顶部：
+## Configure your application to access Blob storage
+Add the following import statements to the top of the Java file where you want to use the Azure Storage APIs to access blobs.
 
 ```java
 // Include the following imports to use blob APIs.
@@ -48,9 +50,9 @@ import com.microsoft.azure.storage.*;
 import com.microsoft.azure.storage.blob.*;
 ```
 
-## 设置 Azure 存储连接字符串
-
-Azure 存储客户端使用存储连接字符串来存储用于访问数据管理服务的终结点和凭据。在客户端应用程序中运行时，必须提供以下格式的存储连接字符串，并对 *AccountName* 和 *AccountKey* 值使用 [Azure 门户预览](https://portal.azure.cn)中列出的存储帐户的名称和存储帐户的主访问密钥。下面的示例演示如何声明一个静态字段以保存连接字符串。
+## Set up an Azure Storage connection string
+An Azure Storage client uses a storage connection string to store
+endpoints and credentials for accessing data management services. When running in a client application, you must provide the storage connection string in the following format, using the name of your storage account and the Primary access key for the storage account listed in the [Azure Portal](https://portal.azure.cn) for the *AccountName* and *AccountKey* values. The following example shows how you can declare a static field to hold the connection string.
 
 ```java
 // Define the connection-string with your values
@@ -61,7 +63,7 @@ public static final String storageConnectionString =
 "EndpointSuffix=core.chinacloudapi.cn";
 ```
 
-在 Azure 的角色中运行的应用程序中，此字符串可存储在服务配置文件  *ServiceConfiguration.cscfg* 中，并可通过调用 **RoleEnvironment.getConfigurationSettings** 方法进行访问。下面的示例从服务配置文件中名为  *StorageConnectionString* 的 **Setting** 元素获取连接字符串
+In an application running within a role in Microsoft Azure, this string can be stored in the service configuration file, *ServiceConfiguration.cscfg*, and can be accessed with a call to the **RoleEnvironment.getConfigurationSettings** method. The following example gets the connection string from a **Setting** element named *StorageConnectionString* in the service configuration file.
 
 ```java
 // Retrieve storage account from connection-string.
@@ -69,17 +71,17 @@ String storageConnectionString =
     RoleEnvironment.getConfigurationSettings().get("StorageConnectionString");
 ```
 
-下面的示例假定你使用了这两个方法之一来获取存储连接字符串。
+The following samples assume that you have used one of these two methods to get the storage connection string.
 
-## 创建容器
-利用 **CloudBlobClient** 对象，可以获得容器和 Blob 的引用对象。以下代码将创建 **CloudBlobClient** 对象。
+## Create a container
+A **CloudBlobClient** object lets you get reference objects for containers and blobs. The following code creates a **CloudBlobClient** object.
 
 > [!NOTE]
-> 还有其他方式来创建 **CloudStorageAccount** 对象；有关详细信息，请参阅 [Azure 存储空间客户端 SDK 参考]中的 **CloudStorageAccount**。
+> There are additional ways to create **CloudStorageAccount** objects; for more information, see **CloudStorageAccount** in the [Azure Storage Client SDK Reference].
 
 [!INCLUDE [storage-container-naming-rules-include](../../includes/storage-container-naming-rules-include.md)]
 
-使用 **CloudBlobClient** 对象获取对你要使用的容器的引用。可使用 **createIfNotExists** 方法创建容器（如果不存在），否则将返回现有容器。默认情况下，新容器是专用容器，因此您必须指定存储访问密钥（如之前所做的那样）才能从该容器下载 Blob。
+Use the **CloudBlobClient** object to get a reference to the container you want to use. You can create the container if it doesn't exist with the **createIfNotExists** method, which will otherwise return the existing container. By default, the new container is private, so you must specify your storage access key (as you did earlier) to download blobs from this container.
 
 ```java
 try
@@ -104,8 +106,8 @@ catch (Exception e)
 }
 ```
 
-### 可选：配置进行公共访问的容器
-默认情况下，容器的权限已配置为允许进行私有访问，但你也可以轻松地将容器的权限配置为允许 Internet 上的用户进行公开的、只读的访问：
+### Optional: Configure a container for public access
+A container's permissions are configured for private access by default, but you can easily configure a container's permissions to allow public, read-only access for all users on the Internet:
 
 ```java
 // Create a permissions object.
@@ -118,9 +120,8 @@ containerPermissions.setPublicAccess(BlobContainerPublicAccessType.CONTAINER);
 container.uploadPermissions(containerPermissions);
 ```
 
-## 将 Blob 上传到容器中
-
-若要将文件上传到 Blob，请获取容器引用，并使用它获取 Blob 引用。获取 Blob 引用后，可以通过对该 Blob 引用调用 upload 来上传任何数据流。此操作将创建 Blob（如果该 Blob 不存在），或者覆盖它（如果该 Blob 存在）。下面的代码示例演示了这一点，并假定已创建容器。
+## Upload a blob into a container
+To upload a file to a blob, get a container reference and use it to get a blob reference. Once you have a blob reference, you can upload any stream by calling upload on the blob reference. This operation will create the blob if it doesn't exist, or overwrite it if it does. The following code sample shows this, and assumes that the container has already been created.
 
 ```java
 try
@@ -149,9 +150,8 @@ catch (Exception e)
 }
 ```
 
-## 列出容器中的 Blob
-
-若要列出容器中的 Blob，请先获取容器引用，就像上传 Blob 时执行的操作一样。可将容器的 **listBlobs** 方法用于 **for** 循环。以下代码将容器中每个 Blob 的 URI 输出到控制台。
+## List the blobs in a container
+To list the blobs in a container, first get a container reference like you did to upload a blob. You can use the container's **listBlobs** method with a **for** loop. The following code outputs the Uri of each blob in a container to the console.
 
 ```java
 try
@@ -177,15 +177,17 @@ catch (Exception e)
 }
 ```
 
-请注意，你可以命名 Blob，并在其名称中包含路径信息。这将创建一个虚拟目录结构，你可以像传统文件系统一样组织和遍历。注意，该目录结构仅仅是虚拟的 - Blob 存储中唯一可用的资源是容器和 Blob。但是，客户端库提供 **CloudBlobDirectory** 对象来引用虚拟目录，并简化了以这种方式组织的 Blob 的使用过程。
+Note that you can name blobs with path information in their names. This creates a virtual directory structure that you can organize and traverse as you would a traditional file system. Note that the directory structure is virtual only - the only resources available in Blob storage are containers and blobs. However, the client library offers a **CloudBlobDirectory** object to refer to a virtual directory and simplify the process of working with blobs that are organized in this way.
 
-例如，你可以创建一个名为“photos”的容器，你可以在其中上传名为“rootphoto1”、“2010/photo1”、“2010/photo2”和“2011/photo1”的 Blob。这将在“photos”容器中创建虚拟目录“2010”和“2011”。当你对“photos”容器调用 **listBlobs** 时，返回的集合将包含表示最高层中所含目录和 Blob 的 **CloudBlobDirectory** 和 **CloudBlob** 对象。在本例中，将返回目录“2010”和“2011”以及照片“rootphoto1”。可使用 **instanceof** 运算符来区分这些对象。
+For example, you could have a container named "photos", in which you might upload blobs named "rootphoto1", "2010/photo1", "2010/photo2", and "2011/photo1". This would create the virtual directories "2010" and "2011" within the "photos" container. When you call **listBlobs** on the "photos" container, the collection returned will contain **CloudBlobDirectory** and **CloudBlob** objects representing the directories and blobs contained at the top level. In this case, directories "2010" and "2011", as well as photo "rootphoto1" would be returned. You can use the **instanceof** operator to distinguish these objects.
 
-还可以向 **listBlobs** 方法传入参数，并将 **useFlatBlobListing** 参数设置为 true。这将导致返回每个 Blob，而无论目录如何。有关详细信息，请参阅 [Azure 存储空间客户端 SDK 参考]中的 **CloudBlobContainer.listBlobs**。
+Optionally, you can pass in parameters to the **listBlobs** method with
+the **useFlatBlobListing** parameter set to true. This will result in
+every blob being returned, regardless of directory. For more
+information, see **CloudBlobContainer.listBlobs** in the [Azure Storage Client SDK Reference].
 
-## 下载 Blob
-
-若要下载 Blob，请执行之前用于上传 Blob 的相同步骤以获取 Blob 引用。在上传示例中，您对 Blob 对象调用了 upload。在下面的示例中，调用 download 以将 Blob 内容传输到可用于将 Blob 保存到本地文件的流对象（如 **FileOutputStream**）。
+## Download a blob
+To download blobs, follow the same steps as you did for uploading a blob in order to get a blob reference. In the uploading example, you called upload on the blob object. In the following example, call download to transfer the blob contents to a stream object such as a **FileOutputStream** that you can use to persist the blob to a local file.
 
 ```java
 try
@@ -216,8 +218,8 @@ catch (Exception e)
 }
 ```
 
-## 删除 Blob
-若要删除 Blob，请获取 Blob 引用，然后调用 **deleteIfExists**。
+## Delete a blob
+To delete a blob, get a blob reference, and call **deleteIfExists**.
 
 ```java
 try
@@ -244,8 +246,9 @@ catch (Exception e)
 }
 ```
 
-## 删除 Blob 容器
-最后，若要删除 Blob 容器，请获取 Blob 容器引用，然后调用 **deleteIfExists**。
+## Delete a blob container
+Finally, to delete a blob container, get a blob container reference, and
+call **deleteIfExists**.
 
 ```java
 try
@@ -269,23 +272,19 @@ catch (Exception e)
 }
 ```
 
-##<a name="NextSteps"></a> 后续步骤
-
-现在，你已了解有关 Blob 存储的基础知识，可单击下面的链接来了解更复杂的存储任务。
+## Next steps
+Now that you've learned the basics of Blob storage, follow these links to learn about more complex storage tasks.
 
 * [Azure Storage SDK for Java][Azure Storage SDK for Java]
-* [Azure 存储客户端 SDK 参考][Azure Storage Client SDK Reference]
-* [Azure Storage REST API（Azure 存储 REST API）][Azure Storage REST API]
-* [Azure 存储团队博客][Azure Storage Team Blog]
+* [Azure Storage Client SDK Reference][Azure Storage Client SDK Reference]
+* [Azure Storage REST API][Azure Storage REST API]
+* [Azure Storage Team Blog][Azure Storage Team Blog]
 
-有关详细信息，另请参阅 [Java 开发人员中心](/develop/java/)。
+For more information, see also the [Java Developer Center](/develop/java/).
 
 [Azure SDK for Java]: /develop/java/
 [Azure Storage SDK for Java]: https://github.com/azure/azure-storage-java
 [Azure Storage SDK for Android]: https://github.com/azure/azure-storage-android
 [Azure Storage Client SDK Reference]: http://dl.windowsazure.com/storage/javadoc/
-[Azure 存储空间客户端 SDK 参考]: http://dl.windowsazure.com/storage/javadoc/
 [Azure Storage REST API]: https://msdn.microsoft.com/zh-cn/library/azure/dd179355.aspx
 [Azure Storage Team Blog]: http://blogs.msdn.com/b/windowsazurestorage/
-
-<!---HONumber=Mooncake_0103_2017-->

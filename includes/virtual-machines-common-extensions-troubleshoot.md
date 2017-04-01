@@ -1,10 +1,10 @@
-## Azure 资源管理器模板概述。
+## Overview of Azure Resource Manager templates
 
 >[!NOTE]
-> 你从 GitHub 仓库 "azure-quickstart-templates" 中下载的模板，需要做一些修改才能适用于 Azure 中国云环境。例如，替换一些终结点 -- "blob.core.windows.net" 替换成 "blob.core.chinacloudapi.cn"，"cloudapp.azure.com" 替换成 "chinacloudapp.cn"；改掉一些不支持的 VM 映像，还有，改掉一些不支持的 VM 大小。
+> Templates you downloaded from the GitHub Repo "azure-quickstart-templates" must be modified in order to fit in the Azure China Cloud Environment. For example, replace some endpoints -- "blob.core.windows.net" by "blob.core.chinacloudapi.cn", "cloudapp.azure.com" by "chinacloudapp.cn"; change some unsupported VM images; and, changes some unsupported VM sizes.
 
-Azure 资源管理器模板可让你通过定义资源之间的依赖关系，使用 JSON 语言以声明方式指定 Azure IaaS 基础结构。
+Azure Resource Manager templates allows you to declaratively specify the Azure IaaS infrastructure in JSON language by defining the dependencies between resources.
 
-若要了解有关使用扩展创作模板的详细信息，请单击文章[创作扩展模板](../articles/virtual-machines/virtual-machines-windows-extensions-authoring-templates.md)。
+See  [Authoring extension templates](../articles/virtual-machines/virtual-machines-windows-extensions-authoring-templates.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) to learn more about authoring templates for using extensions.
 
-在本文中，我们将了解如何对一些常见的 VM 扩展故障进行故障排除。
+In this article we'll learn about troubleshooting some of the common VM extension failures.

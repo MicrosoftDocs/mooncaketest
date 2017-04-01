@@ -1,10 +1,8 @@
-Azure 备份服务具有两种类型的保管库 — 备份保管库和恢复服务保管库。首先使用备份保管库。然后使用恢复服务保管库以支持扩展的 Resource Manager 部署。
+The Azure Backup service has two types of vaults - the Backup vault and the Recovery Services vault. The Backup vault came first. Then the Recovery Services vault came along to support the expanded Resource Manager deployments. Microsoft recommends using Resource Manager deployments unless you specifically require a Classic deployment.
 
-| **部署** | **门户** | **保管库** |
+| **Deployment** | **Portal** | **Vault** |
 |-----------|------|-----|
-|经典|[经典](https://manage.windowsazure.cn)|备份|
+|Classic|[Classic](https://manage.windowsazure.cn)|Backup|
 
 > [!NOTE]
-> 备份保管库无法保护使用 Resource Manager 部署的解决方案。但是，可以使用恢复服务保管库保护使用经典部署的服务器和 VM。
-
-<!---HONumber=Mooncake_1017_2016-->
+> Backup vaults cannot protect Resource Manager-deployed solutions. However, you can use a Recovery Services vault to protect classically-deployed servers and VMs.

@@ -1,11 +1,8 @@
-## 方案
+## Scenario
+This document will walk through a deployment that uses a static public IP address allocated to a virtual machine (VM). In this scenario, you have a single VM with its own static public IP address. The VM is part of a subnet named **FrontEnd** and also has a static private IP address (**192.168.1.101**) in that subnet.
 
-本文档将指导完成使用分配给虚拟机 (VM) 的静态公共 IP 地址的部署。在此方案中，你有一个具有自己的静态公共 IP 地址的 VM。VM 属于名为 **FrontEnd** 的子网，并且在该子网中还具有一个静态专用 IP 地址 (**192.168.1.101**)。
+You may need a static IP address for web servers that require SSL connections in which the SSL certificate is linked to an IP address. 
 
-需要 SSL 连接并且其中的 SSL 证书链接到 IP 地址的 Web 服务器可能需要静态 IP 地址。
+![IMAGE DESCRIPTION](./media/virtual-network-deploy-static-pip-scenario-include/figure1.png)
 
-![图像说明](./media/virtual-network-deploy-static-pip-scenario-include/figure1.png)
-
-你可以按照以下步骤来部署上图中所示的环境。
-
-<!---HONumber=Mooncake_0215_2016-->
+You can follow the steps below to deploy the environment shown in the figure above.

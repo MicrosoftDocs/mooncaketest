@@ -18,6 +18,4 @@ ms.date: 10/21/2016
 ms.author: tysonn
 
 ---
-# 待提交。
-
-<!---HONumber=Mooncake_0213_2017-->
+# To be submitted.

@@ -1,9 +1,3 @@
-<!-- not suitable for Mooncake -->
+The Virtual Machine Scale Sets API version is 2015-06-15 and is a preview release for evaluation and testing purposes. It is recommended that for the preview release, you register with the feature before using VM Scale Sets. You do this by running the following command:
 
-虚拟机规模集 API 版本为 2015-06-15，是用于评估和测试目的的预览版本。对于预览版而言，建议在使用 VM 规模集之前，注册相关功能。可以通过运行以下命令来执行此操作：
-
-```
-azure feature register Microsoft.Compute vmssApiPreviewV2Access
-```
-
-<!---HONumber=Mooncake_0411_2016-->
+    azure feature register Microsoft.Compute vmssApiPreviewV2Access

@@ -1,38 +1,39 @@
----
-writer: kathydav
-editor: tysonn
-manager: timlt
----
+When you no longer need a data disk that's attached to a virtual machine, you can easily detach it. Detaching a disk removes the disk from the virtual machine, but doesn't delete the disk from the Azure storage account.
 
-当你不再需要附加到虚拟机的数据磁盘时，你可以轻松地分离它。这将从虚拟机中删除磁盘，但不会从存储中删除它。
-
-若果你希望再次使用磁盘上的现有数据，可以将其重新附加到相同的虚拟机或另一个虚拟机。
+If you want to use the existing data on the disk again, you can reattach it to the same virtual machine, or another one.  
 
 > [!NOTE]
->除非你同时也删除虚拟机，否则不能分离操作系统磁盘。
+> To detach an operating system disk, you first need to delete the virtual machine.
+>
 
-## 找到磁盘
+## Find the disk
+If you don't know the name of the disk or want to verify it before you detach it, follow these steps.
 
-如果你不知道磁盘名称或要在分离磁盘之前验证磁盘名称，请按照以下步骤进行操作。
+1. Sign in to the [Azure portal preview](https://portal.azure.cn).
 
-1. 如果你尚未登录 [Azure 经典管理门户](http://manage.windowsazure.cn)，请先登录。
+2. Click **Virtual Machines**, and then select the appropriate VM.
 
-2. 依次单击“虚拟机”、虚拟机名称和“仪表板”。
+3. Click **Disks** along the left edge of the virtual machine dashboard, under **Settings**.
 
-3. 在“磁盘”下，表格将列出所有附加的磁盘的名称和类型。例如，此屏幕显示带有一个操作系统 (OS) 磁盘和一个数据磁盘的虚拟机：
+ The virtual machine dashboard lists the name and type of all attached disks. For example, this screen shows a virtual machine with one operating system (OS) disk and one data disk:
 
-    ![查找数据磁盘](./media/howto-detach-disk-windows-linux/FindDataDisks.png)
+    ![Find data disk](./media/howto-detach-disk-windows-linux/vmwithdisklist.png)
 
-## 分离磁盘
+## Detach the disk
+1. From the Azure portal preview, click **Virtual Machines**, and then click the name of the virtual machine that has the data disk you want to detach.
 
-1. 单击“虚拟机”，单击其数据磁盘需要进行分离的虚拟机的名称，然后单击“仪表板”。
+2. Click **Disks** along the left edge of the virtual machine dashboard, under **Settings**.
 
-2. 从命令栏中，单击“分离磁盘”。
+3. Click the disk you want to detach.
 
-3. 选择数据磁盘，然后单击复选标记以分离该磁盘。
+  ![Identify the disk to detach](./media/howto-detach-disk-windows-linux/disklist.png)
 
-    ![分离磁盘详细信息](./media/howto-detach-disk-windows-linux/DetachDiskDetails.png)
+4. From the command bar, click **Detach**.
 
-磁盘保留在存储中，但不再附加到虚拟机。
+  ![Locate the detach command](./media/howto-detach-disk-windows-linux/diskdetachcommand.png)
 
-<!---HONumber=Mooncake_1207_2015-->
+5. In the confirmation window, click **Yes** to detach the disk.
+
+  ![Confirm detaching the disk](./media/howto-detach-disk-windows-linux/confirmdetach.png)
+
+The disk remains in storage but is no longer attached to a virtual machine.

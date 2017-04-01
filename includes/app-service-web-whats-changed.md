@@ -1,4 +1,2 @@
-## 发生的更改
-* 有关从网站更改为 App Service 的指南，请参阅：[Azure App Service 及其对现有 Azure 服务的影响](../articles/app-service-web/app-service-changes-existing-services.md)
-
-<!---HONumber=Mooncake_0118_2016-->
+## What's changed
+* For a guide to the change from Websites to App Service see: [Azure App Service and Its Impact on Existing Azure Services](/azure/app-service-web/app-service-changes-existing-services/)

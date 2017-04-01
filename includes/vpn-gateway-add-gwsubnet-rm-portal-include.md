@@ -1,13 +1,9 @@
-1. 在门户中，导航到要为其创建虚拟网络网关的 Resource Manager 虚拟网络。
-2. 在 VNet 边栏选项卡的“设置”部分中，单击“子网”以展开“子网”边栏选项卡。
-3. 在“子网”边栏选项卡中，单击顶部的“+网关子网”。此操作将打开“添加子网”边栏选项卡。
+1. In the portal, navigate to the Resource Manager virtual network for which you want to create a virtual network gateway.
+2. In the **Settings** section of your VNet blade, click **Subnets** to expand the Subnets blade.
+3. On the **Subnets** blade, click **+Gateway subnet** at the top. This will open the **Add subnet** blade. 
 
-    ![添加网关子网](./media/vpn-gateway-add-gwsubnet-rm-portal-include/addgwsubnet.png "添加网关子网")  
+    ![Add the gateway subnet](./media/vpn-gateway-add-gwsubnet-rm-portal-include/addgwsubnet.png "Add the gateway subnet")
+4. The **Name** for your subnet will automatically be filled in with the value 'GatewaySubnet'. This value is required in order for Azure to recognize the subnet as the gateway subnet. Adjust the auto-filled **Address range** values to match your configuration requirements.
 
-4. 子网的“名称”将自动填充为值“GatewaySubnet”。Azure 需要此值才能识别作为网关子网的子网。调整自动填充的**地址范围**值，匹配配置要求。
-
-    ![添加子网](./media/vpn-gateway-add-gwsubnet-rm-portal-include/addsubnetgw.png "添加子网")  
-
-5. 单击边栏选项卡底部的“确定”以创建子网。
-
-<!---HONumber=Mooncake_0206_2017-->
+    ![Adding the subnet](./media/vpn-gateway-add-gwsubnet-rm-portal-include/addsubnetgw.png "Adding the subnet")
+5. Click **OK** at the bottom of the blade to create the subnet.

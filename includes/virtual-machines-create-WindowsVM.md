@@ -1,61 +1,55 @@
-1. 登录 [Azure 门户预览](https://portal.azure.cn)。
+1. Sign in to the [Azure portal preview](https://portal.azure.cn).
 
-2. 首先在左上角单击“新建”>“计算”>“Windows Server 2016 Datacenter”。
+2. Starting in the upper left, click **New > Compute > Windows Server 2016 Datacenter**.
 
-    ![导航到门户中的 Azure VM 映像](./media/virtual-machines-common-portal-create-fqdn/marketplace-new.png)  
+    ![Navigate to the Azure VM images in the portal](./media/virtual-machines-common-portal-create-fqdn/marketplace-new.png)
 
-3. 在 Windows Server 2016 Datacenter 中，选择“经典”部署模型。单击“创建”。
+3. On the Windows Server 2016 Datacenter, select the Classic deployment model. Click Create.
 
-    ![显示在门户中可用的 Azure VM 映像的屏幕截图](./media/virtual-machines-common-portal-create-fqdn/deployment-classic-model.png)  
+    ![Screenshot that shows the Azure VM images available in the portal](./media/virtual-machines-common-portal-create-fqdn/deployment-classic-model.png)
 
-## 1\.“基本信息”边栏选项卡
+## 1. Basics blade
 
-“基本信息”边栏选项卡会请求虚拟机的管理信息。
+The Basics blade requests administrative information for the virtual machine.
 
-1. 输入虚拟机的**名称**。在示例中，_HeroVM_ 是虚拟机的名称。名称必须为 1-15 个字符，不能包含特殊字符。
+1. Enter a **Name** for the virtual machine. In the example, _HeroVM_ is the name of the virtual machine. The name must be 1-15 characters long and it cannot contain special characters.
 
-2. 输入用于在 VM 上创建本地帐户的**用户名**和强**密码**。该本地帐户用于登录和管理 VM。在示例中，_azureuser_ 是用户名。
+2. Enter a **User name** and a strong **Password** that are used to create a local account on the VM. The local account is used to sign in to and manage the VM. In the example, _azureuser_ is the user name.
 
- 密码的长度必须为 8 到 123 个字符，并且必须符合以下四个复杂性要求中的三个要求：1 个小写字符、1 个大写字符、1 个数字和 1 个特殊字符。查看有关[用户名和密码要求](../articles/virtual-machines/virtual-machines-windows-faq.md)的更多信息。
+ The password must be 8-123 characters long and meet three out of the four following complexity requirements: one lower case character, one upper case character, one number, and one special character. See more about [username and password requirements](../articles/virtual-machines/virtual-machines-windows-faq.md).
 
-3. “订阅”是可选的。一个常用设置是“即用即付”。
+3. The **Subscription** is optional. One common setting is "Pay-As-You-Go".
 
-4. 选择现有的**资源组**，或键入新资源组的名称。在示例中，_HeroVMRG_ 是资源组的名称。
+4. Select an existing **Resource group** or type the name for a new one. In the example, _HeroVMRG_ is the name of the resource group.
 
-5. 选择要在其中运行 VM 的 Azure 数据中心**位置**。在示例中，位置为**中国东部**。
+5. Select an Azure datacenter **Location** where you want the VM to run. In the example, **China East** is the location.
 
-6. 完成后，单击“下一步”转到下一边栏选项卡。
+6. When you are done, click **Next** to continue to the next blade.
 
-    ![显示用于配置 Azure VM 的“基本信息”边栏选项卡上的设置的屏幕截图](./media/virtual-machines-common-portal-create-fqdn/basics-blade-classic.png)  
+    ![Screenshot that shows the settings on the Basics blade for configuring an Azure VM](./media/virtual-machines-common-portal-create-fqdn/basics-blade-classic.png)
 
-## 2\.“大小”边栏选项卡
+## 2. Size blade
 
-“大小”边栏选项卡标识了 VM 的配置详细信息，列出了各种选项，其中包括：OS、处理器数、磁盘存储类型、估计的每月使用费用。
+The Size blade identifies the configuration details of the VM, and lists various choices that include OS, number of processors, disk storage type, and estimated monthly usage costs.  
 
-选择 VM 大小，然后单击“选择”继续。在此示例中，_DS1_\__V2 Standard_ 是 VM 大小。
+Choose a VM size, and then click **Select** to continue. In this example, _DS1_\__V2 Standard_ is the VM size.
 
-  ![显示可以选择的 Azure VM 大小的“大小”边栏选项卡的屏幕截图](./media/virtual-machines-common-portal-create-fqdn/vm-size-classic.png)  
+  ![Screenshot of the Size blade that shows the Azure VM sizes that you can select](./media/virtual-machines-common-portal-create-fqdn/vm-size-classic.png)
 
-## 3\.“设置”边栏选项卡
+## 3. Settings blade
 
-“设置”边栏选项卡可请求存储和网络选项。可以接受默认设置。Azure 可根据需要创建适当的条目。
+The Settings blade requests storage and network options. You can accept the default settings. Azure creates appropriate entries where necessary.
 
-如果选择了支持它的虚拟机大小，则可以通过选择“磁盘类型”中的“高级(SSD)”来试用 Azure 高级存储。
+If you selected a virtual machine size that supports it, you can try Azure Premium Storage by selecting Premium (SSD) in Disk type.
 
-完成更改后，单击“确定”。
+When you're done making changes, click **OK**.
 
-## 4\.“摘要”边栏选项卡
+## 4. Summary blade
 
-“摘要”边栏选项卡列出了在以前的边栏选项卡中指定的设置。准备好制作映像时，请单击“确定”。
+The Summary blade lists the settings specified in the previous blades. Click **OK** when you're ready to make the image.
 
- ![“摘要”边栏选项卡报告，提供虚拟机的指定设置](./media/virtual-machines-common-portal-create-fqdn/summary-blade-classic.png)  
+ ![Summary blade report giving specified settings of the virtual machine](./media/virtual-machines-common-portal-create-fqdn/summary-blade-classic.png)
 
-<!--  deleted 2/16/2017 - RABixby
-  * A virtual machine's size affects the cost of using it, as well as configuration options such as how many data disks you can attach. For more information, see [Sizes for virtual machines](../articles/virtual-machines/virtual-machines-windows-sizes.md).
-  -->
+After the virtual machine is created, the portal lists the new virtual machine under **All resources**, and displays a tile of the virtual machine on the dashboard. The corresponding cloud service and storage account also are created and listed. Both the virtual machine and cloud service are started automatically and their status is listed as **Running**.
 
-创建虚拟机之后，门户将在“所有资源”下列出新虚拟机，并在仪表板上显示虚拟机的磁贴。此外，还会创建并列出相应的云服务和存储帐户。虚拟机和云服务都会自动启动，其状态将显示为“正在运行”。
-
- ![配置虚拟机的 VM 代理和终结点](./media/virtual-machines-common-portal-create-fqdn/portal-with-new-vm.png)  
-
-<!---HONumber=Mooncake_0313_2017-->
+ ![Configure VM Agent and the endpoints of the virtual machine](./media/virtual-machines-common-portal-create-fqdn/portal-with-new-vm.png)

@@ -1,23 +1,19 @@
-#### VPN 类型 - Resource Manager 部署模型
+#### VPN type - Resource Manager deployment model
+|  | **RouteBased** | **PolicyBased** |
+| --- | --- | --- |
+| **Site-to-Site** |Supported |Supported |
+| **VNet-to-VNet** |Supported |Not Supported |
+| **Multi-Site** |Supported |Not Supported |
+| **S2S and ExpressRoute coexist** |Supported |Not Supported |
+| **Point-to-Site** |Supported |Not Supported |
+| **Classic to Resource Manager** |Supported |Not Supported |
 
-| | **RouteBased** | **PolicyBased** |
-|-----------------------------------|-------------|------------------|
-| **站点到站点** | 支持 | 支持 |
-| **VNet 到 VNet** | 支持 | 不支持 |
-| **多站点** | 支持 | 不支持 |
-| **S2S 和 ExpressRoute 共存** | 支持 | 不支持 |
-| **点到站点** | 支持 | 不支持 |
-| **资源管理器经典** | 支持 | 不支持 |
-
-#### VPN 类型 - 经典部署模型
-
-| | **动态** | **静态** |
-|---------------------------------------------|--------------|--------------|
-| **站点到站点** | 支持 | 支持 |
-| **VNet 到 VNet** | 支持 | 不支持 |
-| **多站点** | 支持 | 不支持 |
-| **S2S 和 ExpressRoute 共存** | 支持 | 不支持 |
-| **点到站点** | 支持 | 不支持 |
-| **资源管理器经典** | 支持 | 不支持 |
-
-<!---HONumber=Mooncake_1010_2016-->
+#### VPN type - classic deployment model
+|  | **Dynamic** | **Static** |
+| --- | --- | --- |
+| **Site-to-Site** |Supported |Supported |
+| **VNet-to-VNet** |Supported |Not Supported |
+| **Multi-Site** |Supported |Not Supported |
+| **S2S and ExpressRoute coexist** |Supported |Not Supported |
+| **Point-to-Site** |Supported |Not Supported |
+| **Classic to Resource Manager** |Supported |Not Supported |

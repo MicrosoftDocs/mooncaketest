@@ -1,59 +1,57 @@
-<!-- need to be verified -->
-
-本文概述了在 Azure 上运行 Linux 虚拟机 (VM) 的一套经过验证的做法，这些做法注重可扩展性、可用性、可管理性和安全性。Azure 支持运行大量常用的 Linux 分发，包括 CentOS、Debian、Red Hat Enterprise、Ubuntu 和 FreeBSD。有关详细信息，请参阅 [Azure 和 Linux][azure-linux]。
+This article outlines a set of proven practices for running a Linux virtual machine (VM) on Azure, paying attention to scalability, availability, manageability, and security. Azure supports running various popular Linux distributions, including CentOS, Debian, Red Hat Enterprise, Ubuntu, and FreeBSD. For more information, see [Azure and Linux][azure-linux].
 
 > [!NOTE]
-Azure 具有两个不同的部署模型：[Resource Manager][resource-manager-overview] 和经典。本文使用 Resource Manager，Azure 建议将它用于新部署。
+> Azure has two different deployment models: [Resource Manager][resource-manager-overview] and classic. This article uses Resource Manager, which Azure recommends for new deployments.
 > 
 > 
 
-我们不建议为任务关键工作负荷使用单个 VM，因为它会导致单点故障。若要获得更高的可用性，请在[可用性集][availability-set]中部署多个 VM。
+We don't recommend using a single VM for mission critical workloads, because it creates a single point of failure. For higher availability, deploy multiple VMs in an [availability set][availability-set].
 
-## 体系结构关系图
-在 Azure 中预配 VM 涉及更多移动部件，而不只是 VM 本身。需要考虑的因素有计算、网络和存储。
+## Architecture diagram
+Provisioning a VM in Azure involves more moving parts than just the VM itself. There are compute, networking, and storage elements that you need to consider.
 
-> 可从 [Microsoft 下载中心][visio-download]下载包含此体系结构图的 Visio 文档。此图位于“计算 - 单一 VM”页上。
+> A Visio document that includes this architecture diagram is available for download from the [Microsoft download center][visio-download]. This diagram is on the "Compute - single VM" page.
 > 
 > 
 
-![[0]][0]  
+![[0]][0]
 
-* **资源组。** [*资源组*][resource-manager-overview]是一个容器，包含相关资源。创建资源组以保存此 VM 的资源。
-* **VM**。可以基于已发布的映像列表或上载到 Azure Blob 存储的虚拟硬盘 (VHD) 文件预配 VM。
-* **OS 磁盘。** OS 磁盘是存储在 [Azure 存储空间][azure-storage]中的一个 VHD。这意味着它一直存在，即使主机出现故障，也是如此。OS 磁盘是 `/dev/sda1`。
-* **临时磁盘。** 使用临时磁盘创建 VM。此磁盘存储在主机的物理驱动器上。它*不*保存在 Azure 存储空间中，并且可能会在重新启动和其他 VM 生命周期事件过程中被删除。只使用此磁盘存储临时数据，如页面文件或交换文件。临时磁盘是 `/dev/sdb1`，并在 `/mnt/resource` 或 `/mnt` 中装入。
-* **数据磁盘。** [数据磁盘][data-disk]是用于应用程序数据的持久性 VHD。数据磁盘像 OS 磁盘一样，存储在 Azure 存储空间中。
-* **虚拟网络 (VNet) 和子网。** Azure 中的每个 VM 都部署在 VNet 中，后者进一步划分为多个子网。
-* **公共 IP 地址。** 公共 IP 地址需要与 VM（例如，通过 SSH）进行通信。
-* **网络接口 (NIC)**。NIC 使 VM 能够与虚拟网络进行通信。
-* **网络安全组 (NSG)**。[NSG][nsg] 用于允许/拒绝到子网的网络流量。可以将 NSG 与单个 NIC 或与子网相关联。如果将 NSG 与一个子网相关联，则 NSG 规则适用于该子网中的所有 VM。
-* **诊断。** 诊断日志记录对于 VM 管理和故障排除至关重要。
+* **Resource group.** A [*resource group*][resource-manager-overview] is a container that holds related resources. Create a resource group to hold the resources for this VM.
+* **VM**. You can provision a VM from a list of published images or from a virtual hard disk (VHD) file that you upload to Azure Blob storage.
+* **OS disk.** The OS disk is a VHD stored in [Azure Storage][azure-storage]. That means it persists even if the host machine goes down. The OS disk is `/dev/sda1`.
+* **Temporary disk.** The VM is created with a temporary disk. This disk is stored on a physical drive on the host machine. It is *not* saved in Azure Storage, and might be deleted during reboots and other VM lifecycle events. Use this disk only for temporary data, such as page or swap files. The temporary disk is `/dev/sdb1` and is mounted at `/mnt/resource` or `/mnt`.
+* **Data disks.** A [data disk][data-disk] is a persistent VHD used for application data. Data disks are stored in Azure Storage, like the OS disk.
+* **Virtual network (VNet) and subnet.** Every VM in Azure is deployed into a VNet that is further divided into subnets.
+* **Public IP address.** A public IP address is needed to communicate with the VM&mdash;for example over SSH.
+* **Network interface (NIC)**. The NIC enables the VM to communicate with the virtual network.
+* **Network security group (NSG)**. The [NSG][nsg] is used to allow/deny network traffic to the subnet. You can associate an NSG with an individual NIC or with a subnet. If you associate it with a subnet, the NSG rules apply to all VMs in that subnet.
+* **Diagnostics.** Diagnostic logging is crucial for managing and troubleshooting the VM.
 
-## 建议
+## Recommendations
 
-以下建议适用于大多数情况。请遵循这些建议，除非有更优先的特定要求。
+The following recommendations apply for most scenarios. Follow these recommendations unless you have a specific requirement that overrides them. 
 
-### VM 建议
+### VM recommendations
 
-Azure 可提供多种虚拟机大小，但建议使用 DS 和 GS 系列，因为相关计算机大小支持[高级存储][premium-storage]。请选择其中一个计算机大小，除非存在专用工作负荷（如高性能计算）。有关详细信息，请参阅 [virtual machine sizes][virtual-machine-sizes]（虚拟机大小）。
+Azure offers many different virtual machine sizes, but we recommend the DS- and GS-series because these machine sizes support [Premium Storage][premium-storage]. Select one of these machine sizes unless you have a specialized workload such as high-performance computing. For details, see [virtual machine sizes][virtual-machine-sizes].
 
-如果要将现有工作负荷移到 Azure，最开始使用与本地服务器最接近的 VM 大小。然后测量与 CPU、内存和每秒磁盘输入/输出操作次数 (IOPS) 有关的实际工作负荷的性能，并根据需要调整大小。如果 VM 需要多个 NIC，请注意 NIC 的最大数量是 [VM 大小][vm-size-tables]的函数。
+If you are moving an existing workload to Azure, start with the VM size that's the closest match to your on-premises servers. Then measure the performance of your actual workload with respect to CPU, memory, and disk input/output operations per second (IOPS), and adjust the size if needed. If you require multiple NICs for your VM, be aware that the maximum number of NICs is a function of the [VM size][vm-size-tables].
 
-预配 VM 和其他资源时，必须指定区域。通常应选择离内部用户或客户最近的区域。但是，并非所有 VM 大小都可在所有区域中使用。有关详细信息，请参阅 [Services by region][services-by-region]（按区域列出的服务）。若要列出给定区域中的可用 VM 大小，请运行以下 Azure 命令行接口 (CLI) 命令：
+When you provision the VM and other resources, you must specify a region. Generally, choose a region closest to your internal users or customers. However, not all VM sizes may be available in all region. For details, see [Services by region][services-by-region]. To list the VM sizes available in a given region, run the following Azure command-line interface (CLI) command:
 
 ```
 azure vm sizes --location <location>
 ```
 
-若要了解如何选择发布的 VM 映像，请参阅[利用 Azure CLI 选择 Linux VM 映像][select-vm-image]。
+For information about choosing a published VM image, see [Select Linux VM images with the Azure CLI][select-vm-image].
 
-### 磁盘和存储建议
+### Disk and storage recommendations
 
-为获得最佳磁盘 I/O 性能，建议使用[高级存储][premium-storage]，它在固态硬盘 (SSD) 上存储数据。成本取决于预配磁盘的大小。IOPS 和吞吐量（即数据传输速率）也取决于磁盘大小，因此在预配磁盘时，请全面考虑三个因素（容量、IOPS 和吞吐量）。
+For best disk I/O performance, we recommend [Premium Storage][premium-storage], which stores data on solid-state drives (SSDs). Cost is based on the size of the provisioned disk. IOPS and throughput (that is, data transfer rate) also depend on disk size, so when you provision a disk, consider all three factors (capacity, IOPS, and throughput). 
 
-为每个 VM 创建单独的 Azure 存储帐户，用于存放虚拟硬盘 (VHD)，从而避免存储帐户达到 IOPS 限制。
+Create separate Azure storage accounts for each VM to hold the virtual hard disks (VHDs) in order to avoid hitting the IOPS limits for storage accounts. 
 
-添加一个或多个数据磁盘。刚创建的 VHD 尚未格式化，请登录 VM 格式化该磁盘。在 Linux shell 中，数据磁盘显示为 `/dev/sdc`、`/dev/sdd` 等。你可以运行 `lsblk` 以列出块设备，包括磁盘。若要使用数据磁盘，请创建一个分区和文件系统，然后装载磁盘。例如：
+Add one or more data disks. When you create a VHD, it is unformatted. Log in to the VM to format the disk. In the Linux shell, data disks are displayed as `/dev/sdc`, `/dev/sdd`, and so on. You can run `lsblk` to list the block devices, including the disks. To use a data disk, create a partition and file system, and mount the disk. For example:
 
 ```bat
 # Create a partition.
@@ -67,115 +65,116 @@ sudo mkdir /data1
 sudo mount /dev/sdc1 /data1
 ```
 
-如果你有大量数据磁盘，请注意存储帐户的总 I/O 限制。有关详细信息，请参阅 [virtual machine disk limits][vm-disk-limits]（虚拟机磁盘限制）。
+If you have a large number of data disks, be aware of the total I/O limits of the storage account. For more information, see [virtual machine disk limits][vm-disk-limits].
 
-在添加数据磁盘时，将为磁盘分配逻辑单元号 (LUN) ID。或者，你可以指定 LUN ID - 例如，如果要更换磁盘并保留相同的 LUN ID，或者应用程序要查找特定 LUN ID。但请记住，每个磁盘的 LUN ID 必须唯一。
+When you add a data disk, a logical unit number (LUN) ID is assigned to the disk. Optionally, you can specify the LUN ID &mdash; for example, if you're replacing a disk and want to retain the same LUN ID, or you have an application that looks for a specific LUN ID. However, remember that LUN IDs must be unique for each disk.
 
-你可能想要更改 I/O 计划程序，以便针对 SSD 的性能进行优化，因为使用高级存储帐户的 VM 的磁盘是 SSD。常见的建议是对 SSD 使用 NOOP 计划程序，但应使用 [iostat] 等工具来监视特定工作负荷的磁盘 I/O 性能。
+You may want to change the I/O scheduler to optimize for performance on SSDs, because the disks for VMs with premium storage accounts are SSDs. A common recommendation is to use the NOOP scheduler for SSDs, but you should use a tool such as [iostat] to monitor disk I/O performance for your particular workload.
 
-为获得最佳性能，请创建单独的存储帐户来存储诊断日志。标准的本地冗余存储 (LRS) 帐户足以存储诊断日志。
+For best performance, create a separate storage account to hold diagnostic logs. A standard locally redundant storage (LRS) account is sufficient for diagnostic logs.
 
-### 网络建议
+### Network recommendations
 
-公共 IP 地址可以是动态的或静态的。默认是动态的。
+The public IP address can be dynamic or static. The default is dynamic.
 
-* 如果需要不会更改的固定 IP 地址（例如，如果需要在 DNS 中创建 A 记录，或者需要将 IP 地址添加到安全列表），请保留[静态 IP 地址][static-ip]。
-* 你还可以为 IP 地址创建完全限定域名 (FQDN)。然后，可以在 DNS 中注册指向 FQDN 的 [CNAME 记录][cname-record]。有关详细信息，请参阅[在 Azure 门户预览中创建完全限定域名][fqdn]。
+* Reserve a [static IP address][static-ip] if you need a fixed IP address that won't change &mdash; for example, if you need to create an A record in DNS, or need the IP address to be added to a safe list.
+* You can also create a fully qualified domain name (FQDN) for the IP address. You can then register a [CNAME record][cname-record] in DNS that points to the FQDN. For more information, see [create a fully qualified domain name in the Azure portal preview][fqdn].
 
-所有 NSG 都包含一组[默认规则][nsg-default-rules]，其中包括阻止所有入站 Internet 流量的规则。无法删除默认规则，但其他规则可以覆盖它们。若要启用 Internet 流量，请创建允许特定端口（例如，将端口 80 用于 HTTP）的入站流量的规则。
+All NSGs contain a set of [default rules][nsg-default-rules], including a rule that blocks all inbound Internet traffic. The default rules cannot be deleted, but other rules can override them. To enable Internet traffic, create rules that allow inbound traffic to specific ports &mdash; for example, port 80 for HTTP.  
 
-若要启用 SSH，请向 NSG 添加允许 TCP 端口 22 的入站流量的规则。
+To enable SSH, add a rule to the NSG that allows inbound traffic to TCP port 22.
 
-## 可伸缩性注意事项
+## Scalability considerations
 
-若要扩大或缩小，请参阅[更改 VM 大小][vm-resize]。
+To scale up or down, [change the VM size][vm-resize]. 
 
-若要水平扩大，请将两个或更多 VM 放入负载均衡器后面的可用性集中。
+To scale out horizontally, put two or more VMs into an availability set behind a load balancer.
 
-## 可用性注意事项
+## Availability considerations
 
-若要获得更高的可用性，请在可用性集中部署多个 VM。这还可提供更高的[服务级别协议][vm-sla] (SLA)。
+For higher availabiility, deploy multiple VMs in an availability set. This also provides a higher [service level agreement][vm-sla]  (SLA). 
 
-你的 VM 可能会受到[计划内维护][planned-maintenance]或[计划外维护][manage-vm-availability]的影响。你可以使用 [VM 重新启动日志][reboot-logs]来确定 VM 重新启动是否是由计划内维护导致的。
+Your VM may be affected by [planned maintenance][planned-maintenance] or [unplanned maintenance][manage-vm-availability]. You can use [VM reboot logs][reboot-logs] to determine whether a VM reboot was caused by planned maintenance.
 
-VHD 存储在 [Azure 存储空间][azure-storage]中，Azure 存储空间将进行复制以实现持久性和可用性。
+VHDs are stored in [Azure storage][azure-storage], and Azure storage is replicated for durability and availability.
 
-若要防止在正常操作期间意外数据丢失（例如，由于用户错误），则还应使用 [Blob 快照][blob-snapshot]或其他工具实现时间点备份。
+To protect against accidental data loss during normal operations (for example, because of user error), you should also implement point-in-time backups, using [blob snapshots][blob-snapshot] or another tool.
 
-## 可管理性注意事项
+## Manageability considerations
 
-**资源组。** 将共享相同生命周期的紧密耦合资源放入同一[资源组][resource-manager-overview]中。资源组可让你以组的形式部署和监视资源，并按资源组汇总计费成本。你还可以删除作为集的资源，这对于测试部署非常有用。为资源指定有意义的名称。这样，可更轻松地找到特定资源并了解其角色。
+**Resource groups.** Put tightly coupled resources that share the same life cycle into the same [resource group][resource-manager-overview]. Resource groups allow you to deploy and monitor resources as a group, and roll up billing costs by resource group. You can also delete resources as a set, which is very useful for test deployments. Give resources meaningful names. That makes it easier to locate a specific resource and understand its role.
 
-**SSH**在创建 Linux VM 之前，生成 2048 位 RSA 公共/专用密钥对。创建 VM 时，使用公钥文件。有关详细信息，请参阅 [How to Use SSH with Linux and Mac on Azure][ssh-linux]（如何在 Azure 中将 SSH 与 Linux 和 Mac 配合使用）。
+**SSH**. Before you create a Linux VM, generate a 2048-bit RSA public-private key pair. Use the public key file when you create the VM. For more information, see [How to Use SSH with Linux and Mac on Azure][ssh-linux].
 
-**VM 诊断。** 启用监视和诊断，包括基本运行状况指标、诊断基础结构日志和[启动诊断][boot-diagnostics]。如果你的 VM 陷入不可启动状态，启动诊断有助于诊断启动故障。有关详细信息，请参阅 [Enable monitoring and diagnostics][enable-monitoring]（启用监视和诊断）。
+**VM diagnostics.** Enable monitoring and diagnostics, including basic health metrics, diagnostics infrastructure logs, and [boot diagnostics][boot-diagnostics]. Boot diagnostics can help you diagnose boot failure if your VM gets into a nonbootable state. For more information, see [Enable monitoring and diagnostics][enable-monitoring].  
 
-以下 CLI 命令可启用诊断：
+The following CLI command enables diagnostics:
 
 ```
 azure vm enable-diag <resource-group> <vm-name>
 ```
 
-**停止 VM。** Azure 对“已停止”和“已解除分配”状态进行了区分。VM 状态为“已停止”时，将计费，但 VM 为“已解除分配”状态时，则不计费。
+**Stopping a VM.** Azure makes a distinction between "stopped" and "deallocated" states. You are charged when the VM status is stopped, but not when the VM is deallocated.
 
-使用以下 CLI 命令可解除分配 VM：
+Use the following CLI command to deallocate a VM:
 
 ```
 azure vm deallocate <resource-group> <vm-name>
 ```
 
-在 Azure 门户预览中，“停止”按钮将解除分配 VM。但是，如果在已登录时通过 OS 关闭，VM 将停止，但*不*会解除分配，因此仍将向你收费。
+In the Azure portal preview, the **Stop** button deallocates the VM. However, if you shut down through the OS while logged in, the VM is stopped but *not* deallocated, so you will still be charged.
 
-**删除 VM。** 如果你删除 VM，则不会删除 VHD。这意味着你可以安全地删除 VM，而不会丢失数据。但是，仍将向你收取存储费用。若要删除 VHD，请从 [Blob 存储][blob-storage]中删除相应文件。
+**Deleting a VM.** If you delete a VM, the VHDs are not deleted. That means you can safely delete the VM without losing data. However, you will still be charged for storage. To delete the VHD, delete the file from [Blob storage][blob-storage].
 
-若要防止意外删除，请使用[资源锁][resource-lock]锁定整个资源组或锁定单个资源（如 VM）。
+To prevent accidental deletion, use a [resource lock][resource-lock] to lock the entire resource group or lock individual resources, such as the VM. 
 
-## 安全注意事项
+## Security considerations
 
-使用 [OSPatching] VM 扩展自动执行 OS 更新。预配 VM 时，安装此扩展。你可以指定安装修补程序的频率以及修补后是否要重新启动。
+Automate OS updates by using the [OSPatching] VM extension. Install this extension when you provision the VM. You can specify how often to install patches and whether to reboot after patching.
 
-使用[基于角色的访问控制][rbac] (RBAC) 来控制对你部署的 Azure 资源的访问权限。RBAC 允许你将授权角色分配给开发运营团队的成员。例如，“读者”角色可以查看 Azure 资源，但不能创建、管理或删除这些资源。某些角色特定于特定的 Azure 资源类型。例如，“虚拟机参与者”角色可以执行重启或解除分配 VM、重置管理员密码、创建 VM 等操作。可能对此参考体系结构有用的其他[内置 RBAC 角色][rbac-roles]包括 [DevTest Lab 用户][rbac-devtest]和[网络参与者][rbac-network]。
+Use [role-based access control][rbac] (RBAC) to control access to the Azure resources that you deploy. RBAC lets you assign authorization roles to members of your DevOps team. For example, the Reader role can view Azure resources but not create, manage, or delete them. Some roles are specific to particular Azure resource types. For example, the Virtual Machine Contributor role can restart or deallocate a VM, reset the administrator password, create a VM, and so forth. Other [built-in RBAC roles][rbac-roles] that might be useful for this reference architecture include [DevTest Labs User][rbac-devtest] and [Network Contributor][rbac-network]. 
 
-可将用户分配给多个角色，并且可以创建自定义角色以实现更细化的权限。
+A user can be assigned to multiple roles, and you can create custom roles for even more fine-grained permissions.
 
 > [!NOTE]
-RBAC 不限制已登录到 VM 的用户可以执行的操作。这些权限由来宾 OS 上的帐户类型决定。
+> RBAC does not limit the actions that a user logged into a VM can perform. Those permissions are determined by the account type on the guest OS.   
 > 
 > 
 
-使用[审核日志][audit-logs]可查看预配操作和其他 VM 事件。
+Use [audit logs][audit-logs] to see provisioning actions and other VM events.
 
-## 解决方案部署
+## Solution deployment
 
-[GitHub][github-folder] 中提供了此参考体系结构的部署。它包括 VNet、NSG 和单个 VM。若要部署体系结构，请遵循以下步骤：
+A deployment for this reference architecture is available on [GitHub][github-folder]. It includes a VNet, NSG, and a single VM. To deploy the architecture, follow these steps: 
 
-1. 右键单击下面的按钮，然后选择“在新选项卡中打开链接”或“在新窗口中打开链接”。[![部署到 Azure](./media/guidance-compute-single-vm-linux/deploybutton.png)](https://portal.azure.cn/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fmspnp%2Freference-architectures%2Fmaster%2Fguidance-compute-single-vm%2Fazuredeploy.json)
-2. 链接在 Azure 门户预览中打开后，必须输入某些设置的值：
+1. Right click the button below and select either "Open link in new tab" or "Open link in new window."
+    [![Deploy to Azure](./media/guidance-compute-single-vm-linux/deploybutton.png)](https://portal.azure.cn/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fmspnp%2Freference-architectures%2Fmaster%2Fguidance-compute-single-vm%2Fazuredeploy.json)
+2. Once the link has opened in the Azure portal preview, you must enter values for some of the settings: 
 
-    * 参数文件中已定义了“资源组”名称，因此选择“新建”并在文本框中输入 `ra-single-vm-rg`。
-    * 从“位置”下拉框中选择区域。
-    * 请勿编辑“模板根 URI”或“参数根 URI”文本框。
-    * 在“OS 类型”下拉框中，选择“Linux”。
-    * 查看条款和条件，然后单击“我同意上述条款和条件”复选框。
-    * 单击“购买”按钮。
-3. 等待部署完成。
-4. 参数文件包括硬编码管理员用户名和密码，强烈建议你立即更改它们。在 Azure 门户预览中，单击名为 `ra-single-vm0 ` 的 VM。然后，单击“支持 + 疑难解答”部分中的“重置密码”。在“模式”下拉框中选择“重置密码”，然后选择新的“用户名”和“密码”。单击“更新”按钮来持久保存新的用户名和密码。
+    * The **Resource group** name is already defined in the parameter file, so select **Create New** and enter `ra-single-vm-rg` in the text box.
+    * Select the region from the **Location** drop down box.
+    * Do not edit the **Template Root Uri** or the **Parameter Root Uri** text boxes.
+    * Select **linux** in the **Os Type** drop down box.
+    * Review the terms and conditions, then click the **I agree to the terms and conditions stated above** checkbox.
+    * Click on the **Purchase** button.
+3. Wait for the deployment to complete.
+4. The parameter files include a hard-coded administrator user name and password, and it is strongly recommended that you immediately change both. Click on the VM named `ra-single-vm0 `in the Azure portal preview. Then, click on **Reset password** in the **Support + troubleshooting** section. Select **Reset password** in the **Mode** dropdown box, then select a new **User name** and **Password**. Click the **Update** button to persist the new user name and password.
 
-## 后续步骤
-若要获得更高的可用性，请为负载均衡器部署两个或以上 VM。
+## Next steps
+For higher availability, deploy two or more VMs behind a load balancer.
 
 <!-- links -->
 
 [audit-logs]: https://azure.microsoft.com/blog/analyze-azure-audit-logs-in-powerbi-more/
 [availability-set]: ../articles/virtual-machines/virtual-machines-windows-create-availability-set.md
-[azure-cli]: ../articles/virtual-machines-command-line-tools.md
+[azure-cli]: https://docs.microsoft.com/cli/azure/get-started-with-az-cli2
 [azure-linux]: ../articles/virtual-machines/virtual-machines-linux-azure-overview.md
 [azure-storage]: ../articles/storage/storage-introduction.md
 [blob-snapshot]: ../articles/storage/storage-blob-snapshots.md
 [blob-storage]: ../articles/storage/storage-introduction.md
 [boot-diagnostics]: https://azure.microsoft.com/blog/boot-diagnostics-for-virtual-machines-v2/
 [cname-record]: https://en.wikipedia.org/wiki/CNAME_record
-[data-disk]: ../articles/virtual-machines/virtual-machines-linux-about-disks-vhds.md
+[data-disk]: ../articles/storage/storage-about-disks-and-vhds-linux.md
 [enable-monitoring]: ../articles/monitoring-and-diagnostics/insights-how-to-use-diagnostics.md
 [fqdn]: ../articles/virtual-machines/virtual-machines-linux-portal-create-fqdn.md
 [github-folder]: https://github.com/mspnp/reference-architectures/tree/master/guidance-compute-single-vm/
@@ -193,7 +192,7 @@ RBAC 不限制已登录到 VM 的用户可以执行的操作。这些权限由�
 [reboot-logs]: https://azure.microsoft.com/blog/viewing-vm-reboot-logs/
 [Resize-VHD]: https://technet.microsoft.com/zh-cn/library/hh848535.aspx
 [Resize virtual machines]: https://azure.microsoft.com/blog/resize-virtual-machines/
-[resource-lock]: ../articles/azure-resource-manager/resource-group-lock-resources.md
+[resource-lock]: ../articles/resource-group-lock-resources.md
 [resource-manager-overview]: ../articles/azure-resource-manager/resource-group-overview.md
 [select-vm-image]: ../articles/virtual-machines/virtual-machines-linux-cli-ps-findimage.md
 [services-by-region]: https://azure.microsoft.com/regions/#services
@@ -210,6 +209,4 @@ RBAC 不限制已登录到 VM 的用户可以执行的操作。这些权限由�
 [readme]: https://github.com/mspnp/reference-architectures/blob/master/guidance-compute-single-vm
 [components]: #Solution-components
 [blocks]: https://github.com/mspnp/template-building-blocks
-[0]: ./media/guidance-blueprints/compute-single-vm.png "Azure 中的单一 Linux VM 体系结构"
-
-<!---HONumber=Mooncake_0213_2017-->
+[0]: ./media/guidance-blueprints/compute-single-vm.png "Single Linux VM architecture in Azure"

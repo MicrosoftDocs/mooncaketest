@@ -1,7 +1,7 @@
-若要在部署过程中标记资源，请将 `tags` 元素添加到要部署的资源。提供标记名称和值。
+To tag a resource during deployment, add the `tags` element to the resource you are deploying. Provide the tag name and value.
 
-### 将文本值应用于标记名称
-以下示例显示了具有设置为文本值的两个标记（`Dept` 和 `Environment`）的存储帐户：
+### Apply literal value to tag name
+The following example shows a storage account with two tags (`Dept` and `Environment`) that are set to literal values:
 
 ```json
 {
@@ -27,8 +27,8 @@
 }
 ```
 
-### 将对象应用于标记元素
-可以定义一个存储多个标记的对象参数，并将该对象应用于标记元素。对象中的每个属性将成为资源的单独标记。以下示例有一个名为 `tagValues` 的参数，将应用于标记元素。
+### Apply object to tag element
+You can define an object parameter that stores several tags, and apply that object to the tag element. Each property in the object becomes a separate tag for the resource. The following example has a parameter named `tagValues` that is applied to the tag element.
 
 ```json
 {
@@ -60,9 +60,9 @@
 }
 ```
 
-### 将 JSON 字符串应用于标记名称
+### Apply JSON string to tag name
 
-若要将多个值存储在单个标记中，请应用表示这些值的 JSON 字符串。整个 JSON 字符串将存储为一个标记，该标记不能超过 256 个字符。以下示例有一个名为 `CostCenter` 的标记，其中包含 JSON 字符串中的多个值：
+To store many values in a single tag, apply a JSON string that represents the values. The entire JSON string is stored as one tag that cannot exceed 256 characters. The following example has a single tag named `CostCenter` that contains several values from a JSON string:  
 
 ```json
 {
@@ -86,6 +86,3 @@
     ]
 }
 ```
-
-<!---HONumber=Mooncake_0227_2017-->
-<!--Update_Description: new article about how to utilize the tag during the deployment -->

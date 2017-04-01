@@ -1,37 +1,33 @@
-## 准备 AKV 集成
-若要使用 Azure 密钥保管库集成来配置 SQL Server VM，有以下几个先决条件：
+## Prepare for AKV Integration
+To use Azure Key Vault Integration to configure your SQL Server VM, there are several prerequisites: 
 
-1. [安装 Azure Powershell](#install-azure-powershell)
-2. [创建 Azure Active Directory](#create-an-azure-active-directory)
-3. [创建密钥保管库](#create-a-key-vault)
+1. [Install Azure Powershell](#install-azure-powershell)
+2. [Create an Azure Active Directory](#create-an-azure-active-directory)
+3. [Create a key vault](#create-a-key-vault)
 
-以下各节描述了这些先决条件，以及稍后运行 PowerShell cmdlet 需要收集的信息。
+The following sections describe these prerequisites and the information you need to collect to later run the PowerShell cmdlets.
 
-### <a name="install-azure-powershell"></a> 安装 Azure PowerShell
-请确保已安装最新的 Azure PowerShell SDK。有关详细信息，请参阅[如何安装和配置 Azure PowerShell](https://docs.microsoft.com/powershell/azureps-cmdlets-docs)。
+### <a name="install-azure-powershell"></a> Install Azure PowerShell
+Make sure you have installed the latest Azure PowerShell SDK. For more information, see [How to install and configure Azure PowerShell](https://docs.microsoft.com/powershell/azureps-cmdlets-docs).
 
-### <a name="create-an-azure-active-directory"></a> 创建 Azure Active Directory
-首先，你的订阅中需要具有 [Azure Active Directory](https://www.azure.cn/pricing/1rmb-trial/) (AAD)。其优点之一是允许你为特定用户和应用程序授予对密钥保管库的权限。
+### <a name="create-an-azure-active-directory"></a> Create an Azure Active Directory
+First, you need to have an Azure Active Directory (AAD) in your subscription. Among many benefits, this allows you to grant permission to your key vault for certain users and applications.
 
-然后，将应用程序注册到 Azure AAD。这将为你提供一个服务主体帐户，使你有权访问 VM 所需的密钥保管库。在 Azure 密钥保管库文章中，你可以在[将应用程序注册到 Azure Active Directory](../articles/key-vault/key-vault-get-started.md#register) 部分中找到这些步骤，或者可以在[此博客文章](http://blogs.technet.com/b/kv/archive/2015/01/09/azure-key-vault-step-by-step.aspx)的**获取应用程序的标识**部分中看到这些步骤以及屏幕截图。请注意，在完成这些步骤之前，你需要在注册期间收集以下信息，之后在 SQL VM 上启用 Azure 密钥保管库集成时需要这些信息。
+Next, register an application with AAD. This will give you a Service Principal account that has access to your key vault which your VM will need. In the Azure Key Vault article, you can find these steps in the [Register an application with Azure Active Directory](../articles/key-vault/key-vault-get-started.md#register) section, or you can see the steps with screen shots in the **Get an identity for the application section** of [this blog post](http://blogs.technet.com/b/kv/archive/2015/01/09/azure-key-vault-step-by-step.aspx). Before completing these steps, note that you need to collect the following information during this registration that is needed later when you enable Azure Key Vault Integration on your SQL VM.
 
-- 添加应用程序后，在“配置”选项卡上找到**客户端 ID**。 
-    ![Azure Active Directory 客户端 ID](./media/virtual-machines-sql-server-akv-prepare/aad-client-id.png)
+* After the application is added, find the **CLIENT ID**  on the **CONFIGURE** tab. 
+    ![Azure Active Directory Client ID](./media/virtual-machines-sql-server-akv-prepare/aad-client-id.png)
 
-    稍后会将该客户端 ID 分配给 PowerShell 脚本中的 **$spName**（服务主体名称）参数，以启用 Azure 密钥保管库集成。 
-- 此外，在执行这些步骤期间，请在创建密钥时复制密钥的密码，如下面的屏幕截图中所示。稍后会将此密钥密码分配给 PowerShell 脚本中的 **$spSecret**（服务主体密码）参数。  
-    ![Azure Active Directory 密码](./media/virtual-machines-sql-server-akv-prepare/aad-sp-secret.png)
-- 必须为此新的客户端 ID 授予以下访问权限：**加密**、**解密**、**密钥换行**、**取消密钥换行**、**签名**和**验证**。可通过 [Set-AzureRmKeyVaultAccessPolicy](https://msdn.microsoft.com/zh-cn/library/azure/mt603625.aspx) cmdlet 实现此操作。有关详细信息，请参阅[授权应用程序使用密钥或密码](../articles/key-vault/key-vault-get-started.md#authorize)。
+    The client ID is assigned later to the **$spName** (Service Principal name) parameter in the PowerShell script to enable Azure Key Vault Integration. 
+* Also, during these steps when you create your key, copy the secret for your key as is shown in the following screenshot. This key secret is assigned later to the **$spSecret** (Service Principal secret) parameter in the PowerShell script.  
+    ![Azure Active Directory Secret](./media/virtual-machines-sql-server-akv-prepare/aad-sp-secret.png)
+* You must authorize this new client ID to have the following access permissions: **encrypt**, **decrypt**, **wrapKey**, **unwrapKey**, **sign**, and **verify**. This is done with the [Set-AzureRmKeyVaultAccessPolicy](https://msdn.microsoft.com/zh-cn/library/azure/mt603625.aspx) cmdlet. For more information see [Authorize the application to use the key or secret](../articles/key-vault/key-vault-get-started.md#authorize).
 
-### <a name="create-a-key-vault"></a> 创建密钥保管库
-若要使用 Azure 密钥保管库来存储将用于在 VM 中加密的密钥，你将需要对密钥保管库的访问权限。如果你尚未设置密钥保管库，请按照[开始使用 Azure 密钥保管库](../articles/key-vault/key-vault-get-started.md)主题中的步骤创建一个。请注意，在完成这些步骤之前，你需要在设置期间收集一些信息，之后在 SQL VM 上启用 Azure 密钥保管库集成时需要这些信息。
+### <a name="create-a-key-vault"></a> Create a key vault
+In order to use Azure Key Vault to store the keys you will use for encryption in your VM, you need access to a key vault. If you have not already set up your key vault, create one by following the steps in the [Getting Started with Azure Key Vault](../articles/key-vault/key-vault-get-started.md) topic. Before completing these steps, note that there is some information you need to collect during this set up that is needed later when you enable Azure Key Vault Integration on your SQL VM.
 
-进行创建密钥保管库的步骤时，请注意返回的 **vaultUri** 属性，它是密钥保管库 URL。下面显示了该步骤中提供的示例，其中的密钥保管库名称是 ContosoKeyVault，因此密钥保管库 URL 将为 https://contosokeyvault.vault.chinacloudapi.cn/。
+When you get to the Create a key vault step, note the returned **vaultUri** property, which is the key vault URL. In the example provided in that step, shown below, the key vault name is ContosoKeyVault, therefore the key vault URL would be https://contosokeyvault.vault.chinacloudapi.cn/.
 
-```
-New-AzureRmKeyVault -VaultName 'ContosoKeyVault' -ResourceGroupName 'ContosoResourceGroup' -Location 'China East'
-```
+    New-AzureRmKeyVault -VaultName 'ContosoKeyVault' -ResourceGroupName 'ContosoResourceGroup' -Location 'China East'
 
-稍后会将该密钥保管库 URL 分配给 PowerShell 脚本中的 **$akvURL** 参数，以启用 Azure 密钥保管库集成。
-
-<!---HONumber=Mooncake_0215_2016-->
+The key vault URL is assigned later to the **$akvURL** parameter in the PowerShell script to enable Azure Key Vault Integration.

@@ -1,6 +1,1 @@
-Azure 虚拟网络 (VNet) 是你自己的网络在云中的表示形式。你可以控制 Azure 网络设置并定义 DHCP 地址块、DNS 设置、安全策略和路由。还可以进一步将 VNet 细分为子网，并以将物理计算机和虚拟机部署到本地数据中心的相同方式部署 Azure IaaS 虚拟机 (VM) 和 PaaS 角色实例。从本质上讲，你可以将网络扩展到 Azure，自带 IP 地址块。如果你不熟悉 VNet，请阅读[虚拟网络概述](../articles/virtual-network/virtual-networks-overview.md)。
-
->[!IMPORTANT]
->在创建 VNet 之前，请务必了解 Azure 当前使用两种部署模型：资源管理器部署模型和经典部署模型。<!--在创建 VNet 之前，请确保你了解[部署模型和工具](../articles/azure-classic-rm.md)。可以通过单击本文顶部的选项卡来查看不同工具的文档。-->
-
-<!---HONumber=69-->
+An Azure virtual network (VNet) is a representation of your own network in the cloud. You can control your Azure network settings and define DHCP address blocks, DNS settings, security policies, and routing. You can also further segment your VNet into subnets and deploy Azure IaaS virtual machines (VMs) and PaaS role instances, in the same way you can deploy physical and virtual machines to your on-premises datacenter. In essence, you can expand your network to Azure, bringing your own IP address blocks. Read the [virtual network overview](../articles/virtual-network/virtual-networks-overview.md) if you are not familiar with VNets.

@@ -1,422 +1,397 @@
-Azure 是一个实现开发/测试或概念证明配置的极好平台，因为它只需很少的投资即可测试实现你的解决方案的特定方法。但是，你必须能够将用于开发/测试环境的简便做法与用于全功能生产就绪的 IT 工作负荷实现的更难且更详细的做法区分开来。
+Azure is an excellent platform to implement dev/test or proof-of-concept configurations, because it requires very little investment to test a particular approach to an implementation of your solutions. However, you must be able to distinguish the easy practices for a dev/test environment from the more difficult, detailed practices for a fully functional, production-ready implementation of an IT workload.
 
-本指南将列出规划对 Azure 中的 IT 工作负荷取得成功至关重要的许多方面。此外，使用规划可以更有序地创建必需的资源。虽然可以灵活运用，但我们建议你按本文中的顺序来进行规划和决策。
+This guidance identifies many areas for which planning is vital to the success of an IT workload in Azure. In addition, planning provides an order to the creation of the necessary resources. Although there is some flexibility, we recommend that you apply the order in this article to your planning and decision-making.
 
-本文改编自 [Azure 实现指导原则](http://blogs.msdn.com/b/thecolorofazure/archive/2014/05/13/azure-implementation-guidelines.aspx)这篇博客文章中的内容。感谢 Santiago Cánepa（Microsoft 应用程序开发经理）和 Hugo Salcedo（Microsoft 应用程序开发经理）提供的原创内容。
+This article was adapted from the content in the [Azure implementation guidelines](http://blogs.msdn.com/b/thecolorofazure/archive/2014/05/13/azure-implementation-guidelines.aspx) blog post. Thanks to Santiago Cánepa (Application Development Manager for Microsoft) and Hugo Salcedo (Application Development Manager for Microsoft) for their original material.
 
 > [!NOTE]
->地缘组已弃用。此处不介绍其用法。有关详细信息，请参阅[关于区域虚拟网络和地缘组](../articles/virtual-network/virtual-networks-migrate-to-regional-vnet.md)。
+> Affinity groups have been deprecated. Their use is not described here. For more information, see [About regional VNets and affinity groups](../articles/virtual-network/virtual-networks-migrate-to-regional-vnet.md).
+> 
+> 
 
-## 1\.命名约定
+## 1. Naming conventions
+You should have a good naming convention in place before creating anything in Azure. A naming convention ensures that all the resources have a predictable name, which helps lower the administrative burden associated with managing those resources.
 
-在 Azure 中创建任何项目之前，你应该已确定合适的命名约定。命名约定可确保所有资源都具有可预测的名称，这有助于减轻与这些资源的管理相关联的管理负担。
+You might choose to follow a specific set of naming conventions defined for your entire organization or for a specific Azure subscription or account. Although it is easy for individuals within organizations to establish implicit rules when working with Azure resources, when a team needs to work on a project on Azure, that model does not scale well.
 
-你可以选择遵循一组为你的整个组织或特定 Azure 订阅或帐户定义的特定命名约定。虽然组织内的个人在使用 Azure 资源时，在团队需要在 Azure 上处理项目时很容易建立隐式规则，但该模型可伸缩性差。
+You should agree on a set of naming conventions up front. There are some considerations regarding naming conventions that cut across the sets of rules that make up those conventions.
 
-你们应事先就命名约定集达成一致意见。对于超越构成这些约定的规则集的命名约定有一些注意事项。
+### Affixes
+When creating certain resources, Azure uses some defaults to simplify management of the resources that are associated with these resources. For example, when creating the first virtual machine for a new cloud service, the Azure Classic Management Portal attempts to use the virtual machine's name for the name of a new cloud service for the virtual machine.
 
-### 词缀
+Therefore, it is beneficial to identify types of resources that need an affix to identify that type. In addition, clearly specify whether the affix will be at:
 
-创建特定资源时，Azure 使用某些默认设置来简化与这些资源关联的资源的管理。例如，在为新云服务创建第一个虚拟机时，Azure 经典管理门户会尝试将虚拟机的名称用于虚拟机的新云服务的名称。
+* The beginning of the name (prefix)
+* The end of the name (suffix)
 
-因此，它对确定需要词缀来标识该类型的资源的类型是有利的。此外，还明确指定词缀是否在以下位置：
+For instance, here are two possible names for a resource group that hosts a calculation engine:
 
-- 名称的开头（前缀）
-- 名称的末尾（后缀）
+* Rg-CalculationEngine (prefix)
+* CalculationEngine-Rg (suffix)
 
-例如，下面是托管计算引擎的资源组的两个可能名称：
+Affixes can refer to different aspects that describe the particular resources. The following table shows some examples typically used.
 
-- Rg-CalculationEngine（前缀）
-- CalculationEngine-Rg（后缀）
+| Aspect | Examples | Notes |
+| --- | --- | --- |
+| Environment |dev, stg, prod |Depending on the purpose and name of each environment. |
+| Location | China North, China East | Depending on the region of the datacenter or the region of the organization. |
+| Azure component, service, or product |Rg for resource group, Svc for cloud service, VNet for virtual network |Depending on the product for which the resource provides support. |
+| Role |sql, ora, sp, iis |Depending on the role of the virtual machine. |
+| Instance |01, 02, 03, etc. |For resources that have more than one instance. For example, load balanced web servers in a cloud service. |
 
-词缀可以引用描述特定资源的不同方面。下表显示了通常使用的一些示例。
+When establishing your naming conventions, make sure that they clearly state which affixes to use for each type of resource, and in which position (prefix vs suffix).
 
-方面 | 示例 | 说明
---- | --- | ---
-环境 | dev、stg、prod | 根据每个环境的用途和名称。
-位置 | China North（中国北部）、China East（中国东部) | 根据数据中心的区域或组织的区域。
-Azure 组件、服务或产品 | Rg 用于资源组，Svc 用于云服务，VNet 用于虚拟网络 | 根据资源提供支持的产品。
-角色 | sql、ora、sp、iis | 根据虚拟机的角色。
-实例 | 01、02、03 等。 | 适用于具有多个实例的资源。例如，云服务中经过负载均衡的 Web 服务器。
+### Dates
+It is often important to determine the date of creation from the name of a resource. We recommend the YYYYMMDD date format. This format ensures that not only the full date is recorded, but also that two resources whose names differ only on the date will be sorted alphabetically and chronologically at the same time.
 
-建立命名约定时，请确保这些命名约定明确说明要对每种类型的资源使用哪些词缀，以及在哪个位置使用（前缀还是后缀）。
+### Naming resources
+You should define each type of resource in the naming convention, which should have rules that define how to assign names to each resource that is created. These rules should apply to all types of resources, for example:
 
-### 日期
+* Subscriptions
+* Accounts
+* Storage accounts
+* Virtual networks
+* Subnets
+* Availability sets
+* Resource groups
+* Cloud services
+* Virtual machines
+* Endpoints
+* Network security groups
+* Roles
 
-通常情况下，从资源名称确定创建日期很重要。我们建议使用 YYYYMMDD 日期格式。此格式可确保不仅会记录完整的日期，而且名称只是日期不同的两个资源也会同时按字母和按时间顺序进行排序。
+To ensure that the name provides enough information to determine to which resource it refers, you should use descriptive names.
 
-### 命名资源
+### Computer names
+When administrators create a virtual machine, Azure requires them to provide a virtual machine name of up to 15 characters. Azure uses the virtual machine name as the Azure virtual machine resource name. Azure uses the same name as the computer name for the operating system installed in the virtual machine. However, these names might not always be the same.
 
-你应该在命名约定中定义每种类型的资源，其中应包含定义如何为创建的每个资源分配名称的规则。这些规则应适用于所有类型的资源，例如：
+In case a virtual machine is created from a .vhd image file that already contains an operating system, the virtual machine name in Azure can differ from the virtual machine's operating system computer name. This situation can add a degree of difficulty to virtual machine management, which we therefore do not recommend. Assign the Azure virtual machine resource the same name as the computer name that you assign to the operating system of that virtual machine.
 
-- 订阅
-- 帐户
-- 存储帐户
-- 虚拟网络
-- 子网
-- 可用性集
-- 资源组
-- 云服务
-- 虚拟机
-- 终结点
-- 网络安全组
-- 角色
+We recommend that the Azure virtual machine name be the same as the underlying operating system computer name. Because of this, follow the NetBIOS naming rules as described in [Microsoft NetBIOS computer naming conventions](https://support.microsoft.com/kb/188997/).
 
-为了确保名称可以提供足够的信息来确定它所引用的资源，你应该使用描述性名称。
+### Storage account names
+Storage accounts have special rules governing their names. You can only use lowercase letters and numbers. See [Create a storage account](../articles/storage/storage-create-storage-account.md#create-a-storage-account) for more information. Additionally, the storage account name, in combination with core.chinacloudapi.cn, should be a globally valid, unique DNS name. For instance, if the storage account is called mystorageaccount, the following resulting DNS names should be unique:
 
-### 计算机名称
+* mystorageaccount.blob.core.chinacloudapi.cn
+* mystorageaccount.table.core.chinacloudapi.cn
+* mystorageaccount.queue.core.chinacloudapi.cn
 
-当管理员创建虚拟机时，Azure 将要求他们提供至多为 15 个字符的虚拟机名称。Azure 使用虚拟机名称作为 Azure 虚拟机资源名称。Azure 使用同一名称作为虚拟机上安装的操作系统的计算机名称。但是，这些名称可能并非始终相同。
+### Azure building block names
+Azure building blocks are application-level services that Azure offers, typically to those applications taking advantage of PaaS features, although IaaS resources might leverage some, like SQL Database, Traffic Manager, and others.
 
-如果使用已包含操作系统的 .vhd 映像文件创建虚拟机，Azure 中的虚拟机名称可能不同于虚拟机的操作系统计算机名称。这种情况可能会增加虚拟机管理难度，因此不建议使用这种方法。分配给 Azure 虚拟机资源的名称可以与分配给该虚拟机的操作系统的计算机名称相同。
+These services rely on an array of artifacts that are created and registered in Azure. These also need to be considered in your naming conventions.
 
-我们建议 Azure 虚拟机名称应该与基础操作系统计算机名称相同。因此，请遵循 [Microsoft NetBIOS 计算机命名约定](https://support.microsoft.com/zh-CN/kb/188997)中所述的 NetBIOS 命名规则。
+### Implementation guidelines recap for naming conventions
+Decision:
 
-### 存储帐户名称
+* What are your naming conventions for Azure resources?
 
-存储帐户具有适用于其名称的特殊规则。你只能使用小写字母和数字。有关详细信息，请参阅[创建存储帐户](../articles/storage/storage-create-storage-account.md#create-a-storage-account)。此外，存储帐户名称与 core.chinacloudapi.cn 组合在一起应该是一个全局有效的唯一 DNS 名称。例如，如果存储帐户名为 mystorageaccount，则下面生成的 DNS 名称应该是唯一的：
+Task:
 
-- mystorageaccount.blob.core.chinacloudapi.cn
-- mystorageaccount.table.core.chinacloudapi.cn
-- mystorageaccount.queue.core.chinacloudapi.cn
+* Define the naming conventions in terms of affixes, hierarchy, string values, and other policies for Azure resources.
 
-### Azure 构建基块名称
+## 2. Subscriptions and accounts
+In order to work with Azure, you need one or more Azure subscriptions. Resources, like cloud services or virtual machines, exist in the context of those subscriptions.
 
-Azure 构建基块是 Azure 通常为利用 PaaS 功能的应用程序提供的应用程序级别服务，虽然 IaaS 资源可以利用一些诸如 SQL 数据库、流量管理器等工具。
+* Enterprise customers typically have an Enterprise Enrollment, which is the top-most resource in the hierarchy, and is associated to one or more accounts.
+* For consumers and customers without an Enterprise Enrollment, the top-most resource is the account.
+* Subscriptions are associated to accounts, and there can be one or more subscriptions per account. Azure records billing information at the subscription level.
 
-这些服务依赖于已在 Azure 中创建并注册的一组项目。命名约定中还需要考虑这些项。
-
-### 实现准则会扼要重述命名约定
-
-决策：
-
-- 你的 Azure 资源的命名约定是什么？
-
-任务：
-
-- 根据 Azure 资源的词缀、层次结构、字符串值和其他策略定义命名约定。
-
-## 2\.订阅和帐户
-
-要使用 Azure，需要一个或多个 Azure 订阅。云服务或虚拟机等资源存在于这些订阅的上下文中。
-
-- 企业客户通常具有企业许可登记表，该表是层次结构中的最顶层资源并与一个或多个帐户相关联。
-- 对于没有企业许可登记表的使用者和客户，最顶层资源是帐户。
-- 订阅关联到帐户，并且每个帐户可以有一个或多个订阅。订阅级别的 Azure 记录计费信息。
-
-由于两个层次结构级别在订阅/帐户关系上的限制，根据计费要求调整帐户和订阅的命名约定至关重要。例如，如果一家全国性公司使用 Azure，他们可以选择每个区域建立一个帐户，并在区域级别管理订阅。
+Due to the limit of two hierarchy levels on the Account/Subscription relationship, it is important to align the naming convention of accounts and subscriptions to the billing needs. For instance, if a global company uses Azure, they might choose to have one account per region, and have subscriptions managed at the region level.
 
 ![](./media/virtual-machines-common-infrastructure-service-guidelines/sub01.png)
 
-例如，你可能会使用此结构。
+For instance, you might use this structure.
 
 ![](./media/virtual-machines-common-infrastructure-service-guidelines/sub02.png)
 
-按照同一示例，如果某一区域决定将多个订阅关联到一个特定组，则命名约定应引入相应方法来对帐户或订阅名称的额外项进行编码。此组织允许窜改计费数据以在计费报告期间生成新的层次结构级别。
+Following the same example, if a region decides to have more than one subscription associated to a particular group, then the naming convention should incorporate a way to encode the extra on either the account or the subscription name. This organization allows massaging billing data to generate the new levels of hierarchy during billing reports.
 
 ![](./media/virtual-machines-common-infrastructure-service-guidelines/sub03.png)
 
-该组织可以如下所示。
+The organization could look like this.
 
 ![](./media/virtual-machines-common-infrastructure-service-guidelines/sub04.png)
 
-Azure.cn 通过可下载的文件为企业协议中的单个帐户或所有帐户提供详细的计费信息。你可以通过合适的方式处理此文件，例如，使用 Microsoft Excel 来处理。此过程将引入数据、对将多个级别的层次结构编码为单独列的资源进行分区，并使用数据透视表或 PowerPivot 提供动态报告功能。
+Azure.cn provides detailed billing via a downloadable file for a single account or for all accounts in an enterprise agreement. You can process this file, for example, by using Microsoft Excel. This process would ingest the data, partition the resources that encode more than one level of the hierarchy into separate columns, and use a pivot table or PowerPivot to provide dynamic reporting capabilities.
 
-### 实现准则会扼要重述订阅和帐户
+### Implementation guidelines recap for subscriptions and accounts
+Decision:
 
-决策：
+* What set of subscriptions and accounts do you need to host your IT workload or infrastructure?
 
-- 你需要使用哪一组订阅和帐户来托管你的 IT 工作负荷或基础结构？
+Task:
 
-任务：
+* Create the set of subscriptions and accounts using your naming convention.
 
-- 使用命名约定创建订阅和帐户集。
+## 3. Storage
+Azure Storage is an integral part of many Azure solutions. Azure Storage provides services for storing file data, unstructured data, and messages, and it is also part of the infrastructure supporting virtual machines.
 
-## 3\.存储
+There are two types of storage accounts available from Azure. A standard storage account gives you access to blob storage (used for storing Azure virtual machine disks), table storage, queue storage, and file storage. Premium storage is designed for high-performance applications, such as SQL Servers in an AlwaysOn cluster, and currently supports Azure virtual machine disks only.
 
-Azure 存储空间是许多 Azure 解决方案不可或缺的组成部分。Azure 存储空间提供的服务可用于存储文件数据、非结构化数据和消息，该存储空间也是为虚拟机提供支持的基础结构的一部分。
+Storage accounts are bound to scalability targets. See [Azure subscription and service limits, quotas, and constraints](../articles/azure-subscription-service-limits.md#storage-limits) to become familiar with current Azure storage limits. Also see [Azure storage scalability and performance targets](../articles/storage/storage-scalability-targets.md).
 
-Azure 提供两种类型的存储帐户。标准存储帐户可以访问 Blob 存储（用于存储 Azure 虚拟机磁盘）、表存储、队列存储和文件存储。高级存储专为高性能应用程序（例如 AlwaysOn 群集中的 SQL Server）设计，当前仅支持 Azure 虚拟机磁盘。
+Azure creates virtual machines with an operating system disk, a temporary disk, and zero or more optional data disks. The operating system disk and data disks are Azure page blobs, whereas the temporary disk is stored locally on the node where the machine lives. This makes the temporary disk unfit for data that must persist during a system recycle, because the machine might silently be migrated from one node to another, losing any data in that disk. Do not store anything on the temporary drive.
 
-存储帐户将绑定到可伸缩性目标。要熟悉当前 Azure 存储空间限制，请参阅 [Azure 订阅和服务限制、配额和约束](../articles/azure-subscription-service-limits.md#storage-limits)。另请参阅 [Azure 存储空间可伸缩性和性能目标](../articles/storage/storage-scalability-targets.md)。
+Operating system disks and data disks have a maximum size of 1023 gigabytes (GB) because the maximum size of a blob is 1024 GB and that must contain the metadata (footer) of the VHD file (a GB is 1024<sup>3</sup> bytes). You can implement disk striping in Windows to surpass this limit.
 
-Azure 使用一个操作系统磁盘、一个临时磁盘和零个或更多可选数据磁盘创建虚拟机。操作系统磁盘和数据磁盘是 Azure 页 blob，而临时磁盘则通过本地方式存储在计算机所在的节点上。这使得临时磁盘不适用于在系统回收过程中必须保留的数据，因为计算机可能会以无提示方式从一个节点迁移到另一个节点，从而丢失该磁盘中的任何数据。不要在临时驱动器上存储任何内容。
+### Striped disks
+Besides providing the ability to create disks larger than 1023 GB, in many instances, using striping for data disks enhances performance by allowing multiple blobs to back the storage for a single volume. With striping, the I/O required to write and read data from a single logical disk proceeds in parallel.
 
-由于 blob 的最大大小为 1024 千兆字节 (GB)，并且必须包含 VHD 文件的元数据（页脚），因此操作系统磁盘和数据磁盘的最大大小为 1023 GB（1 GB 为 1024<sup>3</sup> 字节）。你可以通过在 Windows 中实现磁盘条带化来超越此限制。
+Azure imposes limits on the amount of data disks and bandwidth available, depending on the virtual machine size. For details, see [Sizes for virtual machines](../articles/virtual-machines/virtual-machines-linux-sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
-### 条带化的磁盘
-除了提供相关功能来创建大于 1023 GB 的磁盘外，在许多情况下，对数据磁盘使用条带化还可增强性能，因为允许多个 blob 支持单个卷的存储。使用条带化时，将会并行处理针对单个逻辑磁盘写入和读取数据所需的 I/O。
+If you are using disk striping for Azure data disks, consider the following guidelines:
 
-Azure 将对可用的数据磁盘量和带宽加以限制，具体取决于虚拟机大小。有关详细信息，请参阅 [Windows](../articles/virtual-machines/virtual-machines-windows-sizes.md) 或者 [Linux](../articles/virtual-machines/virtual-machines-linux-sizes.md)虚拟机大小。
+* Data disks should always be the maximum size (1023 GB)
+* Attach the maximum data disks allowed for the virtual machine size
+* Use storage spaces configuration
+* Use storage striping configuration
+* Avoid using Azure data disk caching options (caching policy = None)
 
-如果要对 Azure 数据磁盘使用磁盘条带化，请考虑以下准则：
+For more information, see [Storage spaces - designing for performance](http://social.technet.microsoft.com/wiki/contents/articles/15200.storage-spaces-designing-for-performance.aspx).
 
-- 数据磁盘应始终为最大大小 (1023 GB)
-- 附加虚拟机大小所允许的最大数据磁盘
-- 使用存储空间配置
-- 使用存储条带化配置
-- 避免使用 Azure 数据磁盘缓存选项（缓存策略 =“无”）
+### Multiple storage accounts
+Using multiple storage accounts to back the disks associated with many virtual machines ensures that the aggregated I/O of those disks is well below the scalability targets for each one of those storage accounts.
 
-有关详细信息，请参阅[存储空间 - 专为提高性能设计](http://social.technet.microsoft.com/wiki/contents/articles/15200.storage-spaces-designing-for-performance.aspx)。
+We recommend that you start with the deployment of one virtual machine per storage account.
 
-### 多个存储帐户
+### Storage layout design
+To implement these strategies to implement the disk subsystem of the virtual machines with good performance, an IT workload or infrastructure typically takes advantage of many storage accounts. These host many VHD blobs. In some instances, more than one blob is associated to one single volume in a virtual machine.
 
-使用多个存储帐户支持与多个虚拟机关联的磁盘，可确保这些磁盘的聚合 I/O 远低于这些存储帐户每个的可伸缩性目标。
+This situation can add complexity to the management tasks. Designing a sound strategy for storage, including appropriate naming for the underlying disks and associated VHD blobs is key.
 
-我们建议你从为每个存储帐户部署一个虚拟机开始。
+### Implementation guidelines recap for storage
+Decisions:
 
-### 存储布局设计
+* Do you need disk striping to create disks larger than 500 terabytes (TB)?
+* Do you need disk striping to achieve optimal performance for your workload?
+* What set of storage accounts do you need to host your IT workload or infrastructure?
 
-为了实现这些策略，以便为虚拟机的磁盘子系统实现良好性能，IT 工作负荷或基础结构通常会利用多个存储帐户。这些帐户托管多个 VHD blob。在某些情况下，多个 blob 将关联到虚拟机中的单个卷。
+Task:
 
-这种情况可能会增加管理任务的复杂性。为存储设计有效的策略（包括基础磁盘和关联的 VHD blob 的相应命名）是关键。
+* Create the set of storage accounts using your naming convention. You can use the Azure portal preview, the Azure Classic Management Portal, or the **New-AzureStorageAccount** PowerShell cmdlet.
 
-### 实现准则会扼要重述存储
+## 4. Cloud services
+Cloud services are a fundamental building block in Azure service management, both for PaaS and IaaS services. For PaaS, cloud services represent an association of roles whose instances can communicate among each other. Cloud services are associated to a public virtual IP (VIP) address and a load balancer, which takes incoming traffic from the Internet and load balances it to the roles configured to receive that traffic.
 
-决策：
-
-- 你需要进行磁盘条带化以创建大于 500 千吉字节 (TB) 的磁盘吗？
-- 你需要进行磁盘条带化以获得工作负荷的最佳性能吗？
-- 你需要使用哪一组存储帐户来托管你的 IT 工作负荷或基础结构？
-
-任务：
-
-- 使用命名约定创建存储帐户集。可以使用 Azure 经典管理门户或 **New-AzureStorageAccount** PowerShell cmdlet。
-
-## 4\.云服务
-
-云服务是 Azure 服务管理中的基本构建基块，同时用于 PaaS 和 IaaS 服务。对于 PaaS，云服务表示其实例可以相互通信的角色关联。云服务将关联到一个公共虚拟 IP (VIP) 地址和一个负载均衡器，后者将接受来自 Internet 的传入流量，并将该流量负载均衡到配置为接收该流量的角色。
-
-对于 IaaS，云服务提供类似的功能，虽然在大多数情况下，负载均衡器功能用于将流量转发到 Internet 上的特定 TCP 或 UDP 端口，再转发到该云服务中的多个虚拟机。
+In the case of IaaS, cloud services offer similar functionality, although in most cases, the load balancer functionality is used to forward traffic to specific TCP or UDP ports from the Internet to the many virtual machines within that cloud service.
 
 > [!NOTE]
->云服务不存在于 Azure 资源管理器中。
+> Cloud services do not exist in Azure Resource Manager. For an introduction to the advantages of Resource Manager, see [Azure compute, network and storage providers under Azure Resource Manager](../articles/virtual-machines/virtual-machines-windows-compare-deployment-models.md).
+> 
+> 
 
-云服务名称在 IaaS 中尤其重要，因为 Azure 将使用它们作为磁盘的默认命名约定的一部分。云服务名称只能包含字母、数字和连字符。该字段中的第一个和最后一个字符必须是字母或数字。
+Cloud service names are especially important in IaaS because Azure uses them as part of the default naming convention for disks. The cloud service name can contain only letters, numbers, and hyphens. The first and last character in the field must be a letter or number.
 
-Azure 将公开云服务名称，因为这些名称会关联到域“chinacloudapp.cn”中 VIP。为了改善应用程序的用户体验，应根据需要配置虚名称来替换完全限定的云服务名称。这通常使用公共 DNS 中将资源的公共 DNS 名称（例如，www.contoso.com）映射到托管资源的云服务（例如，托管 www.contoso.com 的 Web 服务器的云服务）的 DNS 名称的 CNAME 记录完成。
+Azure exposes the cloud service names, because they are associated to the VIP, in the domain "chinacloudapp.cn". For a better user experience of the application, a vanity name should be configured as needed to replace the fully qualified cloud service name. This is typically done with a CNAME record in your public DNS that maps the public DNS name of your resource (for example, www.contoso.com) to the DNS name of the cloud service hosting the resource (for example, the cloud service hosting the web servers for www.contoso.com).
 
-此外，用于云服务的命名约定可能需要允许例外，因为云服务名称必须在所有其他 Azure 云服务中唯一，而不考虑 Azure 租户。
+In addition, the naming convention used for cloud services might need to tolerate exceptions because the cloud service names must be unique among all other Azure cloud services, regardless of the Azure tenant.
 
-对于云服务中的所有虚拟机来说，一项需要考虑的云服务限制是：一次只能执行一项虚拟机管理操作。当你在云服务中的一台虚拟机上执行虚拟机管理操作时，你必须等待该操作完成，然后才能在另一台虚拟机上执行新的管理操作。因此，云服务中虚拟机的数量应保持在较低的水平。
+One important limitation of cloud services to consider is that only one virtual machine management operation can be performed at a time for all the virtual machines in the cloud service. When you perform a virtual machine management operation on one virtual machine in the cloud service, you must wait until it is finished before you can perform a new management operation on another virtual machine. Therefore, you should keep the number of virtual machines in a cloud service low.
 
-Azure 订阅最多可以支持 200 个云服务。
+Azure subscriptions can support a maximum of 200 cloud services.
 
-### 实现准则会扼要重述云服务
+### Implementation guidelines recap for cloud services
+Decision:
 
-决策：
+* What set of cloud services do you need to host your IT workload or infrastructure?
 
-- 你需要使用哪一组云服务来托管你的 IT 工作负荷或基础结构？
+Task:
 
-任务：
+* Create the set of cloud services using your naming convention. You can use the Azure Classic Management Portal or the **New-AzureService** PowerShell cmdlet.
 
-- 使用命名约定创建云服务集。可以使用 Azure 经典管理门户或 **New-AzureService** PowerShell cmdlet。
+## 5. Virtual networks
+The next logical step is to create the virtual networks necessary to support the communications across the virtual machines in the solution. Although it is possible to host multiple virtual machines of an IT workload within just one cloud service, virtual networks are recommended.
 
-## 5\.虚拟网络
+Virtual networks are a container for virtual machines for which you can also specify subnets, custom addressing, and DNS configuration options. Virtual machines within the same virtual network can communicate directly with other computers within the same virtual network, regardless of which cloud service they are a member of. Within the virtual network, this communication remains private, without the need for the communication to go through the public endpoints. This communication can occur via IP address, or by name, using a DNS server installed in the virtual network, or on-premises, if the virtual machine is connected to the corporate network.
 
-下一个逻辑步骤是创建支持解决方案中的虚拟机之间的通信所需的虚拟网络。虽然可以只在一个云服务中托管 IT 工作负荷的多个虚拟机，但是建议使用虚拟网络。
-
-虚拟网络是虚拟机的容器，你还可以为其指定子网、自定义寻址和 DNS 配置选项。同一虚拟网络中的虚拟机可以直接与同一虚拟网络中的其他计算机通信，而不考虑它们属于哪个云服务。在虚拟网络中，此通信将保持私有，而无需让通信通过公共终结点。如果虚拟机已连接到公司网络，这种通信可通过 IP 地址进行，或按名称进行，使用虚拟网络中安装的 DNS 服务器进行，或在本地进行。
-
-### 站点连接
-如果本地用户和计算机无需持续连接到 Azure 虚拟网络中的虚拟机，则可创建仅限云的虚拟网络。
+### Site connectivity
+If on-premises users and computers do not require ongoing connectivity to virtual machines in an Azure virtual network, create a cloud-only virtual network.
 
 ![](./media/virtual-machines-common-infrastructure-service-guidelines/vnet01.png)
 
-这通常用于面向 Internet 的工作负荷，如基于 Internet 的 Web 服务器。你可以使用远程桌面连接、远程 PowerShell 会话、安全外壳 (SSH) 连接和点到站点 VPN 连接来管理这些虚拟机。
+This is typically for Internet-facing workloads, such as an Internet-based web server. You can manage these virtual machines using Remote Desktop connections, remote PowerShell sessions, Secure Shell (SSH) connections, and point-to-site VPN connections.
 
-由于仅限云的虚拟网络未连接到你的本地网络，因此它们可以使用专用 IP 地址空间的任何部分。
+Because they do not connect to your on-premises network, cloud-only virtual networks can use any portion of the private IP address space.
 
-如果本地用户和计算机需要持续连接到 Azure 虚拟网络中的虚拟机，则可创建跨界虚拟网络，然后使用 ExpressRoute 或站点到站点 VPN 连接将其连接到你的本地网络。
+If on-premises users and computers require ongoing connectivity to virtual machines in an Azure virtual network, create a cross-premises virtual network and connect it to your on-premises network with an ExpressRoute or site-to-site VPN connection.
 
 ![](./media/virtual-machines-common-infrastructure-service-guidelines/vnet02.png)
 
-在此配置中，Azure 虚拟网络实质上是你的本地网络基于云的扩展。
+In this configuration, the Azure virtual network is essentially a cloud-based extension of your on-premises network.
 
-由于跨界虚拟网络连接到你的本地网络，因此它们必须使用你的组织使用的唯一地址空间的一部分，并且路由基础结构必须通过将流量转发到你的本地 VPN 设备来支持将流量路由到该部分。
+Because they connect to your on-premises network, cross-premises virtual networks must use a portion of the address space used by your organization that is unique, and the routing infrastructure must support routing traffic to that portion by forwarding it to your on-premises VPN device.
 
-若要允许将数据包从跨界虚拟网络传输到你的本地网络，必须配置相关的本地地址前缀集作为虚拟网络的本地网络定义的一部分。根据虚拟网络的地址空间和相关的本地位置集，本地网络中可以有多个地址前缀。
+To allow packets to travel from your cross-premises virtual network to your on-premises network, you must configure the set of relevant on-premises address prefixes as part of the local network definition for the virtual network. Depending on the address space of the virtual network and the set of relevant on-premises locations, there can be many address prefixes in the local network.
 
-可以将仅限云的虚拟网络转换为跨界虚拟网络，但这很可能需要你为你的虚拟网络地址空间、子网和使用 Azure 分配的静态 IP 地址（称为动态 IP (DIP)）的虚拟机重新编号。因此，在创建虚拟网络前，请仔细考虑所需的虚拟网络类型（仅限云还是跨界）。
+You can convert a cloud-only virtual network to a cross-premises virtual network, but it will most likely require you to renumber your virtual network address space, your subnets, and the virtual machines that use static Azure-assigned IP addresses, known as Dynamic IPs (DIPs). Therefore, carefully consider the type of virtual networks you need (cloud-only versus cross-premises) before you create them.
 
-### 子网
-子网允许你组织相关资源，以逻辑方式（例如，一个子网用于关联到同一个应用程序的虚拟机）或以物理方式（例如，每个云服务一个子网）或使用子网隔离技术以提高安全性。
+### Subnets
+Subnets allow you to organize resources that are related, either logically (for example, one subnet for virtual machines associated to the same application), or physically (for example, one subnet per cloud service), or to employ subnet isolation techniques for added security.
 
-对于跨界虚拟网络，应使用用于本地资源的相同约定来设计子网，请记住：**Azure 始终使用每个子网的地址空间的前三个 IP 地址**。若要确定子网所需的地址数，请计算你现在需要的虚拟机数，估计未来的增长，然后使用下表确定子网大小。
+For cross-premises virtual networks, you should design subnets with the same conventions that you use for on-premises resources, keeping in mind that **Azure always uses the first three IP addresses of the address space for each subnet**. To determine the number of addresses needed for the subnet, count the number of virtual machines that you need now, estimate for future growth, and then use the following table to determine the size of the subnet.
 
-所需的虚拟机数 | 所需的主机位数 | 子网的大小
---- | --- | ---
-1–3 | 3 | /29
-4–11 | 4 | /28
-12–27 | 5 | /27
-28–59 | 6 | /26
-60–123 | 7 | /25
+| Number of virtual machines needed | Number of host bits needed | Size of the subnet |
+| --- | --- | --- |
+| 1-3 |3 |/29 |
+| 4-11 |4 |/28 |
+| 12-27 |5 |/27 |
+| 28-59 |6 |/26 |
+| 60-123 |7 |/25 |
 
 > [!NOTE]
->对于普通的本地子网，具有 n 个主机位的子网的最大主机地址数为 2<sup>n</sup> – 2 个。对于 Azure 子网，具有 n 个主机位的子网的最大主机地址数是 2<sup>n</sup> – 5（2 + 3 作为 Azure 在每个子网上使用的地址）。
+> For normal on-premises subnets, the maximum number of host addresses for a subnet with n host bits is 2<sup>n</sup> - 2. For an Azure subnet, the maximum number of host addresses for a subnet with n host bits is 2<sup>n</sup> - 5 (2 plus 3 for the addresses that Azure uses on each subnet).
+> 
+> 
 
-如果你选择的子网大小太小，将需要对子网中的虚拟机进行重新编号和重新部署。
+If you choose a subnet size that is too small, you will have to renumber and redeploy the virtual machines in the subnet.
 
-### 实现准则会扼要重述虚拟网络
+### Implementation guidelines recap for virtual networks
+Decisions:
 
-决策：
+* What type of virtual network do you need to host your IT workload or infrastructure (cloud-only or cross-premises)?
+* For cross-premises virtual networks, how much address space do you need to host the subnets and virtual machines now and for reasonable expansion in the future?
 
-- 你需要使用哪种类型的虚拟网络来托管 IT 工作负荷或基础结构（仅限云还是跨界）？
-- 对于跨界虚拟网络，你现在需要多少地址空间来托管子网和虚拟机和用于将来合理扩展？
+Tasks:
 
-任务：
+* Define the address space for the virtual network.
+* Define the set of subnets and the address space for each.
+* For cross-premises virtual networks, define the set of local network address spaces for the on-premises locations that the virtual machines in the virtual network need to reach.
+* Create the virtual network using your naming convention. You can use the Azure portal preview or the Azure Classic Management Portal.
 
-- 定义用于虚拟网络的地址空间。
-- 定义子网集和每个子网的地址空间。
-- 对于跨界虚拟网络，定义虚拟网络中的虚拟机需要访问的本地位置的本地网络地址空间集。
-- 使用命名约定创建虚拟网络。可以使用Azure 经典管理门户。
+## 6. Availability sets
+In Azure PaaS, cloud services contain one or more roles that execute application code. Roles can have one or more virtual machine instances that the fabric automatically provisions. At any given time, Azure might update the instances in these roles, but because they are part of the same role, Azure knows not to update all at the same time to prevent a service outage for the role.
 
-## 6\.可用性集
+In Azure IaaS, the concept of role is not significant, because each IaaS virtual machine represents a role with a single instance. In order to hint to Azure not to bring down two or more associated machines at the same time (for example, for operating system updates of the node where they reside), the concept of availability sets was introduced. An availability set tells Azure not to bring down all the machines in the same availability set at the same time to prevent a service outage. The virtual machine members of an availability set have a 99.95% uptime service level agreement.
 
-在 Azure PaaS 中，云服务包含执行应用程序代码的一个或多个角色。角色可以拥有结构自动设置的一个或多个虚拟机实例。在任何给定时间，Azure 都可以更新这些角色中的实例，但因为这些实例属于同一角色，所以 Azure 知道不能同时更新所有实例，以防止角色的服务中断。
+Availability sets must be part of the high-availability planning of the solution. An availability set is defined as the set of virtual machines within a single cloud service that have the same availability set name. You can create availability sets after you create cloud services.
 
-在 Azure IaaS 中，角色的概念并不重要，因为每个 IaaS 虚拟机表示包含单个实例的角色。为了提示 Azure 不要同时关闭两个或更多关联的计算机（例如，为了对它们所在的节点进行操作系统更新），引入了可用性集的概念。可用性集告知 Azure 不要同时关闭同一可用性集中的所有计算机，以防止服务中断。可用性集的虚拟机成员具有 99.95% 的正常运行时间服务级别协议。
+### Implementation guidelines recap for availability sets
+Decision:
 
-可用性集必须是该解决方案的高可用性规划的一部分。可用性集定义为单个云服务中具有相同可用性集名称的虚拟机集。在创建云服务后，可以创建可用性集。
+* How many availability sets do you need for the various roles and tiers in your IT workload or infrastructure?
 
-### 实现准则会扼要重述可用性集
+Task:
 
-决策：
+* Define the set of availability sets using your naming convention. You can associate a virtual machine to an availability set when you create the virtual machines, or you can associate a virtual machine to an availability set after the virtual machine has been created.
 
-- 你的 IT 工作负荷或基础结构中的各种角色和层需要多少可用性集？
+## 7. Virtual machines
+In Azure PaaS, Azure manages virtual machines and their associated disks. You must create and name cloud services and roles, and then Azure creates instances associated to those roles. In the case of Azure IaaS, it is up to you to provide names for the cloud services, virtual machines, and associated disks.
 
-任务：
+To reduce administrative burden, the Azure Classic Management Portal uses the computer name as a suggestion for the default name for the associated cloud service (in the case the customer chooses to create a new cloud service as part of the virtual machine creation wizard).
 
-- 使用命名约定定义一组可用性集。创建虚拟机时，你可以将该虚拟机关联到某个可用性集，也可以在创建虚拟机后将该虚拟机关联到某个可用性集。
+In addition, Azure names disks and their supporting VHD blobs using a combination of the cloud service name, the computer name, and the creation date.
 
-## 7\.虚拟机
+In general, the number of disks is much greater than the number of virtual machines. You should be careful when manipulating virtual machines to prevent orphaning disks. Also, disks can be deleted without deleting the supporting blob. If this is the case, the blob remains in the storage account until manually deleted.
 
-在 Azure PaaS 中，Azure 管理虚拟机及其关联的磁盘。你必须创建并命名云服务和角色，然后 Azure 将创建关联到这些角色的实例。对于 Azure IaaS，由你负责为云服务、虚拟机和关联的磁盘提供名称。
+### Implementation guidelines recap for virtual machines
+Decision:
 
-为了减少管理负担，Azure 经典管理门户将使用计算机名称作为关联的云服务的默认名称建议（如果客户在虚拟机创建向导中选择创建新的云服务）。
+* How many virtual machines do you need to provide for the IT workload or infrastructure?
 
-此外，Azure 还将使用云服务名称、计算机名称和创建日期的组合来命名磁盘及其支持的 VHD blob。
+Tasks:
 
-通常，磁盘数将大大多于虚拟机数。你在操作虚拟机时应小心以防止出现孤立的磁盘。此外，还可以删除磁盘，而不会删除支持的 blob。如果出现这种情况，该 blob 将一直保留在存储帐户中，直到被手动删除为止。
+* Define each virtual machine name using your naming convention.
+* Create your virtual machines with the Azure portal preview, the Azure Classic Management Portal, the **New-AzureVM** PowerShell cmdlet, the Azure CLI, or with Resource Manager templates.
 
-### 实现准则会扼要重述虚拟机
+## Example of an IT workload: The Contoso financial analysis engine
+The Contoso Corporation has developed a next-generation financial analysis engine with leading-edge proprietary algorithms to aid in futures market trading. They want to make this engine available to its customers as a set of servers in Azure, which consist of:
 
-决策：
-
-- 你需要为 IT 工作负荷或基础结构提供多少个虚拟机？
-
-任务：
-
-- 使用命名约定定义每个虚拟机名称。
-- 使用 Azure 经典管理门户、**New-AzureVM** PowerShell cmdlet 或使 Azure CLI。
-
-## IT 工作负荷的示例：Contoso 财务分析引擎
-
-Contoso Corporation 已使用最先进的专有算法开发了下一代财务分析引擎，以帮助实现将来的市场贸易。他们想要将此引擎提供给其客户作为 Azure 中的一组服务器，其中包括：
-
-- 两个（最终更多）在 Web 层中运行自定义 Web 服务的基于 IIS 的 Web 服务器
-- 两个（最终更多）在应用程序层中执行计算的基于 IIS 的应用程序服务器
-- 使用 AlwaysOn 可用性组，将历史数据和正在执行的计算数据存储在数据库层中的 SQL Server 2014 群集（两个 SQL Server 和多数节点见证）
-- 身份验证层中自包含林和域的两个 Active Directory 域控制器，它们是 SQL Server 群集所必需的
-- 所有服务器都位于两个子网中；前端子网用于 Web 服务器，后端子网用于应用程序服务器、SQL Server 2014 群集和域控制器
+* Two (and eventually more) IIS-based web servers running custom web services in a web tier
+* Two (and eventually more) IIS-based application servers that perform the calculations in an application tier
+* A SQL Server 2014 cluster with AlwaysOn availability groups (two SQL Servers and a majority node witness) that stores historical and ongoing calculation data in a database tier
+* Two Active Directory domain controllers for a self-contained forest and domain in the authentication tier, which is required by SQL Server clustering
+* All of the servers are located on two subnets; a front end subnet for the web servers and a back end subnet for the application servers, a SQL Server 2014 cluster, and domain controllers
 
 ![](./media/virtual-machines-common-infrastructure-service-guidelines/example-tiers.png)
 
-从 Internet 上的 Contoso 客户端传入的安全 Web 流量需要在 Web 服务器之间进行负载均衡。来自 Web 服务器的 HTTP 请求形式的计算请求流量需要在应用程序服务器之间进行平衡。此外，还必须设计引擎以实现高可用性。
+Incoming secure web traffic from the Contoso clients on the Internet needs to be load-balanced among the web servers. Calculation request traffic in the form of HTTP requests from the web servers needs to be balanced among the application servers. Additionally, the engine must be designed for high availability.
 
-生成的设计必须引入：
+The resulting design must incorporate:
 
-- Contoso Azure 订阅和帐户
-- 存储帐户
-- 包含两个子网的虚拟网络
-- 具有类似角色的服务器组的可用性集
-- 虚拟机
-- 单个资源组
+* A Contoso Azure subscription and account
+* Storage accounts
+* A virtual network with two subnets
+* Availability sets for the sets of servers with a similar role
+* Virtual machines
+* A single resource group
 
-以上所有项将遵循这些 Contoso 命名约定：
+All of the above will follow these Contoso naming conventions:
 
-- Contoso 使用 [IT 工作负荷]-[位置]-[Azure 资源] 作为前缀。在此示例中，"azfae"（Azure 财务分析引擎）为 IT 工作负荷的名称，"use"（美国东部 2）是位置，因为 Contoso 的大多数初始客户都位于美国东海岸。
-- 存储帐户使用 contosoazfaeusesa[说明] 请注意 contoso 已添加到前缀以提供唯一性，并且存储帐户名称不支持使用连字符。
-- 虚拟网络使用 AZFAE-USE-VN[数字]。
-- 可用性集使用 azfae-use-as-[角色]。
-- 虚拟机名称使用 azfae-use-vm-[vmname]。
+* Contoso uses [IT workload]-[location]-[Azure resource] as a prefix. For this example, "azfae" (Azure Financial Analysis Engine) is the IT workload name and "chinaeast" is the location, because most of Contoso's initial customers are on the East Coast of the United States.
+* Storage accounts use contosoazfaeusesa[description] Note that contoso was added to the prefix to provide uniqueness, and storage account names do not support the use of hyphens.
+* Virtual networks use AZFAE-USE-VN[number].
+* Availability sets use azfae-use-as-[role].
+* Virtual machine names use azfae-use-vm-[vmname].
 
-### Azure 订阅和帐户
+### Azure subscriptions and accounts
+Contoso is using their Enterprise subscription, named Contoso Enterprise Subscription, to provide billing for this IT workload.
 
-Contoso 使用名为“Contoso 企业订阅”的企业订阅来提供此 IT 工作负荷的计费。
+### Storage accounts
+Contoso determined that they needed two storage accounts:
 
-### 存储帐户
+* **contosoazfaeusesawebapp** for the standard storage of the web servers, application servers, and domain controlles and their extra data disks
+* **contosoazfaeusesasqlclust** for the premium storage of the SQL Server cluster servers and their extra data disks
 
-Contoso 确定他们需要以下两个存储帐户：
+### A virtual network with subnets
+Because the virtual network does not need ongoing connectivity to the Contoso on-premises network, Contoso decided on a cloud-only virtual network.
 
-- **contosoazfaeusesawebapp** 用于 Web 服务器、应用程序服务器和域控制器及其额外的数据磁盘的标准存储
-- **contosoazfaeusesasqlclust** 用于 SQL Server 群集服务器及其额外的数据磁盘的高级存储
+They created a cloud-only virtual network with the following settings using the Azure portal preview:
 
-### 包含子网的虚拟网络
+* Name: AZFAE-USE-VN01
+* Location: China East
+* Virtual network address space: 10.0.0.0/8
+* First subnet:
+    * Name: FrontEnd
+    * Address space: 10.0.1.0/24
+* Second subnet:
+    * Name: BackEnd
+    * Address space: 10.0.2.0/24
 
-由于该虚拟网络不需要持续连接到 Contoso 本地网络，Contoso 决定选择仅限云的虚拟网络。
+### Availability sets
+To maintain high availability of all four tiers of their financial analysis engine, Contoso decided on four availability sets:
 
-他们通过 Azure 经典管理门户使用以下设置创建了仅限云的虚拟网络：
+* **azfae-use-as-dc** for the domain controllers
+* **azfae-use-as-web** for the web servers
+* **azfae-use-as-app** for the application servers
+* **azfae-use-as-sql** for the servers in the SQL Server cluster
 
-- 名称：AZFAE-USE-VN01
-- 位置：中国东部
-- 虚拟网络地址空间：10.0.0.0/8
-- 第一个子网：
-    - 名称：FrontEnd
-    - 地址空间：10.0.1.0/24
-- 第二个子网：
-    - 名称：BackEnd
-    - 地址空间：10.0.2.0/24
+These availability sets will be created along with the virtual machines.
 
-### 可用性集
+### Virtual machines
+Contoso decided on the following names for their Azure virtual machines:
 
-为了维护其财务分析引擎的所有四个层的高可用性，Contoso 决定使用四个可用性集：
+* **azfae-use-vm-dc01** for the first domain controller
+* **azfae-use-vm-dc02** for the second domain controller
+* **azfae-use-vm-web01** for the first web server
+* **azfae-use-vm-web02** for the second web server
+* **azfae-use-vm-app01** for the first application server
+* **azfae-use-vm-app02** for the second application server
+* **azfae-use-vm-sql01** for the first SQL Server in the SQL Server cluster
+* **azfae-use-vm-sql02** for the second SQL Server in the SQL Server cluster
+* **azfae-use-vm-sqlmn01** for the majority node witness in the SQL Server cluster
 
-- **azfae-use-as-dc** 用于域控制器
-- **azfae-use-as-web** 用于 Web 服务器
-- **azfae-use-as-app** 用于应用程序服务器
-- **azfae-use-as-sql** 用于 SQL Server 群集中的服务器
-
-这些可用性集将随虚拟机一起创建。
-
-### 虚拟机
-
-Contoso 决定将以下名称用于其 Azure 虚拟机：
-
-- **azfae-use-vm-dc01** 用于第一个域控制器
-- **azfae-use-vm-dc02** 用于第二个域控制器
-- **azfae-use-vm-web01** 用于第一个 Web 服务器
-- **azfae-use-vm-web02** 用于第二个 Web 服务器
-- **azfae-use-vm-app01** 用于第一个应用程序服务器
-- **azfae-use-vm-app02** 用于第二个应用程序服务器
-- **azfae-use-vm-sql01** 用于 SQL 服务器群集中的第一个 SQL 服务器
-- **azfae-use-vm-sql02** 用于 SQL 服务器群集中的第二个 SQL 服务器
-- **azfae-use-vm-sqlmn01** 用于 SQL Server 群集中的多数节点见证
-
-这是生成的配置。
+Here is the resulting configuration.
 
 ![](./media/virtual-machines-common-infrastructure-service-guidelines/example-config.png)
 
-此配置引入以下项：
+This configuration incorporates:
 
-- 包含两个子网（FrontEnd 和 BackEnd）的仅限云虚拟网络
-- 两个存储帐户
-- 四个可用性集，每个财务分析引擎层一个
-- 四个层中的虚拟机
-- 用于从 Internet 到 Web 服务器的基于 HTTPS 的 Web 流量的外部负载均衡集
-- 用于从 Web 服务器到应用程序服务器的未加密 Web 流量的内部负载均衡集
-- 单个资源组
+* A cloud-only virtual network with two subnets (FrontEnd and BackEnd)
+* Two storage accounts
+* Four availability sets, one for each tier of the financial analysis engine
+* The virtual machines for the four tiers
+* An external load balanced set for HTTPS-based web traffic from the Internet to the web servers
+* An internal load balanced set for unencrypted web traffic from the web servers to the application servers
+* A single resource group
 
-## 其他资源
+## Additional resources
+[Azure subscription and service limits, quotas, and constraints](../articles/azure-subscription-service-limits.md#storage-limits)
 
-[Azure 订阅和服务限制、配额和约束](../articles/azure-subscription-service-limits.md#storage-limits)
+[Sizes for virtual machines](../articles/virtual-machines/virtual-machines-linux-sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
-[Windows](../articles/virtual-machines/virtual-machines-windows-sizes.md) 或者 [linux](../articles/virtual-machines/virtual-machines-linux-sizes.md) 虚拟机的大小
+[Azure storage scalability and performance targets](../articles/storage/storage-scalability-targets.md)
 
-[Azure 存储空间可伸缩性和性能目标](../articles/storage/storage-scalability-targets.md)
+[Datacenter extension reference architecture diagram](https://gallery.technet.microsoft.com/Datacenter-extension-687b1d84)
 
-[云平台集成框架（Azure 体系结构模式）](../articles/azure-architectures-cpif-overview.md)
-
-[数据中心扩展参考体系结构关系图](https://gallery.technet.microsoft.com/Datacenter-extension-687b1d84)
-
-<!---HONumber=Mooncake_1207_2015-->
+[Azure compute, network, and storage providers under Azure Resource Manager](../articles/virtual-machines/virtual-machines-windows-compare-deployment-models.md)

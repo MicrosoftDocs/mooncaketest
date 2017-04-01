@@ -1,11 +1,6 @@
-<!-- not suitable for Mooncake -->
+## Peering VNets in the same subscription
+In this scenario you will create a peering between two VNets named **VNet1** and **VNet2** belonging to the same subscription. 
 
-## 在同一订阅中对等 VNet
+![Basic scenario](./media/virtual-networks-create-vnetpeering-scenario-basic-include/figure01.PNG)
 
-在此方案中，将创建属于同一订阅的名称分别为“VNet1”和“VNet2”的 VNet 间的对等互连。
-
-![基本方案](./media/virtual-networks-create-vnetpeering-scenario-basic-include/figure01.PNG)
-
-VNet 对等互连会允许对等虚拟网络间整个地址空间的完全连接。
-
-<!---HONumber=Mooncake_0919_2016-->
+VNet peering will allow full connectivity between the entire address space of peered virtual networks.

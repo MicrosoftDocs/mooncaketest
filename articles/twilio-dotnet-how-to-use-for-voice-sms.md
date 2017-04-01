@@ -264,8 +264,6 @@ var call = client.InitiateOutboundCall(options);
 
 For additional information about using Twilio on Azure with ASP.NET, see [How to make a phone call using Twilio in a web role on Azure][howto_phonecall_dotnet].
 
-[!INCLUDE [twilio_additional_services_and_next_steps](../includes/twilio_additional_services_and_next_steps.md)]
-
 [howto_phonecall_dotnet]: partner-twilio-cloud-services-dotnet-phone-call-web-role.md
 
 [twimlet_message_url]: http://twimlets.com/message

@@ -41,7 +41,7 @@ This Secure Push tutorial shows how to send a push notification securely. The tu
 > [!NOTE]
 > This tutorial assumes that you have created and configured your notification hub as described in [Getting Started with Notification Hubs (iOS)](./notification-hubs-ios-apple-push-notification-apns-get-started.md).
 
-[!INCLUDE [notification-hubs-aspnet-backend-securepush](../../includes/notification-hubs-aspnet-backend-securepush)]
+[!INCLUDE [notification-hubs-aspnet-backend-securepush](../../includes/notification-hubs-aspnet-backend-securepush.md)]
 
 ## Modify the iOS project
 

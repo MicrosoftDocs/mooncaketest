@@ -30,8 +30,48 @@ This sample works in a Bash shell. For options on running Azure CLI scripts on W
 
 ## Sample script
 
-[!code-azurecli[main](../../../cli_scripts/sql-database/monitor-and-scale-database/monitor-and-scale-database.sh "Monitor and scale single SQL Database")]
+```azurecli
+#!/bin/bash
 
+# Set an admin login and password for your database
+adminlogin=ServerAdmin
+password=ChangeYourAdminPassword1
+# the logical server name has to be unique in the system
+servername=server-$RANDOM
+
+# Create a resource group
+az group create \
+	--name myResourceGroup \
+	-location westeurope 
+
+# Create a server
+az sql server create \
+	--name $servername \
+	--resource-group myResourceGroup \
+	--location westeurope \
+	--admin-user $adminlogin \
+	--admin-password $password
+
+# Create a database
+az sql db create \
+	--resource-group myResourceGroup \
+	--server $servername \
+	--name mySampleDatabase \
+	--service-objective S0
+
+# Monitor database size
+az sql db show-usage \
+	--name mySampleDatabase \
+	--resource-group myResourceGroup \
+	--name $servername
+
+# Scale up database to S1 performance level (create command executes update if DB already exists)
+az sql db create \
+	--resource-group myResourceGroup \
+	--server $servername \
+	--name mySampleDatabase \
+	--service-objective S1
+```
 ## Clean up deployment
 
 After the script sample has been run, the following command can be used to remove the resource group and all resources associated with it.

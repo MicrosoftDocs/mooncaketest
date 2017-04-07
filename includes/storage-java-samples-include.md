@@ -1,12 +1,10 @@
-## Java 示例代码存储库
+## Java sample code repositories
 
-下面是适用于 Azure 存储 Java 客户端库的所有示例存储库的列表。
+Here is a list of all our sample repositories for the Azure Storage Java client library.
 
-* [存储入门 - 在 Java 中管理存储帐户](https://azure.microsoft.com/resources/samples/storage-java-manage-storage-accounts/)
-* [Java 中的 Azure Blob 服务入门](https://azure.microsoft.com/resources/samples/storage-blob-java-getting-started/)
-* [Java 中的 Azure 文件服务入门](https://azure.microsoft.com/resources/samples/storage-file-java-getting-started/)
-* [Java 中的 Azure 队列服务入门](https://azure.microsoft.com/resources/samples/storage-queue-java-getting-started/)
-* [Java 中的 Azure 表服务入门](https://azure.microsoft.com/resources/samples/storage-table-java-getting-started/)
-* [存储 Java 客户端库示例](https://github.com/Azure/azure-storage-java/tree/master/microsoft-azure-storage-samples/src/com/microsoft/azure/storage)
-
-<!---HONumber=Mooncake_0220_2017-->
+* [Getting Started with Storage - Manage Storage Account in Java](https://azure.microsoft.com/resources/samples/storage-java-manage-storage-accounts/)
+* [Getting Started with Azure Blob Service in Java](https://azure.microsoft.com/resources/samples/storage-blob-java-getting-started/)
+* [Getting Started with Azure File Service in Java](https://azure.microsoft.com/resources/samples/storage-file-java-getting-started/)
+* [Getting Started with Azure Queue Service in Java](https://azure.microsoft.com/resources/samples/storage-queue-java-getting-started/)
+* [Getting Started with Azure Table Service in Java](https://azure.microsoft.com/resources/samples/storage-table-java-getting-started/)
+* [Storage Java Client Library Samples](https://github.com/Azure/azure-storage-java/tree/master/microsoft-azure-storage-samples/src/com/microsoft/azure/storage)

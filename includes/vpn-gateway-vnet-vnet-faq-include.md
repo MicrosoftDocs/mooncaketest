@@ -1,46 +1,44 @@
-###Azure 会对 VNet 之间的流量收费吗？
-同一区域中的 VNet 到 VNet 流量两个方向都是免费的。跨区域 VNet 到 VNet 出口流量根据源区域的出站 VNet 间数据传输费率收费。有关详细信息，请参阅[定价页](https://www.azure.cn/pricing/details/vpn-gateway/)。
+###Does Azure charge for traffic between VNets?
+VNet-to-VNet traffic within the same region is free for both directions. Cross region VNet-to-VNet egress traffic is charged with the outbound inter-VNet data transfer rates based on the source regions. Refer to the [pricing page](https://www.azure.cn/pricing/details/vpn-gateway/) for details.
 
-###VNet 到 VNet 流量是否会通过 Internet？
-否。VNet 到 VNet 流量会流经 Azure 主干，而非 Internet。
+###Does VNet-to-VNet traffic travel across the Internet?
+No. VNet-to-VNet traffic travels across the Azure backbone, not the Internet.
 
-### VNet 到 VNet 流量是否安全？
-是，它通过 IPsec/IKE 加密进行保护。
+### Is VNet-to-VNet traffic secure?
+Yes, it is protected by IPsec/IKE encryption.
 
-###是否需要使用 VPN 设备将 VNet 连接在一起？
-否。将多个 Azure 虚拟网络连接在一起不需要 VPN 设备，除非需要跨界连接。
+###Do I need a VPN device to connect VNets together?
+No. Connecting multiple Azure virtual networks together doesn't require a VPN device unless cross-premises connectivity is required.
 
-###VNet 是否需要处于同一区域？
-否。虚拟网络可以在相同或不同的 Azure 区域（位置）中。
+###Do my VNets need to be in the same region?
+No. The virtual networks can be in the same or different Azure regions (locations).
 
-###是否可以将 VNet 到 VNet 与多站点连接一起使用？
-是的。虚拟网络连接可与多站点 VPN 同时使用。
+###Can I use VNet-to-VNet along with multi-site connections?
+Yes. Virtual network connectivity can be used simultaneously with multi-site VPNs.
 
-### 一个虚拟网络可以连接到多少个本地站点和虚拟网络？
-请参阅[网关要求](../articles/vpn-gateway/vpn-gateway-about-vpn-gateway-settings.md#requirements)表。
+### How many on-premises sites and virtual networks can one virtual network connect to?
+See [Gateway requirements](../articles/vpn-gateway/vpn-gateway-about-vpn-gateway-settings.md#requirements) table.
 
-###是否可以使用 VNet 到 VNet 连接 VNet 外的 VM 或云服务？
-否。VNet 到 VNet 支持连接虚拟网络。它不支持连接不在虚拟网络中的虚拟机或云服务。
+###Can I use VNet-to-VNet to connect VMs or cloud services outside of a VNet?
+No. VNet-to-VNet supports connecting virtual networks. It does not support connecting virtual machines or cloud services that are not in a virtual network.
 
-###云服务或负载均衡终结点可否跨 VNet？
-否。云服务或负载均衡终结点不能跨虚拟网络，即使它们连接在一起，也是如此。
+###Can a cloud service or a load balancing endpoint span VNets?
+No. A cloud service or a load balancing endpoint can't span across virtual networks, even if they are connected together.
 
-###是否可以为 VNet 到 VNet 或多站点连接使用 PolicyBased VPN 类型？
-否。VNet 到 VNet 和多站点连接需要 RouteBased（以前称为动态路由）VPN 类型的 Azure VPN 网关。
+###Can I used a PolicyBased VPN type for VNet-to-VNet or Multi-Site connections?
+No. VNet-to-VNet and Multi-Site connections require Azure VPN gateways with RouteBased (previously called Dynamic Routing) VPN types.
 
-### 是否可以将 RouteBased VPN 类型的 VNet 连接到另一个 PolicyBased VPN 类型的 VNet？
-否，两台虚拟网络都必须使用基于路由（以前称为动态路由）的 VPN。
+### Can I connect a VNet with a RouteBased VPN Type to another VNet with a PolicyBased VPN type?
+No, both virtual networks MUST be using route-based (previously called Dynamic Routing) VPNs.
 
-###VPN 隧道是否共享带宽？
-是的。虚拟网络的所有 VPN 隧道共享 Azure VPN 网关上的可用带宽，以及 Azure 中的相同 VPN 网关运行时间 SLA。
+###Do VPN tunnels share bandwidth?
+Yes. All VPN tunnels of the virtual network share the available bandwidth on the Azure VPN gateway and the same VPN gateway uptime SLA in Azure.
 
-###是否支持冗余隧道？
-将一个虚拟网络网关配置为主动-主动时，支持在一对虚拟网络之间设置冗余隧道。
+###Are redundant tunnels supported?
+Redundant tunnels between a pair of virtual networks are supported when one virtual network gateway is configured as active-active.
 
-###VNet 到 VNet 配置是否可以有重叠的地址空间？
-否。不能有重叠的 IP 地址范围。
+###Can I have overlapping address spaces for VNet-to-VNet configurations?
+No. You can't have overlapping IP address ranges.
 
-### 连接的虚拟网络与内部本地站点之间是否可以有重叠的地址空间？
-否。不能有重叠的 IP 地址范围。
-
-<!---HONumber=Mooncake_0227_2017-->
+### Can there be overlapping address spaces among connected virtual networks and on-premises local sites?
+No. You can't have overlapping IP address ranges.

@@ -1,82 +1,64 @@
-在 Azure 上运行时，有些软件包可能无法使用 pip 进行安装。可能只是该软件包在 Python 软件包索引中不可用。可能需要一个编译器（在运行 Azure App Service 的计算机上未提供编译器）。
+Some packages may not install using pip when run on Azure.  It may simply be that the package is not available on the Python Package Index.  It could be that a compiler is required (a compiler is not available on the machine running the web app in Azure App Service).
 
-在此部分中，我们将考察解决此问题的方法。
+In this section, we'll look at ways to deal with this issue.
 
-### 请求轮
+### Request wheels
+If the package installation requires a compiler, you should try contacting the package owner to request that wheels be made available for the package.
 
-如果软件包安装需要编译器，您应尝试联系软件包所有者以请求为软件包提供轮。
+With the recent availability of [Microsoft Visual C++ Compiler for Python 2.7][Microsoft Visual C++ Compiler for Python 2.7], it is now easier to build packages that have native code for Python 2.7.
 
-现在使用最新提供的 [Microsoft Visual C++ Compiler for Python 2.7][]，就可以更轻松地构建具有针对 Python 2.7 的本机代码的软件包。
+### Build wheels (requires Windows)
+Note: When using this option, make sure to compile the package using a Python environment that matches the platform/architecture/version that is used on the web app in Azure App Service (Windows/32-bit/2.7 or 3.4).
 
-### 构建轮（需要 Windows）
+If the package doesn't install because it requires a compiler, you can install the compiler on your local machine and build a wheel for the package, which you will then include in your repository.
 
-注意：使用此选项时，确保使用匹配 Azure App Service 上所用的平台/体系结构/版本（Windows/32 位/2.7 或 3.4）的 Python 环境来编译此软件包。
+Mac/Linux Users: If you don't have access to a Windows machine, see [Create a Virtual Machine Running Windows][Create a Virtual Machine Running Windows] for how to create a VM on Azure.  You can use it to build the wheels, add them to the repository, and discard the VM if you like. 
 
-如果软件包由于需要编译器而未安装，您可以在本地计算机上安装编译器，然后为软件包构建轮，随后将轮包含在您的存储库中。
+For Python 2.7, you can install [Microsoft Visual C++ Compiler for Python 2.7][Microsoft Visual C++ Compiler for Python 2.7].
 
-Mac/Linux 用户：如果您没有 Windows 计算机的访问权限，请参阅[创建运行 Windows 的虚拟机][]以了解如何在 Azure 上创建虚拟机。可以使用它来构建轮、将其添加到存储库以及在必要时放弃虚拟机。 
+For Python 3.4, you can install [Microsoft Visual C++ 2010 Express][Microsoft Visual C++ 2010 Express].
 
-对于 Python 2.7，您可以安装 [Microsoft Visual C++ Compiler for Python 2.7][]。
+To build wheels, you'll need the wheel package:
 
-对于 Python 3.4，您可以安装 [Microsoft Visual C++ 2010 Express][]。
+    env\scripts\pip install wheel
 
-要构建轮，你需要轮软件包：
+You'll use `pip wheel` to compile a dependency:
 
-```
-env\scripts\pip install wheel
-```
+    env\scripts\pip wheel azure==0.8.4
 
-您将使用  `pip wheel` 来编译依赖项：
+This creates a .whl file in the \wheelhouse folder.  Add the \wheelhouse folder and wheel files to your repository.
 
-```
-env\scripts\pip wheel azure==0.8.4
-```
+Edit your requirements.txt to add the `--find-links` option at the top. This tells pip to look for an exact match in the local folder before going to the python package index.
 
-这将在 \wheelhouse 文件夹中创建 .whl 文件。将 \wheelhouse 文件夹和轮文件添加到您的存储库。
+    --find-links wheelhouse
+    azure==0.8.4
 
-编辑 requirements.txt 从而在顶部添加 `--find-links` 选项。这会让 pip 在本地文件夹中查找完全匹配项，然后转至 python 软件包索引。
+If you want to include all your dependencies in the \wheelhouse folder and not use the python package index at all, you can force pip to ignore the package index by adding `--no-index` to the top of your requirements.txt.
 
-```
---find-links wheelhouse
-azure==0.8.4
-```
+    --no-index
 
-如果您想要将所有依赖项包含在 \wheelhouse 文件夹中而根本不使用 python 软件包索引，则可以通过将 `--no-index` 添加到 requirements.txt 之上来强制 pip 忽略软件包索引。
+### Customize installation
+You can customize the deployment script to install a package in the virtual environment using an alternate installer, such as easy\_install.  See deploy.cmd for an example that is commented out.  Make sure that such packages aren't listed in requirements.txt, to prevent pip from installing them.
 
-```
---no-index
-```
+Add this to the deployment script:
 
-### 自定义安装
+    env\scripts\easy_install somepackage
 
-您可以自定义部署脚本以在虚拟环境中使用备用安装程序（例如 easy\_install）来安装软件包。请参阅 deploy.cmd 以了解注释掉的示例。确保此类软件包不列入 requirements.txt 中，从而防止 pip 将其安装。
+You may also be able to use easy\_install to install from an exe installer (some are zip compatible, so easy\_install supports them).  Add the installer to your repository, and invoke easy\_install by passing the path to the executable.
 
-将其添加到部署脚本：
+Add this to the deployment script:
 
-```
-env\scripts\easy_install somepackage
-```
+    env\scripts\easy_install "%DEPLOYMENT_SOURCE%\installers\somepackage.exe"
 
-您还可以使用 easy\_install 从 exe 安装程序进行安装（有些兼容 zip，所以 easy\_install 支持它们）。将安装程序添加到您的存储库，然后通过传递可执行文件的路径来调用 easy\_install。
+### Include the virtual environment in the repository (requires Windows)
+Note: When using this option, make sure to use a virtual environment that matches the platform/architecture/version that is used on the web app in Azure App Service (Windows/32-bit/2.7 or 3.4).
 
-将其添加到部署脚本：
+If you include the virtual environment in the repository, you can prevent the deployment script from doing virtual environment management on Azure by creating an empty file:
 
-```
-env\scripts\easy_install "%DEPLOYMENT_SOURCE%\installers\somepackage.exe"
-```
+    .skipPythonDeployment
 
-### 将虚拟环境包含在存储库中（需要 Windows）
+We recommend that you delete the existing virtual environment on the app, to prevent leftover files from when the virtual environment was managed automatically.
 
-注意：使用此选项时，确保使用匹配 Azure App Service 上所用的平台/体系结构/版本（Windows/32 位/2.7 或 3.4）的虚拟环境。
-
-如果存储库中包含虚拟环境，您可以通过创建一个空文件来防止部署脚本在 Azure 上执行虚拟环境管理：
-
-```
-.skipPythonDeployment
-```
-
-我们建议您删除站点上的现有虚拟环境，从而防止在自动管理虚拟环境时出现剩余文件。
-
-[创建运行 Windows 的虚拟机]: ../articles/virtual-machines/virtual-machines-windows-classic-tutorial.md
+[Create a Virtual Machine Running Windows]: /azure/virtual-machines-windows-hero-tutorial/
 [Microsoft Visual C++ Compiler for Python 2.7]: http://aka.ms/vcpython27
 [Microsoft Visual C++ 2010 Express]: http://go.microsoft.com/?linkid=9709949

@@ -1,10 +1,10 @@
-- **Visual Studio 2013**<br/>若要下载 Visual Studio 2013 免费试用版，请参阅 [Visual Studio 下载](http://www.visualstudio.com/downloads/download-visual-studio-vs)。 
+- **Visual Studio 2013** <br/>This a requirement for using To download a free trial version of Visual Studio 2013, see [Visual Studio Downloads](http://www.visualstudio.com/downloads/download-visual-studio-vs). 
 
-- **SQL Server 2014 Express with Tools**<br/>从 [Microsoft SQL Server Express Edition 页](http://www.microsoft.com/zh-CN/server-cloud/Products/sql-server-editions/sql-server-express.aspx)免费下载 Microsoft SQL Server Express。选择“下载 SQL Server Express”并填写你的个人资料，选择“SQL Server 2014 Express with Tools”，然后单击“继续”。随后将开始下载 SQL Server Express 和 SQL Server Express 管理工具的安装程序。将安装程序包保存到本地计算机。
+- **SQL Server 2014 Express with Tools** <br/>Download Microsoft SQL Server Express for free at the [Microsoft SQL Server Express Edition page](http://www.microsoft.com/en-us/server-cloud/Products/sql-server-editions/sql-server-express.aspx). Choose the **Download SQL Server Express** and fill out your profile, choosing **SQL Server 2014 Express with Tools**, then click continue. This starts the download of the installer for both SQL Server Express and the SQL Server Express Management Tools. Save the installer package to your on-premises computer.
 
-- **本地计算机**<br/>你可以在与 SQL Server 实例所在的同一台本地计算机上运行混合连接管理器，也可以在不同的计算机上运行不同的管理器。运行混合连接管理器的计算机必须满足以下条件：
+- **An on-premises computer** <br/>You can run the Hybrid Connections Manger on the same on-premises computer as your SQL Server instance, or you can run each on a separate computer. The computer on which the Hybrid Connection Manager runs must meet the following criteria:
 
-    - 能够通过端口 5671 连接到 Azure。
-    - 能够访问运行 SQL Server 实例的计算机的*主机名*:*端口号*。  
+    - Be able to connect to Azure over port 5671.
+    - Be able to access the *hostname*:*portnumber* of the computer running your SQL Server instance.  
 
-<!---HONumber=71-->
+    For more information see [Hybrid Connections Overview](/documentation/articles//integration-hybrid-connection-overview).

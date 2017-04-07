@@ -1,22 +1,19 @@
-﻿如果部署脚本检测到兼容的虚拟环境已存在，它将跳过在 Azure 上创建虚拟环境的过程。这可以显著加快部署。通过 pip，将跳过已安装的软件包。
+The deployment script will skip creation of the virtual environment on Azure if it detects that a compatible virtual environment already exists.  This can speed up deployment considerably.  Packages that are already installed will be skipped by pip.
 
-在某些情况下，您可能想要强制删除该虚拟环境。如果您决定将虚拟环境包含为您的存储库的一部分，需要执行此操作。如果您需要删除某些软件包或测试对 requirements.txt 的更改，可能也会执行此操作。
+In certain situations, you may want to force delete that virtual environment.  You'll want to do this if you decide to include a virtual environment as part of your repository.  You may also want to do this if you need to get rid of certain packages, or test changes to requirements.txt.
 
-有几个选项用于管理 Azure 上的现有虚拟环境：
+There are a few options to manage the existing virtual environment on Azure:
 
-### 选项 1：使用 FTP
+### Option 1: Use FTP
+With an FTP client, connect to the server and you'll be able to delete the env folder.  Note that some FTP clients (such as web browsers) may be read-only and won't allow you to delete folders, so you'll want to make sure to use an FTP client with that capability.  The FTP host name and user are displayed in your web app's blade on the [Azure Portal Preview](https://portal.azure.cn).
 
-通过 FTP 客户端，连接到服务器，然后您就可以删除 env 文件夹。请注意，某些 FTP 客户端（例如 Web 浏览器）可能为只读而不允许您删除文件夹，因此您要确保使用具备此功能的 FTP 客户端。在 Azure 门户上，您 Web 应用的选项卡中显示 FTP 主机名和用户。
+### Option 2: Toggle runtime
+Here's an alternative that takes advantage of the fact that the deployment script will delete the env folder when it doesn't match the desired version of Python.  This will effectively delete the existing environment, and create a new one.
 
-### 选项 2：切换运行时
+1. Switch to a different version of Python (via runtime.txt or the **Application Settings** blade in the Azure Portal Preview)
+2. git push some changes (ignore any pip install errors if any)
+3. Switch back to initial version of Python
+4. git push some changes again
 
-这是利用以下事实的一个替代方法：部署脚本不匹配期望的 Python 版本时，它将删除 env 文件夹。这将有效地删除现有环境，然后创建新环境。
-
-1. 切换到其他版本的 Python（通过 runtime.txt 或 Azure 门户中的“应用程序设置”选项卡）
-1. git 推送一些更改 （如果有任何 pip 安装错误，请忽略）
-1. 切换回初始版本的 Python
-1. git 再次推送某些更改
-
-### 选项 3：自定义部署脚本
-
-如果您已自定义部署脚本，则可以更改 deploy.cmd 中的代码以强制其删除 env 文件夹。
+### Option 3: Customize deployment script
+If you've customized the deployment script, you can change the code in deploy.cmd to force it to delete the env folder.

@@ -1,11 +1,26 @@
----
-layout: LandingPage
-description: 了解如何同步目录并启用单一登录。文档介绍了如何集成整套标识管理功能。
----
+<properties
+    layout="LandingPage"
+    description="Learn how to synchronize directories and enable single sign-on. Documentation shows you how to integrate a full suite of identity management capabilities."
+    pageTitle="Azure Active Directory Documentation - Tutorials, API Reference | Azure"
+    description="Learn how to synchronize directories and enable single sign-on. Documentation shows you how to integrate a full suite of identity management capabilities."
+    services="active-directory"
+    author="carolz"
+    manager="carolz"
+    layout="LandingPage"/>
+    
+<tags    
+    ms.assetid=""
+    ms.service="active-directory"
+    ms.tgt_pltfrm="na"
+    ms.devlang="na"
+    ms.topic="landing-page"
+    ms.date="01/23/2017"
+    ms.author="carolz"
+    wacn.date="" />
 
-# Azure Active Directory 文档
+# Azure Active Directory Documentation
 
-了解如何通过 Azure Active Directory (Azure AD) 同步目录并启用单一登录。教程、API 参考和其他文档介绍了如何集成各种标识管理功能，包括多重身份验证、设备注册、基于角色的访问控制，以及安全监视和提醒。
+Learn how to synchronize directories and enable single sign-on with Azure Active Directory (Azure AD). Tutorials, API references, and other documentation show you how to integrate identity management capabilities including multi-factor authentication, device registration, role-based access control, and security monitoring and alerting.
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -19,7 +34,7 @@ description: 了解如何同步目录并启用单一登录。文档介绍了如�
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>了解 Azure Active Directory</h3>
+                        <h3>Learn about Azure Active Directory</h3>
                     </div>
                 </div>
             </div>
@@ -37,7 +52,7 @@ description: 了解如何同步目录并启用单一登录。文档介绍了如�
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Azure Active Directory 视频库</h3>
+                        <h3>Azure Active Directory Video Library</h3>
                     </div>
                 </div>
             </div>
@@ -55,25 +70,7 @@ description: 了解如何同步目录并启用单一登录。文档介绍了如�
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Azure Active Directory 入门</h3>
-                    </div>
-                </div>
-            </div>
-        </div>
-        </a>
-    </li>
-    <li>
-        <a href="/azure/active-directory/active-directory-get-started-premium">
-        <div class="cardSize">
-            <div class="cardPadding">
-                <div class="card">
-                    <div class="cardImageOuter">
-                        <div class="cardImage">
-                            <img src="media/index/get-started.svg" alt="" />
-                        </div>
-                    </div>
-                    <div class="cardText">
-                        <h3>Azure Active Directory Premium 入门</h3>
+                        <h3>Get started with Azure Active Directory</h3>
                     </div>
                 </div>
             </div>
@@ -84,14 +81,14 @@ description: 了解如何同步目录并启用单一登录。文档介绍了如�
 
 ---
 
-<h2>引用</h2>
+<h2>Reference</h2>
 <ul class="panelContent cardsW">
     <li>
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardText">
-                        <h3>命令行</h3>
+                        <h3>Command-Line</h3>
                         <p><a href="/powershell/">PowerShell</a></p>
                     </div>
                 </div>
@@ -103,7 +100,7 @@ description: 了解如何同步目录并启用单一登录。文档介绍了如�
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardText">
-                        <h3>语言</h3>
+                        <h3>Languages</h3>
                         <p><a href="/active-directory/adal/microsoft.identitymodel.clients.activedirectory">.NET</a></p>
                         <p><a href="/java/api">Java</a></p>
                    </div>
@@ -116,23 +113,11 @@ description: 了解如何同步目录并启用单一登录。文档介绍了如�
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardText">
-                        <h3>其他</h3>
-                        <p><a href="/azure/active-directory/active-directory-service-limits-restrictions">服务限制和局限性</a></p>
+                        <h3>Other</h3>
+                        <p><a href="/azure/active-directory/active-directory-service-limits-restrictions">Service limits and restrictions</a></p>
                     </div>
                 </div>
             </div>
         </div>
     </li>
 </ul>
-
-<div class="downloadHolder">
-    <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/zh-cn/Azure.azure-documents/live/active-directory.pdf">
-        <div class="img"></div>
-        <div class="text">
-            下载 Active Directory 文档
-        </div>
-    </a>
-
-</div>
-
-<!---HONumber=Mooncake_0120_2017-->

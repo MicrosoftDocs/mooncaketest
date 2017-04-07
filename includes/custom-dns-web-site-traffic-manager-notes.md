@@ -1,3 +1,1 @@
-如果还没有流量管理器配置文件，请根据[使用“快速创建”创建流量管理器配置文件](../articles/traffic-manager/traffic-manager-manage-profiles.md)中的信息创建一个。记下与你的流量管理器配置文件关联的 **.trafficmanager.cn** 域名，因为该域名将在本文档的后续步骤中使用。
-
-<!---HONumber=71-->
+If you do not already have a Traffic Manager profile, use the information in [Create a Traffic Manager profile using Quick Create](../articles/traffic-manager/traffic-manager-manage-profiles.md) to create one. Note the **.trafficmanager.cn** domain name associated with your Traffic Manager profile, as this will be used later by later steps in this document.

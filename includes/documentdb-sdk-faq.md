@@ -1,25 +1,23 @@
-**1.如何向客户通知即将停用的 SDK？**
+**1. How will customers be notified of the retiring SDK?**
 
-Microsoft 会在即将停用的 SDK 的支持结束之前提前 12 个月进行通知，以便协助平稳地转换到支持的 SDK。此外，会通过各种通信渠道（Azure 经典管理门户、开发人员中心、博客文章以及与分配的服务管理员的直接通信）来通知客户。
+Microsoft will provide 12 month advance notification to the end of support of the retiring SDK in order to facilitate a smooth transition to a supported SDK. Further, customers will be notified through various communication channels – Azure Management Portal, Developer Center, blog post, and direct communication to assigned service administrators.
 
-**2.在这 12 个月期间，客户是否可以使用“即将”停用的 DocumentDB SDK 来创作应用程序？**
+**2. Can customers author applications using a "to-be" retired DocumentDB SDK during the 12 month period?** 
 
-可以，客户在 12 个月宽限期内拥有完全访问权限，可以使用“即将”停用的 DocumentDB SDK 来创作、部署和修改应用程序。在 12 个月宽限期内，建议客户根据相应情况迁移到支持的较新版本 DocumentDB SDK。
+Yes, customers will have full access to author, deploy and modify applications using the "to-be" retired DocumentDB SDK during the 12 month grace period. During the 12 month grace period, customers are advised to migrate to a newer supported version of DocumentDB SDK as appropriate.
 
-**3.在 12 个月通知期之后，客户是否可以使用已停用的 DocumentDB SDK 创建和修改应用程序？**
+**3. Can customers author and modify applications using a retired DocumentDB SDK after the 12 month notification period?**
 
-在 12 个月通知期之后，SDK 将停用。DocumentDB 平台不允许使用已停用的 SDK 的应用程序对 DocumentDB 进行任何访问。此外，Microsoft 不会对已停用的 SDK 提供客户支持。
+After the 12 month notification period, the SDK will be retired. Any access to DocumentDB by an applications using a retired SDK will not be permitted by the DocumentDB platform. Further, Microsoft will not provide customer support on the retired SDK.
 
-**4.客户正在运行的使用不支持的 DocumentDB SDK 版本的应用程序会发生什么情况？**
+**4. What happens to Customer’s running applications that are using unsupported DocumentDB SDK version?**
 
-为连接到使用已停用的 SDK 版本的 DocumentDB 服务而进行的任何尝试都会受到拒绝。
+Any attempts made to connect to the DocumentDB service with a retired SDK version will be rejected. 
 
-**5.新特性和功能是否会适用于所有未停用的 SDK**
+**5. Will new features and functionality be applied to all non-retired SDKs**
 
-新特性和功能只添加到新版本。如果你使用的是未停用的旧版本 SDK，则对 DocumentDB 进行的请求仍可与以前一样正常工作，但是你无权访问任何新功能。
+New features and functionality will only be added to new versions. If you are using an old, non-retired, version of the SDK your requests to DocumentDB will still function as previous but you will not have access to any new capabilities.  
 
-**6.如果我无法在截止日期之前更新应用程序，我应该怎么办**
+**6. What should I do if I cannot update my application before a cut-off date**
 
-我们建议尽早升级到最新 SDK。SDK 标记为要停用之后，你会有 12 个月来更新应用程序。
-
-<!---HONumber=Mooncake_0503_2016-->
+We recommend that you upgrade to the latest SDK as early as possible. Once an SDK has been tagged for retirement you will have 12 months to update your application. If, for whatever reason, you cannot complete your application update within this timeframe then please contact the [DocumentDB Team](mailto:askdocdb@microsoft.com) and request their assistance before the cutoff date.

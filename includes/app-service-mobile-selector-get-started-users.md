@@ -6,5 +6,3 @@
 >- [Xamarin.Android](../articles/app-service-mobile/app-service-mobile-xamarin-android-get-started-users.md)
 >- [Xamarin.Forms](../articles/app-service-mobile/app-service-mobile-xamarin-forms-get-started-users.md)
 >- [Xamarin.iOS](../articles/app-service-mobile/app-service-mobile-xamarin-ios-get-started-users.md)
-
-<!---HONumber=Mooncake_0919_2016-->

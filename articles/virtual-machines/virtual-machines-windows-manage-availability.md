@@ -1,35 +1,34 @@
 ---
-title: 管理 Windows VM 的可用性 | Azure
-description: 了解如何使用多个虚拟机确保 Azure 中 Windows 应用程序的高可用性
+title: Manage the availability of Windows VMs in Azure | Azure
+description: Learn how to use multiple virtual machines to ensure high availability for your Windows application in Azure
 services: virtual-machines-windows
-documentationCenter: ''
-authors: cynthn
+documentationcenter: ''
+author: cynthn
 manager: timlt
 editor: tysonn
 tags: azure-resource-manager,azure-service-management
 
+ms.assetid: 02351953-7b6a-4657-b9e1-de2ea8f6aa05
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
-ms.date: 11/14/2016
-wacn.date: 12/30/2016
+ms.date: 03/06/2017
+wacn.date: ''
 ms.author: cynthn
+ms.custom: H1Hack27Feb2017
+
 ---
+# Manage the availability of Windows virtual machines in Azure 
 
-# 管理虚拟机的可用性
+Learn ways to set up and manage multiple virtual machines to ensure high availability for your Windows application in Azure. You can also [manage the availability of Linux virtual machines](virtual-machines-linux-manage-availability.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
-了解如何设置和管理多个虚拟机，以确保 Azure 中 Windows 应用程序的高可用性。还可以[管理 Linux 虚拟机的可用性](./virtual-machines-linux-manage-availability.md)。
+[!INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-both-include.md)]
 
-[!INCLUDE [了解部署模型](../../includes/learn-about-deployment-models-both-include.md)]
-
-有关在使用经典部署模型时创建和使用可用性集的说明，请参阅[如何配置可用性集](./virtual-machines-windows-classic-configure-availability.md)。
+For instructions on creating and using availability sets when using the classic deployment model, see [How to Configure an Availability Set](virtual-machines-windows-classic-configure-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json).
 
 [!INCLUDE [virtual-machines-common-manage-availability](../../includes/virtual-machines-common-manage-availability.md)]
 
-## 后续步骤
-
-若要了解有关对虚拟机进行负载均衡的详细信息，请参阅[对虚拟机进行负载均衡](./virtual-machines-windows-load-balance.md)。
-
-<!---HONumber=Mooncake_Quality_Review_1118_2016-->
+## Next steps
+To learn more about load balancing your virtual machines, see [Load Balancing virtual machines](virtual-machines-windows-load-balance.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).

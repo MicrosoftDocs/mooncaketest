@@ -1,6 +1,6 @@
 ---
-title: Azure SQL 数据库常见问题
-description: 客户就云数据库、Azure SQL 数据库、Microsoft 的关系数据库管理系统 (RDBMS) 和云中“数据库即服务”经常提出的问题的解答。
+title: Azure SQL Database FAQ | Azure
+description: Answers to common questions customers ask about cloud databases and Azure SQL Database, Microsoft's relational database management system (RDBMS) and database as a service in the cloud.
 services: sql-database
 documentationcenter: ''
 author: CarlRabeler
@@ -14,92 +14,103 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-management
-ms.date: 12/19/2016
-wacn.date: 01/20/2017
+ms.date: 02/06/2017
+wacn.date: ''
 ms.author: sashan;carlrab
 ---
 
-# SQL 数据库常见问题
-## SQL 数据库的使用情况如何体现在我的帐单上？
-SQL 数据库以可预测的每小时费率收费，同时根据服务层 + 单一数据库的性能级别或每一弹性池的 eDTU 数计费。实际使用量是每小时按比例计算的，因此帐单可能会显示小时的小数部分。例如，如果某个数据库在一个月内存在了 12 小时，则帐单将显示 0.5 天的使用量。服务层 + 性能级别和每个池的 eDTU 数在帐单中进行了划分，以便查看单个月份中使用数据库的天数。
+# SQL Database FAQ
 
-## 如果单一数据库活动的时间少于一小时，或使用更高服务层的时间少于一小时，会如何计费？
-需要支付使用最高服务层数据库存在的时数 + 在该小时适用的性能级别，无论使用方式或数据库的活动状态是否少于一小时。例如，如果创建了单一数据库，并在五分钟后将其删除，则将按该数据库存在一小时收费。
+## What is the current version of SQL Database?
+The current version of SQL Database is V12. Version V11 has been retired.
 
-示例
+## What is the SLA for SQL Database?
+We guarantee at least 99.99% of the time customers will have connectivity between their single or elastic Basic, Standard, or Premium Azure SQL Database and our Internet gateway. For more information, see [SLA](https://www.azure.cn/support/legal/sla/).
 
-* 如果创建了一个基本数据库并立即将其升级为标准版 S1，则第一小时将按标准版 S1 费率收费。
-* 如果晚上 10:00 将数据库从基本版升级到高级版，并且升级过程在第二天凌晨 1:35 完成，则将从凌晨 1:00 开始按高级版费率收费。
-* 如果在上午 11:00 将数据库从“高级”降级到“基本”级别，并且在下午 2:15 完成降级，则下午 3:00 之前会以高级版费率对数据库收费，之后将以基本版费率收费。
+## How do I reset the password for the server admin?
+In the [Azure portal](https://portal.azure.cn) click **SQL Servers**, select the server from the list, and then click **Reset Password**.
 
-## 弹性池的使用情况如何体现在我的帐单上，另外，更改每个池的 eDTU 数会发生什么情况？
-在帐单上，弹性池收费显示为弹性 DTU (eDTU)，并在[定价页](https://www.azure.cn/pricing/details/sql-database/)上的“每个池的 eDTU 数”下递增显示。弹性池没有每一数据库的费用。对于池存在的每个小时，都需要支付最高的 eDTU，无论使用量是多少，也不管池处于活动状态的时间是否少于一小时。
+## How do I manage databases and logins?
+See [Managing databases and logins](./sql-database-manage-logins.md).
 
-示例
+## How do I make sure only authorized IP addresses are allowed to access a server?
+See [How to: Configure firewall settings on SQL Database](./sql-database-configure-firewall-settings.md).
 
-* 如果在上午 11:18 以 200 eDTU 创建标准弹性池，并向池中添加了五个数据库，则从上午 11 点开始到当天剩余的时间都会以 200 eDTU 收取整小时的费用。
-* 在第 2 天上午 5:05，数据库 1 开始使用 50 eDTU 并且在一天中保持稳定。数据库 2-5 在 0 和 80 eDTU 之间波动。在当天，添加全天使用不同 eDTU 的其他五个数据库。第 2 天全天将以 200 eDTU 计费。
-* 在第 3 天上午 5 点，添加了另外 15 个数据库。数据库使用量全天增加，到下午 8:05 决定将池的 eDTU 数从 200 增加到 400。下午 8 点以前继续按 200 eDTU 收费，当天的其余 4 小时则按 400 eDTU 计费。
+## How does the usage of SQL Database show up on my bill?
+SQL Database bills on a predictable hourly rate based on both the service tier + performance level for single databases or eDTUs per elastic pool. Actual usage is computed and pro-rated hourly, so your bill might show fractions of an hour. For example, if a database exists for 12 hours in a month, your bill shows usage of 0.5 days. Additionally, service tiers + performance level and eDTUs per pool are broken out in the bill to make it easier to see the number of database days you used for each in a single month.
 
-## 弹性池计费和定价信息
-弹性池按以下特征计费：
+## What if a single database is active for less than an hour or uses a higher service tier for less than an hour?
+You are billed for each hour a database exists using the highest service tier + performance level that applied during that hour, regardless of usage or whether the database was active for less than an hour. For example, if you create a single database and delete it five minutes later your bill reflects a charge for one database hour. 
 
-* 弹性池一创建即计费，即使池中没有数据库。
-* 弹性池按小时计费。该计量频率与单一数据库性能级别的计量频率相同。
-* 如果将弹性池的大小调整为新的 eDTU 量，在调整操作完成之前，不会按新的 eDTU 量计费。这种计费所遵循的模式与更改单一数据库的性能级别所遵循的模式相同。
-* 弹性池的价格取决于池的 eDTU 数量。弹性池的价格与池内弹性数据库的数目和使用率无关。
-* 价格的计算公式为：（池 eDTU 的数量）x（每 eDTU 的单位价格）。
+Examples
 
-弹性池的 eDTU 单价高于同一服务层中单一数据库的 DTU 单价。有关详细信息，请参阅 [SQL 数据库定价](https://www.azure.cn/pricing/details/sql-database/)。
+* If you create a Basic database and then immediately upgrade it to Standard S1, you are charged at the Standard S1 rate for the first hour.
+* If you upgrade a database from Basic to Premium at 10:00 p.m. and upgrade completes at 1:35 a.m. on the following day, you are charged at the Premium rate starting at 1:00 a.m. 
+* If you downgrade a database from Premium to Basic at 11:00 a.m. and it completes at 2:15 p.m., then the database is charged at the Premium rate until 3:00 p.m., after which it is charged at the Basic rates.
 
-若要了解 eDTU 和服务层，请参阅 [SQL 数据库选项和性能](./sql-database-service-tiers.md)。
-## 帐单上如何体现弹性池中活动异地复制的使用？
-与单一数据库不同的是，对弹性数据库使用[活动异地复制](./sql-database-geo-replication-overview.md)对计费没有直接的影响。只需支付对每个池（主池和辅助池）预配的 eDTU 费用
+## How does elastic pool usage show up on my bill and what happens when I change eDTUs per pool?
+Elastic pool charges show up on your bill as Elastic DTUs (eDTUs) in the increments shown under eDTUs per pool on [the pricing page](https://www.azure.cn/pricing/details/sql-database/). There is no per-database charge for elastic pools. You are billed for each hour a pool exists at the highest eDTU, regardless of usage or whether the pool was active for less than an hour. 
 
-## 使用审核功能会对帐单产生什么影响？
-审核功能是 SQL 数据库服务的内置功能，无需另行付费，基本、标准和高级数据库均提供此功能。但是，为了存储审核日志，审核功能将使用 Azure 存储帐户，而 Azure 存储空间中表和队列的费率根据审核日志的大小来应用。
+Examples
 
-## 如何找到单一数据库和弹性池的合适服务层和性能级别？
-有几种工具可供使用。
+* If you create a Standard elastic pool with 200 eDTUs at 11:18 a.m., adding five databases to the pool, you are charged for 200 eDTUs for the whole hour, beginning at 11 a.m. through the remainder of the day.
+* On Day 2, at 5:05 a.m., Database 1 begins consuming 50 eDTUs and holds steady through the day. Databases 2-5 fluctuate between 0 and 80 eDTUs. During the day, you add five other databases that consume varying eDTUs throughout the day. Day 2 is a full day billed at 200 eDTU. 
+* On Day 3, at 5 a.m. you add another 15 databases. Database usage increases throughout the day to the point where you decide to increase eDTUs for the pool from 200 to 400 at 8:05 p.m. Charges at the 200 eDTU level were in effect until 8 pm and increases to 400 eDTUs for the remaining four hours. 
 
-- 对于本地数据库，请使用 [DTU 选型顾问](http://dtucalculator.azurewebsites.net/)，它会建议所需的数据库和 DTU，并为弹性池评估多个数据库。
-- 如果单一数据库可因池受益，并且 Azure 的智能引擎发现担保数据库的历史使用模式时，建议使用弹性池。请参阅 [使用 Azure 门户预览监视和管理弹性池](./sql-database-elastic-pool-manage-portal.md)。有关如何自行进行数学计算的详细信息，请参阅[弹性池的价格和性能注意事项](./sql-database-elastic-pool-guidance.md)
-- 若要确定是否需要向上或向下调整单一数据库，请参阅[单一数据库的性能指南](./sql-database-performance-guidance.md)。
+## Elastic pool billing and pricing information
+Elastic pools are billed per the following characteristics:
 
-## 可以按何种频率更改单一数据库的服务层或性能级别？
-使用 V12 数据库，可以随意（在基本、标准和高级之间）更改服务层或服务层内的性能级别（例如 S1 到 S2）。对于早期版本的数据库，可以在 24 小时内更改服务层或性能级别四次。
+* An elastic pool is billed upon its creation, even when there are no databases in the pool.
+* An elastic pool is billed hourly. This is the same metering frequency as for performance levels of single databases.
+* If an elastic pool is resized to a new number of eDTUs, then the pool is not billed according to the new amount of eDTUS until the resizing operation completes. This follows the same pattern as changing the performance level of single databases.
+* The price of an elastic pool is based on the number of eDTUs of the pool. The price of an elastic pool is independent of the number and utilization of the elastic databases within it.
+* Price is computed by (number of pool eDTUs)x(unit price per eDTU).
 
-## 可以按何种频率调整每个池的 eDTU？
-次数随意。
+The unit eDTU price for an elastic pool is higher than the unit DTU price for a single database in the same service tier. For details, see [SQL Database pricing](https://www.azure.cn/pricing/details/sql-database/). 
 
-## 更改单一数据库的服务层次或性能级别，或将数据库移入和移出弹性池需要多长时间？
-更改数据库的服务层和移入和移出池需要在平台上以后台操作的形式复制数据库。更改服务层可能需要几分钟至几小时的时间，具体取决于数据库的大小。这两种情况下，数据库在移动期间保持联机和可用。有关更改单一数据库的详细信息，请参阅[更改数据库的服务层](./sql-database-scale-up.md)。
+To understand the eDTUs and service tiers, see [SQL Database options and performance](sql-database-service-tiers.md).
+## How does the use of Active Geo-Replication in an elastic pool show up on my bill?
+Unlike single databases, using [Active Geo-Replication](./sql-database-geo-replication-overview.md) with elastic databases doesn't have a direct billing impact.  You are only charged for the eDTUs provisioned for each of the pools (primary pool and secondary pool)
 
-## 何时应该使用单一数据库或弹性数据库？ 
-一般而言，弹性池针对典型的[软件即服务 (SaaS) 应用程序模式](./sql-database-design-patterns-multi-tenancy-saas-applications.md)而设计，该模式中每个客户或租户有一个数据库。购买单独的数据库并超量预配以满足每个数据库的可变和峰值需求通常不够经济高效。使用池可以管理池的整体性能，数据库将自动扩展和收缩。
+## How does the use of the auditing feature impact my bill?
+Auditing is built into the SQL Database service at no extra cost and is available to Basic, Standard, and Premium databases. However, to store the audit logs, the auditing feature uses an Azure Storage account, and rates for tables and queues in Azure Storage apply based on the size of your audit log.
 
-如果 Azure 的智能引擎发现了担保数据库的使用模式，则建议使用池。有关详细信息，请参阅 [SQL 数据库定价层建议](./sql-database-service-tier-advisor.md)。有关在单一数据库与弹性数据库之间进行选择的详细指导，请参阅[弹性池的价格和性能注意事项](./sql-database-elastic-pool-guidance.md)。
+## How do I find the right service tier and performance level for single databases and elastic pools?
+There are a few tools available to you. 
 
-## 具有高达备份存储的最大已预配数据库存储两倍的容量是什么意思？ 
-备份存储是与用于[时间点还原](./sql-database-recovery-using-backups.md#point-in-time-restore)和[异地还原](./sql-database-recovery-using-backups.md#geo-restore)的自动数据库备份关联的存储。Azure SQL 数据库提供了高达备份存储的最大已预配数据库存储两倍的容量，不需要支付额外的成本。例如，如果拥有一个标准 DB 实例并且预配的 DB 大小为 250 GB，则会提供 500 GB 的备份存储并且不额外收费。如果数据库超过提供的备份存储，则可以选择与 Azure 支持联系来缩短保留期，或针对按标准读取访问地域冗余存储 (RA-GRS) 费率计费的额外备份存储支付费用。有关 RA-GRS 计费的更多信息，请参阅“存储定价详细信息”。
+- For on-premises databases, use the [DTU sizing advisor](http://dtucalculator.azurewebsites.net/) to recommend the databases and DTUs required, and evaluate multiple databases for elastic pools.
+- If a single database would benefit from being in a pool, Azure's intelligent engine recommends an elastic pool if it sees a historical usage pattern that warrants it. See [Monitor and manage an elastic pool with the Azure portal](./sql-database-elastic-pool-manage-portal.md). For details about how to do the math yourself, see [Price and performance considerations for an elastic pool](./sql-database-elastic-pool-guidance.md)
+- To see whether you need to dial a single database up or down, see [performance guidance for single databases](./sql-database-performance-guidance.md).
 
-## 我正在从 Web/企业版迁移到新服务层，我需要了解哪些信息？
-Azure SQL Web 和企业数据库现已停用。基本、标准、高级和弹性层将取代即将停用的 Web 和企业数据库。我们制作了额外的常见问题解答，以帮助你完成此过渡期。[Web 和 Business Edition 停用常见问题](./sql-database-web-business-sunset-faq.md)
+## How often can I change the service tier or performance level of a single database?
+With V12 databases, you can change the service tier (between Basic, Standard, and Premium) or the performance level within a service tier (for example, S1 to S2) as often as you want. For earlier version databases, you can change the service tier or performance level a total of four times in a 24-hour period.
 
-## 在相同的 Azure 地理位置内的两个区域之间进行异地复制数据库时，哪些是预期的复制延迟？
-目前支持 5 秒的 RPO，并且只要地域辅助数据库承载于 Azure 建议的配对区域并且属于相同的服务层，复制延迟就会少于该时间。
+## How often can I adjust the eDTUs per pool?
+As often as you want.
 
-## 在主数据库所在的同一区域中创建地域辅助数据库时，哪些是预期的复制滞后？
-根据经验数据，使用 Azure 建议的配对区域时，内部区域和区域之间的复制延迟没有太多差别。
+## How long does it take to change the service tier or performance level of a single database or move a database in and out of an elastic pool?
+Changing the service tier of a database and moving in and out of a pool requires the database to be copied on the platform as a background operation. Changing the service tier can take from a few minutes to several hours depending on the size of the databases. In both cases, the databases remain online and available during the move. For details on changing single databases, see [Change the service tier of a database](./sql-database-service-tiers.md).
 
-## 如果两个区域之间存在网络故障，那么在设置了异地复制的情况下，重试逻辑是如何运作的？
-如果连接断开，我们会每 10 秒钟重试一次以重新建立连接。
+## When should I use a single database vs. elastic databases? 
+In general, elastic pools are designed for a typical [software-as-a-service (SaaS) application pattern](./sql-database-design-patterns-multi-tenancy-saas-applications.md), where there is one database per customer or tenant. Purchasing individual databases and overprovisioning to meet the variable and peak demand for each database is often not cost efficient. With pools, you manage the collective performance of the pool, and the databases scale up and down automatically. Azure's intelligent engine recommends a pool for databases when a usage pattern warrants it. For details, see [Elastic pool guidance](./sql-database-elastic-pool-guidance.md).
 
-## 为了保证复制主数据库上的关键更改，我该做什么？
-地域辅助数据库是非同步副本，我们不尝试将其与主数据库保持完全同步。不过，我们提供一种强制同步的方法，确保复制关键更改（例如密码更新）。在所有提交的事务完成复制之前，强制同步会阻止调用线程，因此会影响性能。有关详细信息，请参阅 [sp\_wait\_for\_database\_copy\_sync](https://msdn.microsoft.com/zh-cn/library/dn467644.aspx)。
+## What does it mean to have up to 200% of your maximum provisioned database storage for backup storage?
+Backup storage is the storage associated with your automated database backups that are used for [Point-In-Time-Restore](./sql-database-recovery-using-backups.md#point-in-time-restore) and [Geo-Restore](./sql-database-recovery-using-backups.md#geo-restore). Azure SQL Database provides up to 200% of your maximum provisioned database storage of backup storage at no additional cost. For example, if you have a Standard DB instance with a provisioned DB size of 250 GB, you are provided with 500 GB of backup storage at no additional charge. If your database exceeds the provided backup storage, you can choose to reduce the retention period by contacting Azure Support or pay for the extra backup storage billed at standard Read-Access Geographically Redundant Storage (RA-GRS) rate. For more information on RA-GRS billing, see Storage Pricing Details.
 
-## 哪些工具可用于监视主数据库与地域辅助数据库之间的复制延迟？
-我们通过 DMV 显示主数据库与地域辅助数据库之间的实时复制延迟。有关详细信息，请参阅 [sys.dm\_geo\_replication\_link\_status](https://msdn.microsoft.com/zh-cn/library/mt575504.aspx)。
+## I'm moving from Web/Business to the new service tiers, what do I need to know?
+Azure SQL Web and Business databases are now retired. The Basic, Standard, Premium, and Elastic tiers replace the retiring Web and Business databases. We've additional FAQ that should help you in this transition period. [Web and Business Edition sunset FAQ](./sql-database-web-business-sunset-faq.md)
 
-<!---HONumber=Mooncake_0116_2017-->
-<!--update: add section "弹性池计费和定价信息"; translation update "弹性数据库池" to "弹性池"-->
+## What is an expected replication lag when geo-replicating a database between two regions within the same Azure geography?
+We are currently supporting an RPO of five seconds and the replication lag has been less than that when the geo-secondary is hosted in the Azure recommended paired region and at the same service tier.
+
+## What is an expected replication lag when geo-secondary is created in the same region as the primary database?
+Based on empirical data, there is not too much difference between intra-region and inter-region replication lag when the Azure recommended paired region is used. 
+
+## If there is a network failure between two regions, how does the retry logic work when Geo-Replication is set up?
+If there is a disconnect, we retry every 10 seconds to re-establish connections.
+
+## What can I do to guarantee that a critical change on the primary database is replicated?
+The geo-secondary is an async replica and we do not try to keep it in full sync with the primary. But we provide a method to force synchronization to ensure the replication of critical changes (for example, password updates). Forced synchronization impacts performance because it blocks the calling thread until all committed transactions are replicated. For details, see [sp_wait_for_database_copy_sync](https://msdn.microsoft.com/zh-cn/library/dn467644.aspx). 
+
+## What tools are available to monitor the replication lag between the primary database and geo-secondary?
+We expose the real-time replication lag between the primary database and geo-secondary through a DMV. For details, see [sys.dm_geo_replication_link_status](https://msdn.microsoft.com/zh-cn/library/mt575504.aspx).

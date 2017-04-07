@@ -1,9 +1,9 @@
-﻿如果您需要复审部署输出（包括自定义部署脚本输出），请浏览到 Azure 经典管理门户 Web 应用上的**部署**页面。
+If you need to review the deployment output, including the custom deployment script output, navigate to the  **DEPLOYMENTS** page on the Azure Classic Management portal.
 
-展开期望的部署：
+Expand the desired deployment:
 
 ![](./media/web-sites-python-troubleshoot-deployment/portal-deployment-history.png)
 
-单击**查看日志**以查看自定义部署脚本的输出：
+Click on **View Log** to see the output of the custom deployment script:
 
 ![](./media/web-sites-python-troubleshoot-deployment/portal-deployment-log.png)

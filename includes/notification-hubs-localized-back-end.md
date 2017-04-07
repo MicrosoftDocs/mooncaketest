@@ -1,6 +1,4 @@
-﻿
-
-当您发送模板通知时，您只需提供一组属性，在本例中，我们将发送一组包含当前新闻的本地化版本的属性，例如：
+When you send template notifications you only need to provide a set of properties, in our case we will send the set of properties containing the localized version of the current news, for instance:
 
 ```
 {
@@ -10,13 +8,13 @@
 }
 ```
 
-本部分演示如何使用控制台应用发送通知
+This section shows how to send notifications using a console app
 
-包括的代码将广播到 Windows 应用商店和 iOS 设备，因为该后端可广播到支持的任何设备。
+The included code broadcasts to both Windows Store and iOS devices, since the backend can broadcast to any of the supported devices.
 
-### 使用 C# 控制台应用程序发送通知 
+### To send notifications using a C# console app 
 
-使用以下代码修改前面创建的控制台应用中的 `SendTemplateNotificationAsync` 方法。请注意为何在本例中无需为不同的区域设置和平台发送多条通知。
+Modify the `SendTemplateNotificationAsync` method in the console app you previously created with the following code. Notice how in this case there is no need to send multiple notifications for different locales and platforms.
 
 ```
     private static async void SendTemplateNotificationAsync()
@@ -53,11 +51,11 @@
     }
 ```
 
-请注意，此简单调用不管平台如何都会将本地化的新闻片段传递到**所有**设备，因为你的通知中心将生成正确的本机负载并将其传送到已订阅特定标记的所有设备。
+Note that this simple call will deliver the localized piece of news to **all** your devices, irrespective of the platform, as your Notification Hub builds and delivers the correct native payload to all the devices subscribed to a specific tag.
 
-### 使用移动服务发送通知
+### Sending the notification with Mobile Services
 
-在移动服务计划程序中，可以使用以下脚本：
+In your Mobile Service scheduler, you can use the following script:
 
 ```
 var azure = require('azure');
@@ -73,5 +71,3 @@ notificationHubService.send('World', notification, function(error) {
     }
 });
 ```
-
-<!---HONumber=Mooncake_0104_2016-->

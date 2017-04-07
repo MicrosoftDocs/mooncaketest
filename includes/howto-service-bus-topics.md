@@ -1,67 +1,55 @@
-## 什么是服务总线主题和订阅？
+## What are Service Bus topics and subscriptions?
 
-服务总线主题和订阅支持*发布/订阅*消息通信模型。在使用主题和订阅时，分布式应用程序的组件不会直接相互通信，而是通过充当中介的主题交换消息。
+Service Bus topics and subscriptions support a *publish/subscribe* messaging communication model. When using topics and subscriptions, components of a distributed application do not communicate directly with each other; instead they exchange messages via a topic, which acts as an intermediary.
 
 ![TopicConcepts](./media/howto-service-bus-topics/sb-topics-01.png)
 
-与每条消息由单个使用方处理的服务总线队列相比，主题和订阅通过发布/订阅模式提供“一对多”通信方式。可向一个主题注册多个订阅。消息发送到主题时，每个订阅会分别对该消息进行处理。
+In contrast with Service Bus queues, in which each message is processed by a single consumer, topics and subscriptions provide a "one-to-many" form of communication, using a publish/subscribe pattern. It is possible to
+register multiple subscriptions to a topic. When a message is sent to a topic, it is then made available to each subscription to handle/process independently.
 
-主题订阅类似于接收发送至该主题的消息副本的虚拟队列。可以选择基于每个订阅注册主题的筛选规则，这样就可以筛选或限制哪些主题订阅接收发送至某个主题的哪些消息。
+A subscription to a topic resembles a virtual queue that receives copies of the messages that were sent to the topic. You can optionally register filter rules for a topic on a per-subscription basis, which enables you to filter or restrict which messages to a topic are received by which topic subscriptions.
 
-利用服务总线主题和订阅，可以扩展并处理跨许多用户和应用程序的海量消息。
+Service Bus topics and subscriptions enable you to scale and process a very large number of messages across many users and applications.
 
-## 创建命名空间
+## Create a namespace
 
-若要开始在 Azure 中使用服务总线主题和订阅，必须先创建一个*服务命名空间*。命名空间提供了用于对应用程序中的 Service Bus 资源进行寻址的范围容器。
+To begin using Service Bus topics and subscriptions in Azure, you must first create a *service namespace*. A namespace provides a scoping container for addressing Service Bus resources within your application.
 
-创建命名空间：
+To create a namespace:
 
-1.  登录到 [Azure 经典管理门户][]。
+1. Log on to the [Azure portal][].
 
-2.  在门户的左侧导航窗格中，单击“服务总线”。
+2. In the left navigation pane of the portal, click **New**, then click **Enterprise Integration**, and then click **Service Bus**.
 
-3.  在门户的下方窗格中，单击“创建”。   
-    ![][0]
+4. In the **Create namespace** dialog, enter a namespace name. The system immediately checks to see if the name is available.
 
-4.  在“添加新命名空间”对话框中，输入命名空间名称。系统会立即检查该名称是否可用。
+5. After making sure the namespace name is available, choose the pricing tier (Basic, Standard, or Premium).
 
-    ![][2]
+7. In the **Subscription** field, choose an Azure subscription in which to create the namespace.
 
-5.  在确保命名空间名称可用后，选择应承载您的命名空间的国家或地区（确保使用在其中部署计算资源的同一国家/地区）。
+9. In the **Resource group** field, choose an existing resource group in which the namespace will live, or create a new one.      
 
-    > [!IMPORTANT]
-    > 选取要选择用于部署应用程序的**相同区域**。这将为你提供最佳性能。
+8. In **Location**, choose the country or region in which your namespace should be hosted.
 
-6. 	将对话框中的其他字段保留其默认值（“消息传送”和“标准层”），然后单击“确定”复选标记。系统现已创建命名空间并已将其启用。您可能需要等待几分钟，因为系统将为您的帐户配置资源。
+    ![Create namespace][create-namespace]
 
-    ![][6]
+6. Click the **Create** button. The system now creates your namespace and enables it. You might have to wait several minutes as the system provisions resources for your account.
 
-## 获取命名空间的默认管理凭据
+### Obtain the credentials
 
-若要在新命名空间上执行管理操作（如创建主题或订阅），则必须从获取该命名空间的管理凭据。可以从门户中获取这些凭据。
+1. In the list of namespaces, click the newly created namespace name.
 
-###从门户中获取管理凭据
+3. In the **Service Bus namespace** blade, click **Shared access policies**.
 
-1.  在左侧导航窗格中，单击“Service Bus”节点以显示可用命名空间的列表：
+4. In the **Shared access policies** blade, click **RootManageSharedAccessKey**.
 
-    ![][0]
+    ![connection-info][connection-info]
 
-2.  从显示的列表中选择刚刚创建的命名空间：
+5. In the **Policy: RootManageSharedAccessKey** blade, click the copy button next to **Connection string–primary key**, to copy the connection string to your clipboard for later use.
 
-    ![][3]
+    ![connection-string][connection-string]
 
-3.  单击“连接信息”。
-
-    ![][4]
-
-4.  在“访问连接信息”对话框中，找到包含 SAS 密钥和密钥名称的连接字符串。记下这些值，因为你稍后将使用此信息来对命名空间执行操作。
-
-  [Azure 经典管理门户]: http://manage.windowsazure.cn
-  [0]: ./media/howto-service-bus-topics/sb-queues-13.png
-  [2]: ./media/howto-service-bus-topics/sb-queues-04.png
-  [3]: ./media/howto-service-bus-topics/sb-queues-09.png
-  [4]: ./media/howto-service-bus-topics/sb-queues-06.png
-
-  [6]: ./media/howto-service-bus-topics/getting-started-multi-tier-27.png
-
-<!---HONumber=82-->
+[Azure portal]: https://portal.azure.cn
+[create-namespace]: ./media/howto-service-bus-topics/create-namespace.png
+[connection-info]: ./media/howto-service-bus-topics/connection-info.png
+[connection-string]: ./media/howto-service-bus-topics/connection-string.png

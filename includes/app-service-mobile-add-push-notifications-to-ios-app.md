@@ -1,13 +1,13 @@
-**Objective-C**：
+**Objective-C**:
 
-1. 在“QSAppDelegate.m”中，导入 iOS SDK 和 “QSTodoService.h”：
+1. In **QSAppDelegate.m**, import the iOS SDK and **QSTodoService.h**:
 
     ```
     #import <MicrosoftAzureMobile/MicrosoftAzureMobile.h>
     #import "QSTodoService.h"
     ```
 
-2. 在“QSAppDelegate.m”中的 `didFinishLaunchingWithOptions` 内，紧靠在 `return YES;` 的前面插入以下行：
+2. In `didFinishLaunchingWithOptions` in **QSAppDelegate.m**, insert the following lines right before `return YES;`:
 
     ```
     UIUserNotificationSettings* notificationSettings = [UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeAlert | UIUserNotificationTypeBadge | UIUserNotificationTypeSound categories:nil];
@@ -15,7 +15,7 @@
     [[UIApplication sharedApplication] registerForRemoteNotifications];
     ```
 
-3. 在“QSAppDelegate.m”中，添加以下处理程序方法。你的应用现已更新，可支持推送通知。
+3. In **QSAppDelegate.m**, add the following handler methods. Your app is now updated to support push notifications. 
 
     ```
     // Registration with APNs is successful
@@ -84,9 +84,9 @@
     }
     ```
 
-**Swift**：
+**Swift**:
 
-1. 将文件“ClientManager.swift”与以下内容一起添加。用 Azure 移动应用后端的 URL 替换“%AppUrl%”。
+1. Add file **ClientManager.swift** with the following contents. Replace _%AppUrl%_ with the URL of the Azure Mobile App backend.
 
     ```
     class ClientManager {
@@ -94,13 +94,13 @@
     }
     ```
 
-2. 在“ToDoTableViewController.swift”中，用以下行替换用于初始化 `MSClient` 的 `let client` 行：
+2. In **ToDoTableViewController.swift**, replace the `let client` line that initializes an `MSClient` with this line:
 
     ```
     let client = ClientManager.sharedClient
     ```
 
-3. 在“AppDelegate.swift”中，如下所示替换 `func application` 的正文：
+3. In **AppDelegate.swift**, replace the body of `func application` as follows:
 
     ```
     func application(application: UIApplication,
@@ -113,7 +113,7 @@
     }
     ```
 
-2. 在“AppDelegate.swift”中，添加以下处理程序方法。你的应用现已更新，可支持推送通知。
+2. In **AppDelegate.swift**, add the following handler methods. Your app is now updated to support push notifications.
 
     ```
     func application(application: UIApplication,
@@ -156,5 +156,3 @@
 
     }
     ```
-
-<!---HONumber=Mooncake_0919_2016-->

@@ -1,33 +1,26 @@
-## 使用门户将 VM 移到其他订阅
+## Use the portal to move a VM to a different subscription
+You can move a VM and it's associated resources to a different subscription using the portal.
 
-可以使用门户将 VM 及其关联的资源移到其他订阅。
+1. Open the [Azure portal preview](https://portal.azure.cn).
+2. Click **Browse** > **Virtual machines** and select the VM you would like to move from the list.
 
-1. 打开 [Azure 门户预览](https://portal.azure.cn)。
-2. 单击“浏览”>“虚拟机”，然后从列表中选择要移动的 VM。
+    ![Screenshot of the Essentials section where you click the pencil icon to open the Move resources blade.](./media/virtual-machines-common-move-vm/move-button.png)
+3. In the **Essentials** section, click on the **Change subscription** pencil icon next to the subscription name. The **Move resources** blade will open.
 
-    ![“基本功能”部分的屏幕截图，其中你单击铅笔图标以打开“移动资源”边栏选项卡。](./media/virtual-machines-common-move-vm/move-button.png)
+    ![Screenshot of the Move resources blade.](./media/virtual-machines-common-move-vm/move.png)
+4. Select each of the resources to move. In most cases, you should move all of the listed optional resources.
+5. Select the **Subscription** where you want the VM to be moved.
+6. Select an existing **Resource group** or type a name to have a new resource group created.
+7. When you are done, select that you understand that new resource IDs will be created and those need to be used with the VM once it is moved, then click **OK**.
 
-3. 在“基本功能”部分中，单击订阅名称旁边的“更改订阅”铅笔图标。此时将打开“移动资源”边栏选项卡。
+## Use the portal to move a VM to another resource group
+You can move a VM and it's associated resources to another resource group using the portal.
 
-    ![“移动资源”边栏选项卡的屏幕截图。](./media/virtual-machines-common-move-vm/move.png)
+1. Open the [Azure portal preview](https://portal.azure.cn).
+2. Click **Browse** > **Resource groups** and select the resource group that contains the VM.
+3. In the **Resource group** blade, select **Move** from the menu.
 
-4. 选择要移动的每个资源。大多数情况下，应移动列出的所有可选资源。
-5. 选择要将 VM 移到的**订阅**。
-6. 选择一个现有**资源组**，或者键入名称以创建新的资源组。
-7. 完成后，选择你了解将创建新的资源 ID 并且移动后需要将这些资源 ID 用于 VM，然后单击“确定”。
+    ![Screenshot of the Move button on the Resource groups menu.](./media/virtual-machines-common-move-vm/move-rg.png)
+4. In the **Move resources** blade, select the resources to be moved and then either type an existing resource group name or choose to create a new resource group. When you are done, select that you understand that new resource IDs will be created and those need to be used with the VM once it is moved, then click **OK**
 
-## 使用门户将 VM 移到其他资源组
-
-可以使用门户将 VM 及其关联的资源移到其他资源组。
-
-1. 打开 [Azure 门户预览](https://portal.azure.cn)。
-2. 单击“浏览”>“资源组”，然后选择包含 VM 的资源组。
-3. 从“资源组”边栏选项卡上的菜单中选择“移动”。
-
-    ![“资源组”菜单中的“移动”按钮屏幕截图。](./media/virtual-machines-common-move-vm/move-rg.png)  
-
-3. 在“移动资源”边栏选项卡中，选择要移动的资源，然后键入现有资源组名称，或选择创建新资源组。完成后，选择你了解将创建新的资源 ID 并且移动后需要将这些资源 ID 用于 VM，然后单击“确定”。
-
-    ![“移动资源”边栏选项卡的屏幕截图。](./media/virtual-machines-common-move-vm/move-rg-list.png)
-
-<!---HONumber=Mooncake_0829_2016-->
+    ![Screenshot of the Move resources blade.](./media/virtual-machines-common-move-vm/move-rg-list.png)

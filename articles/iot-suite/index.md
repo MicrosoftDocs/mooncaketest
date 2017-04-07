@@ -1,9 +1,9 @@
 ---
 layout: LandingPage
 ---
-# IoT 套件文档
+# IoT Suite Documentation
 
-Microsoft Azure IoT 套件快速入门。使用预配置解决方案，并加快物联网 (IoT) 解决方案的开发。使用适用于多个平台（包括 Linux、Windows 和实时操作系统）的设备 SDK 添加新设备并连接现有设备。无论项目大小，都可从少数几个传感器轻松扩展至数百万台同步连接的设备，并依赖 Azure 的全球可用性。
+Get started quickly with Microsoft Azure IoT Suite. Use preconfigured solutions, and accelerate the development of your Internet of Things (IoT) solution. Add new devices—and connect existing ones—using device SDKs for multiple platforms, including Linux, Windows, and real-time operating systems. Easily scale from just a few sensors to millions of simultaneously connected devices, and rely on the global availability of Azure&mdash;no matter how large or small your project.
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -17,13 +17,13 @@ Microsoft Azure IoT 套件快速入门。使用预配置解决方案，并加快
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>了解 IoT 套件</h3>
+                        <h3>Learn about IoT Suite</h3>
                     </div>
                 </div>
             </div>
         </div>
         </a>
-</li>
+    </li>
     <li>
         <a href="https://azure.microsoft.com/resources/videos/index/?services=internet-of-things">
         <div class="cardSize">
@@ -35,13 +35,13 @@ Microsoft Azure IoT 套件快速入门。使用预配置解决方案，并加快
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Azure 视频库</h3>
+                        <h3>Azure Video Library</h3>
                     </div>
                 </div>
             </div>
         </div>
         </a>
-</li>
+    </li>
     <li>
         <a href="/azure/iot-suite/iot-solution-get-started">
         <div class="cardSize">
@@ -53,29 +53,29 @@ Microsoft Azure IoT 套件快速入门。使用预配置解决方案，并加快
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>IoT 预配置解决方案入门</h3>
+                        <h3>Get Started with IoT Preconfigured Solutions</h3>
                     </div>
                 </div>
             </div>
         </div>
         </a>
-</li>    
+    </li>    
 </ul>
 
 ---
 
-<h2>引用</h2>
+<h2>Reference</h2>
 <ul class="panelContent cardsW">
     <li>
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardText">
-                        <h3>资源</h3>
-                        <p><a href="/azure/iot-suite/iot-security-architecture">安全体系结构</a></p>
-                        <p><a href="/azure/iot-suite/iot-security-best-practices">安全最佳实践</a></p>
-                        <p><a href="/azure/iot-suite/iot-suite-security-deployment">保护你的 IoT 部署</a></p>
-                        <p><a href="/azure/iot-suite/securing-iot-ground-up">安全基础知识</a></p>
+                        <h3>Resources</h3>
+                        <p><a href="/azure/iot-suite/iot-security-architecture">Security architecture</a></p>
+                        <p><a href="/azure/iot-suite/iot-security-best-practices">Security best practices</a></p>
+                        <p><a href="/azure/iot-suite/iot-suite-security-deployment">Secure your IoT deployment</a></p>
+                        <p><a href="/azure/iot-suite/securing-iot-ground-up">Security from the ground up</a></p>
                    </div>
                 </div>
             </div>
@@ -85,13 +85,11 @@ Microsoft Azure IoT 套件快速入门。使用预配置解决方案，并加快
 
 ---
 
-<div class="downloadHolder"><a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/zh-cn/Azure.azure-documents/live/iot-suite.pdf">
-<div class="img"></div>
+<div class="downloadHolder">
+    <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/iot-suite.pdf">
+        <div class="img"></div>
         <div class="text">
-            下载 IoT 套件文档
-	</div>
+            Download IoT Suite Documentation
+        </div>
     </a>
-
 </div>
-
-<!---HONumber=Mooncake_0120_2017-->

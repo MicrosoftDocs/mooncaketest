@@ -1,20 +1,18 @@
-下表描述 Azure 计划程序中各主要的配额、限制、默认值和中止值。
+The following table describes each of the major quotas, limits, defaults, and throttles in Azure Scheduler.
 
-| 资源 | 限制说明 |
+| Resource | Limit Description |
 | --- | --- |
-| **作业大小** |作业大小上限为 16K。如果某个作业中的 PUT 或 PATCH 结果大于这些限制，则返回 400 错误请求状态代码。 |
-| **请求 URL 大小** |请求 URL 的最大大小为 2048 个字符。 |
-| **聚合标头大小** |最大聚合标头大小为 4096 个字符。 |
-| **标头计数** |最大标头计数为 50 个标头。 |
-| **正文大小** |最大正文大小为 8192 个字符。 |
-| **重复间隔** |最大重复间隔为 18 个月。 |
-| **距离开始时间的时间** |最大“距离开始时间的时间”为 18 个月。 |
-| **作业历史记录** |作业历史记录中存储的最大响应正文为 2048 个字节。 |
-| **频率** |默认的最大频率配额在免费作业集合中为 1 小时，在标准作业集合中为 1 分钟。在作业集合上，最大频率可配置为小于该最大值。作业集合中的所有作业都受到对作业集合设置的该值的限制。如果你尝试创建其频率高于针对作业集合的最大频率的作业，则请求将失败并且具有 409 冲突状态代码。 |
-| **作业** |默认的最大作业配额在免费作业集合中为 5 个作业，在标准作业集合中为 50 个作业。在作业集合上，可配置作业的最大数目。作业集合中的所有作业都受到对作业集合设置的该值的限制。如果你尝试创建超过最大作业配额数目的更多作业，则请求将失败并且具有 409 冲突状态代码。 |
-| **作业集合** |每个订阅的作业集合数上限为 200,000 个。 |
-| **作业历史记录保留期** |作业历史记录保留最多 2 个月或最后 1000 次执行。 |
-| **已完成和出错作业的保留期** |完成的作业和出错的作业保留 60 天。 |
-| **超时** |HTTP 操作的静态（不可配置）请求超时为 60 秒。对于长时间运行的操作，将遵循 HTTP 异步协议；例如，立即返回 202 但在后台继续工作。 |
-
-<!---HONumber=Mooncake_0220_2017-->
+| **Job size** |Maximum job size is 16K. If a PUT or a PATCH results in a job larger than these limits, a 400 Bad Request status code is returned. |
+| **Request URL size** |Maximum size of the request URL is 2048 chars. |
+| **Aggregate header size** |Maximum aggregate header size is 4096 chars. |
+| **Header count** |Maximum header count is 50 headers. |
+| **Body size** |Maximum body size is 8192 chars. |
+| **Recurrence span** |Maximum recurrence span is 18 months. |
+| **Time to start time** |Maximum “time to start time” is 18 months. |
+| **Job history** |Maximum response body stored in job history is 2048 bytes. |
+| **Frequency** |The default max frequency quota is 1 hour in a free job collection and 1 minute in a standard job collection. The max frequency is configurable on a job collection to be lower than the maximum. All jobs in the job collection are limited the value set on the job collection. If you attempt to create a job with a higher frequency than the maximum frequency on the job collection then request will fail with a 409 Conflict status code. |
+| **Jobs** |The default max jobs quota is 5 jobs in a free job collection and 50 jobs in a standard job collection. The maximum number of jobs is configurable on a job collection. All jobs in the job collection are limited the value set on the job collection. If you attempt to create more jobs than the maximum jobs quota, then the request fails with a 409 Conflict status code. |
+| **Job collections** |Maximum number of job collection per subscription is 200,000. |
+| **Job history retention** |Job history is retained for up to 2 months or up to the last 1000 executions. |
+| **Completed and faulted job retention** |Completed and faulted jobs are retained for 60 days. |
+| **Timeout** |There’s a static (not configurable) request timeout of 60 seconds for HTTP actions. For longer running operations, follow HTTP asynchronous protocols; for example, return a 202 immediately but continue working in the background. |

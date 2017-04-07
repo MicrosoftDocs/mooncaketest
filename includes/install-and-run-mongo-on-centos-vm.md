@@ -1,85 +1,65 @@
-按照以下步骤操作可在运行 CentOS Linux 的虚拟机上安装和运行 MongoDB。
+Follow these steps to install and run MongoDB on a virtual machine running CentOS Linux.
 
 > [!WARNING]
->默认情况下，不启用 MongoDB 安全功能，例如身份验证和 IP 地址绑定。在将 MongoDB 部署到生产环境之前，应启用安全功能。有关详细信息，请参阅[安全性和身份验证](http://www.mongodb.org/display/DOCS/Security+and+Authentication)。
+> MongoDB security features, such as authentication and IP address binding, are not enabled by default. Security features should be enabled before deploying MongoDB to a production environment.  See [Security and Authentication](http://www.mongodb.org/display/DOCS/Security+and+Authentication) for more information.
+> 
+> 
 
-1. 配置程序包管理系统 (YUM) 以便能够安装 MongoDB。创建 */etc/yum.repos.d/10gen.repo* 文件以保存有关你的存储库的信息并添加以下内容：
+1. Configure the Package Management System (YUM) so that you can install MongoDB. Create a */etc/yum.repos.d/10gen.repo* file to hold information about your repository and add the following:
 
-    ```
-    [10gen]
-    name=10gen Repository
-    baseurl=http://downloads-distro.mongodb.org/repo/redhat/os/x86_64
-    gpgcheck=0
-    enabled=1
-    ```
+        [10gen]
+        name=10gen Repository
+        baseurl=http://downloads-distro.mongodb.org/repo/redhat/os/x86_64
+        gpgcheck=0
+        enabled=1
+2. Save the repo file and then run the following command to update the local package database:
 
-2. 保存 repo 文件，然后运行以下命令以更新本地程序包数据库：
+        $ sudo yum update
+3. To install the package, run the following command to install the latest stable version of MongoDB and the associated tools:
 
-    ```
-    $ sudo yum update
-    ```
+        $ sudo yum install mongo-10gen mongo-10gen-server
 
-3. 若要安装程序包，请运行以下命令以安装最新的 MongoDB 稳定版本及相关工具：
+    Wait while MongoDB downloads and installs.
+4. Create a data directory. By default MongoDB stores data in the */data/db* directory, but you must create that directory. To create it, run:
 
-    ```
-    $ sudo yum install mongo-10gen mongo-10gen-server
-    ```
+        $ sudo mkdir -p /srv/datadrive/data
+        $ sudo chown `id -u` /srv/datadrive/data
 
-    下载和安装 MongoDB 时，请等待。
+    For more information on installing MongoDB on Linux, see [Quickstart Unix][QuickstartUnix].
+5. To start the database, run:
 
-4. 创建数据目录。默认情况下，MongoDB 将数据存储在 */data/db* 目录中，但你必须创建该目录。若要创建它，请运行：
+        $ mongod --dbpath /srv/datadrive/data --logpath /srv/datadrive/data/mongod.log
 
-    ```
-    $ sudo mkdir -p /srv/datadrive/data
-    $ sudo chown `id -u` /srv/datadrive/data
-    ```
+    All log messages will be directed to the */srv/datadrive/data/mongod.log* file as MongoDB server starts and preallocates journal files. It may take several minutes for MongoDB to preallocate the journal files and start listening for connections.
+6. To start the MongoDB administrative shell, open a separate SSH or PuTTY window and run:
 
-    有关在 Linux 上安装 MongoDB 的详细信息，请参阅[快速启动 Unix][QuickstartUnix]。
+        $ mongo
+        > db.foo.save ( { a:1 } )
+        > db.foo.find()
+        { _id : ..., a : 1 }
+        > show dbs  
+        ...
+        > show collections  
+        ...  
+        > help  
 
-5. 若要启动数据库，请运行：
+    The database is created by the insert.
+7. Once MongoDB is installed you must configure an endpoint so that MongoDB can be accessed remotely. In the Classic Management Portal, click **Virtual Machines**, then click the name of your new virtual machine, then click **Endpoints**.
 
-    ```
-    $ mongod --dbpath /srv/datadrive/data --logpath /srv/datadrive/data/mongod.log
-    ```
+    ![Endpoints][Image7]
+8. Click **Add Endpoint** at the bottom of the page.
 
-    当 MongoDB 服务器启动和预分配日志文件时，所有日志消息都将定向到 */srv/datadrive/data/mongod.log* 文件。MongoDB 可能需要几分钟来预分配日志文件和开始侦听连接。
+    ![Endpoints][Image8]
+9. Add an endpoint with the following settings:
 
-6. 若要启动 MongoDB 命令行管理程序，请打开一个单独的 SSH 或 PuTTY 窗口并运行：
+    * **Name**: Mongo
+    * **Protocol**: TCP
+    * **Public Port**: 27017
+    * **Private Port**: 27017
 
-    ```
-    $ mongo
-    > db.foo.save ( { a:1 } )
-    > db.foo.find()
-    { _id : ..., a : 1 }
-    > show dbs  
-    ...
-    > show collections  
-    ...  
-    > help  
-    ```
-
-    通过 insert 创建数据库。
-
-7. 在安装 MongoDB 后，您必须配置终结点才能远程访问 MongoDB。在“经典管理门户”中，依次单击“虚拟机”、你的新虚拟机的名称和“终结点”。
-
-    ![终结点][Image7]
-
-8. 单击页面底部的“添加终结点”。
-
-    ![终结点][Image8]
-
-9. 添加一个具有下列设置的终结点：
-
- - **名称**：Mongo
- - **协议**：TCP
- - **公用端口**：27017
- - **专用端口**：27017
-
- 这将允许对 MongoDB 进行远程访问。
+    This will allow MongoDB to be accessed remotely.
 
 [QuickStartUnix]: http://www.mongodb.org/display/DOCS/Quickstart+Unix
 
 [Image7]: ./media/install-and-run-mongo-on-centos-vm/LinuxVmAddEndpoint.png
 [Image8]: ./media/install-and-run-mongo-on-centos-vm/LinuxVmAddEndpoint2.png
-
-<!---HONumber=Mooncake_1207_2015-->

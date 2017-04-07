@@ -7,33 +7,40 @@ manager: timlt
 editor: tysonn
 
 ms.service: virtual-machine
+ms.devlang: na
+ms.topic: article
+ms.tgt_pltfrm: linux
+ms.workload: infrastructure
 ms.date: 04/13/2015
-wacn.date: 12/17/2015
+ms.author: rasquill
 ---
 
-## 将 Azure CLI 与 Azure 资源管理器 (ARM) 配合使用
+## Using Azure CLI with Azure Resource Manager (ARM)
 
-通过资源管理器命令和模板使用 Azure CLI 以利用资源组部署 Azure 资源和工作负荷之前，你将需要一个 Azure 帐户（这是当然的）。如果没有帐户，你可以[在此处获取免费 Azure 试用帐户](http://azure.microsoft.com/pricing/free-trial/)。
+Before you can use the Azure CLI with Resource Manager commands and templates to deploy Azure resources and workloads using resource groups, you will need an account with Azure (of course). If you do not have an account, you can get a [free Azure trial here](http://azure.microsoft.com/pricing/free-trial/).
 
-### 步骤 1：验证 Azure CLI 版本
+> [!NOTE]
+> If you don't already have an Azure account but you do have a subscription to MSDN subscription, you can get free Azure credits by activating your [MSDN subscriber benefits here](http://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) -- or you can use the free account. Either will work for Azure access.
 
-若要将 Azure CLI 用于强制性命令和 ARM 模板，你至少需要安装 0.8.17 版。要验证你的版本，请键入 `azure --version`。你应看到类似如下的内容：
+### Step 1: Verify the Azure CLI version
+
+To use Azure CLI for imperative commands and ARM templates, you need to have at least version 0.8.17. To verify your version, type `azure --version`. You should see something like:
 
 ```
 $ azure --version
 0.8.17 (node: 0.10.25)
 ```
 
-如果需要更新 Azure CLI 版本，请参阅 [Azure CLI](https://github.com/Azure/azure-xplat-cli)。
+If you need to update your version of Azure CLI, see [Azure CLI](https://github.com/Azure/azure-xplat-cli).
 
-### 步骤 2：确保对 Azure 使用工作或学校标识
+### Step 2: Verify you are using a work or school identity with Azure
 
-如果你使用 [Azure Active Directory 租户](https://msdn.microsoft.com/library/azure/jj573650.aspx#BKMK_WhatIsAnAzureADTenant)或[服务主体名称](https://msdn.microsoft.com/library/azure/dn132633.aspx)，则只能使用 ARM 命令模式。（这些也称为*组织 ID*。）
+You can only use the ARM command mode if you are using an [Azure Active Directory tenant](https://msdn.microsoft.com/library/azure/jj573650.aspx#BKMK_WhatIsAnAzureADTenant) or a [Service Principal Name](https://msdn.microsoft.com/library/azure/dn132633.aspx). (These are also called *organizational ids*.)
 
-若要查看你是否已经有一个这样的标识，请登录，方法是键入 `azure login -e AzureChinaCloud`，然后在系统提示时使用你工作单位或学校的用户名和密码。如果你确实有一个，你会看到下面这样的内容：
+To see if you have one, log in by typing `azure login` and using your work or school username and password when prompted. If you do have one, you should see something like the following:
 
 ```
-$ azure login -e AzureChinaCloud
+$ azure login
 info:    Executing command login
 warn:    Please note that currently you can login only via Microsoft organizational account or service principal. For instructions on how to set them up, please read http://aka.ms/Dhf67j.
 Username: ahmet@contoso.partner.onmschina.cn
@@ -45,13 +52,13 @@ info:    Added subscription Azure Free Trial
 info:    login command OK
 ```
 
-如果你没有看到该内容，则必须使用 Microsoft 帐户标识创建一个新租户（或服务主体）。（个人 MSDN 订阅或免费试用订阅通常会发生这种情况。） 若要通过使用 Microsoft ID 创建的 Azure 帐户创建一个工作或学校 ID，请参阅[将 Azure AD Directory 与新的 Azure 订阅关联](https://msdn.microsoft.com/library/azure/jj573650.aspx#BKMK_WhatIsAnAzureADTenant)。如果你认为你应该已经有一个组织 ID，则需向为你创建该帐户的人员反映情况。
+If you do not see this, you must create a new tenant (or service principal) with your Microsoft account identity. (This is often the case with personal MSDN subscriptions or free trial subscriptions.) To create a work or school id from your Azure account created with a Microsoft id, see [Associate an Azure AD Directory with a new Azure Subscription](https://msdn.microsoft.com/library/azure/jj573650.aspx#BKMK_WhatIsAnAzureADTenant). If you think you should have an organizational id already, you may need to talk with the person who created the account for you.
 
-### 步骤 3：选择 Azure 订阅
+### Step 3: Choose your Azure subscription
 
-如果你的 Azure 帐户中只有一个订阅，则默认情况下，Azure CLI 会自行与该订阅相关联。如果你有多个订阅，则需通过键入 `azure account set <subscription id or name> true` 来选择要使用的订阅，其中，_subscription id or name_ 是你要在当前会话中使用的订阅 ID 或订阅名称。
+If you have only one subscription in your Azure account, Azure CLI associates itself with that subscription by default. If you have more than one subscription, you need to select the subscription you want to use by typing `azure account set <subscription id or name> true` where _subscription id or name_ is either the subscription id or the subscription name that you would like to work with in the current session.
 
-你会看到下面这样的内容：
+You should see something like the following:
 
 ```
 $ azure account set "Azure Free Trial" true
@@ -61,9 +68,9 @@ info:    Changes saved
 info:    account set command OK
 ```
 
-### 步骤 4：将 Azure CLI 置于 ARM 模式下
+### Step 4: Place your Azure CLI in the ARM mode
 
-若要通过 Azure CLI 使用 Azure 资源管理 (ARM) 模式，请键入 `azure config mode arm`。你会看到下面这样的内容：
+To use the Azure Resource Management (ARM) mode with the Azure CLI, type `azure config mode arm`. You should see something like the following:
 
 ```
 $ azure config mode arm
@@ -71,6 +78,4 @@ info:    New mode is arm
 ```
 
 > [!NOTE]
->你可以通过键入 `azure config mode asm` 切换回来，以便使用 Azure 服务管理命令。
-
-<!---HONumber=Mooncake_1207_2015-->
+> You can switch back to use Azure service management commands by typing `azure config mode asm`.

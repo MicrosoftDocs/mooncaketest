@@ -1,5 +1,3 @@
-自定义探测可让你更精细地控制服务器后端池的运行状况监视状态。你可以更改检查间隔、失败的请求阈值和超时设置。
+Custom probes allows you to have more granular control about health monitoring status for your back end pool of servers. You can change the interval checks, failed request threshold and timeout settings.
 
-本文将指导你创建包含自定义探测的应用程序网关，或者向现有的应用程序网关添加自定义探测。
-
-<!---HONumber=Mooncake_0215_2016-->
+This article will guide you to create an application gateway with a custom probe or adding a custom probe to an existing application gateway.

@@ -1,52 +1,50 @@
-## 准备对 Resource Manager 请求进行身份验证
+## Prepare to authenticate Resource Manager requests
 
-你必须使用 [Azure Resource Manager][lnk-authenticate-arm] 配合 Azure Active Directory (AD) 来验证所有针对资源执行的操作。最简单的配置方式是使用 PowerShell 或 Azure CLI。
+You must authenticate all the operations that you perform on resources using the [Azure Resource Manager][lnk-authenticate-arm] with Azure Active Directory (AD). The easiest way to configure this is to use PowerShell or Azure CLI.
 
-继续之前，你应安装 [Azure PowerShell 1.0][lnk-powershell-install] 或更高版本。
+You should install [Azure PowerShell 1.0][lnk-powershell-install] or later before you continue.
 
-以下步骤说明如何使用 PowerShell 设置 AD 应用程序的密码身份验证。可以在标准 PowerShell 会话中运行这些命令。
+The following steps show how to set up password authentication for an AD application using PowerShell. You can run these commands in a standard PowerShell session.
 
-1. 使用以下命令登录到你的 Azure 订阅：
+1. Log in to your Azure subscription using the following command:
 
     ```
-    Login-AzureRmAccount -Environment $(Get-AzureRmEnvironment -Name AzureChinaCloud)
+    Login-AzureRmAccount
     ```
 
-2. 记下你的 TenantId 和 SubscriptionId。稍后你将需要它们。
+2. Make a note of your **TenantId** and **SubscriptionId**. You will need them later.
 
-3. 使用以下命令并替换占位符，以创建新的 Azure Active Directory 应用程序：
+3. Create a new Azure Active Directory application using the following command, replacing the place holders:
 
-    - **{Display name}**：应用程序的显示名称，如 MySampleApp
-    - **{Home page URL}**：应用程序主页的 URL，如 **http://mysampleapp/home**。此 URL 不需要指向实际的应用程序。
-    - **{Application identifier}**：唯一标识符，如 **http://mysampleapp**。此 URL 不需要指向实际的应用程序。
-    - **{Password}**：用来对应用程序进行身份验证的密码。
+    - **{Display name}:** a display name for your application such as **MySampleApp**
+    - **{Home page URL}:** the URL of the home page of your app such as **http://mysampleapp/home**. This URL does not need to point to a real application.
+    - **{Application identifier}:** A unique identifier such as **http://mysampleapp**. This URL does not need to point to a real application.
+    - **{Password}:** A password that you will use to authenticate with your app.
 
     ```
     New-AzureRmADApplication -DisplayName {Display name} -HomePage {Home page URL} -IdentifierUris {Application identifier} -Password {Password}
     ```
 
-4. 请记下创建的应用程序的 **ApplicationId**。稍后你将需要此项。
+4. Make a note of the **ApplicationId** of the application you created. You will need this later.
 
-5. 使用以下命令（将 **{MyApplicationId}** 替换为上一步骤中的 **ApplicationId**）创建新的服务主体：
+5. Create a new service principal using the following command, replacing **{MyApplicationId}** with the **ApplicationId** from the previous step:
 
     ```
     New-AzureRmADServicePrincipal -ApplicationId {MyApplicationId}
     ```
 
-6. 使用以下命令（将 **{MyApplicationId}** 替换为 **ApplicationId**）设置角色分配。
+6. Setup a role assignment using the following command, replacing **{MyApplicationId}** with your **ApplicationId**.
 
     ```
     New-AzureRmRoleAssignment -RoleDefinitionName Owner -ServicePrincipalName {MyApplicationId}
     ```
 
-现在，你已创建可从自定义 C# 应用程序进行身份验证的 Azure AD 应用程序。在本教程的后续内容中，你需要用到以下值：
+You have now finished creating the Azure AD application that will enable you to authenticate from your custom C# application. You will need the following values later in this tutorial:
 
 - TenantId
 - SubscriptionId
 - ApplicationId
-- 密码
+- Password
 
 [lnk-authenticate-arm]: https://msdn.microsoft.com/zh-cn/library/azure/dn790557.aspx
 [lnk-powershell-install]: ../articles/powershell-install-configure.md
-
-<!---HONumber=Mooncake_0321_2016-->

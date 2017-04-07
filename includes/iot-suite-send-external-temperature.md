@@ -1,51 +1,46 @@
-## 配置 Node.js 模拟设备
-1. 在远程监视仪表板上单击“+ 添加设备”，然后添加*自定义设备*。记下 IoT 中心主机名、设备 ID 和设备密钥。在本教程稍后准备 remote\_monitoring.js 设备客户端应用程序时，需要使用它们。
-2. 请确保已在开发计算机上安装 Node.js 0.12.x 或更高版本。在命令提示符或 shell 中运行 `node --version` 以检查版本。有关使用包管理器在 Linux 上安装 Node.js 的信息，请参阅 [Installing Node.js via package manager][node-linux]（通过包管理器安装 Node.js）。
-3. 安装 Node.js 之后，请将最新版本的 [azure-iot-sdk-node][lnk-github-repo] 存储库复制到开发计算机。始终对最新版的库和示例使用**主**分支。
-4. 在 [azure-iot-sdk-node][lnk-github-repo] 存储库的本地副本中，将以下两个文件从 node/device/samples 文件夹复制到开发计算机上的某个空文件夹：
+## Configure the Node.js simulated device
+1. On the remote monitoring dashboard, click **+ Add a device** and then add a *custom device*. Make a note of the IoT Hub hostname, device id, and device key. You need them later in this tutorial when you prepare the remote_monitoring.js device client application.
+2. Ensure that Node.js version 0.12.x or later is installed on your development machine. Run `node --version` at a command prompt or in a shell to check the version. For information about using a package manager to install Node.js on Linux, see [Installing Node.js via package manager][node-linux].
+3. When you have installed Node.js, clone the latest version of the [azure-iot-sdk-node][lnk-github-repo] repository to your development machine. Always use the **master** branch for the latest version of the libraries and samples.
+4. From your local copy of the [azure-iot-sdk-node][lnk-github-repo] repository, copy the following two files from the node/device/samples folder to an empty folder on your development machine:
 
-   - packages.json
-   - remote\_monitoring.js
-
-5. 打开 remote\_monitoring.js 文件并查找以下变量定义：
+   * packages.json
+   * remote_monitoring.js
+5. Open the remote_monitoring.js file and look for the following variable definition:
 
     ```
     var connectionString = "[IoT Hub device connection string]";
     ```
-
-6. 将 **[IoT Hub device connection string]** 替换为设备连接字符串。使用在步骤 1 中记下的 IoT 中心主机名、设备 ID 和设备密钥的值。设备连接字符串具有以下格式：
+6. Replace **[IoT Hub device connection string]** with your device connection string. Use the values for your IoT Hub hostname, device id, and device key that you made a note of in step 1. A device connection string has the following format:
 
     ```
     HostName={your IoT Hub hostname};DeviceId={your device id};SharedAccessKey={your device key}
     ```
 
-    如果 IoT 中心主机名是 **contoso**，而设备 ID 为 **mydevice**，则连接字符串如下代码片段所示：
+    If your IoT Hub hostname is **contoso** and your device id is **mydevice**, your connection string looks like the following snippet:
 
     ```
     var connectionString = "HostName=contoso.azure-devices.cn;DeviceId=mydevice;SharedAccessKey=2s ... =="
     ```
-
-7. 保存文件。在包含这些文件的文件夹中的 shell 或命令提示符处运行以下命令，以安装所需包，然后运行示例应用程序：
+7. Save the file. Run the following commands in a shell or command prompt in the folder that contains these files to install the necessary packages and then run the sample application:
 
     ```
     npm install
     node remote_monitoring.js
     ```
 
-## 观察动态遥测的工作动态
-仪表板将显示现有模拟设备的温度与湿度遥测数据：
+## Observe dynamic telemetry in action
+The dashboard shows the temperature and humidity telemetry from the existing simulated devices:
 
-![默认仪表板][image1]
+![The default dashboard][image1]
 
-如果你选择在上一部分中运行的 Node.js 模拟设备，将看到温度、湿度与外部温度遥测数据：
+If you select the Node.js simulated device you ran in the previous section, you see temperature, humidity, and external temperature telemetry:
 
-![将外部温度添加到仪表板][image2]
+![Add external temperature to the dashboard][image2]
 
-远程监视解决方案将自动检测其他外部温度遥测类型，并将其添加到仪表板上的图表中。
+The remote monitoring solution automatically detects the additional external temperature telemetry type and adds it to the chart on the dashboard.
 
 [node-linux]: https://github.com/nodejs/node-v0.x-archive/wiki/Installing-Node.js-via-package-manager
 [lnk-github-repo]: https://github.com/Azure/azure-iot-sdk-node
 [image1]: ./media/iot-suite-send-external-temperature/image1.png
 [image2]: ./media/iot-suite-send-external-temperature/image2.png
-
-<!---HONumber=Mooncake_1226_2016-->

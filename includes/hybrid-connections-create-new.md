@@ -1,29 +1,27 @@
-1. 在本地计算机上，登录到 [Azure 经典管理门户](http://manage.windowsazure.cn)。
+1. On the on-premises machine, log on to the [Azure Management Portal](http://manager.windowsazure.com) (this is the old portal).
 
-2. 在导航窗格的底部，选择“+新建”>“应用程序服务”>“BizTalk 服务”>“自定义创建”。
+2. At the bottom of the navigation pane, select **+NEW** > **App Services** > **BizTalk Service** > **Custom Create**.
 
-3. 指定“BizTalk 服务名称”并选择“版本”。
+3. Provide a **BizTalk Service Name** and select an **Edition**. 
 
-    本教程使用 **mobile1**。你需要为新的 BizTalk 服务提供唯一名称。
+    This tutorial uses **mobile1**. You will need to supply a unique name for your new BizTalk Service.
 
-4. 创建 BizTalk 服务后，请选择“混合连接”选项卡，然后单击“添加”。
+4. Once the BizTalk Service has been created, select the **Hybrid Connections** tab, then click **Add**.
 
-    ![添加混合连接](./media/hybrid-connections-create-new/3.png)
+    ![Add Hybrid Connection](./media/hybrid-connections-create-new/3.png)
 
-    这将会创建一个新的混合连接。
+    This creates a new hybrid connection.
 
-5. 指定混合连接的“名称”和“主机名”，然后将“端口”设置为 `1433`。
+5. Provide a **Name** and **Host Name** for your hybrid connection and set **Port** to `1433`. 
 
-    ![配置混合连接](./media/hybrid-connections-create-new/4.png)
+    ![Configure Hybrid Connection](./media/hybrid-connections-create-new/4.png)
 
-    主机名就是本地服务器的名称。这会将混合连接配置为访问端口 1433 上运行的 SQL Server。如果你使用命名的 SQL Server 实例，请改用前面定义的静态端口。
+    The host name is the name of the on-premises server. This configures the hybrid connection to access SQL Server running on port 1433. If you are using a named SQL Server instance, instead use the static port you defined earlier.
 
-6. 创建新连接后，新连接的状态将显示为“本地安装未完成”。
+6. After the new connection is created, the status of the of the new connection shows **On-premises setup incomplete**.
 
-7. 导航回到你的移动服务，单击“配置”，向下滚动到“混合连接”并单击“添加混合连接”，然后选择你刚刚创建的混合连接并单击“确定”。
+7. Navigate back to your mobile service, click **Configure**, scroll down to **Hybrid connections** and click **Add hybrid connection**, then select the hybrid connection that you just created and click **OK**.
 
-    这样，你的移动服务便可以使用新的混合连接。
+    This enables your mobile service to use your new hybrid connection.
 
-接下来，需要在本地计算机上安装混合连接管理器。
-
-<!---HONumber=71-->
+Next, you'll need to install the Hybrid Connection Manager on the on-premises computer.

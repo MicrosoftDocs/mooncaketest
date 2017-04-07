@@ -1,38 +1,35 @@
-<a name="tellmevm"></a>
-## 告诉我有关虚拟机的信息
+## <a name="tellmevm"></a> Tell me about virtual machines
+Azure Virtual Machines lets you create and use virtual machines in the cloud. Providing what's known as *Infrastructure as a Service (IaaS)*, virtual machine technology can be used in variety of ways. Some examples are:
 
-你可以使用 Azure 虚拟机在云中创建和使用虚拟机。虚拟机提供所谓的*基础结构即服务 (IaaS)*，是一项可广泛使用的技术。下面是一些示例：
+* **Virtual machines (VMs) for development and test.** Development groups commonly use VMs because they offer a quick, easy way to create a computer with specific configurations required to code and test an application. Azure Virtual Machines provides a straightforward and economical way to create these VMs, use them, then delete them when they're no longer needed.
+* **Running applications in the cloud.** It makes economic sense to run some applications in the public cloud. One example is an application that has large spikes in demand. Although you could equip your own data center with enough hardware to handle peak demand, that hardware might be underutilized much of the time. Running this application on Azure lets you pay for extra VMs only when you need them and shut them down when you don't. Or, suppose you're a start-up that needs on-demand computing resources quickly and with no commitment. Once again, Azure can be the right choice.
+* **Extending your own datacenter into the public cloud.** When you use Azure Virtual Network, your organization can create a virtual network (VNET) that's an extension of your own on-premises network and add VMs to that VNET. This allows running applications such as [SharePoint](../articles/virtual-machines/virtual-machines-windows-sharepoint-farm.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json), [SQL Server](../articles/virtual-machines/windows/sql/virtual-machines-windows-sql-server-iaas-overview.md) and others on an Azure VM. This approach might be easier to deploy or less expensive than running them in VMs in your own datacenter.   
+* **Disaster recovery.** Rather than paying continuously for a backup datacenter that's rarely used, IaaS-based disaster recovery lets you pay for the computing resources you need only when you really need them.  For example, if your primary datacenter goes down, you can create VMs running on Azure to run essential applications, then shut them down when they're no longer needed.
 
-- **用于开发和测试的虚拟机 (VM)。** 开发组经常会使用 VM，因为这样可以快速轻松地创建具有特定配置的计算机来满足编程和应用程序测试的需要。Azure 虚拟机提供一种简单且经济的方法来创建、使用 VM，以及在不再需要时删除它们。
-- **在云中运行应用程序。** 在公有云中运行某些应用程序可以带来经济效益。需求会急剧上升的应用程序就是一个例子。尽管你可以在自己的数据中心装配足够的硬件来处理高峰需求，但这些硬件在大部分时间可能利用不足。如果在 Azure 上运行此应用程序，只有在需要额外 VM 时才支付额外 VM 的费用，在不需要的时候则可以将它们关闭。或者，假设你是一家初创公司，需要在不做出任何承诺的情况下快速地按需计算资源。同样，Azure 也是合适的选择。
-- **将你自己的数据中心扩展到公有云。** 利用 Azure 虚拟网络，你的组织可以创建一个虚拟网络 (VNET) 作为自有本地网络的扩展，然后将 VM 添加到该 VNET。这样，便可以在 Azure VM 上运行 [SQL Server](../articles/virtual-machines/virtual-machines-windows-sql-server-iaas-overview.md) 和其他应用程序。与在自有数据中心的 VM 上运行这些应用程序相比，这种做法可能更易于部署，或者可以降低成本。   
-- **灾难恢复。** 基于 IaaS 灾难恢复使您可以只在真正需要计算资源时才为所需的计算资源付费，而不用不停地为很少使用的备份数据中心付费。例如，如果您的主数据中心出现故障，您可以创建在 Azure 上运行的 VM 来运行至关重要的应用程序，然后在不再需要时关闭它们。
+Like other virtual machines, a VM in Azure has an operating system, storage and networking capabilities and can run a wide variety of applications. You can use an image provided by Azure or one of it's partners, or use your own. Examples include various versions, editions and configurations of:
 
-与其他虚拟机一样，Azure 中的 VM 具有操作系统、存储和网络功能，并可以运行各种应用程序。你可以使用 Azure 或其合作伙伴之一提供的映像，或使用自己的映像。示例包含以下产品的各个版本和配置：
+* Linux servers such as Suse, Ubuntu and CentOS
+* Windows Server 
+* SQL Server
+* SharePoint Server
 
-- Windows Server 
-- Linux 服务器，例如 Suse、Ubuntu 和 CentOS
-- SQL Server
-- SharePoint Server
+Virtual machines use virtual hard disks (VHDs) to store their operating system (OS) and data. VHDs are also used for the images you can choose from to install an OS. The following figure shows this, as well as two of the tools for creating and managing your VMs.
 
-虚拟机使用虚拟硬盘 (VHD) 来存储其操作系统 (OS) 和数据。VHD 还可用于存储映像，你可以选择某个映像来安装 OS。下图显示了这项特性，以及用于创建和管理 VM 的两个工具。
+<a name="fig_createvms"></a>
+![vm_diagram](./media/virtual-machines-choose-me-content/diagram.png)
 
-<a name="fig_createvms"></a> ![vm\_diagram](./media/virtual-machines-choose-me-content/diagram.png)
+**Figure: Azure Virtual Machines provides Infrastructure as a Service.**
 
-**图：Azure 虚拟机提供“基础结构即服务”。**
+VMs can be managed using a browser-based portal, command-line tools with support for scripting, or directly through the REST API. Azure.cn partners such as RightScale and ScaleXtreme also provide management services that rely on the REST API. 
 
-可以使用基于浏览器的经典管理门户、支持脚本的命令行工具或直接通过 REST API 管理 VM。Azure.cn 合作伙伴（如 RightScale 和 ScaleXtreme）也提供依赖 REST API 的管理服务。
+Along with the OS, other configuration choices you have with VMs include:
 
-除了操作系统以外，可对 VM 使用的其他配置选项包括：
+* The size, which determines factors such as how many disks you can attach and the processing power. Azure offers a wide variety of sizes to support many types of uses. For details, see [Sizes for Virtual Machines](../articles/virtual-machines/virtual-machines-linux-sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).  
+* The Azure region where your new VM will be hosted, such as in the China East or China North. 
+* VM extensions, which give your virtual machine additional capabilities, such as running anti-virus or using the Desired State Configuration feature of Windows PowerShell.
 
-- 大小，决定了可附加的磁盘数和处理能力等因素。Azure 提供各种大小来支持多种类型的用途。有关详细信息，请参阅 [Windows](../articles/virtual-machines/virtual-machines-windows-sizes.md) 或者 [Linux](../articles/virtual-machines/virtual-machines-linux-sizes.md) 虚拟机大小。  
-- 托管新 VM 的 Azure 区域，例如中国东部或中国北部。 
-- VM 扩展，为虚拟机提供更多的功能，例如，运行防病毒软件，或使用 Windows PowerShell 的所需状态配置功能。
+Other benefits to consider for VMs include:
 
-VM 带来的其他好处包括：
+**Pay-as-you-go** -- Azure charges an hourly price based on the VM's size and operating system. For partial hours, Azure charges only for the minutes of use. Storage is priced and charged separately. For details, see [Virtual Machines Pricing](https://www.azure.cn/pricing/details/virtual-machines/).
 
-**即付即用** - Azure 根据 VM 的大小和操作系统每小时计费。对于不足一小时的部分，Azure 将仅根据使用的分钟数计费。存储将另行定价和收费。有关详细信息，请参阅[虚拟机定价](https://www.azure.cn/pricing/details/virtual-machines/)。
-
-**复原** - Azure 将会监视每个正在运行的 VM 所在的物理硬件。如果运行 VM 的物理服务器出现故障，Azure 会及时发现，并将该 VM 转移到新硬件，然后重新启动该 VM。此过程有时称为服务修复。Azure 还会通过在 Blob 存储中保留 VHD 的冗余副本，来保护虚拟机的数据。
-
-<!---HONumber=70-->
+**Resiliency** -- Azure monitors the physical hardware that hosts each running VM. If a physical server running a VM fails, Azure notices this, moves the VM to new hardware and restarts the VM. This process is sometimes called service healing. Azure also protects a virtual machine's data, by keeping redundant copies of the VHDs in blob storage.

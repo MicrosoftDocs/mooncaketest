@@ -1,8 +1,8 @@
-在每次启动该应用程序时，前面的示例既联系标识提供程序又联系移动服务。相反，你可以缓存授权令牌并首先尝试使用它。
+The previous example contacts both the identity provider and the mobile service every time the app starts. Instead, you can cache the authorization token and try to use it first.
 
-* 加密并将身份验证令牌存储在 iOS 客户端上的推荐方式是使用 iOS 密钥链。我们将使用 [SSKeychain](https://github.com/soffes/sskeychain)，这是一种围绕 iOS 密钥链的简单包装器。按照 SSKeychain 页上的说明操作并将其添加到你的项目。验证在项目的**生成设置**中已启用**启用模块**设置（**Apple LLVM - 语言 - 模块**部分。）
+* The recommended way to encrypt and store authentication tokens on an iOS client is use the iOS Keychain. We'll use [SSKeychain](https://github.com/soffes/sskeychain) -- a simple wrapper around the iOS Keychain. Follow the instructions on the SSKeychain page and add it to your project. Verify that the **Enable Modules** setting is enabled in the project's **Build Settings** (section **Apple LLVM - Languages - Modules**.)
 
-* 打开 **QSTodoListViewController.m** 并添加以下代码：
+* Open **QSTodoListViewController.m** and add the following code:
 
 ```
         - (void) saveAuthInfo {
@@ -20,16 +20,14 @@
         }
 ```
 
-* 在 `loginAndGetData` 中，修改 `loginWithProvider:controller:animated:completion:` 的 completion 块。就在 `[self refresh]` 的前面添加以下行来存储用户 ID 和标记属性：
+* In `loginAndGetData`, modify  `loginWithProvider:controller:animated:completion:`'s completion block. Add the following line right before `[self refresh]` to store the user ID and token properties:
 
 ```
                 [self saveAuthInfo];
 ```
 
-* 在该应用程序启动时加载用户 ID 和令牌。在 **QSTodoListViewController.m** 中的 `viewDidLoad` 中，就在 `self.todoService` 初始化后添加此项。
+* Let's load the user ID and token when the app starts. In the `viewDidLoad` in **QSTodoListViewController.m**, add this right after`self.todoService` is initialized.
 
 ```
                 [self loadAuthInfo];
 ```
-
-<!---HONumber=Mooncake_0919_2016-->

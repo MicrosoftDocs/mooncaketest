@@ -35,3 +35,8 @@
 # Resources
 ## [MSDN forum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=windowsazuremanagement) 
 ## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-management-portal)
+
+
+
+
+

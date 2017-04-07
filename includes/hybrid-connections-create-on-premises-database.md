@@ -1,55 +1,55 @@
-本部分说明如何安装 SQL Server Express、启用 TCP/IP、设置静态端口，以及创建可用于混合连接的数据库。
+This section shows you how to install a SQL Server Express, enable TCP/IP, set a static port, and create a database that can be used with Hybrid Connections.  
 
-###安装 SQL Server Express
+###Install SQL Server Express
 
-若要通过混合连接使用本地 SQL Server 或 SQL Server Express 数据库，需要在静态端口上启用 TCP/IP。SQL Server 上的默认实例使用静态端口 1433，而命名的实例则不使用该端口。因此，我们将安装默认实例。如果你已安装 SQL Server Express 的默认实例，则可以跳过本部分。
+To use an on-premises SQL Server or SQL Server Express database with a hybrid connection, TCP/IP needs to be enabled on a static port. Default instances on SQL Server use static port 1433, whereas named instances do not. Because of this, we will install the default instance. If you already have the default instance of SQL Server Express installed, you can skip this section.
 
-1. 若要安装 SQL Server Express，请运行下载的 **SQLEXPRWT\_x64\_ENU.exe** 或 **SQLEXPR\_x86\_ENU.exe** 文件。SQL Server 安装中心向导显示。
+1. To install SQL Server Express, run the **SQLEXPRWT_x64_ENU.exe** or **SQLEXPR_x86_ENU.exe** file that you downloaded. The SQL Server Installation Center wizard appears.
 
-2. 选择“全新 SQL Server 独立安装或向现有安装添加功能”。按照说明操作，接受默认选项和设置，直到显示“实例配置”页。
+2. Choose **New SQL Server stand-alone installation or add features to an existing installation**, follow the instructions, accepting the default choices and settings, until you get to the **Instance Configuration** page.
 
-3. 在“实例配置”页上选择“默认实例”，然后在“服务器配置”页上接受默认设置。
+3. On the **Instance Configuration** page, choose **Default instance**, then accept the default settings on the **Server Configuration** page.
 
     >[!NOTE]
-    >如果你已安装 SQL Server 的默认实例，则可以跳到下一部分，为混合连接使用此实例。
+    >If you already have a default instance of SQL Server installed, you can skip to the next section and use this instance with Hybrid Connections. 
 
-4. 在“数据库引擎配置”页面上，在“身份验证模式”下选择“混合模式(SQL Server 身份验证和 Windows 身份验证)”并输入内置 **sa** 管理员帐户的安全密码。
+5. On the **Database Engine Configuration** page, under **Authentication Mode**, choose **Mixed Mode (SQL Server authentication and Windows authentication)**, and provide a secure password for the built-in **sa** administrator account.
 
-    在本教程中，您将使用 SQL Server 身份验证。请确保记住您输入的密码，稍后将用到此密码。
+    In this tutorial, you will be using SQL Server authentication. Be sure to remember the password that you provide, because you will need it later.
 
-5. 完成向导以完成安装。
+6. Finish the wizard to complete the installation.
 
-###启用 TCP/IP 并设置静态端口
+###Enable TCP/IP and setting a static port
 
-本部分使用随 SQL Server Express 一起安装的 SQL Server 配置管理器来启用 TCP/IP。
+This section uses SQL Server Configuration Manager, which was installed when you installed SQL Server Express, to enable TCP/IP and set a static IP address. 
 
-1. 遵循[针对 SQL Server 启用 TCP/IP 网络协议](http://technet.microsoft.com/zh-cn/library/hh231672%28v=sql.110%29.aspx)中的步骤启用对该实例的 TCP/IP 访问。
+1. Follow the steps in [Enable TCP/IP Network Protocol for SQL Server](http://technet.microsoft.com/library/hh231672%28v=sql.110%29.aspx) to enable TCP/IP access to the instance.
 
-2. （可选）如果你无法使用默认实例，则必须遵循[配置服务器以侦听特定 TCP 端口](https://msdn.microsoft.com/zh-cn/library/ms177440.aspx)中的步骤，为实例设置一个静态端口。完成此步骤后，你将会使用定义的新端口而不是端口 1433 进行连接。
+2. (Optional) If you are not able to use the default instance, you must follow the steps in [Configure a Server to Listen on a Specific TCP Port ](https://msdn.microsoft.com/library/ms177440.aspx) to set a static port for the instance. If you complete this step, you will connect using the new port that you define, instead of port 1433.
 
-3. （可选）如果需要，请在防火墙中添加例外，以允许远程访问 SQL Server 进程 (sqlservr.exe)。
+3. (Optional) If needed, add exceptions in the firewall to allow remote access to the SQL Server process (sqlservr.exe).
 
-###在本地 SQL Server 实例中创建新数据库
+###Create a new database in the on-premises SQL Server instance
 
-1. 在 SQL Server Management Studio 中，连接至刚才安装的 SQL Server。（如果“连接到服务器”对话框没有自动显示，请导航至左侧窗格中的“对象资源管理器”，单击“连接”，然后单击“数据库引擎”。） 	
+1. In SQL Server Management Studio, connect to the SQL Server you just installed. (If the **Connect to Server** dialog does not appear automatically, navigate to **Object Explorer** in the left pane, click **Connect**, and then click **Database Engine**.) 	
 
-    ![连接到服务器](./media/hybrid-connections-create-on-premises-database/A04SSMSConnectToServer.png)
+    ![Connect to Server](./media/hybrid-connections-create-on-premises-database/A04SSMSConnectToServer.png)
 
-    对于“服务器类型”，请选择“数据库引擎”。对于“服务器名称”，可使用 **localhost** 或正装有 SQL Server 的计算机的名称。选择“SQL Server 身份验证”，然后提供前面创建的 sa 登录名的密码。
+    For **Server type**, choose **Database Engine**. For **Server name**, you can use **localhost** or the name of the computer where you installed SQL Server. Choose **SQL Server authentication**, and supply the password for the sa login that you created earlier. 
 
-2. 若要使用 SQL Server Management Studio 新建数据库，请在“对象资源管理器”中右键单击“数据库”，然后单击“新建数据库”。
+2. To create a new database by using SQL Server Management Studio, right-click **Databases** in Object Explorer, and then click **New Database**.
 
-3. 在“新建数据库”对话框中键入 `OnPremisesDB`，然后单击“确定”。
+3. In the **New Database** dialog, type `OnPremisesDB`, and then click **OK**. 
 
-4. 在“对象资源管理”中，如果展开“数据库”，你会看到新数据库已创建。
+4. In Object Explorer, if you expand **Databases**, you will see that the new database is created.
 
-###创建新的 SQL Server 登录名并设置权限
+###Create a new SQL Server login and set permissions
 
-最后，你要创建权限受限的新 SQL Server 登录名。Azure 服务将使用此登录名而不是内置 sa 登录名（对服务器拥有完全权限）连接到在本地 SQL Server。
+Finally, you will create a new SQL Server login with restricted permissions. Your Azure service will connect to the on-premise SQL Server using this login instead of the built-in sa login, which has full permissions on the server.
 
-1. 在 SQL Server Management Studio 对象资源管理器中，右键单击“OnPremisesDB”数据库，然后单击“新建查询”。
+1. In SQL Server Management Studio Object Explorer, right-click the **OnPremisesDB** database and click **New Query**.
 
-2.  将以下 TSQL 查询粘贴到查询窗口中。
+2.  Paste the following TSQL query into the query window.
 
     ```
     USE [master]
@@ -76,8 +76,6 @@
     GO  
     ```
 
-3. 在上述脚本中，请将字符串 `<**secure_password**>` 替换为新 *HybridConnectionsLogin* 的安全密码。
+3. In the above script, replace the string `<**secure_password**>` with a secure password for the new *HybridConnectionsLogin*.
 
-4. **执行**该查询，以在本地数据库中创建新的登录名，并授予所需的权限。
-
-<!---HONumber=71-->
+4. **Execute** the query to create the new login and grant the required permissions in the on-premises database.

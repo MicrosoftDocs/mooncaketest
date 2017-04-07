@@ -6,17 +6,17 @@ Latest Freshness check:  2015-09-03 , GeneMi.
 ## Connection string
 -->
 
-### 比较连接字符串
+### Compare the connection string
 
-下表针对你的 C# 程序连接到本地 SQL Server 所需的连接字符串，与连接到云中的 Azure SQL 数据库所需的连接字符串进行了比较。差异以粗体显示。
+The following table compares the connection strings that your C# program needs to connect to your on-premises SQL Server versus your Azure SQL Database in the cloud. The differences are in bold.
 
-| 用于 <br/>Azure SQL 数据库的连接字符串 | 用于 <br/>Microsoft SQL Server 的连接字符串 |
+| Connection string for<br/>Azure SQL Database | Connection string for<br/>Microsoft SQL Server |
 | :-- | :-- |
-| Server=**tcp:**{your\_serverName_here}**.database.chinacloudapi.cn,1433**;<br/>User ID={your\_loginName_here}**@{your\_serverName\_here}**;<br/>Password={your\_password_here};<br/>**Database={your\_databaseName\_here};**<br/>**Connection Timeout=30**;<br/>**Encrypt=True**;<br/>**TrustServerCertificate=False**; | Server={your\_serverName\_here};<br/>User ID={your\_loginName\_here};<br/>Password={your\_password_here}; |
+| Server=**tcp:**{your_serverName_here}**.database.windows.net,1433**;<br/>User ID={your_loginName_here}**@{your_serverName_here}**;<br/>Password={your_password_here};<br/>**Database={your_databaseName_here};**<br/>**Connection Timeout=30**;<br/>**Encrypt=True**;<br/>**TrustServerCertificate=False**; | Server={your_serverName_here};<br/>User ID={your_loginName_here};<br/>Password={your_password_here}; |
 
-**Database=** 对于 SQL Server 是可选的，但对于 SQL 数据库是必需的。
+The **Database=** is optional for SQL Server, but is required for SQL Database.
 
-[.NET ADO SqlConnectionStringBuilder 属性](https://msdn.microsoft.com/zh-cn/library/system.data.sqlclient.sqlconnectionstringbuilder_properties.aspx) - 详细讨论所有参数。
+[.NET ADO SqlConnectionStringBuilder Properties](https://msdn.microsoft.com/zh-cn/library/system.data.sqlclient.sqlconnectionstringbuilder_properties.aspx) - discusses all the parameters in detail.
 
 <!--
 These three includes/ files are a sequenced set, but you can pick and choose:
@@ -25,5 +25,3 @@ includes/sql-database-include-connection-string-20-portalshots.md
 includes/sql-database-include-connection-string-30-compare.md
 includes/sql-database-include-connection-string-40-config.md
 -->
-
-<!---HONumber=79-->

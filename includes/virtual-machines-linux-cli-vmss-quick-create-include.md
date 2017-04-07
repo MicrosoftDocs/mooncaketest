@@ -1,69 +1,33 @@
-<!-- need to be verified -->
+## Prerequisites
 
-如果尚未这样做，则你可以获取 [Azure 订阅试用版](https://www.azure.cn/pricing/1rmb-trial/)和[连接到你的 Azure 帐户](../articles/xplat-cli-connect.md)的 [Azure CLI](../articles/xplat-cli-install.md)。请确保 Azure CLI 处于 Resource Manager 模式下，如下所示：
+If you haven't already, get an [Azure subscription trial](https://www.azure.cn/pricing/1rmb-trial/) and install the [Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-az-cli2).
 
-```azurecli
-azure config mode arm
-```
+## Create the scale set
 
-现在，使用 `azure vmss quick-create` 命令创建规模集。以下示例在名为 `myResourceGroup` 的资源组中创建具有 5 个 VM 实例的 Linux 规模集 `myVMSS`：
+First, create a resource group to deploy the scale set into:
 
 ```azurecli
-azure vmss quick-create -n myVMSS -g myResourceGroup -l chinanorth \
-    -u ops -p P@ssw0rd! \
-    -C 5 -Q Canonical:UbuntuServer:16.04.0-LTS:latest
+az group create --location chinanorth --name myResourceGroup
 ```
 
-以下示例创建具有相同配置的 Windows 规模集：
+Now create your scale set using the `az vmss create` command. The following example creates a Linux scale set named `myvmss` with in the resource group named `myrg`:
 
 ```azurecli
-azure vmss quick-create -n myVMSS -g myResourceGroup -l chinanorth \
-    -u ops -p P@ssw0rd! \
-    -C 5 -Q MicrosoftWindowsServer:WindowsServer:2016-Datacenter:latest
+az vmss create --resource-group myResourceGroup --name myVmss \
+    --image UbuntuLTS --admin-username azureuser \
+    --authentication-type password --admin-password P4$$w0rd
 ```
 
-如果想要自定义位置或 image-urn，请查看命令 `azure location list` 和 `azure vm image {list-publishers|list-offers|list-skus|list|show}`。
+The following example creates a Windows scale set with the same configuration:
 
-此命令返回后，将创建规模集。此规模集将包含一个负载均衡器，其 NAT 规则会将负载均衡器上的端口 50,000 + 映射到 VM i 上的端口 22。因此，在确定负载均衡器的 FQDN 后，我们就可以通过 ssh 连接到 VM：
-
-```bash
-# (if you decide to run this as a script, please invoke using bash)
-
-# list load balancers in the resource group we created
-#
-# generic syntax:
-# azure network lb list -g RESOURCE-GROUP-NAME
-#
-# example with some quick-and-dirty grep-fu to store the result in a variable:
-line=$(azure network lb list -g negatvmssrg | grep negatvmssrg)
-split_line=( $line )
-lb_name=${split_line[1]}
-
-# now that we have the name of the load balancer, we can show the details to find which Public IP (PIP) is 
-# associated to it
-#
-# generic syntax:
-# azure network lb show -g RESOURCE-GROUP-NAME -n LOAD-BALANCER-NAME
-#
-# example with some quick-and-dirty grep-fu to store the result in a variable:
-line=$(azure network lb show -g negatvmssrg -n $lb_name | grep loadBalancerFrontEnd)
-split_line=( $line )
-pip_name=${split_line[4]}
-
-# now that we have the name of the public IP address, we can show the details to find the FQDN
-#
-# generic syntax:
-# azure network public-ip show -g RESOURCE-GROUP-NAME -n PIP-NAME
-#
-# example with some quick-and-dirty grep-fu to store the result in a variable:
-line=$(azure network public-ip show -g negatvmssrg -n $pip_name | grep FQDN)
-split_line=( $line )
-FQDN=${split_line[3]}
-
-# now that we have the FQDN, we can use ssh on port 50,000+i to connect to VM i (where i is 0-indexed)
-#
-# example to connct via ssh into VM "0":
-ssh -p 50000 negat@$FQDN
+```azurecli
+az vmss create --resource-group myResourceGroup --name myVmss \
+    --image Win2016Datacenter --admin-username azureuser \
+    --authentication-type password --admin-password P4$$w0rd
 ```
 
-<!---HONumber=Mooncake_0109_2017-->
+If you want to choose a different OS image, you can see available images with the command `az vm image list` or `az vm image list --all`. To see the connection information for the VMs in the scale set, use the command `az vmss list_instance_connection_info`:
+
+```azurecli
+az vmss list_instance_connection_info --resource-group myResourceGroup --name myVmss
+```

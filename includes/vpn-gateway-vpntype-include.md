@@ -1,9 +1,6 @@
-- **PolicyBased**：PolicyBased VPN 以前在经典部署模型中称为静态路由网关。基于策略的 VPN 会根据使用本地网络和 Azure VNet 之间的地址前缀的各种组合配置的 IPsec 策略，加密数据包并引导其通过 IPsec 隧道。通常会在 VPN 设备配置中将策略（或流量选择器）定义为访问列表。PolicyBased VPN 类型的值为 *PolicyBased*。使用 PolicyBased VPN 时，请记住下列限制：
+* **PolicyBased:** PolicyBased VPNs were previously called static routing gateways in the classic deployment model. Policy-based VPNs encrypt and direct packets through IPsec tunnels based on the IPsec policies configured with the combinations of address prefixes between your on-premises network and the Azure VNet. The policy (or traffic selector) is usually defined as an access list in the VPN device configuration. The value for a PolicyBased VPN type is *PolicyBased*. When using a PolicyBased VPN, keep in mind the following limitations:
 
-    - PolicyBased VPN **仅**可在基本网关 SKU 上使用。此 VPN 类型与其他网关 SKU 不兼容。
-    - 如果使用 PolicyBased VPN，可以只有 1 个隧道。
-    - 只能将 PolicyBased VPN 用于 S2S 连接且只能用于特定配置。大多数 VPN 网关配置需要 RouteBased VPN。
-
-- **RouteBased**：RouteBased VPN 以前在经典部署模型中称为动态路由网关。RouteBased VPN 使用 IP 转发或路由表中的“路由”将数据包引导到相应的隧道接口中。然后，隧道接口会加密或解密出入隧道的数据包。RouteBased VPN 的策略（或流量选择器）配置为任意到任意（或通配符）。RouteBased VPN 类型的值为 *RouteBased*。
-
-<!---HONumber=Mooncake_1031_2016-->
+    * PolicyBased VPNs can **only** be used on the Basic gateway SKU. This VPN type is not compatible with other gateway SKUs.
+    * You can have only 1 tunnel when using a PolicyBased VPN.
+    * You can only use PolicyBased VPNs for S2S connections, and only for certain configurations. Most VPN Gateway configurations require a RouteBased VPN.
+* **RouteBased**: RouteBased VPNs were previously called dynamic routing gateways in the classic deployment model. RouteBased VPNs use "routes" in the IP forwarding or routing table to direct packets into their corresponding tunnel interfaces. The tunnel interfaces then encrypt or decrypt the packets in and out of the tunnels. The policy (or traffic selector) for RouteBased VPNs are configured as any-to-any (or wild cards). The value for a RouteBased VPN type is *RouteBased*.

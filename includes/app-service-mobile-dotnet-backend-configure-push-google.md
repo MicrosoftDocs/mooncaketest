@@ -1,17 +1,17 @@
-使用与后端项目类型匹配的过程 - [.NET 后端](#dotnet) 或 [Node.js 后端](#nodejs)。
+Use the procedure that matches your backend project type&mdash;either [.NET backend](#dotnet) or [Node.js backend](#nodejs).
 
-### <a name="dotnet"></a>.NET 后端项目
+### <a name="dotnet"></a>.NET backend project
 
-1. 在 Visual Studio 中，右键单击服务器项目并单击“管理 NuGet 包”，搜索 `Microsoft.Azure.NotificationHubs`，然后单击“安装”。这将安装通知中心客户端库。
+1. In Visual Studio, right-click the server project and click **Manage NuGet Packages**, search for `Microsoft.Azure.NotificationHubs`, then click **Install**. This installs the Notification Hubs client library.
 
-2. 在“控制器”文件夹中，打开“TodoItemController.cs”，添加以下 `using` 语句：
+2. In the Controllers folder, open TodoItemController.cs and add the following `using` statements:
 
     ```
     using Microsoft.Azure.Mobile.Server.Config;
     using Microsoft.Azure.NotificationHubs;
     ```
 
-3. 将 `PostTodoItem`方法替换为以下代码：
+3. Replace the `PostTodoItem` method with the following code:  
 
     ```
     public async Task<IHttpActionResult> PostTodoItem(TodoItem item)
@@ -53,13 +53,13 @@
     }
     ```
 
-4. 重新发布服务器项目。
+4. Republish the server project.
 
-### <a name="nodejs"></a>Node.js 后端项目
+### <a name="nodejs"></a>Node.js backend project
 
-1. 如果尚未执行此操作，请[下载快速启动项目](../articles/app-service-mobile/app-service-mobile-node-backend-how-to-use-server-sdk.md#download-quickstart)或使用 [Azure 门户中的在线编辑器](../articles/app-service-mobile/app-service-mobile-node-backend-how-to-use-server-sdk.md#online-editor)。
+1. If you haven't already done so, [download the quickstart project](../articles/app-service-mobile/app-service-mobile-node-backend-how-to-use-server-sdk.md#download-quickstart) or else use the [online editor in the Azure portal](../articles/app-service-mobile/app-service-mobile-node-backend-how-to-use-server-sdk.md#online-editor).
 
-1. 将 todoitem.js 文件中的现有代码替换为以下内容：
+1. Replace the existing code in the todoitem.js file with the following:
 
     ```
     var azureMobileApps = require('azure-mobile-apps'),
@@ -106,8 +106,6 @@
     module.exports = table;  
     ```
 
-    插入新的 todo 项时，会发送包含 item.text 的 GCM 通知。
+    This sends a GCM notification that contains the item.text when a new todo item is inserted. 
 
-2. 在本地计算机中编辑文件时，请重新发布服务器项目。
-
-<!---HONumber=Mooncake_0919_2016-->
+2. When editing the file in your local computer, republish the server project.

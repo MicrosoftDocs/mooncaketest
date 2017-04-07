@@ -1,19 +1,9 @@
-## 增量部署和完整部署
+## Incremental and complete deployments
+When deploying your resources, you specify that the deployment is either an incremental update or a complete update. The primary difference between these two modes is how Resource Manager handles existing resources in the resource group that are not in the template:
 
-默认情况下，资源管理器会将部署视为对资源组的增量更新。进行增量部署时，资源管理器将会：
+* In complete mode, Resource Manager **deletes** resources that exist in the resource group but are not specified in the template. 
+* In incremental mode, Resource Manager **leaves unchanged** resources that exist in the resource group but are not specified in the template.
 
-- 使资源组中存在的、但未在模板中指定的资源**保留不变**
-- **添加**模板中指定的、但不在资源组中的资源
-- **不会重新预配**资源组中存在的、与模板中定义的条件相同的资源
-- **重新预配**已更新模板设置的现有资源
+For both modes, Resource Manager attempts to provision all resources specified in the template. If the resource already exists in the resource group and its settings are unchanged, the operation results in no change. If you change the settings for a resource, the resource is provisioned with those new settings. However, you cannot update the location or type of an existing resource. Instead, deploy a new resource with the location or type that you need.
 
-进行完整部署时，资源管理器将会：
-
-- **删除**资源组中存在的、但未在模板中指定的资源
-- **添加**模板中指定的、但不在资源组中的资源
-- **不会重新预配**资源组中存在的、与模板中定义的条件相同的资源
-- **重新预配**已更新模板设置的现有资源
-
-可以通过 **Mode** 属性指定部署的类型。
-
-<!---HONumber=Mooncake_0725_2016-->
+By default, Resource Manager uses the incremental mode.

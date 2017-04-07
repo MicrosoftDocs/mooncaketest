@@ -1,6 +1,6 @@
 ---
-title: Operational Insights 限制表
-description: 描述 Operational Insights 的系统限制。
+title: Operational Insights limits table
+description: Describes system limits for Operational Insights.
 services: operational-insights
 documentationCenter: NA
 authors: bandersmsft
@@ -8,18 +8,20 @@ manager: jwhit
 editor: ''
 
 ms.service: operational-insights
+ms.devlang: NA
+ms.topic: article
+ms.tgt_pltfrm: NA
+ms.workload: TBD
 ms.date: 07/01/2015
-wacn.date: 10/3/2015
+ms.author: banders
 ---
 
-以下限制适用于 Operational Insights 订阅。
+The following limits apply to Operational Insights subscriptions.
 
-| |免费|标准|高级|
+|   |FREE|STANDARD|PREMIUM|
 |---|---|---|---|
-|每日数据传输限制|500 MB<sup>1</sup>|无|无|
-|数据保留期|7 天|1 个月|12 个月|
-|数据存储限制|500 MB * 7 天 = 3.5 GB|不受限制|不受限制|
+|Daily data transfer limit|500 MB<sup>1</sup>|None|None|
+|Data retention period|7 days|1 month|12 months|
+|Data storage limit|500 MB * 7 days = 3.5 GB|unlimited|unlimited|
 
-<sup>1</sup>当客户达到其 500 MB 的每日数据传输限制时，数据分析将会停止，并在下一日开始时恢复。日期基于 UTC。
-
-<!---HONumber=71-->
+<sup>1</sup>When customers reach their 500MB daily data transfer limit, data analyzation stops and resumes at the start of the next day. A day is based on UTC.

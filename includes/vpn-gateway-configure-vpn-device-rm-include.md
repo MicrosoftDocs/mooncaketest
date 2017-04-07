@@ -1,11 +1,7 @@
-若要配置 VPN 设备，你需要使用虚拟网络网关的公共 IP 地址来配置本地 VPN 设备。请联系你的设备制造商以获得具体的配置信息并配置设备。有关可在 Azure 上正常工作的 VPN 设备的详细信息，请参阅 [VPN Devices](../articles/vpn-gateway/vpn-gateway-about-vpn-devices.md)（VPN 设备）。
+To configure your VPN device, you'll need the public IP address of the virtual network gateway for configuring your on-premises VPN device. Work with your device manufacturer for specific configuration information and configure your device. Refer to the [VPN Devices](../articles/vpn-gateway/vpn-gateway-about-vpn-devices.md) for more information about VPN devices that work well with Azure.
 
-若要使用 PowerShell 查找虚拟网络网关的公共 IP 地址，请使用以下示例：
+To find the public IP address of your virtual network gateway using PowerShell, use the following sample:
 
-```
-Get-AzureRmPublicIpAddress -Name GW1PublicIP -ResourceGroupName TestRG
-```
+    Get-AzureRmPublicIpAddress -Name GW1PublicIP -ResourceGroupName TestRG
 
-也可以使用 Azure 门户预览来查看虚拟网络网关的公共 IP 地址。导航到“虚拟网络网关”，然后单击网关的名称。
-
-<!---HONumber=Mooncake_0425_2016-->
+You can also view the public IP address for your virtual network gateway by using the Azure portal preview. Navigate to **Virtual network gateways**, then click the name of your gateway.

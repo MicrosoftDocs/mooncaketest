@@ -1,11 +1,9 @@
-需要为两件事情付费：虚拟网络网关的小时计算成本和来自虚拟网络网关的出口数据传输。定价信息可在[定价](https://www.azure.cn/pricing/details/vpn-gateway/)页找到。
+You pay for two things: the hourly compute costs for the virtual network gateway, and the egress data transfer from the virtual network gateway. Pricing information can be found on the [Pricing](https://www.azure.cn/pricing/details/vpn-gateway/) page.
 
-**虚拟网络网关计算成本**<br>每个虚拟网络网关都有小时计算成本。该价格取决于创建虚拟网络网关时指定的网关 SKU。该成本是指网关本身的成本，不包括流经网关的数据传输的成本。
+**Virtual network gateway compute costs**<br>Each virtual network gateway has an hourly compute cost. The price is based on the gateway SKU that you specify when you create a virtual network gateway. The cost is for the gateway itself and is in addition to the data transfer that flows through the gateway.
 
-**数据传输成本**<br>数据传输成本根据来自源虚拟网络网关的出口流量计算。
+**Data transfer costs**<br>Data transfer costs are calculated based on egress traffic from the source virtual network gateway.
 
-- 如果将流量发送到本地 VPN 设备，会以 Internet 出站数据传输费率收费。
-- 如果在不同区域的虚拟网络之间发送流量，定价取决于区域。
-- 如果仅在同一区域的虚拟网络之间发送流量，不会有数据成本。同一区域的 VNet 之间的流量是免费的。
-
-<!---HONumber=Mooncake_1031_2016-->
+* If you are sending traffic to your on-premises VPN device, it will be charged with the Internet egress data transfer rate.
+* If you are sending traffic between virtual networks in different regions, the pricing is based the region.
+* If you are sending traffic only between virtual networks that are in the same region, there are no data costs. Traffic between VNets in the same region is free.

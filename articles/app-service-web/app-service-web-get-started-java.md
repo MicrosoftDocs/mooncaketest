@@ -1,6 +1,6 @@
 ---
-title: 在 5 分钟内将第一个 Java Web 应用部署到 Azure（CLI 2.0 预览版）| Azure
-description: 了解如何部署示例应用，轻松地在应用服务中运行 Web 应用。快速进行实际的开发，立即查看结果。
+title: Create your first Java web app in Azure in five minutes | Azure
+description: Learn how easy it is to run web apps in App Service by deploying a sample app. 
 services: app-service\web
 documentationcenter: ''
 author: cephalin
@@ -13,105 +13,68 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: hero-article
-ms.date: 01/04/2017
-wacn.date: 02/10/2017
+ms.date: 03/17/2017
+wacn.date: ''
 ms.author: cephalin
+
 ---
+# Create your first Java web app in Azure in five minutes
+[!INCLUDE [app-service-web-selector-get-started](../../includes/app-service-web-selector-get-started.md)]
 
-# 在 5 分钟内将第一个 Java Web 应用部署到 Azure（CLI 2.0 预览版）
-> [!div class="op_single_selector"]
->- [第一个 HTML 站点](./app-service-web-get-started-html-cli-nodejs.md)
->- [第一个 .NET 应用](./app-service-web-get-started-dotnet-cli-nodejs.md)
->- [第一个 PHP 应用](./app-service-web-get-started-php-cli-nodejs.md)
->- [第一个 Node.js 应用](./app-service-web-get-started-nodejs-cli-nodejs.md)
->- [第一个 Python 应用](./app-service-web-get-started-python-cli-nodejs.md)
->- [第一个 Java 应用](./app-service-web-get-started-java.md)
+This QuickStart helps you deploy your first Java web app to [Azure App Service](../app-service/app-service-value-prop-what-is.md) in just a few minutes.
 
-本教程旨在帮助用户将一个简单的 Java Web 应用部署到 [Azure App Service](../app-service/app-service-value-prop-what-is.md)。应用服务可用于创建 Web 应用、[移动应用后端](../app-service-mobile/index.md)和 [API 应用](../app-service-api/app-service-api-apps-why-best-platform.md)。
+Before you start, make sure that the Azure CLI has been installed. For more information, see [Azure CLI installation guide](https://docs.microsoft.com/cli/azure/install-azure-cli).
 
-用户将能够：
+## Log in to Azure
+Log in to Azure by running `az login` and following the on-screen directions.
 
-* 在 Azure App Service 中创建 Web 应用。
-* 部署示例 Java 应用。
-* 查看代码在生产环境中的实时运行。
+```azurecli
+az login
+```
 
-## 先决条件
-* 获取 FTP/FTPS 客户端，如 [FileZilla](https://filezilla-project.org/)。
-* 获取 Azure 帐户。如果你没有帐户，可以[注册试用版](https://www.azure.cn/pricing/1rmb-trial/?WT.mc_id=A261C142F)。
+## Create a resource group   
+Create a [resource group](../azure-resource-manager/resource-group-overview.md). This is where you put all the Azure resources that you want to manage together, such as 
+the web app and its SQL Database back end.
 
-## <a name="create"></a> 创建 Web 应用
-1. 使用 Azure 帐户登录到 [Azure 门户预览](https://portal.azure.cn)。
-2. 在左侧菜单中，单击“新建”>“Web + 移动”>“Web 应用”。
+```azurecli
+az group create --location "China North" --name myResourceGroup
+```
 
-    ![](./media/app-service-web-get-started-languages/create-web-app-portal.png)  
+To see what possible values you can use for `--location`, use the `az appservice list-locations` Azure CLI command.
 
-3. 在应用创建边栏选项卡中，对新应用使用以下设置：
+## Create an App Service plan
+Create a "FREE" [App Service plan](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md). 
 
-    * **应用名称**：键入唯一名称。
-    * **资源组**：选择“新建”，为资源组指定名称。
-    * **应用服务计划/位置**：单击进行配置，然后单击“新建”，设置应用服务计划的名称、位置和定价层。可随意使用“免费”定价层。
+```azurecli
+az appservice plan create --name my-free-appservice-plan --resource-group myResourceGroup --sku FREE
+```
 
-     完成后，应用创建边栏选项卡如下所示：
+## Create a web app
+Create a web app with a unique name in `<app_name>`.
 
-     ![](./media/app-service-web-get-started-languages/create-web-app-settings.png)  
+```azurecli
+az appservice web create --name <app_name> --resource-group myResourceGroup --plan my-free-appservice-plan
+```
 
-4. 单击底部的“创建”。可以单击顶部的“通知”图标，查看进度。
+## Deploy sample application
+Deploy a sample Java app from GitHub.
 
-    ![](./media/app-service-web-get-started-languages/create-web-app-started.png)  
+```azurecli
+az appservice web source-control config --name <app_name> --resource-group myResourceGroup \
+--repo-url "https://github.com/azure-appservice-samples/JavaCoffeeShopTemplate.git" --branch master --manual-integration 
+```
 
-5. 完成部署后，会看到此通知消息。单击该消息可打开部署的边栏选项卡。
+## Browse to web app
+To see your app running live in Azure, run this command.
 
-    ![](./media/app-service-web-get-started-languages/create-web-app-finished.png)  
+```azurecli
+az appservice web browse --name <app_name> --resource-group myResourceGroup
+```
 
-6. 在“成功的部署”边栏选项卡中，单击“资源”链接，打开新 Web 应用的边栏选项卡。
+Congratulations, your first Java web app is running live in Azure App Service.
 
-    ![](./media/app-service-web-get-started-languages/create-web-app-resource.png)  
+[!INCLUDE [cli-samples-clean-up](../../includes/cli-samples-clean-up.md)]
 
-## 将 Java 应用部署到 Web 应用
-接下来，使用 FTPS 将 Java 应用部署到 Azure。
+## Next steps
 
-1. 在 Web 应用边栏选项卡中，向下滚动到“应用程序设置”或进行搜索，然后单击。
-
-    ![](./media/app-service-web-get-started-languages/set-java-application-settings.png)  
-
-2. 在“Java 版本”中，选择“Java 8”，单击“保存”。
-
-    ![](./media/app-service-web-get-started-languages/set-java.png)  
-
-    收到“已成功更新 Web 应用设置”通知时，导航到 http://*&lt;appname>*.chinacloudsites.cn，查看默认 JSP servlet 的效果。
-1. 登录到 [Azure 经典管理门户](https://manage.windowsazure.cn/)，找到你的应用，然后单击“速览”下的“仪表板”>“重置部署凭据”，为应用设置部署凭据。
-5. 返回到 [Azure 门户预览](https://portal.azure.cn)，单击“概述”。单击“FTP/部署用户名”和“FTPS 主机名”旁的“复制”按钮，复制这些值。
-
-    ![](./media/app-service-web-get-started-languages/get-ftp-url.png)  
-
-    现在可以使用 FTPS 部署 Java 应用了。
-6. 在 FTP/FTPS 客户端中，使用上一步中复制的值，登录到 Azure Web 应用的 FTP 服务器。使用之前创建的部署密码。
-
-    以下屏幕截图显示的是使用 FileZilla 进行登录。
-
-    ![](./media/app-service-web-get-started-languages/filezilla-login.png)  
-
-    可能会看到 Azure 无法识别 SSL 证书的安全警告。继续。
-7. 单击[此链接](https://github.com/Azure-Samples/app-service-web-java-get-started/raw/master/webapps/ROOT.war)，将 WAR 文件下载到本地计算机。
-8. 在 FTP/FTPS 客户端中，导航到远程站点的 **/site/wwwroot/webapps**，将下载到本机计算机中的 WAR 文件拖到该远程目录。
-
-    ![](./media/app-service-web-get-started-languages/transfer-war-file.png)  
-
-    单击“确定”，覆盖 Azure 中的文件。
-
-    > [!NOTE]
-    根据 Tomcat 的默认行为，/site/wwwroot/webapps 中的文件名 **ROOT.war** 提供根 Web 应用 (http://*&lt;appname>*.chinacloudsites.cn)，文件名 ***&lt;anyname>*.war** 提供命名 Web 应用 (http://*&lt;appname>*.chinacloudsites.cn/*&lt;anyname>*)。
-    > 
-    > 
-
-就这么简单！ 代码现在已在 Azure 中实时运行。在浏览器中，导航到 http://*&lt;appname>*.chinacloudsites.cn，查看效果。
-
-## 更新应用
-需要更新时，只需将新的 WAR 文件上传到 FTP/FTPS 客户端中的同一个远程目录。
-
-## 后续步骤
-* 尝试[将代码部署到 Azure 的其他方法](./web-sites-deploy.md)。
-* 使 Azure 应用上升到更高的层次。对用户进行身份验证。按需缩放。设置一些性能警报。所有这些操作只需按几下鼠标即可完成。请参阅[在第一个 Web 应用中添加功能](./app-service-web-get-started-2.md)。
-
-<!---HONumber=Mooncake_0206_2017-->
-<!--Update_Description: change for azure cli to azure cli 2.0-->
+Explore pre-created [Web apps CLI scripts](app-service-cli-samples.md).

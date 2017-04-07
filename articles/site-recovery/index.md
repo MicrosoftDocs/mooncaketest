@@ -1,41 +1,144 @@
 ---
+title: Azure Site Recovery Documentation - Tutorials, API Reference | Microsoft Docs
+description: Learn how to set up cloud disaster recovery and business continuity for physical servers and virtual machines by deploying and managing replication.
+services: site-recovery
+author: carolz
+manager: carolz
 layout: LandingPage
-description: 了解如何通过部署和管理复制来设置物理服务器和虚拟机的云灾难恢复和业务连续性。
+ms.assetid: 
+ms.service: site-recovery
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: landing-page
+ms.date: 01/23/2017
+ms.author: carolz
 ---
-# Site Recovery 文档
+# Site Recovery Documentation
 
-了解如何使用 Site Recovery 实现业务连续性和私有云的灾难恢复策略。教程和其他文档演示了如何规划、部署和管理将本地物理服务器和虚拟机复制到云或辅助数据中心的业务流程。
+Learn how to use Site Recovery for business continuity and disaster recovery strategy for private clouds. Tutorials and other documentation show you how to plan, deploy, and manage the orchestration of replicating on-premises physical servers and virtual machines to the cloud or to a secondary datacenter.
 
 <ul class="panelContent cardsFTitle">
-    <li><a href="/azure/site-recovery/site-recovery-overview">
-<div class="cardSize"><div class="cardPadding"><div class="card"><div class="cardImageOuter"><div class="cardImage"><img src="media/index/site-recovery.svg" alt="" /></div></div><div class="cardText"><h3>了解 Azure Site Recovery</h3></div></div></div>
-        </div></a>
-</li>
-    <li><a href="/azure/site-recovery/site-recovery-best-practices">
-<div class="cardSize"><div class="cardPadding"><div class="card"><div class="cardImageOuter"><div class="cardImage"><img src="media/index/get-started.svg" alt="" /></div></div><div class="cardText"><h3>Azure Site Recovery 入门</h3></div></div></div>
-        </div></a>
-</li>
+    <li>
+        <a href="/azure/site-recovery/site-recovery-overview">
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardImageOuter">
+                        <div class="cardImage">
+                            <img src="media/index/site-recovery.svg" alt="" />
+                        </div>
+                    </div>
+                    <div class="cardText">
+                        <h3>Learn about Azure Site Recovery</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </a>
+    </li>
+    <li>
+        <a href="https://azure.microsoft.com/en-us/resources/videos/index/?services=recovery-manager">
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardImageOuter">
+                        <div class="cardImage">
+                            <img src="media/index/video-library.svg" alt="" />
+                        </div>
+                    </div>
+                    <div class="cardText">
+                        <h3>Azure Site Recovery Video Library</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </a>
+    </li>
+    <li>
+        <a href="/azure/site-recovery/site-recovery-vmware-to-azure">
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardImageOuter">
+                        <div class="cardImage">
+                            <img src="media/index/get-started.svg" alt="" />
+                        </div>
+                    </div>
+                    <div class="cardText">
+                        <h3>Get started with Azure Site Recovery</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </a>
+    </li>
+    <li>
+        <a href="/azure/site-recovery/site-recovery-hyper-v-site-to-azure">
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardImageOuter">
+                        <div class="cardImage">
+                            <img src="media/index/get-started.svg" alt="" />
+                        </div>
+                    </div>
+                    <div class="cardText">
+                        <h3>Get started with replication of Hyper-V VMs to Azure (without VMM)</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </a>
+    </li>
+    <li>
+        <a href="/azure/site-recovery/site-recovery-vmm-to-azure">
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardImageOuter">
+                        <div class="cardImage">
+                            <img src="media/index/get-started.svg" alt="" />
+                        </div>
+                    </div>
+                    <div class="cardText">
+                        <h3>Get started with replication of Hyper-V VMs in VMM clouds to Azure</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </a>
+    </li>
 </ul>
 
 ---
 
-<h2>引用</h2>
+<h2>Reference</h2>
 <ul class="panelContent cardsW">
     <li>
-        <div class="cardSize"><div class="cardPadding"><div class="card"><div class="cardText"><h3>命令行</h3><p><a href="/powershell/resourcemanager/azurerm.siterecovery/v3.2.0/azurerm.siterecovery">PowerShell</a></p><p><a href="/powershell/servicemanagement/azure.siterecovery/v3.1.0/azure.siterecovery">PowerShell 经典</a></p></div></div></div>
-        </div>
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>Command-Line</h3>
+                        <p><a href="/powershell/resourcemanager/azurerm.siterecovery/v3.2.0/azurerm.siterecovery">PowerShell</a></p>
+                        <p><a href="/powershell/servicemanagement/azure.siterecovery/v3.1.0/azure.siterecovery">PowerShell classic</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
     </li>
     <li>
-        <div class="cardSize"><div class="cardPadding"><div class="card"><div class="cardText"><h3>REST</h3><p><a href="https://msdn.microsoft.com/zh-cn/library/mt750497">REST API 参考</a></p></div></div></div>
-        </div>
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>REST</h3>
+                        <p><a href="https://msdn.microsoft.com/en-us/library/mt750497">REST API Reference</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
     </li>
 </ul>
 
-<div class="downloadHolder"><a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/zh-cn/Azure.azure-documents/live/site-recovery.pdf">
-<div class="img"></div>
-        <div class="text">下载 Site Recovery 文档</div>
-    </a>
 
-</div>
-
-<!---HONumber=Mooncake_0206_2017-->

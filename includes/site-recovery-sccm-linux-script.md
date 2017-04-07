@@ -67,5 +67,3 @@ cd /tmp
 rm -rf /tm/MobSvc
 exit ${Error}
 ```
-
-<!---HONumber=Mooncake_0206_2017-->

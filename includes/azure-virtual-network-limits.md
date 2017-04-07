@@ -1,46 +1,44 @@
-以下限制仅适用于通过每个订阅的经典部署模型进行管理的网络资源。
+The following limits apply only for networking resources managed through the classic deployment model per subscription.
 
-| 资源 | 默认限制 | 最大限制 |
+| Resource | Default limit | Maximum limit |
 | --- | --- | --- |
-| 每个订阅的虚拟网络数 |50 |100 |
-| 每个订阅的本地网站数 |20 |联系支持人员 |
-| 每个虚拟网络的 DNS 服务器数 |20 |100 |
-| 每个虚拟网络的专用 IP 地址数 |4096 |4096 |
-| 虚拟机或角色实例的并发 TCP 连接 |500K |500K |
-| 网络安全组 (NSG) |100 |200 |
-| 每个 NSG 的 NSG 规则数 |200 |400 |
-| 用户定义路由表数 |100 |200 |
-| 每个路由表的用户定义的路由数 |100 |400 |
-| 公共 IP 地址 (动态) |5 |联系支持人员 |
-| 保留的公共 IP 地址 |20 |联系支持人员 |
-| 每个部署的公共 VIP |5 |联系支持人员 |
-| 每个部署的私有 VIP (ILB) |1 |1 |
-| 终结点访问控制列表 (ACL) |50 |50 |
+| Virtual networks per subscription |50 |100 |
+| Local network sites per subscription |20 |contact support |
+| DNS Servers per virtual network |20 |100 |
+| Private IP Addresses per virtual network |4096 |4096 |
+| Concurrent TCP connections for a virtual machine or role instance |500K |500K |
+| Network Security Groups (NSG) |100 |200 |
+| NSG rules per NSG |200 |400 |
+| User defined route tables |100 |200 |
+| User defined routes per route table |100 |400 |
+| Public IP addresses (dynamic) |5 |contact support |
+| Reserved public IP addresses |20 |contact support |
+| Public VIP per deployment |5 |contact support |
+| Private VIP (ILB) per deployment |1 |1 |
+| Endpoint Access Control Lists (ACLs) |50 |50 |
 
-#### <a name="azure-resource-manager-virtual-networking-limits"></a>网络限制 - Azure Resource Manager
-以下限制仅适用于通过每个订阅的每个区域的 Azure Resource Manager 进行管理的网络资源。
+#### <a name="azure-resource-manager-virtual-networking-limits"></a>Networking Limits - Azure Resource Manager
+The following limits apply only for networking resources managed through Azure Resource Manager per region per subscription.
 
-| 资源 | 默认限制 | 最大限制 |
+| Resource | Default limit | Maximum Limit |
 | --- | --- | --- |
-| 每个订阅的虚拟网络数 |50 |500 |
-| 每个虚拟网络的子网数 |1,000 |联系支持人员 |
-| 每个虚拟网络的 DNS 服务器数 |9 |25 |
-| 每个虚拟网络的专用 IP 地址数 |4096 |4096 |
-| 虚拟机或角色实例的并发 TCP 连接 |500K |500K |
-| 网络接口 (NIC) |300 |10000 |
-| 网络安全组 (NSG) |100 |400 |
-| 每个 NSG 的 NSG 规则数 |200 |500 |
-| 用户定义路由表数 |100 |200 |
-| 每个路由表的用户定义的路由数 |100 |400 |
-| 公共 IP 地址 (动态) |60 |联系支持人员 |
-| 公共 IP 地址（静态） |20 |联系支持人员 |
-| 负载均衡器（内部和面向 internet） |100 |联系支持人员 |
-| 每个负载均衡器的负载均衡器规则数 |150 |150 |
-| 每个负载均衡器的公共前端 IP 数 |5 |联系支持人员 |
-| 每个负载均衡器的私有前端 IP 数 |30 |联系支持人员 |
-| 每个虚拟网络的 VNet 对等互连数 |10 |50 |
-| 每个 VPN 网关的点到站点根证书数 |20 |20 |
+| Virtual networks per subscription |50 |500 |
+| Subnets per virtual network |1,000 |contact support |
+| DNS Servers per virtual network |9 |25 |
+| Private IP Addresses per virtual network |4096 |4096 |
+| Concurrent TCP connections for a virtual machine or role instance |500K |500K |
+| Network Interfaces (NIC) |300 |10000 |
+| Network Security Groups (NSG) |100 |400 |
+| NSG rules per NSG |200 |500 |
+| User defined route tables |100 |200 |
+| User defined routes per route table |100 |400 |
+| Public IP addresses (dynamic) |60 |contact support |
+| Public IP addresses (Static) |20 |contact support |
+| Load balancers (internal and internet facing) |100 |contact support |
+| Load balancer rules per load balancer |150 |150 |
+| Public front end IP per load balancer |10 |contact support |
+| Private front end IP per load balancer |10 |contact support |
+| VNets peerings per Virtual Network |10 |50 |
+| Point-to-Site Root Certificates per VPN Gateway |20 |20 |
 
-如果需要在默认值的基础上提高限制，请与支持人员联系。
-
-<!---HONumber=Mooncake_0206_2017-->
+Contact support in case you need to increase limits from default.

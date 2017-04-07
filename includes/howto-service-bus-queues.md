@@ -1,65 +1,63 @@
-## 什么是 Service Bus 队列？
+## What are Service Bus queues?
 
-Service Bus 队列支持**中转消息**通信模型。在使用队列时，分布式应用程序的组件不会直接相互通信，而是通过充当中介（中转站）的队列交换消息。消息创建方（发送方）将消息传送到队列，然后继续对其进行处理。消息使用方（接收方）以异步方式从队列中提取消息并对其进行处理。创建方不必等待使用方的答复即可继续处理并发送更多消息。队列为一个或多个竞争使用方提供**先入先出 \(FIFO\)** 消息传递方式。也就是说，接收方通常会按照消息添加到队列中的顺序来接收并处理消息，并且每条消息仅由一个消息使用方接收并处理。
+Service Bus queues support a **brokered messaging** communication model. When using queues, components of a distributed application do not communicate directly with each other; instead they exchange messages via a queue, which acts as an intermediary (broker). A message producer (sender) hands off a message to the queue and then continues its processing. Asynchronously, a message consumer (receiver) pulls the message from the queue and processes it. The producer does not have to wait for a reply from the consumer in order to continue to process and send further messages. Queues offer **First In, First Out (FIFO)** message delivery to one or more competing consumers. That is, messages are typically received and processed by the receivers in the order in which they were added to the queue, and each message is received and processed by only one message consumer.
 
 ![QueueConcepts](./media/howto-service-bus-queues/sb-queues-08.png)
 
-服务总线队列是一种可用于各种应用场景的通用技术：
+Service Bus queues are a general-purpose technology that can be used for a wide variety of scenarios:
 
--   多层 Azure 应用程序中 Web 角色和辅助角色之间的通信。
--   混合解决方案中本地应用程序和 Azure 托管应用程序之间的通信。
--   在不同组织或组织的各部门中本地运行的分布式应用程序组件之间的通信。
+-   Communication between web and worker roles in a multi-tier Azure application.
+-   Communication between on-premises apps and Azure-hosted apps in a hybrid solution.
+-   Communication between components of a distributed application running on-premises in different organizations or departments of an organization.
 
-利用队列，你可以更轻松地缩放应用程序，并增强体系结构的弹性。
+Using queues enables you to scale your applications more easily, and enable more resiliency to your architecture.
 
-## 创建服务命名空间
+## Create a service namespace
 
-若要开始在 Azure 中使用服务总线队列，必须先创建一个服务命名空间。命名空间提供了用于对应用程序中的服务总线资源进行寻址的范围容器。
+To begin using Service Bus queues in Azure, you must first create a service namespace. A namespace provides a scoping container for addressing Service Bus resources within your application.
 
-创建服务命名空间：
+To create a service namespace:
 
-1.  登录到 [Azure 经典管理门户][]。
+1.  Log on to the [Azure classic portal][].
 
-2.  在门户的左侧导航窗格中，单击“服务总线”。
+2.  In the left navigation pane of the portal, click **Service Bus**.
 
-3.  在门户的下方窗格中，单击“创建”。
+3.  In the lower pane of the portal, click **Create**.
     ![](./media/howto-service-bus-queues/sb-queues-03.png)
 
-4.  在“添加新命名空间”对话框中，输入命名空间名称。系统会立即检查该名称是否可用。
+4.  In the **Add a new namespace** dialog, enter a namespace name. The system immediately checks to see if the name is available.   
     ![](./media/howto-service-bus-queues/sb-queues-04.png)
 
-5.  在确保命名空间名称可用后，选择应托管你的命名空间的国家或地区（确保使用在其中部署计算资源的同一国家/地区）。
+5.  After making sure the namespace name is available, choose the country or region in which your namespace should be hosted (make sure you use the same country/region in which you are deploying your compute resources).
 
      > [!IMPORTANT]
-     > 选取要选择用于部署应用程序的**相同区域**。这将为你提供最佳性能。
+     > Pick the **same region** that you intend to choose for deploying your application. This will give you the best performance.
 
-6. 	将对话框中的其他字段保留其默认值（“消息传送”和“标准层”），然后单击“确定”复选标记。系统现已创建命名空间并已将其启用。你可能需要等待几分钟，因为系统将为你的帐户预配资源。
+6. 	Leave the other fields in the dialog with their default values (**Messaging** and **Standard Tier**), then click the OK check mark. The system now creates your namespace and enables it. You might have to wait several minutes as the system provisions resources for your account.
 
     ![](./media/howto-service-bus-queues/getting-started-multi-tier-27.png)
 
-创建的命名空间将花费一段时间来激活，然后显示在管理门户中。请等到命名空间状态变为“活动”后再继续操作。
+The namespace you created takes a moment to activate, and will then appear in the portal. Wait until the namespace status is **Active** before continuing.
 
-## 获取命名空间的默认管理凭据
+## Obtain the default management credentials for the namespace
 
-若要在新命名空间上执行管理操作（如创建队列），则必须获取该命名空间的管理凭据。可以从 [Azure 经典管理门户][]中获取这些凭据。
+In order to perform management operations, such as creating a queue on the new namespace, you must obtain the management credentials for the namespace. You can obtain these credentials from the [Azure classic portal][].
 
-###从经典管理门户中获取管理凭据
+###To obtain management credentials from the portal
 
-1.  在左侧导航窗格中，单击“Service Bus”节点以显示可用命名空间的列表：
+1.  In the left navigation pane, click the **Service Bus** node, to display the list of available namespaces:   
     ![](./media/howto-service-bus-queues/sb-queues-13.png)
 
-2.  从显示的列表中选择刚刚创建的命名空间：
+2.  Select the namespace you just created from the list shown:   
     ![](./media/howto-service-bus-queues/sb-queues-09.png)
 
-3.  单击“连接信息”。
+3.  Click **Connection Information**.   
     ![](./media/howto-service-bus-queues/sb-queues-06.png)
 
-4.  在“访问连接信息”窗格中，找到包含 SAS 密钥和密钥名称的连接字符串。
+4.  In the **Access connection information** pane, find the connection string that contains the SAS key and key name.   
 
     ![](./media/howto-service-bus-queues/multi-web-45.png)
 
-5.  记下该密钥或将其复制到剪贴板。
+5.  Make a note of the key, or copy it to the clipboard.
 
-  [Azure 经典管理门户]: http://manage.windowsazure.cn
-
-<!---HONumber=Mooncake_0213_2017-->
+  [Azure classic portal]: http://manage.windowsazure.cn

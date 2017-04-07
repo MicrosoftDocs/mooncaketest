@@ -1,89 +1,72 @@
-<!-- Ibiza portal: tested -->
+An availability set helps keep your virtual machines available during downtime, such as during maintenance. Placing two or more similarly configured virtual machines in an availability set creates the redundancy needed to maintain availability of the applications or services that your virtual machine runs. For details about how this works, see [Manage the availability of virtual machines][Manage the availability of virtual machines].
 
-可用性集可帮助虚拟机在停机期间（例如维护期间）保持可用。在可用性集中放置两个或更多个类似配置的虚拟机，将可针对虚拟机运行的应用程序或服务创建保持其可用性所需的冗余。有关工作原理的详细信息，请参阅“管理 [Windows](../articles/virtual-machines/virtual-machines-windows-manage-availability.md) 或 [Linux](../articles/virtual-machines/virtual-machines-linux-manage-availability.md) 虚拟机的可用性”。
+It's a best practice to use both availability sets and load-balancing endpoints to help ensure that your application is always available and running efficiently. For details about load-balanced endpoints, see [Load balancing for Azure infrastructure services][Load balancing for Azure infrastructure services].
 
-同时使用可用性集和负载均衡终结点是帮助确保应用程序一直可用并有效运行的最佳实践。有关负载均衡终结点的详细信息，请参阅“Azure 基础结构服务的负载均衡”（[Windows](../articles/virtual-machines/virtual-machines-windows-load-balance.md) 或 [Linux](../articles/load-balancer/load-balancer-overview.md)）。
+You can add classic virtual machines into an availability set by using one of two options:
 
-可以使用以下两个选项中的一个，将经典虚拟机添加到可用性集中：
+* [Option 1: Create a virtual machine and an availability set at the same time][Option 1: Create a virtual machine and an availability set at the same time]. Then, add new virtual machines to the set when you create those virtual machines.
+* [Option 2: Add an existing virtual machine to an availability set][Option 2: Add an existing virtual machine to an availability set].
 
-- [选项 1：同时创建虚拟机和可用性集][]。然后，在创建新的虚拟机时将虚拟机添加到该集。
-- [选项 2：将现有虚拟机添加到可用性集][]。
+> [!NOTE]
+> In the classic model, virtual machines that you want to put in the same availability set must belong to the same cloud service.
+> 
+> 
 
->[!NOTE]
-> 在经典模型中，要放入同一可用性集的虚拟机必须属于同一云服务。
+## <a id="createset"> </a>Option 1: Create a virtual machine and an availability set at the same time
+You can use either the Azure portal preview or Azure PowerShell commands to do this.
 
-## <a id="createset"> </a>选项 1：同时创建虚拟机和可用性集##
+To use the Azure portal preview:
 
-可以使用 Azure 门户预览或 Azure PowerShell 命令来执行此操作。
+1. If you haven't already done so, sign in to the [Azure portal preview](https://portal.azure.cn).
+2. On the hub menu, click **+ New**, and then click **Virtual Machine**.
 
-若要使用 Azure 门户预览：
+    ![Alt image text](./media/virtual-machines-common-classic-configure-availability/ChooseVMImage.png)
+3. Select the Marketplace virtual machine image you wish to use. You can choose to create a Linux or Windows virtual machine.
+4. For the selected virtual machine, verify that the deployment model is set to **Classic** and then click **Create**
 
-1. 如果你尚未登录 [Azure 门户预览](https://portal.azure.cn)，请先登录。
+    ![Alt image text](./media/virtual-machines-common-classic-configure-availability/ChooseClassicModel.png)
+5. Enter a virtual machine name, user name and password (for Windows machines) or SSH public key (for Linux machines). 
+6. Choose the VM size and then click **Select** to continue.
+7. Choose **Optional Configuration > Availability set**, and select the availability set you wish to add the virtual machine to.
 
-2. 在中心菜单中，单击“+ 新建”，然后单击“虚拟机”。
+    ![Alt image text](./media/virtual-machines-common-classic-configure-availability/ChooseAvailabilitySet.png) 
+8. Review your configuration settings. When you're done, click **Create**.
+9. While Azure creates your virtual machine, you can track the progress under **Virtual Machines** in the hub menu.
 
-    ![Alt 图像文本](./media/virtual-machines-common-classic-configure-availability/ChooseVMImage.png)
+To use Azure PowerShell commands to create an Azure virtual machine and add it to a new or existing availability set, see [Use Azure PowerShell to create and preconfigure Windows-based virtual machines](../articles/virtual-machines/virtual-machines-windows-classic-create-powershell.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
 
-3. 选择要使用的应用商店虚拟机映像。可以选择创建 Linux 或 Windows 虚拟机。
+## <a id="addmachine"> </a>Option 2: Add an existing virtual machine to an availability set
+In the Azure portal preview, you can add existing classic virtual machines to an existing availability set
+ or create a new one for them. (Keep in mind that the virtual machines in the same availability set must belong to the same cloud service.) The steps are almost the same. With Azure PowerShell, you can add the virtual machine to an existing availability set.
 
-4. 对于所选的虚拟机，确认部署模型已设置为“经典”，然后单击“创建”
+1. If you have not already done so, sign in to the [Azure portal preview](https://portal.azure.cn).
+2. On the Hub menu, click **Virtual Machines (classic)**.
 
-    ![Alt 图像文本](./media/virtual-machines-common-classic-configure-availability/ChooseClassicModel.png)
+    ![Alt image text](./media/virtual-machines-common-classic-configure-availability/ChooseClassicVM.png)
+3. From the list of virtual machines, select the name of the virtual machine that you want to add to the set.
+4. Choose **Availability set** from the virtual machine **Settings**.
 
-5. 输入虚拟机名称、用户名和密码（适用于 Windows 虚拟机）或 SSH 公钥（适用于 Linux 虚拟机）。
+    ![Alt image text](./media/virtual-machines-common-classic-configure-availability/AvailabilitySetSettings.png)
+5. Select the availability set you wish to add the virtual machine to. The virtual machine must belong to the same cloud service as the availability set.
 
-6. 选择 VM 大小，然后单击“选择”以继续。
+    ![Alt image text](./media/virtual-machines-common-classic-configure-availability/AvailabilitySetPicker.png)
+6. Click **Save**.
 
-7. 选择“可选配置 > 可用性集”，并选择要将虚拟机添加到的可用性集。
+To use Azure PowerShell commands, open an administrator-level Azure PowerShell session and run the following command. For the placeholders (such as &lt;VmCloudServiceName&gt;), replace everything within the quotes, including the < and > characters, with the correct names.
 
-    ![Alt 图像文本](./media/virtual-machines-common-classic-configure-availability/ChooseAvailabilitySet.png)
+    Get-AzureVM -ServiceName "<VmCloudServiceName>" -Name "<VmName>" | Set-AzureAvailabilitySet -AvailabilitySetName "<AvSetName>" | Update-AzureVM
 
-8. 查看配置设置。完成后，单击“创建”。
-
-9. 当 Azure 创建虚拟机时，你可以在中心菜单中的“虚拟机”下跟踪进度。
-
-若要使用 Azure PowerShell 命令创建 Azure 虚拟机并将它添加到新的或现有的可用性集，请参阅[使用 Azure PowerShell 创建和预配置基于 Windows 的虚拟机](../articles/virtual-machines/virtual-machines-windows-classic-create-powershell.md)
-
-## <a id="addmachine"> </a>选项 2：将现有虚拟机添加到可用性集##
-
-在 Azure 门户预览中，可以将现有经典虚拟机添加到现有可用性集，或为现有经典虚拟机创建新的可用性集。（请记住，同一可用性集中的虚拟机必须属于同一云服务。） 步骤几乎完全相同。使用 Azure PowerShell 时，可以将虚拟机添加到现有可用性集。
-
-1. 如果你尚未登录 [Azure 门户预览](https://portal.azure.cn)，请先登录。
-
-2. 在“中心”菜单中，单击“虚拟机(经典)”。
-
-    ![Alt 图像文本](./media/virtual-machines-common-classic-configure-availability/ChooseClassicVM.png)
-
-3. 从虚拟机列表中，选择想要添加到集中的虚拟机的名称。
-
-4. 从虚拟机**设置**中选择“可用性集”。
-
-    ![Alt 图像文本](./media/virtual-machines-common-classic-configure-availability/AvailabilitySetSettings.png)
-
-5. 选择要将虚拟机添加到的可用性集。虚拟机必须与可用性集属于同一云服务。
-
-    ![Alt 图像文本](./media/virtual-machines-common-classic-configure-availability/AvailabilitySetPicker.png)
-
-6. 单击“保存”。
-
-若要使用 Azure PowerShell 命令，请打开系统管理员级的 Azure PowerShell 会话并运行以下命令。对于占位符（例如 &lt;VmCloudServiceName&gt;），请将引号内的所有内容（包括 < and > 字符）替换为相应的名称。
-
-```
-Get-AzureVM -ServiceName "<VmCloudServiceName>" -Name "<VmName>" | Set-AzureAvailabilitySet -AvailabilitySetName "<AvSetName>" | Update-AzureVM
-```
-
->[!NOTE]
-> 虚拟机可能必须重新启动，以完成将其添加到可用性集的操作。
+> [!NOTE]
+> The virtual machine might have to be restarted to finish adding it to the availability set.
+> 
+> 
 
 <!-- LINKS -->
-[选项 1：同时创建虚拟机和可用性集]: #createset
-[选项 2：将现有虚拟机添加到可用性集]: #addmachine
+[Option 1: Create a virtual machine and an availability set at the same time]: #createset
+[Option 2: Add an existing virtual machine to an availability set]: #addmachine
 
-[Load balancing for Azure infrastructure services]: ../articles/load-balancer/load-balancer-overview.md
+[Load balancing for Azure infrastructure services]: ../articles/virtual-machines/virtual-machines-linux-load-balance.md
 [Manage the availability of virtual machines]: ../articles/virtual-machines/virtual-machines-linux-manage-availability.md
 
 [Create a virtual machine running Windows]: ../articles/virtual-machines/virtual-machines-windows-hero-tutorial.md
 [Virtual Network overview]: ../articles/virtual-network/virtual-networks-overview.md
-[有关经典虚拟机的文章]: /documentation/articles/?tag=azure-service-management&service=virtual-machines/
-
-<!---HONumber=Mooncake_0627_2016-->

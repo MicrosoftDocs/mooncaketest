@@ -1,14 +1,12 @@
-若要创建高级缓存，请登录到 [Azure 门户预览](https://portal.azure.cn)，然后单击“新建”>“数据库”>“Redis 缓存”。
+To create a premium cache, sign-in to the [Azure portal preview](https://portal.azure.cn) and click **New** > **Databases** > **Redis Cache**.
 
-![创建缓存](./media/redis-cache-premium-create/redis-cache-new-cache-menu.png)  
+![Create cache](./media/redis-cache-premium-create/redis-cache-new-cache-menu.png)
 
 > [!NOTE]
-除了在 Azure 门户预览中创建缓存以外，也可以使用 Resource Manager 模板、PowerShell 或 Azure CLI 来创建。有关创建 Azure Redis 缓存的详细信息，请参阅[创建缓存](../articles/redis-cache/cache-dotnet-how-to-use-azure-redis-cache.md#create-a-cache)。
+> In addition to creating caches in the Azure portal preview, you can also create them using Resource Manager templates, PowerShell, or Azure CLI. For more information about creating an Azure Redis Cache, see [Create a cache](../articles/redis-cache/cache-dotnet-how-to-use-azure-redis-cache.md#create-a-cache).
 > 
 > 
 
-若要配置高级功能，请先在“选择你的定价层”边栏选项卡中选择一个高级定价层。
+To configure premium features, first select one of the premium pricing tiers in the **Choose your pricing tier** blade.
 
-![选择你的定价层](./media/redis-cache-premium-create/redis-cache-premium-pricing-tier.png)
-
-<!---HONumber=Mooncake_0227_2017-->
+![Choose your pricing tier](./media/redis-cache-premium-create/redis-cache-premium-pricing-tier.png)

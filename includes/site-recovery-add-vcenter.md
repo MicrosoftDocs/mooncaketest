@@ -1,8 +1,6 @@
-* 在“添加 vCenter”中，指定 vSphere 主机或 vCenter 服务器的友好名称，然后指定服务器的 IP 地址或 FQDN。除非已将 VMware 服务器配置为在不同的端口上侦听请求，否则请保留 443 作为端口号。选择要连接到 VMware vCenter 或 vSphere ESXi 服务器的帐户。单击**“确定”**。
+* In **Add vCenter**, specify a friendly name for the vSphere host or vCenter server, and then specify the IP address or FQDN of the server. Leave the port as 443 unless your VMware servers are configured to listen for requests on a different port. Select the account that is to connect to the VMware vCenter or vSphere ESXi server. Click **OK**.
 
-    ![VMware](./media/site-recovery-add-vcenter/vmware-server.png)  
+    ![VMware](./media/site-recovery-add-vcenter/vmware-server.png)
 
    > [!NOTE]
-   如果在添加 VMware vCenter 服务器或 VMware vSphere 主机时使用的帐户没有对 vCenter 或主机服务器的管理员权限，请确保为帐户启用了以下权限：数据中心、数据存储、文件夹、主机、网络、资源、虚拟机、vSphere 分布式交换机。此外，VMware vCenter 服务器需要启用存储视图权限。
-
-<!---HONumber=Mooncake_0306_2017-->
+   > If you're adding the VMware vCenter server or VMware vSphere host with an account that doesn't have administrator privileges on the vCenter or host server, make sure that the account has these privileges enabled: Datacenter, Datastore, Folder, Host, Network, Resource, Virtual machine, and vSphere Distributed Switch. In addition, the VMware vCenter server needs the Storage views privilege enabled.

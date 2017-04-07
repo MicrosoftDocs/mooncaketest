@@ -1,63 +1,56 @@
-## <a name="Route-table"></a> 路由表
+## <a name="Route-table"></a> Route tables
+Route table resources contains routes used to define how traffic flows within your Azure infrastructure. You can use user defined routes (UDR) to send all traffic from a given subnet to a virtual appliance, such as a firewall or intrusion detection system (IDS). You can associate a route table to subnets. 
 
-路由表资源包含用于定义流量如何在 Azure 基础结构中流动的路由。你可以使用用户定义的路由 (UDR) 将所有流量从给定子网发送到虚拟设备，例如防火墙或入侵检测系统 (IDS)。可以将路由表关联到子网。
+Route tables contain the following properties.
 
-路由表包含以下属性。
+| Property | Description | Sample values |
+| --- | --- | --- |
+| **routes** |Collection of user defined routes in the route table |see [user defined routes](#User-defined-routes) |
+| **subnets** |Collection of subnets the route table is applied to |see [subnets](#Subnets) |
 
-|属性|说明|示例值|
-|---|---|---|
-|**routes**|路由表中用户定义的路由集合|请参阅[用户定义的路由](#User-defined-routes)|
-|**子网**|路由表应用到的子网集合| |
+### <a name="User-defined-routes"></a> User defined routes
+You can create UDRs to specify where traffic should be sent to, based on its destination address. You can think of a route as the default gateway definition based on the destination address of a network packet.
 
-### <a name="User-defined-routes"></a> 用户定义的路由
+UDRs contain the following properties. 
 
-你可以根据流量的目标地址创建 UDR，以指定流量应发送到何处。可以将路由视为根据网络数据包目标地址定义的默认网关。
+| Property | Description | Sample values |
+| --- | --- | --- |
+| **addressPrefix** |Address prefix, or full IP address for the destination |192.168.1.0/24, 192.168.1.101 |
+| **nextHopType** |Type of device the traffic will be sent to |VirtualAppliance, VPN Gateway, Internet |
+| **nextHopIpAddress** |IP address for the next hop |192.168.1.4 |
 
-UDR 包含以下属性。
+Sample route table in JSON format:
 
-|属性|说明|示例值|
-|---|---|---|
-|**addressPrefix**|目标的地址前缀或完整 IP 地址|192\.168.1.0/24、192.168.1.101|
-|**nextHopType**|流量要发送到的设备的类型。|VirtualAppliance、VPN 网关、Internet|
-|**nextHopIpAddress**|下一跃点的 IP 地址|192\.168.1.4|
-
-采用 JSON 格式的示例路由表：
-
-```
-{
-    "name": "UDR-BackEnd",
-    "id": "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/TestRG/providers/Microsoft.Network/routeTables/UDR-BackEnd",
-    "etag": "W/"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"",
-    "type": "Microsoft.Network/routeTables",
-    "location": "chinanorth",
-    "properties": {
-        "provisioningState": "Succeeded",
-        "routes": [
-            {
-                "name": "RouteToFrontEnd",
-                "id": "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/TestRG/providers/Microsoft.Network/routeTables/UDR-BackEnd/routes/RouteToFrontEnd",
-                "etag": "W/"v"",
-                "properties": {
-                    "provisioningState": "Succeeded",
-                    "addressPrefix": "192.168.1.0/24",
-                    "nextHopType": "VirtualAppliance",
-                    "nextHopIpAddress": "192.168.0.4"
+    {
+        "name": "UDR-BackEnd",
+        "id": "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/TestRG/providers/Microsoft.Network/routeTables/UDR-BackEnd",
+        "etag": "W/\"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"",
+        "type": "Microsoft.Network/routeTables",
+        "location": "chinanorth",
+        "properties": {
+            "provisioningState": "Succeeded",
+            "routes": [
+                {
+                    "name": "RouteToFrontEnd",
+                    "id": "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/TestRG/providers/Microsoft.Network/routeTables/UDR-BackEnd/routes/RouteToFrontEnd",
+                    "etag": "W/\"v\"",
+                    "properties": {
+                        "provisioningState": "Succeeded",
+                        "addressPrefix": "192.168.1.0/24",
+                        "nextHopType": "VirtualAppliance",
+                        "nextHopIpAddress": "192.168.0.4"
+                    }
                 }
-            }
-        ],
-        "subnets": [
-            {
-                "id": "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/TestRG/providers/Microsoft.Network/virtualNetworks/TestVNet/subnets/BackEnd"
-            }
-        ]
+            ],
+            "subnets": [
+                {
+                    "id": "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/TestRG/providers/Microsoft.Network/virtualNetworks/TestVNet/subnets/BackEnd"
+                }
+            ]
+        }
     }
-}
-```
 
-### 其他资源
-
-- 获取有关 [UDR](../articles/virtual-network/virtual-networks-udr-overview.md) 的详细信息。
-- 阅读路由表的 [REST API 参考文档](https://msdn.microsoft.com/zh-cn/library/azure/mt502549.aspx)
-- 阅读用户定义的路由 (UDR) 的 [REST API 参考文档](https://msdn.microsoft.com/zh-cn/library/azure/mt502539.aspx)。
-
-<!---HONumber=82-->
+### Additional resources
+* Get more information about [UDRs](../articles/virtual-network/virtual-networks-udr-overview.md).
+* Read the [REST API reference documentation](https://msdn.microsoft.com/zh-cn/library/azure/mt502549.aspx) for route tables.
+* Read the [REST API reference documentation](https://msdn.microsoft.com/zh-cn/library/azure/mt502539.aspx) for user defined routes (UDRs).

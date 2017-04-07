@@ -1,17 +1,15 @@
-* [缩放 Azure App Service](../articles/app-service-web/web-sites-scale.md)
-    * 了解冗余性和可靠性
-    * “有状态”与“无状态”应用程序
-        * [配置无状态应用](https://azure.microsoft.com/blog/disabling-arrs-instance-affinity-in-windows-azure-web-sites/)
+* [Scale Azure App Service](../articles/app-service-web/web-sites-scale.md)
 
-* 在 App Service 中加载测试应用
+    * Understanding Redundancy and Reliability
+    * StateFULL vs StateLESS applications
+        * [Configuring your Stateless app](https://azure.microsoft.com/blog/disabling-arrs-instance-affinity-in-windows-azure-web-sites/)
+* Load Testing apps in App Service   
+* App Service scaling best practices
 
-* App Service 缩放最佳做法
-    * 端口消耗和连接池
-    * [利用 App Service 应用的 Azure 存储空间](../articles/storage/storage-dotnet-how-to-use-blobs.md)
-    * [利用 App Service 应用的 Azure CDN](../articles/cdn/cdn-overview.md)
-    * [利用 App Service 应用的 Azure Redis 缓存](../articles/redis-cache/cache-dotnet-how-to-use-azure-redis-cache.md)
+    * Port exhaustion and connection pooling
+    * [Leveraging Azure Storage from your App Service app](../articles/storage/storage-dotnet-how-to-use-blobs.md)
+    * [Leveraging Azure CDN from your App Service app](../articles/cdn/cdn-overview.md)
+    * [Leveraging Azure Redis Cache from your App Service app](../articles/redis-cache/cache-dotnet-how-to-use-azure-redis-cache.md)
+* Geo distribution
 
-* 地理分布
-    * [利用流量管理器实现全局缩放](../articles/traffic-manager/traffic-manager-overview.md)
-
-<!---HONumber=Mooncake_0815_2016-->
+    * [Leveraging Traffic Manager to achive global scale](../articles/traffic-manager/traffic-manager-overview.md)

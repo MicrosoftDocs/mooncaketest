@@ -1,10 +1,7 @@
-打开 SQL Server 页：
+Open your SQL server page:
 
-1. 转到 [Azure 门户预览](https://portal.azure.cn)。
-2. 单击“更多服务”>“SQL Server”：
+1. Go to the [Azure portal](https://portal.azure.cn).
+2. Click **More services** > **SQL servers**:
 
-   ![SQL Server](./media/sql-database-browse-to-server/browse-to-server.png)  
-
-3. 单击所需的 SQL Server。
-
-<!---HONumber=Mooncake_0116_2017-->
+   ![SQL servers](./media/sql-database-browse-to-server/browse-to-server.png)
+3. Click the desired SQL server.

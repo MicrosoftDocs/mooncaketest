@@ -1,209 +1,206 @@
-如果本文未解答你的 Azure 问题，请访问 [MSDN 和 CSDN Azure 上的 Azure 论坛](https://www.azure.cn/support/forums/)。你可以在这些论坛上发布你的问题。此外，你可以通过在 [Azure 支持](https://www.azure.cn/support/contact/)站点上选择“获取支持”来发出 Azure 支持请求。
+If your Azure issue is not addressed in this article, visit the [Azure forums on MSDN and CSDN Azure](https://www.azure.cn/support/forums/). You can post your issue on these forums. Also, you can file an Azure support request by selecting **Get support** on the [Azure support](https://www.azure.cn/support/contact/) site.
 
-## 常规故障排除步骤
-### 对经典部署模型中的常见分配失败进行故障排除
+## General troubleshooting steps
+### Troubleshoot common allocation failures in the classic deployment model
+These steps can help resolve many allocation failures in virtual machines:
 
-这些步骤可帮助解决虚拟机中的许多分配失败：
+* Resize the VM to a different VM size.<br>
+    Click **Browse all** > **Virtual machines (classic)** > your virtual machine > **Settings** > **Size**. For detailed steps, see [Resize the virtual machine](https://msdn.microsoft.com/zh-cn/library/dn168976.aspx).
+* Delete all VMs from the cloud service and re-create VMs.<br>
+    Click **Browse all** > **Virtual machines (classic)** > your virtual machine > **Delete**. Then, click **New** > **Compute** > [virtual machine image].
 
-- 将 VM 重设为不同的 VM 大小。<br> 
-    单击“浏览全部”>“虚拟机(经典)”> 你的虚拟机 >“设置”>“大小”。有关详细步骤，请参阅[调整虚拟机的大小](https://msdn.microsoft.com/zh-cn/library/dn168976.aspx)。
+### Troubleshoot common allocation failures in the Azure Resource Manager deployment model
+These steps can help resolve many allocation failures in virtual machines:
 
-- 从云服务删除所有 VM，然后重新创建 VM。<br> 
-    单击“浏览全部”>“虚拟机(经典)”> 你的虚拟机 >“删除”。然后，单击“新建”>“计算”> [虚拟机映像]。
+* Stop (deallocate) all VMs in the same availability set, then restart each one.<br>
+    To stop: Click **Resource groups** > your resource group > **Resources** > your availability set > **Virtual Machines** > your virtual machine > **Stop**.
 
-### 对 Azure Resource Manager 部署模型中的常见分配失败进行故障排除
+    After all VMs stop, select the first VM and click **Start**.
 
-这些步骤可帮助解决虚拟机中的许多分配失败：
+## Background information
+### How allocation works
+The servers in Azure datacenters are partitioned into clusters. Normally, an allocation request is attempted in multiple clusters, but it's possible that certain constraints from the allocation request force the Azure platform to attempt the request in only one cluster. In this article, we'll refer to this as "pinned to a cluster." Diagram 1 below illustrates the case of a normal allocation that is attempted in multiple clusters. Diagram 2 illustrates the case of an allocation that's pinned to Cluster 2 because that's where the existing Cloud Service CS_1 or availability set is hosted.
+![Allocation Diagram](./media/virtual-machines-common-allocation-failure/Allocation1.png)
 
-- 停止（解除分配）同一可用性集中的所有 VM，然后重新启动每个 VM。<br> 
-    若要停止：单击“资源组”> 你的资源组 >“资源”> 你的可用性集 >“虚拟机”> 你的虚拟机 >“停止”。
+### Why allocation failures happen
+When an allocation request is pinned to a cluster, there's a higher chance of failing to find free resources since the available resource pool is smaller. Furthermore, if your allocation request is pinned to a cluster but the type of resource you requested is not supported by that cluster, your request will fail even if the cluster has free resources. Diagram 3 below illustrates the case where a pinned allocation fails because the only candidate cluster does not have free resources. Diagram 4 illustrates the case where a pinned allocation fails because the only candidate cluster does not support the requested VM size, even though the cluster has free resources.
 
-    所有 VM 都停止后，选中第一个 VM 并单击“启动”。
+![Pinned Allocation Failure](./media/virtual-machines-common-allocation-failure/Allocation2.png)
 
-## 背景信息
-### 分配的工作原理
-Azure 数据中心的服务器分区成群集。通常会尝试向多个群集发出分配请求，但分配请求可能带有某些约束，从而强制 Azure 平台只尝试向一个群集发出请求。在本文中，这种情况称为“固定到群集”。 下图 1 演示了在多个群集中尝试进行一般分配的情况。图 2 演示了固定到群集 2（因为现有的云服务 CS\_1 或可用性集托管于此处）的分配情况。
-![分配图](./media/virtual-machines-common-allocation-failure/Allocation1.png)
+## Detailed troubleshoot steps specific allocation failure scenarios in the classic deployment model
+Here are common allocation scenarios that cause an allocation request to be pinned. We'll dive into each scenario later in this article.
 
-### 发生分配失败的原因
-当分配请求固定到某个群集时，由于可用的资源池较小，很可能找不到可用的资源。此外，如果分配请求固定到某个群集，但该群集不支持你所请求的资源类型，那么，即使该群集有可用的资源，你的请求仍会失败。下图 3 说明由于唯一候选群集没有可用的资源，导致已固定的分配失败的情况。图 4 说明由于唯一候选群集不支持所请求的 VM 大小（虽然群集有可用的资源），导致已固定的分配失败的情况。
+* Resize a VM or add VMs or role instances to an existing cloud service
+* Restart partially stopped (deallocated) VMs
+* Restart fully stopped (deallocated) VMs
+* Staging/production deployments (platform as a service only)
+* Affinity group (VM/service proximity)
+* Affinity-group-based virtual network
 
-![固定分配故障](./media/virtual-machines-common-allocation-failure/Allocation2.png)
+When you receive an allocation error, see if any of the scenarios described apply to your error. Use the allocation error returned by the Azure platform to identify the corresponding scenario. If your request is pinned, remove some of the pinning constraints to open your request to more clusters, thereby increasing the chance of allocation success.
 
-## 针对经典部署模型中的具体分配失败情况进行故障排除的步骤
-以下是造成分配请求被固定的常见分配案例。我们将在本文稍后深入探讨每一个案例。
+In general, as long as the error does not indicate "the requested VM size is not supported," you can always retry at a later time, as enough resources may have been freed in the cluster to accommodate your request. If the problem is that the requested VM size is not supported, try a different VM size. Otherwise, the only option is to remove the pinning constraint.
 
-- 重设 VM 大小或向现有云服务添加 VM 或角色实例
-- 重新启动部分停止（已解除分配）的 VM
-- 重新启动完全停止（已解除分配）的 VM
-- 过渡/生产环境部署（仅适用于平台即服务）
-- 地缘组（VM/服务邻近性）
-- 基于地缘组的虚拟网络
+Two common failure scenarios are related to affinity groups. In the past, an affinity group was used to provide close proximity to VMs/service instances, or it was used to enable the creation of a virtual network. With the introduction of regional virtual networks, affinity groups are no longer required to create a virtual network. With the reduction of network latency in Azure infrastructure, the recommendation to use affinity groups for VM/service proximity has changed.
 
-发生分配错误时，请查看以下是否有任何案例符合你所处的情况。使用 Azure 平台返回的分配错误来识别对应的案例。如果你的请求已固定，请尝试删除一些固定约束，向更多群集展现你的请求，以增加分配成功的机会。
-
-一般而言，只要错误不指示“不支持所请求的 VM 大小”，你永远都可以稍后再试，因为到时群集可能释放足够的资源来满足你的请求。如果问题在于不支持所请求的 VM 大小，请尝试使用不同的 VM 大小。否则，唯一的做法就是删除固定约束。
-
-有两个常见的故障案例与地缘组有关。在过去，地缘组用于支持 VM/服务实例的邻近性，或用于支持创建虚拟网络。在引进区域虚拟网络之后，创建虚拟网络已不再需要地缘组。由于 Azure 基础结构中的网络延迟时间缩短，原本建议使用地缘组来支持 VM/服务邻近性的情况已有所改变。
-
-下图 5 显示（固定的）分配案例的分类。
-![固定分配分类](./media/virtual-machines-common-allocation-failure/Allocation3.png)
+Diagram 5 below presents the taxonomy of the (pinned) allocation scenarios.
+![Pinned Allocation Taxonomy](./media/virtual-machines-common-allocation-failure/Allocation3.png)
 
 > [!NOTE]
-> 每个分配案例中列出的错误均已缩略。有关详细的错误字符串，请参阅 [错误字符串查找](#Error string lookup)。
+> The error listed in each allocation scenario is a short form. Refer to the [Error string lookup](#Error string lookup) for detailed error strings.
+> 
+> 
 
-## 分配案例：重设 VM 大小或向现有云服务添加 VM 或角色实例
-**错误**
+## Allocation scenario: Resize a VM or add VMs or role instances to an existing cloud service
+**Error**
 
-Upgrade\_VMSizeNotSupported 或 GeneralError
+Upgrade_VMSizeNotSupported or GeneralError
 
-**群集固定的原因**
+**Cause of cluster pinning**
 
-必须在托管现有云服务的原始群集上，尝试请求重设 VM 大小或向现有云服务添加 VM 或角色实例。创建新的云服务可让 Azure 平台寻找另一个有可用资源的群集，或另一个支持你所请求的 VM 大小的群集。
+A request to resize a VM or add a VM or a role instance to an existing cloud service has to be attempted at the original cluster that hosts the existing cloud service. Creating a new cloud service allows the Azure platform to find another cluster that has free resources or supports the VM size that you requested.
 
-**解决方法**
+**Workaround**
 
-如果错误是 Upgrade\_VMSizeNotSupported*，请尝试使用不同的 VM 大小。如果使用不同的 VM 大小不可行，但可接受使用不同的虚拟 IP 地址 (VIP)，则创建新的云服务来托管新的 VM，并将新的云服务添加到运行现有 VM 的区域虚拟网络中。如果现有的云服务未使用区域虚拟网络，你仍然可以为新的云服务创建新的虚拟网络，然后[将现有虚拟网络连接到新的虚拟网络](https://azure.microsoft.com/blog/vnet-to-vnet-connecting-virtual-networks-in-azure-across-different-regions/)。请参阅有关[区域虚拟网络](https://azure.microsoft.com/blog/2014/05/14/regional-virtual-networks/)的详细信息。
+If the error is Upgrade_VMSizeNotSupported*, try a different VM size. If using a different VM size is not an option, but if it's acceptable to use a different virtual IP address (VIP), create a new cloud service to host the new VM and add the new cloud service to the regional virtual network where the existing VMs are running. If your existing cloud service does not use a regional virtual network, you can still create a new virtual network for the new cloud service, and then connect your [existing virtual network to the new virtual network](https://azure.microsoft.com/blog/vnet-to-vnet-connecting-virtual-networks-in-azure-across-different-regions/). See more about [regional virtual networks](https://azure.microsoft.com/blog/2014/05/14/regional-virtual-networks/).
 
-如果错误是 GeneralError*，很可能是因为群集虽然支持资源的类型（例如特定的 VM 大小），但群集目前没有可用的资源。类似上述，通过创建新的云服务（请注意，新的云服务必须使用不同的 VIP）尝试添加所需的计算资源，并使用区域虚拟网络连接你的云服务。
+If the error is GeneralError*, it's likely that the type of resource (such as a particular VM size) is supported by the cluster, but the cluster does not have free resources at the moment. Similar to the above scenario, add the desired compute resource through creating a new cloud service (note that the new cloud service has to use a different VIP) and use a regional virtual network to connect your cloud services.
 
-## 分配案例：重新启动部分停止（已解除分配）的 VM
-
-**错误**
-
-GeneralError*
-
-**群集固定的原因**
-
-部分解除分配表示你已停止（解除分配）云服务中的一或多个 VM，但不是全部。停止（解除分配）VM 时会释放相关联的资源。因此，重新启动已停止（解除分配）的 VM 是一项新的分配请求。重新启动已部分解除分配的云服务中的 VM 相当于向现有云服务添加 VM。必须在托管现有云服务的原始群集上尝试发出分配请求。创建不同的云服务可让 Azure 平台寻找另一个有可用资源的群集，或另一个支持你所请求的 VM 大小的群集。
-
-**解决方法**
-
-如果可接受使用不同的 VIP，请删除已停止（解除分配）的 VM（但保留相关联的磁盘），并通过不同的云服务加回 VM。使用区域虚拟网络连接你的云服务：
-- 如果现有的云服务使用区域虚拟网络，只要将新的云服务添加到相同的虚拟网络即可。
-- 如果现有的云服务未使用区域虚拟网络，请为新的云服务创建新的虚拟网络，然后[将现有虚拟网络连接到新的虚拟网络](https://azure.microsoft.com/blog/vnet-to-vnet-connecting-virtual-networks-in-azure-across-different-regions/)。请参阅有关[区域虚拟网络](https://azure.microsoft.com/blog/2014/05/14/regional-virtual-networks/)的详细信息。
-
-## 分配案例：重新启动完全停止（已解除分配）的 VM
-**错误**
+## Allocation scenario: Restart partially stopped (deallocated) VMs
+**Error**
 
 GeneralError*
 
-**群集固定的原因**
+**Cause of cluster pinning**
 
-完全解除分配表示已从云服务停止（解除分配）所有 VM。必须在托管云服务的原始群集上尝试发出分配请求来重新启动这些 VM。创建新的云服务可让 Azure 平台寻找另一个有可用资源的群集，或另一个支持你所请求的 VM 大小的群集。
+Partial deallocation means that you stopped (deallocated) one or more, but not all, VMs in a cloud service. When you stop (deallocate) a VM, the associated resources are released. Restarting that stopped (deallocated) VM is therefore a new allocation request. Restarting VMs in a partially deallocated cloud service is equivalent to adding VMs to an existing cloud service. The allocation request has to be attempted at the original cluster that hosts the existing cloud service. Creating a different cloud service allows the Azure platform to find another cluster that has free resource or supports the VM size that you requested.
 
-**解决方法**
+**Workaround**
 
-如果可接受使用不同的 VIP，请删除已停止（解除分配）的原始 VM（但保留相关联的磁盘），并删除对应的云服务（停止（解除分配）VM 时就已释放相关联的计算资源）。创建新的云服务来加回 VM。
+If it's acceptable to use a different VIP, delete the stopped (deallocated) VMs (but keep the associated disks) and add the VMs back through a different cloud service. Use a regional virtual network to connect your cloud services:
 
-## 分配案例：过渡/生产环境部署（仅适用于平台即服务）
-**错误**
+* If your existing cloud service uses a regional virtual network, simply add the new cloud service to the same virtual network.
+* If your existing cloud service does not use a regional virtual network, create a new virtual network for the new cloud service, and then [connect your existing virtual network to the new virtual network](https://azure.microsoft.com/blog/vnet-to-vnet-connecting-virtual-networks-in-azure-across-different-regions/). See more about [regional virtual networks](https://azure.microsoft.com/blog/2014/05/14/regional-virtual-networks/).
 
-New\_General* 或 New\_VMSizeNotSupported*
-
-**群集固定的原因**
-
-云服务的过渡环境部署和生产环境部署托管于同一个群集中。添加第二个部署时，将会在托管第一个部署的相同群集中尝试发出对应的分配请求。
-
-**解决方法**
-
-删除第一个部署和原始的云服务，然后重新部署云服务。此操作可能将第一个部署安排到有足够可用资源可满足这两个部署的群集，或安排到支持所请求 VM 大小的群集。
-
-## 分配案例：地缘组（VM/服务邻近性）
-**错误**
-
-New\_General* 或 New\_VMSizeNotSupported*
-
-**群集固定的原因**
-
-任何分配给地缘组的计算资源都绑定到一个群集。该地缘组中新的计算资源请求将于托管现有资源的相同群集中尝试发出。无论是通过新的云服务还是现有的云服务创建新资源，都是如此。
-
-**解决方法**
-
-如果不一定需要地缘组，请不要使用地缘组或尝试将计算资源分组为多个地缘组。
-
-## 分配案例：基于地缘组的虚拟网络
-**错误**
-
-New\_General* 或 New\_VMSizeNotSupported*
-
-**群集固定的原因**
-
-在引入区域虚拟网络之前，必须先将虚拟网络与地缘组进行关联。这样，便会根据上一部分“分配案例：地缘组：（VM/服务邻近性）”中所述的相同约束，绑定已放入地缘组中的计算资源。计算资源已绑定到一个群集。
-
-**解决方法**
-
-如果不需要地缘组，请为要添加的新资源创建新的区域虚拟网络，然后[将现有虚拟网络连接到新的虚拟网络](https://azure.microsoft.com/blog/vnet-to-vnet-connecting-virtual-networks-in-azure-across-different-regions/)。请参阅有关[区域虚拟网络](https://azure.microsoft.com/blog/2014/05/14/regional-virtual-networks/)的详细信息。
-
-此外，你也可以[将基于地缘组的虚拟网络迁移到区域虚拟网络](https://azure.microsoft.com/blog/2014/11/26/migrating-existing-services-to-regional-scope/)，然后重新添加所需的资源。
-
-## 针对 Azure Resource Manager 部署模型中的具体分配失败情况进行故障排除的步骤
-以下是造成分配请求被固定的常见分配案例。我们将在本文稍后深入探讨每一个案例。
-
-- 重设 VM 大小或向现有云服务添加 VM 或角色实例
-- 重新启动部分停止（已解除分配）的 VM
-- 重新启动完全停止（已解除分配）的 VM
-
-发生分配错误时，请查看以下是否有任何案例符合你所处的情况。使用 Azure 平台返回的分配错误来识别对应的案例。如果你的请求已固定到现有的群集，请删除一些固定约束，向更多群集展现你的请求，以增加分配成功的机会。
-
-一般而言，只要错误不指示“不支持所请求的 VM 大小”，你永远都可以稍后再试，因为到时群集可能释放足够的资源来满足你的请求。如果问题在于不支持所请求的 VM 大小，请参阅下面的解决方法。
-
-## 分配案例：重设 VM 大小或向现有可用性集添加 VM
-**错误**
-
-Upgrade\_VMSizeNotSupported* 或 GeneralError*
-
-**群集固定的原因**
-
-必须在托管现有可用性集的原始群集上，尝试请求重设 VM 大小或向现有可用性集添加 VM。创建新的可用性集可让 Azure 平台寻找另一个有可用资源的群集，或另一个支持你所请求的 VM 大小的群集。
-
-**解决方法**
-
-如果错误是 Upgrade\_VMSizeNotSupported*，请尝试使用不同的 VM 大小。如果使用不同的 VM 大小不可行，请停止可用性集中的所有 VM。然后，你可以更改虚拟机的大小，将 VM 分配到支持所需 VM 大小的群集。
-
-如果错误是 GeneralError*，很可能是因为群集虽然支持资源的类型（例如特定的 VM 大小），但群集目前没有可用的资源。如果 VM 可以属于不同的可用性集，请在不同的可用性集（位于相同区域）中创建新的 VM。然后，可以将这个新的 VM 添加到相同的虚拟网络中。
-
-## 分配案例：重新启动部分停止（已解除分配）的 VM
-**错误**
+## Allocation scenario: Restart fully stopped (deallocated) VMs
+**Error**
 
 GeneralError*
 
-**群集固定的原因**
+**Cause of cluster pinning**
 
-部分解除分配表示你已停止（解除分配）可用性集中的一或多个（但不是全部）VM。停止（解除分配）VM 时会释放相关联的资源。因此，重新启动已停止（解除分配）的 VM 是一项新的分配请求。重新启动已部分解除分配的可用性集相当于向现有可用性集添加 VM。必须在托管现有可用性集的原始群集上尝试发出分配请求。
+Full deallocation means that you stopped (deallocated) all VMs from a cloud service. The allocation requests to restart these VMs have to be attempted at the original cluster that hosts the cloud service. Creating a new cloud service allows the Azure platform to find another cluster that has free resources or supports the VM size that you requested.
 
-**解决方法**
+**Workaround**
 
-停止可用性集中的所有 VM，再重新启动第一个 VM。这可确保运行新的分配尝试，而且可以选择有可用容量的新群集。
+If it's acceptable to use a different VIP, delete the original stopped (deallocated) VMs (but keep the associated disks) and delete the corresponding cloud service (the associated compute resources were already released when you stopped (deallocated) the VMs). Create a new cloud service to add the VMs back.
 
-## 分配案例：重新启动完全停止（已解除分配）的 VM
-**错误**
+## Allocation scenario: Staging/production deployments (platform as a service only)
+**Error**
+
+New_General* or New_VMSizeNotSupported*
+
+**Cause of cluster pinning**
+
+The staging deployment and the production deployment of a cloud service are hosted in the same cluster. When you add the second deployment, the corresponding allocation request will be attempted in the same cluster that hosts the first deployment.
+
+**Workaround**
+
+Delete the first deployment and the original cloud service and redeploy the cloud service. This action may land the first deployment in a cluster that has enough free resources to fit both deployments or in a cluster that supports the VM sizes that you requested.
+
+## Allocation scenario: Affinity group (VM/service proximity)
+**Error**
+
+New_General* or New_VMSizeNotSupported*
+
+**Cause of cluster pinning**
+
+Any compute resource assigned to an affinity group is tied to one cluster. New compute resource requests in that affinity group are attempted in the same cluster where the existing resources are hosted. This is true whether the new resources are created through a new cloud service or through an existing cloud service.
+
+**Workaround**
+
+If an affinity group is not necessary, do not use an affinity group, or group your compute resources into multiple affinity groups.
+
+## Allocation scenario: Affinity-group-based virtual network
+**Error**
+
+New_General* or New_VMSizeNotSupported*
+
+**Cause of cluster pinning**
+
+Before regional virtual networks were introduced, you were required to associate a virtual network with an affinity group. As a result, compute resources placed into an affinity group are bound by the same constraints as described in the "Allocation scenario: Affinity group (VM/service proximity)" section above. The compute resources are tied to one cluster.
+
+**Workaround**
+
+If you do not need an affinity group, create a new regional virtual network for the new resources you're adding, and then [connect your existing virtual network to the new virtual network](https://azure.microsoft.com/blog/vnet-to-vnet-connecting-virtual-networks-in-azure-across-different-regions/). See more about [regional virtual networks](https://azure.microsoft.com/blog/2014/05/14/regional-virtual-networks/).
+
+Alternatively, you can [migrate your affinity-group-based virtual network to a regional virtual network](https://azure.microsoft.com/blog/2014/11/26/migrating-existing-services-to-regional-scope/), and then add the desired resources again.
+
+## Detailed troubleshooting steps specific allocation failure scenarios in the Azure Resource Manager deployment model
+Here are common allocation scenarios that cause an allocation request to be pinned. We'll dive into each scenario later in this article.
+
+* Resize a VM or add VMs or role instances to an existing cloud service
+* Restart partially stopped (deallocated) VMs
+* Restart fully stopped (deallocated) VMs
+
+When you receive an allocation error, see if any of the scenarios described apply to your error. Use the allocation error returned by the Azure platform to identify the corresponding scenario. If your request is pinned to an existing cluster, remove some of the pinning constraints to open your request to more clusters, thereby increasing the chance of allocation success.
+
+In general, as long as the error does not indicate "the requested VM size is not supported," you can always retry at a later time, as enough resources may have been freed in the cluster to accommodate your request. If the problem is that the requested VM size is not supported, see below for workarounds.
+
+## Allocation scenario: Resize a VM or add VMs to an existing availability set
+**Error**
+
+Upgrade_VMSizeNotSupported* or GeneralError*
+
+**Cause of cluster pinning**
+
+A request to resize a VM or add a VM to an existing availability set has to be attempted at the original cluster that hosts the existing availability set. Creating a new availability set allows the Azure platform to find another cluster that has free resources or supports the VM size that you requested.
+
+**Workaround**
+
+If the error is Upgrade_VMSizeNotSupported*, try a different VM size. If using a different VM size is not an option, stop all VMs in the availability set. You can then change the size of the virtual machine that will allocate the VM to a cluster that supports the desired VM size.
+
+If the error is GeneralError*, it's likely that the type of resource (such as a particular VM size) is supported by the cluster, but the cluster does not have free resources at the moment. If the VM can be part of a different availability set, create a new VM in a different availability set (in the same region). This new VM can then be added to the same virtual network.  
+
+## Allocation scenario: Restart partially stopped (deallocated) VMs
+**Error**
 
 GeneralError*
 
-**群集固定的原因**
+**Cause of cluster pinning**
 
-完全解除分配表示已停止（解除分配）可用性集中的所有 VM。发出分配请求来重新启动这些 VM 时，将会以支持所需大小的所有群集为目标。
+Partial deallocation means that you stopped (deallocated) one or more, but not all, VMs in an availability set. When you stop (deallocate) a VM, the associated resources are released. Restarting that stopped (deallocated) VM is therefore a new allocation request. Restarting VMs in a partially deallocated availability set is equivalent to adding VMs to an existing availability set. The allocation request has to be attempted at the original cluster that hosts the existing availability set.
 
-**解决方法**
+**Workaround**
 
-选择要分配的新 VM 大小。如果这不起作用，请稍后重试。
+Stop all VMs in the availability set before restarting the first one. This will ensure that a new allocation attempt is run and that a new cluster can be selected that has available capacity.
 
-## <a name="Error string lookup"></a> 错误字符串查找
-**New\_VMSizeNotSupported***
+## Allocation scenario: Restart fully stopped (deallocated)
+**Error**
 
-“由于部署请求约束，无法预配此部署所需的 VM 大小（或 VM 大小的组合）。可能的话，请尝试放宽约束（例如虚拟网络绑定）、部署到不具有其他部署的托管服务及不同的地缘组（或不具有地缘组的托管服务），或尝试部署到不同的区域。”
+GeneralError*
 
-**New\_General***
+**Cause of cluster pinning**
 
-“分配失败；无法满足请求中的约束。请求的新服务部署绑定至地缘组，或以虚拟网络为目标，或此托管服务下已经有部署。上述任一情况都会将新的部署局限于特定的 Azure 资源。请稍后重试，或尝试减少 VM 大小或角色实例数目。或者，可能的话，删除先前提到的约束，或尝试部署到不同的区域。”
+Full deallocation means that you stopped (deallocated) all VMs in an availability set. The allocation request to restart these VMs will target all clusters that support the desired size.
 
-**Upgrade\_VMSizeNotSupported***
+**Workaround**
 
-“无法升级部署。在支持现有部署的资源中，可能没有所请求的 VM 大小 XXX。请稍后再试，尝试使用不同的 VM 大小或较少的角色实例，或在空的托管服务下以创建新的地缘组或没有地缘组绑定来创建部署。”
+Select a new VM size to allocate. If this does not work, please try again later.
+
+## <a name="Error string lookup"></a> Error string lookup
+**New_VMSizeNotSupported***
+
+"The VM size (or combination of VM sizes) required by this deployment cannot be provisioned due to deployment request constraints. If possible, try relaxing constraints such as virtual network bindings, deploying to a hosted service with no other deployment in it and to a different affinity group or with no affinity group, or try deploying to a different region."
+
+**New_General***
+
+"Allocation failed; unable to satisfy constraints in request. The requested new service deployment is bound to an affinity group, or it targets a virtual network, or there is an existing deployment under this hosted service. Any of these conditions constrains the new deployment to specific Azure resources. Please retry later or try reducing the VM size or number of role instances. Alternatively, if possible, remove the aforementioned constraints or try deploying to a different region."
+
+**Upgrade_VMSizeNotSupported***
+
+"Unable to upgrade the deployment. The requested VM size XXX may not be available in the resources supporting the existing deployment. Please try again later, try with a different VM size or smaller number of role instances, or create a deployment under an empty hosted service with a new affinity group or no affinity group binding."
 
 **GeneralError***
 
-“服务器遇到内部错误。请重试请求。” 或者“无法为服务生成分配。”
-
-<!---HONumber=Mooncake_0523_2016-->
+"The server encountered an internal error. Please retry the request." Or "Failed to produce an allocation for the service."

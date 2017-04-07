@@ -1,35 +1,33 @@
 ---
-title: Linux VM 大小 | Azure
-description: 列出 Azure 中 Linux 虚拟机的不同可用大小。
+title: Linux VM sizes in Azure | Azure
+description: Lists the different sizes available for Linux virtual machines in Azure.
 services: virtual-machines-linux
-documentationCenter: ''
-authors: cynthn
+documentationcenter: ''
+author: cynthn
 manager: timlt
 editor: ''
 tags: azure-resource-manager,azure-service-management
 
+ms.assetid: da681171-f045-4c80-a5a9-d8bd47964673
 ms.service: virtual-machines-linux
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 11/15/2016
-wacn.date: 12/30/2016
+ms.date: 03/10/2017
+wacn.date: ''
 ms.author: cynthn
+
 ---
+# Sizes for Linux virtual machines in Azure
+This article describes the available sizes and options for the Azure virtual machines you can use to run your Linux apps and workloads. It also provides deployment considerations to be aware of when you're planning to use these resources. This article is also available for [Windows virtual machines](virtual-machines-windows-sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 
-# Azure 中虚拟机的大小
+> [!IMPORTANT]
+><p> * For information about pricing of the various sizes, see [Virtual Machines Pricing](https://www.azure.cn/pricing/details/virtual-machines/). 
+><p> * To see general limits on Azure VMs, see [Azure subscription and service limits, quotas, and constraints](../azure-subscription-service-limits.md).
+> 
+> 
 
-本文介绍可用于运行 Linux 应用和工作负荷的 Azure 虚拟机的可用大小与选项。此外，还提供在计划使用这些资源时要考虑的部署注意事项。本文也适用于 [Windows 虚拟机](./virtual-machines-windows-sizes.md)。
-
->[!IMPORTANT] 
-><p>
-><p>- 有关不同大小的定价信息，请参阅[虚拟机定价](https://www.azure.cn/pricing/details/virtual-machines/)。
-><p>
-><p>- 若要查看 Azure VM 的一般限制，请参阅 [Azure 订阅和服务的限制、配额与约束](../azure-subscription-service-limits.md)。
-
-<br>  
+<br>   
 
 [!INCLUDE [virtual-machines-common-sizes](../../includes/virtual-machines-common-sizes.md)]
-
-<!---HONumber=Mooncake_1114_2016-->

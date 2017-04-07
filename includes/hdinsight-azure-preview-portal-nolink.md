@@ -1,9 +1,7 @@
-<!-- not suitable for Mooncake -->
-
-##Azure 管理门户和 Azure 预览门户
-
+## Azure portal preview and Azure Portal Preview
 > [!IMPORTANT]
-> 本文档中的步骤使用 Azure 预览门户。Azure 建议在创建新的服务时使用 Azure 预览门户。有关预览门户优势的说明，请参阅 [DevOps 变得更出色](https://portal.azure.cn)。
+> The steps in this document use the Azure Portal Preview. Azure recommends using the Azure Portal Preview when creating new services. For an explanation of the advantages of the Portal Preview, see [DevOps just got a whole lot more awesome](https://azure.microsoft.comhttp://portal.azure.cn). 
 > 
-> 在 Azure 预览门户中创建的服务和资源在 Azure 管理门户中不可见，因为它们使用新资源模型。
-<!---HONumber=Mooncake_0405_2016-->
+> Services and resources created in the Azure Portal Preview are not visible in the Azure portal preview, as they use a new resource model.
+> 
+>

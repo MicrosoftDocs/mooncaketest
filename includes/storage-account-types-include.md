@@ -1,23 +1,28 @@
-有两种类型的存储帐户：
+There are two types of storage accounts:
 
-### 通用存储帐户
+### General-purpose Storage Accounts
 
-通用存储帐户有权使用单个帐户访问诸如表、队列、文件、Blob 和 Azure 虚拟机磁盘等 Azure 存储空间服务。此类型存储帐户具有两个性能层：
+A general-purpose storage account gives you access to Azure Storage services such as Tables, Queues, Files, Blobs and Azure virtual machine disks under a single account. This type of storage account has two performance tiers:
 
-- 标准存储性能层，允许存储表、队列、文件、Blob 和 Azure 虚拟机磁盘。
-- 高级存储性能层，当前仅支持 Azure 虚拟机磁盘。有关高级存储的详细信息，请参阅[高级存储：适用于 Azure 虚拟机工作负荷的高性能存储](../articles/storage/storage-premium-storage.md)。
+- A standard storage performance tier which allows you to store Tables, Queues, Files, Blobs and Azure virtual machine disks.
+- A premium storage performance tier which currently only supports Azure virtual machine disks. See [Premium Storage: High-Performance Storage for Azure Virtual Machine Workloads](../articles/storage/storage-premium-storage.md) for an in-depth overview of Premium storage.
 
-### Blob 存储帐户
+### Blob Storage Accounts
 
-Blob 存储帐户是将非结构化数据作为 Blob（对象）存储在 Azure 存储空间的专用存储帐户。Blob 存储帐户类似于现有的通用存储帐户，并且具有你现在使用的所有卓越的耐用性、可用性、可伸缩性和性能功能，包括用于块 blob 和追加 blob 的 100% API 一致性。对于仅需要块 blob 或追加 blob 存储的应用程序，我们建议使用 Blob 存储帐户。
+A Blob storage account is a specialized storage account for storing your unstructured data as blobs (objects) in Azure Storage. Blob storage accounts are similar to your existing general-purpose storage accounts and share all the great durability, availability, scalability, and performance features that you use today including 100% API consistency for block blobs and append blobs. For applications requiring only block or append blob storage, we recommend using Blob storage accounts.
 
 > [!NOTE]
-> Blob 存储帐户仅支持块 blob 和追加 blob，不支持页 blob。
+> Blob storage accounts support only block and append blobs, and not page blobs.
 
-Blob 存储帐户公开**访问层**属性，该属性可在帐户创建过程中指定，并稍后根据需要进行修改。
+Blob storage accounts expose the **Access Tier** attribute which can be specified during account creation and modified later as needed. There are two types of access tiers that can be specified based on your data access pattern:
 
-你必须具有 Azure 订阅（这是允许你访问各种 Azure 服务的计划），然后才能创建存储帐户。你可以使用 [1rmb 帐户](https://www.azure.cn/pricing/1rmb-trial/)开始使用 Azure。一旦决定购买某个订阅计划，你可以从各种[购买选项](https://www.azure.cn/pricing/overview/)中进行选择。有关批量定价的信息，请参阅 [Azure Storage Pricing（Azure 存储空间定价）](https://www.azure.cn/pricing/details/storage/)。
+- A **Hot** access tier which indicates that the objects in the storage account will be more frequently accessed. This allows you to store data at a lower access cost.
+- A **Cool** access tier which indicates that the objects in the storage account will be less frequently accessed. This allows you to store data at a lower data storage cost.
 
-若要了解如何创建存储帐户，请参阅[创建存储帐户](../articles/storage/storage-create-storage-account.md#create-a-storage-account)以获取详细信息。通过单个订阅，你最多可以创建 100 个唯一的命名存储帐户。有关存储帐户限制的详细信息，请参阅 [Azure Storage Scalability and Performance Targets（Azure 存储空间可伸缩性和性能目标）](../articles/storage/storage-scalability-targets.md)。
+If there is a change in the usage pattern of your data, you can also switch between these access tiers at any time. Changing the access tier may result in additional charges. Please see [Pricing and billing for Blob storage accounts](../articles/storage/storage-blob-storage-tiers.md#pricing-and-billing) for more details.
 
-<!---HONumber=Mooncake_0530_2016-->
+For more details on Blob storage accounts, see [Azure Blob Storage: Cool and Hot tiers](../articles/storage/storage-blob-storage-tiers.md).
+
+Before you can create a storage account, you must have an Azure subscription, which is a plan that gives you access to a variety of Azure services. You can get started with Azure with a [1rmb account](https://www.azure.cn/pricing/1rmb-trial/). Once you decide to purchase a subscription plan, you can choose from a variety of [purchase options](https://www.azure.cn/pricing/purchase-options/). See [Azure Storage Pricing ](https://www.azure.cn/pricing/details/storage/) for information on volume pricing.
+
+To learn how to create a storage account, see [Create a storage account](../articles/storage/storage-create-storage-account.md#create-a-storage-account) for more details. You can create up to 100 uniquely named storage accounts with a single subscription. See [Azure Storage Scalability and Performance Targets](../articles/storage/storage-scalability-targets.md) for details about storage account limits.

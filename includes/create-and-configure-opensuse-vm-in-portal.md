@@ -1,73 +1,55 @@
----
-writer: kathydav
-editor: tysonn
-manager: timlt
----
+1. Sign in to the [Azure Classic Management Portal](http://manage.windowsazure.cn).  
+2. On the command bar at the bottom of the window, click **New**.
+3. Under **Compute**, click **Virtual Machine**, and then click **From Gallery**.
 
-1. 登录到 [Azure 经典管理门户](http://manage.windowsazure.cn)。
+    ![Create a New Virtual Machine][Image1]
+4. Under the **SUSE** group, select an OpenSUSE virtual machine image, and then click the arrow to continue.
+5. On the first **Virtual machine configuration** page:
 
-2. 在窗口底部的命令栏上，单击“新建”。
+    * Type a **Virtual Machine Name**, such as "testlinuxvm". The name must contain between 3 and 15 characters, can contain only letters, numbers, and hyphens, and must start with a letter and end with either a letter or number.
+    * Verify the **Tier** and pick a **Size**. The tier determines the sizes you can choose from. The size affects the cost of using it, as well as configuration options such as how many data disks you can attach. For details, see [Sizes for virtual machines](../articles/virtual-machines/virtual-machines-linux-sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+    * Type a **New User Name**, or accept the default, **azureuser**. This name is added to the Sudoers list file.
+    * Decide which type of **Authentication** to use. For general password guidelines, see [Strong passwords](http://msdn.microsoft.com/zh-cn/library/ms161962.aspx).
+6. On the next **Virtual machine configuration** page:
 
-3. 在“计算”下，单击“虚拟机”，然后单击“从库中”。
+    * Use the default **Create a new cloud service**.
+    * In the **DNS Name** box, type a unique DNS name to use as part of the address, such as "testlinuxvm".
+    * In the **Region/Affinity Group/Virtual Network** box, select a region where this virtual image will be hosted.
+    * Under **Endpoints**, keep the SSH endpoint. You can add others now, or add, change, or delete them after the virtual machine is created.
 
-    ![新建虚拟机][Image1]
+        > [!NOTE]
+        > If you want a virtual machine to use a virtual network, you **must** specify the virtual network when you create the virtual machine. You can't add a virtual machine to a virtual network after you create the virtual machine. For more information, see [Virtual Network Overview](../articles/virtual-network/virtual-networks-overview.md).
+        > 
+        > 
+7. On the last **Virtual machine configuration** page, keep the default settings and then click the check mark to finish.
 
-4. 在“SUSE”组下，选择一个 OpenSUSE 虚拟机映像，然后单击箭头以继续。
+The portal lists the new virtual machine under **Virtual Machines**. While the status is reported as **(Provisioning)**, the virtual machine is being set up. When the status is reported as **Running**, you can move on to the next step.
 
-5. 在第一个“虚拟机配置”页上：
+## Connect to the Virtual Machine
+You'll use SSH or PuTTY to connect to the virtual machine, depending on the operating system on the computer you'll connect from:
 
-    - 键入“虚拟机名称”，例如“testlinuxvm”。该名称必须包含 3 至 15 个字符，只能包含字母、数字和连字符，必须以字母开头，并且必须以字母或数字结尾。
-
-    - 验证“层”并选取“大小”。层决定你可以选择的大小。大小会影响其使用成本，还会影响某些配置选项，例如，可以附加的数据磁盘数。有关详细信息，请参阅[虚拟机大小](../articles/virtual-machines/virtual-machines-windows-sizes.md)。
-    - 键入“新用户名”，或接受默认值 **azureuser**。该名称会添加到 Sudoers 列表文件中。
-    - 决定要使用的“身份验证”类型。有关一般密码指南，请参阅[强密码](http://msdn.microsoft.com/zh-cn/library/ms161962.aspx)。
-
-6. 在下一个“虚拟机配置”页上：
-
-    - 使用默认的“创建新云服务”。
-    - 在“DNS 名称”框中，键入唯一的 DNS 名称作为地址的一部分（例如“testlinuxvm”）。
-    - 在“区域/地缘组/虚拟网络”框中，选择将托管此虚拟映像的区域。
-    - 在“终结点”下，保留 SSH 终结点。你可以立即添加其他终结点，也可以在创建虚拟机之后添加、更改或删除终结点。
-
-    >[!NOTE]
-    > 如果你希望虚拟机使用虚拟网络，则**必须**在创建虚拟机时指定虚拟网络。创建虚拟机后，不能将它添加到虚拟网络中。有关详细信息，请参阅[虚拟网络概述](../articles/virtual-network/virtual-networks-overview.md)。
-
-7. 在最后一个“虚拟机配置”页上，保留默认设置，然后单击复选标记以完成操作。
-
-经典管理门户会在“虚拟机”下列出新虚拟机。如果状态报告为“(正在预配)”，则表示正在设置虚拟机。如果状态报告为“正在运行”，则可以继续执行下一个步骤。
-
-##连接到虚拟机
-
-视将要连接的计算机上的操作系统而定，你将使用 SSH 或 PuTTY 连接到虚拟机：
-
-- 从运行 Linux 的计算机使用 SSH。在命令提示符处，键入：
+* From a computer running Linux, use SSH. At the command prompt, type:
 
     `$ ssh newuser@testlinuxvm.chinacloudapp.cn -o ServerAliveInterval=180`
 
-    键入用户的密码。
+    Type the user's password.
+* From a computer running Windows, use PuTTY. If you don't have it installed, download it from the [PuTTY Download Page][PuTTYDownload].
 
-- 从运行 Windows 的计算机使用 PuTTY。如果尚未安装，请从 [PuTTY 下载页面][PuTTYDownload]下载。
+    Save **putty.exe** to a directory on your computer. Open a command prompt, navigate to that folder, and run **putty.exe**.
 
-    将 **putty.exe** 保存到你计算机上的某个目录中。打开命令提示符，导航到该文件夹，然后运行 **putty.exe**。
+    Type the host name, such as "testlinuxvm.chinacloudapp.cn", and type "22" for the **Port**.
 
-    键入主机名（例如“testlinuxvm.chinacloudapp.cn”），然后针对“端口”键入“22”。
+    ![PuTTY Screen][Image6]  
 
-    ![PuTTY 屏幕][Image6]
-
-##更新虚拟机（可选）
-
-1. 在连接到虚拟机后，可以选择安装系统更新和修补程序。若要运行更新，请键入：
+## Update the Virtual Machine (optional)
+1. After you're connected to the virtual machine, you can optionally install system updates and patches. To run the update, type:
 
     `$ sudo zypper update`
-
-2. 选择“软件”，然后选择“联机更新”以列出可用的更新。选择“接受”开始安装，并应用所有新的可用的修补程序（可选修补程序除外）。
-
-3. 安装完成后，选择“完成”。您的系统现在已为最新。
+2. Select **Software**, then **Online Update** to list available updates. Select **Accept** to start the installation and apply all new available patches (except the optional ones).
+3. After installation is done, select **Finish**.  Your system is now up to date.
 
 [PuTTYDownload]: http://www.puttyssh.org/download.html
 
 [Image1]: ./media/create-and-configure-opensuse-vm-in-portal/CreateVM.png
 
 [Image6]: ./media/create-and-configure-opensuse-vm-in-portal/putty.png
-
-<!---HONumber=Mooncake_0314_2016-->

@@ -1,56 +1,56 @@
-﻿第一步是创建一个用于本教程的新帐户。您可以使用免费沙盒计划，它是本教程的理想之选。
+Your first step is to create a new account to use for the tutorial. You can use the FREE Sandbox plan, it's perfect for this tutorial.
 
-### 注册 Pusher 帐户
+### To sign up for a Pusher account
 
-1. 登录到 [Azure 经典管理门户][]。
+1. Log in to the [Azure Management Portal][].
 
-2. 在该管理门户的下方窗格中，单击"新建"。
+2. In the lower pane of the management portal, click **New**.
 
     ![command-bar-new][command-bar-new]
 
-3. 单击"应用商店"。
+3. Click **Store**.
 
     ![pusher-store][pusher-store]
 
-4. 在"选择外接程序"对话框中，选择"Pusher"，然后单击右箭头。
+4. In the **Choose an Add-on** dialog, select **Pusher** and click the right arrow.
 
-5. 在"个性化外接程序"对话框中，选择要注册的"Pusher"计划。
+5. In the **Personalize Add-on** dialog select the **Pusher** plan you want to sign up for.
 
-6. 输入一个名称以标识 Azure 设置中的"Pusher"服务，或使用"Pusher"的默认值。名称的长度必须介于 1 到 100 个字符之间，并只能包含字母字符、短划线、句点和下划线。名称在订阅的 Azure 应用商店项目的列表中必须是唯一的。
+6. Enter a name to identify your **Pusher** service in your Azure settings, or use the default value of **Pusher**. Names must be between 1 and 100 characters in length and contain only alphanumeric characters, dashes, dots, and underscores. The name must be unique in your list of subscribed Azure Store Items.
 
     ![store-screen-1][store-screen-1]
 
-8. 选择区域值，例如美国西部。 
+8. Choose a value for the region; for example, West US. 
 
-9. 单击右箭头。
+9. Click the right arrow.
 
-10. 在"查看购买"选项卡上，检查计划和定价信息，并查看法律条款。如果同意这些条款，请单击复选标记。单击复选标记后，您的 Pusher 帐户将开始设置过程。 
+10. On the **Review Purchase** tab, review the plan and pricing information, and review the legal terms. If you agree to the terms, click the check mark. After you click the check mark, your Pusher account will begin the provisioning process. 
 
     ![store-screen-2][store-screen-2]
 
-11. 确认您的购买后，系统会将您重定向到外接程序仪表板，并且将显示消息"购买 Pusher"。
+11. After confirming your purchase you are redirected to the add-ons dashboard and you will see the message **Purchasing Pusher**.
 
     ![store-screen-3][store-screen-3]
 
-将立即设置您的 Pusher 帐户，并将显示消息"已成功购买外接程序 Pusher"。已创建您的帐户，您现在可以使用 Pusher 服务。
+Your Pusher account is provisioned immediately and you will see the message **Successfully purchased Add-On Pusher**. Your account has been created and you are now ready to use the Pusher service.
 
-若要修改您的订阅计划或查看 Pusher 联系人设置，请单击 Pusher 服务的名称以打开 Pusher 外接程序仪表板。
+To modify your subscription plan or see the Pusher contact settings, click the name of your Pusher service to open the Pusher add-ons dashboard.
 
 ![pusher-add-on-dashboard][pusher-add-on-dashboard]
 
-在使用 Pusher 时，您将需要提供 Pusher 应用连接设置。
+When using Pusher you will need to supply your Pusher app connection settings.
 
-### 查找 Pusher 连接设置 ###
+### To find your Pusher connection settings ###
 
-1. 单击"连接信息"。
+1. Click **Connection Info**.
 
     ![pusher-connection-info-button][pusher-connection-info-button]
 
-2. 在" *Connection info*"对话框中，您将看到自己的应用 ID、密钥和机密。由于本教程后面将使用这些值，因此请复制这些值以供稍后使用。
+2. In the *Connection info* dialog you will see your app ID, key and secret. You will use these values later in the tutorial so copy them for late use.
 
     ![pusher-connection-info][pusher-connection-info]
 
-有关 Pusher 入门的详细信息，请参阅[了解 Pusher][]。
+For more information on getting started with Pusher, see [Understanding Pusher][].
 
 <!--images-->
 
@@ -65,7 +65,5 @@
 
 <!--Links-->
 
-[Azure 经典管理门户]: https://manage.windowsazure.cn
-[了解 Pusher]: http://pusher.com/docs
-
-<!--HONumber=41-->
+[Azure Management Portal]: https://manage.windowsazure.com
+[Understanding Pusher]: http://pusher.com/docs

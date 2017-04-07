@@ -1,44 +1,34 @@
-**如果这些条件都成立**，Azure 将确定你的应用程序使用 Python：
+Azure will determine that your application uses Python **if both of these conditions are true**:
 
-- 根文件夹中的 requirements.txt 文件
-- 根文件夹中的任何 .py 文件或指定 python 的 runtime.txt
+* requirements.txt file in the root folder
+* any .py file in the root folder OR a runtime.txt that specifies python
 
-如果是这种情况，它将使用特定于 Python 的部署脚本，此脚本执行文件的标准同步以及其他 Python 操作，例如：
+When that's the case, it will use a Python specific deployment script, which performs the standard synchronization of files, as well as additional Python operations such as:
 
-- 自动管理虚拟环境
-- 使用 pip 来安装 requirements.txt 中列出的软件包
-- 根据所选的 Python 版本创建相应的 web.config。
-- 收集 Django 应用程序的静态文件
+* Automatic management of virtual environment
+* Installation of packages listed in requirements.txt using pip
+* Creation of the appropriate web.config based on the selected Python version.
+* Collect static files for Django applications
 
-您可以控制默认部署步骤的某些方面，而无需自定义脚本。
+You can control certain aspects of the default deployment steps without having to customize the script.
 
-如果您想要跳过所有特定于 Python 的部署步骤，可以创建此空文件：
+If you want to skip all Python specific deployment steps, you can create this empty file:
 
-```
-\.skipPythonDeployment
-```
+    \.skipPythonDeployment
 
-如果您想要跳过为 Django 应用程序收集静态文件的操作：
+If you want to skip collection of static files for your Django application:
 
-```
-\.skipDjango 
-```
+    \.skipDjango 
 
-为了更大程度控制部署，可以通过创建以下文件来覆盖默认部署脚本：
+For more control over deployment, you can override the default deployment script by creating the following files:
 
-```
-\.deployment
-\deploy.cmd
-```
+    \.deployment
+    \deploy.cmd
 
-你可以使用 [Azure 命令行界面][]来创建这些文件。从项目文件夹使用以下命令：
+You can use the [Azure command-line interface][Azure command-line interface] to create the files.  Use this command from your project folder:
 
-```
-azure site deploymentscript --python
-```
+    azure site deploymentscript --python
 
-这些文件不存在时，Azure 创建一个临时部署脚本然后运行此脚本。它等同于使用以上命令创建的脚本。
+When these files don't exist, Azure creates a temporary deployment script and runs it.  It is identical to the one you create with the command above.
 
-[Azure 命令行界面]: /downloads/
-
-<!---HONumber=Mooncake_0328_2016-->
+[Azure command-line interface]: https://www.azure.cn/downloads/

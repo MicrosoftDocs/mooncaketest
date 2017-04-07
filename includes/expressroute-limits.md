@@ -1,22 +1,22 @@
-#### ExpressRoute 限制
+#### ExpressRoute Limits
 
-下列限制适用于每个订阅的 ExpressRoute 资源。
+The following limits apply to ExpressRoute resources per subscription.
 
-| 资源 | 默认限制 |
+| Resource | Default Limit |
 |---|---|
-| 每个订阅的 ExpressRoute 线路数 | 10 |
-| ARM 的每个订阅每个区域的 ExpressRoute 线路数 | 10 |
-| 具有 ExpressRoute Standard 的 Azure 私用对等互连的最大路由数 | 4,000 |
-| 具有 ExpressRoute Premium 附加设备的 Azure 私用对等互连的最大路由数 | 10,000 |
-| 具有 ExpressRoute Standard 的 Azure 公共对等互连的最大路由数 | 200 |
-| 具有 ExpressRoute Premium 附加设备的 Azure 公共对等互连的最大路由数 | 200 |
-| 具有 ExpressRoute Standard 的 Azure Microsoft 对等互连的最大路由数 | 200 |
-| 具有 ExpressRoute Premium 附加设备的 Azure Microsoft 对等互连的最大路由数 | 200 |
-| 每个 ExpressRoute 线路允许的虚拟网络链接数 | 请参阅下表 |
+| ExpressRoute circuits per subscription | 10 |
+| ExpressRoute circuits per region per subscription for ARM | 10 |
+| Maximum number of routes for Azure private peering with ExpressRoute standard | 4,000 |
+| Maximum number of routes for Azure private peering with ExpressRoute premium add-on | 10,000 |
+| Maximum number of routes for Azure public peering with ExpressRoute standard | 200 |
+| Maximum number of routes for Azure public peering with ExpressRoute premium add-on | 200 |
+| Maximum number of routes for Azure Microsoft peering with ExpressRoute standard | 200 |
+| Maximum number of routes for Azure Microsoft peering with ExpressRoute premium add-on | 200 |
+| Number of virtual network links allowed per ExpressRoute circuit | see table below |
 
-#### 每个 ExpressRoute 线路的虚拟网络数
+#### Number of Virtual Networks per ExpressRoute circuit
 
-| **线路大小** | **针对 Standard 的 VNet 链接数** | **使用 Premium 附加设备时的 VNet 链接数** |
+| **Circuit Size** | **Number of VNet links for standard** | **Number of VNet Links with Premium add-on** |
 |---|---|---|
 | 50 Mbps | 10 | 20 |
 | 100 Mbps | 10 | 25 |
@@ -26,5 +26,3 @@
 | 2 Gbps | 10 | 60 |
 | 5 Gbps | 10 | 75 |
 | 10 Gbps | 10 | 100 |
-
-<!---HONumber=Mooncake_1010_2016-->

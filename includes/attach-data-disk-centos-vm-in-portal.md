@@ -1,108 +1,88 @@
-1. 在 Azure [经典管理门户](http://manage.windowsazure.cn)中，单击“虚拟机”，然后选择刚才创建的虚拟机 (**testlinuxvm**)。
+1. In the Azure [Classic Management Portal](http://manage.windowsazure.cn), click **Virtual Machines** and then select the virtual machine you just created (**testlinuxvm**).
+2. On the command bar click **Attach** and then click **Attach Empty Disk**.
 
-2. 在命令栏上，单击“附加”，然后单击“附加空磁盘”。
+    The **Attach Empty Disk** dialog box appears.
+3. The **Virtual Machine Name**, **Storage Location**, and **File Name** are already defined for you. All you have to do is enter the size that you want for the disk. Type **5** in the **Size** field.
 
-    将显示“附加空磁盘”对话框。
+    ![Attach Empty Disk][Image2]
 
-3. 已经为你定义了“虚拟机名称”、“存储位置”和“文件名”。您只需要输入所需的磁盘大小。在“大小”字段中键入“5”。
+    **Note:** All disks are created from a .vhd file in Azure storage. You can provide a name for the .vhd file that is added to storage, but Azure generates the name of the disk automatically.
+4. Click the check mark to attach the data disk to the virtual machine.
+5. Click the name of the virtual machine to display the dashboard so you can verify that the data disk was successfully attached to the virtual machine. The disk that you attached is listed in the **Disks** table.
 
-    ![附加空磁盘][Image2]
+    When you attach a data disk, it's not ready for use until you log in to complete the setup.
 
-    **注意：**所有磁盘都是根据 Azure 存储中的 .vhd 文件创建的。你可以为添加到存储的 .vhd 文件提供名称，但是 Azure 会自动生成磁盘名称。
+## Connect to the Virtual Machine Using SSH or PuTTY and Complete Setup
+Log on to the virtual machine to complete setup of the disk so you can use it to store data.
 
-4. 单击复选标记以将数据磁盘附加到虚拟机。
-
-5. 单击虚拟机的名称可显示仪表板，这样你就可以验证数据磁盘是否已成功附加到虚拟机。你附加的磁盘会列在“磁盘”表中。
-
-    附加数据磁盘后，必须登录完成设置才能使用该磁盘。
-
-##使用 SSH 或 PuTTY 连接到虚拟机并完成安装
-登录虚拟机完成磁盘设置，以便用它来存储数据。
-
-1. 预配虚拟机后，使用 SSH 或 PuTTY 进行连接，并作为 **newuser** 进行登录（如上述步骤中所述）。	
-
-2. 在 SSH 或 PuTTY 窗口中，键入以下命令，然后输入帐户密码：
+1. After the virtual machine is provisioned, connect using SSH or PuTTY and login as **newuser** (as described in the steps above).    
+2. In the SSH or PuTTY window type the following command and then enter the account password:
 
     `$ sudo grep SCSI /var/log/messages`
 
-    你可以在所示消息中找到上次添加的数据磁盘的标识符（在此示例中为 **sdc**）。
+    You can find the identifier of the last data disk that was added in the messages that are displayed (**sdc**, in this example).
 
     ![GREP][Image4]
-
-3. 在 SSH 或 PuTTY 窗口中，输入以下命令，对磁盘 **/dev/sdc** 进行分区：
+3. In the SSH or PuTTY window, enter the following command to partition the disk **/dev/sdc**:
 
     `$ sudo fdisk /dev/sdc`
-
-4. 输入 **n** 新建一个分区。
+4. Enter **n** to create a new partition.
 
     ![FDISK][Image5]
-
-5. 键入 **p** 将该分区设置为主分区，键入 **1** 将其设置为第一分区，然后按 Enter 以接受默认分区值 (1)。
+5. Type **p** to make the partition the primary partition, type **1** to make it the first partition, and then type enter to accept the default value (1) for the cylinder.
 
     ![FDISK][Image6]
-
-6. 键入 **p** 以查看有关分区磁盘的详细信息。
+6. Type **p** to see the details about the disk that is being partitioned.
 
     ![FDISK][Image7]
-
-7. 键入“w”以写入磁盘的设置。
+7. Type **w** to write the settings for the disk.
 
     ![FDISK][Image8]
-
-8. 使用 **mkfs** 命令格式化新磁盘：
+8. Format the new disk using the **mkfs** command:
 
     `$ sudo mkfs -t ext4 /dev/sdc1`
-
-9. 接下来，您必须有一个目录可用于装载新文件系统。例如，键入下面的命令来创建一个用于装载驱动器的新目录，然后输入帐户密码：
+9. Next you must have a directory available to mount the new file system. As an example, type the following command to make a new directory for mounting the drive, and then enter the account password:
 
     `sudo mkdir /datadrive`
-
-10. 键入下面的命令以安装驱动器：
+10. Type the following command to mount the drive:
 
     `sudo mount /dev/sdc1 /datadrive`
 
-    数据磁盘现在可以作为 /datadrive 使用。
+    The data disk is now ready to use as **/datadrive**.
+11. Add the new drive to /etc/fstab:
 
-11. 将新驱动器添加到 /etc/fstab：
+    To ensure the drive is re-mounted automatically after a reboot it must be added to the /etc/fstab file. In addition, it is highly recommended that the UUID (Universally Unique IDentifier) is used in /etc/fstab to refer to the drive rather than just the device name (i.e. /dev/sdc1). To find the UUID of the new drive you can use the **blkid** utility:
 
-    若要确保在重新引导后自动重新装载驱动器，必须将其添加到 /etc/fstab 文件。此外，强烈建议在 /etc/fstab 中使用 UUID（全局唯一标识符）来引用驱动器而不是只使用设备名称（即 /dev/sdc1）。若要查找新驱动器的 UUID，可以使用 blkid 实用程序：
+        `sudo -i blkid`
 
-    ```
-    `sudo -i blkid`
-    ```
+    The output will look similar to the following:
 
-    输出与以下内容类似：
+        `/dev/sda1: UUID="11111111-1b1b-1c1c-1d1d-1e1e1e1e1e1e" TYPE="ext4"`
+        `/dev/sdb1: UUID="22222222-2b2b-2c2c-2d2d-2e2e2e2e2e2e" TYPE="ext4"`
+        `/dev/sdc1: UUID="33333333-3b3b-3c3c-3d3d-3e3e3e3e3e3e" TYPE="ext4"`
 
-    ```
-    `/dev/sda1: UUID="11111111-1b1b-1c1c-1d1d-1e1e1e1e1e1e" TYPE="ext4"`
-    `/dev/sdb1: UUID="22222222-2b2b-2c2c-2d2d-2e2e2e2e2e2e" TYPE="ext4"`
-    `/dev/sdc1: UUID="33333333-3b3b-3c3c-3d3d-3e3e3e3e3e3e" TYPE="ext4"`
-    ```
+    > [!NOTE]
+    > blkid may not require sudo access in all cases, however, it may be easier to run with `sudo -i` on some distributions if /sbin or /usr/sbin are not in your `$PATH`.
+    > 
+    > 
 
-    >[!NOTE]
-    >Blkid 可能不是在所有情况下都需要 sudo 访问权限，不过，如果 /sbin 或 /usr/sbin 不在你的 `$PATH` 中，则在某些分发上使用 `sudo -i` 运行可能更为容易。
+    **Caution:** Improperly editing the /etc/fstab file could result in an unbootable system. If unsure, please refer to the distribution's documentation for information on how to properly edit this file. It is also recommended that a backup of the /etc/fstab file is created before editing.
 
-    **警告：**错误地编辑 /etc/fstab 文件可能会导致系统无法引导。如果没有把握，请参考分发的文档来获取有关如何正确编辑该文件的信息。另外，建议在编辑之前创建 /etc/fstab 文件的备份。
+    Using a text editor, enter the information about the new file system at the end of the /etc/fstab file.  In this example we will use the UUID value for the new **/dev/sdc1** device that was created in the previous steps, and the mountpoint **/datadrive**:
 
-    使用文本编辑器，在 /etc/fstab 文件的末尾输入有关新文件系统的信息。在此示例中，我们将使用在之前的步骤中创建的新 /dev/sdc1 设备的 UUID 值并使用装载点 /datadrive：
+        `UUID=33333333-3b3b-3c3c-3d3d-3e3e3e3e3e3e   /datadrive   ext4   defaults   1   2`
 
-    ```
-    `UUID=33333333-3b3b-3c3c-3d3d-3e3e3e3e3e3e   /datadrive   ext4   defaults   1   2`
-    ```
+    If additional data drives or partitions are created you will need to enter them into /etc/fstab separately as well.
 
-    如果还创建了其他数据驱动器或分区，您同样也需要分别将其输入到 /etc/fstab 中。
+    You can now test that the file system is mounted properly by simply unmounting and then re-mounting the file system, i.e. using the example mount point `/datadrive` created in the earlier steps: 
 
-    现在，你可以通过简单地卸载并重新装载文件系统（即使用在之前的步骤中创建的示例装载点 `/datadrive`）来测试文件系统是否已正确装载：
+        `sudo umount /datadrive`
+        `sudo mount /datadrive`
 
-    ```
-    `sudo umount /datadrive`
-    `sudo mount /datadrive`
-    ```
-
-    如果第二个命令产生错误，请检查 /etc/fstab 文件的语法是否正确。
+    If the second command produces an error, check the /etc/fstab file for correct syntax.
 
     >[!NOTE]
-    >之后，在不编辑 fstab 的情况下删除数据磁盘可能会导致 VM 无法引导。如果这是一种常见情况，则请注意，大多数分发都提供了 `nofail` 和/或 `nobootwait` fstab 选项，这些选项使系统在磁盘不存在时也能引导。有关这些参数的详细信息，请查阅您的分发文档。
+    > Subsequently removing a data disk without editing fstab could cause the VM to fail to boot. If this is a common occurrence, then most distributions provide either the `nofail` and/or `nobootwait` fstab options that will allow a system to boot even if the disk is not present. Please consult your distribution's documentation for more information on these parameters.
 
 [Image2]: ./media/attach-data-disk-centos-vm-in-portal/AttachDataDiskLinuxVM2.png
 [Image4]: ./media/attach-data-disk-centos-vm-in-portal/GrepScsiMessages.png
@@ -111,5 +91,3 @@
 [Image7]: ./media/attach-data-disk-centos-vm-in-portal/fdisk3.png
 [Image8]: ./media/attach-data-disk-centos-vm-in-portal/fdisk4.png
 [Image9]: ./media/attach-data-disk-centos-vm-in-portal/mkfs.png
-
-<!---HONumber=Mooncake_1207_2015-->

@@ -1,41 +1,41 @@
-| 资源 | 默认限制 |
+| Resource | Default Limit |
 | --- | --- |
-| 每个订阅的存储帐户数 |200<sup>1</sup> |
-| 每个存储帐户的 TB |500 TB |
-| 每个存储帐户的 Blob 容器、Blob、文件共享、表、队列、实体或消息数上限 |唯一的限制是 500 TB 的存储帐户容量 |
-| 单个 Blob 容器、表或队列的最大大小 |500 TB |
-| 块 Blob 或附加 Blob 中的块数上限 |50,000 |
-| 块 Blob 中块的最大大小 |100 MB |
-| 块 Blob 的最大大小 |50,000 X 100 MB（约 4.75 TB） |
-| 附加 Blob 中块的最大大小 |4 MB |
-| 附加 Blob 的最大大小 |50,000 X 4 MB（约 195 GB） |
-| 页 Blob 的最大大小 |1 TB |
-| 表实体的最大大小 |1 MB |
-| 表实体中属性的最大数目 |252 |
-| 队列中消息的最大大小 |64 KB |
-| 文件共享的最大大小 |5 TB |
-| 文件共享中文件的最大大小 |1 TB |
-| 文件共享中的文件数上限 |唯一的限制是文件共享的总容量不超过 5 TB |
-| 每个共享最大 8 KB IOPS |1000 |
-| 文件共享中的文件数上限 |唯一的限制是文件共享的总容量不超过 5 TB |
-| 每个存储帐户的 Blob 容器、Blob、文件共享、表、队列、实体或消息数上限 |唯一的限制是 500 TB 的存储帐户容量 |
-| 每个容器、文件共享、表或队列的存储访问策略数上限 |5 |
-| 每个存储帐户的总请求速率（假设对象大小为 1 KB） |每秒实体或每秒消息数目最高 20,000 IOPS |
-| 单个 Blob 的目标吞吐量 |每秒最多 60 MB，或每秒最多 500 个请求 |
-| 单个队列的目标吞吐量（1 KB 消息） |每秒最多 2000 条消息 |
-| 单个表分区的目标吞吐量（1 KB 实体） |每秒最多 2000 个实体 |
-| 单个文件共享的目标吞吐量 |最高每秒 60 MB |
-| 每个存储帐户的最大入口<sup>2</sup> |如果已启用 GRS/ZRS<sup>3</sup>，则为 5 Gbps；对于 LRS，为 10 Gbps |
-| 每个存储帐户的最大出口<sup>2</sup> |如果已启用 RA-GRS/GRS/ZRS<sup>3</sup>，则为 10 Gbps；对于 LRS，为 15 Gbps |
+| Number of storage accounts per subscription |200<sup>1</sup> |
+| TB per storage account |500 TB |
+| Max number of blob containers, blobs, file shares, tables, queues, entities, or messages per storage account |Only limit is the 500 TB storage account capacity |
+| Max size of a single blob container, table, or queue |500 TB |
+| Max number of blocks in a block blob or append blob |50,000 |
+| Max size of a block in a block blob |100 MB |
+| Max size of a block blob |50,000 X 100 MB (approx. 4.75 TB) |
+| Max size of a block in an append blob |4 MB |
+| Max size of an append blob |50,000 X 4 MB (approx. 195 GB) |
+| Max size of a page blob |1 TB |
+| Max size of a table entity |1 MB |
+| Max number of properties in a table entity |252 |
+| Max size of a message in a queue |64 KB |
+| Max size of a file share |5 TB |
+| Max size of a file in a file share |1 TB |
+| Max number of files in a file share |Only limit is the 5 TB total capacity of the file share |
+| Max 8 KB IOPS per share |1000 |
+| Max number of files in a file share |Only limit is the 5 TB total capacity of the file share |
+| Max number of blob containers, blobs, file shares, tables, queues, entities, or messages per storage account |Only limit is the 500 TB storage account capacity |
+| Max number of stored access policies per container, file share, table, or queue |5 |
+| Maximum Request Rate per storage account |Blobs: 20,000 requests per second for blobs of any valid size (capped only by the account's ingress/egress limits) <br />Files: 1000 IOPS (8 KB in size) per file share <br />Queues: 20,000 messages per second (assuming 1 KB message size)<br />Tables: 20,000 transactions per second (assuming 1 KB entity size) |
+| Target throughput for single blob |Up to 60 MB per second, or up to 500 requests per second |
+| Target throughput for single queue (1 KB messages) |Up to 2000 messages per second |
+| Target throughput for single table partition (1 KB entities) |Up to 2000 entities per second |
+| Target throughput for single file share |Up to 60 MB per second |
+| Max ingress<sup>2</sup> per storage account (US Regions) |10 Gbps if GRS/ZRS<sup>3</sup> enabled, 20 Gbps for LRS |
+| Max egress<sup>2</sup> per storage account (US Regions) |20 Gbps if RA-GRS/GRS/ZRS<sup>3</sup> enabled, 30 Gbps for LRS |
+| Max ingress<sup>2</sup> per storage account (Non-US regions) |5 Gbps if GRS/ZRS<sup>3</sup> enabled, 10 Gbps for LRS |
+| Max egress<sup>2</sup> per storage account (Non-US regions) |10 Gbps if RA-GRS/GRS/ZRS<sup>3</sup> enabled, 15 Gbps for LRS |
 
-<sup>1</sup>这包括标准和高级存储帐户。如果需要的存储帐户超过 100 个，请通过 [Azure 支持](https://www.azure.cn/support/faq/)提出请求。Azure 存储空间团队将评审你的业务案例，最多可以批准 250 个存储帐户。
+<sup>1</sup>This includes both Standard and Premium storage accounts. If you require more than 100 storage accounts, make a request through [Azure Support](https://www.azure.cn/support/faq/). The Azure Storage team will review your business case and may approve up to 250 storage accounts. 
 
-<sup>2</sup>*传入*是指发送到存储帐户的所有数据（请求）。“出口”是指从存储帐户接收的所有数据（响应）。
+<sup>2</sup>*Ingress* refers to all data (requests) being sent to a storage account. *Egress* refers to all data (responses) being received from a storage account.  
 
-<sup>3</sup>Azure 存储复制选项包括：
+<sup>3</sup>Azure Storage replication options include:
 
-- **RA-GRS**：读取访问异地冗余存储。如果已启用 RA-GRS，辅助位置的出口目标与主要位置的出口目标相同。
-- **GRS**：异地冗余存储空间。
-- **LRS**：本地冗余存储空间。
-
-<!---HONumber=Mooncake_0313_2017-->
+- **RA-GRS**: Read-access geo-redundant storage. If RA-GRS is enabled, egress targets for the secondary location are identical to those for the primary location.
+- **GRS**:  Geo-redundant storage. 
+- **LRS**: Locally redundant storage.

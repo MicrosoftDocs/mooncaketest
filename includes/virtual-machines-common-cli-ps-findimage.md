@@ -1,6 +1,6 @@
-## <a name="azure-cli"></a> Azure CLI 2.0（预览版）
+## <a name="azure-cli"></a> Azure CLI 2.0
 
-一旦[安装 Azure CLI 2.0（预览版）](https://docs.microsoft.com/cli/azure/install-az-cli2)，即可使用 `az vm image list` 命令查看一个缓存的列表，其中包含常用的 VM 映像。例如，下面这个有关 `az vm image list -o table` 命令的示例显示了多个映像：
+Once you have [installed the Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-az-cli2), use the `az vm image list` command to see a cached list of popular VM images. For example, the following example of the command `az vm image list -o table` displays:
 
 ```
 You are viewing an offline list of images, use --all to retrieve an up-to-date list
@@ -18,21 +18,21 @@ Debian         credativ                8                   credativ:Debian:8:lat
 CoreOS         CoreOS                  Stable              CoreOS:CoreOS:Stable:latest                                     CoreOS               latest
 ```
 
-### 查找所有当前映像
+### Finding all current images
 
-若要获取包含所有映像的最新列表，请使用 `az vm image list` 命令和 `--all` 选项。与 Azure CLI 1.0 命令不同，`az vm image list --all` 命令默认情况下会返回 **chinanorth** 中的所有映像（除非指定了特定的 `--location` 参数），因此 `--all` 命令需要一定的时间才能完成。若要以交互方式进行调查，请使用 `az vm image list --all > allImages.json`，这样会返回当前在 Azure 上可用的所有映像的列表，并将其存储为一个文件，供本地使用。
+To obtain the current list of all images, use the `az vm image list` command with the `--all` option. Unlike the Azure CLI 1.0 commands, the `az vm image list --all` command returns all images in **chinanorth** by default (unless you specify a particular `--location` argument), so the `--all` command takes some time to complete. If you intend to investigate interactively, use `az vm image list --all > allImages.json`, which returns a list of all images currently available on Azure and stores it as a file for local use. 
 
-可以在多个选项中指定一个，将搜索限制于特定的位置、产品/服务、发布者或 SKU，前提是你在心目中已经有一个或多个此类范围。如果未指定位置，则会返回 **chinanorth** 的值。
+You can specify one of several options to restrict your search to a specific location, offer, publisher, or sku if you already have one or more in mind. If you do not specify a location, the values for **chinanorth** are returned.
 
-### 查找特定映像
+### Find specific images
 
-将 `az vm image list` 与 [JMESPATH 查询筛选器](https://docs.microsoft.com/cli/azure/query-az-cli2)结合使用可查找特定信息。例如，以下命令显示适用于 **Debian** 的 **SKU**（请记住，如果没有 `--all` 开关，则只会搜索常用映像的本地缓存）：
+Use `az vm image list` with a [JMESPATH query filter](https://docs.microsoft.com/cli/azure/query-az-cli2) to find specific information. For example, the following displays the **sku**s that are available for **Debian** (remember that without the `--all` switch, it only searches the local cache of common images):
 
 ```azurecli
 az vm image list --query '[?contains(offer,`Debian`)]' -o table --all
 ```
 
-输出类似于：
+The output is something like: 
 
 ```
 You are viewing an offline list of images, use --all to retrieve an up-to-date list
@@ -43,13 +43,13 @@ You are viewing an offline list of images, use --all to retrieve an up-to-date l
 <list shortened for the example>
 ```
 
-如果知道要部署的位置，则可使用常规映像搜索结果以及 `az vm image list-skus`、`az vm image list-offers` 和 `az vm image list-publishers` 命令来准确查找所需内容及其能够部署的位置。例如，如果从前面的示例中了解到 `credativ` 有一个 Debian 产品/服务，则可使用 `--location` 和其他选项来准确查找所需内容。以下示例在 **chinanorth** 中查找一个 Debian 8 映像：
+If you know where you are deploying, you can use the general image search results along with the `az vm image list-skus`, `az vm image list-offers`, and `az vm image list-publishers` commands to find exactly what you want and where it can be deployed. For example, if from the preceding example you know that `credativ` has a Debian offer, you can then use the `--location` and other options to find exactly what you want. The following example looks for a Debian 8 image in **chinanorth**:
 
 ```azurecli
 az vm image show -l chinanorth -f debian -p credativ --skus 8 --version 8.0.201701180
 ```
 
-输出为：
+and the output is:
 
 ```json
 {
@@ -68,20 +68,20 @@ az vm image show -l chinanorth -f debian -p credativ --skus 8 --version 8.0.2017
 ## Azure CLI 1.0 
 
 > [!NOTE]
-本文介绍如何使用安装的 Azure CLI 1.0 或 Azure PowerShell（支持 Azure Resource Manager 部署模型）来导航和选择虚拟机映像。首先，请切换到 Resource Manager 模式。使用 Azure CLI 时，键入 `azure config mode arm` 即可进入该模式。
+> This article describes how to navigate and select virtual machine images, using an installation of either the Azure CLI 1.0 or Azure PowerShell that supports the Azure resource manager deployment model. As a prerequisite, change to the Resource Manager mode. With the Azure CLI, enter that mode by typing `azure config mode arm`. 
 > 
 
-查找映像的最快速方式是调用 `azure vm image list` 命令，并传递位置、发布者名称（不区分大小写！）和产品/服务（如果知道）。例如，如果你知道“Canonical”是“UbuntuServer”产品的发布者，则以下列表只是简短的示例（许多列表相当长）。
+The quickest way to locate an image is to call the `azure vm image list` command and pass the location, the publisher name (it's not case-sensitive!), and an offer -- if you know the offer. For example, the following list is only a short example -- many lists are quite long -- if you know that "Canonical" is a publisher for the "UbuntuServer" offer.
 
-```
+```azurecli
 azure vm image list chinanorth canonical ubuntuserver
 info:    Executing command vm image list
 warn:    The parameter --sku if specified will be ignored
 + Getting virtual machine image skus (Publisher:"canonical" Offer:"ubuntuserver" Location:"chinanorth")
-data:    Publisher  Offer         Sku            OS     Version          Location    Urn
+data:    Publisher  Offer         Sku              OS     Version          Location    Urn
 data:    ---------  ------------  -----------  -----  ---------------  ----------  --------------------------------------------------
-data:    canonical  ubuntuserver  12.04.5-LTS    Linux  12.04.201601140  chinanorth    canonical:ubuntuserver:12.04.5-LTS:12.04.201601140
-data:    canonical  ubuntuserver  12.04.5-LTS    Linux  12.04.201602010  chinanorth    canonical:ubuntuserver:12.04.5-LTS:12.04.201602010
+data:    canonical  ubuntuserver  12.04.5-LTS     Linux  12.04.201601140  chinanorth    canonical:ubuntuserver:12.04.5-LTS:12.04.201601140
+data:    canonical  ubuntuserver  12.04.5-LTS     Linux  12.04.201602010  chinanorth    canonical:ubuntuserver:12.04.5-LTS:12.04.201602010
 data:    canonical  ubuntuserver  12.04.5-LTS    Linux  12.04.201606270  chinanorth    canonical:ubuntuserver:12.04.5-LTS:12.04.201606270
 data:    canonical  ubuntuserver  12.04.5-LTS    Linux  12.04.201610201  chinanorth    canonical:ubuntuserver:12.04.5-LTS:12.04.201610201
 data:    canonical  ubuntuserver  14.04.2-LTS    Linux  14.04.201507060  chinanorth    canonical:ubuntuserver:14.04.2-LTS:14.04.201507060
@@ -95,16 +95,16 @@ data:    canonical  ubuntuserver  14.04.3-LTS    Linux  14.04.201604060  chinano
 data:    canonical  ubuntuserver  14.04.3-LTS    Linux  14.04.201606270  chinanorth    canonical:ubuntuserver:14.04.3-LTS:14.04.201606270
 data:    canonical  ubuntuserver  14.04.4-LTS    Linux  14.04.201610200  chinanorth    canonical:ubuntuserver:14.04.4-LTS:14.04.201610200
 data:    canonical  ubuntuserver  14.04.5-LTS    Linux  14.04.201610200  chinanorth    canonical:ubuntuserver:14.04.5-LTS:14.04.201610200
-data:    canonical  ubuntuserver  16.04.0-LTS    Linux  16.04.201606270  chinanorth    canonical:ubuntuserver:16.04.0-LTS:16.04.201606270
-data:    canonical  ubuntuserver  16.04.0-LTS    Linux  16.04.201610200  chinanorth    canonical:ubuntuserver:16.04.0-LTS:16.04.201610200
+data:    canonical  ubuntuserver  16.04.0-LTS      Linux  16.04.201606270  chinanorth    canonical:ubuntuserver:16.04.0-LTS:16.04.201606270
+data:    canonical  ubuntuserver  16.04.0-LTS      Linux  16.04.201610200  chinanorth    canonical:ubuntuserver:16.04.0-LTS:16.04.201610200
 data:    canonical  ubuntuserver  16.10          Linux  16.10.201610201  chinanorth    canonical:ubuntuserver:16.10:16.10.201610201
 ```
 
-**Urn** 列是你传递给 `azure vm quick-create` 的表单。
+The **Urn** column will be the form you pass to `azure vm quick-create`.
 
-不过，你通常还不知道什么可用。在本示例中，可以使用 `azure vm image list-publishers` 命令并在提示符处指定数据中心位置，以便导航映像。例如，以下列表是中国北部位置的所有映像发布者（将位置设为小写并删除标准位置中的空格，以传递位置参数）。
+Often, however, you don't yet know what is available. In this case, you can navigate images by using the `azure vm image list-publishers` command and specifying a data center location at the prompt. For example, the following lists all image publishers in the China North location (pass the location argument by lowercasing and removing spaces from the standard locations)
 
-```
+```azurecli
 azure vm image list-publishers
 info:    Executing command vm image list-publishers
 Location: chinanorth
@@ -139,7 +139,7 @@ data:    SUSE                                             chinanorth
 data:    TrendMicro.DeepSecurity                          chinanorth
 ```
 
-这些列表可能相当长，因此上面的示例列表只是一个代码片段。假设我注意到 Canonical 事实上是中国北部位置的映像发布者。现在可以调用 `azure vm image list-offers` 来查找其发布的产品，并在提示文字后面输入位置和发布者，如以下示例所示：
+These lists can be quite long, so the example list preceding is just a snippet. Let's say that I noticed that Canonical is, indeed, an image publisher in the China North location. You can now find their offers by calling `azure vm image list-offers` and pass the location and the publisher at the prompts, like the following example:
 
 ```azurecli
 azure vm image list-offers
@@ -153,9 +153,9 @@ data:    canonical  UbuntuServer               chinanorth
 info:    vm image list-offers command OK
 ```
 
-现在，我们知道在中国北部区域中，Canonical 在 Azure 上发布 **UbuntuServer** 产品。但是，有哪些 SKU 呢？ 若要获取这些值，请调用 `azure vm image list-skus`，并在提示文字后面输入已找到的位置、发布者和产品/服务信息。
+Now we know that in the China North region, Canonical publishes the **UbuntuServer** offer on Azure. But what SKUs? To get those values, you call `azure vm image list-skus` and respond to the prompt with the location, publisher, and offer that you have discovered.
 
-```
+```azurecli
 azure vm image list-skus
 info:    Executing command vm image list-skus
 Location: chinanorth
@@ -177,7 +177,7 @@ data:    canonical  ubuntuserver  16.10              chinanorth
 info:    vm image list-skus command OK
 ```
 
-利用这些信息，现在可以通过在顶部调用原始调用，准确地找到你需要的映像。
+With this information, you can now find exactly the image you want by calling the original call at the top.
 
 ```azurecli
 azure vm image list chinanorth canonical ubuntuserver 16.04.0-LTS
@@ -189,52 +189,52 @@ data:    canonical  ubuntuserver  16.04.0-LTS  Linux  16.04.201606270  chinanort
 info:    vm image list command OK
 ```
 
-现在，你可以确切地选择想要使用的映像。若要使用刚刚找到的 URN 信息快速创建虚拟机，或要使用包含该 URN 信息的模板，请参阅[将适用于 Mac、Linux 和 Windows 的 Azure CLI 与 Azure Resource Manager 配合使用](../articles/azure-resource-manager/xplat-cli-azure-resource-manager.md)。
+Now you can choose precisely the image you want to use. To create a virtual machine quickly by using the URN information, which you just found, or to use a template with that URN information, see [Using the Azure CLI for Mac, Linux, and Windows with Azure Resource Manager](../articles/xplat-cli-azure-resource-manager.md).
 
 ## <a name="powershell"></a> PowerShell
 > [!NOTE]
-下载并配置[最新的 Azure PowerShell](https://docs.microsoft.com/powershell/azureps-cmdlets-docs)。如果使用低于 1.0 版本的 Azure PowerShell 模块，则仍使用以下命令，但必须先执行 `Switch-AzureMode AzureResourceManager`。
+> Install and configure the [latest Azure PowerShell](https://docs.microsoft.com/powershell/azureps-cmdlets-docs). If you are using Azure PowerShell modules below 1.0, you still use the following commands but you must first `Switch-AzureMode AzureResourceManager`. 
 > 
 > 
 
-使用 Azure 资源管理器创建新的虚拟机时，在某些情况下，你需要使用以下映像属性组合来指定映像：
+When creating a new virtual machine with Azure Resource Manager, in some cases you need to specify an image with the combination of the following image properties:
 
-* 发布者
-* 产品
+* Publisher
+* Offer
 * SKU
 
-例如，`Set-AzureRMVMSourceImage` PowerShell cmdlet 或资源组模板文件需要这些值，必须在此命令或文件中指定要创建的虚拟机类型。
+For example, these values are needed for the `Set-AzureRMVMSourceImage` PowerShell cmdlet or with a resource group template file in which you must specify the type of virtual machine to be created.
 
-如果你需要确定这些值，可以浏览映像以确定这些值：
+If you need to determine these values, you can navigate the images to determine these values:
 
-1. 列出映像发布者。
-2. 对于给定的发布者，列出其产品。
-3. 对于给定的产品，列出其 SKU。
+1. List the image publishers.
+2. For a given publisher, list their offers.
+3. For a given offer, list their SKUs.
 
-首先，使用以下命令列出发布者：
+First, list the publishers with the following commands:
 
 ```powershell
 $locName="<Azure location, such as China North>"
 Get-AzureRMVMImagePublisher -Location $locName | Select PublisherName
 ```
 
-填写选择的发布者名称，然后运行以下命令：
+Fill in your chosen publisher name and run the following commands:
 
 ```powershell
 $pubName="<publisher>"
 Get-AzureRMVMImageOffer -Location $locName -Publisher $pubName | Select Offer
 ```
 
-填写选择的产品名称，然后运行以下命令：
+Fill in your chosen offer name and run the following commands:
 
 ```powershell
 $offerName="<offer>"
 Get-AzureRMVMImageSku -Location $locName -Publisher $pubName -Offer $offerName | Select Skus
 ```
 
-从 `Get-AzureRMVMImageSku` 命令的输出来看，你已获得了为新虚拟机指定映像所需的所有信息。
+From the display of the `Get-AzureRMVMImageSku` command, you have all the information you need to specify the image for a new virtual machine.
 
-下面是一个完整示例：
+The following shows a full example:
 
 ```powershell
 PS C:\> $locName="China North"
@@ -248,7 +248,7 @@ credativ
 ...
 ```
 
-对于“MicrosoftWindowsServer”发布者：
+For the "MicrosoftWindowsServer" publisher:
 
 ```powershell
 PS C:\> $pubName="MicrosoftWindowsServer"
@@ -259,7 +259,7 @@ Offer
 WindowsServer
 ```
 
-对于“WindowsServer”产品：
+For the "WindowsServer" offer:
 
 ```powershell
 PS C:\> $offerName="WindowsServer"
@@ -278,19 +278,15 @@ Skus
 Windows-Server-Technical-Preview
 ```
 
-从上面的列表中复制选择的 SKU 名称，你已获得 `Set-AzureRMVMSourceImage` PowerShell cmdlet 或资源组模板的所有信息。
+From this list, copy the chosen SKU name, and you have all the information for the `Set-AzureRMVMSourceImage` PowerShell cmdlet or for a resource group template.
 
 <!--Image references-->
-
 [5]: ./media/markdown-template-for-new-articles/octocats.png
 [6]: ./media/markdown-template-for-new-articles/pretty49.png
 [7]: ./media/markdown-template-for-new-articles/channel-9.png
 [8]: ./media/markdown-template-for-new-articles/copytemplate.png
 
 <!--Reference style links - using these makes the source content way more readable than using inline links-->
-
 [gog]: http://google.com/
-[yah]: http://search.yahoo.com/
+[yah]: http://search.yahoo.com/  
 [msn]: http://search.msn.com/
-
-<!---HONumber=Mooncake_0313_2017-->

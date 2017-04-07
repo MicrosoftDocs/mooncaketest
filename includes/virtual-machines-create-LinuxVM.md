@@ -1,22 +1,20 @@
-<!-- need to be verified -->
+1. Sign in to your Azure subscription using the steps listed in [Connect to Azure from the Azure CLI 1.0](../articles/xplat-cli-connect.md).
 
-1. 使用[从 Azure CLI 连接到 Azure](../articles/xplat-cli-connect.md)中列出的步骤登录到 Azure 订阅。
-
-2. 确保使用经典部署模式，如下所示：
+2. Make sure you are in the Classic deployment mode as follows:
 
     ```azurecli
     azure config mode asm
     ```
 
-3. 从可用映像中找出你想要加载的 Linux 映像，如下所示：
+3. Find out the Linux image that you want to load from the available images as follows:
 
     ```azurecli
     azure vm image list | grep "Linux"
     ```
 
-    在 Windows 的命令行窗口，使用“find”代替“grep”。
+    In a Windows command-prompt window, use **find** instead of grep.
 
-4. 使用 `azure vm create`通过上一列表中的 Linux 映像创建 VM。此步骤将创建云服务和存储帐户。你还可通过 `-c` 选项将此 VM 连接到现有云服务。使用 `-e` 选项创建 SSH 终结点以登录到 Linux 虚拟机。以下示例使用位于 `China North` 的 `Ubuntu-14_04_3-LTS` 映像创建名为 `myVM` 的 VM，并添加用户名 `ops`：
+4. Use `azure vm create` to create a VM with the Linux image from the previous list. This step creates a cloud service and storage account. You could also connect this VM to an existing cloud service with a `-c` option. Create an SSH endpoint to log in to the Linux virtual machine with the `-e` option. The following example creates a VM named `myVM` using the `Ubuntu-14_04_3-LTS` image in the `China North` location, and adds a user name `ops`:
 
     ```azurecli
     azure vm create myVM \
@@ -24,7 +22,7 @@
         -g ops -p P@ssw0rd! -z "Small" -e -l "China North"
     ```
 
-    输出类似于以下示例：
+    The output is similar to the following example:
 
     ```azurecli
     info:    Executing command vm create
@@ -38,21 +36,19 @@
     ```
 
     > [!NOTE]
-    对于 Linux 虚拟机，必须在 `vm create` 中提供 `-e` 选项。在创建虚拟机后便无法启用 SSH。有关 SSH 的详细信息，请参阅[如何在 Azure 中将 SSH 用于 Linux](../articles/virtual-machines/virtual-machines-linux-mac-create-ssh-keys.md)。
+    > For a Linux virtual machine, you must provide the `-e` option in `vm create`. It is not possible to enable SSH after the virtual machine has been created. For more details on SSH, read [How to Use SSH with Linux on Azure](../articles/virtual-machines/virtual-machines-linux-mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
-5. 可以通过使用 `azure vm show` 命令验证 VM 的属性。以下示例列出名为 `myVM` 的 VM 的信息：
+5. You can verify the attributes of the VM by using the `azure vm show` command. The following example lists information for the VM named `myVM`:
 
     ```azurecli
     azure vm show myVM
     ```
 
-6. 使用 `azure vm start` 命令启动 VM，如下所示：
+6. Start your VM with the `azure vm start` command as follows:
 
     ```azurecli
     azure vm start myVM
     ```
 
-## 后续步骤
-有关所有这些 Azure CLI 虚拟机命令的详细信息，请参阅[使用经典部署 API 的 Azure CLI](../articles/virtual-machines-command-line-tools.md)。
-
-<!---HONumber=Mooncake_1212_2016-->
+## Next steps
+For details on all these Azure CLI 1.0 virtual machine commands, read the [Using the Azure CLI 1.0 with the Classic deployment API](https://docs.microsoft.com/cli/azure/get-started-with-az-cli2).

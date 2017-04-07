@@ -1,8 +1,6 @@
-1. 在 [Azure 门户预览](https://portal.azure.cn/)中，单击“浏览全部”>“应用服务”，然后单击移动应用后端。在“设置”下，单击“应用服务推送”，然后单击通知中心名称。
-2. 转到“Windows (WNS)”，输入“安全密钥”（客户端密码）和从 Live 服务站点获取的“包 SID”，然后单击“保存”。
+1. In the [Azure portal](https://portal.azure.com/), click **Browse All** > **App Services**, and click your Mobile Apps back end. Under **Settings**, click **App Service Push**, and then click your notification hub name.
+2. Go to **Windows (WNS)**, enter the **Security key** (client secret) and **Package SID** that you obtained from the Live Services site, and then click **Save**.
 
-    ![设置门户中的 WNS 密钥](./media/app-service-mobile-configure-wns/mobile-push-wns-credentials.png)  
+    ![Set the WNS key in the portal](./media/app-service-mobile-configure-wns/mobile-push-wns-credentials.png)
 
-后端现已配置为使用 WNS 发送推送通知。
-
-<!---HONumber=Mooncake_0116_2017-->
+Your back end is now configured to use WNS to send push notifications.

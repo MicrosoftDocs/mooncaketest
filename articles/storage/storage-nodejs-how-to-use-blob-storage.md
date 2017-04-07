@@ -1,6 +1,6 @@
-﻿---
-title: 如何通过 Node.js 使用 Blob 存储 | Azure
-description: 使用 Azure Blob 存储（对象存储）将非结构化数据存储在云中。
+---
+title: How to use Blob storage from Node.js | Azure
+description: Store unstructured data in the cloud with Azure Blob storage (object storage).
 services: storage
 documentationcenter: nodejs
 author: mmacy
@@ -14,29 +14,31 @@ ms.tgt_pltfrm: na
 ms.devlang: nodejs
 ms.topic: article
 ms.date: 12/08/2016
-wacn.date: 01/06/2017
+wacn.date: ''
 ms.author: marsma
 ---
 
-# 如何通过 Node.js 使用 Blob 存储
+# How to use Blob storage from Node.js
 [!INCLUDE [storage-selector-blob-include](../../includes/storage-selector-blob-include.md)]
 
-## 概述
-本文介绍如何使用 Blob 存储执行常见方案。相关示例是通过 Node.js API 编写的。涉及的方案包括如何上传、列出、下载和删除 Blob。
+[!INCLUDE [storage-try-azure-tools-queues](../../includes/storage-try-azure-tools-blobs.md)]
+
+## Overview
+This article shows you how to perform common scenarios using Blob storage. The samples are written via the Node.js API. The scenarios covered include how to upload, list, download, and delete blobs.
 
 [!INCLUDE [storage-blob-concepts-include](../../includes/storage-blob-concepts-include.md)]
 
 [!INCLUDE [storage-create-account-include](../../includes/storage-create-account-include.md)]
 
-## 创建 Node.js 应用程序
-有关如何创建 Node.js 应用程序的说明，请参阅[在 Azure App Service 中创建 Node.js Web 应用]、[使用 Windows PowerShell 生成 Node.js 应用程序并将其部署到 Azure 云服务]或[使用 Web Matrix 生成 Node.js Web 应用并将其部署到 Azure]。
+## Create a Node.js application
+For instructions on how to create a Node.js application, see [Create a Node.js web app in Azure App Service], [Build and deploy a Node.js application to an Azure Cloud Service] -- using Windows PowerShell, or [Build and deploy a Node.js web app to Azure using Web Matrix].
 
-## 配置应用程序以访问存储
-若要使用 Azure 存储，需要 Azure Storage SDK for Node.js，其中包括一组便于与存储 REST 服务进行通信的库。
+## Configure your application to access storage
+To use Azure storage, you need the Azure Storage SDK for Node.js, which includes a set of convenience libraries that communicate with the storage REST services.
 
-### 使用 Node 包管理器 (NPM) 可获取包
-1. 使用 **PowerShell** (Windows)、**Terminal** (Mac) 或 **Bash** (Unix) 等命令行接口导航到在其中创建了示例应用程序的文件夹。
-2. 在命令窗口中键入 **npm install azure-storage**。该命令的输出类似于以下代码示例。
+### Use Node Package Manager (NPM) to obtain the package
+1. Use a command-line interface such as **PowerShell** (Windows), **Terminal** (Mac), or **Bash** (Unix), to navigate to the folder where you created your sample application.
+2. Type **npm install azure-storage** in the command window. Output from the command is similar to the following code example.
 
   azure-storage@0.5.0 node_modules\azure-storage
   +-- extend@1.2.1
@@ -49,33 +51,33 @@ ms.author: marsma
   +-- xml2js@0.2.7 (sax@0.5.2)
   +-- request@2.57.0 (caseless@0.10.0, aws-sign2@0.5.0, forever-agent@0.6.1, stringstream@0.0.4, oauth-sign@0.8.0, tunnel-agent@0.4.1, isstream@0.1.2, json-stringify-safe@5.0.1, bl@0.9.4, combined-stream@1.0.5, qs@3.1.0, mime-types@2.0.14, form-data@0.2.0, http-signature@0.11.0, tough-cookie@2.0.0, hawk@2.3.1, har-validator@1.8.0)
 
-3. 可以手动运行 **ls** 命令来验证是否创建了 **node\_modules** 文件夹。在该文件夹中，将找到 **azure-storage** 包，其中包含访问存储所需的库。
+3. You can manually run the **ls** command to verify that a **node\_modules** folder was created. Inside that folder, find the **azure-storage** package, which contains the libraries that you need to access storage.
 
-### 导入包
-使用记事本或其他文本编辑器将以下内容添加到要在其中使用存储的应用程序的 **server.js** 文件的顶部：
+### Import the package
+Using Notepad or another text editor, add the following to the top of the **server.js** file of the application where you intend to use storage:
 
 ```nodejs
 var azure = require('azure-storage');
 ```
 
-## 设置 Azure 存储连接
-Azure 模块将读取环境变量 `AZURE_STORAGE_ACCOUNT`、`AZURE_STORAGE_ACCESS_KEY` 或 `AZURE_STORAGE_CONNECTION_STRING`，以获取连接到 Azure 存储帐户所需的信息。如果未设置这些环境变量，则在调用 **createBlobService** 时必须指定帐户信息。
+## Set up an Azure Storage connection
+The Azure module will read the environment variables `AZURE_STORAGE_ACCOUNT` and `AZURE_STORAGE_ACCESS_KEY`, or `AZURE_STORAGE_CONNECTION_STRING`, for information required to connect to your Azure storage account. If these environment variables are not set, you must specify the account information when calling **createBlobService**.
 
-有关在 [Azure 门户预览](https://portal.azure.cn)中为 Azure Web 应用设置环境变量的示例，请参阅[使用 Azure 表服务的 Node.js Web 应用]。
+For an example of setting the environment variables in the [Azure Portal](https://portal.azure.cn) for an Azure web app, see [Node.js web app using the Azure Table Service].
 
-## 创建容器
-使用 **BlobService** 对象可以对容器和 Blob 进行操作。以下代码创建 **BlobService** 对象。将以下内容添加到 **server.js** 顶部附近。
+## Create a container
+The **BlobService** object lets you work with containers and blobs. The following code creates a **BlobService** object. Add the following near the top of **server.js**:
 
 ```nodejs
 var blobSvc = azure.createBlobService();
 ```
 
 > [!NOTE]
-> 可以匿名访问 Blob，只需使用 **createBlobServiceAnonymous** 并提供主机地址即可。例如，使用 `var blobSvc = azure.createBlobServiceAnonymous('https://myblob.blob.core.chinacloudapi.cn/');`。
+> You can access a blob anonymously by using **createBlobServiceAnonymous** and providing the host address. For example, use `var blobSvc = azure.createBlobServiceAnonymous('https://myblob.blob.core.chinacloudapi.cn/');`.
 
 [!INCLUDE [storage-container-naming-rules-include](../../includes/storage-container-naming-rules-include.md)]
 
-若要创建一个新的容器，请使用 **createContainerIfNotExists**。以下代码示例将创建名为“mycontainer”的新容器：
+To create a new container, use **createContainerIfNotExists**. The following code example creates a new container named 'mycontainer':
 
 ```nodejs
 blobSvc.createContainerIfNotExists('mycontainer', function(error, result, response){
@@ -85,15 +87,15 @@ blobSvc.createContainerIfNotExists('mycontainer', function(error, result, respon
 });
 ```
 
-如果该容器是新建的，则 `result.created` 为 true。如果该容器已存在，则 `result.created` 为 false。`response` 包含有关操作的信息，包括容器的 ETag 信息。
+If the container is newly created, `result.created` is true. If the container already exists, `result.created` is false. `response` contains information about the operation, including the ETag information for the container.
 
-### 容器安全性
-默认情况下，新容器是私有的，不能匿名访问。若要使容器公开，以便能够对其进行匿名访问，可将容器的访问级别设置为“Blob”或“容器”。
+### Container security
+By default, new containers are private and cannot be accessed anonymously. To make the container public so that you can access it anonymously, you can set the container's access level to **blob** or **container**.
 
-* **Blob** - 可匿名读取此容器中的 Blob 内容和元数据，但无法匿名读取容器元数据（如列出容器中的所有 Blob）
-* **容器** - 可匿名读取 Blob 内容和元数据，以及容器元数据
+* **blob** - allows anonymous read access to blob content and metadata within this container, but not to container metadata such as listing all blobs within a container
+* **container** - allows anonymous read access to blob content and metadata as well as container metadata
 
-以下代码示例演示了如何将访问级别设置为“Blob”：
+The following code example demonstrates setting the access level to **blob**:
 
 ```nodejs
 blobSvc.createContainerIfNotExists('mycontainer', {publicAccessLevel : 'blob'}, function(error, result, response){
@@ -105,7 +107,7 @@ blobSvc.createContainerIfNotExists('mycontainer', {publicAccessLevel : 'blob'}, 
 });
 ```
 
-另外，可以通过使用 **setContainerAcl** 指定访问级别来修改容器的访问级别。以下代码示例将访问级别更改为“容器”：
+Alternatively, you can modify the access level of a container by using **setContainerAcl** to specify the access level. The following code example changes the access level to container:
 
 ```nodejs
 blobSvc.setContainerAcl('mycontainer', null /* signedIdentifiers */, {publicAccessLevel : 'container'} /* publicAccessLevel*/, function(error, result, response){
@@ -115,42 +117,42 @@ blobSvc.setContainerAcl('mycontainer', null /* signedIdentifiers */, {publicAcce
 });
 ```
 
-结果将包含有关操作的信息，包括容器的当前 **ETag**。
+The result contains information about the operation, including the current **ETag** for the container.
 
-### 筛选器
-可以向使用 **BlobService** 执行的操作应用可选的筛选操作。筛选操作可包括日志记录、自动重试等。筛选器是实现具有签名的方法的对象：
+### Filters
+You can apply optional filtering operations to operations performed using **BlobService**. Filtering operations can include logging, automatically retrying, etc. Filters are objects that implement a method with the signature:
 
 ```nodejs
 function handle (requestOptions, next)
 ```
 
-在对请求选项执行预处理后，该方法需要调用“next”并且传递具有以下签名的回调：
+After doing its preprocessing on the request options, the method needs to call "next", passing a callback with the following signature:
 
 ```nodejs
 function (returnObject, finalCallback, next)
 ```
 
-在此回调中并且在处理 returnObject（来自对服务器请求的响应）后，回调需要调用 next（如果它已存在）以继续处理其他筛选器或只调用 finalCallback 以便结束服务调用。
+In this callback, and after processing the returnObject (the response from the request to the server), the callback needs to either invoke next if it exists to continue processing other filters or simply invoke finalCallback to end the service invocation.
 
-Azure SDK for Node.js 中附带了两个实现重试逻辑的筛选器，分别是 **ExponentialRetryPolicyFilter** 和 **LinearRetryPolicyFilter**。下面的代码将创建一个 **BlobService** 对象，该对象使用 **ExponentialRetryPolicyFilter**：
+Two filters that implement retry logic are included with the Azure SDK for Node.js, **ExponentialRetryPolicyFilter** and **LinearRetryPolicyFilter**. The following creates a **BlobService** object that uses the **ExponentialRetryPolicyFilter**:
 
 ```nodejs
 var retryOperations = new azure.ExponentialRetryPolicyFilter();
 var blobSvc = azure.createBlobService().withFilter(retryOperations);
 ```
 
-## 将 Blob 上传到容器中
-有三种类型的 Blob：块 Blob、页 Blob 和追加 Blob。块 Blob 能够实现更高效地上传大型数据。追加 Blob 针对追加操作进行了优化。页 Blob 针对读取/写入操作进行了优化。有关详细信息，请参阅[了解块 Blob、追加 Blob 和页 Blob](http://msdn.microsoft.com/zh-cn/library/azure/ee691964.aspx)。
+## Upload a blob into a container
+There are three types of blobs: block blobs, page blobs and append blobs. Block blobs allow you to more efficiently upload large data. Append blobs are optimized for append operations. Page blobs are optimized for read/write operations. For more information, see [Understanding Block Blobs, Append Blobs, and Page Blobs](http://msdn.microsoft.com/zh-cn/library/azure/ee691964.aspx).
 
-### 块 Blob
-若要将数据上传到块 Blob，可使用以下方法：
+### Block blobs
+To upload data to a block blob, use the following:
 
-* **createBlockBlobFromLocalFile** - 创建新的块 Blob 并上传文件的内容
-* **createBlockBlobFromStream** - 创建新的块 Blob 并上传流的内容
-* **createBlockBlobFromText** - 创建新的块 Blob 并上传字符串的内容
-* **createWriteStreamToBlockBlob** - 向块 Blob 提供写入流
+* **createBlockBlobFromLocalFile** - creates a new block blob and uploads the contents of a file
+* **createBlockBlobFromStream** - creates a new block blob and uploads the contents of a stream
+* **createBlockBlobFromText** - creates a new block blob and uploads the contents of a string
+* **createWriteStreamToBlockBlob** - provides a write stream to a block blob
 
-以下代码示例将 **test.txt** 文件的内容上传到 **myblob** 中。
+The following code example uploads the contents of the **test.txt** file into **myblob**.
 
 ```nodejs
 blobSvc.createBlockBlobFromLocalFile('mycontainer', 'myblob', 'test.txt', function(error, result, response){
@@ -160,17 +162,17 @@ blobSvc.createBlockBlobFromLocalFile('mycontainer', 'myblob', 'test.txt', functi
 });
 ```
 
-这些方法返回的 `result` 将包含有关操作的信息，例如 Blob 的 **ETag**。
+The `result` returned by these methods contains information on the operation, such as the **ETag** of the blob.
 
-### 追加 Blob
-若要将数据上传到新的追加 Blob，可使用以下方法：
+### Append blobs
+To upload data to a new append blob, use the following:
 
-* **createAppendBlobFromLocalFile** - 创建新的追加 Blob 并上传文件的内容
-* **createAppendBlobFromStream** - 创建新的追加 Blob 并上传流的内容
-* **createAppendBlobFromText** - 创建新的追加 Blob 并上传字符串的内容
-* **createWriteStreamToNewAppendBlob** - 创建新的追加 blob，然后向其提供要写入的流
+* **createAppendBlobFromLocalFile** - creates a new append blob and uploads the contents of a file
+* **createAppendBlobFromStream** - creates a new append blob and uploads the contents of a stream
+* **createAppendBlobFromText** - creates a new append blob and uploads the contents of a string
+* **createWriteStreamToNewAppendBlob** - creates a new append blob and then provides a stream to write to it
 
-以下代码示例将 **test.txt** 文件的内容上传到 **myappendblob** 中。
+The following code example uploads the contents of the **test.txt** file into **myappendblob**.
 
 ```nodejs
 blobSvc.createAppendBlobFromLocalFile('mycontainer', 'myappendblob', 'test.txt', function(error, result, response){
@@ -180,18 +182,18 @@ blobSvc.createAppendBlobFromLocalFile('mycontainer', 'myappendblob', 'test.txt',
 });
 ```
 
-若要将块追加到现有追加 Blob，请使用以下方法：
+To append a block to an existing append blob, use the following:
 
-* **appendFromLocalFile** - 将文件的内容追加到现有追加 Blob
-* **appendFromStream** - 将流的内容追加到现有追加 Blob
-* **appendFromText** - 将字符串的内容追加到现有追加 Blob
-* **appendBlockFromStream** - 将流的内容追加到现有追加 Blob
-* **appendBlockFromText** - 将字符串的内容追加到现有追加 Blob
+* **appendFromLocalFile** - append the contents of a file to an existing append blob
+* **appendFromStream** - append the contents of a stream to an existing append blob
+* **appendFromText** - append the contents of a string to an existing append blob
+* **appendBlockFromStream** - append the contents of a stream to an existing append blob
+* **appendBlockFromText** - append the contents of a string to an existing append blob
 
 > [!NOTE]
-> appendFromXXX API 将会执行某些客户端验证以快速失败，从而避免不必要的服务器调用。而 appendBlockFromXXX 则不会如此。
+> appendFromXXX APIs will do some client-side validation to fail fast to avoid unncessary server call. appendBlockFromXXX won't.
 
-以下代码示例将 **test.txt** 文件的内容上传到 **myappendblob** 中。
+The following code example uploads the contents of the **test.txt** file into **myappendblob**.
 
 ```nodejs
 blobSvc.appendFromText('mycontainer', 'myappendblob', 'text to be appended', function(error, result, response){
@@ -201,16 +203,16 @@ blobSvc.appendFromText('mycontainer', 'myappendblob', 'text to be appended', fun
 });
 ```
 
-### 页 Blob
-若要将数据上传到页 Blob，可使用以下方法：
+### Page blobs
+To upload data to a page blob, use the following:
 
-* **createPageBlob** - 创建新的特定长度的页 Blob
-* **createPageBlobFromLocalFile** - 创建新的页 Blob 并上传文件的内容
-* **createPageBlobFromStream** - 创建新的页 Blob 并上传流的内容
-* **createWriteStreamToExistingPageBlob** - 向现有页 Blob 提供写入流
-* **createWriteStreamToNewPageBlob** - 创建新的页 Blob，然后向其提供要写入的流
+* **createPageBlob** - creates a new page blob of a specific length
+* **createPageBlobFromLocalFile** - creates a new page blob and uploads the contents of a file
+* **createPageBlobFromStream** - creates a new page blob and uploads the contents of a stream
+* **createWriteStreamToExistingPageBlob** - provides a write stream to an existing page blob
+* **createWriteStreamToNewPageBlob** - creates a new page blob and then provides a stream to write to it
 
-以下代码示例将 **test.txt** 文件的内容上传到 **mypageblob** 中。
+The following code example uploads the contents of the **test.txt** file into **mypageblob**.
 
 ```nodejs
 blobSvc.createPageBlobFromLocalFile('mycontainer', 'mypageblob', 'test.txt', function(error, result, response){
@@ -221,10 +223,10 @@ blobSvc.createPageBlobFromLocalFile('mycontainer', 'mypageblob', 'test.txt', fun
 ```
 
 > [!NOTE]
-> 页 Blob 包含 512 字节的“页面”。如果上传大小不是 512 倍数的数据，则会收到错误。
+> Page blobs consist of 512-byte 'pages'. You will receive an error when uploading data with a size that is not a multiple of 512.
 
-## 列出容器中的 Blob
-若要列出容器中的 Blob，请使用 **listBlobsSegmented** 方法。如果想要返回带特定前缀的 Blob，请使用 **listBlobsSegmentedWithPrefix**。
+## List the blobs in a container
+To list the blobs in a container, use the **listBlobsSegmented** method. If you'd like to return blobs with a specific prefix, use **listBlobsSegmentedWithPrefix**.
 
 ```nodejs
 blobSvc.listBlobsSegmented('mycontainer', null, function(error, result, response){
@@ -235,17 +237,17 @@ blobSvc.listBlobsSegmented('mycontainer', null, function(error, result, response
 });
 ```
 
-`result` 包含一个 `entries` 集合，该集合是一组用于描述每个 Blob 的对象。如果不能返回所有 Blob，`result` 还将提供 `continuationToken`，这可用作第二个参数来检索其他条目。
+The `result` contains an `entries` collection, which is an array of objects that describe each blob. If all blobs cannot be returned, the `result` also provides a `continuationToken`, which you may use as the second parameter to retrieve additional entries.
 
-## 下载 Blob
-若要从 Blob 下载数据，可使用以下方法：
+## Download blobs
+To download data from a blob, use the following:
 
-* **getBlobToLocalFile** - 将 Blob 内容写入文件
-* **getBlobToStream** - 将 Blob 内容写入流
-* **getBlobToText** - 将 Blob 内容写入字符串
-* **createReadStream** - 提供可从 Blob 读取内容的流
+* **getBlobToLocalFile** - writes the blob contents to file
+* **getBlobToStream** - writes the blob contents to a stream
+* **getBlobToText** - writes the blob contents to a string
+* **createReadStream** - provides a stream to read from the blob
 
-以下代码示例演示了如何使用 **getBlobToStream** 下载 **myblob** Blob 的内容，并使用一个流将其存储到 **output.txt** 文件：
+The following code example demonstrates using **getBlobToStream** to download the contents of the **myblob** blob and store it to the **output.txt** file by using a stream:
 
 ```nodejs
 var fs = require('fs');
@@ -256,10 +258,10 @@ blobSvc.getBlobToStream('mycontainer', 'myblob', fs.createWriteStream('output.tx
 });
 ```
 
-`result` 包含有关 Blob 的信息，包括 **ETag** 信息。
+The `result` contains information about the blob, including **ETag** information.
 
-## 删除 Blob
-最后，若要删除 Blob，请调用 **deleteBlob**。以下代码示例将删除名为 **myblob** 的 Blob。
+## Delete a blob
+Finally, to delete a blob, call **deleteBlob**. The following code example deletes the blob named **myblob**.
 
 ```nodejs
 blobSvc.deleteBlob(containerName, 'myblob', function(error, response){
@@ -269,16 +271,16 @@ blobSvc.deleteBlob(containerName, 'myblob', function(error, response){
 });
 ```
 
-## 并发访问
-若要允许从多个客户端或多个进程实例并发访问某个 Blob，可以使用 **ETag** 或**租约**。
+## Concurrent access
+To support concurrent access to a blob from multiple clients or multiple process instances, you can use **ETags** or **leases**.
 
-* **Etag** - 用于检测 Blob 或容器是否已被其他进程修改
-* **租约** - 用于在某个时段内获取对 Blob 的独占式可续订写入或删除访问
+* **Etag** - provides a way to detect that the blob or container has been modified by another process
+* **Lease** - provides a way to obtain exclusive, renewable, write or delete access to a blob for a period of time
 
 ### ETag
-如果需要允许多个客户端或实例同时写入块 Blob 或页 Blob，请使用 ETag。ETag 用于确定自第一次读取或创建某个容器或 Blob 以来，该容器或 Blob 是否被修改，这样就可以避免覆盖其他客户端或进程提交的更改。
+Use ETags if you need to allow multiple clients or instances to write to the block Blob or page Blob simultaneously. The ETag allows you to determine if the container or blob was modified since you initially read or created it, which allows you to avoid overwriting changes committed by another client or process.
 
-可以使用可选的 `options.accessConditions` 参数设置 ETag 条件。如果 Blob 已存在且具有 `etagToMatch` 所包含的 ETag 值，则以下代码示例将仅上传 **test.txt** 文件。
+You can set ETag conditions by using the optional `options.accessConditions` parameter. The following code example only uploads the **test.txt** file if the blob already exists and has the ETag value contained by `etagToMatch`.
 
 ```nodejs
 blobSvc.createBlockBlobFromLocalFile('mycontainer', 'myblob', 'test.txt', { accessConditions: { EtagMatch: etagToMatch} }, function(error, result, response){
@@ -288,16 +290,15 @@ blobSvc.createBlockBlobFromLocalFile('mycontainer', 'myblob', 'test.txt', { acce
 });
 ```
 
-当使用 ETag 时，常规模式为：
+When you're using ETags, the general pattern is:
 
-1. 通过创建、列出或获取操作来获取 ETag。
-2. 执行一个操作，查看 ETag 值是否尚未修改。
+1. Obtain the ETag as the result of a create, list, or get operation.
+2. Perform an action, checking that the ETag value has not been modified.
 
-如果值已修改，则表明在获得 ETag 值后，其他客户端或实例已修改该 Blob 或容器。
+If the value was modified, this indicates that another client or instance modified the blob or container since you obtained the ETag value.
 
-### 租约
-
-新的租约可使用 **acquireLease** 方法获取，只需指定希望获取其租约的 Blob 或容器即可。例如，以下代码将获取 **myblob** 的租约。
+### Lease
+You can acquire a new lease by using the **acquireLease** method, specifying the blob or container that you wish to obtain a lease on. For example, the following code acquires a lease on **myblob**.
 
 ```nodejs
 blobSvc.acquireLease('mycontainer', 'myblob', function(error, result, response){
@@ -307,22 +308,22 @@ blobSvc.acquireLease('mycontainer', 'myblob', function(error, result, response){
 });
 ```
 
-对 **myblob** 的后续操作必须提供 `options.leaseId` 参数。租约 ID 作为 `result.id` 从 **acquireLease** 返回。
+Subsequent operations on **myblob** must provide the `options.leaseId` parameter. The lease ID is returned as `result.id` from **acquireLease**.
 
 > [!NOTE]
-> 默认情况下，租约期限为无期。可以指定一个有限的租期（15 到 60 秒），只需提供 `options.leaseDuration` 参数即可。
+> By default, the lease duration is infinite. You can specify a non-infinite duration (between 15 and 60 seconds) by providing the `options.leaseDuration` parameter.
 
-若要删除租约，请使用 **releaseLease**。若要中断租约，但又要防止其他人在原始租约到期之前获得新租约，则可使用 **breakLease**。
+To remove a lease, use **releaseLease**. To break a lease, but prevent others from obtaining a new lease until the original duration has expired, use **breakLease**.
 
-## 使用共享访问签名
-共享访问签名 (SAS) 是一种安全的方法，用于对 Blob 和容器进行细致访问而无需提供存储帐户名或密钥。通常使用共享访问签名来提供对数据的有限访问权限，例如允许移动应用程序访问 Blob。
+## Work with shared access signatures
+Shared access signatures (SAS) are a secure way to provide granular access to blobs and containers without providing your storage account name or keys. Shared access signatures are often used to provide limited access to your data, such as allowing a mobile app to access blobs.
 
 > [!NOTE]
-> 虽然也可以允许匿名访问 Blob，但共享访问签名可以允许提供更受控制的访问，因为必须生成 SAS。
+> While you can also allow anonymous access to blobs, shared access signatures allow you to provide more controlled access, as you must generate the SAS.
 
-受信任的应用程序（例如基于云的服务）可使用 **BlobService** 的 **generateSharedAccessSignature** 生成共享访问签名，然后将其提供给不受信任的或不完全受信任的应用程序，例如移动应用。共享访问签名可使用策略生成，该策略描述了共享访问签名的生效日期和失效日期，以及授予共享访问签名持有者的访问级别。
+A trusted application such as a cloud-based service generates shared access signatures using the **generateSharedAccessSignature** of the **BlobService**, and provides it to an untrusted or semi-trusted application such as a mobile app. Shared access signatures are generated using a policy, which describes the start and end dates during which the shared access signatures are valid, as well as the access level granted to the shared access signatures holder.
 
-以下代码示例生成了一个新的共享访问策略，该策略将允许共享访问签名持有者对 **myblob** Blob 执行读取操作，并且在创建后 100 分钟过期。
+The following code example generates a new shared access policy that allows the shared access signatures holder to perform read operations on the **myblob** blob, and expires 100 minutes after the time it is created.
 
 ```nodejs
 var startDate = new Date();
@@ -342,9 +343,9 @@ var blobSAS = blobSvc.generateSharedAccessSignature('mycontainer', 'myblob', sha
 var host = blobSvc.host;
 ```
 
-请注意，还必须提供主机信息，因为共享访问签名持有者尝试访问容器时，必须提供该信息。
+Note that the host information must be provided also, as it is required when the shared access signatures holder attempts to access the container.
 
-然后，客户端应用程序将共享访问签名用于 **BlobServiceWithSAS**，以便针对 Blob 执行操作。以下语句获取有关 **myblob** 的信息。
+The client application then uses shared access signatures with **BlobServiceWithSAS** to perform operations against the blob. The following gets information about **myblob**.
 
 ```nodejs
 var sharedBlobSvc = azure.createBlobServiceWithSas(host, blobSAS);
@@ -355,12 +356,12 @@ sharedBlobSvc.getBlobProperties('mycontainer', 'myblob', function (error, result
 });
 ```
 
-由于共享访问签名在生成时具有只读访问权限，因此如果尝试修改 Blob，则会返回错误。
+Since the shared access signatures were generated with read-only access, if an attempt is made to modify the blob, an error will be returned.
 
-### 访问控制列表
-还可以使用访问控制列表 (ACL) 为 SAS 设置访问策略。如果希望允许多个客户端访问某个容器，但为每个客户端提供了不同的访问策略，则访问控制列表会很有用。
+### Access control lists
+You can also use an access control list (ACL) to set the access policy for SAS. This is useful if you wish to allow multiple clients to access a container but provide different access policies for each client.
 
-ACL 是使用一组访问策略实施的，每个策略都有一个关联的 ID。以下代码示例定义了两个策略，一个用于“user1”，一个用于“user2”：
+An ACL is implemented using an array of access policies, with an ID associated with each policy. The following code example defines two policies, one for 'user1' and one for 'user2':
 
 ```nodejs
 var sharedAccessPolicy = {
@@ -377,7 +378,7 @@ var sharedAccessPolicy = {
 };
 ```
 
-以下代码示例将获取 **mycontainer** 的当前 ACL，然后使用 **setBlobAcl** 添加新策略。此方法具有以下用途：
+The following code example gets the current ACL for **mycontainer**, and then adds the new policies using **setBlobAcl**. This approach allows:
 
 ```nodejs
 var extend = require('extend');
@@ -393,31 +394,29 @@ blobSvc.getBlobAcl('mycontainer', function(error, result, response) {
 });
 ```
 
-设置 ACL 后，可以根据某个策略的 ID 创建共享访问签名。以下代码示例将为“user2”创建新的共享访问签名：
+Once the ACL is set, you can then create shared access signatures based on the ID for a policy. The following code example creates new shared access signatures for 'user2':
 
 ```nodejs
 blobSAS = blobSvc.generateSharedAccessSignature('mycontainer', { Id: 'user2' });
 ```
 
-## 后续步骤
-有关详细信息，请参阅以下资源。
+## Next steps
+For more information, see the following resources.
 
-* [Azure Storage SDK for Node API 参考][Azure Storage SDK for Node API Reference]
-* [Azure 存储团队博客][Azure Storage Team Blog]
-* GitHub 上的 [Azure Storage SDK for Node][Azure Storage SDK for Node] 存储库
-* [Node.js 开发人员中心](/develop/nodejs/)
-* [使用 AzCopy 命令行实用程序传输数据](./storage-use-azcopy.md)
+* [Azure Storage SDK for Node API Reference][Azure Storage SDK for Node API Reference]
+* [Azure Storage Team Blog][Azure Storage Team Blog]
+* [Azure Storage SDK for Node][Azure Storage SDK for Node] repository on GitHub
+* [Node.js Developer Center](/develop/nodejs/)
+* [Transfer data with the AzCopy command-line utility](./storage-use-azcopy.md)
 
 [Azure Storage SDK for Node]: https://github.com/Azure/azure-storage-node
 
-[在 Azure App Service 中创建 Node.js Web 应用]: ../app-service-web/web-sites-nodejs-develop-deploy-mac.md
+[Create a Node.js web app in Azure App Service]: ../app-service-web/web-sites-nodejs-develop-deploy-mac.md
 [Node.js Cloud Service with Storage]: ./storage-nodejs-use-table-storage-cloud-service-app.md
-[使用 Azure 表服务的 Node.js Web 应用]: ../app-service-web/storage-nodejs-use-table-storage-web-site.md
-[使用 Web Matrix 生成 Node.js Web 应用并将其部署到 Azure]: ../app-service-web/web-sites-nodejs-use-webmatrix.md
+[Node.js web app using the Azure Table Service]: ../app-service-web/storage-nodejs-use-table-storage-web-site.md
+[Build and deploy a Node.js web app to Azure using Web Matrix]: /documentation/articles/web-sites-nodejs-use-webmatrix/
 [Using the REST API]: http://msdn.microsoft.com/zh-cn/library/azure/hh264518.aspx
 [Azure Portal]: https://portal.azure.cn
-[使用 Windows PowerShell 生成 Node.js 应用程序并将其部署到 Azure 云服务]: ../cloud-services/cloud-services-nodejs-develop-deploy-app.md
+[Build and deploy a Node.js application to an Azure Cloud Service]: ../cloud-services/cloud-services-nodejs-develop-deploy-app.md
 [Azure Storage Team Blog]: http://blogs.msdn.com/b/windowsazurestorage/
 [Azure Storage SDK for Node API Reference]: http://azure.github.io/azure-storage-node/
-
-<!---HONumber=Mooncake_0103_2017-->

@@ -1,15 +1,13 @@
-## <a name="Scenario"></a> 方案
-创建具有一个 NIC 的 VM，并连接到虚拟网络。VM 需要三个不同的*专用* IP 地址和两个*公共* IP 地址。IP 地址会分配给以下 IP 配置：
+## <a name="Scenario"></a> Scenario
+A VM with a single NIC is created and connected to a virtual network. The VM requires three different *private* IP addresses and two *public* IP addresses. The IP addresses are assigned to the following IP configurations:
 
-* **IPConfig-1：**分配一个*动态*专用 IP 地址（默认）和一个*静态*公共 IP 地址。
-* **IPConfig-2：**分配一个*静态*专用 IP 地址和一个*静态*公共 IP 地址。
-* **IPConfig-3：**分配一个*动态*专用 IP 地址，不分配公共 IP 地址。
+* **IPConfig-1:** Assigns a *dynamic* private IP address (default) and a *static* public IP address.
+* **IPConfig-2:** Assigns a *static* private IP address and a *static* public IP address.
+* **IPConfig-3:** Assigns a *dynamic* private IP address and no public IP address.
 
-    ![多个 IP 地址](./media/virtual-network-multiple-ip-addresses-scenario/OneNIC-3IP.png)  
+    ![Multiple IP addresses](./media/virtual-network-multiple-ip-addresses-scenario/OneNIC-3IP.png)
 
-IP 配置在创建 NIC 时关联到 NIC，NIC 在创建 VM 时附加到 VM。本方案使用的 IP 地址类型用于演示目的。可分配需要的任何 IP 地址和分配类型。
+The IP configurations are associated to the NIC when the NIC is created and the NIC is attached to the VM when the VM is created. The types of IP addresses used for the scenario are for illustration. You can assign whatever IP address and assignment types you require.
 
 > [!NOTE]
-尽管本文中的步骤将所有 IP 配置都分配给一个 NIC，但也可将多个 IP 配置分配给多 NIC VM 中的任何 NIC。若要了解如何创建具有多个 NIC 的 VM，请阅读[创建具有多个 NIC 的 VM](../articles/virtual-network/virtual-network-deploy-multinic-arm-ps.md) 一文。
-
-<!---HONumber=Mooncake_1226_2016-->
+> Though the steps in this article assigns all IP configurations to a single NIC, you can also assign multiple IP configurations to any NIC in a multi-NIC VM. To learn how to create a VM with multiple NICs, read the [Create a VM with multiple NICs](../articles/virtual-network/virtual-network-deploy-multinic-arm-ps.md) article.

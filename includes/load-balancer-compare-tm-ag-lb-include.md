@@ -1,32 +1,28 @@
-## 负载均衡器之间的差异
+## Load Balancer differences
 
-使用 Azure 分配网络流量有不同的选项。这些选项的工作方式彼此不同，具有不同的功能集，并支持不同的方案。这些选项每个都能单独使用，也可以组合使用。
+There are different options to distribute network traffic using Azure. These options work differently from each other, having a different feature set and support different scenarios. They can each be used in isolation, or combining them.
 
-- **Azure Load Balancer** 在传输层（OSI 网络参考堆栈中的第 4 层）工作。它可对同一 Azure 数据中心中运行的应用程序实例间的流量进行网络级分配。
+* **Azure Load Balancer** works at the transport layer (Layer 4 in the OSI network reference stack). It provides network-level distribution of traffic across instances of an application running in the same Azure data center.
+* **Application Gateway** works at the application layer (Layer 7 in the OSI network reference stack). It acts as a reverse-proxy service, terminating the client connection and forwarding requests to back-end endpoints.
+* **Traffic Manager** works at the DNS level.  It uses DNS responses to direct end-user traffic to globally distributed endpoints. Clients then connect to those endpoints directly.
 
-- **应用程序网关**在应用程序层（OSI 网络参考堆栈中的第 7 层）工作。它充当反向代理服务，终止客户端连接，并将请求转发到后端终结点。
+The following table summarizes the features offered by each service:
 
-- **流量管理器**在 DNS 级别工作。它使用 DNS 响应将最终用户流量定向到全球分布的终结点。然后，客户端直接连接到这些终结点。
+| Service | Azure Load Balancer | Application Gateway | Traffic Manager |
+| --- | --- | --- | --- |
+| Technology |Transport level (Layer 4) |Application level (Layer 7) |DNS level |
+| Application protocols supported |Any |HTTP and HTTPS |Any (An HTTP endpoint is required for endpoint monitoring) |
+| Endpoints |Azure VMs and Cloud Services role instances |Any Azure Internal IP address or public internet IP address |Azure VMs, Cloud Services, Azure Web Apps, and external endpoints |
+| Vnet support |Can be used for both Internet facing and internal (Vnet) applications |Can be used for both Internet facing and internal (Vnet) applications |Only supports Internet-facing applications |
+| Endpoint Monitoring |Supported via probes |Supported via probes |Supported via HTTP/HTTPS GET |
 
-下表总结了每个服务提供的功能：
+Azure Load Balancer and Application Gateway route network traffic to endpoints but they have different usage scenarios to which traffic to handle. The following table helps understanding the difference between the two load balancers:
 
-| 服务 | Azure 负载均衡器 | 应用程序网关 | 流量管理器 |
-|---|---|---|---|
-|技术| 传输层（第 4 层） | 应用程序层（第 7 层） | DNS 级别 |
-| 支持的应用程序协议 |	任意 | HTTP 和 HTTPS | 	任何（HTTP 终结点是终结点监视所必需的） |
-| 终结点 | Azure VM 和云服务角色实例 | 任何 Azure 内部 IP 地址或公共 Internet IP 地址 | Azure VM、云服务、Azure Web 应用和外部终结点 |
-| 虚拟网络支持 | 可用于面向 Internet 的应用程序和内部 (Vnet) 应用程序 | 可用于面向 Internet 的应用程序和内部 (Vnet) 应用程序 |	仅支持面向 Internet 的应用程序 |
-终结点监视 | 通过探测支持 | 通过探测支持 | 通过 HTTP/HTTPS GET 支持 | 
-
-Azure Load Balancer 和应用程序网关都将网络流量路由到终结点，但它们具有处理流量的不同使用方案。下表有助于了解这两种负载均衡器之间的区别：
-
-| 类型 | Azure 负载均衡器 | 应用程序网关 |
-|---|---|---|
-| 协议 | UDP/TCP | HTTP/HTTPS |
-| IP 保留 | 支持 | 不支持 | 
-| 负载均衡模式 | 5 元组（源 IP、源端口、目标 IP、目标端口、协议类型） | 轮循机制<br>基于 URL 的路由 | 
-| 负载均衡模式（源 IP/粘性会话） | 2 元组（源 IP 和目标 IP）、3 元组（源 IP、目标 IP 和端口）。可以根据虚拟机数增加或减少 | 基于 Cookie 的相关性<br>基于 URL 的路由 |
-| 运行状况探测 | 默认值：探测间隔 - 15 秒。退出循环：2 次连续失败。支持用户定义的探测 | 空闲探测间隔 30 秒。在 5 次连续实时通信失败或空闲模式下单次探测失败后取出。支持用户定义的探测 | 
-| SSL 卸载 | 不支持 | 支持 | 
-
-<!---HONumber=Mooncake_0926_2016-->
+| Type | Azure Load Balancer | Application Gateway |
+| --- | --- | --- |
+| Protocols |UDP/TCP |HTTP/ HTTPS |
+| IP reservation |Supported |Not supported |
+| Load balancing mode |5-tuple(source IP, source port, destination IP, destination port, protocol type) |Round Robin<br>Routing based on URL |
+| Load balancing mode (source IP /sticky sessions) |2-tuple (source IP and destination IP), 3-tuple (source IP, destination IP, and port). Can scale up or down based on the number of virtual machines |Cookie-based affinity<br>Routing based on URL |
+| Health probes |Default: probe interval - 15 secs. Taken out of rotation: 2 Continuous failures. Supports user-defined probes |Idle probe interval 30 secs. Taken out after 5 consecutive live traffic failures or a single probe failure in idle mode. Supports user-defined probes |
+| SSL offloading |Not supported |Supported |

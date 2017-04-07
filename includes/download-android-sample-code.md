@@ -1,15 +1,13 @@
-本教程基于 Android 应用 **GetStartedWithData**。此应用程序的 UI 与 Mobile Services Android 快速入门中生成的应用程序相同，不过，前者的一些项本地存储在内存中。你将添加所需的代码，以便将数据保存到存储空间。
+This tutorial is built on **GetStartedWithData**, which is an Android app. The UI for this app is identical to the one in the Mobile Services Android quickstart, except that items that are added to the list are stored locally in memory. You will add the code needed to persist the data to storage.
 
-1. 通过单击<a href="https://github.com/Azure/mobile-services-samples" target="blank">此处</a>，然后单击“下载 ZIP”，从 gitHub 下载示例存储库。
+1. Download the samples repository from gitHub by clicking <a href="https://github.com/Azure/mobile-services-samples" target="blank">here</a> and then Click **Download ZIP**.
 
-2. 解压缩下载的文件并记下其位置，或将其移到 Android Studio 项目目录中。
+2. Unzip the downloaded file and make a note of its location, or move it to your Android Studio projects directory.
 
-3. 打开 Android Studio。如果你正在使用不同的项目并且显示该项目，请关闭该项目（“文件”= >“关闭项目”）。
+3. Open Android Studio. If you are working with a different project and it appears, close the project (**File => Close Project**).
 
-4. 选择“打开现有 Android Studio 项目”，浏览到该项目在 *GettingStartedWithData* 的 *AndroidStudio* 文件夹中位置，然后单击“确定”。
+4. Select **Open an existing Android Studio project**, browse to the project location in the *AndroidStudio* folder of *GettingStartedWithData*, and then click **OK.** 
 
      ![](./media/mobile-services-android-get-started/android-studio-import-project.png)
 
-    现在，你可以使用该项目。
-
-<!---HONumber=71-->
+    The project is now ready for you to work with.

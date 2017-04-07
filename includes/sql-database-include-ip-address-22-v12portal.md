@@ -5,23 +5,35 @@ Latest Freshness check:  2016-03-21 , daleche.
 
 As of circa 2015-09-04, the following topics might include this include:
 /documentation/articles/sql-database-configure-firewall-settings/
-/documentation/articles/sql-database-connect-query/
+/documentation/articles/sql-database-connect-query
 
 ## Server-level firewall rules
 
 ### Add a server-level firewall rule through the new Azure portal
 -->
 
-1. 登录到 [Azure 经典管理门户](https://manage.windowsazure.cn)（网址为 http://manage.windowsazure.cn/）。
+1. Log in to the [Azure portal](https://manage.windowsazure.cn) at http://manage.windowsazure.cn/.
 
-2. 滚动并单击“SQL 数据库”。
+2. In the left banner, click **BROWSE ALL**. The **Browse** blade is displayed.
 
-3. 单击顶部显示的“服务器”，
+3. Scroll and click **SQL servers**. The **SQL servers** blade is displayed.
 
-4. 单击“配置”。 
+4. For convenience, click the minimize control on the earlier **Browse** blade.
 
-5. 在“允许的 IP 地址”部分添加你想要启用的范围的下限和上限 IP 地址值。
-    - 为方便起见，可以让下限值以 **.0** 结尾，让上限值以 **.255** 结尾。
+5. In the filter text box, start typing the name of your server. Your row is displayed.
+
+6. Click the row for your server. A blade for your server is displayed.
+
+7. On your server blade, click **Settings**. The **Settings** blade is displayed.
+
+8. Click **Firewall**. The **Firewall Settings** blade is displayed.
+
+9. Click **Add Client IP**. Type in a name for your new rule into the first text box.
+
+10. Type in the low and high IP address values for the range you want to enable.
+    - It can be handy to have the low value end with **.0** and the high with **.255**.
+
+11. Click **Save**.
 
 <!-- Image references. -->
 
@@ -37,5 +49,3 @@ These includes/ files are a sequenced set, but you can pick and choose:
 ../includes/sql-database-include-ip-address-22-v12portal.md
 ? ../includes/sql-database-include-ip-address-*.md
 -->
-
-<!---HONumber=Mooncake_0503_2016-->

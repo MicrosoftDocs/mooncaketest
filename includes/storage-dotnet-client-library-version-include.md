@@ -1,6 +1,4 @@
 >[!NOTE]
-> 我们建议您使用最新版本的用于 .NET 的 Azure 存储空间客户端库来完成本教程。该库的最新版本为 7.x，现在可从 [Nuget](https://www.nuget.org/packages/WindowsAzure.Storage/) 下载。可从 [GitHub](https://github.com/Azure/azure-storage-net) 获得客户端库的来源。
+> We recommend that you use the latest version of the Azure Storage Client Library for .NET to complete this tutorial. The latest version of the library is 7.x, available for download on [Nuget](https://www.nuget.org/packages/WindowsAzure.Storage/). The source for the client library is available on [GitHub](https://github.com/Azure/azure-storage-net).
 >
->如果使用的是存储模拟器，请注意 7.x 版的客户端库需要最低为 4.3 版的存储模拟器
-
-<!---HONumber=Mooncake_0516_2016-->
+>If you are using the storage emulator, note that version 7.x of the client library requires at least version 4.3 of the storage emulator

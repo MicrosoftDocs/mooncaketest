@@ -1,18 +1,15 @@
-## 方案
+## Scenario
+To better illustrate how to create NSGs, this document will use the scenario below.
 
-为了更好地说明如何创建 NSG，本文档将使用以下方案。
+![VNet scenario](./media/virtual-networks-create-nsg-scenario-include/figure1.png)
 
-![VNet 方案](./media/virtual-networks-create-nsg-scenario-include/figure1.png)
+In this scenario you will create an NSG for each subnet in the **TestVNet** virtual network, as described below: 
 
-在此方案中，你将为 **TestVNet** 虚拟网络中的每个子网创建 NSG，如下面所述：
+* **NSG-FrontEnd**. The front end NSG will be applied to the *FrontEnd* subnet, and contain two rules:    
+    * **rdp-rule**. This rule will allow RDP traffic to the *FrontEnd* subnet.
+    * **web-rule**. This rule will allow HTTP traffic to the *FrontEnd* subnet.
+* **NSG-BackEnd**. The back end NSG will be applied to the *BackEnd* subnet, and contain two rules:    
+    * **sql-rule**. This rule allows SQL traffic only from the *FrontEnd* subnet.
+    * **web-rule**. This rule denies all internet bound traffic from the *BackEnd* subnet.
 
-- **NSG-FrontEnd**。前端 NSG 将应用于 *FrontEnd* 子网，并且包含以下两个规则：	
-    - **rdp-rule**。此规则允许将 RDP 流量传输到 *FrontEnd* 子网。
-    - **web-rule**。此规则允许将 HTTP 流量传输到 *FrontEnd* 子网。
-- **NSG-BackEnd**。后端 NSG 将应用于 *BackEnd* 子网，并且包含以下两个规则：	
-    - **sql-rule**。此规则只允许从 *FrontEnd* 子网传输的 SQL 流量。
-    - **web-rule**。此规则将拒绝从 *BackEnd* 子网传输的所有 Internet 绑定流量。
-
-将这些规则组合起来可创建一个与 DMZ 类似的方案，其中后端子网只能接收来自前端子网的 SQL 通信的传入流量且不能访问 Internet，而前端子网可以与 Internet 通信并只接收传入 HTTP 请求。
-
-<!---HONumber=76-->
+The combination of these rules create a DMZ-like scenario, where the back end subnet can only receive incoming traffic for SQL from the front end subnet, and has no access to the Internet, while the front end subnet can communicate with the Internet, and receive incoming HTTP requests only.

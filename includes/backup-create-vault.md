@@ -1,42 +1,40 @@
-## 创建备份保管库
-若要将文件和数据从 Windows Server 或 Data Protection Manager (DPM) 备份到 Azure 或者要将 IaaS VM 备份到 Azure，你必须在要存储数据的地理区域中创建备份保管库。
+## Create a Backup Vault
+To back up files and data from Windows Server or Data Protection Manager (DPM) to Azure or when backing up IaaS VMs to Azure, you must create a backup vault in the geographic region where you want to store the data.
 
-以下步骤将指导你完成创建用于存储备份的保管库。
+The following steps will walk you through the creation of the vault used to store backups.
 
-1. 登录到[管理门户](https://manage.windowsazure.cn/)
-2. 单击“新建”>“数据服务”>“恢复服务”->“备份保管库”，然后选择“快速创建”。
+1. Sign in to the [Management Portal](https://manage.windowsazure.cn/)
+2. Click **New** > **Data Services** > **Recovery Services** > **Backup Vault** and choose **Quick Create**.
 
-    ![创建保管库](./media/backup-create-vault/createvault1.png)
+    ![Create vault](./media/backup-create-vault/createvault1.png)
 
-3. 对于“名称”参数，请输入一个友好名称以标识备份保管库。这必须是每个订阅的唯一名称。
+3. For the **Name** parameter, enter a friendly name to identify the backup vault. This needs to be unique for each subscription.
 
-4. 对于“区域”参数，请选择备份保管库的地理区域。所选项确定了备份数据要发送到的地理区域。选择靠近你所在位置的地理区域可以减少备份到 Azure 时的网络延迟。
+4. For the **Region** parameter, select the geographic region for the backup vault. The choice determines the geographic region to which your backup data is sent. By choosing a geographic region close to your location, you can reduce the network latency when backing up to Azure.
 
-5. 单击“创建保管库”完成该工作流。创建备份保管库可能需要一段时间。若要检查状态，可以监视门户底部的通知。
+5. Click on **Create Vault** to complete the workflow. It can take a while for the backup vault to be created. To check the status, you can monitor the notifications at the bottom of the portal.
 
-    ![创建保管库](./media/backup-create-vault/creatingvault1.png)
+    ![Creating Vault](./media/backup-create-vault/creatingvault1.png)
 
-6. 在创建备份保管库后，将显示一条消息通知你已成功创建保管库。该保管库还会在恢复服务的资源中列出为“活动”。
+6. After the backup vault has been created, a message tells you the vault has been successfully created. The vault is also listed in the resources for Recovery Services as **Active**.
 
-    ![创建保管库状态](./media/backup-create-vault/backupvaultstatus1.png)
+    ![Creating Vault status](./media/backup-create-vault/backupvaultstatus1.png)
 
-### <a name="azure-backup---storage-redundancy-options"></a>Azure 备份 - 存储冗余选项
+### Azure Backup - Storage Redundancy Options
 
 >[!IMPORTANT]
-> 确定存储冗余选项的最佳时机是在创建保管库之后、将任何计算机注册到保管库之前。将某个项注册到保管库后，存储冗余选项将会锁定且不能修改。
+> The best time to identify your storage redundancy option is right after vault creation, and before any machines are registered to the vault. Once an item has been registered to the vault, the storage redundancy option is locked and cannot be modified.
 
-你的业务需求应确定 Azure 备份后端存储的存储冗余。如果你要使用 Azure 作为主要备份存储终结点（例如，你要从 Windows Server 备份到 Azure），应考虑选择（默认的）地域冗余存储选项。此选项显示在备份保管库的“配置”选项下。
+Your business needs should determine the storage redundancy of the Azure Backup backend storage. If you are using Azure as a primary backup storage endpoint (e.g. you are backing up to Azure from a Windows Server), you should consider picking (the default) Geo-Redundant storage option. This is seen under the **Configure** option of your Backup vault.
 
 ![GRS](./media/backup-create-vault/grs.png)
 
-#### 地域冗余存储 (GRS)。
-GRS 维护你的数据的六个副本。使用 GRS 时，你的数据将在主区域内复制三次，并且还在离主区域数百英里的辅助区域中复制三次，从而提供最高级别的持久性。当主区域中发生故障时，Azure 备份会将数据存储在 GRS 中，从而确保你的数据在两个独立的区域中持久保存。
+#### Geo-Redundant Storage (GRS)
+GRS maintains six copies of your data. With GRS, your data is replicated three times within the primary region, and is also replicated three times in a secondary region hundreds of miles away from the primary region, providing the highest level of durability. In the event of a failure at the primary region, by storing data in GRS, Azure Backup ensures that your data is durable in two separate regions.
 
-#### 本地冗余存储 (LRS)
-本地冗余存储 (LRS) 保留数据的三个副本。LRS 将在单个区域中的单个设施内复制三次。LRS 可以保护你的数据免受普通的硬件故障损害，但无法保护你的数据免受整个 Azure 设施故障的损害。
+#### Locally Redundant Storage (LRS)
+Locally redundant storage (LRS) maintains three copies of your data. LRS is replicated three times within a single facility in a single region. LRS protects your data from normal hardware failures, but not from the failure of an entire Azure facility.
 
-如果使用 Azure 作为第三级备份存储终结点（例如，你正在使用 SCDPM 在本地创建本地备份复制，使用 Azure 满足长期数据保留需求），应考虑从备份保管库的“配置”选项中选择“本地冗余存储”。这可以降低在 Azure 中存储数据的成本，但提供的数据持久性更低，不过，对于第三级副本是可接受的。
+If you are using Azure as a tertiary backup storage endpoint (e.g. you are using SCDPM to have a local backup copy on-premises & using Azure for your long term retention needs), you should consider choosing Locally Redundant Storage from the **Configure** option of your Backup vault. This brings down the cost of storing data in Azure, while providing a lower level of durability for your data that might be acceptable for tertiary copies.
 
 ![LRS](./media/backup-create-vault/lrs.png)
-
-<!---HONumber=Mooncake_0405_2016-->

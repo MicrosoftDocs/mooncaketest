@@ -1,91 +1,159 @@
-> [AZURE.LANGUAGE]
-- [中文](../articles/cdn/cdn-overview.md)
-- [English](../articles/cdn/cdn-overview.md) 
-# 使用 Azure CDN
+# Using CDN for Azure
 
-Azure 内容传送网络 (CDN) 通过遍布在中国大陆的众多物理节点上缓存Azure平台上的Storage Blob，Cloud Service和WebSites的静态内容，为开发人员提供一个传送高带宽内容的解决方案。目前本CDN服务也同时支持没有部署在Azure平台上的源站使用。
+The Azure Content Delivery Network (CDN) offers developers a
+global solution for delivering high-bandwidth content by caching blobs
+and static content of compute instances at physical nodes in the United
+States, Europe, Asia, Australia and South America. For a current list of
+CDN node locations, see [Azure CDN Node Locations].
 
-此任务包括下列步骤：
+This task includes the following steps:
 
-+ [步骤 1:创建存储帐户，云服务, Web 应用或媒体服务](#step1)
-+ [步骤 2:创建新的 CDN 终结点](#step2)
-+ [步骤 3:访问 CDN 内容](#step3)
-+ [步骤 4:删除 CDN 中的内容](#step4)
-+ [步骤 5:使用高级管理功能](#step5)
+* [Step 1: Create a storage account](#Step1)
+* [Step 2: Create a new CDN endpoint for your storage account](#Step2)
+* [Step 3: Access your CDN content](#Step3)
+* [Step 4: Delete your CDN content](#Step4)
 
-使用 CDN 缓存 Azure 数据的优点包括：
+The benefits of using CDN to cache Azure data include:
 
-- 远离内容源并使用需要进行多次“互联网旅行”才能加载内容的应用程序的最终用户可获得更好的性能和用户体验
-- 大型分布式规模可更好地处理瞬时高负载（例如在像产品发布这样的活动开始时）
+-   Better performance and user experience for end users who are far from a content source, and are using applications where many 'internet trips' are required to load content
+-   Large distributed scale to better handle instantaneous high load, say, at the start of an event such as a product launch
 
-现有 Azure 中国客户现在可使用[Azure 管理门户](https://manage.windowsazure.cn/)中的 Azure CDN。 如需开通HTTPS加速类型，请参考[Azure CDN HTTPS 加速服务](../articles/cdn/cdn-https-how-to.md)。
+Existing CDN customers can now use the Azure CDN in the [Azure Management Portal]. The CDN is an add-on feature to your subscription and has a separate [billing plan].
 
-## 步骤 1:创建存储帐户，云服务， Web 应用或媒体服务<a id="step1"></a>
-您可以为现有的Azure订阅中的存储账户，云服务， Web 应用或媒体服务创建CDN终结点。您也可以按以下过程创建新的存储帐户，云服务或者 Web 应用用于 Azure 订阅。
+<a id="Step1"> </a>
+<h2>Step 1: Create a storage account</h2>
 
-### 为 Azure 订阅创建存储帐户
-请参阅 [如何创建存储帐户](../articles/storage/storage-create-storage-account.md)
+Use the following procedure to create a new storage account for a
+Azure subscription. A storage account gives access to 
+Azure storage services. The storage account represents the highest level
+of the namespace for accessing each of the Azure storage service
+components: Blob services, Queue services, and Table services. For more
+information about the Azure storage services, see [Using the
+Azure Storage Services].
 
-### 为 Azure 订阅创建云服务
-请参阅 [如何创建和部署云服务](../articles/cloud-services/cloud-services-how-to-create-deploy.md) 
+To create a storage account, you must be either the service
+administrator or a co-administrator for the associated subscription.
 
-### 为 Azure 订阅创建 Web 应用
-请参阅 [如何创建和部署 Web 应用](/documentation/articles/web-sites-create-deploy/) 
+<div class="dev-callout">
+<strong>Note</strong>
+<p>For information about performing this operation by using the
+Azure Service Management API, see the <a href="http://msdn.microsoft.com/en-us/library/windowsazure/hh264518.aspx">Create Storage Account</a> reference topic.</p>
+</div>
 
-### 为 Azure 订阅创建媒体服务
-请参阅 [如何创建和部署媒体服务](../articles/media-services/media-services-create-account.md) 
+**To create a storage account for an Azure subscription**
 
-## 步骤 2:创建新的 CDN 终结点<a id="step2"></a>
-一旦启用对存储帐户，云服务或者 Web 应用的 CDN 访问，所有公开可用的对象将有资格获得 CDN 边缘高速缓存。如果您修改一个当前在 CDN 中缓存的对象，则只有 CDN 在缓存内容生存时间到期时刷新了对象的内容后（或通过高级管理功能进行手动刷新），才能通过 CDN 访问新内容。
+1.  Log into the [Azure Management Portal].
+2.  In the lower left corner, click **New**, and then click **Storage**.
+3.  Click **Quick Create**.
 
-### 创建新的 CDN 终结点
-1. 在 [Azure 管理门户](https://manage.windowsazure.cn/)的导航窗格中，单击“CDN”。
-2. 在功能区上，单击“新建”。在“新建”对话框上，依次选择“应用服务”、“CDN”和“快速创建”。
+    The **Create Storage Account** dialog appears.
 
-    ![CDN quick create][1]
-3. 在“订阅”下拉列表中选择所要使用的Azure 订阅（如果有多个订阅的话）。
-4. 在“加速类型”下拉列表中选择加速类型。目前支持“WEB加速”，“下载加速”，“HTTP VOD（视频点播）加速”和“Live Streaming（视频直播）加速”。
-5. 在“原始域类型”下拉列表中，选择云服务，存储账户，WEB应用，媒体服务（media service）或者自定义原始域。
-6. 在“原始域”下拉列表中，从可用的云服务，存储帐户，WEB应用或者媒体服务列表中选择一个用于创建CDN终结点。如果“原始域类型”选择的是“自定义原始域”，那么请在“原始域”里输入您自己的原始域地址。
-7. 在“自定义域”中输入要使用的自定义域名如：cdn.yourcompany.com
-8. 在“原点主机标头（origin host header）”中输入您的源站所接受的回源访问host header。当您输入完“自定义域”之后，系统会根据您所选择的“原始域类型”来自动填充一个默认值。具体的规则是，如果您的源站是在Azure上的话，默认值就是相应的源站地址。如果您的源站不在Azure上，默认值是您输入的“自定义域名”，当然您也可以根据自己源站的实际配置情况来修改。
-9. 在“ICP编号”中输入和上一步中所输入的自定义域名相对应的**ICP备案号**（如：京ICP备XXXXXXXX号-X）。
-10. 单击“创建”按钮以创建新的终结点。
-11. 终结点创建后将出现在订阅的终结点的列表中。列表视图显示了用于访问缓存内容的自定义域以及原始域。
+    ![Create Storage Account][create-new-storage-account]
 
-原始域是 CDN 所缓存内容的原始位置。自定义域是用于访问CDN缓存内容的URL。
-> **注意** 为终结点创建的配置将不能立即可用：
+4. In the **URL** field, type a subdomain name. This entry can contain from 3-24 lowercase letters and numbers.
 
-> 1. 首先需要审核所提供的自定义域名和ICP编号是否匹配、有效。这个过程需要最多**一个工作日**的时间来完成。
-2. 如果ICP审核没有通过，您需要删除之前创建的这个CDN终结点，然后使用正确的自定义域名和ICP编号重新创建。
-3. 如果ICP审核通过，CDN服务最多需要 **60 分钟**时间进行注册以便通过 CDN 网络传播。与此同时，您还需要按照界面上的提示信息配置CNAME映射信息，这样才可以最终通过自定义域名访问CDN缓存内容。
+    This value becomes the host name within the URI that is used to
+    address Blob, Queue, or Table resources for the subscription. To
+    address a container resource in the Blob service, you would use a
+    URI in the following format, where *&lt;StorageAccountLabel&gt;* refers
+    to the value you typed in **Enter a URL**:
 
-## 步骤 3:访问 CDN 内容<a id="step3"></a>
-若要访问 CDN 上的缓存内容，请使用您在步骤2中所提供的自定义域名来访问CDN缓存内容。缓存 Blob 的地址类似于下面的地址（以步骤2中的例子为例）：
+    http://*&lt;StorageAcountLabel&gt;*.blob.core.windows.net/*&lt;mycontainer&gt;*
 
-`http://cdn.yourcompany.com/<myPublicContainer>/<BlobName>`
+    **Important:** The URL label forms the subdomain of the storage
+    account URI and must be unique among all hosted services in 
+    Azure.
 
-## 步骤 4:删除 CDN 中的内容<a id="step4"></a>
-如果您不想继续在 Azure 内容交付网络 (CDN) 中缓存对象，则可执行下列步骤之一：
+    This value is also used as the name of this storage account in the portal, or when accessing this account programmatically.
 
-- 对于 Azure Blob，可从公共容器中删除该 Blob。
-- 生成专用容器代替公用容器。有关更多信息，请参见[限制对容器和 Blob 的访问](http://msdn.microsoft.com/zh-cn/library/dd179354.aspx)。
-- 您可使用管理门户禁用或删除 CDN 终结点。
-- 您可将云服务修改为不再响应此对象的请求。
+5.  From the **Region/Affinity Group** drop-down list, select a region or affinity group for the storage account. Select an affinity group instead of a region if you want your storage services to be in the same data center with other Microsoft Azure services that you are using. This can improve performance, and no charges are incurred for egress.  
 
-已在 CDN 中缓存的对象将保持缓存状态，直到该对象的生存时间到期为止。当生存时间到期时，CDN 将查看 CDN 终结点是否仍有效，且是否仍可对该对象进行匿名访问。如果不能访问，则不再对该对象进行缓存。
+    **Note:** To create an affinity group, open the **Settings** area of the Management Portal, click **Affinity Groups**, and then click either **Add an affinity group** or **Add**. You can also create and manage affinity groups using the Microsoft Azure Service Management API. For more information, see [Operations on Affinity Groups].
 
-## 步骤 5:使用高级管理功能<a id="step5"></a>
-当您创建好CDN终结点之后，除了可以在管理门户中查看基本的配置信息和对CDN终结点做“禁用/启用”和“删除”等基本操作外，您还可以通过点击“管理”按钮，跳转到另外的管理页面进行高级管理功能：
+6. From the **Subscription** drop-down list, select the subscription that the storage account will be used with.
+7.  Click **Create Storage Account**. The process of creating the storage account might take several minutes to complete.
+8.  To verify that the storage account was created successfully, verify that the account appears in the items listed for **Storage** with a status of **Online**.
 
-![Manage Button][2]
-> **注意：您将被引导至另外的CDN管理页面，它不属于Azure管理门户的一部分。（请注意允许浏览器打开新的窗口）**
+<a id="Step2"> </a>
+<h2>Step 2: Create a new CDN endpoint for your storage account</h2>
 
-![Adv Portal][3]
+Once you enable CDN access to a storage account or hosted service, all
+publicly available objects are eligible for CDN edge caching. If you
+modify an object that is currently cached in the CDN, the new content
+will not be available via the CDN until the CDN refreshes its content
+when the cached content time-to-live period expires.
 
-这个高级管理界面提供了“概览”，“域名管理”，“流量报表”，“带宽报表”，“缓存刷新”，“内容预取”，“日志下载”以及“服务检查”等功能。具体的使用和配置方式，可以点击进入相应的功能模块，然后查看对应的帮助文件。或者通过左侧导航栏的“帮助文档”，直接查看。
+**To create a new CDN endpoint for your storage account**
 
-<!--Image references-->
-[1]: ./media/cdn/image005.png
-[2]: ./media/cdn/image002.png
-[3]: ./media/cdn/how_to_001.png
+1. In the [Azure Management Portal], in the navigation pane, click **CDN**.
+
+2. On the ribbon, click **New**. In the **New** dialog, select **App Services**, then **CDN**, then **Quick Create**.
+
+3. In the **Origin Domain** dropdown, select the storage account you created in the previous section from the list of your available storage accounts. 
+
+4. Click the **Create** button to create the new endpoint.
+
+5. Once the endpoint is created, it appears in a list of endpoints for the subscription. The list view shows the URL to use to access cached content, as well as the origin domain. 
+
+    The origin domain is the location from which the CDN caches
+    content. The origin domain can be either a storage account or a cloud service; a storage account is used for the purposes of this example. Storage content is cached to edge servers according either to a cache-control setting that you specify, or to the default heuristics of the caching network. See [How to Manage Expiration of Blob Content](http://msdn.microsoft.com/en-us/library/gg680306.aspx) for more information. 
+
+    <div class="dev-callout">
+    <strong>Note</strong>
+    <p>The configuration created for the endpoint will not
+    immediately be available; it can take up to 60 minutes for the
+    registration to propagate through the CDN network. Users who try to
+    use the CDN domain name immediately may receive status code 400
+    (Bad Request) until the content is available via the CDN.</p>
+    </div>
+
+<a id="Step3"> </a>
+<h2>Step 3: Access CDN content</h2> 
+
+To access cached content on the CDN, use the CDN URL provided in the portal. The address for a cached blob will be similar to the following:
+
+http://<*CDNNamespace*\>.vo.msecnd.net/<*myPublicContainer*\>/<*BlobName*\>
+
+<a id="Step4"> </a>
+<h2>Step 4: Remove content from the CDN</h2>
+
+If you no longer wish to cache an object in the Azure Content
+Delivery Network (CDN), you can take one of the following steps:
+
+-   For an Azure blob, you can delete the blob from the public
+    container.
+-   You can make the container private instead of public. See [Restrict Access to Containers and Blobs](http://msdn.microsoft.com/en-us/library/dd179354.aspx) for more information.
+-   You can disable or delete the CDN endpoint using the Management
+    Portal.
+-   You can modify your hosted service to no longer respond to requests for the
+    object.
+
+An object already cached in the CDN will remain cached until the
+time-to-live period for the object expires. When the time-to-live period
+expires, the CDN will check to see whether the CDN endpoint is still
+valid and the object still anonymously accessible. If it is not, then
+the object will no longer be cached.
+
+No explicit "purge" tool is currently available for the Azure
+CDN.
+
+## Additional resources
+
+-   [How to Create an Affinity Group in Azure]
+-   [How to: Manage Storage Accounts for an Azure Subscription]
+-   [About the Service Management API]
+-   [How to Map CDN Content to a Custom Domain]
+
+  [Create Storage Account]: http://msdn.microsoft.com/en-us/library/windowsazure/hh264518.aspx
+  [Azure CDN Node Locations]: http://msdn.microsoft.com/en-us/library/windowsazure/gg680302.aspx
+  [Azure Management Portal]: https://manage.windowsazure.com/
+  [billing plan]: /en-us/pricing/calculator/?scenario=full
+  [How to Register a Custom Subdomain Name for Accessing Blobs in Azure]: http://msdn.microsoft.com/en-us/library/windowsazure/ee795179.aspx
+  [Operations on Affinity Groups]: http://msdn.microsoft.com/library/azure/ee460798.aspx
+  [Overview of the Azure CDN]: http://msdn.microsoft.com/en-us/library/windowsazure/ff919703.aspx
+  [How to: Manage Storage Accounts for an Azure Subscription]: http://msdn.microsoft.com/en-us/library/windowsazure/hh531567.aspx
+  [About the Service Management API]: http://msdn.microsoft.com/en-us/library/windowsazure/ee460807.aspx
+  [How to Map CDN Content to a Custom Domain]: http://msdn.microsoft.com/en-us/library/windowsazure/gg680307.aspx
+
+[create-new-storage-account]: ./media/cdn/CDN_CreateNewStorageAcct.png
+[Previous Management Portal]: ../../Shared/Media/previous-portal.png

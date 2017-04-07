@@ -6,23 +6,29 @@ Latest Freshness check:  2015-09-02 , GeneMi.
 ## Connection string
 -->
 
-### 从 Azure  管理门户获取连接字符串
+### Obtain the connection string from the Azure portal
 
-使用 [Azure 经典管理门户](https://manage.windowsazure.cn/)获取客户端程序与 Azure SQL 数据库进行交互所需的连接字符串：
+Use the [Azure preview portal](https://manage.windowsazure.cn/) to obtain the connection string necessary for your client program to interact with Azure SQL Database: 
 
-1. 单击“所有项目”>“SQL 数据库”。
+1. Click **BROWSE** > **SQL databases**.
 
-2. 在“SQL 数据库”边栏选项卡左上角附近的筛选器文本框中输入你的数据库的名称。
+2. Enter the name of your database into the filter text box near the upper-left of the **SQL databases** blade.
 
-3. 单击数据库所对应的行。
+3. Click the row for your database.
 
-    ![用于隔离数据库的筛选器][10-FilterDatabase]
+4. After the blade appears for your database, for visual convenience you can click the standard minimize controls to collapse the blades  you used for browsing and database filtering. 
 
-5. 单击“查看 ADO .Net、ODBC、PHP 和 JDBC 的 SQL 数据库连接字符串”。
+    ![Filter to isolate your database][10-FilterDatabase]
 
-7. 通过这种或那种格式，将连接字符串信息粘贴到客户端程序代码中。
+5. On the blade for your database, click **Show database connection strings**.
 
-有关详细信息，请参阅<br/>[连接字符串和配置文件](http://msdn.microsoft.com/zh-cn/library/ms254494.aspx)。
+6. If you intend to use the ADO.NET connection library, copy the string labeled **ADO**. 
+
+    ![Copy the ADO connection string for your database][20-CopyAdoConnectionString]
+
+7. In one format or another, paste the connection string information into your client program code.
+
+For more information, see:<br/>[Connection Strings and Configuration Files](http://msdn.microsoft.com/zh-cn/library/ms254494.aspx).
 
 <!-- Image references. -->
 
@@ -37,5 +43,3 @@ includes/sql-database-include-connection-string-20-portalshots.md
 includes/sql-database-include-connection-string-30-compare.md
 includes/sql-database-include-connection-string-40-config.md
 -->
-
-<!---HONumber=74-->

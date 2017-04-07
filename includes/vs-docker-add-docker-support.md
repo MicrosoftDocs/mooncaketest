@@ -1,12 +1,10 @@
-1. 在 Visual Studio 的“解决方案资源管理器”中，右键单击项目，然后选择“添加”>“Docker 支持”。
+1. From the Visual Studio Solution Explorer, right-click the project and select **Add > Docker Support**.
 
     ![][0]
 
-1. 随即会在项目节点下面创建以下文件：
+1. The following files are created under the project node:
 
     ![][1]
 
 [0]: ./media/vs-docker-add-docker-support/add-docker-support.png
 [1]: ./media/vs-docker-add-docker-support/docker-files-added.png
-
-<!---HONumber=Mooncake_0711_2016-->

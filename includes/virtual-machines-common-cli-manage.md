@@ -1,39 +1,37 @@
-通过 Resource Manager 命令和模板使用 Azure CLI 以利用资源组部署 Azure 资源和工作负荷之前，你将需要一个 Azure 帐户。如果没有帐户，你可以[在此处获取 Azure 试用帐户](https://www.azure.cn/pricing/1rmb-trial/)。
+Before you can use the Azure CLI with Resource Manager commands and templates to deploy Azure resources and workloads using resource groups, you will need an account with Azure. If you do not have an account, you can get an [Azure trial here](https://www.azure.cn/pricing/1rmb-trial/).
 
-如果你尚未安装 Azure CLI 并连接到订阅，请参阅[安装 Azure CLI](../articles/xplat-cli-install.md) 以使用 `azure config mode arm` 将模式设置为 `arm`，并使用 `azure login -e AzureChinaCloud` 命令连接到 Azure。
+If you haven't already installed the Azure CLI and connected to your subscription, see [Install the Azure CLI](../articles/cli-install-nodejs.md) set the mode to `arm` with `azure config mode arm`, and connect to Azure with the `azure login -e AzureChinaCloud` command.
 
-## Azure CLI 中的基本 Azure Resource Manager 命令
-
-本文章介绍配合 Azure CLI 来管理 Azure 订阅中的 ARM 资源（主要是 VM）并与其交互的基本命令。有关特定命令行开关和选项的详细帮助，可以通过键入 `azure <command> <subcommand> --help` 或 `azure help <command> <subcommand>` 来使用联机命令帮助和选项。
+## Basic Azure Resource Manager commands in Azure CLI
+This article covers basic commands you will want to use with Azure CLI to manage and interact with your ARM resources (primarily VMs) in your Azure subscription.  For more detailed help with specific command line switches and options, you can use the online command help and options by typing `azure <command> <subcommand> --help` or `azure help <command> <subcommand>`.
 
 > [!NOTE]
-> 这些示例不包括通常为资源管理器中的 VM 部署建议的基于模板的操作。有关信息，请参阅 [将 Azure CLI 与 Azure 资源管理器配合使用](../articles/azure-resource-manager/xplat-cli-azure-resource-manager.md)和 [使用 Azure Resource Manager 模板和 Azure CLI 部署和管理虚拟机](../articles/virtual-machines/virtual-machines-linux-cli-deploy-templates.md)。
+> These examples don't include template-based operations which are generally recommended for VM deployments in Resource Manager. For information, see [Use the Azure CLI with Azure Resource Manager](../articles/xplat-cli-azure-resource-manager.md) and [Deploy and manage virtual machines by using Azure Resource Manager templates and the Azure CLI](../articles/virtual-machines/virtual-machines-linux-cli-deploy-templates.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+> 
+> 
 
-任务 | 资源管理器
--------------- | ----------- | -------------------------
-创建最基本的 VM | `azure vm quick-create [options] <resource-group> <name> <location> <os-type> <image-urn> <admin-username> <admin-password>`<br/><br/>（从 `azure vm image list` 命令获取 `image-urn`。有关示例，请参阅[一文](../articles/virtual-machines/virtual-machines-linux-cli-ps-findimage.md)。）
-创建 Linux VM | `azure  vm create [options] <resource-group> <name> <location> -y "Linux"`
-创建 Windows VM | `azure  vm create [options] <resource-group> <name> <location> -y "Windows"`
-列出 VM | `azure  vm list [options]`
-获取有关 VM 的信息 | `azure  vm show [options] <resource_group> <name>`
-启动 VM | `azure vm start [options] <resource_group> <name>`
-停止 VM | `azure vm stop [options] <resource_group> <name>`
-释放 VM | `azure vm deallocate [options] <resource-group> <name>`
-重新启动 VM | `azure vm restart [options] <resource_group> <name>`
-删除 VM | `azure vm delete [options] <resource_group> <name>`
-捕获 VM | `azure vm capture [options] <resource_group> <name>`
-从用户映像创建 VM | `azure  vm create [options] -q <image-name> <resource-group> <name> <location> <os-type>`
-从专用磁盘创建 VM | `azue  vm create [options] -d <os-disk-vhd> <resource-group> <name> <location> <os-type>`
-将数据磁盘添加到 VM | `azure  vm disk attach-new [options] <resource-group> <vm-name> <size-in-gb> [vhd-name]`
-从 VM 中删除数据磁盘 | `azure  vm disk detach [options] <resource-group> <vm-name> <lun>`
-将泛型扩展添加到 VM |`azure  vm extension set [options] <resource-group> <vm-name> <name> <publisher-name> <version>`
-将 VM 访问扩展添加到 VM | `azure vm reset-access [options] <resource-group> <name>`
-删除 VM 扩展 | `azure  vm extension set [options] -u <resource-group> <vm-name> <name> <publisher-name> <version>`
-获取 VM 资源的使用情况 | `azure vm list-usage [options] <location>`
-获取所有可用 VM 大小 | `azure vm sizes [options]`
+| Task | Resource Manager |
+| --- | --- | --- |
+| Create the most basic VM |`azure vm quick-create [options] <resource-group> <name> <location> <os-type> <image-urn> <admin-username> <admin-password>`<br/><br/>(Obtain the `image-urn` from the `azure vm image list` command. See [this article](../articles/virtual-machines/virtual-machines-linux-cli-ps-findimage.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) for examples.) |
+| Create a Linux VM |`azure  vm create [options] <resource-group> <name> <location> -y "Linux"` |
+| Create a Windows VM |`azure  vm create [options] <resource-group> <name> <location> -y "Windows"` |
+| List VMs |`azure  vm list [options]` |
+| Get information about a VM |`azure  vm show [options] <resource_group> <name>` |
+| Start a VM |`azure vm start [options] <resource_group> <name>` |
+| Stop a VM |`azure vm stop [options] <resource_group> <name>` |
+| Deallocate a VM |`azure vm deallocate [options] <resource-group> <name>` |
+| Restart a VM |`azure vm restart [options] <resource_group> <name>` |
+| Delete a VM |`azure vm delete [options] <resource_group> <name>` |
+| Capture a VM |`azure vm capture [options] <resource_group> <name>` |
+| Create a VM from a user image |`azure  vm create [options] -q <image-name> <resource-group> <name> <location> <os-type>` |
+| Create a VM from a specialized disk |`azue  vm create [options] -d <os-disk-vhd> <resource-group> <name> <location> <os-type>` |
+| Add a data disk to a VM |`azure  vm disk attach-new [options] <resource-group> <vm-name> <size-in-gb> [vhd-name]` |
+| Remove a data disk from a VM |`azure  vm disk detach [options] <resource-group> <vm-name> <lun>` |
+| Add a generic extension to a VM |`azure  vm extension set [options] <resource-group> <vm-name> <name> <publisher-name> <version>` |
+| Add VM Access extension to a VM |`azure vm reset-access [options] <resource-group> <name>` |
+| Remove a VM extension |`azure  vm extension set [options] -u <resource-group> <vm-name> <name> <publisher-name> <version>` |
+| Get usage of VM resources |`azure vm list-usage [options] <location>` |
+| Get all available VM sizes |`azure vm sizes [options]` |
 
-## 后续步骤
-
-* 有关超越基本 VM 管理的其他 CLI 命令示例，请参阅[将 Azure CLI 与 Azure Resource Manager 配合使用](../articles/virtual-machines/azure-cli-arm-commands.md)。
-
-<!---HONumber=Mooncake_0808_2016-->
+## Next steps
+* For additional examples of the CLI commands going beyond basic VM management, see [Using the Azure CLI with Azure Resource Manager](../articles/virtual-machines/azure-cli-arm-commands.md).

@@ -1,32 +1,27 @@
-## 定义备份策略
+## Defining a backup policy
+A backup policy defines a matrix of when the data snapshots are taken, and how long those snapshots are retained. When defining a policy for backing up a VM, you can trigger a backup job *once a day*. When you create a new policy, it is applied to the vault. The backup policy interface looks like this:
 
-备份策略定义由数据快照创建时间和这些快照的保留时间长度构成的矩阵。定义 VM 的备份策略时，可以*一天一次*地触发备份作业。创建新策略时，该策略将应用到保管库。备份策略界面如下所示：
+![Backup policy](./media/backup-create-policy-for-vms/backup-policy.png)
 
-![备份策略](./media/backup-create-policy-for-vms/backup-policy.png)
+To create a policy:
 
-若要创建策略，请执行以下操作：
+1. Enter a name for the **Policy name**.
+2. Snapshots of your data can be taken at Daily or Weekly intervals. Use the **Backup Frequency** drop-down menu to choose whether data snapshots are taken Daily or Weekly.
 
-1. 输入**策略名称**。
+    * If you choose a Daily interval, use the highlighted control to select the time of the day for the snapshot. To change the hour, de-select the hour, and select the new hour.
 
-2. 数据快照可按“每日”或“每周”的间隔来创建。使用“备份频率”下拉菜单来选择要“每日”还是“每周”创建数据快照。
+        ![Daily backup policy](./media/backup-create-policy-for-vms/backup-policy-daily.png) <br/>
+    * If you choose a Weekly interval, use the highlighted controls to select the day(s) of the week, and the time of day to take the snapshot. In the day menu, select one or multiple days. In the hour menu, select one hour. To change the hour, de-select the selected hour, and select the new hour.
 
-    - 如果选择“每日”间隔，可使用突出显示的控件来选择要在一天中的什么时间创建快照。若要更改小时，请取消选择该小时值，然后选择新的小时值。
+        ![Weekly backup policy](./media/backup-create-policy-for-vms/backup-policy-weekly.png)
+3. By default, all **Retention Range** options are selected. Uncheck any retention range limit you do not want to use. Then, specify the interval(s) to use.
 
-    ![每日备份策略](./media/backup-create-policy-for-vms/backup-policy-daily.png) <br/>
+    Monthly and Yearly retention ranges allow you to specify the snapshots based on a weekly or daily increment.
 
-    - 如果选择“每周”间隔，可使用突出显示的控件来选择要在哪个星期日期，以及该日期的什么时间创建快照。在日期菜单中选择一个或多个日期。在小时菜单中选择某个小时。若要更改小时，请取消选择选定的小时值，然后选择新的小时值。
+    > [!NOTE]
+    > When protecting a VM, a backup job runs once a day. The time when the backup runs is the same for each retention range.
+    > 
+    > 
+4. After setting all options for the policy, at the top of the blade click **Save**.
 
-    ![每周备份策略](./media/backup-create-policy-for-vms/backup-policy-weekly.png)
-
-3. 默认情况下，已选择所有“保留范围”选项。请取消选中任何不想要使用的保留范围限制。然后，指定要使用的时间间隔。
-
-    “每月”和“每年”保留范围可让你根据每周或每日增量指定快照。
-
-    >[!NOTE]
-    > 在保护 VM 时，备份作业将每天运行一次。每个保留范围的备份运行时间相同。
-
-4. 设置策略的所有选项后，在边栏选项卡顶部单击“保存”。
-
-    新策略将立即应用于保管库。
-
-<!---HONumber=Mooncake_0627_2016-->
+    The new policy is immediately applied to the vault.

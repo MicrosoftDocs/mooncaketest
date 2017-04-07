@@ -1,8 +1,9 @@
-除了自动将客户端连接到主副本外，侦听器还可用于将只读工作负荷重定向到辅助副本。这可以提高整个解决方案的性能和可扩展性。有关详细信息，请参阅[使用 Azure AlwaysOn 可用性组侦听器的 ReadIntent 路由](http://blogs.msdn.com/b/alwaysonpro/archive/2014/03/31/use-readintent-routing-with-azure-alwayson-availability-group-listener.aspx)。
+In addition to automatically connecting clients to the primary replica, a listener can also be used to redirect read-only workloads to the secondaries. This can improve the performance and scalability of your overall solution. For more information, see
+[Use ReadIntent Routing with Azure AlwaysOn Availability Group Listener](http://blogs.msdn.com/b/alwaysonpro/archive/2014/03/31/use-readintent-routing-with-azure-alwayson-availability-group-listener.aspx).
 
->[!NOTE]
-> 有关 Azure 侦听器的故障排除提示，请参阅 AlwaysOn 支持团队[博客](http://blogs.msdn.com/b/alwaysonpro/)中的 [Azure 中可用性组侦听器的故障排除](http://blogs.msdn.com/b/alwaysonpro/archive/2016/02/01/troubleshooting-availability-group-listener-in-azure.aspx)。
+> [!NOTE]
+> For troubleshooting tips on Azure listeners, see [Troubleshooting Availability Group Listener in Azure](https://blogs.msdn.microsoft.com/alwaysonpro/2017/02/22/troubleshooting-internal-load-balancer-listener-connectivity-in-azure) in the AlwaysOn Support Team [blog](http://blogs.msdn.com/b/alwaysonpro/).
+> 
+> 
 
-有关在 Azure 中使用 SQL Server 的其他信息，请参阅 [Azure 虚拟机上的 SQL Server](../articles/virtual-machines/virtual-machines-windows-sql-server-iaas-overview.md)。
-
-<!---HONumber=Mooncake_0314_2016-->
+For other information about using SQL Server in Azure, see [SQL Server on Azure Virtual Machines](../articles/virtual-machines/windows/sql/virtual-machines-windows-sql-server-iaas-overview.md).

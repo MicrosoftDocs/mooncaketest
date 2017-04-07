@@ -1,7 +1,4 @@
-## 问题：自定义映像；预配错误
+## Issue: Custom image; provisioning errors
+Provisioning errors arise if you upload or capture a generalized VM image as a specialized VM image or vice versa. The former will cause a provisioning timeout error and the latter will cause a provisioning failure. To deploy your custom image without errors, you must ensure that the type of the image does not change during the capture process.
 
-当你上载或捕获用作专用 VM 映像的通用化 VM 映像时，将发生预配错误，反之亦然。前者会导致预配超时错误，后者会导致预配失败。若要部署自定义映像且不出错，必须确保在捕获过程中映像类型不会更改。
-
-下表列出了通用化和专用映像的可能组合、你会遇到的错误类型，以及需要执行哪些操作来解决错误。
-
-<!---HONumber=Mooncake_0606_2016-->
+The following table lists the possible combinations of generalized and specialized images, the error type you will encounter and what you need to do to fix the errors.

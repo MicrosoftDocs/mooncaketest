@@ -1,6 +1,6 @@
 ---
-title: StorSimple 系统限制表
-description: 介绍 StorSimple 组件和连接的系统限制与建议大小。
+title: StorSimple system limits table
+description: Describes system limits and recommended sizes for StorSimple components and connections.
 services: storsimple
 documentationCenter: NA
 authors: alkohli
@@ -8,32 +8,34 @@ manager: adinah
 editor: ''
 
 ms.service: storsimple
+ms.devlang: NA
+ms.topic: article
+ms.tgt_pltfrm: NA
+ms.workload: TBD
 ms.date: 08/18/2015
-wacn.date: 10/3/2015
+ms.author: alkohli
 ---
 
-| 限制标识符 | 限制 | 注释 |
+| Limit identifier | Limit | Comments |
 |----------------- | ------|--------- |
-| 存储帐户凭据的最大数目 | 64 | |
-| 卷容器的最大数目 | 64 | |
-| 队列的最大数目 | 255 | |
-| 每个带宽模板的最大计划数 | 168 | 一周中每天每小时一个计划 (24*7)。 |
-| 卷的最大大小 | 64 TB | |
-| iSCSI 连接的最大数目 | 512 | |
-| 来自发起程序的 iSCSI 连接的最大数目 | 512 | |
-| 每个设备的访问控制记录的最大数目 | 64 | |
-| 每个备份策略的卷的最大数目 | 24 | |
-| 每个备份策略保留的备份的最大数目 | 64 | |
-| 每个备份策略的最大计划数 | 10 | |
-| 每个卷可保留的任何类型快照的最大数目 | 256 | 其中包括本地快照和云快照。 |
-| 任何设备中可以存在的快照的最大数目 | 10,000 | |
-| 可以并行处理以实现备份、还原或克隆的卷的最大数目 | 16 |<ul><li>如果有超过 16 个卷，则在在处理槽位可用时，将按顺序对这些卷进行处理。</li><li>在操作完成之前，不能对克隆或还原的卷进行新的备份。</li></ul>|
-| 还原和克隆恢复时间 | < 2 分钟 | <ul><li>卷在还原或克隆操作的 2 分钟内可用，而不考虑卷大小。</li><li>最初，卷性能可能比正常情况慢，因为大部分数据和元数据仍驻留在云中。随着数据从云流入 StorSimple 设备中，性能可能会提高。</li><li>元数据下载总时间取决于已分配的卷大小。在后台，元数据将自动以 5 分钟 1 TB 已分配卷数据的速率载入设备中。此速率可能受到云的 Internet 带宽的影响。</li><li>当所有元数据都位于设备上时，还原或克隆操作即完成。</li><li>备份操作必须在还原或克隆操作完全完成之后才能执行。|
-| 精简还原可用性 | 上次故障转移 | |
-| 最大客户端读取/写入吞吐量（从 SSD 层提供服务时）* | 920/720 MB/s，使用单个 10GbE 网络接口 | 最多为 2 倍，使用 MPIO 和两个网络接口。 |
-| 最大客户端读取/写入吞吐量（从 HDD 层提供服务时）* | 120/250 MB/s |
-| 最大客户端读取/写入吞吐量（从云层提供服务时）* | 11/41 MB/s | 读取吞吐量取决于生成和维护足够的 I/O 队列深度的客户端。 |
+| Maximum number of storage account credentials | 64 | |
+| Maximum number of volume containers | 64 | |
+| Maximum number of volumes | 255 | |
+| Maximum number of schedules per bandwidth template | 168 | A schedule for every hour, every day of the week (24*7). |
+| Maximum size of a volume | 64 TB |  |
+| Maximum number of iSCSI connections | 512 | |
+| Maximum number of iSCSI connections from initiators | 512 | |
+| Maximum number of access control records per device | 64 | |
+| Maximum number of volumes per backup policy | 24 | |
+| Maximum number of backups retained per backup policy | 64 | |
+| Maximum number of schedules per backup policy | 10 | |
+| Maximum number of snapshots of any type that can be retained per volume | 256 | This includes local snapshots and cloud snapshots. |
+| Maximum number of snapshots that can be present in any device | 10,000 | |
+| Maximum number of volumes that can be processed in parallel for backup, restore, or clone | 16 |<ul><li>If there are more than 16 volumes, they will be processed sequentially as processing slots become available.</li><li>New backups of a cloned or a restored volume cannot occur until the operation is finished.</li></ul>|
+| Restore and clone recover time | < 2 minutes | <ul><li>The volume is made available within 2 minutes of restore or clone operation, regardless of the volume size.</li><li>The volume performance may initially be slower than normal as most of the data and metadata still resides in the cloud. Performance may increase as data flows from the cloud to the StorSimple device.</li><li>The total time to download metadata depends on the allocated volume size. Metadata is automatically brought into the device in the background at the rate of 5 minutes per TB of allocated volume data. This rate may be affected by Internet bandwidth to the cloud.</li><li>The restore or clone operation is complete when all the metadata is on the device.</li><li>Backup operations cannot be performed until the restore or clone operation is fully complete.|
+| Thin-restore availability | Last failover | |
+| Maximum client read/write throughput (when served from the SSD tier)* | 920/720 MB/s with a single 10GbE network interface | Up to 2x with MPIO and two network interfaces. |
+| Maximum client read/write throughput (when served from the HDD tier)* | 120/250 MB/s |
+| Maximum client read/write throughput (when served from the cloud tier)* | 11/41 MB/s | Read throughput depends on clients generating and maintaining sufficient I/O queue depth. |
 
-&#42; 每个 I/O 类型的最大吞吐量使用 100% 读取方案和 100% 写入方案进行测量。实际的吞吐量可能会低于测量值，具体取决于 I/O 混用情况和网络状况。
-
-<!---HONumber=71-->
+&#42; Maximum throughput per I/O type was measured with 100 percent read and 100 percent write scenarios. Actual throughput may be lower and depends on I/O mix and network conditions.

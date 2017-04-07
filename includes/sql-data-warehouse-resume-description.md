@@ -11,7 +11,7 @@ articles/sql-data-warehouse/sql-data-warehouse-manage-scale-out-tasks-rest-api.m
 -->
 When you resume a database:
 
-* SQL Data Warehouse acquires compute and memory resources for your DWU setting.
-* Compute charges for your DWUs resume.
-* Your data will be available.
-* You will need to restart your workload queries.
+- SQL Data Warehouse acquires compute and memory resources for your DWU setting.
+- Compute charges for your DWUs resume.
+- Your data will be available.
+- You will need to restart your workload queries.

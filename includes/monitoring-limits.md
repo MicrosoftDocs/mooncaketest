@@ -1,5 +1,3 @@
-| 资源 | 限制 |
+| Resource | Limit |
 |----|----|
-| 自动缩放设置 | 每个区域每个订阅的 100 个数目 |
-
-<!---HONumber=Mooncake_0926_2016-->
+| Autoscale Settings | 100 per region per subscription |

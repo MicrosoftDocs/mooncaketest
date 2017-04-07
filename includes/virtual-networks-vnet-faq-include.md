@@ -1,267 +1,201 @@
-## 虚拟网络基础知识
+## Virtual Network Basics
+### What is an Azure Virtual network (VNet)?
+You can use VNets to provision and manage virtual private networks (VPNs) in Azure and, optionally, link the VNets with other VNets in Azure, or with your on-premises IT infrastructure to create hybrid or cross-premises solutions. Each VNet you create has its own CIDR block, and can be linked to other VNets and on-premises networks as long as the CIDR blocks do not collide. You also have controls of DNS server settings for VNets, and segmentation of the VNet into subnets.
 
-### Azure 虚拟网络 (VNet) 是什么？
+Use VNets to:
 
-你可以使用 VNet 设置和管理 Azure 中的虚拟专用网络 (VPN)，或者链接 VNet 与 Azure 中的其他 VNet，或链接你的本地 IT 基础结构，以创建混合或跨界解决方案。你创建的每个 VNet 都具有其自己的 CIDR 块，并且只要 CIDR 块不会冲突，则可链接到其他 Vnet 和本地网络。还可以控制 VNet 的 DNS 服务器设置并将 VNet 分离到子网中。
+* Create a dedicated private cloud-only virtual network
 
-使用 VNet：
+    Sometimes you don't require a cross-premises configuration for your solution. When you create a VNet, your services and VMs within your VNet can communicate directly and securely with each other in the cloud. This keeps traffic securely within the VNet, but still allows you to configure endpoint connections for the VMs and services that require Internet communication as part of your solution.
+* Securely extend your data center
 
-- 创建私有云专用的虚拟网络
+    With VNets, you can build traditional site-to-site (S2S) VPNs to securely scale your datacenter capacity. S2S VPNs use IPSEC to provide a secure connection between your corporate VPN gateway and Azure.
+* Enable hybrid cloud scenarios
 
-    有时你不需要适用于解决方案的跨界配置。创建 VNet 时，VNet 中的服务和 VM 可以在云中安全地互相直接通信。这可以在 VNet 内安全地保存流量，但仍允许你为需要 Internet 通信的 VM 和服务配置终结点连接，作为解决方案的一部分。
+    VNets give you the flexibility to support a range of hybrid cloud scenarios. You can securely connect cloud-based applications to any type of on-premises system such as mainframes and Unix systems.
 
-- 安全地扩展数据中心
+### How do I know if I need a virtual network?
+Visit the [Virtual Network Overview](../articles/virtual-network/virtual-networks-overview.md) to see a decision table that will help you decide the best network design option for you.
 
-    借助 VNet，你可以构建传统的站点到站点 (S2S) VPN，以便安全地缩放数据中心容量。S2S VPN 使用 IPSEC 提供企业 VPN 网关和 Azure 之间的安全连接。
+### How do I get started?
+Visit [the Virtual Network documentation](/azure/virtual-network/) to get started. This page has links to common configuration steps as well as information that will help you understand the things that you'll need to take into consideration when designing your virtual network.
 
-- 实现混合云方案
+### What services can I use with VNets?
+VNets can be used with a variety of different Azure services, such as Cloud Services (PaaS), Virtual Machines, and Web Apps. However, there are a few services that are not supported on a VNet. Please check the specific service you want to use and verify that it is compatible.
 
-    利用 VNet 可灵活地支持一系列混合云方案。你可以安全地将基于云的应用程序连接到任何类型的本地系统，例如大型机和 Unix 系统。
+### Can I use VNets without cross-premises connectivity?
+Yes. You can use a VNet without using site-to-site connectivity. This is particularly useful if you want to run domain controllers and SharePoint farms in Azure.
 
-### 如何知道是否需要虚拟网络？
+## Virtual Network Configuration
+### What tools do I use to create a VNet?
+You can use the following tools to create or configure a virtual network:
 
-请访问[虚拟网络概述](../articles/virtual-network/virtual-networks-overview.md)，以便查看可帮助你决定最佳网络设计选项的决策表。
+* Azure Portal Preview (for classic and Resource Manager VNets).
+* A network configuration file (netcfg - for classic VNets only). See [Configure a virtual network using a network configuration file](../articles/virtual-network/virtual-networks-using-network-configuration-file.md).
+* PowerShell (for classic and Resource Manager VNets).
+* Azure CLI (for classic and Resource Manager VNets).
 
-### 如何开始？
+### What address ranges can I use in my VNets?
+You can use public IP address ranges and any IP address range defined in [RFC 1918](http://tools.ietf.org/html/rfc1918).
 
-请访问[虚拟网络文档](../articles/virtual-network/index.md)开始。此页包含指向常见配置步骤的链接以及帮助你了解设计虚拟网络时需要考虑的事项的信息。
+### Can I have public IP addresses in my VNets?
+Yes. For more information about public IP address ranges, see [Public IP address space in a Virtual Network (VNet)](../articles/virtual-network/virtual-networks-public-ip-within-vnet.md). Keep in mind that your public IPs will not be directly accessible from the Internet.
 
-### 哪些服务可以与 VNet 共同使用？
+### Is there a limit to the number of subnets in my virtual network?
+There is no limit on the number of subnets you use within a VNet. All the subnets must be fully contained in the virtual network address space and should not overlap with one another.
 
-VNet 可以与各种不同的 Azure 服务共同使用，例如云服务 (PaaS)、虚拟机和 Web Apps。但是，有几个 VNet 不支持的服务。请检查你想要使用的特定服务，并验证是否兼容。
+### <a name="are-there-any-restrictions-on-using-ip-addresses-within-these-subnets"></a> Are there any restrictions on using IP addresses within these subnets?
+Azure reserves some IP addresses within each subnet. The first and last IP addresses of the subnets are reserved for protocol conformance, along with 3 more addresses used for Azure services.
 
-### 没有跨界连接的情况下是否可以使用 VNet？
+### How small and how large can VNets and subnets be?
+The smallest subnet we support is a /29 and the largest is a /8 (using CIDR subnet definitions).
 
-是的。可以在不使用站点到站点连接的情况下使用 VNet。如果你想要在 Azure 中运行域控制器和 SharePoint 场，此特点特别有用。
+### Can I bring my VLANs to Azure using VNets?
+No. VNets are Layer-3 overlays. Azure does not support any Layer-2 semantics.
 
-## 虚拟网络配置
+### Can I specify custom routing policies on my VNets and subnets?
+Yes. You can use User Defined Routing (UDR). For more information about UDR, visit [User Defined Routes and IP Forwarding](../articles/virtual-network/virtual-networks-udr-overview.md).
 
-### 要使用哪些工具创建 VNet？
+### Do VNets support multicast or broadcast?
+No. We do not support multicast or broadcast.
 
-可以使用以下工具创建或配置虚拟网络：
+### What protocols can I use within VNets?
+You can use standard IP-based protocols within VNets. However, multicast, broadcast, IP-in-IP encapsulated packets and Generic Routing Encapsulation (GRE) packets are blocked within VNets. Standard protocols that work include:
 
-- Azure 门户预览（用于经典 VNet 和 Resource Manager VNet）。
+* TCP
+* UDP
+* ICMP
 
-- 网络配置文件（netcfg - 仅用于经典 VNet）。请参阅[使用网络配置文件配置虚拟网络](../articles/virtual-network/virtual-networks-using-network-configuration-file.md)。
+### Can I ping my default routers within a VNet?
+No.
 
-- PowerShell（用于经典 VNet 和 Resource Manager VNet）。
+### Can I use tracert to diagnose connectivity?
+No.
 
-- Azure CLI（用于经典 VNet 和 Resource Manager VNet）。
+### Can I add subnets after the VNet is created?
+Yes. Subnets can be added to VNets at any time as long as the subnet address is not part of another subnet in the VNet.
 
-### 在我的 VNet 中可以使用哪些地址范围？
+### Can I modify the size of my subnet after I create it?
+You can add, remove, expand or shrink a subnet if there are no VMs or services deployed within it by using PowerShell cmdlets or the NETCFG file. You can also add, remove, expand or shrink any prefixes as long as the subnets that contain VMs or services are not affected by the change.
 
-您可以使用 [RFC 1918](http://tools.ietf.org/html/rfc1918) 中定义的公共 IP 地址范围和任何 IP 地址范围。
+### Can I modify subnets after I created them?
+Yes. You can add, remove, and modify the CIDR blocks used by a VNet.
 
-### 我的 VNet 中是否可以有公共 IP 地址？
+### Can I connect to the internet if I am running my services in a VNet?
+Yes. All services deployed within a VNet can connect to the internet. Every cloud service deployed in Azure has a publicly addressable VIP assigned to it. You will have to define input endpoints for PaaS roles and endpoints for virtual machines to enable these services to accept connections from the internet.
 
-是的。有关公共 IP 地址范围的详细信息，请参阅[虚拟网络 (VNet) 中的公共 IP 地址空间](../articles/virtual-network/virtual-networks-public-ip-within-vnet.md)。请记住，无法从 Internet 直接访问公共 IP。
+### Do VNets support IPv6?
+No. You cannot use IPv6 with VNets at this time.
 
-### 虚拟网络中的子网数量是否有限制？
+### Can a VNet span regions?
+No. A VNet is limited to a single region.
 
-VNet 中使用的子网数量没有限制。所有子网都必须完全包含在虚拟网络地址空间中，并不应相互重叠。
+### Can I connect a VNet to another VNet in Azure?
+Yes. You can create VNet to VNet communication by using REST APIs or Windows PowerShell. You can also connect VNets via VNet Peering. See more details about peering [here.](../articles/virtual-network/virtual-network-peering-overview.md)
 
-### <a name="are-there-any-restrictions-on-using-ip-addresses-within-these-subnets"></a>使用这些子网中的 IP 地址是否有任何限制？
+## Name Resolution (DNS)
+### What are my DNS options for VNets?
+Use the decision table on the [Name Resolution for VMs and Role Instances](../articles/virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md) page to guide you through all the DNS options available.
 
-Azure 会保留每个子网中的某些 IP 地址。子网的第一个和最后一个 IP 地址仅为协议一致性而保留，其他 3 个地址用于 Azure 服务。
+### Can I specify DNS servers for a VNet?
+Yes. You can specify DNS server IP addresses in the VNet settings. This will be applied as the default DNS server(s) for all VMs in the VNet.
 
-### VNet 和子网的最小和最大容量是多少？
+### How many DNS servers can I specify?
+You can specify up to 12 DNS servers.
 
-我们支持的最小子网为 /29，最大为 /8（使用 CIDR 子网定义）。
+### Can I modify my DNS servers after I have created the network?
+Yes. You can change the DNS server list for your VNet at any time. If you change your DNS server list, you will need to restart each of the VMs in your VNet in order for them to pick up the new DNS server.
 
-### 是否可以使用 VNet 将 VLAN 引入 Azure 中？
-
-否。VNet 是第 3 层重叠。Azure 不支持任何第 2 层语义。
-
-### 是否可以在 VNet 和子网上指定自定义路由策略？
-
-是的。可以使用用户定义路由 (UDR)。有关 UDR 的详细信息，请访问[用户定义的路由和 IP 转发](../articles/virtual-network/virtual-networks-udr-overview.md)。
-
-### VNet 是否支持多播或广播？
-
-否。我们不支持多播或广播。
-
-### 在 VNet 中可以使用哪些协议？
-
-可以在 VNet 中使用基于 IP 的标准协议。但是，VNet 内阻止多播、广播、在 IP 里面封装 IP 的数据包以及通用路由封装 (GRE) 数据包。工作的标准协议包括：
-
-- TCP
-- UDP
-- ICMP
-
-### 是否可以在 VNet 中 ping 默认路由器？
-
-没有。
-
-### 是否可以使用 tracert 诊断连接？
-
-没有。
-
-### 创建 VNet 后是否可以添加子网？
-
-是的。只要子网地址不属于 VNet 中另一个子网的一部分，就能随时将子网添加到 VNet 中。
-
-### 创建后是否可以修改子网的大小？
-
-如果子网中未部署任何 VM 或服务，则可以使用 PowerShell cmdlet 或 NETCFG 文件添加、删除、展开或收缩该子网。只要包含 VM 或服务的子网不受此更改的影响，还可以添加、删除、展开或收缩任何前缀。
-
-### 创建子网后是否可以对其进行修改？
-
-是的。可以添加、删除和修改 VNet 使用的 CIDR 块。
-
-### 如果我在 VNet 中运行服务，是否可以连接到 Internet？
-
-是的。VNet 中部署的所有服务都可以连接到 Internet。Azure 中部署的每个云服务都具有分配到它的可公开寻址的 VIP。必须定义 PaaS 角色的输入终结点和虚拟机的终结点，以使这些服务可以接受 Internet 的连接。
-
-### VNet 是否支持 IPv6？
-
-否。此词无法共同使用 IPv6 和 VNet。
-
-### VNet 是否可以跨区域？
-
-否。一个 VNet 限制为单个区域。
-
-### 是否可以将 VNet 连接到 Azure 中的另一个 VNet？
-
-是的。可以使用 REST API 或 Windows PowerShell 创建 VNet 到 VNet 通信。
-
-## 名称解析 (DNS)
-
-### VNet 的 DNS 选项有哪些？
-
-使用[](../articles/virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md)“VM 和角色实例的名称解析”页的决策表，引导你浏览提供的所有 DNS 选项。
-
-### 是否可以为 VNet 指定 DNS 服务器？
-
-是的。可以在 VNet 设置中指定 DNS 服务器 IP 地址。这将作为 VNet 中的所有 VM 的默认 DNS 服务器进行应用。
-
-### 可以指定多少 DNS 服务器？
-
-最多可以指定 12 个 DNS 服务器。
-
-### 创建网络后是否可以修改 DNS 服务器？
-
-是的。可以随时更改 VNet 的 DNS 服务器列表。如果更改 DNS 服务器列表，则需要重新启动 VNet 中的每个 VM，以使其拾取新的 DNS 服务器。
-
-### 什么是 Azure 提供的 DNS？它是否适用于 VNet？
-
-Azure 提供的 DNS 是由 Microsoft 提供的多租户 DNS 服务。在此服务中，Azure 会注册所有 VM 和角色实例。此服务通过主机名为相同云服务内包含的 VM 和角色实例提供名称解析，并通过 FQDN 为相同 VNet 中的 VM 和角色实例提供名称解析。
+### What is Azure-provided DNS and does it work with VNets?
+Azure-provided DNS is a multi-tenant DNS service offered by Microsoft. Azure registers all of your VMs and role instances in this service. This service provides name resolution by hostname for VMs and role instances contained within the same cloud service, and by FQDN for VMs and role instances in the same VNet.
 
 > [!NOTE]
-> 此时使用 Azure 提供的 DNS 进行跨租户名称解析时，虚拟网络中的前 100 个云服务具有限制。如果使用自己的 DNS 服务器，此限制则不适用。
+> There is a limitation at this time to the first 100 cloud services in the virtual network for cross-tenant name resolution using Azure-provided DNS. If you are using your own DNS server, this limitation does not apply.
+> 
+> 
 
-### 是否可以基于每个 VM/服务重写 DNS 设置？
+### Can I override my DNS settings on a per-VM / service basis?
+Yes. You can set DNS servers on a per-cloud service basis to override the default network settings. However, we recommend that you use network-wide DNS as much as possible.
 
-是的。您可以基于每个云服务设置 DNS 服务器，以重写默认网络设置。但是，我们建议你使用尽可能多的整个网络的 DNS。
+### Can I bring my own DNS suffix?
+No. You cannot specify a custom DNS suffix for your VNets.
 
-### 是否可以引入我自己的 DNS 后缀？
+## VNets and VMs
+### Can I deploy VMs to a VNet?
+Yes.
 
-否。不能为 VNet 指定自定义的 DNS 后缀。
+### Can I deploy Linux VMs to a VNet?
+Yes. You can deploy any distro of Linux supported by Azure.
 
-## VNet 和 VM
+### What is the difference between a public VIP and an internal IP address?
+* An internal IP address is an IP address that is assigned to each VM within a VNet by DHCP. It's not public facing. If you have created a VNet, the internal IP address is assigned from the range that you specified in the subnet settings of your VNet. If you do not have a VNet, an internal IP address will still be assigned. The internal IP address will remain with the VM for its lifetime, unless that VM is deallocated.
+* A public VIP is the public IP address that is assigned to your cloud service or load balancer. It is not assigned directly to your VM NIC. The VIP stays with the cloud service it is assigned to until all the VMs in that cloud service are deallocated or deleted. At that point, it is released.
 
-### 是否可以将 VM 部署到 VNet？
+### What IP address will my VM receive?
+* **Internal IP address -** If you deploy a VM to a VNet, the VM receives an internal IP address from a pool of internal IP addresses that you specify. VMs communicate within the VNets by using internal IP addresses. Although Azure assigns a dynamic internal IP address, you can request a static address for your VM. To learn more about static internal IP addresses, visit [How to Set a Static Internal IP](../articles/virtual-network/virtual-networks-reserved-private-ip.md).
+* **VIP -** Your VM is also associated with a VIP, although a VIP is never assigned to the VM directly. A VIP is a public IP address that can be assigned to your cloud service. You can, optionally, reserve a VIP for your cloud service.
+* **ILPIP -** You can also configure an instance-level public IP address (ILPIP). ILPIPs are directly associated with the VM, rather than the cloud service. To learn more about ILPIPs, visit [Instance-Level Public IP Overview](../articles/virtual-network/virtual-networks-instance-level-public-ip.md).
 
-是的。
+### Can I reserve an internal IP address for a VM that I will create at a later time?
+No. You cannot reserve an internal IP address. If an internal IP address is available it will be assigned to a VM or role instance by the DHCP server. That VM may or may not be the one that you want the internal IP address to be assigned to. You can, however, change the internal IP address of an already created VM to any available internal IP address.
 
-### 是否可以将 Linux VM 部署到 VNet？
+### Do internal IP addresses change for VMs in a VNet?
+Yes. Internal IP addresses remain with the VM for its lifetime unless the VM is deallocated. When a VM is deallocated, the internal IP address is released unless you defined a static internal IP address for your VM. If the VM is simply stopped (and not put in the status **Stopped (Deallocated)**) the IP address will remain assigned to the VM.
 
-是的。可以部署 Azure 支持的任何发行版的 Linux。
+### Can I manually assign IP addresses to NICs in VMs?
+No. You must not change any interface properties of VMs. Any changes may lead to potentially losing connectivity to the VM.
 
-### 公共 VIP 与内部 IP 地址之间的区别是什么？
-
-- 内部 IP 地址是由 DHCP 分配到 VNet 中每台 VM 的 IP 地址。它不是面向公众的。如果已经创建 VNet，内部 IP 地址则通过 VNet 的子网设置中指定的范围进行分配。如果还没有 VNet，仍会分配内部 IP 地址。内部 IP 地址在生存期内仍属于 VM，除非 VM 被释放。
-
-- 公共 VIP 是分配到云服务或负载均衡器的公共 IP 地址。不会将其直接分配到 VM NIC。VIP 保留在分配到的云服务中，直到该云服务中的所有 VM 被释放或删除。此时，VIP 将释放。
-
-### 我的 VM 将接收哪个 IP 地址？
-
-- **内部 IP 地址 -** 如果将 VM 部署到 VNet，该 VM 从您指定的内部 IP 地址池接收内部 IP 地址。VM 使用内部 IP 地址在 VNet 内进行通信。虽然 Azure 分配动态内部 IP 地址，但你可以为你的 VM 请求静态地址。若要了解有关静态内部 IP 地址的详细信息，请访问[如何设置静态内部 IP](../articles/virtual-network/virtual-networks-reserved-private-ip.md)。
-
-- **VIP -** 你的 VM 还与 VIP 相关联，不过永远不会将 VIP 直接分配到 该 VM。VIP 是可以分配到云服务的公共 IP 地址。还可以为云服务保留 VIP。
-
-- **ILPIP -** 还可以配置实例层级公共 IP 地址 (ILPIP)。ILPIP 是直接与 VM 相关联，而非云服务。若要了解有关 ILPIP 的详细信息，请访问[实例层级公共 IP 概述](../articles/virtual-network/virtual-networks-instance-level-public-ip.md)。
-
-### 是否可以为以后创建的 VM 保留内部 IP 地址？
-
-否。不能保留内部 IP 地址。如果内部 IP 地址可用，它将由 DHCP 服务器分配到 VM 或角色实例。该 VM 可能是想要分配到的内部 IP 地址，也可能不是。但是，可以将已创建的 VM 的内部 IP 地址更改为任何可用的内部 IP 地址。
-
-### 是否为 VNet 中的 VM 更改内部 IP 地址？
-
-是的。内部 IP 地址在生存期内仍属于 VM，除非 VM 被释放。当 VM 被释放时，内部 IP 地址则释放，除非定义了 VM 的静态内部 IP 地址。如果 VM 只是停机（并不是处于**停止（释放）状态**），IP 地址仍保持分配到 VM。
-
-### 是否可以手动将 IP 地址分配到 VM 中的 NIC？
-
-否。不得更改 VM 的任何界面属性。任何更改都可能导致 VM 连接丢失。
-
-### 如果关闭 VM，IP 地址会发生什么变化？
-
-无变化。IP 地址（公共 VIP 和内部 IP 地址）将留在云服务或 VM 中。
+### What happens to my IP addresses if I shut down a VM?
+Nothing. The IP addresses (both public VIP and internal IP address) will stay with your cloud service or VM.
 
 > [!NOTE]
-> 如果只想关闭 VM，请不要使用经典管理门户执行此操作。目前，关闭按钮会释放虚拟机。
+> If you want to simply shut down the VM, don't use the Classic Management Portal to do so. Currently, the shutdown button will deallocate the virtual machine.
+> 
+> 
 
-### 在无需重新部署的情况下，是否可以将 VM 从一个子网移动到 VNet 中的另一个子网？
+### Can I move VMs from one subnet to another subnet in a VNet without re-deploying?
+Yes. You can find more information [here](../articles/virtual-network/virtual-networks-move-vm-role-to-subnet.md).
 
-是的。可以在[此处](../articles/virtual-network/virtual-networks-move-vm-role-to-subnet.md)查看详细信息。
+### Can I configure a static MAC address for my VM?
+No. A MAC address cannot be statically configured.
 
-### 是否可以为我的 VM 配置静态 MAC 地址？
+### Will the MAC address remain the same for my VM once it has been created?
+Yes, the MAC address will remain the same for a VM even though the VM has been stopped (deallocated) and relaunched.
 
-否。MAC 地址不能以静态方式配置。
+### Can I connect to the internet from a VM in a VNet?
+Yes. All services deployed within a VNet can connect to the Internet. Additionally, every cloud service deployed in Azure has a publicly addressable VIP assigned to it. You have to define input endpoints for PaaS roles and endpoints for VMs to enable these services to accept connections from the Internet.
 
-### 创建 MAC 后，其地址是否在 VM 中保持不变？
+## VNets and Services
+### What services can I use with VNets?
+You can only use compute services within VNets. Compute services are limited to Cloud Services (web and worker roles) and VMs.
 
-是，即使 VM 已停止（已解除分配）并重新启动，VM 的 MAC 地址也保持不变。
+### Can I use Web Apps with Virtual Network?
+Yes. You can deploy Web Apps inside a VNet. Adding to that, Web Apps can securely connect and access resources in your Azure VNet if you have point-to-site configured for your VNet. For more information, see the following:
 
-### 是否可以通过 VNet 中的 VM 连接到 Internet？
+* [Web Apps Virtual Network Integration](/azure/app-service-web/app-service-vnet-integration-powershell/)
 
-是的。VNet 中部署的所有服务都可以连接到 Internet。此外，Azure 中部署的每个云服务都具有分配到它的可公开寻址的 VIP。必须定义 PaaS 角色的输入终结点和 VM 的终结点，以使这些服务可以接受 Internet 的连接。
+### Can I deploy cloud services with web and worker roles (PaaS) in a VNet?
+Yes. You can deploy PaaS services within VNets.
 
-## VNet 和服务
+### How do I deploy PaaS roles to a VNet?
+You can accomplish this by specifying the VNet name and the role /subnet mappings in the network configuration section of your service configuration. You do not need to update any of your binaries.
 
-### 哪些服务可以与 VNet 共同使用？
+### Can I move my services in and out of VNets?
+No. You cannot move services in and out of VNets. You will have to delete and re-deploy the service to move it to another VNet.
 
-只能在 VNet 中使用计算服务。计算服务仅限于云服务（Web 和辅助角色）和 VM。
+## VNets and Security
+### What is the security model for VNets?
+VNets are completely isolated from one another, and other services hosted in the Azure infrastructure. A VNet is a trust boundary.
 
-### 是否可以共同使用 Web Apps 和虚拟网络？
+### Can I define ACLs or NSGs on my VNets?
+No. You cannot associate ACLs or NSGs to VNets. However, ACLs can be defined on input endpoints for VMs that have been deployed to a VNets, and NSGs can be associated to subnets or NICs.
 
-是的。可以在 VNet 内部署 Web 应用程序。此外，如果为 VNet 配置了点到站点，Web 应用则可以安全地连接和访问 Azure VNet 中的资源。有关详细信息，请参阅以下主题：
+### Is there a VNet security whitepaper?
+Yes. You can download it [here](http://download.microsoft.com/download/4/3/9/43902EC9-410E-4875-8800-0788BE146A3D/Windows%20Azure%20Network%20Security%20Whitepaper%20-%20FINAL.docx).
 
-- [Web Apps 虚拟网络集成](../articles/app-service-web/app-service-vnet-integration-powershell.md)
+## APIs, Schemas, and Tools
+### Can I manage VNets from code?
+Yes. You can use REST APIs to manage VNets and cross-premises connectivity. More information can be found [here](https://msdn.microsoft.com/zh-cn/library/azure/ee460799.aspx).
 
-### 是否可以在 VNet 中部署云服务与 Web 和辅助角色 (PaaS)？
-
-是的。可以在 VNet 中部署 PaaS 服务。
-
-### 如何将 PaaS 角色部署到 VNet？
-
-可以通过在服务配置的网络配置部分中指定 VNet 名称和角色/子网映射完成此操作。不需要更新任何二进制文件。
-
-### 是否可以将服务移入和移出 VNet？
-
-否。无法将服务移入和移出 VNet。必须删除并重新部署该服务，以将其移动到另一个 VNet 中。
-
-## VNet 和安全
-
-### VNet 的安全模型是什么？
-
-VNet 相互之间以及与 Azure 基础结构中托管的其他服务之间完全孤立。VNet 是一条信任边界。
-
-### 是否可以在 VNet 上定义 ACL 或 NSG？
-
-否。不能将 ACL 或 NSG 关联到 VNet。但是，可以在已部署到 VNet 的 VM 的输入终结点上定义 ACL，并且 NSG 可与子网或 NIC 相关联。
-
-### 是否有 VNet 安全白皮书？
-
-是的。可以在[此处](http://download.microsoft.com/download/4/3/9/43902EC9-410E-4875-8800-0788BE146A3D/Windows%20Azure%20Network%20Security%20Whitepaper%20-%20FINAL.docx)下载。
-
-## API、架构和工具
-
-### 是否可以通过代码管理 VNet？
-
-是的。可以使用 REST API 管理 VNet 和跨界连接。可在[此处](https://msdn.microsoft.com/zh-cn/library/azure/ee460799.aspx)找到更多信息。
-
-### 是否有 VNet 的工具支持？
-
-是的。PowerShell 和命令行工具可用于各种平台。可在[此处](https://msdn.microsoft.com/zh-cn/library/azure/jj152841.aspx)找到更多信息。
-
-<!---HONumber=Mooncake_1107_2016-->
+### Is there tooling support for VNets?
+Yes. You can use PowerShell and command line tools for a variety of platforms. More information can be found [here](https://msdn.microsoft.com/zh-cn/library/azure/jj152841.aspx).

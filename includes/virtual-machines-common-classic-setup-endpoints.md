@@ -1,62 +1,58 @@
-每个终结点都有一个*公用端口*和一个*专用端口*：
+Each endpoint has a *public port* and a *private port*:
 
-- Azure 负载均衡器使用公用端口侦听从 Internet 传入的虚拟机流量。
-- 虚拟机使用专用端口侦听通常发送到虚拟机上运行的应用程序或服务的传入流量。
+* The public port is used by the Azure load balancer to listen for incoming traffic to the virtual machine from the Internet.
+* The private port is used by the virtual machine to listen for incoming traffic, typically destined to an application or service running on the virtual machine.
 
-使用 Azure 经典管理门户创建终结点时，将为 IP 协议和众所周知的网络协议的 TCP 或 UDP 端口提供默认值。对于自定义终结点，必须指定正确的 IP 协议（TCP 或 UDP）以及公用和专用端口。若要将传入流量随机分布到多个虚拟机上，必须创建包含多个终结点的负载均衡集。
+Default values for the IP protocol and TCP or UDP ports for well-known network protocols are provided when you create endpoints with the Azure Classic Management Portal. For custom endpoints, you'll need to specify the correct IP protocol (TCP or UDP) and the public and private ports. To distribute incoming traffic randomly across multiple virtual machines, you'll need to create a load-balanced set consisting of multiple endpoints.
 
-创建终结点后，可以使用访问控制列表 (ACL) 定义规则以根据传入流量的源 IP 地址允许或拒绝终结点的公用端口的传入流量。但是，如果虚拟机在 Azure 虚拟网络中，则应改为使用网络安全组。有关详细信息，请参阅[关于网络安全组](../articles/virtual-network/virtual-networks-nsg.md)。
-
-> [!NOTE]
->将对与 Azure 自动设置的远程连接终结点关联的端口自动完成 Azure 虚拟机的防火墙配置。对于为所有其他终结点指定的端口，将不会为虚拟机的防火墙自动进行任何配置。为虚拟机创建终结点时，需要确保虚拟机的防火墙也允许与终结点配置对应的协议和专用端口的流量。若要配置防火墙，请参阅有关在虚拟机上运行的操作系统的文档或联机帮助。
-
-## 创建终结点
-
-1. 如果你尚未执行，请先登录 [Azure 经典管理门户](http://manage.windowsazure.cn)。
-2. 单击“虚拟机”，然后单击要配置的虚拟机的名称。
-3. 单击“终结点”。“终结点”页将列出该虚拟机的所有当前终结点。（此示例中的是 Windows VM。如果是 Linux VM，则默认显示一个 SSH 终结点。）
-
-    ![终结点](./media/virtual-machines-common-classic-setup-endpoints/endpointswindows.png)
-
-4. 在任务栏中，单击“添加”。
-5. 在“将终结点添加到虚拟机”页上，选择终结点的类型。
-
-    - 如果你要创建的新终结点不属于负载均衡集也不是新负载均衡集中的第一个终结点，请选择“添加独立终结点”，然后单击左箭头。
-    - 否则，请选择“将终结点添加到现有负载均衡集”，选择负载均衡集的名称，然后单击左箭头。在“指定终结点详细信息”页上，键入终结点的名称，然后单击复选标记以创建该终结点。
-
-6. 在“指定终结点详细信息”页上的“名称”中，键入终结点的名称。此外，还可以从列表中选择网络协议名称，这将填充“协议”、“公用端口”和“专用端口”的初始值。
-7. 对于自定义终结点，请在“协议”中，选择 **TCP** 或 **UDP**。
-8. 对于自定义端口，请在“公用端口”中，键入从 Internet 传入流量的端口号。在“专用端口”中，键入虚拟机正在侦听的端口号。这些端口号可以是不同的。请确保已将虚拟机上的防火墙配置为允许与协议（在步骤 7 中）和专用端口对应的流量。
-9. 如果此终结点是负载均衡集中的第一个终结点，请单击“创建负载均衡集”，然后单击右箭头。在“配置负载均衡集”页上，指定负载均衡集名称、探测协议和端口，以及探测间隔和发送的探测数。Azure 负载均衡器会将探测发送到负载均衡集中的虚拟机以监视其可用性。Azure 负载均衡器不会将流量转发到未响应探测的虚拟机。单击右箭头。
-10. 单击复选标记以创建终结点。
-
-新的终结点将在“终结点”页上列出。
-
-![成功创建终结点](./media/virtual-machines-common-classic-setup-endpoints/endpointwindowsnew.png)
-
-## <a name="manage-the-acl-on-an-endpoint"></a>管理终结点上的 ACL
-
-若要定义一组可以发送流量的计算机，终结点上的 ACL 可以基于源 IP 地址限制流量。按照下列步骤在终结点上添加、修改或删除 ACL。
+After you create an endpoint, you can use an access control list (ACL) to define rules that permit or deny the incoming traffic to the public port of the endpoint based on its source IP address. However, if the virtual machine is in an Azure virtual network, you should use network security groups instead. For details, see [About network security groups](../articles/virtual-network/virtual-networks-nsg.md).
 
 > [!NOTE]
-> 如果终结点是负载均衡集的一部分，则你对一个终结点上的 ACL 做出的任何更改都将应用于该集中的所有终结点。
+> Firewall configuration for Azure virtual machines is done automatically for ports associated with remote connectivity endpoints that Azure sets up automatically. For ports specified for all other endpoints, no configuration is done automatically to the firewall of the virtual machine. When you create an endpoint for the virtual machine, you'll need to ensure that the firewall of the virtual machine also allows the traffic for the protocol and private port corresponding to the endpoint configuration. To configure the firewall, see the documentation or on-line help for the operating system running on the virtual machine.
+> 
+> 
 
-如果虚拟机在 Azure 虚拟网络中，则建议使用网络安全组（而不是 ACL）。有关详细信息，请参阅[关于网络安全组](../articles/virtual-network/virtual-networks-nsg.md)。
+## Create an endpoint
+1. If you haven't already done so, sign in to the [Azure Classic Management Portal](http://manage.windowsazure.cn).
+2. Click **Virtual Machines**, and then click the name of the virtual machine that you want to configure.
+3. Click **Endpoints**. The **Endpoints** page lists all the current endpoints for the virtual machine. (This example is a Windows VM. A Linux VM will by default show an endpoint for SSH.)
 
-1. 如果你尚未执行，请先登录 Azure 经典管理门户。
-2. 单击“虚拟机”，然后单击要配置的虚拟机的名称。
-3. 单击“终结点”。从列表中选择适当的终结点。
+    ![Endpoints](./media/virtual-machines-common-classic-setup-endpoints/endpointswindows.png)
+4. In the taskbar, click **Add**.
+5. On the **Add an endpoint to a virtual machine** page, choose the type of endpoint.
 
-    ![ACL 列表](./media/virtual-machines-common-classic-setup-endpoints/EndpointsShowsDefaultEndpointsForVM.png)
+    * If you're creating a new endpoint that isn't part of a load-balanced set, or is the first endpoint in a new load-balanced set, choose **Add a stand-alone endpoint**, then click the left arrow.
+    * Otherwise, choose **Add an endpoint to an existing load-balanced set**, select the name of the load-balanced set, then click the left arrow. On the **Specify the details of the endpoint** page, type a name for the endpoint, then click the check mark to create the endpoint.
+6. On the **Specify the details of the endpoint** page, type a name for the endpoint in **Name**. You can also choose a network protocol name from the list, which will fill in initial values for the **Protocol**, **Public Port**, and **Private Port**.
+7. For a customized endpoint, in **Protocol**, choose either **TCP** or **UDP**.
+8. For customized ports, in **Public Port**, type the port number for the incoming traffic from the Internet. In **Private Port**, type the port number on which the virtual machine is listening. These port numbers can be different. Ensure that the firewall on the virtual machine has been configured to allow the traffic corresponding to the protocol (in step 7) and private port.
+9. If this endpoint will be the first one in a load-balanced set, click **Create a load-balanced set**, and then click the right arrow. On the **Configure the load-balanced set** page, specify a load-balanced set name, a probe protocol and port, and the probe interval and number of probes sent. The Azure load balancer sends probes to the virtual machines in a load-balanced set to monitor their availability. The Azure load balancer does not forward traffic to virtual machines that do not respond to the probe. Click the right arrow.
+10. Click the check mark to create the endpoint.
 
-5. 在任务栏中，单击“管理 ACL”以打开“指定 ACL 详细信息”对话框。
+The new endpoint will be listed on the **Endpoints** page.
 
-    ![指定 ACL 详细信息](./media/virtual-machines-common-classic-setup-endpoints/EndpointACLdetails.png)
+![Endpoint creation successful](./media/virtual-machines-common-classic-setup-endpoints/endpointwindowsnew.png)
 
-6. 使用列表中的行为 ACL 添加、删除或编辑规则，并更改其顺序。**远程子网**值是从 Internet 传入流量的 IP 地址范围，Azure 负载均衡器将使用该值根据流量的源 IP 地址允许或拒绝传入流量。请务必以 CIDR 格式（也称为地址前缀格式）指定 IP 地址范围。例如 131.107.0.0/16。
+## <a name="manage-the-acl-on-an-endpoint"></a> Manage the ACL on an endpoint
+To define the set of computers that can send traffic, the ACL on an endpoint can restrict traffic based upon source IP address. Follow these steps to add, modify, or remove an ACL on an endpoint.
 
-你可以使用规则只允许来自与 Internet 上你的计算机对应的特定计算机的流量或拒绝来自特定的已知地址范围的流量。
+> [!NOTE]
+> If the endpoint is part of a load-balanced set, any changes you make to the ACL on an endpoint are applied to all endpoints in the set.
+> 
+> 
 
-将按以第一条规则开始、以最后一条规则结束的顺序来计算规则。这意味着规则应按最少限制到最多限制排序。有关示例和更多信息，请参阅[什么是网络访问控制列表？](../articles/virtual-network/virtual-networks-acl.md)。
+If the virtual machine is in an Azure virtual network, we recommend network security groups instead of ACLs. For details, see [About network security groups](../articles/virtual-network/virtual-networks-nsg.md).
 
-<!---HONumber=Mooncake_0530_2016-->
+1. If you haven't already done so, sign in to the Azure Classic Management Portal.
+2. Click **Virtual Machines**, and then click the name of the virtual machine that you want to configure.
+3. Click **Endpoints**. From the list, select the appropriate endpoint.
+
+    ![ACL list](./media/virtual-machines-common-classic-setup-endpoints/EndpointsShowsDefaultEndpointsForVM.png)
+4. In the taskbar, click **Manage ACL** to open the **Specify ACL details** dialog box.
+
+    ![Specify ACL details](./media/virtual-machines-common-classic-setup-endpoints/EndpointACLdetails.png)
+5. Use rows in the list to add, delete, or edit rules for an ACL and change their order. The **Remote Subnet** value is an IP address range for incoming traffic from the Internet that the Azure load balancer uses to permit or deny the traffic based on its source IP address. Be sure to specify the IP address range in CIDR format, also known as address prefix format. An example is 131.107.0.0/16.
+
+You can use rules to allow only traffic from specific computers corresponding to your computers on the Internet or to deny traffic from specific, known address ranges.
+
+The rules are evaluated in order starting with the first rule and ending with the last rule. This means that rules should be ordered from least restrictive to most restrictive. For examples and more information, see [What is a Network Access Control List?](../articles/virtual-network/virtual-networks-acl.md).

@@ -1,7 +1,4 @@
-## 方案
+## Scenario
+This document will walk through a deployment that uses multiple NICs in VMs in a specific scenario. In this scenario, you have a two-tiered IaaS workload hosted in Azure. Each tier is deployed in its own subnet in a virtual network (VNet). The front end tier is composed of several web servers, grouped together in a load balancer set for high availability. The back end tier is composed of several database servers. These database servers will be deployed with two NICs each, one for database access, the other for management. The scenario also includes Network Security Groups (NSGs) to control what traffic is allowed to each subnet, and NIC in the deployment. The figure below shows the basic architecture of this scenario.  
 
-本文档将指导你完成在特定方案中使用 VM 中的多个 NIC 的部署。在此方案中，你在 Azure 中托管两层 IaaS 工作负荷。每个层部署在虚拟网络 (VNet) 中其自己的子网中。前端层由几个 Web 服务器组成，这些服务器在负载均衡器集中组合在一起以实现高可用性。后端层由几个数据库服务器组成。这些数据库服务器将部署为每个具有两个 NIC，一个用于数据库访问，另一个用于管理。此方案还包括网络安全组 (NSG) 以控制哪些流量允许到达部署中的每个子网和 NIC。下图显示了此方案的基本体系结构。
-
-![MultiNIC 方案](./media/virtual-network-deploy-multinic-scenario-include/Figure1.png)
-
-<!---HONumber=Mooncake_0104_2016-->
+![MultiNIC scenario](./media/virtual-network-deploy-multinic-scenario-include/Figure1.png)

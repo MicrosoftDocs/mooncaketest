@@ -1,6 +1,4 @@
-当你尝试创建新的 Azure 虚拟机 (VM) 时，遇到的常见错误是预配失败或分配失败。
+When you try to create a new Azure Virtual Machine (VM), the common errors you encounter are provisioning failures or allocation failures.
 
-- 当由于准备步骤不当，或者在从门户预览捕获映像期间选择了错误的设置而导致 OS 映像无法加载时，将发生预配失败。
-- 当群集或区域没有可用的资源或无法支持所请求的 VM 大小时，将发生分配失败。
-
-<!---HONumber=Mooncake_0606_2016-->
+* A provisioning failure happens when the OS image fails to load either due to incorrect preparatory steps or because of selecting the wrong settings during the image capture from the portal.
+* An allocation failure results when the cluster or region either does not have resources available or cannot support the requested VM size.

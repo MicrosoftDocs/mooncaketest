@@ -1,39 +1,37 @@
-### 点到站点连接允许使用哪些操作系统？
-支持以下操作系统：
+### What operating systems can I use with Point-to-Site?
+The following operating systems are supported:
 
-* Windows 7（32 位和 64 位）
-* Windows Server 2008 R2（仅 64 位）
-* Windows 8（32 位和 64 位）
-* Windows 8.1（32 位和 64 位）
-* Windows Server 2012（仅 64 位）
-* Windows Server 2012 R2（仅 64 位）
+* Windows 7 (32-bit and 64-bit)
+* Windows Server 2008 R2 (64-bit only)
+* Windows 8 (32-bit and 64-bit)
+* Windows 8.1 (32-bit and 64-bit)
+* Windows Server 2012 (64-bit only)
+* Windows Server 2012 R2 (64-bit only)
 * Windows 10
 
-### 是否可以使用任何支持 SSTP 的点到站点软件 VPN 客户端？
-否。仅支持上面列出的 Windows 操作系统版本。
+### Can I use any software VPN client for Point-to-Site that supports SSTP?
+No. Support is limited only to the Windows operating system versions listed above.
 
-### 在我的点到站点配置中，可以有多少 VPN 客户端终结点？
-我们最多支持 128 个 VPN 客户端可同时连接到一个虚拟网络。
+### How many VPN client endpoints can I have in my Point-to-Site configuration?
+We support up to 128 VPN clients to be able to connect to a virtual network at the same time.
 
-### 是否可以将我自己的内部 PKI 根 CA 用于点到站点连接？
-是。以前只可使用自签名根证书。你仍可上传 20 个根证书。
+### Can I use my own internal PKI root CA for Point-to-Site connectivity?
+Yes. Previously, only self-signed root certificates could be used. You can still upload 20 root certificates.
 
-### 是否可以使用点到站点功能穿越代理和防火墙？
-是。我们使用 SSTP（安全套接字隧道协议）作为隧道穿越防火墙。此隧道将显示为 HTTPS 连接。
+### Can I traverse proxies and firewalls using Point-to-Site capability?
+Yes. We use SSTP (Secure Socket Tunneling Protocol) to tunnel through firewalls. This tunnel will appear as an HTTPs connection.
 
-### 如果重新启动进行过点到站点配置的客户端计算机，是否会自动重新连接 VPN？
-默认情况下，客户端计算机将不自动重新建立 VPN 连接。
+### If I restart a client computer configured for Point-to-Site, will the VPN automatically reconnect?
+By default, the client computer will not reestablish the VPN connection automatically.
 
-### 点到站点在 VPN 客户端上是否支持自动重新连接和 DDNS？
-点到站点 VPN 中当前不支持自动重新连接和 DDNS。
+### Does Point-to-Site support auto-reconnect and DDNS on the VPN clients?
+Auto-reconnect and DDNS are currently not supported in Point-to-Site VPNs.
 
-### 对于同一虚拟网络，站点到站点和点到站点配置能否共存？
-是。如果为网关使用 RouteBased VPN 类型，这两种解决方案都可行。对于经典部署模型，需要一个动态网关。我们不支持对静态路由 VPN 网关或使用 `-VpnType PolicyBased` cmdlet 的网关使用点到站点连接。
+### Can I have Site-to-Site and Point-to-Site configurations coexist for the same virtual network?
+Yes. Both these solutions will work if you have a RouteBased VPN type for your gateway. For the classic deployment model, you need a dynamic gateway. We do not support Point-to-Site for static routing VPN gateways or gateways using the `-VpnType PolicyBased` cmdlet.
 
-### 是否可以将点到站点客户端配置为同时连接到多个虚拟网络？
-是，可以这样做。但虚拟网络的 IP 前缀不得重叠，并且点到站点地址空间在虚拟网络之间不得重叠。
+### Can I configure a Point-to-Site client to connect to multiple virtual networks at the same time?
+Yes, it is possible. But the virtual networks cannot have overlapping IP prefixes and the Point-to-Site address spaces must not overlap between the virtual networks.
 
-### 预计通过站点到站点连接或点到站点连接的吞吐量有多少？
-很难维持 VPN 隧道的准确吞吐量。IPsec 和 SSTP 是重重加密的 VPN 协议。本地网络与 Internet 之间的延迟和带宽也限制了吞吐量。
-
-<!---HONumber=Mooncake_0227_2017-->
+### How much throughput can I expect through Site-to-Site or Point-to-Site connections?
+It's difficult to maintain the exact throughput of the VPN tunnels. IPsec and SSTP are crypto-heavy VPN protocols. Throughput is also limited by the latency and bandwidth between your premises and the Internet.

@@ -1,19 +1,17 @@
 > [!div class="op_single_selector"]
-- [C#](../articles/iot-hub/iot-hub-csharp-csharp-getstarted.md)
-- [Java](../articles/iot-hub/iot-hub-java-java-getstarted.md)
-- [Node.js](../articles/iot-hub/iot-hub-node-node-getstarted.md)
+>- [C#](/documentation/articles/articles/iot-hub-csharp-csharp-getstarted)
+>- [Java](/documentation/articles/articles/iot-hub-java-java-getstarted)
+>- [Node.js](/documentation/articles/articles/iot-hub-node-node-getstarted)
 
-## 介绍
-Azure IoT 中心是一项完全托管的服务，可在数百万个物联网 (IoT) 设备和一个解决方案后端之间实现安全可靠的双向通信。IoT 项目面临的最大挑战之一是如何可靠且安全地将设备连接到解决方案后端。为了解决此难题，IoT 中心：
+## Introduction
+Azure IoT Hub is a fully managed service that enables reliable and secure bi-directional communications between millions of Internet of Things (IoT) devices and a solution back end. One of the biggest challenges that IoT projects face is how to reliably and securely connect devices to the solution back end. To address this challenge, IoT Hub:
 
-* 提供可靠的设备到云和云到设备的超大规模消息传送。
-* 使用每个设备的安全凭据和访问控制来实现安全通信。
-* 包含最流行语言和平台的设备库。
+* Offers reliable device-to-cloud and cloud-to-device hyper-scale messaging.
+* Enables secure communications using per-device security credentials and access control.
+* Includes device libraries for the most popular languages and platforms.
 
-本教程演示如何：
+This tutorial shows you how to:
 
-* 使用 Azure 门户预览创建 IoT 中心。
-* 在 IoT 中心内创建设备标识。
-* 创建一个模拟设备，用于将遥测数据发送到云后端，以及从云后端接收命令。
-
-<!---HONumber=Mooncake_1212_2016-->
+* Use the Azure portal to create an IoT hub.
+* Create a device identity in your IoT hub.
+* Create a simulated device app that sends telemetry to your solution back end.

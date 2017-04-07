@@ -1,52 +1,50 @@
-# 概述
-## [Azure VM 上的 SQL Server 是什么？](virtual-machines-windows-sql-server-iaas-overview.md) 
-## [价格](https://azure.microsoft.com/pricing/details/virtual-machines/windows/)
-## [常见问题](virtual-machines-windows-sql-server-iaas-faq.md)
- 
-# 入门
-## [在 Azure 门户中预配 VM](virtual-machines-windows-portal-sql-server-provision.md)
-## [使用 Azure PowerShell 预配 VM](virtual-machines-windows-ps-sql-create.md)
-## [连接到 VM](virtual-machines-windows-sql-connect.md)
-## [迁移 SQL Server 数据库](virtual-machines-windows-migrate-sql.md)
+# Overview
+## [What is SQL Server on Azure VMs?](virtual-machines-windows-sql-server-iaas-overview.md) 
+## [Pricing](https://www.azure.cn/pricing/details/virtual-machines/windows/)
+## [FAQ](virtual-machines-windows-sql-server-iaas-faq.md)
 
-# 如何
-## 配置高可用性
-### [高可用性选项](virtual-machines-windows-sql-high-availability-dr.md) 
-### [Always On 可用性组](virtual-machines-windows-portal-sql-availability-group-overview.md)
-#### [自动 - 使用模板](virtual-machines-windows-portal-sql-alwayson-availability-groups.md)
-#### [手动 - 先决条件](virtual-machines-windows-portal-sql-availability-group-prereq.md)
-#### [手动 - 教程](virtual-machines-windows-portal-sql-availability-group-tutorial.md)
-#### [负载均衡器 - 门户](virtual-machines-windows-portal-sql-alwayson-int-listener.md)
-#### [负载均衡器 - PowerShell](virtual-machines-windows-portal-sql-ps-alwayson-int-listener.md)
-#### [多个区域](virtual-machines-windows-portal-sql-availability-group-dr.md)
-### 故障转移群集实例
-#### [配置](virtual-machines-windows-portal-sql-create-failover-cluster.md)
+# Get Started
+## [Provision a VM in the Azure Portal Preview](virtual-machines-windows-portal-sql-server-provision.md)
+## [Provision a VM using Azure PowerShell](virtual-machines-windows-ps-sql-create.md)
+## [Connect to a VM](virtual-machines-windows-sql-connect.md)
+## [Migrate a SQL Server database](virtual-machines-windows-migrate-sql.md)
 
-## 管理
-### [使用 SQL Server IaaS 代理扩展](virtual-machines-windows-sql-server-agent-extension.md)
-### [自动修补](virtual-machines-windows-sql-automated-patching.md)
-### [配置 Azure Key Vault 集成](virtual-machines-windows-ps-sql-keyvault.md)
-### [安全注意事项](virtual-machines-windows-sql-security.md)
-## 备份和还原
-### [备份和还原](virtual-machines-windows-sql-backup-recovery.md)
-### [自动备份](virtual-machines-windows-sql-automated-backup.md)
-### [将 Azure 存储用于备份和还原](virtual-machines-windows-use-storage-sql-server-backup-restore.md)
-## [性能最佳做法](virtual-machines-windows-sql-performance.md)
-## [配置存储](virtual-machines-windows-sql-server-storage-configuration.md)
-## [应用程序模式](virtual-machines-windows-sql-server-app-patterns-dev-strategies.md)
+# How to
+## Configure High Availability
+### [High availability options](virtual-machines-windows-sql-high-availability-dr.md) 
+### [Always On availability group](virtual-machines-windows-portal-sql-availability-group-overview.md)
+#### [Automatic - with template](virtual-machines-windows-portal-sql-alwayson-availability-groups.md)
+#### [Manual - prerequisites](virtual-machines-windows-portal-sql-availability-group-prereq.md)
+#### [Manual - tutorial](virtual-machines-windows-portal-sql-availability-group-tutorial.md)
+#### [Load balancer - portal](virtual-machines-windows-portal-sql-alwayson-int-listener.md)
+#### [Load balancer - PowerShell](virtual-machines-windows-portal-sql-ps-alwayson-int-listener.md)
+#### [Multiple regions](virtual-machines-windows-portal-sql-availability-group-dr.md)
+### Failover Cluster Instance
+#### [Configure](virtual-machines-windows-portal-sql-create-failover-cluster.md)
 
-# 参考
-## [PowerShell](/powershell/resourcemanager)
-## [Azure CLI](/cli/azure/)
-## [T-SQL](https://msdn.microsoft.com/library/azure/bb510741.aspx)
-## [SQL Server 驱动程序](https://msdn.microsoft.com/library/mt654049.aspx)
-## [REST](/rest/api/)
+## Manage
+### [Use the SQL Server IaaS Agent Extension](virtual-machines-windows-sql-server-agent-extension.md)
+### [Automated Patching](virtual-machines-windows-sql-automated-patching.md)
+### [Configure Azure Key Vault Integration](virtual-machines-windows-ps-sql-keyvault.md)
+### [Security Considerations](virtual-machines-windows-sql-security.md)
+## Backup and restore
+### [Backup and Restore](virtual-machines-windows-sql-backup-recovery.md)
+### [Automated Backup](virtual-machines-windows-sql-automated-backup.md)
+### [Use Azure Storage for Backup and Restore](virtual-machines-windows-use-storage-sql-server-backup-restore.md)
+## [Performance best practices](virtual-machines-windows-sql-performance.md)
+## [Configure storage](virtual-machines-windows-sql-server-storage-configuration.md)
+## [Application patterns](virtual-machines-windows-sql-server-app-patterns-dev-strategies.md)
 
-# 资源
-## [MSDN 论坛](https://social.msdn.microsoft.com/Forums/zh-cn/home?forum=WAVirtualMachinesforWindows&filter=alltypes&brandIgnore=True&sort=relevancedesc&searchTerm=SQL+Server)
-## [堆栈溢出](http://stackoverflow.com/search?q=%5Bazure-virtual-machine%5D+sql+server)
-## [SQL Server 工具](https://msdn.microsoft.com/library/mt238365.aspx)
-## [SQL Server Management Studio (SSMS)](https://msdn.microsoft.com/library/mt238290.aspx)
-## [SQL Server Data Tools (SSDT)](https://msdn.microsoft.com/library/mt204009.aspx)
+# Reference
+## [PowerShell](https://docs.microsoft.com/powershell/resourcemanager)
+## [Azure CLI](https://docs.microsoft.com/cli/azure/)
+## [T-SQL](https://msdn.microsoft.com/zh-cn/library/azure/bb510741.aspx)
+## [SQL Server Drivers](https://msdn.microsoft.com/zh-cn/library/mt654049.aspx)
+## [REST](https://docs.microsoft.com/rest/api/)
 
-<!---HONumber=Mooncake_0320_2017-->
+# Resources
+## [MSDN forum](https://social.msdn.microsoft.com/Forums/home?forum=WAVirtualMachinesforWindows&filter=alltypes&brandIgnore=True&sort=relevancedesc&searchTerm=SQL+Server)
+## [Stack Overflow](http://stackoverflow.com/search?q=%5Bazure-virtual-machine%5D+sql+server)
+## [SQL Server Tools](https://msdn.microsoft.com/zh-cn/library/mt238365.aspx)
+## [SQL Server Management Studio (SSMS)](https://msdn.microsoft.com/zh-cn/library/mt238290.aspx)
+## [SQL Server Data Tools (SSDT)](https://msdn.microsoft.com/zh-cn/library/mt204009.aspx)

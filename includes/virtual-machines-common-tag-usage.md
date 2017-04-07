@@ -1,19 +1,16 @@
-## 在使用情况详细信息中查看标记
+## Viewing your tags in the usage details
+Tags placed on Compute, Network, and Storage resources in the Resource Manager deployment model will be populated in your usage details in the [billing portal](https://account.windowsazure.cn/).
 
-通过 Resource Manager 部署模型放置在计算、网络和存储资源中的标记将在[计费门户](https://account.windowsazure.cn/)上的使用情况详细信息中填充。
+Click on **Download usage details** to view the usage details in your subscription.
 
-单击“下载使用情况详细信息”，以查看订阅中的使用情况详细信息。
+![Usage details in Azure portal preview](./media/virtual-machines-common-tag-usage/azure-portal-tags-usage-details.png)
 
-![Azure 门户中的使用情况详细信息](./media/virtual-machines-common-tag-usage/azure-portal-tags-usage-details.png)
+Select your billing statement and the **Version 2** usage details:
 
-选择帐单和**版本 2** 使用情况详细信息：
+![Version 2 Preview Usage Details in Azure portal preview](./media/virtual-machines-common-tag-usage/azure-portal-version2-usage-details.png)
 
-![Azure 门户中的版本 2 预览使用情况详细信息](./media/virtual-machines-common-tag-usage/azure-portal-version2-usage-details.png)
+From the usage details, you can see all of the tags in the **Tags** column:
 
-在使用情况详细信息中，可以在“标记”列中看到所有标记：
+![Tags column in Azure portal preview](./media/virtual-machines-common-tag-usage/azure-portal-tags-column.png)
 
-![Azure 门户中的标记列](./media/virtual-machines-common-tag-usage/azure-portal-tags-column.png)
-
-通过分析这些标记以及使用情况，组织将能够获得对消耗数据的全新见解。
-
-<!---HONumber=Mooncake_0606_2016-->
+By analyzing these tags along with usage, organizations will be able to gain new insights into their consumption data.

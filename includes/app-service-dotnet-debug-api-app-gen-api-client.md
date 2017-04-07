@@ -1,89 +1,69 @@
-## 生成 API 应用客户端 
+## Generate an API app client
+The API App tools in Visual Studio make it easy to generate C# code that calls to your Azure API Apps from desktop, store, and mobile apps. 
 
-Visual Studio 中的 API 应用工具能更加轻松地生成可从桌面、应用商店和移动应用调用到 Azure API 应用的 C# 代码。
+1. In Visual Studio, open the solution that contains the API app from the [Create API app](../articles/app-service-api/app-service-dotnet-create-api-app.md) topic. 
+2. From **Solution Explorer**, right-click the solution and select the **Add** > **New Project**.
 
-1. 在 Visual Studio 中，打开包含[创建 API 应用](../articles/app-service-api/app-service-api-dotnet-get-started.md)主题中的 API 应用的解决方案。
+    ![Add a new project](./media/app-service-dotnet-debug-api-app-gen-api-client/01-add-new-project-v3.png)
+3. In the **Add New Project** dialog, perform the following steps:
 
-2. 在“解决方案资源管理器”中，右键单击解决方案并选择“添加”>“新建项目”。
+    1. Select the **Windows Desktop** category.
+    2. Select the **Console Application** project template.
+    3. Name the project.
+    4. Click **OK** to generate the new project in your existing solution.
 
-    ![添加新项目](./media/app-service-dotnet-debug-api-app-gen-api-client/01-add-new-project-v3.png)
+        ![Add a new project](./media/app-service-dotnet-debug-api-app-gen-api-client/02-contact-list-console-project-v3.png)
+4. Right-click the newly created console application project and select **Add** > **Azure API App Client**. 
 
-3. 在“添加新项目”对话框中，执行以下步骤：
+    ![Add a new Client](./media/app-service-dotnet-debug-api-app-gen-api-client/03-add-azure-api-client-v3.png)
+5. In the **Add Azure API App Client** dialog, perform the following steps: 
 
-    1. 选择“Windows 桌面”类别。
+    1. Select the **Download** option. 
+    2. From the drop-down list, select the API app that you created earlier. 
+    3. Click **OK**. 
 
-    2. 选择“控制台应用程序”项目模板。
+        ![Generation Screen](./media/app-service-dotnet-debug-api-app-gen-api-client/04-select-the-api-v3.png)
 
-    3. 为该项目命名。
+        The wizard will download the API metadata file and generate a typed interface for invoking the API App.
 
-    4. 单击“确定”以在现有解决方案中生成新的项目。
+        ![Generation Happening](./media/app-service-dotnet-debug-api-app-gen-api-client/05-metadata-downloading-v3.png)
 
-    ![添加新项目](./media/app-service-dotnet-debug-api-app-gen-api-client/02-contact-list-console-project-v3.png)
+        Once code generation is complete, you'll see a new folder in Solution Explorer, with the name of the API app. This folder contains the code that implements the client and data models. 
 
-4. 右键单击新创建的控制台应用程序项目，然后选择“添加”>“Azure API 应用客户端”。
+        ![Generation Complete](./media/app-service-dotnet-debug-api-app-gen-api-client/06-code-gen-output-v3.png)
+6. Open the **Program.cs** file from the project root and replace the **Main** method with the following code: 
 
-    ![添加新客户端](./media/app-service-dotnet-debug-api-app-gen-api-client/03-add-azure-api-client-v3.png)
-
-5. 在“添加 Azure API 应用客户端”对话框中，执行以下步骤：
-
-    1. 选择“下载”选项。
-
-    2. 在下拉列表中，选择前面创建的 API 应用。
-
-    3. 单击**“确定”**。
-
-    ![生成屏幕](./media/app-service-dotnet-debug-api-app-gen-api-client/04-select-the-api-v3.png)
-
-    向导将下载 API 元数据文件并生成类型化接口，用于调用 API 应用。
-
-    ![正在生成](./media/app-service-dotnet-debug-api-app-gen-api-client/05-metadata-downloading-v3.png)
-
-    完成代码生成后，将在解决方案资源管理器中看到以 API 应用命名的新文件夹。此文件夹包含用于实现客户端模型和数据模型的代码。
-
-    ![完成生成](./media/app-service-dotnet-debug-api-app-gen-api-client/06-code-gen-output-v3.png)
-
-6. 从项目根目录打开 **Program.cs**，并使用以下代码替换 **Main** 方法：
-
-    ```
-    static void Main(string[] args)
-    {
-        var client = new ContactsList();
-
-        // Send GET request.
-        var contacts = client.Contacts.Get();
-        foreach (var c in contacts)
+        static void Main(string[] args)
         {
-            Console.WriteLine("{0}: {1} {2}",
-                c.Id, c.Name, c.EmailAddress);
+            var client = new ContactsList();
+
+            // Send GET request.
+            var contacts = client.Contacts.Get();
+            foreach (var c in contacts)
+            {
+                Console.WriteLine("{0}: {1} {2}",
+                    c.Id, c.Name, c.EmailAddress);
+            }
+
+            // Send POST request.
+            client.Contacts.Post(new Models.Contact
+            {
+                EmailAddress = "lkahn@contoso.com",
+                Name = "Loretta Kahn",
+                Id = 4
+            });
+
+            Console.WriteLine("Finished");
+            Console.ReadLine();
         }
 
-        // Send POST request.
-        client.Contacts.Post(new Models.Contact
-        {
-            EmailAddress = "lkahn@contoso.com",
-            Name = "Loretta Kahn",
-            Id = 4
-        });
+## Test the API app client
+Once the API app has been coded, it's time to test the code.
 
-        Console.WriteLine("Finished");
-        Console.ReadLine();
-    }
-    ```
+1. Open **Solution Explorer**.
+2. Right-click the console application you created in the previous section.
+3. From the console application's context menu, select **Debug > Start new instance**. 
+4. A console windows should open and display all of the contacts. 
 
-## 测试 API 应用客户端
-
-对 API 应用进行编码后，就可以测试代码了。
-
-1. 打开“解决方案资源管理器”。
-
-2. 右键单击上一节中创建的控制台应用程序。
-
-3. 在控制台应用程序的上下文菜单中，选择“调试 > 启动新实例”。
-
-4. 这时将打开一个控制台窗口并显示所有联系人。
-
-    ![运行控制台应用](./media/app-service-dotnet-debug-api-app-gen-api-client/running-console-app.png)
-
-5. 按 Enter 键以消除控制台窗口。
-
-<!---HONumber=Mooncake_0919_2016-->
+    ![Running console app](./media/app-service-dotnet-debug-api-app-gen-api-client/running-console-app.png)
+5. Press **Enter** to dismiss the console window.

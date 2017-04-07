@@ -1,9 +1,7 @@
-* 在 Xcode 中，按“运行”并在 iOS 设备（不是模拟器）上启动应用。 单击“确定”接受推送通知；此请求只会在首次运行应用时出现。
+* In Xcode, press **Run** and start the app on an iOS device (not the simulator.) Click **OK** to accept push notifications; this request occurs the first time the app runs.
 
-* 在应用中，添加新项并单击“+”。
+* In the app, add a new item and click **+**.
 
-* 检查是否已收到通知，然后单击“确定”以取消通知。现在，你已成功完成本教程。
+* Verify that a notification is received, then click **OK** to dismiss the notification. You have now successfully completed this tutorial.
 
-    ![](./media/mobile-services-ios-get-started-push/mobile-quickstart-push3-ios.png)
-
-<!---HONumber=71-->
+      ![](../articles/media/mobile-services-ios-get-started-push/mobile-quickstart-push3-ios.png)

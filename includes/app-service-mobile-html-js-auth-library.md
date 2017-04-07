@@ -1,27 +1,56 @@
-### <a name="server-auth"></a>如何：使用提供程序（服务器流）进行身份验证
-若要让移动应用管理应用中的身份验证过程，必须向标识提供者注册应用。然后，需要在 Azure App Service 中配置提供者提供的应用程序 ID 和机密。有关详细信息，请参阅[向应用程序添加身份验证](../articles/app-service-mobile/app-service-mobile-cordova-get-started-users.md)教程。
+### <a name="server-auth"></a>How to: Authenticate with a Provider (Server Flow)
+To have Mobile Apps manage the authentication process in your app, you must register your app with your identity
+provider. Then in your Azure App Service, you need to configure the application ID and secret provided by your provider.
+For more information, see the tutorial [Add authentication to your app](../articles/app-service-mobile/app-service-mobile-cordova-get-started-users.md).
 
-注册标识提供者后，只需使用提供者的名称调用 .login() 方法即可。例如，若要使用 microsoftaccount 登录，请使用以下代码。
+Once you have registered your identity provider, call the `.login()` method with the name of your provider. For
+example, to login with Facebook use the following code:
 
 ```
-client.login("microsoftaccount").done(function (results) {
+client.login("facebook").done(function (results) {
      alert("You are now logged in as: " + results.userId);
 }, function (err) {
      alert("Error: " + err);
 });
 ```
 
-如果使用的标识提供程序不是 microsoftaccount，请将传递给上述 login 方法的值更改为 `aad`。
+The valid values for the provider are 'aad', 'facebook', 'google', 'microsoftaccount', and 'twitter'.
 
-在这种情况下，由 Azure 应用服务管理 OAuth 2.0 身份验证流程。它显示所选提供者的登录页，并在使用标识提供者成功登录后生成应用服务身份验证令牌。login 函数在完成时返回一个 JSON 对象，该对象分别在 userId 和 authenticationToken 字段中公开用户 ID 和应用服务身份验证令牌。可以缓存此令牌，并在它过期之前重复使用。
+> [!NOTE]
+> Google Authentication does not currently work via Server Flow.  To authenticate with Google, you must
+> use a [client-flow method](#client-auth).
 
-###<a name="client-auth"></a>如何：使用提供程序（客户端流）进行身份验证
+In this case, Azure App Service manages the OAuth 2.0 authentication flow.  It displays the login page of the selected
+provider and generates an App Service authentication token after successful login with the identity provider. The login
+function, when complete, returns a JSON object that exposes both the user ID and App Service authentication token
+in the userId and authenticationToken fields, respectively. This token can be cached and reused until it expires.
 
-你的应用还能够独立联系标识提供者，然后将返回的令牌提供给应用服务以进行身份验证。使用此客户端流可为用户提供单一登录体验，或者从标识提供者中检索其他用户数据。
+###<a name="client-auth"></a>How to: Authenticate with a Provider (Client Flow)
 
-#### Microsoft 帐户示例
+Your app can also independently contact the identity provider and then provide the returned token to your App Service for
+authentication. This client flow enables you to provide a single sign-in experience for users or to retrieve additional
+user data from the identity provider.
 
-以下示例使用 Live SDK，该 SDK 使用 Microsoft 帐户来支持 Windows 应用商店应用程序的单一登录：
+#### Social Authentication basic example
+
+This example uses Facebook client SDK for authentication:
+
+```
+client.login(
+     "facebook",
+     {"access_token": token})
+.done(function (results) {
+     alert("You are now logged in as: " + results.userId);
+}, function (err) {
+     alert("Error: " + err);
+});
+
+```
+This example assumes that the token provided by the respective provider SDK is stored in the token variable.
+
+#### Microsoft Account example
+
+The following example uses the Live SDK, which supports single-sign-on for Windows Store apps by using Microsoft Account:
 
 ```
 WL.login({ scope: "wl.basic"}).then(function (result) {
@@ -35,13 +64,16 @@ WL.login({ scope: "wl.basic"}).then(function (result) {
             alert("Error: " + err);
       });
 });
+
 ```
 
-这个示例将从 Live Connect 获取一个令牌，并通过调用 login 函数将该令牌提供给你的应用服务。
+This example gets a token from Live Connect, which is supplied to your App Service by calling the login function.
 
-###<a name="auth-getinfo"></a>如何：获取已经过身份验证的用户相关信息
+###<a name="auth-getinfo"></a>How to: Obtain information about the authenticated user
 
-可以使用具有任何 AJAX 库的 HTTP 调用从 `/.auth/me` 终结点检索身份验证信息。确保将 `X-ZUMO-AUTH` 标头设置为身份验证令牌。身份验证令牌存储在 `client.currentUser.mobileServiceAuthenticationToken` 中。例如，若要使用提取 API：
+The authentication information can be retrieved from the `/.auth/me` endpoint using a HTTP call with any AJAX
+library.  Ensure you set the `X-ZUMO-AUTH` header to your authentication token.  The authentication token
+is stored in `client.currentUser.mobileServiceAuthenticationToken`.  For example, to use the fetch API:
 
 ```
 var url = client.applicationUrl + '/.auth/me';
@@ -55,6 +87,6 @@ fetch(url, { headers: headers })
     });
 ```
 
-提取可作为 [npm 包](https://www.npmjs.com/package/whatwg-fetch)，或供浏览器从 [CDNJS](https://cdnjs.com/libraries/fetch) 进行下载。也可以使用 jQuery 或其他 AJAX API 提取信息。数据作为 JSON 对象接收。
-
-<!---HONumber=Mooncake_0116_2017-->
+Fetch is available as [an npm package](https://www.npmjs.com/package/whatwg-fetch) or for browser
+download from [CDNJS](https://cdnjs.com/libraries/fetch). You could also use jQuery or another AJAX API
+to fetch the information.  Data is received as a JSON object.

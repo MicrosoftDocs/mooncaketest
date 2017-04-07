@@ -1,19 +1,10 @@
-在此步骤中，你创建一个防火墙规则以打开负载均衡终结点的探测端口（同样采用之前指定的 59999）和另一规则来打开可用性组侦听器端口。由于你在包含可用性组副本的 Azure 虚拟机上创建了负载均衡的终结点，你需要打开相应 Azure 虚拟机上的探测端口和侦听器端口。
+In this step, you create a firewall rule to open the probe port for the load-balanced endpoint (59999 as specified earlier), and another rule to open the availability group listener port. Since you created the load-balanced endpoint on the Azure VMs that contain availability group replicas, you need to open the probe port and the listener port on the respective Azure VMs.
 
-1. 在托管副本的虚拟机上，启动“具有高级安全性的 Windows 防火墙”。
-
-1. 右键单击“入站规则”，然后单击“新建规则”。
-
-1. 在“规则类型”页面中，请选择“端口”，然后单击“下一步”。
-
-1. 在“协议和端口”页面中，选择“TCP”，然后选择“特定本地端口”框中的类型“59999”。然后，单击“下一步”。
-
-1. 在“操作”页面中，保持选中“允许连接”，然后单击“下一步”。
-
-1. 在“配置文件”页面中，接受默认设置并单击“下一步”。
-
-1. 在“名称”页面中，在“名称”文本框中指定规则名称，比如 AlwaysOn Listener Probe Port，然后单击“完成”。
-
-1. 为可用性组侦听器端口重复上述步骤（按之前在脚本的 $EndpointPort 参数中指定的那样）并指定合适的规则名称，比如 AlwaysOn Listener Port。
-
-<!---HONumber=70-->
+1. On VMs hosting replicas, launch **Windows Firewall with Advanced Security**.
+2. Right-click **Inbound Rules** and click **New Rule**.
+3. In the **Rule Type** page, select **Port**, then click **Next**.
+4. In the **Protocol and Ports** page, select **TCP** and type **59999** in the **Specific local ports** box. Then, click **Next**.
+5. In the **Action** page, keep **Allow the connection** selected and click **Next**.
+6. In the **Profile** page, accept the default settings and click **Next**.
+7. In the **Name** page, specify a rule name, such as **Always On Listener Probe Port** in the **Name** text box, and click **Finish**.
+8. Repeat the above steps for the availability group listener port (as specified earlier in the $EndpointPort parameter of the script) and specify an appropriate rule name, such as **Always On Listener Port**.

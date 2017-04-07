@@ -1,41 +1,28 @@
-若要使用 Azure 门户预览在 Resource Manager 部署模型中创建 VNet，请执行以下步骤。这些屏幕截图作为示例提供。请务必替换为你自己的值。有关使用虚拟网络的详细信息，请参阅[虚拟网络概述](../articles/virtual-network/virtual-networks-overview.md)。
+To create a VNet in the Resource Manager deployment model by using the Azure portal preview, follow the steps below. The screenshots are provided as examples. Be sure to replace the values with your own. For more information about working with virtual networks, see the [Virtual Network Overview](../articles/virtual-network/virtual-networks-overview.md).
 
-1. 从浏览器导航到 [Azure 门户预览](http://portal.azure.cn)，并在必要时用 Azure 帐户登录。
+1. From a browser, navigate to the [Azure portal preview](http://portal.azure.cn) and, if necessary, sign in with your Azure account.
+2. Click **New**. In the **Search the marketplace** field, type "Virtual Network". Locate **Virtual Network** from the returned list and click to open the **Virtual Network** blade.
 
-2. 单击“新建”。在“搜索应用商店”字段中，键入“虚拟网络”。从返回的列表中找到“虚拟网络”，单击打开“虚拟网络”边栏选项卡。
+    ![Locate Virtual Network resource blade](./media/vpn-gateway-basic-vnet-rm-portal-include/newvnetportal700.png "Locate virtual network resource blade")
+3. Near the bottom of the Virtual Network blade, from the **Select a deployment model** list, select **Resource Manager**, and then click **Create**.
 
-    ![找到虚拟网络资源边栏选项卡](./media/vpn-gateway-basic-vnet-rm-portal-include/newvnetportal700.png "找到虚拟网络资源边栏选项卡")  
+    ![Select Resource Manager](./media/vpn-gateway-basic-vnet-rm-portal-include/resourcemanager250.png "Select Resource Manager")
 
-3. 从靠近“虚拟网络”边栏选项卡底部的“选择部署模型”列表中，选择“Resource Manager”，然后单击“创建”。
+1. On the **Create virtual network** blade, configure the VNet settings. When you fill in the fields, the red exclamation mark will become a green check mark when the characters entered in the field are valid.
 
-    ![选择“资源管理器”。](./media/vpn-gateway-basic-vnet-rm-portal-include/resourcemanager250.png "选择“资源管理器”。")  
+    ![Field validation](./media/vpn-gateway-basic-vnet-rm-portal-include/checkmark300.png "Field validation")
+2. The **Create virtual network** blade looks similar to the following example. There may be values that are auto-filled. If so, replace the values with your own.
 
-4. 在“创建虚拟网络”边栏选项卡上，配置 VNet 设置。填写字段时，如果在字段中输入的字符有效，红色感叹号标记会变成绿色对钩标记。
+    ![Create virtual network blade](./media/vpn-gateway-basic-vnet-rm-portal-include/createvnet300.png "Create virtual network blade")
+3. **Name**: Enter the name for your Virtual Network.
+4. **Address space**: Enter the address space. If you have multiple address spaces to add, add your first address space. You can add additional address spaces later, after creating the VNet.
+5. **Subnet name**: Add the subnet name and subnet address range. You can add additional subnets later, after creating the VNet.
+6. **Subscription**: Verify that the Subscription listed is the correct one. You can change subscriptions by using the drop-down.
+7. **Resource group**: Select an existing resource group, or create a new one by typing a name for your new resource group. If you are creating a new group, name the resource group according to your planned configuration values. For more information about resource groups, visit [Azure Resource Manager Overview](../articles/azure-resource-manager/resource-group-overview.md#resource-groups).
+8. **Location**: Select the location for your VNet. The location determines where the resources that you deploy to this VNet will reside.
+9. Select **Pin to dashboard** if you want to be able to find your VNet easily on the dashboard, and then click **Create**.
 
-    ![字段验证](./media/vpn-gateway-basic-vnet-rm-portal-include/checkmark300.png "字段验证")  
+    ![Pin to dashboard](./media/vpn-gateway-basic-vnet-rm-portal-include/pintodashboard150.png "pin to dashboard")
+10. After clicking **Create**, you will see a tile on your dashboard that will reflect the progress of your VNet. The tile changes as the VNet is being created.
 
-5. “创建虚拟网络”边栏选项卡看起来与以下示例类似。可能会有自动填充的值。如果出现这种情况，将值替换为自己的值。
-
-    ![创建虚拟网络边栏选项卡](./media/vpn-gateway-basic-vnet-rm-portal-include/createvnet300.png "创建虚拟网络边栏选项卡")  
-
-6. **名称**：输入虚拟网络的名称。
-
-7. **地址空间**：输入地址空间。如果有多个要添加的地址空间，请添加第一个地址空间。可在创建 VNet 后再添加其他地址空间。
-
-8. **子网名称**：添加子网名称和子网地址范围。可在创建 VNet 后再添加其他子网。
-
-10. **订阅**：确认列出的订阅是正确的。可以使用下拉列表更改订阅。
-
-11. **资源组**：选择现有的资源组，或键入新资源组的名称以创建新的资源组。如果要创建新组，请根据计划的配置值来命名资源组。有关资源组的详细信息，请访问 [Azure 资源管理器概述](../articles/azure-resource-manager/resource-group-overview.md#resource-groups)。
-
-12. **位置**：选择 VNet 的位置。该位置确定要部署到此 VNet 的资源所在的位置。
-
-13. 如果希望能够在仪表板上轻松查找 VNet，请选择“固定到仪表板”，然后单击“创建”。
-
-    ![固定到仪表板](./media/vpn-gateway-basic-vnet-rm-portal-include/pintodashboard150.png "固定到仪表板")  
-
-14. 单击“创建”后，会看到仪表板上有一个反映 VNet 进度的磁贴。创建 VNet 时，该磁贴会更改。
-
-    ![创建虚拟网络磁贴](./media/vpn-gateway-basic-vnet-rm-portal-include/deploying150.png "创建虚拟网络磁贴")  
-
-<!---HONumber=Mooncake_1031_2016-->
+    ![Creating virtual network tile](./media/vpn-gateway-basic-vnet-rm-portal-include/deploying150.png "Creating virtual network tile")

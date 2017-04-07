@@ -1,13 +1,11 @@
-## VPN 网关 
-使用 VPN 网关资源可以在本地数据中心和 Azure 之间创建安全连接。可通过三种不同的方式配置 VPN 网关资源：
+## VPN Gateway
+A VPN gateway resource enables you to create a secure connection between their on-premises data center and Azure. A VPN gateway resource can be configured in three different ways:
 
-- **点到站点** – 可以从任何计算机使用 VPN 客户端安全地访问 VNET 中托管的 Azure 资源。 
-- **多站点连接** – 可以从本地数据中心安全连接到 VNET 中运行的资源。 
-- **VNET 到 VNET** – 可以跨同一区域中的 Azure VNET 或者跨区域建立连接，以构建地域冗余的工作负载。
+* **Point to Site** - you can securely access your Azure resources hosted in a VNET by using a VPN client from any computer. 
+* **Multi-site connection** - you can securely connect from your on-premises data centers to resources running in a VNET. 
+* **VNET to VNET** - you can securely connect across Azure VNETS within the same region, or across regions to build workloads with geo-redundancy.
 
-VPN 网关的关键属性包括：
+Key properties of a VPN gateway include:
 
-- **网关类型** - 动态路由或静态路由的网关。 
-- **VPN 客户端地址池前缀** – 在点到站点配置中，要分配给连接的客户端的 IP 地址。
-
-<!---HONumber=82-->
+* **Gateway type** - dynamically routed or a static routed gateway. 
+* **VPN Client Address Pool Prefix** - IP addresses to be assigned to clients connecting in a point to site configuration.

@@ -1,10 +1,10 @@
 ---
 layout: LandingPage
-description: 教程、API 参考和其他文档介绍了如何使用云服务托管和运行高度可用且可伸缩的云应用程序和 API。
+description: Tutorials, API references and other documentation show you how to use Cloud Services to host and run highly available and scalable cloud applications and APIs.
 ---
-# 云服务文档
+# Cloud Services Documentation
 
-了解如何使用云服务托管和运行高度可用和可伸缩的云应用程序和 API。教程、API 参考和其他文档介绍了如何管理虚拟机主机以及配置、修补和安装软件。
+Learn how to use Cloud Services to host and run highly available, scalable cloud applications and APIs.  Tutorials, API references and other documentation show you how to manage virtual machine hosts and configure, patch, and install software.
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -18,13 +18,13 @@ description: 教程、API 参考和其他文档介绍了如何使用云服务托
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>了解云服务</h3>
+                        <h3>Learn about Cloud Services</h3>
                     </div>
                 </div>
             </div>
         </div>
         </a>
-</li>
+    </li>
     <li>
         <a href="https://azure.microsoft.com/documentation/videos/index/?services=cloud-services">
         <div class="cardSize">
@@ -36,13 +36,13 @@ description: 教程、API 参考和其他文档介绍了如何使用云服务托
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>云服务视频库</h3>
+                        <h3>Cloud Services Video Library</h3>
                     </div>
                 </div>
             </div>
         </div>
         </a>
-</li>
+    </li>
     <li>
         <a href="/azure/cloud-services/cloud-services-dotnet-get-started">
         <div class="cardSize">
@@ -54,13 +54,13 @@ description: 教程、API 参考和其他文档介绍了如何使用云服务托
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>开始通过 .NET 使用云服务</h3>
+                        <h3>Get Started with Cloud Services using .NET</h3>
                     </div>
                 </div>
             </div>
         </div>
         </a>
-</li>
+    </li>
     <li>
         <a href="/azure/cloud-services/cloud-services-python-ptvs">
         <div class="cardSize">
@@ -72,18 +72,18 @@ description: 教程、API 参考和其他文档介绍了如何使用云服务托
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>开始通过 Python 使用云服务</h3>
+                        <h3>Get Started with Cloud Services using Python</h3>
                     </div>
                 </div>
             </div>
         </div>
         </a>
-</li>
+    </li>
  </ul>
 
 ---
 
-<h2>引用</h2>
+<h2>Reference</h2>
 <ul class="panelContent cardsW">
     <li>
         <div class="cardSize">
@@ -113,13 +113,10 @@ description: 教程、API 参考和其他文档介绍了如何使用云服务托
 </ul>
 
 <div class="downloadHolder">
-    <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/zh-cn/Azure.azure-documents/live/cloud-services.pdf">
-<div class="img"></div>
+    <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/cloud-services.pdf">
+        <div class="img"></div>
         <div class="text">
-            下载云服务文档
-	</div>
+            Download Cloud Services Documentation
+        </div>
     </a>
-
 </div>
-
-<!---HONumber=Mooncake_0120_2017-->

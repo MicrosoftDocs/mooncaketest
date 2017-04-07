@@ -1,12 +1,10 @@
-我们将根据你的存储帐户，针对你的 Azure 存储空间使用情况收费。存储成本取决于以下几个因素：区域/位置、帐户类型、存储容量、复制方案、存储交易和数据流出量。
+You are billed for Azure Storage usage based on your storage account. Storage costs are based on the following factors: region/location, account type, storage capacity, replication scheme, storage transactions, and data egress.
 
-- 区域是指你的帐户所在的地理区域。
-- 帐户类型是指你使用的是通用存储帐户还是 Blob 存储帐户。如果使用的是 Blob 存储帐户，则访问层还可以确定该帐户的计费模型。
-- 存储容量指的是存储帐户中用来存储数据的配额。
-- 复制可以确定一次保留的数据副本的数量以及保留位置。
-- 事务指的是对 Azure 存储空间的所有读取和写入操作。
-- 数据流出量指的是传出某个 Azure 区域的数据。当不在同一区域中的应用程序访问你的存储帐户中的数据时，你需要为数据流出量付费。（对于 Azure 服务，你可以采取措施将你的数据和服务通过分组分到相同的数据中心内，从而降低或避免数据流出量费用。）
+- Region refers to the geographical region in which your account is based.
+- Account type refers to whether you are using a general-purpose storage account or a Blob storage account. With a Blob storage account, the access tier also determines the billing model for the account.
+- Storage capacity refers to how much of your storage account allotment you are using to store data.
+- Replication determines how many copies of your data are maintained at one time, and in what locations.
+- Transactions refer to all read and write operations to Azure Storage.
+- Data egress refers to data transferred out of an Azure region. When the data in your storage account is accessed by an application that is not running in the same region, you are charged for data egress. (For Azure services, you can take steps to group your data and services in the same data centers to reduce or eliminate data egress charges.)
 
-[Azure 存储空间定价](https://www.azure.cn/pricing/details/storage/)页提供了基于帐户类型、存储容量、复制和事务的详细定价信息。[数据传输定价详细信息](https://www.azure.cn/pricing/details/data-transfer/)提供了针对数据流出量的详细定价信息。你可以使用 [Azure 存储空间定价计算器](https://www.azure.cn/pricing/calculator/?scenario=data-management)来帮助估算成本。
-
-<!---HONumber=Mooncake_0530_2016-->
+The [Azure Storage Pricing](https://www.azure.cn/pricing/details/storage/) page provides detailed pricing information based on account type, storage capacity, replication, and transactions. The [Data Transfers Pricing Details](https://azure.microsoft.com/pricing/details/data-transfers/) provides detailed pricing information for data egress. You can use the [Azure Storage Pricing Calculator](https://www.azure.cn/pricing/calculator/?scenario=data-management) to help estimate your costs.

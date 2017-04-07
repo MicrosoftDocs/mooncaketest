@@ -1,5 +1,5 @@
-## 典型输出
-下面通过 Hello World 示例来说明写入到日志文件的输出。添加了换行符和制表符来增强可读性：
+## Typical output
+Below is an example of the output written to the log file by the Hello World sample. Newline and Tab characters have been added for legibility:
 
 ```
 [{
@@ -29,13 +29,13 @@
 }]
 ```
 
-## 代码段
-此部分讨论 Hello World 示例中的部分重要代码。
+## Code snippets
+This section discusses some key parts of the code in the Hello World sample.
 
-### 创建网关
-开发人员必须编写*网关进程*。此程序创建内部基础结构（中转站）、加载模块，以及进行正常运行所需的所有设置。该 SDK 提供 **Gateway\_Create\_From\_JSON** 函数，允许你从 JSON 文件启动网关。若要使用 **Gateway\_Create\_From\_JSON** 函数，必须将 JSON 文件的路径传递给它，以便指定要加载的模块。
+### Gateway creation
+The developer must write the *gateway process*. This program creates the internal infrastructure (the broker), loads the modules, and sets everything up to function correctly. The SDK provides the **Gateway_Create_From_JSON** function to enable you to bootstrap a gateway from a JSON file. To use the **Gateway_Create_From_JSON** function you must pass it the path to a JSON file that specifies the modules to load. 
 
-你可以在 Hello World 示例的 [main.c][lnk-main-c] 文件中找到网关进程的代码。为了增强可读性，下面的代码段显示的是简化版网关进程代码。该程序创建一个网关，在卸除该网关之前，会等待用户按 **Enter** 键。
+You can find the code for the gateway process in the Hello World sample in the [main.c][lnk-main-c] file. For legibility, the snippet below shows an abbreviated version of the gateway process code. This program creates a gateway and then waits for the user to press the **ENTER** key before it tears down the gateway. 
 
 ```
 int main(int argc, char** argv)
@@ -53,19 +53,32 @@ int main(int argc, char** argv)
         Gateway_LL_Destroy(gateway);
     }
     return 0;
-}
+} 
 ```
 
-JSON 设置文件包含要加载的模块的列表和模块之间的链接。每个模块必须指定：
+The JSON settings file contains a list of modules to load and links between the modules.
+Each module must specify a:
 
-* **name**：模块的唯一名称。
-* **loader**：了解如何加载所需模块的加载程序。加载程序是用于加载各类模块的扩展点。我们提供用于使用本机 C、Node.js、Java 和 .Net 编写的模块的加载程序。Hello World 示例仅使用“本机”加载程序，因为此示例中的所有模块都是使用 C 语言编写的动态库。
-    * **name**：用于加载模块的加载程序的名称。
-    * **entrypoint**：包含模块的库的路径。在 Linux 上，这是一个 .so 文件，而在 Windows 上，这是一个 .dll 文件。请注意，此入口点特定于所用加载程序的类型。例如，Node.js 加载程序的入口点是 .js 文件，Java 加载程序的入口点是类路径 + 类名称，.Net 加载程序的入口点是程序集名称 + 类名称。
+* **name**: a unique name for the module.
+* **loader**: a loader which knows how to load the desired module.  Loaders are an extension 
+point for loading different types of modules. We provide loaders for use with modules written 
+in native C, Node.js, Java, and .NET. The Hello World sample only uses the "native" loader since 
+all the modules in this sample are dynamic libraries written in C. Please refer to the [Node.js](https://github.com/Azure/azure-iot-gateway-sdk/blob/develop/samples/nodejs_simple_sample/), 
+[Java](https://github.com/Azure/azure-iot-gateway-sdk/tree/develop/samples/java_sample), or [.NET](https://github.com/Azure/azure-iot-gateway-sdk/tree/develop/samples/dotnet_binding_sample) 
+samples for more information on using modules written in different languages.
+    * **name**: name of the loader used to load the module.  
+    * **entrypoint**: the path to the library containing the module. For Linux this is a .so 
+    file, on Windows this is a .dll file. Note that this entry point is specific to the type of 
+    loader being used. For example, the Node.js loader's entry point is a .js file, the Java 
+    loader's entry point is a classpath + class name, and the .Net loader's entry point is an 
+    assembly name + class name.
 
-* **args**：模块所需的任何配置信息。
+* **args**: any configuration information the module needs.
 
-以下代码显示用于在 Linux 上声明 Hello World 示例的所有模块的 JSON。模块是否需要参数取决于模块的设计。在此示例中，记录器模块使用的参数是输出文件的路径，而 Hello World 模块则不使用任何参数。
+The following code shows the JSON used to declare all of the modules for the Hello World 
+sample on Linux. Whether a module requires any arguments depends on the design of the module. 
+In this example, the logger module takes an argument which is the path to the output file 
+and the Hello World module does not take any arguments.
 
 ```
 "modules" :
@@ -93,14 +106,19 @@ JSON 设置文件包含要加载的模块的列表和模块之间的链接。每
 ]
 ```
 
-JSON 文件还包含要传递到中转站的模块之间的链接。链接具有两个属性：
+The JSON file also contains the links between the modules that will be passed to the broker. 
+A link has two properties:
 
-* **源**：来自 `modules` 部分的模块名称，或“*”。
-* **接收器**：来自 `modules` 部分的模块名称。
+* **source**: a module name from the `modules` section, or "\*".
+* **sink**: a module name from the `modules` section.
 
-每个链接都会定义消息路由和方向。来自模块 `source` 的消息会传递到模块 `sink`。`source` 可能会设置为“*”，指示来自任何模块的消息都会由 `sink` 接收。
+Each link defines a message route and direction. Messages from module `source` are to be delivered 
+to the module `sink`. The `source` may be set to "\*", indicating that messages from any module 
+will be received by `sink`.
 
-以下代码显示用于在 Linux 上配置在 Hello World 示例中使用的模块之间的链接的 JSON。模块 `hello_world` 生成的每条消息都会被模块 `logger` 使用。
+The following code shows the JSON used to configure links between the modules used in the Hello 
+World sample on Linux. Every message produced by module `hello_world` will be consumed by module 
+`logger`.
 
 ```
 "links": 
@@ -112,31 +130,30 @@ JSON 文件还包含要传递到中转站的模块之间的链接。链接具有
 ]
 ```
 
-### Hello World 模块消息发布
-
-可以在[“hello\_world.c”][lnk-helloworld-c]文件中找到“hello world”模块发布消息时使用的代码。以下代码段显示的是修改版，添加了更多的注释，并删除了部分处理错误的代码以增强可读性：
+### Hello World module message publishing
+You can find the code used by the "hello world" module to publish messages in the ['hello_world.c'][lnk-helloworld-c] file. The snippet below shows an amended version with additional comments and some error handling code removed for legibility:
 
 ```
 int helloWorldThread(void *param)
 {
-    // Create data structures used in function.
+    // create data structures used in function.
     HELLOWORLD_HANDLE_DATA* handleData = param;
     MESSAGE_CONFIG msgConfig;
     MAP_HANDLE propertiesMap = Map_Create(NULL);
 
-    // Add a property named "helloWorld" with a value of "from Azure IoT
+    // add a property named "helloWorld" with a value of "from Azure IoT
     // Gateway SDK simple sample!" to a set of message properties that
     // will be appended to the message before publishing it. 
     Map_AddOrUpdate(propertiesMap, "helloWorld", "from Azure IoT Gateway SDK simple sample!")
 
-    // Set the content for the message
+    // set the content for the message
     msgConfig.size = strlen(HELLOWORLD_MESSAGE);
     msgConfig.source = HELLOWORLD_MESSAGE;
 
-    // Set the properties for the message
+    // set the properties for the message
     msgConfig.sourceProperties = propertiesMap;
 
-    // Create a message based on the msgConfig structure
+    // create a message based on the msgConfig structure
     MESSAGE_HANDLE helloWorldMessage = Message_Create(&msgConfig);
 
     while (1)
@@ -162,9 +179,8 @@ int helloWorldThread(void *param)
 }
 ```
 
-### Hello World 模块消息处理
-
-Hello World 模块不需处理其他模块发布到中转站的任何消息。因此，在 Hello World 模块中实施消息回调时，使用的是不执行任何操作的函数。
+### Hello World module message processing
+The Hello World module never needs to process any messages that other modules publish to the broker. This makes implementation of the message callback in the Hello World module a no-op function.
 
 ```
 static void HelloWorld_Receive(MODULE_HANDLE moduleHandle, MESSAGE_HANDLE messageHandle)
@@ -173,11 +189,10 @@ static void HelloWorld_Receive(MODULE_HANDLE moduleHandle, MESSAGE_HANDLE messag
 }
 ```
 
-### 记录器模块消息发布和处理
+### Logger module message publishing and processing
+The Logger module receives messages from the broker and writes them to a file. It never publishes any messages. Therefore, the code of the logger module never calls the **Broker_Publish** function.
 
-Logger 模块接收来自中转站的消息，并将其写入文件中。它不发布任何消息。因此，Logger 模块的代码不会调用 **Broker\_Publish** 函数。
-
-[logger.c][lnk-logger-c] 文件中的 **Logger\_Recieve** 函数是中转站发起的回调，用于将消息传递给 Logger 模块。以下代码段显示的是修改版，添加了更多的注释，并删除了部分处理错误的代码以增强可读性：
+The **Logger_Recieve** function in the [logger.c][lnk-logger-c] file is the callback the broker invokes to deliver messages to the logger module. The snippet below shows an amended version with additional comments and some error handling code removed for legibility:
 
 ```
 static void Logger_Receive(MODULE_HANDLE moduleHandle, MESSAGE_HANDLE messageHandle)
@@ -218,18 +233,15 @@ static void Logger_Receive(MODULE_HANDLE moduleHandle, MESSAGE_HANDLE messageHan
 }
 ```
 
-## 后续步骤
-若要了解如何使用 IoT 网关 SDK，请参阅以下内容：
+## Next steps
+To learn about how to use the IoT Gateway SDK, see the following:
 
-- [IoT 网关 SDK - 使用 Linux 通过模拟设备发送设备到云消息][lnk-gateway-simulated]。
-- GitHub 上的 [Azure IoT Gateway SDK][lnk-gateway-sdk]（Azure IoT 网关 SDK）。
+- [IoT Gateway SDK – send device-to-cloud messages with a simulated device using Linux][lnk-gateway-simulated].
+- [Azure IoT Gateway SDK][lnk-gateway-sdk] on GitHub.
 
 <!-- Links -->
-
 [lnk-main-c]: https://github.com/Azure/azure-iot-gateway-sdk/blob/master/samples/hello_world/src/main.c
 [lnk-helloworld-c]: https://github.com/Azure/azure-iot-gateway-sdk/blob/master/modules/hello_world/src/hello_world.c
 [lnk-logger-c]: https://github.com/Azure/azure-iot-gateway-sdk/blob/master/modules/logger/src/logger.c
 [lnk-gateway-sdk]: https://github.com/Azure/azure-iot-gateway-sdk/
 [lnk-gateway-simulated]: ../articles/iot-hub/iot-hub-linux-gateway-sdk-simulated-device.md
-
-<!---HONumber=Mooncake_1212_2016-->

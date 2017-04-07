@@ -1,30 +1,28 @@
-数据工厂是一种多租户服务，它实施以下默认限制以确保客户订阅不会受到彼此工作负荷的影响。你可以联系支持人员，将订阅的大多数限制调整到其最大限制。
+Data factory is a multi-tenant service that has the following default limits in place to make sure customer subscriptions are protected from each others workloads. Many of the limits can be easily raised for your subscription up to the maximum limit by contacting support. 
 
-**资源** | **默认限制** | **最大限制**
+**Resource** | **Default Limit** | **Maximum Limit**
 -------- | ------------- | -------------
-数据工厂中的管道 | 100 | 2500
-数据工厂中的数据集 | 500 | 5000
-每个数据集的并发切片数 | 10 | 10
-每个管道的每个对象字节数 <sup>1</sup> | 200 KB | 2000 KB
-数据集和链接服务对象的每个对象字节数 <sup>1</sup> | 30 KB | 2000 KB
-每个对象的字段数 | 100 | [联系支持人员](http://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/)
-每个字段名称或标识符的字节数 | 2 KB | [联系支持人员](http://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/)
-每个字段的字节数 | 30 KB | [联系支持人员](http://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/)
-订阅中的 HDInsight 按需群集核心数 <sup>2</sup> | 48 | [联系支持人员](http://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/)
-管道活动运行的重试次数 | 1000 | MaxInt（32 位）
+pipelines within a data factory | 100 | 2500
+datasets within a data factory | 500 | 5000
+concurrent slices per dataset | 10 | 10
+bytes per object for pipeline objects <sup>1</sup> | 200 KB | 2000 KB
+bytes per object for dataset and linkedservice objects <sup>1</sup> | 30 KB | 2000 KB
+fields per object | 100 | [Contact support](http://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/)
+bytes per field name or identifier | 2 KB | [Contact support](http://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/)
+bytes per field | 30 KB | [Contact support](http://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/)
+HDInsight on-demand cluster cores within a subscription <sup>2</sup> | 48 | [Contact support](http://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/)
+Retry count for pipeline activity runs | 1000 | MaxInt (32 bit)
 
-<sup>1</sup> 管道、数据集和链接服务对象代表工作负荷的逻辑组。对这些对象的限制与可以使用 Azure 数据工厂服务移动或处理的数据量无关。可以缩放数据工厂以处理 PB 量级的数据。
+<sup>1</sup> Pipeline, dataset, and linked service objects represent a logical grouping of your workload. Limits for these objects do not relate to amount of data you can move and process with the Azure Data Factory service. Data factory is designed to scale to handle petabytes of data.
 
-<sup>2</sup> 按需 HDInsight 核心并未分配在包含数据工厂的订阅中。因此，上述限制为数据工厂针对按需 HDInsight 核心所强制的核心限制，不同于 Azure 订阅关联的核心限制。
+<sup>2</sup>On-demand HDInsight cores are allocated out of the subscription that contains the data factory. As a result, the above limit is the Data Factory enforced core limit for on-demand HDInsight cores and is different from the core limit associated with your Azure subscription.
 
-**资源** | **默认下限** | **最小限制**
+**Resource** | **Default lower limit** | **Minimum limit**
 -------- | ------------------- | -------------
-计划间隔 | 15 分钟 | 5 分钟
-重试尝试之间的间隔 | 1 秒 | 1 秒
-重试超时值 | 1 秒 | 1 秒
+Scheduling interval | 15 minutes | 5 minutes
+Interval between retry attempts | 1 second | 1 second
+Retry timeout value | 1 second | 1 second
 
-### Web 服务调用限制
+### Web service call limits
 
-Azure 资源管理器限制 API 调用。你可以根据 <!--[-->Azure 资源管理器 API 限制<!--](../articles/azure-subscription-service-limits.md#resource-group-limits)-->中规定的频率执行 API 调用。
-
-<!---HONumber=71-->
+Azure resource manager has limits for API calls. You can make API calls at a rate within the [Azure Resource Manager API limits](../articles/azure-subscription-service-limits.md#resource-group-limits).

@@ -7,43 +7,41 @@ As of circa 2016-04-11, the following topics might include this include:
 articles/sql-database/sql-database-get-started-tutorial.md
 
 -->
-## 创建新的 Azure SQL 数据库
+## Create a new Azure SQL database
 
-在 Azure 门户预览中使用以下步骤，在新的现有的 Azure SQL 数据库逻辑服务器上创建新的 Azure SQL 数据库。
+Use the following steps in the Azure portal to create a new Azure SQL database on a new or existing Azure SQL Database logical server.
 
-1. 如果当前未连接，请连接到 [Azure 门户预览](http://portal.azure.cn)。
-2. 单击“新建”，键入“SQL 数据库”，然后单击“SQL 数据库(新建数据库)”。
+1. If you're not currently connected, connect to the [Azure portal](http://portal.azure.cn).
+2. Click **New**, type **SQL Database**, and then click **SQL Database (new database)**.
 
-     ![新数据库](./media/sql-database-create-new-database-portal/sql-database-create-new-database-portal-1.png)  
+     ![new database](./media/sql-database-create-new-database-portal/sql-database-create-new-database-portal-1.png)
 
-3. 单击“SQL 数据库(新建数据库)”。
+3. Click **SQL Database (new database)**.
 
-     ![新数据库](./media/sql-database-create-new-database-portal/sql-database-create-new-database-portal-2.png)  
+     ![new database](./media/sql-database-create-new-database-portal/sql-database-create-new-database-portal-2.png)
 
-4. 单击“创建”，以在 SQL 数据库服务中创建新的数据库。
+4. Click **Create** to create a new database in the SQL Database service.
 
-     ![新数据库](./media/sql-database-create-new-database-portal/sql-database-create-new-database-portal-3.png)
+     ![new database](./media/sql-database-create-new-database-portal/sql-database-create-new-database-portal-3.png)
 
-5. 提供以下服务器属性的值：
+5. Provide the values for the following server properties:
 
- - 数据库名称
- - 订阅：仅在具有多个订阅时适用。
- - 资源组：如果你是新手，请使用逻辑服务器的资源组。
- - 选择源：可以选择空白数据库、示例数据或 Azure 数据库备份。若要使用 BCP 命令行工具来迁移本地 SQL Server 数据库或加载数据，请查看本文末尾处的链接。
- - 服务器：新的或现有的逻辑服务器。
- - 服务器管理员登录名
- - 密码
- - 定价层：如果你是新手，请使用默认值 S0。
- - 排序规则：仅在选择空数据库时适用。
+ - Database name
+ - Subscription: This applies only if you have multiple subscriptions.
+ - Resource group: If you're just getting started, use the resource group of the logical server.
+ - Select source: You can choose a blank database, sample data, or an Azure database backup. To migrate an on-premises SQL Server database or load data by using the BCP command-line tool, see the links at the end of this article.
+ - Server: A new or existing logical server.
+ - Server admin login
+ - Password
+ - Pricing tier: If you're just getting started, use the default value S0.
+ - Collation: This applies only if a blank database was chosen.
 
         ![new database](./media/sql-database-create-new-database-portal/sql-database-create-new-database-portal-4.png)
 
-6.  单击“创建”。可以在通知区域中看到部署已开始。
+6.  Click **Create**. In the notification area, you can see that deployment has started.
 
-     ![新数据库](./media/sql-database-create-new-database-portal/sql-database-create-new-database-portal-5.png)  
+     ![new database](./media/sql-database-create-new-database-portal/sql-database-create-new-database-portal-5.png)
 
-7. 等待部署完成，然后继续下一步。
+7. Wait for deployment to finish before continuing to the next step.
 
-     ![新数据库](./media/sql-database-create-new-database-portal/sql-database-create-new-database-portal-6.png)
-
-<!---HONumber=Mooncake_1010_2016-->
+     ![new database](./media/sql-database-create-new-database-portal/sql-database-create-new-database-portal-6.png)

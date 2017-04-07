@@ -1,0 +1,359 @@
+---
+title: Create Azure HDInsight (Hadoop) using templates | Azure
+description: Learn how to create clusters for Azure HDInsight using Azure Azure Resource Management templates.
+services: hdinsight
+documentationcenter: ''
+tags: azure-portal
+author: mumian
+manager: jhubbard
+editor: cgronlun
+
+ms.assetid: 00a80dea-011f-44f0-92a4-25d09db9d996
+ms.service: hdinsight
+ms.devlang: na
+ms.topic: article
+ms.tgt_pltfrm: na
+ms.workload: big-data
+ms.date: 03/14/2017
+wacn.date: ''
+ms.author: jgao
+
+---
+# Create Hadoop clusters in HDInsight using Azure Resource Management templates
+[!INCLUDE [selector](../../includes/hdinsight-create-linux-cluster-selector.md)]
+
+Learn how to create HDInsight clusters using Azure Resource Management templates. For more information, see [Deploy an application with Azure Resource Manager template](../azure-resource-manager/resource-group-template-deploy.md). To learn other cluster creation tools and features, click the tab select on the top of this page or see [Cluster creation methods](hdinsight-hadoop-provision-linux-clusters.md#cluster-creation-methods).
+
+## Prerequisites:
+[!INCLUDE [delete-cluster-warning](../../includes/hdinsight-delete-cluster-warning.md)]
+
+Before you begin the instructions in this article, you must have the following prerequisites:
+
+* [Azure subscription](https://www.azure.cn/pricing/1rmb-trial/).
+* Azure PowerShell and/or Azure CLI
+
+[!INCLUDE [use-latest-version](../../includes/hdinsight-use-latest-powershell-and-cli.md)]
+
+### Access control requirements
+[!INCLUDE [access-control](../../includes/hdinsight-access-control-requirements.md)]
+
+## Resource Management templates
+Resource Manager template makes it easy to create HDInsight clusters, their dependent resources (such as the default storage account), and other resources (such as Azure SQL Database to use Apache Sqoop) for your application in a single, coordinated operation. In the template, you define the resources that are needed for the application and specify deployment parameters to input values for different environments. The template consists of JSON and expressions which you can use to construct values for your deployment.
+
+You can find HDInsight template samples at [Azure QuickStart Templates](https://azure.microsoft.com/resources/templates/?term=hdinsight). Use cross-platform [VSCode](https://code.visualstudio.com/#alt-downloads) with the [Resource Manager extention](https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools) or a text editor to save the template into a file on your workstation. You learn how to call the template using different methods.
+
+For more information about Resource Manager template, see the following articles:
+
+* [Author Azure Resource Management templates](../azure-resource-manager/resource-group-authoring-templates.md)
+* [Deploy an application with Azure Resource Manager template](../azure-resource-manager/resource-group-template-deploy.md)
+
+## Generate templates
+
+Using the Azure portal preview, you can configure all the properties of a cluster and then save the template before deploying it.  So you can reuse the template.
+
+**To generate a template using the Azure portal preview**
+
+1. Sign on to the [Azure portal preview](https://portal.azure.cn).
+2. Click **New** on the left menu, click **Intelligence + analytics**, and then click **HDInsight**.
+3. Follow the instructions entering the properties. You can use either the **Quick create** or the **Custom** option.
+4. On the Summary tab, click **Download template and parameters**.
+
+    ![HDInsight Hadoop create cluster Resource Management template download](./media/hdinsight-hadoop-create-linux-clusters-arm-templates/hdinsight-create-cluster-resource-manager-template-download.png)
+
+    It lists the template file, the parameters file, and the code samples to deploy the template:
+
+    ![HDInsight Hadoop create cluster Resource Management template download options](./media/hdinsight-hadoop-create-linux-clusters-arm-templates/hdinsight-create-cluster-resource-manager-template-download-options.png)
+
+    From here, you can download the template, save it to your template library, or deploy the template.
+
+    To access a template in your library, click **More services** from the left menu, and then click **Templates** (under the **Other** category).
+
+> [!Note]
+> The templates must be used with the parameter files together.  Otherwise, you might get unexpected results.  For example, the default clusterKind property value is always hadoop despite what you have specified before you download the template.
+
+## <a name="deploy-with-powershell"></a> Deploy with PowerShell
+
+The following procedure creates Hadoop cluster in HDInsight:
+
+**To deploy a cluster using Resource Manager template**
+
+1. Save the json file in [Appendix A](#appx-a-arm-template) to your workstation. In the PowerShell script, the file name is *C:\HDITutorials-ARM\hdinsight-arm-template.json*.
+2. Set the parameters and variables if needed.
+3. Run the template using the following PowerShell script:
+
+        ####################################
+        # Set these variables
+        ####################################
+        #region - used for creating Azure service names
+        $nameToken = "<Enter an Alias>"
+        $templateFile = "C:\HDITutorials-ARM\hdinsight-arm-template.json"
+        #endregion
+
+        ####################################
+        # Service names and varialbes
+        ####################################
+        #region - service names
+        $namePrefix = $nameToken.ToLower() + (Get-Date -Format "MMdd")
+
+        $resourceGroupName = $namePrefix + "rg"
+        $hdinsightClusterName = $namePrefix + "hdi"
+        $defaultStorageAccountName = $namePrefix + "store"
+        $defaultBlobContainerName = $hdinsightClusterName
+
+        $location = "China East"
+
+        $armDeploymentName = $namePrefix
+        #endregion
+
+        ####################################
+        # Connect to Azure
+        ####################################
+        #region - Connect to Azure subscription
+        Write-Host "`nConnecting to your Azure subscription ..." -ForegroundColor Green
+        try{Get-AzureRmContext}
+        catch{Login-AzureRmAccount -EnvironmentName AzureChinaCloud}
+        #endregion
+
+        # Create a resource group
+        New-AzureRmResourceGroup -Name $resourceGroupName -Location $Location
+
+        # Create cluster and the dependent storage accounge
+        $parameters = @{clusterName="$hdinsightClusterName"}
+
+        New-AzureRmResourceGroupDeployment `
+            -Name $armDeploymentName `
+            -ResourceGroupName $resourceGroupName `
+            -TemplateFile $templateFile `
+            -TemplateParameterObject $parameters
+
+        # List cluster
+        Get-AzureRmHDInsightCluster -ResourceGroupName $resourceGroupName -ClusterName $hdinsightClusterName
+
+    The PowerShell script only configures the cluster name. The storage account name is hardcoded in the template. You are prompted to enter the cluster user password (the default username is *admin*); and the SSH user password (the default SSH username is *sshuser*).  
+
+For more information, see  [Deploy with PowerShell](../azure-resource-manager/resource-group-template-deploy.md#deploy).
+
+## <a name="deploy-with-azure-cli"></a> Deploy with CLI
+The following sample creates a cluster and its dependent storage account and container by calling a Resource Manager template:
+
+    azure login -e AzureChinaCloud
+    azure config mode arm
+    azure group create -n hdi1229rg -l "China East"
+    azure group deployment create --resource-group "hdi1229rg" --name "hdi1229" --template-file "C:\HDITutorials-ARM\hdinsight-arm-template.json"
+
+You are prompted to enter the cluster name, cluster user password (the default username is *admin*), and the SSH user password (the default SSH username is *sshuser*). To provide in-line parameters:
+
+    azure group deployment create --resource-group "hdi1229rg" --name "hdi1229" --template-file "c:\Tutorials\HDInsightARM\create-linux-based-hadoop-cluster-in-hdinsight.json" --parameters '{\"clusterName\":{\"value\":\"hdi1229\"},\"clusterLoginPassword\":{\"value\":\"Pass@word1\"},\"sshPassword\":{\"value\":\"Pass@word1\"}}'
+
+## Deploy with REST API
+See [Deploy with the REST API](../azure-resource-manager/resource-group-template-deploy-rest.md).
+
+## Deploy with Visual Studio
+With Visual Studio, you can create a resource group project and deploy it to Azure through the user interface. You select the type of resources to include in your project and those resources are automatically added to Resource Manager template. The project also provides a PowerShell script to deploy the template.
+
+For an introduction to using Visual Studio with resource groups, see [Creating and deploying Azure resource groups through Visual Studio](../azure-resource-manager/vs-azure-tools-resource-groups-deployment-projects-create-deploy.md).
+
+## Next steps
+In this article, you have learned several ways to create an HDInsight cluster. To learn more, see the following articles:
+
+* For an example of deploying resources through the .NET client library, see [Deploy resources using .NET libraries and a template](../virtual-machines/virtual-machines-windows-csharp-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+* For an in-depth example of deploying an application, see [Provision and deploy microservices predictably in Azure](../app-service-web/app-service-deploy-complex-application-predictably.md).
+* For guidance on deploying your solution to different environments, see [Development and test environments in Azure](../solution-dev-test-environments.md).
+* To learn about the sections of the Azure Resource Manager template, see [Authoring templates](../azure-resource-manager/resource-group-authoring-templates.md).
+* For a list of the functions you can use in an Azure Resource Manager template, see [Template functions](../azure-resource-manager/resource-group-template-functions.md).
+
+## <a name="appx-a-arm-template"></a> Appx-A: Resource Manager template
+The following Azure Resource Manager template creates a Linux-based Hadoop cluster with the dependent Azure storage account.
+
+> [!NOTE]
+> The sample includes configuration information for Hive metastore and Oozie metastore.  Remove the section or configure the section before using the template.
+>
+>
+
+    {
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "clusterName": {
+        "type": "string",
+        "metadata": {
+            "description": "The name of the HDInsight cluster to create."
+        }
+        },
+        "clusterLoginUserName": {
+        "type": "string",
+        "defaultValue": "admin",
+        "metadata": {
+            "description": "These credentials can be used to submit jobs to the cluster and to log into cluster dashboards."
+        }
+        },
+        "clusterLoginPassword": {
+        "type": "securestring",
+        "metadata": {
+            "description": "The password must be at least 10 characters in length and must contain at least one digit, one non-alphanumeric character, and one upper or lower case letter."
+        }
+        },
+        "sshUserName": {
+        "type": "string",
+        "defaultValue": "sshuser",
+        "metadata": {
+            "description": "These credentials can be used to remotely access the cluster."
+        }
+        },
+        "sshPassword": {
+        "type": "securestring",
+        "metadata": {
+            "description": "The password must be at least 10 characters in length and must contain at least one digit, one non-alphanumeric character, and one upper or lower case letter."
+        }
+        },
+        "location": {
+        "type": "string",
+        "defaultValue": "China East",
+        "allowedValues": [
+            "China North",
+            "China East"
+        ],
+        "metadata": {
+            "description": "The location where all azure resources will be deployed."
+        }
+        },
+        "clusterType": {
+        "type": "string",
+        "defaultValue": "hadoop",
+        "allowedValues": [
+            "hadoop",
+            "hbase",
+            "storm",
+            "spark"
+        ],
+        "metadata": {
+            "description": "The type of the HDInsight cluster to create."
+        }
+        },
+        "clusterWorkerNodeCount": {
+        "type": "int",
+        "defaultValue": 2,
+        "metadata": {
+            "description": "The number of nodes in the HDInsight cluster."
+        }
+        }
+    },
+    "variables": {
+        "defaultApiVersion": "2015-05-01-preview",
+        "clusterApiVersion": "2015-03-01-preview",
+        "clusterStorageAccountName": "[concat(parameters('clusterName'),'store')]"
+    },
+    "resources": [
+        {
+        "name": "[variables('clusterStorageAccountName')]",
+        "type": "Microsoft.Storage/storageAccounts",
+        "location": "[parameters('location')]",
+        "apiVersion": "[variables('defaultApiVersion')]",
+        "dependsOn": [ ],
+        "tags": { },
+        "properties": {
+            "accountType": "Standard_LRS"
+        }
+        },
+        {
+        "name": "[parameters('clusterName')]",
+        "type": "Microsoft.HDInsight/clusters",
+        "location": "[parameters('location')]",
+        "apiVersion": "[variables('clusterApiVersion')]",
+        "dependsOn": [ "[concat('Microsoft.Storage/storageAccounts/',variables('clusterStorageAccountName'))]" ],
+        "tags": {
+
+        },
+        "properties": {
+            "clusterVersion": "3.5",
+            "osType": "Linux",
+            "tier": "standard",
+            "clusterDefinition": {
+            "kind": "[parameters('clusterType')]",
+            "configurations": {
+                "gateway": {
+                "restAuthCredential.isEnabled": true,
+                "restAuthCredential.username": "[parameters('clusterLoginUserName')]",
+                "restAuthCredential.password": "[parameters('clusterLoginPassword')]"
+                },
+                "hive-site": {
+                    "javax.jdo.option.ConnectionDriverName": "com.microsoft.sqlserver.jdbc.SQLServerDriver",
+                    "javax.jdo.option.ConnectionURL": "jdbc:sqlserver://myadla0901dbserver.database.chinacloudapi.cn;database=myhive20160901;encrypt=true;trustServerCertificate=true;create=false;loginTimeout=300",
+                    "javax.jdo.option.ConnectionUserName": "johndole",
+                    "javax.jdo.option.ConnectionPassword": "myPassword$"
+                },
+                "hive-env": {
+                    "hive_database": "Existing MSSQL Server database with SQL authentication",
+                    "hive_database_name": "myhive20160901",
+                    "hive_database_type": "mssql",
+                    "hive_existing_mssql_server_database": "myhive20160901",
+                    "hive_existing_mssql_server_host": "myadla0901dbserver.database.chinacloudapi.cn",
+                    "hive_hostname": "myadla0901dbserver.database.chinacloudapi.cn"
+                },
+                "oozie-site": {
+                    "oozie.service.JPAService.jdbc.driver": "com.microsoft.sqlserver.jdbc.SQLServerDriver",
+                    "oozie.service.JPAService.jdbc.url": "jdbc:sqlserver://myadla0901dbserver.database.chinacloudapi.cn;database=myhive20160901;encrypt=true;trustServerCertificate=true;create=false;loginTimeout=300",
+                    "oozie.service.JPAService.jdbc.username": "johndole",
+                    "oozie.service.JPAService.jdbc.password": "myPassword$",
+                    "oozie.db.schema.name": "oozie"
+                },
+                "oozie-env": {
+                    "oozie_database": "Existing MSSQL Server database with SQL authentication",
+                    "oozie_database_name": "myhive20160901",
+                    "oozie_database_type": "mssql",
+                    "oozie_existing_mssql_server_database": "myhive20160901",
+                    "oozie_existing_mssql_server_host": "myadla0901dbserver.database.chinacloudapi.cn",
+                    "oozie_hostname": "myadla0901dbserver.database.chinacloudapi.cn"
+                }            
+            }
+            },
+            "storageProfile": {
+            "storageaccounts": [
+                {
+                "name": "[concat(variables('clusterStorageAccountName'),'.blob.core.chinacloudapi.cn')]",
+                "isDefault": true,
+                "container": "[parameters('clusterName')]",
+                "key": "[listKeys(resourceId('Microsoft.Storage/storageAccounts', variables('clusterStorageAccountName')), variables('defaultApiVersion')).key1]"
+                }
+            ]
+            },
+            "computeProfile": {
+            "roles": [
+                {
+                "name": "headnode",
+                "targetInstanceCount": "2",
+                "hardwareProfile": {
+                    "vmSize": "Standard_D3"
+                },
+                "osProfile": {
+                    "linuxOperatingSystemProfile": {
+                    "username": "[parameters('sshUserName')]",
+                    "password": "[parameters('sshPassword')]"
+                    }
+                }
+                },
+                {
+                "name": "workernode",
+                "targetInstanceCount": "[parameters('clusterWorkerNodeCount')]",
+                "hardwareProfile": {
+                    "vmSize": "Standard_D3"
+                },
+                "osProfile": {
+                    "linuxOperatingSystemProfile": {
+                    "username": "[parameters('sshUserName')]",
+                    "password": "[parameters('sshPassword')]"
+                    }
+                }
+                }
+            ]
+            }
+        }
+        }
+    ],
+    "outputs": {
+        "cluster": {
+        "type": "object",
+        "value": "[reference(resourceId('Microsoft.HDInsight/clusters',parameters('clusterName')))]"
+        }
+    }
+    }

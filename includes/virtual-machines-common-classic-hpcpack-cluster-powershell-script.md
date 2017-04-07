@@ -1,56 +1,59 @@
-根据你的环境和选择，该脚本可以创建所有群集基础结构，包括 Azure 虚拟网络、存储帐户、云服务、域控制器、远程或本地 SQL 数据库、头节点和其他群集节点。或者，该脚本可以使用预先存在的 Azure 基础结构仅创建 HPC 群集节点。
+Depending on your environment and choices, the script can create all the cluster infrastructure, including the Azure virtual network, storage accounts, cloud services, domain controller, remote or local SQL databases, head node, and additional cluster nodes. Alternatively, the script can use pre-existing Azure infrastructure and create only the HPC cluster nodes.
 
-有关规划 HPC Pack 群集的背景信息，请参阅 HPC Pack 2012 R2 TechNet 库中的[产品评估和规划](https://technet.microsoft.com/zh-cn/library/jj899596.aspx)及[入门](https://technet.microsoft.com/zh-cn/library/jj899590.aspx)内容。
+For background information about planning an HPC Pack cluster, see the [Product Evaluation and Planning](https://technet.microsoft.com/zh-cn/library/jj899596.aspx) and [Getting Started](https://technet.microsoft.com/zh-cn/library/jj899590.aspx) content in the HPC Pack 2012 R2 TechNet Library.
 
-## 先决条件
-* **Azure 订阅**：可以使用 Azure 全球或 Azure 中国服务中的订阅。订阅限制会影响可以部署的群集节点数量和类型。有关信息，请参阅 [Azure 订阅和服务限制、配额与约束](../articles/azure-subscription-service-limits.md)。
-* **安装并配置了 Azure PowerShell 0.8.10 或更高版本的 Windows 客户端计算机**：有关安装说明和用于连接到 Azure 订阅的步骤，请参阅 [Azure PowerShell 入门](https://docs.microsoft.com/powershell/azureps-cmdlets-docs)。
-* **HPC Pack IaaS 部署脚本**：从 [Microsoft 下载中心](https://www.microsoft.com/download/details.aspx?id=44949)下载并解压缩最新版本的脚本。通过运行 `New-HPCIaaSCluster.ps1 -Version` 检查脚本的版本。本文基于版本 4.5.2 的脚本。
-* **脚本配置文件**：创建 XML 文件，以供脚本用来配置 HPC 群集。有关信息和示例，请参阅本文后面的章节和部署脚本随附的文件 Manual.rtf。
+## Prerequisites
+* **Azure subscription**: You can use a subscription in either the Azure Global or Azure China service. Your subscription limits affect the number and type of cluster nodes you can deploy. For information, see [Azure subscription and service limits, quotas, and constraints](../articles/azure-subscription-service-limits.md).
+* **Windows client computer with Azure PowerShell 0.8.10 or later installed and configured**: See [Get started with Azure PowerShell](https://docs.microsoft.com/powershell/azureps-cmdlets-docs) for installation instructions and steps to connect to your Azure subscription.
+* **HPC Pack IaaS deployment script**: Download and unpack the latest version of the script from the [Microsoft Download Center](https://www.microsoft.com/download/details.aspx?id=44949). Check the version of the script by running `New-HPCIaaSCluster.ps1 -Version`. This article is based on version 4.5.2 of the script.
+* **Script configuration file**: Create an XML file that the script uses to configure the HPC cluster. For information and examples, see sections later in this article and the file Manual.rtf that accompanies the deployment script.
 
-## 语法
-
+## Syntax
 ```PowerShell
 New-HPCIaaSCluster.ps1 [-ConfigFile] <String> [-AdminUserName]<String> [[-AdminPassword] <String>] [[-HPCImageName] <String>] [[-LogFile] <String>] [-Force] [-NoCleanOnFailure] [-PSSessionSkipCACheck] [<CommonParameters>]
 ```
 
 > [!NOTE]
-以管理员身份运行脚本。
+> Run the script as an administrator.
 > 
 > 
 
 ### Parameters
-* **ConfigFile**：指定描述 HPC 群集的配置文件的路径。详细了解本主题中的配置文件，或包含该脚本的文件夹中的 Manual.rtf 文件。
-* **AdminUserName**：指定用户名。如果域林是由脚本创建的，则此用户名将成为所有 VM 的本地管理员用户名以及域管理员名称。如果域林已存在，则此参数会将域用户指定为安装 HPC Pack 的本地管理员用户名。
-* **AdminPassword**：指定管理员的密码。如果未在命令行中指定，脚本将提示用户输入密码。
-* **HPCImageName**（可选）：指定用于部署 HPC 群集的 HPC Pack VM 映像名称。它必须是 Microsoft 通过 Azure 应用商店提供的 HPC Pack 映像。如果未指定（通常情况下建议不要指定），脚本将选择最新发布的 HPC Pack 2012 R2 映像。最新映像基于装有 HPC Pack 2012 R2 Update 3 的 Windows Server 2012 R2 Datacenter。
+* **ConfigFile**: Specifies the file path of the configuration file to describe the HPC cluster. See more about the configuration file in this topic, or in the file Manual.rtf in the folder containing the script.
+* **AdminUserName**: Specifies the user name. If the domain forest is created by the script, this becomes the local administrator user name for all VMs and the domain administrator name. If the domain forest already exists, this specifies the domain user as the local administrator user name to install HPC Pack.
+* **AdminPassword**: Specifies the administrator's password. If not specified in the command line, the script prompts you to input the password.
+* **HPCImageName** (optional): Specifies the HPC Pack VM image name used to deploy the HPC cluster. It must be a Microsoft-provided HPC Pack image from the Azure Marketplace. If not specified (recommended usually), the script chooses the latest published HPC Pack 2012 R2 image. The latest image is based on Windows Server 2012 R2 Datacenter with HPC Pack 2012 R2 Update 3 installed.
 
     > [!NOTE]
-    指定无效的 HPC Pack 映像会导致部署失败。
+    > Deployment fails if you don't specify a valid HPC Pack image.
     > 
     > 
-* **LogFile**（可选）：指定部署日志文件路径。如果未指定，脚本会在运行脚本的计算机的 temp 目录中创建一个日志文件。
-* **Force**（可选）：抑制所有确认提示。
-* **NoCleanOnFailure**（可选）：指定不删除未成功部署的 Azure VM。在重新运行脚本以继续部署之前，请手动删除这些 VM，否则部署可能失败。
-* **PSSessionSkipCACheck**（可选）：对于每个包含此脚本所部署的 VM 的云服务，Azure 将自动生成自签名证书，云服务中的所有 VM 都将使用此证书作为默认的 Windows 远程管理 \(WinRM\) 证书。若要在这些 Azure VM 中部署 HPC 功能，脚本默认情况下将在客户端计算机的“本地计算机\\受信任的根证书颁发机构”存储中临时安装这些证书，以抑制执行脚本期间发生的“不受信任的 CA”安全错误，并在完成脚本后删除这些证书。如果指定此参数，将不会在客户端计算机中安装证书，并且会抑制安全警告。
+* **LogFile** (optional): Specifies the deployment log file path. If not specified, the script creates a log file in the temp directory of the computer running the script.
+* **Force** (optional): Suppresses all the confirmation prompts.
+* **NoCleanOnFailure** (optional): Specifies that the Azure VMs that are not successfully deployed are not removed. Remove these VMs manually before rerunning the script to continue the deployment, or the deployment may fail.
+* **PSSessionSkipCACheck** (optional): For every cloud service with VMs deployed by this script, a self-signed certificate is automatically generated by Azure, and all the VMs in the cloud service use this certificate as the default Windows Remote Management (WinRM) certificate. To deploy HPC features in these Azure VMs, the script by default temporarily installs these certificates in the Local Computer\\Trusted Root Certification Authorities store of the client computer to suppress the "not trusted CA" security error during script execution. The certificates are removed when the script finishes. If this parameter is specified, the certificates are not installed in the client computer, and the security warning is suppressed.
 
     > [!IMPORTANT]
-    对于生产部署，不建议指定此参数。
+    > This parameter is not recommended for production deployments.
     > 
     > 
 
-### 示例
-以下示例将使用配置文件 *MyConfigFile.xml* 创建一个 HPC Pack 群集，并指定用于安装该群集的管理员凭据。
+### Example
+The following example creates an HPC Pack cluster using the
+configuration file *MyConfigFile.xml*, and specifies administrator
+credentials for installing the cluster.
 
 ```PowerShell
 .\New-HPCIaaSCluster.ps1 -ConfigFile MyConfigFile.xml -AdminUserName <username> -AdminPassword <password>
 ```
 
-### 其他注意事项
-* 该脚本可以选择性地启用通过 HPC Pack Web 门户或 HPC Pack REST API 提交作业。
-* 如果你想要安装其他软件或配置其他设置，该脚本可以选择在头节点上运行自定义的配置前和配置后脚本。
+### Additional considerations
+* The script can optionally enable job submission through the HPC Pack web portal or the HPC Pack REST API.
+* The script can optionally run custom pre- and post-configuration scripts on the head node if you want to install additional software or configure other settings.
 
-## <a name="Configuration-file"></a> 配置文件
-部署脚本的配置文件是一个 XML 文件。架构文件 HPCIaaSClusterConfig.xsd 位于 HPC Pack IaaS 部署脚本文件夹中。**IaaSClusterConfig** 是配置文件的根元素，其中包含部署脚本文件夹中 Manual.rtf 文件详细描述的子元素。
-
-<!---HONumber=Mooncake_0213_2017-->
+## <a name="Configuration-file"></a> Configuration file
+The configuration file for the deployment script is an XML
+file. The schema file HPCIaaSClusterConfig.xsd is in the HPC Pack IaaS
+deployment script folder. **IaaSClusterConfig** is the root element of
+the configuration file, which contains the child elements described in
+detail in the file Manual.rtf in the deployment script folder.

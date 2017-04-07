@@ -1,23 +1,22 @@
-在配置 MongoLab 数据库后，您可以随时访问 MongoLab Web UI 以管理该数据库。可通过 Azure 经典管理门户进行简便的单一登录 (SSO) 访问。
+At any time after provisioning a MongoLab database, you can access the MongoLab web UI for managing that database. We offer convenient single-sign-on (SSO) access through the Azure Management Portal.
 
-您可以使用 MongoLab UI 执行大多数数据库任务，例如插入和查询文档，获取数据库统计信息以及运行有用的数据库命令。若要了解有关 MongoLab UI 的详细信息，请访问我们[支持页](http://support.mongolab.com) and our [blog](http://blog.mongolab.com).
+You can use the MongoLab UI to perform most database tasks, such as inserting and querying for documents, obtaining database statistics, and running useful database commands. To learn more about the MongoLab UI, visit our [support page](http://support.mongolab.com) and our [blog](http://blog.mongolab.com).
 
-若要访问 MongoLab UI，请执行以下操作：
+To access the MongoLab UI, do the following:
 
-1. 选择"外接程序"。  
+1. Select **Add-ons**.  
 ![AddonsButton][button-addons]
-1. 在外接程序列表中找到您的 MongoLab 服务。  
+1. Locate your MongoLab service in your list of add-ons.  
 ![MongolabEntry][entry-mongolabaddon]
-1. 单击您的外接程序的名称以转至外接程序页面。
-1. 单击"管理"。  
+1. Cick the name of your add-on to reach the add-on page.
+1. Click **Manage**.  
 ![ManageButton][button-manage]  
-将打开一个新浏览器选项卡，其中显示 MongoLab 数据库主页：
+A new browser tab opens, displaying the MongoLab database home page:  
 ![DbHome][screen-dblanding]
 
-您可以从此处选择特定集合并向下钻取到各个文档。完成操作后注销。
+From here you can select a specific collection and drill down to individual documents. Log out when you are finished.
 
 [entry-mongolabaddon]: ./media/howto-access-mongolab-ui/entry-mongolabaddon.png
 [button-manage]: ./media/howto-access-mongolab-ui/button-manage.png
 [button-addons]: ./media/howto-access-mongolab-ui/button-addons.png
 [screen-dblanding]: ./media/howto-access-mongolab-ui/screen-mongolab_dblanding.png
-<!--HONumber=41-->

@@ -1,18 +1,16 @@
-创建虚拟网络网关时，需要指定要使用的网关 SKU。如果选择更高级的网关 SKU，则将为该网关分配更多的 CPU 和网络带宽，这样使网关能够支持到虚拟网络更高的吞吐量。
+When you create a virtual network gateway, you need to specify the gateway SKU that you want to use. When you select a higher gateway SKU, more CPUs and network bandwidth are allocated to the gateway, and as a result, the gateway can support higher network throughput to the virtual network.
 
-VPN 网关可以使用以下 SKU：
+VPN Gateway can use the following SKUs:
 
-* 基本
-* 标准
+* Basic
+* Standard
 * HighPerformance
 
-VPN 网关不使用 UltraPerformance 网关 SKU。有关 UltraPerformance SKU 的信息，请参阅 [ExpressRoute](../articles/expressroute/expressroute-about-virtual-network-gateways.md) 文档。
+VPN Gateway does not use the UltraPerformance gateway SKU. For information about the UltraPerformance SKU, see the [ExpressRoute](../articles/expressroute/expressroute-about-virtual-network-gateways.md) documentation.
 
-选择 SKU 时，请考虑以下内容：
+When selecting a SKU, consider the following:
 
-* 如果想要使用 PolicyBased VPN 类型，必须使用基本 SKU。任何其他 SKU 均不支持 PolicyBased VPN（之前称为静态路由）。
-* 基本 SKU 不支持 BGP。
-* 基本 SKU 不支持 ExpressRoute-VPN 网关共存配置。
-* 主动-主动 S2S VPN 网关连接只能在 HighPerformance SKU 上配置。
-
-<!---HONumber=Mooncake_1219_2016-->
+* If you want to use a PolicyBased VPN type, you must use the Basic SKU. PolicyBased VPNs (previously called Static Routing) are not supported on any other SKU.
+* BGP is not supported on the Basic SKU.
+* ExpressRoute-VPN Gateway coexist configurations are not supported on the Basic SKU.
+* Active-active S2S VPN Gateway connections can be configured on the HighPerformance SKU only.

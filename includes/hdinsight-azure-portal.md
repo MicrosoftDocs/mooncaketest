@@ -1,9 +1,7 @@
-<!-- not suitable for mooncake-->
-
-##Azure 经典管理门户和 Azure 门户预览
-
+## Azure portal preview and Azure Portal Preview
 > [!IMPORTANT]
-> 本文档中的步骤使用 Azure 经典管理门户。Microsoft 不建议在创建新的服务时使用经典管理门户。
+> The steps in this document use the Azure Classic Management Portal. Microsoft does not recommend using the Classic Management Portal when creating new services. For an explanation of the advantages of the Azure portal preview, see [Azure Portal Preview](https://azure.microsoft.com/features/azure-portal/). 
+> 
+> 
 
-有关使用 Azure 经典管理门户的本文档版本，请查看以下链接：
-<!---HONumber=Mooncake_0530_2016-->
+For a version of this document that uses the Azure portal preview, see the following link:

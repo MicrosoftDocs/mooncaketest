@@ -23,7 +23,7 @@ ms.author: carlrab
 本文解释数据库事务单位 (DTU) 和弹性数据库事务单位 (eDTU)，以及在达到 DTU 或 eDTU 上限时会发生什么情况。
 
 ##<a name="what-are-database-transaction-units-dtus"></a> 什么是数据库事务单位 (DTU)
-
+ 
 DTU 是资源度量单位，这些资源保证可用于[独立数据库服务层](./sql-database-service-tiers.md#standalone-database-service-tiers-and-performance-levels)中特定性能级别的独立 Azure SQL 数据库。DTU 是 CPU、内存、数据 I/O 和事务日志 I/O 的混合度量值，以设计为典型真实 OLTP 工作负荷的 OLTP 基准工作负荷所确定的比率表示。通过提升数据库的性能级别来使 DTU 加倍，就相当于让该数据库可用的资源集合加倍。例如，具有 1750 个 DTU 的高级 P11 数据库提供的 DTU 计算能力是具有 5 个 DTU 的基本数据库的 350 倍。若要了解使用 OLTP 基准工作负荷确定 DTU 混合度量值的方法，请参阅 [SQL Database benchmark overview](./sql-database-benchmark-overview.md)（SQL 数据库基准概述）。
 
 ![SQL 数据库简介：按层和级别统计的单一数据库 DTU](./media/sql-database-what-is-a-dtu/single_db_dtus.png)  

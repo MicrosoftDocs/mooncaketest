@@ -39,12 +39,12 @@ $storageaccountname = $("sql$($(Get-AzureRMContext).Subscription.SubscriptionId)
 $notificationemailreceipient = "changeto@your.email;changeto@your.email"
 
 # Create a new resource group
-New-AzureRmResourceGroup -Name "myResourceGroup" -Location "northcentralus"
+New-AzureRmResourceGroup -Name "myResourceGroup" -Location "China East"
 
 # Create a new server with a system wide unique server name
 New-AzureRmSqlServer -ResourceGroupName "myResourceGroup" `
     -ServerName $servername `
-    -Location "northcentralus" `
+    -Location "China East" `
     -SqlAdministratorCredentials $(New-Object -TypeName System.Management.Automation.PSCredential -ArgumentList $adminlogin, $(ConvertTo-SecureString -String $password -AsPlainText -Force))
 
 # Create a blank database with S0 performance level
@@ -56,7 +56,7 @@ New-AzureRmSqlDatabase  -ResourceGroupName "myResourceGroup" `
 # Create a new Storage Account 
 New-AzureRmStorageAccount -ResourceGroupName "myResourceGroup" `
     -AccountName $storageaccountname `
-    -Location "northcentralus" `
+    -Location "China East" `
     -Type "Standard_LRS"
 
 # Set an auditing policy

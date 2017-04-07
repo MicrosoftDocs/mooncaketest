@@ -53,7 +53,7 @@ Select **Reset configuration only** from the drop-down menu, then click **Update
 Make sure that you have the [latest PowerShell module installed and configured](https://docs.microsoft.com/powershell/azureps-cmdlets-docs) and are signed in to your Azure subscription with the `Login-AzureRmAccount -EnvironmentName AzureChinaCloud` cmdlet.
 
 ### **Reset the local administrator account password**
-Reset the administrator password or user name with the [Set-AzureRmVMAccessExtension](https://msdn.microsoft.com/zh-cn/library/mt619447.aspx) PowerShell cmdlet. Create your account credentials as follows:
+Reset the administrator password or user name with the [Set-AzureRmVMAccessExtension](https://msdn.microsoft.com/library/mt619447.aspx) PowerShell cmdlet. Create your account credentials as follows:
 
 ```powershell
 $cred=Get-Credential
@@ -71,7 +71,7 @@ Set-AzureRmVMAccessExtension -ResourceGroupName "myResourceGroup" -VMName "myVM"
 ```
 
 ### **Reset the Remote Desktop service configuration**
-Reset remote access to your VM with the [Set-AzureRmVMAccessExtension](https://msdn.microsoft.com/zh-cn/library/mt619447.aspx) PowerShell cmdlet. The following example resets the access extension named `myVMAccess` on the VM named `myVM` in the `myResourceGroup` resource group:
+Reset remote access to your VM with the [Set-AzureRmVMAccessExtension](https://msdn.microsoft.com/library/mt619447.aspx) PowerShell cmdlet. The following example resets the access extension named `myVMAccess` on the VM named `myVM` in the `myResourceGroup` resource group:
 
 ```powershell
 Set-AzureRmVMAccessExtension -ResourceGroupName "myResoureGroup" -VMName "myVM" `

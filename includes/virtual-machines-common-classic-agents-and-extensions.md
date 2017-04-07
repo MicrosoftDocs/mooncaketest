@@ -21,7 +21,7 @@ If you want a virtual machine instance to use one or more VM extensions, the ins
 The VM Agent is enabled in the following situations:
 
 * When you create an instance of a VM by using the Azure portal preview and selecting an image from the **Marketplace**,
-* When you create an instance of a VM by using the [New-AzureVM](https://msdn.microsoft.com/zh-cn/library/azure/dn495254.aspx) or the [New-AzureQuickVM](https://msdn.microsoft.com/zh-cn/library/azure/dn495183.aspx) cmdlet. You can create a VM without a VM Agent by adding the **-DisableGuestAgent** parameter to the [Add-AzureProvisioningConfig](https://msdn.microsoft.com/zh-cn/library/azure/dn495299.aspx) cmdlet,
+* When you create an instance of a VM by using the [New-AzureVM](https://msdn.microsoft.com/library/azure/dn495254.aspx) or the [New-AzureQuickVM](https://msdn.microsoft.com/library/azure/dn495183.aspx) cmdlet. You can create a VM without a VM Agent by adding the **-DisableGuestAgent** parameter to the [Add-AzureProvisioningConfig](https://msdn.microsoft.com/library/azure/dn495299.aspx) cmdlet,
 
 * When you manually download and install the VM Agent on an existing VM instance, and set the **ProvisionGuestAgent** value to **true**. You can use this technique for Windows and Linux agents, by using a PowerShell command or a REST call. (If you do not set the **ProvisionGuestAgent** value after manually installing the VM Agent, the addition of the VM Agent is not detected properly.) The following code example shows how to do this using PowerShell where the `$svc` and `$name` arguments have already been determined:
 
@@ -35,7 +35,7 @@ The VM Agent is enabled in the following situations:
 > In PaaS, the VM Agent is called **WindowsAzureGuestAgent**, and is always available on Web and Worker Role VMs. (For more information, see [Azure Role Architecture](http://blogs.msdn.com/b/kwill/archive/2011/05/05/windows-azure-role-architecture.aspx).) The VM Agent for Role VMs can now add extensions to the cloud service VMs in the same way that it does for persistent Virtual Machines. The biggest difference between VM Extensions on role VMs and persistent VMs is when the VM extensions are added. With role VMs, extensions are added first to the cloud service, then to the deployments within that cloud service.
 >
 > Use the
-> [Get-AzureServiceAvailableExtension](https://msdn.microsoft.com/zh-cn/library/azure/dn722498.aspx)
+> [Get-AzureServiceAvailableExtension](https://msdn.microsoft.com/library/azure/dn722498.aspx)
 > cmdlet to list all available role VM extensions.
 >
 >

@@ -14,26 +14,21 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/23/2016
+ms.date: 03/14/2017
 wacn.date: ''
 ms.author: mimig
 ---
 
-# How to perform DocumentDB global database replication using the Azure portal
+# How to perform global database replication using the Azure portal
 
-Learn how to use the Azure portal to replicate data in multiple regions for global availability of data in Azure DocumentDB.
+Learn how to use the Azure portal to replicate data in multiple regions for global availability of data in Azure DocumentDB and API for MongoDB.
 
 For information about how global database replication works in DocumentDB, see [Distribute data globally with DocumentDB](./documentdb-distribute-data-globally.md). For information about performing global database replication programmatically, see [Developing with multi-region DocumentDB accounts](./documentdb-developing-with-multiple-regions.md).
-
-> [!NOTE]
-> Global distribution of DocumentDB databases is generally available and automatically enabled for any newly created DocumentDB accounts. We are working to enable global distribution on all existing accounts, but in the interim, if you want global distribution enabled on your account, please [contact support](https://portal.azure.cn/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) and we’ll enable it for you now.
-> 
-> 
 
 ## <a id="addregion"></a>Add global database regions
 DocumentDB is available in most [Azure regions][azureregions]. After selecting the default consistency level for your database account, you can associate one or more regions (depending on your choice of default consistency level and global distribution needs).
 
-1. In the [Azure portal](https://portal.azure.cn/), in the Jumpbar, click **NoSQL (DocumentDB)**.
+1. In the [Azure portal](https://portal.azure.cn/), in the left bar, click **NoSQL (DocumentDB)**.
 2. In the **NoSQL (DocumentDB)** blade, select the database account to modify.
 3. In the account blade, click **Replicate data globally** from the menu.
 4. In the **Replicate data globally** blade, select the regions to add or remove, and then click **Save**. There is a cost to adding regions, see the [pricing page](https://www.azure.cn/pricing/details/documentdb/) or the [Distribute data globally with DocumentDB](./documentdb-distribute-data-globally.md) article for more information.
@@ -62,6 +57,41 @@ While all regions associated with your DocumentDB database account can serve rea
     ![Change the write region by reordering the region list under DocumentDB Account > Settings > Change Write Regions][3]
 -->
 
+### Verifying your regional setup in API for MongoDB
+The simplest way of double checking your global configuration within API for MongoDB is to run the *isMaster()* command from the Mongo Shell.
+
+From your Mongo Shell:
+
+```
+db.isMaster()
+```
+
+Example results:
+
+```JSON
+{
+    "_t": "IsMasterResponse",
+    "ok": 1,
+    "ismaster": true,
+    "maxMessageSizeBytes": 4194304,
+    "maxWriteBatchSize": 1000,
+    "minWireVersion": 0,
+    "maxWireVersion": 2,
+    "tags": {
+        "region": "South India"
+    },
+    "hosts": [
+        "vishi-api-for-mongodb-southcentralus.documents.azure.com:10250",
+        "vishi-api-for-mongodb-westeurope.documents.azure.com:10250",
+        "vishi-api-for-mongodb-southindia.documents.azure.com:10250"
+    ],
+    "setName": "globaldb",
+    "setVersion": 1,
+    "primary": "vishi-api-for-mongodb-southindia.documents.azure.com:10250",
+    "me": "vishi-api-for-mongodb-southindia.documents.azure.com:10250"
+}
+```
+
 ## <a id="next"></a>Next steps
 Learn how to manage the consistency of your globally replicated account by reading [Consistency levels in DocumentDB](./documentdb-consistency-levels.md).
 
@@ -74,5 +104,5 @@ For information about how global database replication works in DocumentDB, see [
 
 <!--Reference style links - using these makes the source content way more readable than using inline links-->
 [consistency]: ./documentdb-consistency-levels.md
-[azureregions]: https://azure.microsoft.com/en-us/regions/
+[azureregions]: https://azure.microsoft.com/en-us/regions/#services
 [offers]: https://www.azure.cn/pricing/details/documentdb/

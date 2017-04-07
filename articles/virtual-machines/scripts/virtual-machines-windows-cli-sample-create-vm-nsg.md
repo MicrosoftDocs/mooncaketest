@@ -25,11 +25,13 @@ This script creates two virtual machines and secures incoming traffic to both. O
 
 If needed, install the Azure CLI using the instruction found in the [Azure CLI installation guide](https://docs.microsoft.com/cli/azure/install-azure-cli), and then run `az login` to create a connection with Azure.
 
+[!INCLUDE [azure-cli-2-azurechinacloud-environment-parameter](../../../includes/azure-cli-2-azurechinacloud-environment-parameter.md)]
+
 This sample works in Bash shell. For options on running Azure CLI scripts on Windows, see [Running the Azure CLI in Windows](../virtual-machines-windows-cli-options.md).
 
 ## Sample script
 
-```powershell
+```azurecli
 #!/bin/bash
 
 # Update for your admin password

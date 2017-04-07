@@ -1,6 +1,6 @@
 ---
 title: DocumentDB Automation - Managing Regions | Azure
-description: Use Azure CLI and Azure Resource Manager to manage regions in a DocumentDB database account. DocumentDB is a cloud-based NoSQL database for JSON data.
+description: Use Azure CLI 1.0 and Azure Resource Manager to manage regions in a DocumentDB database account. DocumentDB is a cloud-based NoSQL database for JSON data.
 services: documentdb
 author: dmakwana
 manager: jhubbard
@@ -14,31 +14,31 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/20/2016
+ms.date: 02/17/2017
 wacn.date: ''
 ms.author: dimakwan
 ---
 
-# Automate DocumentDB account region management using Azure CLI and Azure Resource Manager templates
+# Automate DocumentDB account region management using Azure CLI 1.0 and Azure Resource Manager templates
 
-This article shows you how to add/remove a region in your Azure DocumentDB account by using Azure CLI commands and Azure Resource Manager templates. Region management can also be accomplished through the [Azure Portal](./documentdb-portal-global-replication.md). Note that the commands in the following tutorial do not allow you to change failover priorities of the various regions. Only read regions can  be added or removed. The write region of a database account (failover priority of 0) cannot be added/removed.
+This article shows you how to add/remove a region in your Azure DocumentDB account by using Azure CLI 1.0 commands and Azure Resource Manager templates. Region management can also be accomplished through the [Azure Portal](./documentdb-portal-global-replication.md). Note that the commands in the following tutorial do not allow you to change failover priorities of the various regions. Only read regions can  be added or removed. The write region of a database account (failover priority of 0) cannot be added/removed.
 
-DocumentDB database accounts are currently the only DocumentDB resource that can be created/modified using [Azure Resource Manager templates and the Azure CLI](./documentdb-automation-resource-manager-cli.md).
+DocumentDB database accounts are currently the only DocumentDB resource that can be created/modified using [Azure Resource Manager templates and Azure CLI 1.0](./documentdb-automation-resource-manager-cli.md).
 
 ## Getting ready
 
-Before you can use the Azure CLI with Azure resource groups, you need to have the right Azure CLI version and an Azure account. If you don't have the Azure CLI, [install it](/documentation/articles/xplat-cli-install/).
+Before you can use Azure CLI 1.0 with Azure resource groups, you need to have the right Azure CLI 1.0 version and an Azure account. If you don't have Azure CLI 1.0, [install it](../cli-install-nodejs.md).
 
-### Update your Azure CLI version
+### Update your Azure CLI 1.0 version
 
-At the command prompt, type `azure --version` to see whether you have already installed version 0.10.4 or later. You may be prompted to participate in Azure CLI data collection at this step, and can select y or n to opt-in or opt-out.
+At the command prompt, type `azure --version` to see whether you have already installed version 0.10.4 or later. You may be prompted to participate in Azure CLI 1.0 data collection at this step, and can select y or n to opt-in or opt-out.
 
 ```
 azure --version
 0.10.4 (node: 4.2.4)
 ```
 
-If your version is not 0.10.4 or later, you need to either [install the Azure CLI](/documentation/articles/xplat-cli-install/) or update by using one of the native installers, or through **npm** by typing `npm update -g azure-cli` to update or `npm install -g azure-cli` to install.
+If your version is not 0.10.4 or later, you need to either [install Azure CLI 1.0](../cli-install-nodejs.md) or update by using one of the native installers, or through **npm** by typing `npm update -g azure-cli` to update or `npm install -g azure-cli` to install.
 
 ### Set your Azure account and subscription
 
@@ -63,7 +63,7 @@ Enter the code E1A2B3C4D to authenticate.
 
 Open [https://aka.ms/devicelogin](https://aka.ms/devicelogin) in a browser and enter the code provided in the command output.
 
-![Screenshot showing the device login screen for Azure CLI](./media/documentdb-automation-resource-manager-cli/azure-cli-login-code.png)
+![Screenshot showing the device login screen for Azure CLI 1.0](./media/documentdb-automation-resource-manager-cli/azure-cli-login-code.png)
 
 Once you've entered the code, select the identity you want to use in the browser and provide your user name and password if needed.
 
@@ -82,11 +82,11 @@ info:    Setting subscription "Visual Studio Ultimate with MSDN" as default
 info:    login command OK
 ```
 
-In addition to the interactive login method described here, there are additional Azure CLI login methods available. For more information about the other methods and information about handling multiple subscriptions, see [Connect to an Azure subscription from the Azure Command-Line Interface (Azure CLI)](../xplat-cli-connect.md).
+In addition to the interactive login method described here, there are additional Azure CLI 1.0 login methods available. For more information about the other methods and information about handling multiple subscriptions, see [Connect to an Azure subscription from the Azure Command-Line Interface (Azure CLI 1.0)](../xplat-cli-connect.md).
 
-### Switch to the Azure CLI resource group mode
+### Switch to Azure CLI 1.0 resource group mode
 
-By default, the Azure CLI starts in the service management mode (**asm** mode). Type the following to switch to resource group mode.
+By default, Azure CLI 1.0 starts in the service management mode (**asm** mode). Type the following to switch to resource group mode.
 
 ```
 azure config mode arm
@@ -119,7 +119,7 @@ azure group create <resourcegroupname> <resourcegrouplocation>
 ```
 
  - `<resourcegroupname>` can only use alphanumeric characters, periods, underscores, the '-' character, and parenthesis and cannot end in a period. 
- - `<resourcegrouplocation>` must be one of the regions in which DocumentDB is generally available. The current list of regions is provided on the [Azure Regions page](https://azure.microsoft.com/regions).
+ - `<resourcegrouplocation>` must be one of the regions in which DocumentDB is generally available. The current list of regions is provided on the [Azure Regions page](https://azure.microsoft.com/regions/#services).
 
 Example input:
 
@@ -155,9 +155,9 @@ You can learn lots more about Azure resource groups and what they can do for you
 
 ## <a id="add-region-documentdb-account"></a>Task: Add Region to a DocumentDB account
 
-DocumentDB has the capability to [distribute your data globally][distribute-globally] across various [Azure regions](https://azure.microsoft.com/regions/). The instructions in this section describe how to add a read region to an existing DocumentDB account with Azure CLI and Resource Manager templates. This can be accomplished using Azure CLI with or without Resource Manager templates.
+DocumentDB has the capability to [distribute your data globally][distribute-globally] across various [Azure regions](https://azure.microsoft.com/regions/#services). The instructions in this section describe how to add a read region to an existing DocumentDB account with Azure CLI 1.0 and Resource Manager templates. This can be accomplished using Azure CLI 1.0 with or without Resource Manager templates.
 
-### <a id="add-region-documentdb-account-cli"></a> Add Region to a DocumentDB account using Azure CLI without Resource Manager templates
+### <a id="add-region-documentdb-account-cli"></a> Add Region to a DocumentDB account using Azure CLI 1.0 without Resource Manager templates
 
 Add a region to an existing DocumentDB account in the new or existing resource group by entering the command below at the command prompt. Note that the "locations" array should reflect the current region configuration within the DocumentDB account with the exception of the new region to be added. The example below shows a command to add a second region to the account.
 
@@ -174,8 +174,8 @@ azure resource create -g <resourcegroupname> -n <databaseaccountname> -r "Micros
  - `<resourcegrouplocation>` is the region of the current resource group.
  - `<ip-range-filter>` Specifies the set of IP addresses or IP address ranges in CIDR form to be included as the allowed list of client IPs for a given database account. IP addresses/ranges must be comma separated and must not contain any spaces. For more information, see [DocumentDB Firewall Support](./documentdb-firewall-support.md)
  - `<databaseaccountname>` can only use lowercase letters, numbers, the '-' character, and must be between 3 and 50 characters.
- - `<databaseaccountlocation>` must be one of the regions in which DocumentDB is generally available. The current list of regions is provided on the [Azure Regions page](https://azure.microsoft.com/regions/).
- - `<newdatabaseaccountlocation>` is the new region to be added and must be one of the regions in which DocumentDB is generally available. The current list of regions is provided on the [Azure Regions page](https://azure.microsoft.com/regions/).
+ - `<databaseaccountlocation>` must be one of the regions in which DocumentDB is generally available. The current list of regions is provided on the [Azure Regions page](https://azure.microsoft.com/regions/#services).
+ - `<newdatabaseaccountlocation>` is the new region to be added and must be one of the regions in which DocumentDB is generally available. The current list of regions is provided on the [Azure Regions page](https://azure.microsoft.com/regions/#services).
 
 Example input for adding the "China East" region as a read region in the DocumentDB account: 
 
@@ -205,7 +205,7 @@ If you encounter errors, see [Troubleshooting](#troubleshooting).
 
 After the command returns, the account will be in the **Creating** state for a few minutes, before it changes to the **Online** state in which it is ready for use. You can check on the status of the account in the [Azure portal](https://portal.azure.cn), on the **DocumentDB Accounts** blade.
 
-### <a id="add-region-documentdb-account-cli-arm"></a> Add Region to a DocumentDB account using Azure CLI with Resource Manager templates
+### <a id="add-region-documentdb-account-cli-arm"></a> Add Region to a DocumentDB account using Azure CLI 1.0 with Resource Manager templates
 
 The instructions in this section describe how to add a region to an existing DocumentDB account with an Azure Resource Manager template and an optional parameters file, both of which are JSON files. Using a template enables you to describe exactly what you want and repeat it without errors.
 
@@ -359,11 +359,11 @@ After the command returns, the account will be in the **Creating** state for a f
 
 ## <a id="remove-region-documentdb-account"></a>Task: Remove Region from a DocumentDB account
 
-DocumentDB has the capability to [distribute your data globally][distribute-globally] across various [Azure regions](https://azure.microsoft.com/regions/). The instructions in this section describe how to remove a region from an existing DocumentDB account with Azure CLI and Resource Manager Templates. This can be accomplished using Azure CLI with or without Resource Manager templates.
+DocumentDB has the capability to [distribute your data globally][distribute-globally] across various [Azure regions](https://azure.microsoft.com/regions/#services). The instructions in this section describe how to remove a region from an existing DocumentDB account with Azure CLI 1.0 and Resource Manager Templates. This can be accomplished using Azure CLI 1.0 with or without Resource Manager templates.
 
-### <a id="remove-region-documentdb-account-cli"></a> Remove Region to a DocumentDB account using Azure CLI without Resource Manager templates
+### <a id="remove-region-documentdb-account-cli"></a> Remove Region to a DocumentDB account using Azure CLI 1.0 without Resource Manager templates
 
-To remove a region from an existing DocumentDB account, the command below can be executed with Azure CLI. The "locations" array should contain only the regions that are to remain after the removal of the region. **The omitted location will be removed from the DocumentDB account**. Enter the following command in the command prompt.
+To remove a region from an existing DocumentDB account, the command below can be executed with Azure CLI 1.0. The "locations" array should contain only the regions that are to remain after the removal of the region. **The omitted location will be removed from the DocumentDB account**. Enter the following command in the command prompt.
 
 One of the regions must have a failoverPriority value of 0 to indicate that this region be kept as the [write region for the DocumentDB account][scaling-globally]. The failover priority values must be unique amongst the locations and the highest failover priority value must be less than the total number of regions. 
 
@@ -378,7 +378,7 @@ azure resource create -g <resourcegroupname> -n <databaseaccountname> -r "Micros
  - `<resourcegrouplocation>` is the region of the current resource group.
  - `<ip-range-filter>` Specifies the set of IP addresses or IP address ranges in CIDR form to be included as the allowed list of client IPs for a given database account. IP addresses/ranges must be comma separated and must not contain any spaces. For more information, see [DocumentDB Firewall Support](./documentdb-firewall-support.md)
  - `<databaseaccountname>` can only use lowercase letters, numbers, the '-' character, and must be between 3 and 50 characters.
- - `<databaseaccountlocation>` must be one of the regions in which DocumentDB is generally available. The current list of regions is provided on the [Azure Regions page](https://azure.microsoft.com/regions/).
+ - `<databaseaccountlocation>` must be one of the regions in which DocumentDB is generally available. The current list of regions is provided on the [Azure Regions page](https://azure.microsoft.com/regions/#services).
 
 Example input: 
 
@@ -408,7 +408,7 @@ If you encounter errors, see [Troubleshooting](#troubleshooting).
 
 After the command returns, the account will be in the **Updating** state for a few minutes, before it changes to the **Online** state in which it is ready for use. You can check on the status of the account in the [Azure portal](https://portal.azure.cn), on the **DocumentDB Accounts** blade.
 
-### <a id="remove-region-documentdb-account-cli-arm"></a> Remove Region from a DocumentDB account using Azure CLI with Resource Manager templates
+### <a id="remove-region-documentdb-account-cli-arm"></a> Remove Region from a DocumentDB account using Azure CLI 1.0 with Resource Manager templates
 
 The instructions in this section describe how to remove a region from an existing DocumentDB account with an Azure Resource Manager template and an optional parameters file, both of which are JSON files. Using a template enables you to describe exactly what you want and repeat it without errors.
 
@@ -541,7 +541,7 @@ After the command returns, the account will be in the **Updating** state for a f
 If you receive errors like `Deployment provisioning state was not successful` while creating your resource group or database account, you have a few troubleshooting options. 
 
 > [!NOTE]
-> Providing incorrect characters in the database account name or providing a location in which DocumentDB is not available will cause deployment errors. Database account names can only use lowercase letters, numbers, the '-' character, and must be between 3 and 50 characters. All valid database account locations are listed on the [Azure Regions page](https://azure.microsoft.com/regions/).
+> Providing incorrect characters in the database account name or providing a location in which DocumentDB is not available will cause deployment errors. Database account names can only use lowercase letters, numbers, the '-' character, and must be between 3 and 50 characters. All valid database account locations are listed on the [Azure Regions page](https://azure.microsoft.com/regions/#services).
 
 - If your output contains the following `Error information has been recorded to C:\Users\wendy\.azure\azure.err`, then review the error info in the azure.err file.
 

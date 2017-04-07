@@ -73,7 +73,7 @@ Follow these steps to install and run MongoDB on a virtual machine running Windo
 
 12. If you didn't configure an endpoint for MongoDB when you created the virtual machine, you can do it now. You need both the firewall rule and the endpoint to be able to connect to MongoDB remotely.
 
-    In the Azure portal preview, click **Virtual Machines (classic)**, click the name of your new virtual machine, and then click **Endpoints**.
+  In the Azure portal, click **Virtual Machines (classic)**, click the name of your new virtual machine, and then click **Endpoints**.
 
     ![Endpoints][Image7]
 
@@ -83,7 +83,7 @@ Follow these steps to install and run MongoDB on a virtual machine running Windo
 
     ![Endpoints][Image9]
 
-> [!NOTE]
+> [AZURE.NOTE]
 > The port 27017 is the default port used by MongoDB. You can change this default port by specifying the `--port` parameter when starting the mongod.exe server. Make sure to give the same port number in the firewall and the "Mongo" endpoint in the preceding instructions.
 >
 >
@@ -91,6 +91,7 @@ Follow these steps to install and run MongoDB on a virtual machine running Windo
 [MongoDownloads]: http://www.mongodb.org/downloads
 
 [MongoWindowsSvcOptions]: http://www.mongodb.org/display/DOCS/Windows+Service
+
 
 [Image1]: ./media/install-and-run-mongo-on-win2k8-vm/WinFirewall1.png
 [Image2]: ./media/install-and-run-mongo-on-win2k8-vm/WinFirewall2.png

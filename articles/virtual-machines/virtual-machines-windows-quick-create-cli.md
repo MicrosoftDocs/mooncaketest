@@ -33,6 +33,8 @@ Log in to your Azure subscription with the [az login](https://docs.microsoft.com
 az login
 ```
 
+[!INCLUDE [azure-cli-2-azurechinacloud-environment-parameter](../../includes/azure-cli-2-azurechinacloud-environment-parameter.md)]
+
 ## Create a resource group
 
 Create a resource group with [az group create](https://docs.microsoft.com/cli/azure/group#create). An Azure resource group is a logical container into which Azure resources are deployed and managed. 

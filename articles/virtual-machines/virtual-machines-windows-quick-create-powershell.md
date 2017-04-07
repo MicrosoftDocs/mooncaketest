@@ -28,7 +28,7 @@ Before you start, make sure that the latest version of the Azure PowerShell modu
 
 ## Log in to Azure
 
-Log in to your Azure subscription with the `Login-AzureRmAccount -EnvironmentName AzureChinaCloud` command and follow the on-screen directions.
+Log in to your Azure subscription with the `Login-AzureRmAccount` command and follow the on-screen directions.
 
 ```powershell
 Login-AzureRmAccount -EnvironmentName AzureChinaCloud

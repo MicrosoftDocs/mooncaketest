@@ -32,9 +32,9 @@ Before you start, make sure you have configured your development environment for
 
 ## Connect to database and query data
 
-Get the connection string in the Azure portal. You use the connection string to connect to the Azure SQL database.
+Get the connection string in the Azure portal preview. You use the connection string to connect to the Azure SQL database.
 
-1. Log in to the [Azure portal](https://portal.azure.com/).
+1. Log in to the [Azure portal preview](https://portal.azure.cn/).
 2. Select **SQL Databases** from the left-hand menu, and click your database on the **SQL databases** page. 
 3. In the **Essentials** pane for your database, locate and click **Show database connection strings**.
 4. Copy the **ADO.NET** connection string.

@@ -14,20 +14,20 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-services
-ms.date: 01/24/2017
+ms.date: 03/06/2017
 wacn.date: ''
 ms.author: jeffstok
 ---
 
 # Programmatically create a Stream Analytics job monitor
- This article demonstrates how to enable monitoring for a Stream Analytics job. Stream Analytics jobs created via REST APIs, Azure SDK, or Powershell do not have monitoring enabled by default.  You can manually enable this in the Azure Portal by navigating to the job’s Monitor page and clicking the Enable button or you can automate this process by following the steps in this article. The monitoring data will show up in the “Monitor” tab in the Azure Portal for your Stream Analytics job.
+ This article demonstrates how to enable monitoring for a Stream Analytics job. Stream Analytics jobs created via REST APIs, Azure SDK, or Powershell do not have monitoring enabled by default.  You can manually enable this in the Azure Portal by navigating to the job's Monitor page and clicking the Enable button or you can automate this process by following the steps in this article. The monitoring data will show up in the "Monitor" tab in the Azure Portal for your Stream Analytics job.
 
 ![job monitor Jobs Tab](./media/stream-analytics-monitor-jobs/stream-analytics-monitor-jobs-tab.png)
 
 ## Prerequisites
 Before you begin this article, you must have the following:
 
-* Visual Studio 2012 or 2013.
+* Visual Studio 2017 or 2015.
 * Download and install [Azure .NET SDK](/downloads/).
 * An existing Stream Analytics job that needs monitoring enabled.
 
@@ -60,11 +60,11 @@ Before you begin this article, you must have the following:
     </appSettings>
     ```
 
-Replace values for *SubscriptionId* and *ActiveDirectoryTenantId* with your Azure subscription and tenant IDs. You can get these values by running the following PowerShell cmdlet:
+    Replace values for *SubscriptionId* and *ActiveDirectoryTenantId* with your Azure subscription and tenant IDs. You can get these values by running the following PowerShell cmdlet:
 
-```
+    ```
     Get-AzureAccount
-```
+    ```
 
 4. Add the following using statements to the source file (Program.cs) in the project.
 

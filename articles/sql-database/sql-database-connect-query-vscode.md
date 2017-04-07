@@ -34,11 +34,11 @@ Before you start, make sure you have installed the newest version of [Visual Stu
 
 ## Get connection information
 
-Get the fully qualified server name for your Azure SQL Database server in the Azure portal. You use the fully qualified server name to connect to your server using Visual Studio Code.
+Get the fully qualified server name for your Azure SQL Database server in the Azure portal preview. You use the fully qualified server name to connect to your server using Visual Studio Code.
 
-1. Log in to the [Azure portal](https://portal.azure.com/).
+1. Log in to the [Azure portal preview](https://portal.azure.cn/).
 2. Select **SQL Databases** from the left-hand menu, and click your database on the **SQL databases** page. 
-3. In the **Essentials** pane in the Azure portal page for your database, locate and then copy the **Server name** to use later in this quick start.
+3. In the **Essentials** pane in the Azure portal preview page for your database, locate and then copy the **Server name** to use later in this quick start.
 
     <img src="./media/sql-database-connect-query-ssms/connection-information.png" alt="connection information" style="width: 780px;" />
 
@@ -70,7 +70,7 @@ Use Visual Studio Code to establish a connection to your Azure SQL Database serv
 
    | Setting | Description |
    |-----|-----|
-   | **Server name** | Enter your fully qualified server name, such as **mynewserver20170313.database.windows.net** |
+   | **Server name** | Enter your fully qualified server name, such as **mynewserver20170313.database.chinacloudapi.cn** |
    | **Database name** | Enter your database name, such as **mySampleDatabase** |
    | **Authentication** | Select SQL Login |
    | **User name** | Enter your server admin account |

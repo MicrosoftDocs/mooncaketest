@@ -302,7 +302,7 @@ The common practice is to use the root certificate to manage access at team or o
 
 ### To revoke a client certificate
 
-1. Retrieve the client certificate thumbprint. For more information, see [How to: Retrieve the Thumbprint of a Certificate](https://msdn.microsoft.com/zh-cn/library/ms734695.aspx).
+1. Retrieve the client certificate thumbprint. For more information, see [How to: Retrieve the Thumbprint of a Certificate](https://msdn.microsoft.com/library/ms734695.aspx).
 2. Copy the information to a text editor and remove all spaces so that it is a continuous string. You will declare this as a variable.
 3. Declare the variables. Make sure to declare the thumbprint you retrieved in the previous step.
 

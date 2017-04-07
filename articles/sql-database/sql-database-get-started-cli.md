@@ -27,32 +27,32 @@ Before you start, make sure that the Azure CLI has been installed. For more info
 
 ## Log in to Azure
 
-Log in to your Azure subscription with the [az login](/cli/azure/#login) command and follow the on-screen directions.
+Log in to your Azure subscription with the [az login](https://docs.microsoft.com/cli/azure/#login) command and follow the on-screen directions.
 
 ```azurecli
-az login
+az login -e azurechinacloud
 ```
 
 ## Create a resource group
 
-Create an [Azure resource group](../azure-resource-manager/resource-group-overview.md) with the [az group create](/cli/azure/group#create) command. A resource group is a logical container into which Azure resources are deployed and managed as a group. The following example creates a resource group named `myResourceGroup` in the `westeurope` location.
+Create an [Azure resource group](../azure-resource-manager/resource-group-overview.md) with the [az group create](https://docs.microsoft.com/cli/azure/group#create) command. A resource group is a logical container into which Azure resources are deployed and managed as a group. The following example creates a resource group named `myResourceGroup` in the `chinaeast` location.
 
 ```azurecli
-az group create --name myResourceGroup --location westeurope
+az group create --name myResourceGroup --location chinaeast
 ```
 ## Create a logical server
 
-Create an [Azure SQL Database logical server](sql-database-features.md) with the [az sql server create](/cli/azure/sql/server#create) command. A logical server contains a group of databases managed as a group. The following example creates a randomly named server in your resource group with an admin login named `ServerAdmin` and a password of `ChangeYourAdminPassword1`. Replace these pre-defined values as desired.
+Create an [Azure SQL Database logical server](sql-database-features.md) with the [az sql server create](https://docs.microsoft.com/cli/azure/sql/server#create) command. A logical server contains a group of databases managed as a group. The following example creates a randomly named server in your resource group with an admin login named `ServerAdmin` and a password of `ChangeYourAdminPassword1`. Replace these pre-defined values as desired.
 
 ```azurecli
 servername=server-$RANDOM
-az sql server create --name $servername --resource-group myResourceGroup --location westeurope \
+az sql server create --name $servername --resource-group myResourceGroup --location chinaeast \
 	--admin-user ServerAdmin --admin-password ChangeYourAdminPassword1
 ```
 
 ## Configure a server firewall rule
 
-Create an [Azure SQL Database server-level firewall rule](sql-database-firewall-configure.md) with the [az sql server firewall create](/cli/azure/sql/server/firewall#create) command. A server-level firewall rule allows an external application, such as SQL Server Management Studio or the SQLCMD utility to connect to a SQL database through the SQL Database service firewall. The following example creates a firewall rule for a predefined address range, which, in this example, is the entire possible range of IP addresses. Replace these predefined values with the values for your external IP address or IP address range. 
+Create an [Azure SQL Database server-level firewall rule](sql-database-firewall-configure.md) with the [az sql server firewall create](https://docs.microsoft.com/cli/azure/sql/server/firewall#create) command. A server-level firewall rule allows an external application, such as SQL Server Management Studio or the SQLCMD utility to connect to a SQL database through the SQL Database service firewall. The following example creates a firewall rule for a predefined address range, which, in this example, is the entire possible range of IP addresses. Replace these predefined values with the values for your external IP address or IP address range. 
 
 ```azurecli
 az sql server firewall-rule create --resource-group myResourceGroup --server $servername \
@@ -61,7 +61,7 @@ az sql server firewall-rule create --resource-group myResourceGroup --server $se
 
 ## Create a database in the server
 
-Create a database with an [S0 performance level](sql-database-service-tiers.md) in the server with the [az sql db create](/cli/azure/sql/db#create) command. The following example creates an empty database called `mySampleDatabase`. Replace this predefined value as desired.
+Create a database with an [S0 performance level](sql-database-service-tiers.md) in the server with the [az sql db create](https://docs.microsoft.com/cli/azure/sql/db#create) command. The following example creates an empty database called `mySampleDatabase`. Replace this predefined value as desired.
 
 ```azurecli
 az sql db create --resource-group myResourceGroup --server $servername \

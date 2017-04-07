@@ -55,18 +55,18 @@ To deploy the template you downloaded by using PowerShell, follow the steps belo
 
 To deploy the template by using the Azure CLI, follow the steps below.
 
-1. If you have never used Azure CLI, see [Install and Configure the Azure CLI](/documentation/articles/xplat-cli-install/) and follow the instructions up to the point where you select your Azure account and subscription.
+1. If you have never used Azure CLI, see [Install and Configure the Azure CLI](../cli-install-nodejs.md) and follow the instructions up to the point where you select your Azure account and subscription.
 2. Run the **azure config mode** command to switch to Resource Manager mode, as shown below.
 
     ```azurecli
     azure config mode arm
     ```
 
-Here is the expected output for the command above:
+    Here is the expected output for the command above:
 
-```
+    ```
     info:    New mode is arm
-```
+    ```
 
 3. Open the parameter file, select its contents, and save it to a file in your computer. For this example, we saved the parameters file to *parameters.json*.
 4. Run the **azure group deployment create** command to deploy the new internal load balancer by using the template and parameter files you downloaded and modified above. The list shown after the output explains the parameters used.

@@ -1,6 +1,6 @@
 ---
-title: 'Azure portal: Create a SQL database | Microsoft Docs'
-description: Learn how to create a SQL Database logical server, server-level firewall rule, and databases in the Azure portal. You also learn to query an Azure SQL database using the Azure portal.
+title: 'Azure portal preview: Create a SQL database | Microsoft Docs'
+description: Learn how to create a SQL Database logical server, server-level firewall rule, and databases in the Azure portal preview. You also learn to query an Azure SQL database using the Azure portal preview.
 keywords: sql database tutorial, create a sql database
 services: sql-database
 documentationcenter: ''
@@ -19,13 +19,13 @@ ms.date: 03/13/2017
 ms.author: carlrab
 
 ---
-# Create and query a single Azure SQL database in the Azure portal
+# Create and query a single Azure SQL database in the Azure portal preview
 
-Azure SQL databases can be created through the Azure portal. This method provides a browser-based user interface for creating and configuring Azure SQL databases and all related Azure resources.
+Azure SQL databases can be created through the Azure portal preview. This method provides a browser-based user interface for creating and configuring Azure SQL databases and all related Azure resources.
 
-## Log in to the Azure portal
+## Log in to the Azure portal preview
 
-Log in to the [Azure portal](https://portal.azure.com/).
+Log in to the [Azure portal preview](https://portal.azure.cn/).
 
 ## Create a SQL database
 
@@ -33,7 +33,7 @@ An Azure SQL database is created with a defined set of [compute and storage reso
 
 Follow these steps to create a SQL database containing the Adventure Works LT sample data. 
 
-1. Click the **New** button found on the upper left-hand corner of the Azure portal.
+1. Click the **New** button found on the upper left-hand corner of the Azure portal preview.
 
 2. Select **Databases** from the **New** page, and select **SQL Database** from the **Databases** page.
 
@@ -51,7 +51,7 @@ Follow these steps to create a SQL database containing the Adventure Works LT sa
       ![create database](./media/sql-database-get-started/create-database-s1.png)
 
 4. Click **Create** when complete. Provisioning takes a few minutes.
-5. Once the SQL database deployment has finished, select the **SQL databases** on the dashboard or by selecting **SQL Databases** from the left-hand menu, and click your new database on the **SQL databases** page. An overview page for your database opens, showing you the fully qualified server name (such as **mynewserver20170313.database.windows.net**) and provides options for further configuration.
+5. Once the SQL database deployment has finished, select the **SQL databases** on the dashboard or by selecting **SQL Databases** from the left-hand menu, and click your new database on the **SQL databases** page. An overview page for your database opens, showing you the fully qualified server name (such as **mynewserver20170313.database.chinacloudapi.cn**) and provides options for further configuration.
 
       ![new-sql database](./media/sql-database-get-started/new-database-s1-overview.png) 
 
@@ -71,7 +71,7 @@ You can now connect to the database and its server using SQL Server Management S
 
 ## Query the SQL database
 
-Follow these steps to query the database using the query editor in the Azure portal. 
+Follow these steps to query the database using the query editor in the Azure portal preview. 
 
 1. On the SQL Database page for your database, click **Tools** on the toolbar. The **Query editor** preview page opens.
 
@@ -99,9 +99,9 @@ Follow these steps to query the database using the query editor in the Azure por
 
 ## Clean up resources
 
-The **Connect with** quick starts in this collection and the tutorials in the tutorial collection build upon this quick start. If you plan to continue on to work with subsequent quick starts or with the tutorials, do not clean up the resources created in this quick start. If you do not plan to continue, use the following steps to delete all resources created by this quick start in the Azure portal.
+The **Connect with** quick starts in this collection and the tutorials in the tutorial collection build upon this quick start. If you plan to continue on to work with subsequent quick starts or with the tutorials, do not clean up the resources created in this quick start. If you do not plan to continue, use the following steps to delete all resources created by this quick start in the Azure portal preview.
 
-1. From the left-hand menu in the Azure portal, click **Resource groups** and then click **myResourceGroup**. 
+1. From the left-hand menu in the Azure portal preview, click **Resource groups** and then click **myResourceGroup**. 
 2. On your resource group page, click **Delete**, type **myResourceGroup** in the text box, and then click **Delete**.
 
 ## Next steps

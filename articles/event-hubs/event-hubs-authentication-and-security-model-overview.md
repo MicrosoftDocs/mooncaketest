@@ -1,5 +1,5 @@
 ---
-title: Overview of Azure Event Hubs authentication and security model | Microsoft Docs
+title: Overview of Azure Event Hubs authentication and security model | Azure
 description: Event Hubs authentication and security model overview.
 services: event-hubs
 documentationcenter: na
@@ -13,20 +13,22 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/30/2016
+ms.date: 03/07/2017
+wacn.date: ''
 ms.author: sethm;clemensv
-
 ---
+
 # Event Hubs authentication and security model overview
+
 The Azure Event Hubs security model meets the following requirements:
 
-- Only devices that present valid credentials can send data to an Event Hub.
-- A device cannot impersonate another device.
-- A rogue device can be blocked from sending data to an Event Hub.
+* Only devices that present valid credentials can send data to an Event Hub.
+* A device cannot impersonate another device.
+* A rogue device can be blocked from sending data to an Event Hub.
 
 ## Device authentication
 
-The Event Hubs security model is based on a combination of [Shared Access Signature (SAS)](../service-bus-messaging/service-bus-shared-access-signature-authentication.md) tokens and event publishers. An event publisher defines a virtual endpoint for an Event Hub. The publisher can only be used to send messages to an Event Hub. It is not possible to receive messages from a publisher.
+The Event Hubs security model is based on a combination of [Shared Access Signature (SAS)](../service-bus-messaging/service-bus-sas.md) tokens and *event publishers*. An event publisher defines a virtual endpoint for an Event Hub. The publisher can only be used to send messages to an Event Hub. It is not possible to receive messages from a publisher.
 
 Typically, an Event Hub employs one publisher per device. All messages that are sent to any of the publishers of an Event Hub are enqueued within that Event Hub. Publishers enable fine-grained access control and throttling.
 
@@ -67,7 +69,7 @@ You can generate tokens using the SAS key. You must produce only one token per d
 public static string SharedAccessSignatureTokenProvider.GetSharedAccessSignature(string keyName, string sharedAccessKey, string resource, TimeSpan tokenTimeToLive)
 ```
 
-When calling this method, the URI should be specified as `//<NAMESPACE>.servicebus.windows.net/<EVENT_HUB_NAME>/publishers/<PUBLISHER_NAME>`. For all tokens, the URI is identical, with the exception of `PUBLISHER_NAME`, which should be different for each token. Ideally, `PUBLISHER_NAME` represents the ID of the device that receives that token.
+When calling this method, the URI should be specified as `//<NAMESPACE>.servicebus.chinacloudapi.cn/<EVENT_HUB_NAME>/publishers/<PUBLISHER_NAME>`. For all tokens, the URI is identical, with the exception of `PUBLISHER_NAME`, which should be different for each token. Ideally, `PUBLISHER_NAME` represents the ID of the device that receives that token.
 
 This method generates a token with the following structure:
 
@@ -105,10 +107,10 @@ In the absence of SAS authentication for individual consumer groups, you can use
 
 To learn more about Event Hubs, visit the following topics:
 
-- [Event Hubs overview]
-- [SAS overview]
-- A complete [sample application that uses Event Hubs].
+* [Event Hubs overview]
+* [Overview of Shared Access Signatures]
+* [Sample applications that use Event Hubs]
 
-[Event Hubs overview]: ./event-hubs-overview.md
-[sample application that uses Event Hubs]: https://code.msdn.microsoft.com/Service-Bus-Event-Hub-286fd097
-[SAS overview]: ../service-bus-messaging/service-bus-sas-overview.md
+[Event Hubs overview]: ./event-hubs-what-is-event-hubs.md
+[Sample applications that use Event Hubs]: https://github.com/Azure/azure-event-hubs/tree/master/samples
+[Overview of Shared Access Signatures]: ../service-bus-messaging/service-bus-sas.md

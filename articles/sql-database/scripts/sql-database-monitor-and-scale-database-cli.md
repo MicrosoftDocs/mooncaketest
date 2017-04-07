@@ -42,13 +42,13 @@ servername=server-$RANDOM
 # Create a resource group
 az group create \
 	--name myResourceGroup \
-	-location westeurope 
+	-location "China East" 
 
 # Create a server
 az sql server create \
 	--name $servername \
 	--resource-group myResourceGroup \
-	--location westeurope \
+	--location "China East" \
 	--admin-user $adminlogin \
 	--admin-password $password
 

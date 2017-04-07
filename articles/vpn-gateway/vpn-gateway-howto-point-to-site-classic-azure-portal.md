@@ -293,7 +293,7 @@ The common practice is to use the root certificate to manage access at team or o
 
 You can revoke a client certificate by adding the thumbprint to the revocation list.
 
-1. Retrieve the client certificate thumbprint. For more information, see [How to: Retrieve the Thumbprint of a Certificate](https://msdn.microsoft.com/zh-cn/library/ms734695.aspx).
+1. Retrieve the client certificate thumbprint. For more information, see [How to: Retrieve the Thumbprint of a Certificate](https://msdn.microsoft.com/library/ms734695.aspx).
 2. Copy the information to a text editor and remove all spaces so that it is a continuous string.
 3. Navigate to the **'classic virtual network name' > Point-to-site VPN connection > Certificates** blade and then click **Revocation list** to open the Revocation list blade. 
 4. On the **Revocation list** blade, click **+Add certificate** to open the **Add certificate to revocation list** blade.

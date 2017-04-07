@@ -35,12 +35,12 @@ $password = "ChangeYourAdminPassword1"
 $servername = "server-$($(Get-AzureRMContext).Subscription.SubscriptionId)"
 
 # Create a new resource group
-New-AzureRmResourceGroup -Name "myResourceGroup" -Location "northcentralus"
+New-AzureRmResourceGroup -Name "myResourceGroup" -Location "China East"
 
 # Create a new server with a system wide unique server name
 New-AzureRmSqlServer -ResourceGroupName "myResourceGroup" `
     -ServerName $servername `
-    -Location "northcentralus" `
+    -Location "China East" `
     -SqlAdministratorCredentials $(New-Object -TypeName System.Management.Automation.PSCredential -ArgumentList $adminlogin, $(ConvertTo-SecureString -String $password -AsPlainText -Force))
 
 # Create two elastic database pools
@@ -82,7 +82,7 @@ Set-AzureRmSqlElasticPool -ResourceGroupName "myResourceGroup" `
 # Add an alert that fires when the pool utilization reaches 90%
 Add-AzureRMMetricAlertRule -ResourceGroup "myResourceGroup" `
     -Name "MySampleAlertRule" `
-    -Location "northcentralus" `
+    -Location "China East" `
     -TargetResourceId "/subscriptions/$($(Get-AzureRMContext).Subscription.SubscriptionId)/resourceGroups/myResourceGroup/providers/Microsoft.Sql/servers/server-$($(Get-AzureRMContext).Subscription.SubscriptionId)/elasticPools/SamplePool" `
     -MetricName "dtu_consumption_percent" `
     -Operator "GreaterThan" `

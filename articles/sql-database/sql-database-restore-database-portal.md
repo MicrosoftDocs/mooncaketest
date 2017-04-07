@@ -1,6 +1,6 @@
 ---
-title: 'Azure portal: Restore a Azure SQL database | Microsoft Docs'
-description: Restore an Azure SQL database (Azure portal).
+title: 'Azure portal preview: Restore a Azure SQL database | Microsoft Docs'
+description: Restore an Azure SQL database (Azure portal preview).
 services: sql-database
 documentationcenter: ''
 author: stevestein
@@ -18,7 +18,7 @@ ms.topic: article
 ms.tgt_pltfrm: NA
 
 ---
-# Restore an Azure SQL database using the Azure portal
+# Restore an Azure SQL database using the Azure portal preview
 
 The following steps show how to restore an Azure SQL database to a point-in-time, from a deleted database, and from a geo-redundant backup.
 
@@ -28,9 +28,9 @@ The following steps show how to restore an Azure SQL database to a point-in-time
 > For a tutorial, see [Get Started with Backup and Restore for data protection and recovery](sql-database-get-started-backup-recovery-portal.md)
 >
 
-Select a database to restore in the Azure portal:
+Select a database to restore in the Azure portal preview:
 
-1. Open the [Azure portal](https://portal.azure.com).
+1. Open the [Azure portal preview](https://portal.azure.cn).
 2. On the left side of the screen, select **More services** > **SQL databases**.
 3. Click the database you want to restore.
 4. At the top of your database's page, select **Restore**:
@@ -49,9 +49,9 @@ Select a database to restore in the Azure portal:
 
 
 ## Restore a deleted Azure SQL database from backups
-To restore a deleted database in the Azure portal:
+To restore a deleted database in the Azure portal preview:
 
-1. In the [Azure portal](https://portal.azure.com), click **More services** > **SQL servers**.
+1. In the [Azure portal preview](https://portal.azure.cn), click **More services** > **SQL servers**.
 2. Select the server that contained the database you want to restore.
 3. Scroll down to the **operations** section of your server blade and select **Deleted databases**:
    ![Restore an Azure SQL database](./media/sql-database-restore-deleted-database-portal/restore-deleted-trashbin.png)
@@ -62,9 +62,9 @@ To restore a deleted database in the Azure portal:
 
 ## Restore an Azure SQL database from a geo-redundant backup
 
-To geo-restore a database in the Azure portal, do the following steps:
+To geo-restore a database in the Azure portal preview, do the following steps:
 
-1. Go to the [Azure portal](https://portal.azure.com).
+1. Go to the [Azure portal preview](https://portal.azure.cn).
 2. On the left side of the screen select **+New** > **Databases** > **SQL Database**:
    
    ![Restore an Azure SQL database](./media/sql-database-geo-restore-portal/new-sql-database.png)

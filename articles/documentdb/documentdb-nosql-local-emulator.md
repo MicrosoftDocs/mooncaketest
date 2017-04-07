@@ -14,7 +14,7 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/30/2017
+ms.date: 02/23/2017
 wacn.date: ''
 ms.author: arramac
 ---
@@ -222,17 +222,19 @@ Because the DocumentDB Emulator provides an emulated environment running on a lo
 - The DocumentDB Emulator does not support the service quota overrides that are available in the Azure DocumentDB service (e.g. document size limits, increased partitioned collection storage).
 - As your copy of the DocumentDB Emulator might not be up to date with the most recent changes with the Azure DocumentDB service, please [DocumentDB capacity planner](https://www.documentdb.com/capacityplanner) to accurately estimate production throughput (RUs) needs of your application.
 
-## <a id="set-partitioncount"></a>Change the number of collections <a name="set-partitioncount"></a>
+## <a id="set-partitioncount"></a>Change the number of collections
 
 By default, you can create up to 25 single partition collections, or 1 partitioned collection using the DocumentDB Emulator. By modifying the **PartitionCount** value, you can create up to 250 single partition collections or 10 partitioned collections, or any combination of the two that does not exceed 250 single partitions (where 1 partitioned collection = 25 single partition collection).
 
 If you attempt to create a collection after the current partition count has been exceeded, the emulator throws a ServiceUnavailable exception, with the following message.
 
+```
 Sorry, we are currently experiencing high demand in this region, 
 and cannot fulfill your request at this time. We work continuously 
 to bring more and more capacity online, and encourage you to try again. 
 Please do not hesitate to email docdbswat@microsoft.com at any time or 
 for any reason. ActivityId: 29da65cc-fba1-45f9-b82c-bf01d78a1f91
+```
 
 To change the number of collections available to the DocumentDB Emulator, do the following:
 
@@ -247,6 +249,9 @@ To change the number of collections available to the DocumentDB Emulator, do the
 Use the following tips to help troubleshoot issues you encounter with the DocumentDB emulator:
 
 - If the DocumentDB emulator crashes, collect dump files from c:\Users\user_name\AppData\Local\CrashDumps folder, compress them, and attach them to an email to [askdocdb@microsoft.com](mailto:askdocdb@microsoft.com).
+
+- If you experience crashes in DocumentDB.StartupEntryPoint.exe, run the following command from an admin command prompt:
+`lodctr /R` 
 
 - If you encounter a connectivity issue, [collect trace files](#trace-files), compress them, and attach them to an email to [askdocdb@microsoft.com](mailto:askdocdb@microsoft.com).
 

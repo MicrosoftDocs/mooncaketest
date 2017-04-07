@@ -41,27 +41,27 @@ servername=server-$RANDOM
 # Create a resource group
 az group create \
 	--name myResourceGroup \
-	--location westeurope 
+	--location "China East" 
 
 # Create a logical server in the resource group
 az sql server create \
 	--name $servername \
 	--resource-group myResourceGroup \
-	--location westeurope \
+	--location "China East" \
 	--admin-user $adminlogin \
 	--admin-password $password
 
 # Create two pools in the logical server
 az sql elastic-pools create \
 	--resource-group myResourceGroup \
-	--location westeurope  \
+	--location "China East"  \
 	--server $servername \
 	--name myFirstPool \
 	--dtu 50 \
 	--database-dtu-max 20
 az sql elastic-pools create \
 	--resource-group myResourceGroup \
-	--location westeurope  \
+	--location "China East"  \
 	--server $servername \
 	--name MySecondPool \
 	--dtu 50 \

@@ -178,7 +178,7 @@ ms.custom: H1Hack27Feb2017
 [Logo_Linux]:./media/virtual-machines-shared-sap-shared/Linux.png
 [Logo_Windows]:./media/virtual-machines-shared-sap-shared/Windows.png
 
-[msdn-set-azurermvmaemextension]:https://msdn.microsoft.com/zh-cn/library/azure/mt670598.aspx
+[msdn-set-azurermvmaemextension]:https://msdn.microsoft.com/library/azure/mt670598.aspx
 
 [planning-guide]:virtual-machines-windows-sap-planning-guide.md
 [planning-guide-1.2]:virtual-machines-windows-sap-planning-guide.md#e55d1e22-c2c8-460b-9897-64622a34fdff
@@ -802,9 +802,7 @@ To set up the ASCS/SCS multi-SID template, in the [ASCS/SCS multi-SID template][
 -  **New Or Existing Subnet**. Set whether a new virtual network and subnet should be created, or an existing subnet should be used. If you already have a virtual network that is connected to your on-premises network, select **existing**.
 -  **Subnet Id**. Set the ID of the subnet to which the virtual machines should be connected. Select the subnet of your virtual private network (VPN) or ExpressRoute virtual network to connect the virtual machine to your on-premises network. The ID usually looks like this:
 
-    ```
     /subscriptions/<*subscription id*>/resourceGroups/<*resource group name*>/providers/Microsoft.Network/virtualNetworks/<*virtual network name*>/subnets/<*subnet name*>
-    ```
 
 The template deploys one Azure Load Balancer instance, which supports multiple SAP systems.
 
@@ -1051,7 +1049,7 @@ To add registry entries on both cluster nodes of the SAP ASCS/SCS instance, firs
 | Variable name |`KeepAliveTime` |
 | Variable type |REG_DWORD (Decimal) |
 | Value |120000 |
-| Link to documentation |[https://technet.microsoft.com/zh-cn/library/cc957549.aspx](https://technet.microsoft.com/zh-cn/library/cc957549.aspx) |
+| Link to documentation |[https://technet.microsoft.com/library/cc957549.aspx](https://technet.microsoft.com/library/cc957549.aspx) |
 
 _**Table 3:** Change the first TCP/IP parameter_
 
@@ -1062,7 +1060,7 @@ Then, add this Windows registry entries on both Windows cluster nodes for SAP AS
 | Variable name |`KeepAliveInterval` |
 | Variable type |REG_DWORD (Decimal) |
 | Value |120000 |
-| Link to documentation |[https://technet.microsoft.com/zh-cn/library/cc957548.aspx](https://technet.microsoft.com/zh-cn/library/cc957548.aspx) |
+| Link to documentation |[https://technet.microsoft.com/library/cc957548.aspx](https://technet.microsoft.com/library/cc957548.aspx) |
 
 _**Table 4:** Change the second TCP/IP parameter_
 

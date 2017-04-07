@@ -100,7 +100,7 @@ If you need to create a storage account, follow these steps:
     New-AzureRmResourceGroup -Name myResourceGroup -Location "China North"
     ```
 
-2. Create a storage account named **mystorageaccount** in this resource group by using the [New-AzureRmStorageAccount](https://msdn.microsoft.com/zh-cn/library/mt607148.aspx) cmdlet:
+2. Create a storage account named **mystorageaccount** in this resource group by using the [New-AzureRmStorageAccount](https://msdn.microsoft.com/library/mt607148.aspx) cmdlet:
 
     ```powershell
     New-AzureRmStorageAccount -ResourceGroupName myResourceGroup -Name mystorageaccount -Location "China North" `
@@ -117,7 +117,7 @@ If you need to create a storage account, follow these steps:
 
 ## <a name="upload-the-vm-vhd-to-your-storage-account"></a> Upload the VHD to your storage account
 
-Use the [Add-AzureRmVhd](https://msdn.microsoft.com/zh-cn/library/mt603554.aspx) cmdlet to upload the VHD to a container in your storage account. This example uploads the file **myVHD.vhd** from `"C:\Users\Public\Documents\Virtual hard disks\"` to a storage account named **mystorageaccount** in the **myResourceGroup** resource group. The file will be placed into the container named **mycontainer** and the new file name will be **myUploadedVHD.vhd**.
+Use the [Add-AzureRmVhd](https://msdn.microsoft.com/library/mt603554.aspx) cmdlet to upload the VHD to a container in your storage account. This example uploads the file **myVHD.vhd** from `"C:\Users\Public\Documents\Virtual hard disks\"` to a storage account named **mystorageaccount** in the **myResourceGroup** resource group. The file will be placed into the container named **mycontainer** and the new file name will be **myUploadedVHD.vhd**.
 
 ```powershell
 $rgName = "myResourceGroup"
@@ -148,11 +148,11 @@ Save the **Destination URI** path to use later if you are going to create a mana
 
 You can also upload a VHD to your storage account using one of the following:
 
--   [Azure Storage Copy Blob API](https://msdn.microsoft.com/zh-cn/library/azure/dd894037.aspx)
+-   [Azure Storage Copy Blob API](https://msdn.microsoft.com/library/azure/dd894037.aspx)
 
 -   [Azure Storage Explorer Uploading Blobs](https://azurestorageexplorer.codeplex.com/)
 
--   [Storage Import/Export Service REST API Reference](https://docs.microsoft.com/zh-cn/rest/api/storageimportexport/)
+-   [Storage Import/Export Service REST API Reference](https://docs.microsoft.com/rest/api/storageimportexport/)
 
     We recommend using Import/Export Service if estimated uploading time is longer than 7 days. You can use [DataTransferSpeedCalculator](https://github.com/Azure-Samples/storage-dotnet-import-export-job-management/blob/master/DataTransferSpeedCalculator.html) to estimate the time from data size and transfer unit. 
 

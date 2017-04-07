@@ -50,7 +50,7 @@ For more information see [Azure Resource Manager support for Load Balancer](./lo
 
 ## Set up CLI to use Resource Manager
 
-1. If you have never used Azure CLI, see [Install and Configure the Azure CLI](/documentation/articles/xplat-cli-install/) and follow the instructions up to the point where you select your Azure account and subscription.
+1. If you have never used Azure CLI, see [Install and Configure the Azure CLI](../cli-install-nodejs.md) and follow the instructions up to the point where you select your Azure account and subscription.
 2. Run the **azure config mode** command to switch to Resource Manager mode, as shown below.
 
     ```azurecli
@@ -101,13 +101,13 @@ This example demonstrates how to create the front-end IP pool that receives the 
 1. Create a front-end IP pool associating the public IP created in the previous step and the load balancer.
 
     ```azurecli
-        azure network lb frontend-ip create nrpRG NRPlb NRPfrontendpool -i nrppublicip
+    azure network lb frontend-ip create nrpRG NRPlb NRPfrontendpool -i nrppublicip
     ```
 
 2. Set up a back-end address pool used to receive incoming traffic from the front-end IP pool.
 
     ```azurecli
-        azure network lb address-pool create NRPRG NRPlb NRPbackendpool
+    azure network lb address-pool create NRPRG NRPlb NRPbackendpool
     ```
 
 ## Create LB rules, NAT rules, and probe
@@ -124,20 +124,20 @@ This example creates the following items.
 1. Create the NAT rules.
 
     ```azurecli
-        azure network lb inbound-nat-rule create --resource-group nrprg --lb-name nrplb --name ssh1 --protocol tcp --frontend-port 21 --backend-port 22
-        azure network lb inbound-nat-rule create --resource-group nrprg --lb-name nrplb --name ssh2 --protocol tcp --frontend-port 23 --backend-port 22
+    azure network lb inbound-nat-rule create --resource-group nrprg --lb-name nrplb --name ssh1 --protocol tcp --frontend-port 21 --backend-port 22
+    azure network lb inbound-nat-rule create --resource-group nrprg --lb-name nrplb --name ssh2 --protocol tcp --frontend-port 23 --backend-port 22
     ```
 
 2. Create a load balancer rule.
 
     ```azurecli
-        azure network lb rule create --resource-group nrprg nrplb --lb-name lbrule --protocol tcp --frontend-port 80 --backend-port 80 --frontend-ip-name NRPfrontendpool --backend-address-pool-name NRPbackendpool
+    azure network lb rule create --resource-group nrprg --lb-name nrplb --name lbrule --protocol tcp --frontend-port 80 --backend-port 80 --frontend-ip-name NRPfrontendpool --backend-address-pool-name NRPbackendpool
     ```
 
 3. Create a health probe.
 
     ```azurecli
-        azure network lb probe create --resource-group nrprg --lb-name nrplb --name healthprobe --protocol "http" --port 80 --path healthprobe.aspx --interval 15 --count 4
+    azure network lb probe create --resource-group nrprg --lb-name nrplb --name healthprobe --protocol "http" --port 80 --path healthprobe.aspx --interval 15 --count 4
     ```
 
 4. Check your settings.
@@ -259,12 +259,12 @@ Expected output:
         azure vm create --resource-group nrprg --name web1 --location chinaeast --vnet-name nrpvnet --vnet-subnet-name nrpvnetsubnet --nic-name lb-nic1-be --availset-name nrp-avset --storage-account-name web1nrp --os-type Windows --image-urn MicrosoftWindowsServer:WindowsServer:2012-R2-Datacenter:4.0.20150825
     ```
 
-> [!IMPORTANT]
+    > [!IMPORTANT]
     > VMs in a load balancer need to be in the same availability set. Use `azure availset create` to create an availability set.
 
-```
-The output should be similar to the following:
+    The output should be similar to the following:
 
+    ```
     info:    Executing command vm create
     + Looking up the VM "web1"
     Enter username: azureuser
@@ -281,12 +281,12 @@ The output should be similar to the following:
     info:    This is a NIC without publicIP configured
     + Creating VM "web1"
     info:    vm create command OK
+    ```
 
-> [!NOTE]
-> The informational message **This is a NIC without publicIP configured** is expected since the NIC created for the load balancer connecting to Internet using the load balancer public IP address.
+    > [!NOTE]
+    > The informational message **This is a NIC without publicIP configured** is expected since the NIC created for the load balancer connecting to Internet using the load balancer public IP address.
 
-Since the *lb-nic1-be* NIC is associated with the *rdp1* NAT rule, you can connect to *web1* using RDP through port 3441 on the load balancer.
-```
+    Since the *lb-nic1-be* NIC is associated with the *rdp1* NAT rule, you can connect to *web1* using RDP through port 3441 on the load balancer.
 
 4. Create a virtual machine (VM) named *web2*, and associate it with the NIC named *lb-nic2-be*. A storage account called *web1nrp* was created before running the command below.
 

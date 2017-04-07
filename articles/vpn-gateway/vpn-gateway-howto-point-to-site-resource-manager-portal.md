@@ -254,7 +254,7 @@ The common practice is to use the root certificate to manage access at team or o
 
 You can revoke a client certificate by adding the thumbprint to the revocation list.
 
-1. Retrieve the client certificate thumbprint. For more information, see [How to retrieve the Thumbprint of a Certificate](https://msdn.microsoft.com/zh-cn/library/ms734695.aspx).
+1. Retrieve the client certificate thumbprint. For more information, see [How to retrieve the Thumbprint of a Certificate](https://msdn.microsoft.com/library/ms734695.aspx).
 2. Copy the information to a text editor and remove all spaces so that it is a continuous string.
 3. Navigate to the virtual network gateway **Point-to-site-configuration** blade. This is the blade that you used to [upload a trusted root certificate](#uploadfile).
 4. In the **Revoked certificates** section, input a friendly name for the certificate (it doesn't have to be the certificate CN).

@@ -1,5 +1,5 @@
 ---
-title: Connect to SQL Database using C and C++ | Azure
+title: Connect to SQL Database using C and C++ | Microsoft Docs
 description: Use the sample code in this quick start to build a modern application with C++ and backed by a powerful relational database in the cloud with Azure SQL Database.
 services: sql-database
 documentationcenter: ''
@@ -14,11 +14,10 @@ ms.workload: drivers
 ms.tgt_pltfrm: na
 ms.devlang: cpp
 ms.topic: article
-ms.date: 02/03/2017
-wacn.date: ''
+ms.date: 03/06/2017
 ms.author: tobiast
----
 
+---
 # Connect to SQL Database using C and C++
 This post is aimed at C and C++ developers trying to connect to Azure SQL DB. It is broken down into sections so you can jump to the section that best captures your interest. 
 
@@ -38,12 +37,12 @@ Azure currently has two options for hosting SQL server workloads: Azure SQL data
 Connecting to Azure SQL DB is no different and currently there are two ways to connect to databases: ODBC (Open Database connectivity) and OLE DB (Object Linking and Embedding database). In recent years, Microsoft has aligned with [ODBC for native relational data access](https://blogs.msdn.microsoft.com/sqlnativeclient/2011/08/29/microsoft-is-aligning-with-odbc-for-native-relational-data-access/). ODBC is relatively simple, and also much faster than OLE DB. The only caveat here is that ODBC does use an old C-style API. 
 
 ## <a id="Create"></a>Step 1:  Creating your Azure SQL Database
-See the [getting started page](./sql-database-get-started.md) to learn how to create a sample database.  
+See the [getting started page](sql-database-get-started.md) to learn how to create a sample database.  
 
 ## <a id="ConnectionString"></a>Step 2:  Get connection string
 After your Azure SQL database has been provisioned, you need to carry out the following steps to determine connection information and add your client IP for firewall access. 
 
-In [Azure portal](https://portal.azure.cn/), go to your Azure SQL database ODBC connection string by using the **Show database connection strings** listed as a part of the overview section for your database: 
+In [Azure portal preview](https://portal.azure.cn/), go to your Azure SQL database ODBC connection string by using the **Show database connection strings** listed as a part of the overview section for your database: 
 
 ![ODBCConnectionString](./media/sql-database-develop-cplusplus-simple/azureportal.png)
 
@@ -52,14 +51,14 @@ In [Azure portal](https://portal.azure.cn/), go to your Azure SQL database ODBC 
 Copy the contents of the **ODBC (Includes Node.js) [SQL authentication]** string. We use this string later to connect from our C++ ODBC command-line interpreter. This string provides details such as the driver, server, and other database connection parameters. 
 
 ## <a id="Firewall"></a>Step 3:  Add your IP to the firewall
-Go to the firewall section for your Database server and add your [client IP to the firewall using these steps](./sql-database-configure-firewall-settings.md) to make sure we can establish a successful connection: 
+Go to the firewall section for your Database server and add your [client IP to the firewall using these steps](sql-database-configure-firewall-settings.md) to make sure we can establish a successful connection: 
 
 ![AddyourIPWindow](./media/sql-database-develop-cplusplus-simple/ip.png)
 
 At this point, you have configured your Azure SQL DB and are ready to connect from your C++ code. 
 
 ## <a id="Windows"></a>Step 4: Connecting from a Windows C/C++ application
-You can easily connect to your [Azure SQL DB using ODBC on Windows using this sample](https://github.com/Microsoft/VCSamples/tree/master/VC2015Samples/ODBC%20database%20sample%20%28windows%29) that builds with Visual Studio. The sample implements an ODBC command-line interpreter that can be used to connect to our Azure SQL DB. This sample takes either a Database source name file (DSN) file as a command-line argument or the verbose connection string that we copied earlier from the Azure portal. Bring up the property page for this project and paste the connection string as a command argument as shown here: 
+You can easily connect to your [Azure SQL DB using ODBC on Windows using this sample](https://github.com/Microsoft/VCSamples/tree/master/VC2015Samples/ODBC%20database%20sample%20%28windows%29) that builds with Visual Studio. The sample implements an ODBC command-line interpreter that can be used to connect to our Azure SQL DB. This sample takes either a Database source name file (DSN) file as a command-line argument or the verbose connection string that we copied earlier from the Azure portal preview. Bring up the property page for this project and paste the connection string as a command argument as shown here: 
 
 ![DSN Propsfile](./media/sql-database-develop-cplusplus-simple/props.png)
 
@@ -91,7 +90,7 @@ apt-get install msodbcsql
 apt-get install unixodbc-dev-utf16 #this step is optional but recommended*
 ```
 
-Launch Visual Studio 2015. Under Tools -> options -> cross platform -> C++ -> connection manager, add a connection to your Linux box: 
+Launch Visual Studio. Under Tools -> Options -> Cross Platform -> Connection Manager, add a connection to your Linux box: 
 
 ![Tools Options](./media/sql-database-develop-cplusplus-simple/tools.png)
 
@@ -100,7 +99,7 @@ After connection over SSH is established, create an Empty project (Linux) templa
 ![New project template](./media/sql-database-develop-cplusplus-simple/template.png)
 
 You can then add a [new C source file and replace it with this content](https://github.com/Microsoft/VCSamples/blob/master/VC2015Samples/ODBC%20database%20sample%20%28linux%29/odbcconnector/odbcconnector.c). Using the ODBC APIs SQLAllocHandle, SQLSetConnectAttr, and SQLDriverConnect, you should be able to initialize and establish a connection to your database. 
-Like with the Windows ODBC sample, you need to replace the SQLDriverConnect call with the details from your database connection string parameters copied from the Azure portal previously. 
+Like with the Windows ODBC sample, you need to replace the SQLDriverConnect call with the details from your database connection string parameters copied from the Azure portal preview previously. 
 
 ```
  retcode = SQLDriverConnect(
@@ -131,9 +130,9 @@ You can find the GetStarted solution that contains all the samples in this artic
 * [ODBC C++ Linux sample](https://github.com/Microsoft/VCSamples/tree/master/VC2015Samples/ODBC%20database%20sample%20%28linux%29), Download the Linux C++ ODBC Sample to connect to Azure SQL
 
 ## Next steps
-* Review the [SQL Database Development Overview](./sql-database-develop-overview.md)
+* Review the [SQL Database Development Overview](sql-database-develop-overview.md)
 * More information on the [ODBC API Reference](https://docs.microsoft.com/sql/odbc/reference/syntax/odbc-api-reference/)
 
 ## Additional resources
-* [Design Patterns for Multi-tenant SaaS Applications with Azure SQL Database](./sql-database-design-patterns-multi-tenancy-saas-applications.md)
+* [Design Patterns for Multi-tenant SaaS Applications with Azure SQL Database](sql-database-design-patterns-multi-tenancy-saas-applications.md)
 * Explore all the [capabilities of SQL Database](https://www.azure.cn/home/features/sql-database/)

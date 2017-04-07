@@ -54,7 +54,7 @@ The [EventHubDescription](https://docs.microsoft.com/zh-cn/dotnet/api/microsoft.
 
 ## Create an Event Hubs client
 
-The primary class for interacting with Event Hubs is [Microsoft.ServiceBus.Messaging.EventHubClient][]. This class provides both sender and receiver capabilities. You can instantiate this class using the [Create](https://docs.microsoft.com/zh-cn/dotnet/api/microsoft.servicebus.messaging.eventhubclient#Microsoft_ServiceBus_Messaging_EventHubClient_Create_System_String_) method, as shown in the following example.
+The primary class for interacting with Event Hubs is [Microsoft.ServiceBus.Messaging.EventHubClient][]. This class provides both sender and receiver capabilities. You can instantiate this class using the [Create](https://docs.microsoft.com/zh-cn/dotnet/api/microsoft.servicebus.messaging.eventhubclient.create) method, as shown in the following example.
 
 ```csharp
 var client = EventHubClient.Create(description.Path);
@@ -123,7 +123,7 @@ You can also send events to an Event Hub asynchronously. Sending asynchronously 
 
 ## Create a partition sender
 
-Although it is most common to send events to an Event Hub with a partition key, in some cases you might want to send events directly to a given partition. For example:
+Although it is most common to send events to an Event Hub without a partition key, in some cases you might want to send events directly to a given partition. For example:
 
 ```csharp
 var partitionedSender = client.CreatePartitionedSender(description.PartitionIds[0]);
@@ -199,6 +199,6 @@ To learn more about Event Hubs scenarios, visit these links:
 [NamespaceManager]: https://docs.microsoft.com/zh-cn/dotnet/api/microsoft.servicebus.namespacemanager
 [EventHubClient]: https://docs.microsoft.com/zh-cn/dotnet/api/microsoft.servicebus.messaging.eventhubclient
 [EventData]: https://docs.microsoft.com/zh-cn/dotnet/api/microsoft.servicebus.messaging.eventdata
-[CreateEventHubIfNotExists]: https://docs.microsoft.com/zh-cn/dotnet/api/microsoft.servicebus.namespacemanager#Microsoft_ServiceBus_NamespaceManager_CreateEventHubIfNotExists_System_String_
+[CreateEventHubIfNotExists]: https://docs.microsoft.com/zh-cn//dotnet/api/microsoft.servicebus.namespacemanager.createeventhubifnotexists
 [PartitionKey]: https://docs.microsoft.com/zh-cn/dotnet/api/microsoft.servicebus.messaging.eventdata#Microsoft_ServiceBus_Messaging_EventData_PartitionKey
 [EventProcessorHost]: https://docs.microsoft.com/zh-cn/dotnet/api/microsoft.servicebus.messaging.eventprocessorhost

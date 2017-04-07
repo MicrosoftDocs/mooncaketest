@@ -36,17 +36,17 @@ $sourceserver = "source-server-$($(Get-AzureRMContext).Subscription.Subscription
 $targetserver = "target-server-$($(Get-AzureRMContext).Subscription.SubscriptionId)"
 
 # Create new, or get existing resource group
-New-AzureRmResourceGroup -Name "myResourceGroup" -Location "northcentralus"
+New-AzureRmResourceGroup -Name "myResourceGroup" -Location "China East"
 
 
 # Create a new server with a system wide unique server name
 New-AzureRmSqlServer -ResourceGroupName "myResourceGroup" `
     -ServerName $sourceserver `
-    -Location "northcentralus" `
+    -Location "China East" `
     -SqlAdministratorCredentials $(New-Object -TypeName System.Management.Automation.PSCredential -ArgumentList $adminlogin, $(ConvertTo-SecureString -String $password -AsPlainText -Force))
 New-AzureRmSqlServer -ResourceGroupName "myResourceGroup" `
     -ServerName "target-server-$($(Get-AzureRMContext).Subscription.SubscriptionId)" `
-    -Location "southcentralus" `
+    -Location "China East" `
     -SqlAdministratorCredentials $(New-Object -TypeName System.Management.Automation.PSCredential -ArgumentList $adminlogin, $(ConvertTo-SecureString -String $password -AsPlainText -Force))
 
 

@@ -13,7 +13,7 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-services
-ms.date: 02/16/2017
+ms.date: 03/07/2017
 wacn.date: ''
 ms.author: andrl
 ---
@@ -89,8 +89,6 @@ You can stay up-to-date with the latest DocumentDB news and features by followin
 - [**Azure DocumentDB - Point in time Backups**](http://softwarejuancarlos.com/2015/09/06/azure-documentdb-point-in-time-backups/) - *by Juan Carlos Sanchez*
 
 *Do you have a blog post, code sample, or case-study you'd like to share? [Let us know](mailto:askdocdb@microsoft.com)!*
-
-## Events and recordings
 
 *Are you speaking at or hosting an event? [Let us know](mailto:askdocdb@microsoft.com) how we can help!*
 

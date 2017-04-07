@@ -40,12 +40,12 @@ $startip = "0.0.0.0"
 $endip = "255.255.255.255"
 
 # Create a new resource group
-New-AzureRmResourceGroup -Name "myResourceGroup" -Location "northcentralus"
+New-AzureRmResourceGroup -Name "myResourceGroup" -Location "China East"
 
 # Create a new Storage Account 
 New-AzureRmStorageAccount -ResourceGroupName "myResourceGroup" `
     -AccountName $storageaccountname `
-    -Location "northcentralus" `
+    -Location "China East" `
     -Type "Standard_LRS"
 
 # Create a new storage container 
@@ -65,7 +65,7 @@ Set-AzureStorageBlobContent -Container "importsample" `
 # Create a new server with a system wide unique server name
 New-AzureRmSqlServer -ResourceGroupName "myResourceGroup" `
     -ServerName $servername `
-    -Location "northcentralus" `
+    -Location "China East" `
     -SqlAdministratorCredentials $(New-Object -TypeName System.Management.Automation.PSCredential -ArgumentList "ServerAdmin", $(ConvertTo-SecureString -String "ASecureP@assw0rd" -AsPlainText -Force))
 
 # Open up the server firewall so we can connect
@@ -80,7 +80,7 @@ $importRequest = New-AzureRmSqlDatabaseImport -ResourceGroupName "myResourceGrou
     -DatabaseMaxSizeBytes "262144000" `
     -StorageKeyType "StorageAccessKey" `
     -StorageKey $(Get-AzureRmStorageAccountKey -ResourceGroupName "myResourceGroup" -StorageAccountName $storageaccountname).Value[0] `
-    -StorageUri "http://$storageaccountname.blob.core.windows.net/importsample/sample.bacpac" `
+    -StorageUri "http://$storageaccountname.blob.core.chinacloudapi.cn/importsample/sample.bacpac" `
     -Edition "Standard" `
     -ServiceObjectiveName "S0" `
     -AdministratorLogin "ServerAdmin" `

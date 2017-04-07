@@ -15,7 +15,7 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 11/22/2016
+ms.date: 03/14/2017
 wacn.date: ''
 ms.author: mimig
 ---
@@ -63,11 +63,9 @@ In addition, this data can be partitioned by post id allowing the data to scale 
 
 You can then build on this solution using other Azure services:
 
-- [Azure Search](https://www.azure.cn/home/features/search/) can be used via the web app to enable users to search for posts.
 - [Azure App Services](https://www.azure.cn/home/features/app-service/) can be used to host applications and background processes.
 - [Azure Blob Storage](https://www.azure.cn/home/features/storage/) can be used to store full user profiles including images.
 - [Azure SQL Database](https://www.azure.cn/home/features/sql-database/) can be used to store massive amounts of data such as login information, and data for usage analytics.
-- [Azure Machine Learning](https://www.azure.cn/home/features/machine-learning/)  can be used to build knowledge and intelligence that can provide feedback to the process and help deliver the right content to the right users.
 
 This social engagement site is just one one scenario in which a NoSQL database is the right data model for the job. If you're interested in reading more about this scenario and how to model your data for DocumentDB in social media applications, see [Going social with DocumentDB](./documentdb-social-media-apps.md). 
 

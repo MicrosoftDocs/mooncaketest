@@ -25,7 +25,7 @@ Learn the answers to common questions, patterns, and best practices for Azure Re
 If your question isn't listed here, let us know and we'll help you find an answer.
 
 * You can post a question in the comments at the end of this FAQ and engage with the Azure Content team and other community members about this article.
-* To reach a wider audience, you can post a question on the [Azure Cache MSDN Forum](https://social.msdn.microsoft.com/forums/azure/home?forum=azurecache) and engage with the Azure Cache team and other members of the community.
+* To reach a wider audience, you can post a question on the [Azure Cache MSDN Forum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurecache) and engage with the Azure Cache team and other members of the community.
 
 ## Azure Redis Cache basics
 The FAQs in this section cover some of the basics of Azure Redis Cache.
@@ -160,7 +160,7 @@ Usually the default values of the client are sufficient. You can fine-tune the o
 * **Retries**
     * For ConnectRetry and ConnectTimeout, the general guidance is to fail fast and retry again. This guidance is based on your workload and how much time on average it takes for your client to issue a Redis command and receive a response.
     * Let StackExchange.Redis automatically reconnect instead of checking connection status and reconnecting yourself. **Avoid using the ConnectionMultiplexer.IsConnected property**.
-    * Snowballing - sometimes you may run into an issue where you are retrying and the retries snowball and never recovers. If snowballing occurs, you should consider using an exponential backoff retry algorithm as described in [Retry general guidance](https://github.com/mspnp/azure-guidance/blob/master/Retry-Policies.md) published by the Microsoft Patterns & Practices group.
+    * Snowballing - sometimes you may run into an issue where you are retrying and the retries snowball and never recovers.
 * **Timeout values**
     * Consider your workload and set the values accordingly. If you are storing large values, set the timeout to a higher value.
     * Set `AbortOnConnectFail` to false and let StackExchange.Redis reconnect for you.
@@ -279,7 +279,7 @@ For instructions on downloading the Redis tools, see the [How can I run Redis co
 * The client VM used for testing should be in the same region as your Redis cache instance.
 * We recommend using Dv2 VM Series for your client as they have better hardware and should give the best results.
 * Make sure your client VM you choose has at least as much computing and bandwidth capability as the cache you are testing.
-* Enable VRSS on the client machine if you are on Windows. [See here for details](https://technet.microsoft.com/zh-cn/library/dn383582.aspx).
+* Enable VRSS on the client machine if you are on Windows. [See here for details](https://technet.microsoft.com/library/dn383582.aspx).
 * Premium tier Redis instances have better network latency and throughput because they are running on better hardware for both CPU and Network.
 
 ### <a name="cache-redis-commands" id="what-are-some-of-the-considerations-when-using-common-redis-commands"></a> What are some of the considerations when using common Redis commands?
@@ -343,14 +343,14 @@ How to configure this setting:
     > The value specified in this configuration element is a *per-core* setting. For example, if you have a 4 core machine and want your minIOThreads setting to be 200 at runtime, you would use `<processModel minIoThreads="50"/>`.
     >
 
-* Outside of ASP.NET, use the [ThreadPool.SetMinThreads(…)](https://msdn.microsoft.com/zh-cn/library/system.threading.threadpool.setminthreads.aspx) API.
+* Outside of ASP.NET, use the [ThreadPool.SetMinThreads(…)](https://msdn.microsoft.com/library/system.threading.threadpool.setminthreads.aspx) API.
 
 ### <a name="server-gc" id="enable-server-gc-to-get-more-throughput-on-the-client-when-using-stackexchangeredis"></a> Enable server GC to get more throughput on the client when using StackExchange.Redis
 Enabling server GC can optimize the client and provide better performance and throughput when using StackExchange.Redis. For more information on server GC and how to enable it, see the following articles:
 
-* [To enable server GC](https://msdn.microsoft.com/zh-cn/library/ms229357.aspx)
-* [Fundamentals of Garbage Collection](https://msdn.microsoft.com/zh-cn/library/ee787088.aspx)
-* [Garbage Collection and Performance](https://msdn.microsoft.com/zh-cn/library/ee851764.aspx)
+* [To enable server GC](https://msdn.microsoft.com/library/ms229357.aspx)
+* [Fundamentals of Garbage Collection](https://msdn.microsoft.com/library/ee787088.aspx)
+* [Garbage Collection and Performance](https://msdn.microsoft.com/library/ee851764.aspx)
 
 ### <a name="cache-monitor" id="how-do-i-monitor-the-health-and-performance-of-my-cache"></a> How do I monitor the health and performance of my cache?
 Azure Redis Cache instances can be monitored in the [Azure portal preview](https://portal.azure.cn). You can view metrics, pin metrics charts to the Startboard, customize the date and time range of monitoring charts, add and remove metrics from the charts, and set alerts when certain conditions are met. For more information, see [Monitor Azure Redis Cache](cache-how-to-monitor.md).
@@ -411,4 +411,4 @@ For more information about getting started with Azure Redis Cache, see [How to U
 ### In-Role Cache
 [In-Role Cache has been retired November 30, 2016.](https://azure.microsoft.com/blog/azure-managed-cache-and-in-role-cache-services-to-be-retired-on-11-30-2016/)
 
-["minIoThreads" configuration setting]: https://msdn.microsoft.com/zh-cn/library/vstudio/7w2sway1(v=vs.100).aspx
+["minIoThreads" configuration setting]: https://msdn.microsoft.com/library/vstudio/7w2sway1(v=vs.100).aspx

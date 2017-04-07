@@ -14,7 +14,7 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-services
-ms.date: 01/24/2017
+ms.date: 03/06/2017
 wacn.date: ''
 ms.author: jeffstok
 ---
@@ -30,8 +30,8 @@ Azure Stream Analytics is a fully managed service providing low-latency, highly 
 ## Prerequisites
 Before you begin this article, you must have the following:
 
-* Install Visual Studio 2012 or 2013.
-* Download and install [Azure .NET SDK](/downloads/). 
+* Install Visual Studio 2017 or 2015.
+* Download and install [Azure .NET SDK](/downloads/).
 * Create an Azure Resource Group in your subscription. The following is a sample Azure PowerShell script. For Azure PowerShell information, see [Install and configure Azure PowerShell](https://docs.microsoft.com/powershell/azureps-cmdlets-docs);  
 
     ```

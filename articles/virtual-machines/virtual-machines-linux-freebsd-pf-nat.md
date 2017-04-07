@@ -35,6 +35,8 @@ The Azure Resource Manager template set up a FreeBSD virtual machine that perfor
 ### Deploy through Azure CLI
 You need the latest [Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-az-cli2) installed and logged in to an Azure account using [az login](https://docs.microsoft.com/cli/azure/#login). Create a resource group with [az group create](https://docs.microsoft.com/cli/azure/group#create). The following example creates a resource group name `myResourceGroup` in the `China North` location.
 
+[!INCLUDE [azure-cli-2-azurechinacloud-environment-parameter](../../includes/azure-cli-2-azurechinacloud-environment-parameter.md)]
+
 ```azurecli
 az group create --name myResourceGroup --location chinanorth
 ```

@@ -20,10 +20,10 @@ ms.author: kumud
 
 # Create an internal load balancer by using the Azure CLI
 > [!div class="op_single_selector"]
->- [Azure Portal Preview](./load-balancer-get-started-ilb-arm-portal.md)
->- [PowerShell](./load-balancer-get-started-ilb-arm-ps.md)
->- [Azure CLI](./load-balancer-get-started-ilb-arm-cli.md)
->- [Template](./load-balancer-get-started-ilb-arm-template.md)
+> * [Azure Portal Preview](./load-balancer-get-started-ilb-arm-portal.md)
+> * [PowerShell](./load-balancer-get-started-ilb-arm-ps.md)
+> * [Azure CLI](./load-balancer-get-started-ilb-arm-cli.md)
+> * [Template](./load-balancer-get-started-ilb-arm-template.md)
 
 [!INCLUDE [load-balancer-get-started-ilb-intro-include.md](../../includes/load-balancer-get-started-ilb-intro-include.md)]
 
@@ -48,18 +48,18 @@ For more information, see [Azure Resource Manager support for Load Balancer](./l
 
 ## Set up CLI to use Resource Manager
 
-1. If you have never used Azure CLI, see [Install and configure the Azure CLI](/documentation/articles/xplat-cli-install/). Follow the instructions up to the point where you select your Azure account and subscription.
+1. If you have never used Azure CLI, see [Install and configure the Azure CLI](../cli-install-nodejs.md). Follow the instructions up to the point where you select your Azure account and subscription.
 2. Run the **azure config mode** command to switch to Resource Manager mode, as follows:
 
     ```azurecli
     azure config mode arm
     ```
 
-Expected output:
-
-```
+    Expected output:
+	
+	```
     info:    New mode is arm
-```
+	```
 
 ## Create an internal load balancer step by step
 
@@ -69,7 +69,7 @@ Expected output:
     azure login -e AzureChinaCloud
     ```
 
-When prompted, enter your Azure credentials.
+    When prompted, enter your Azure credentials.
 
 2. Change the command tools to Azure Resource Manager mode.
 
@@ -95,8 +95,8 @@ azure group create <resource group name> <location>
     azure network lb create --name nrprg --location chinaeast
     ```
 
-> [!NOTE]
-    > All resources for an internal load balancers, such as virtual networks and virtual network subnets, must be in the same resource group and in the same region.
+   > [!NOTE]
+   > All resources for an internal load balancers, such as virtual networks and virtual network subnets, must be in the same resource group and in the same region.
 
 2. Create a front-end IP address for the internal load balancer.
 
@@ -112,7 +112,7 @@ azure group create <resource group name> <location>
     azure network lb address-pool create --resource-group nrprg --lb-name ilbset --name beilb
     ```
 
-After you define a front-end IP address and a back-end address pool, you can create load balancer rules, inbound NAT rules, and customized health probes.
+    After you define a front-end IP address and a back-end address pool, you can create load balancer rules, inbound NAT rules, and customized health probes.
 
 4. Create a load balancer rule for the internal load balancer.
 
@@ -154,9 +154,9 @@ You need to create NICs (or modify existing ones) and associate them to NAT rule
     azure network nic create --resource-group nrprg --name lb-nic1-be --subnet-name nrpvnetsubnet --subnet-vnet-name nrpvnet --lb-address-pool-ids "/subscriptions/####################################/resourceGroups/nrprg/providers/Microsoft.Network/loadBalancers/nrplb/backendAddressPools/beilb" --lb-inbound-nat-rule-ids "/subscriptions/####################################/resourceGroups/nrprg/providers/Microsoft.Network/loadBalancers/nrplb/inboundNatRules/rdp1" --location chinaeast
     ```
 
-Expected output:
+    Expected output:
 
-```
+    ```
     info:    Executing command network nic create
     + Looking up the network interface "lb-nic1-be"
     + Looking up the subnet "nrpvnetsubnet"
@@ -180,7 +180,7 @@ Expected output:
     data:        Id                          : /subscriptions/####################################/resourceGroups/nrprg/providers/Microsoft.Network/loadBalancers/nrplb/inboundNatRules/rdp1
     data:
     info:    network nic create command OK
-```
+    ```
 
 2. Create an NIC named *lb-nic2-be*, and then associate it with the *rdp2* NAT rule and the *beilb* back-end address pool.
 

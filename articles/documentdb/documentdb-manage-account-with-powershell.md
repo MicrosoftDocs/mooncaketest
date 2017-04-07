@@ -14,7 +14,7 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/20/2016
+ms.date: 02/27/2017
 wacn.date: ''
 ms.author: dimakwan
 ---
@@ -22,8 +22,9 @@ ms.author: dimakwan
 # Automate Azure DocumentDB account management using Azure Powershell
 > [!div class="op_single_selector"]
 >- [Azure portal](./documentdb-create-account.md)
->- [Azure CLI and ARM](./documentdb-automation-resource-manager-cli.md)
->- [Azure Powershell](./documentdb-manage-account-with-powershell.md)
+>- [Azure CLI 1.0](./documentdb-automation-resource-manager-cli-nodejs.md)
+>- [Azure CLI 2.0](./documentdb-automation-resource-manager-cli.md)
+>- [Azure PowerShell](./documentdb-manage-account-with-powershell.md)
 
 The following guide describes commands to automate management of your DocumentDB database accounts using Azure Powershell. It also includes commands to manage account keys and failover priorities in [multi-region database accounts][scaling-globally]. Updating your database account allows you to modify consistency policies and add/remove regions. For cross-platform management of your DocumentDB database account, you can use either [Azure CLI](./documentdb-automation-resource-manager-cli.md), the [Resource Provider REST API][rp-rest-api], or the [Azure portal](./documentdb-create-account.md).
 
@@ -70,7 +71,7 @@ New-AzureRmResource -ResourceType "Microsoft.DocumentDb/databaseAccounts" -ApiVe
 
 ### Notes
 - The preceding example creates a database account with two regions. It is also possible to create a database account with either one region (which is designated as the write region and have a failover priority value of 0) or more than two regions. For more information, see [multi-region database accounts][scaling-globally].
-- The locations must be regions in which DocumentDB is generally available. The current list of regions is provided on the [Azure Regions page](https://azure.microsoft.com/regions/).
+- The locations must be regions in which DocumentDB is generally available. The current list of regions is provided on the [Azure Regions page](https://azure.microsoft.com/regions/#services).
 
 ## <a id="update-documentdb-account-powershell"></a> Update a DocumentDB Database Account
 
@@ -212,9 +213,9 @@ Invoke-AzureRmResourceAction -Action failoverPriorityChange -ResourceType "Micro
 ```
 
 <!--Reference style links - using these makes the source content way more readable than using inline links-->
-[powershell-install-configure]: ../powershell-install-configure.md
+[powershell-install-configure]:../powershell-install-configure.md
 [scaling-globally]:./documentdb-distribute-data-globally.md#scaling-across-the-planet/
-[distribute-data-globally]: ./documentdb-distribute-data-globally.md
-[azure-resource-groups]: ../azure-resource-manager/resource-group-overview.md#resource-groups
-[azure-resource-tags]: ../azure-resource-manager/resource-group-using-tags.md
+[distribute-data-globally]:./documentdb-distribute-data-globally.md
+[azure-resource-groups]:../azure-resource-manager/resource-group-overview.md#resource-groups/
+[azure-resource-tags]:../azure-resource-manager/resource-group-using-tags.md
 [rp-rest-api]: https://docs.microsoft.com/en-us/rest/api/documentdbresourceprovider/

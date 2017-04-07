@@ -36,17 +36,17 @@ $primaryservername = "primary-server-$($(Get-AzureRMContext).Subscription.Subscr
 $sercondaryservername = "secondary-server-$($(Get-AzureRMContext).Subscription.SubscriptionId)"
 
 # Create two new resource groups
-New-AzureRmResourceGroup -Name "myPrimaryResourceGroup" -Location "northcentralus"
-New-AzureRmResourceGroup -Name "mySecondaryResourceGroup" -Location "southcentralus"
+New-AzureRmResourceGroup -Name "myPrimaryResourceGroup" -Location "China East"
+New-AzureRmResourceGroup -Name "mySecondaryResourceGroup" -Location "China North"
 
 # Create two new logical servers with a system wide unique server name
 New-AzureRmSqlServer -ResourceGroupName "myPrimaryResourceGroup" `
     -ServerName $primaryservername `
-    -Location "northcentralus" `
+    -Location "China East" `
     -SqlAdministratorCredentials $(New-Object -TypeName System.Management.Automation.PSCredential -ArgumentList $adminlogin, $(ConvertTo-SecureString -String $password -AsPlainText -Force))
 New-AzureRmSqlServer -ResourceGroupName "mySecondaryResourceGroup" `
     -ServerName $sercondaryservername `
-    -Location "southcentralus" `
+    -Location "China North" `
     -SqlAdministratorCredentials $(New-Object -TypeName System.Management.Automation.PSCredential -ArgumentList $adminlogin, $(ConvertTo-SecureString -String $password -AsPlainText -Force))
 
 # Create a pool in each of the servers

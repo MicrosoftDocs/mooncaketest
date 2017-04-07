@@ -33,7 +33,7 @@ Watch these videos for more about scale sets:
 ## Creating and managing scale sets
 You can create a scale set in the [Azure portal preview](https://portal.azure.cn) by selecting *new* and typing in "scale" in the search bar. "Virtual machine scale set" is listed in the results. From there, you can fill in the required fields to customize and deploy your scale set.
 
-Scale sets can also be defined and deployed using JSON templates and [REST APIs](https://msdn.microsoft.com/zh-cn/library/mt589023.aspx) just like individual Azure Resource Manager VMs. Therefore, any standard Azure Resource Manager deployment methods can be used. For more information about templates, see [Authoring Azure Resource Manager templates](../azure-resource-manager/resource-group-authoring-templates.md).
+Scale sets can also be defined and deployed using JSON templates and [REST APIs](https://msdn.microsoft.com/library/mt589023.aspx) just like individual Azure Resource Manager VMs. Therefore, any standard Azure Resource Manager deployment methods can be used. For more information about templates, see [Authoring Azure Resource Manager templates](../azure-resource-manager/resource-group-authoring-templates.md).
 
 A set of example templates for virtual machine scale sets can be found in the Azure Quickstart templates GitHub repository [here](https://github.com/Azure/azure-quickstart-templates) (look for templates with *vmss* in the title).
 

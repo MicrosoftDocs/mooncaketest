@@ -13,7 +13,7 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/30/2017
+ms.date: 03/01/2017
 wacn.date: ''
 ms.author: jotaub
 ---
@@ -21,44 +21,43 @@ ms.author: jotaub
 # Get started sending messages to Event Hubs in .NET Standard
 
 > [!NOTE]
-> This sample is available on [GitHub](https://github.com/Azure/azure-event-hubs-dotnet/tree/master/samples/SampleSender).
+> This sample is available on [GitHub](https://github.com/Azure/azure-event-hubs/tree/master/samples/SampleSender).
 
-## What will be accomplished
-
-This tutorial shows how to create the existing solution **SampleSender** (inside this folder). You can run the solution as-is, replacing the `EhConnectionString`, `EhEntityPath`, and `StorageAccount` strings with your Event Hub values, or follow this tutorial to create your own.
-
-In this tutorial, we will write a .NET Core console application to send messages to an Event Hub.
+This tutorial shows how to write a .NET Core console application that sends a set of messages to an Event Hub. You can run the [GitHub](https://github.com/Azure/azure-event-hubs/tree/master/samples/SampleSender) solution as-is, replacing the `EhConnectionString` and `EhEntityPath` strings with your Event Hub values, or you can follow the steps in this tutorial to create your own.
 
 ## Prerequisites
 
-1. [Visual Studio 2015](http://www.visualstudio.com).
+1. [Microsoft Visual Studio 2015 or 2017](http://www.visualstudio.com). The examples in this tutorial use Visual Studio 2015, but Visual Studio 2017 is also supported.
 
-2. [.NET Core Visual Studio 2015 Tooling](http://www.microsoft.com/net/core).
+2. [.NET Core Visual Studio 2015 or 2017 tools](http://www.microsoft.com/net/core).
 
 3. An Azure subscription.
 
 4. An Event Hubs namespace.
 
-## Send messages to an Event Hub
-
 To send messages to an Event Hub, we will write a C# console application using Visual Studio.
 
-### Create a console application
+## Create an Event Hubs namespace and an Event Hub
 
-* Launch Visual Studio and create a new .NET Core console application.
+The first step is to use the [Azure portal preview](https://portal.azure.cn) to create a namespace of type Event Hubs, and obtain the management credentials your application needs to communicate with the Event Hub. To create a namespace and Event Hub, follow the procedure in [this article](./event-hubs-create.md), then proceed with the following steps.
 
-### Add the Event Hubs NuGet package
+## Create a console application
 
-1. Right-click the newly created project and select **Manage NuGet Packages**.
+Launch Visual Studio. From the File menu, click **New**, and then click **Project**. Create a .NET Core console application.
 
-2. Click the **Browse** tab, then search for "Azure Event Hubs" and select the **Azure Event Hubs** item. Click **Install** to complete the installation, then close this dialog box.
+![][1]
 
-### Write some code to send messages to the Event Hub
+## Add the Event Hubs NuGet package
 
-1. Add the following `using` statement to the top of the Program.cs file.
+Add the [`Microsoft.Azure.EventHubs`](https://www.nuget.org/packages/Microsoft.Azure.EventHubs/) NuGet package to your project.
+
+## Write some code to send messages to the Event Hub
+
+1. Add the following `using` statements to the top of the Program.cs file.
 
     ```csharp
     using Microsoft.Azure.EventHubs;
+    using System.Text;
     ```
 
 2. Add constants to the `Program` class for the Event Hubs connection string and entity path (individual Event Hub name). Replace the placeholders in brackets with the proper values that were obtained when creating the Event Hub.
@@ -69,7 +68,7 @@ To send messages to an Event Hub, we will write a C# console application using V
     private const string EhEntityPath = "{Event Hub path/name}";
     ```
 
-3. Add a new method named `MainAsync` to the `Program` class like the following:
+3. Add a new method named `MainAsync` to the `Program` class, as follows:
 
     ```csharp
     private static async Task MainAsync(string[] args)
@@ -88,7 +87,7 @@ To send messages to an Event Hub, we will write a C# console application using V
 
         await eventHubClient.CloseAsync();
 
-        Console.WriteLine("Press any key to exit.");
+        Console.WriteLine("Press ENTER to exit.");
         Console.ReadLine();
     }
     ```
@@ -162,7 +161,7 @@ To send messages to an Event Hub, we will write a C# console application using V
 
                 await eventHubClient.CloseAsync();
 
-                Console.WriteLine("Press any key to exit.");
+                Console.WriteLine("Press ENTER to exit.");
                 Console.ReadLine();
             }
 
@@ -191,7 +190,7 @@ To send messages to an Event Hub, we will write a C# console application using V
     }
     ```
 
-6. Run the program, and ensure that there are no errors thrown.
+6. Run the program, and ensure that there are no errors.
 
 Congratulations! You have now sent messages to an Event Hub.
 
@@ -202,3 +201,4 @@ You can learn more about Event Hubs by visiting the following links:
 * [Event Hubs overview](./event-hubs-what-is-event-hubs.md)
 * [Create an Event Hub](./event-hubs-create.md)
 * [Event Hubs FAQ](./event-hubs-faq.md)
+[1]: ./media/event-hubs-dotnet-standard-getstarted-send/netcore.png

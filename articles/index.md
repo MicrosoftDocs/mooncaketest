@@ -46,7 +46,7 @@ description: 了解如何使用 Microsoft Azure 云服务构建和管理功能�
 <div class="cardSize"><div class="cardPadding"><div class="card"><div class="cardImageOuter"><div class="cardImage"><img data-scaleimage="media/index/azure-arch-5.svg" src="media/index/azure-arch-5.svg" alt="" /></div></div><div class="cardText"><h3>方案指南</h3><p>有关云中的各种端到端应用程序方案的指南。包括编写指南和参考实现。</p></div></div></div></div></a>
 </li></ul></li></ul></li>
          </ul>
-    </div>
+   </div>
 </div>
 
 <!---HONumber=TCR_Data Lake Store_0313_2017-->

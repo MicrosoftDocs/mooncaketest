@@ -5,7 +5,7 @@ title: Microsoft Azure 文档 | Microsoft 文档
 description: 了解如何使用 Microsoft Azure 云服务构建和管理功能强大的应用程序。获取文档、代码示例、教程和更多内容。
 ---
 <div id="main" class="v2">
-    <div class="container">
+    <div class="container"> 
         <ul class="cardsY panelContent featuredContent"><li><a href="http://aka.ms/azuredevgetstarted/">
 <div class="cardSize"><div class="cardPadding"><div class="card"><div class="cardImageOuter"><div class="cardImage"><img data-hoverimage="media/index/getstarted-developer.svg" src="media/index/getstarted-developer.png" alt="" /></div></div><div class="cardText"><h3>Azure 开发人员入门指南</h3></div></div></div></div></a>
 </li><li><a href="http://aka.ms/azureitgetstarted/">

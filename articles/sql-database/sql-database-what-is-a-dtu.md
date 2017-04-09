@@ -19,7 +19,7 @@ ms.author: carlrab
 ---
 
 # 解释数据库事务单位 (DTU) 和弹性数据库事务单位 (eDTU)
- 
+
 本文解释数据库事务单位 (DTU) 和弹性数据库事务单位 (eDTU)，以及在达到 DTU 或 eDTU 上限时会发生什么情况。
 
 ##<a name="what-are-database-transaction-units-dtus"></a> 什么是数据库事务单位 (DTU)

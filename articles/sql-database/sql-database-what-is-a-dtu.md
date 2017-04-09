@@ -56,6 +56,6 @@ eDTU 是可以在 Azure SQL 服务器上一组数据库（称为[弹性池](./sq
 
 - 有关独立数据库和弹性池可用的 DTU 和 eDTU 的信息，请参阅 [Service tier](./sql-database-service-tiers.md)（服务层）。
 - 有关 CPU、内存、数据 I/O 和事务日志 I/O 以外的资源限制的信息，请参阅 [Azure SQL Database resource limits](./sql-database-resource-limits.md)（Azure SQL 数据库资源限制）。
-- 请参阅 [SQL Database benchmark overview](./sql-database-benchmark-overview.md)（SQL 数据库基准概述），了解使用 OLTP 基准工作负荷确定 DTU 混合度量值的方法。
+- 请参阅 [SQL Database benchmark overview](./sql-database-benchmark-overview.md)（SQL 数据库基准概述），了解使用 OLTP 基准工作负荷确定 DTU 混合度量值的方法。 
  
 <!---HONumber=Mooncake_1010_2016-->

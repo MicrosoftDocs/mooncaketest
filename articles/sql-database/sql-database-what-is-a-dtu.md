@@ -45,7 +45,7 @@ eDTU 是可以在 Azure SQL 服务器上一组数据库（称为[弹性池](./sq
 如果要将现有的本地或 SQL Server 虚拟机工作负荷迁移到 Azure SQL 数据库，可以使用 [DTU 计算器](http://dtucalculator.azurewebsites.net/)来估算所需的 DTU 数目。对于现有的 Azure SQL 数据库工作负荷，可以使用 [sys.dm\_db\_ resource\_stats](https://msdn.microsoft.com/zh-cn/library/dn800981.aspx) DMV 获取最近一小时的资源消耗信息。或者，可以查询目录视图 [sys.resource\_stats](http://msdn.microsoft.com/zh-cn/library/dn269979.aspx)，获取最近 14 天的同类数据，不过，五分钟平均值的准确性较低。
 
 ## 如何知道资源弹性池是否能够带来优势？
-
+ 
 池很适合具有特定使用模式的大量数据库。对于给定的数据库，此模式的特征是低平均使用量与相对不频繁的使用高峰。SQL数据库自动评估现有 SQL 数据库服务器中数据库的历史资源使用率，并在 Azure 门户中推荐适当的池配置。有关详细信息，请参阅 [when should an elastic database pool be used?](./sql-database-elastic-pool-guidance.md)（何时使用弹性数据库池？）
 
 ## 达到 DTU 上限时会发生什么情况

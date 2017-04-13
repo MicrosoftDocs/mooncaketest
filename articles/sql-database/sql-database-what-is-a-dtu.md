@@ -19,11 +19,11 @@ ms.author: carlrab
 ---
 
 # 解释数据库事务单位 (DTU) 和弹性数据库事务单位 (eDTU)
-
+ 
 本文解释数据库事务单位 (DTU) 和弹性数据库事务单位 (eDTU)，以及在达到 DTU 或 eDTU 上限时会发生什么情况。
 
 ##<a name="what-are-database-transaction-units-dtus"></a> 什么是数据库事务单位 (DTU)
-
+ 
 DTU 是资源度量单位，这些资源保证可用于[独立数据库服务层](./sql-database-service-tiers.md#standalone-database-service-tiers-and-performance-levels)中特定性能级别的独立 Azure SQL 数据库。DTU 是 CPU、内存、数据 I/O 和事务日志 I/O 的混合度量值，以设计为典型真实 OLTP 工作负荷的 OLTP 基准工作负荷所确定的比率表示。通过提升数据库的性能级别来使 DTU 加倍，就相当于让该数据库可用的资源集合加倍。例如，具有 1750 个 DTU 的高级 P11 数据库提供的 DTU 计算能力是具有 5 个 DTU 的基本数据库的 350 倍。若要了解使用 OLTP 基准工作负荷确定 DTU 混合度量值的方法，请参阅 [SQL Database benchmark overview](./sql-database-benchmark-overview.md)（SQL 数据库基准概述）。
 
 ![SQL 数据库简介：按层和级别统计的单一数据库 DTU](./media/sql-database-what-is-a-dtu/single_db_dtus.png)  
@@ -45,7 +45,7 @@ eDTU 是可以在 Azure SQL 服务器上一组数据库（称为[弹性池](./sq
 如果要将现有的本地或 SQL Server 虚拟机工作负荷迁移到 Azure SQL 数据库，可以使用 [DTU 计算器](http://dtucalculator.azurewebsites.net/)来估算所需的 DTU 数目。对于现有的 Azure SQL 数据库工作负荷，可以使用 [sys.dm\_db\_ resource\_stats](https://msdn.microsoft.com/zh-cn/library/dn800981.aspx) DMV 获取最近一小时的资源消耗信息。或者，可以查询目录视图 [sys.resource\_stats](http://msdn.microsoft.com/zh-cn/library/dn269979.aspx)，获取最近 14 天的同类数据，不过，五分钟平均值的准确性较低。
 
 ## 如何知道资源弹性池是否能够带来优势？
-
+ 
 池很适合具有特定使用模式的大量数据库。对于给定的数据库，此模式的特征是低平均使用量与相对不频繁的使用高峰。SQL数据库自动评估现有 SQL 数据库服务器中数据库的历史资源使用率，并在 Azure 门户中推荐适当的池配置。有关详细信息，请参阅 [when should an elastic database pool be used?](./sql-database-elastic-pool-guidance.md)（何时使用弹性数据库池？）
 
 ## 达到 DTU 上限时会发生什么情况
@@ -56,6 +56,6 @@ eDTU 是可以在 Azure SQL 服务器上一组数据库（称为[弹性池](./sq
 
 - 有关独立数据库和弹性池可用的 DTU 和 eDTU 的信息，请参阅 [Service tier](./sql-database-service-tiers.md)（服务层）。
 - 有关 CPU、内存、数据 I/O 和事务日志 I/O 以外的资源限制的信息，请参阅 [Azure SQL Database resource limits](./sql-database-resource-limits.md)（Azure SQL 数据库资源限制）。
-- 请参阅 [SQL Database benchmark overview](./sql-database-benchmark-overview.md)（SQL 数据库基准概述），了解使用 OLTP 基准工作负荷确定 DTU 混合度量值的方法。
-
+- 请参阅 [SQL Database benchmark overview](./sql-database-benchmark-overview.md)（SQL 数据库基准概述），了解使用 OLTP 基准工作负荷确定 DTU 混合度量值的方法。 
+ 
 <!---HONumber=Mooncake_1010_2016-->

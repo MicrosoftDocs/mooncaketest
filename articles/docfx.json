@@ -42,7 +42,8 @@
     "overwrite": [],
     "externalReference": [],
     "globalMetadata": {
-      "searchScope": ["Azure"]
+      "searchScope": ["Azure"],
+      "ROBOTS": "NOINDEX,NOFOLLOW"
     },
     "fileMetadata": {},
     "template": [],

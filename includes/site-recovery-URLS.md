@@ -1,0 +1,2 @@
+``*.accesscontrol.chinacloudapi.cn<br>``: Used for access control and identity management<br/><br/>``\*.backup.windowsazure.cn``: Used for replication data transfer andorchestration <br><br/> ``\*.blob.core.chinacloudapi.cn<br>``Used for access to the storage account that stores replicated data<br/><br/> ``\*.hypervrecoverymanager.windowsazure.cn`` Used for replication management operations and orchestration<br.><br/>
+``time.nist.gov`` and ``time.windows.cn`` Used to check time synchronization between system and global time

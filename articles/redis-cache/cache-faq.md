@@ -13,7 +13,7 @@ ms.workload: tbd
 ms.tgt_pltfrm: cache-redis
 ms.devlang: na
 ms.topic: article
-ms.date: 03/08/2017
+ms.date: 04/12/2017
 wacn.date: ''
 ms.author: sdanie
 
@@ -122,7 +122,7 @@ From this table, we can draw the following conclusions:
 * With Redis clustering, throughput increases linearly as you increase the number of shards (nodes) in the cluster. For example, if you create a P4 cluster of 10 shards, then the available throughput is 250K *10 = 2.5 Million RPS.
 * Throughput for bigger key sizes is higher in the Premium tier as compared to the Standard Tier.
 
-| Pricing tier | Size | CPU cores | Available bandwidth | 1 KB Key size |
+| Pricing tier | Size | CPU cores | Available bandwidth | 1 KB value size |
 | --- | --- | --- | --- | --- |
 | **Standard cache sizes** | | |**Megabits per sec (Mb/s) / Megabytes per sec (MB/s)** |**Requests per second (RPS)** |
 | C0 |250 MB |Shared |5 / 0.625 |600 |
@@ -146,8 +146,8 @@ For best performance and lowest latency, locate your Azure Redis Cache in the sa
 ### <a name="cache-billing" id="how-am-i-billed-for-azure-redis-cache"></a> How am I billed for Azure Redis Cache?
 Azure Redis Cache pricing is [here](https://www.azure.cn/pricing/details/redis-cache/). The pricing page lists pricing as an hourly rate. Caches are billed on a per-minute basis from the time that the cache is created until the time that a cache is deleted. There is no option for stopping or pausing the billing of a cache.
 
-### <a name="cache-configuration" id="what-do-the-stackexchangeredis-configuration-options-do"></a> What do the StackExchange.Redis configuration options do?
-StackExchange.Redis has many options. This section talks about some of the common settings. For more detailed information about StackExchange.Redis options, see [StackExchange.Redis configuration](https://github.com/StackExchange/StackExchange.Redis/blob/master/Docs/Configuration.md).
+### <a name="cache-configuration"></a> What do the StackExchange.Redis configuration options do?
+StackExchange.Redis has many options. This section talks about some of the common settings. For more detailed information about StackExchange.Redis options, see [StackExchange.Redis configuration](https://stackexchange.github.io/StackExchange.Redis/Configuration).
 
 | ConfigurationOptions | Description | Recommendation |
 | --- | --- | --- |

@@ -1,2 +1,2 @@
 > [!NOTE]
-> Before you can use Azure CLI 2.0 in Azure China, you need to modify the Azure config file. Run `az configure` to check the path of the config file which usually looks like `C:\Users\<user name>\.azure\config` in Windows and `~/.azure/config` in Linux. Open the file, and replace `AzureCloud` with `AzureChinaCloud`.
+> Before you can use Azure CLI 2.0 in Azure China, you need to modify the Azure config file. Run `az configure` to check the path of the config file which usually looks like `C:\Users\<user name>\.azure\config` in Windows and `/var/users/<username>/.azure/config` in Linux. Open the file, and replace `AzureCloud` with `AzureChinaCloud`.

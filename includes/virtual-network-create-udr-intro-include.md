@@ -1,10 +1,8 @@
-尽管使用系统路由可以自动加快通信以方便部署，但在某些情况下，你需要通过虚拟设备来控制数据包的路由。为此，你可以创建用户定义的路由来指定下一跃点，方便数据包流向特定的子网并转到你的虚拟设备，并可为作为虚拟设备运行的 VM 启用 IP 转发。
+Although the use of system routes facilitates traffic automatically for your deployment, there are cases in which you want to control the routing of packets through a virtual appliance. You can do so by creating user defined routes that specify the next hop for packets flowing to a specific subnet to go to your virtual appliance instead, and enabling IP forwarding for the VM running as the virtual appliance.
 
-可以使用虚拟设备的一些用例包括：
+Some of the cases where virtual appliances can be used include:
 
-- 使用入侵检测系统 (IDS) 监视流量
-- 使用防火墙控制流量
+* Monitoring traffic with an intrusion detection system (IDS)
+* Controlling traffic with a firewall
 
-有关 UDR 和 IP 转发的详细信息，请访问[用户定义的路由和 IP 转发](../articles/virtual-network/virtual-networks-udr-overview.md)。
-
-<!---HONumber=79-->
+For more information about UDR and IP forwarding, visit [User Defined Routes and IP Forwarding](../articles/virtual-network/virtual-networks-udr-overview.md).

@@ -1,12 +1,10 @@
-资源|最大限制
+Resource|Maximum Limit
 ---|---
-应用集合用户|每个应用集合 5 个
-平均数据点数|每个活动用户 200 个/天
-平均应用信息集数|每个活动用户 50 个/天
-平均推送消息数|每个活动用户 20 个/天
-段数|每个应用 100 个
-每个段的条件数|10
-活动推送营销活动数|每个应用 50 个
-推送营销活动总数（包括活动的和已完成的）|每个应用 1000 个
-
-<!---HONumber=71-->
+App Collection Users|5 per App Collection
+Average Data points|200 per Active User/Day
+Average App-Info set|50 per Active User/Day
+Average Messages pushed|20 per Active User/Day
+Segments|100 per app
+Criteria per segment|10
+Active Push Campaigns|50 per app
+Total Push Campaigns (includes Active & Completed)|1000 per app

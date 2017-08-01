@@ -1,9 +1,7 @@
-创建虚拟网络网关时，需要指定要使用的网关 SKU。如果选择更高级的网关 SKU，则将为该网关分配更多的 CPU 和网络带宽，这样使网关能够支持到虚拟网络更高的吞吐量。
+When you create a virtual network gateway, you need to specify the gateway SKU that you want to use. When you select a higher gateway SKU, more CPUs and network bandwidth are allocated to the gateway, and as a result, the gateway can support higher network throughput to the virtual network. 
 
-ExpressRoute 虚拟网络网关可使用以下 SKU：
+ExpressRoute virtual network gateways can use the following SKUs: 
 
-- 标准
-- HighPerformance
-- UltraPerformance
-
-<!---HONumber=Mooncake_1226_2016-->
+* Standard
+* HighPerformance
+* UltraPerformance

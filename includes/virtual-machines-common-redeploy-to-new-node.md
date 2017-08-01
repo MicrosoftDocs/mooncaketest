@@ -1,23 +1,16 @@
-## <a name="using-azure-portal"></a> 使用 Azure 门户预览 
+## <a name="using-azure-portal"></a> Using Azure portal preview
+1. Select the VM you wish to redeploy, and click the 'Redeploy' button in the 'Settings' blade. Scroll down to see the **Support and Troubleshooting** section that contains the 'Redeploy' button as in the following example:
 
-1. 选择想要重新部署的 VM，然后单击“设置”边栏选项卡中的“重新部署”按钮。向下滚动，查看包含“重新部署”按钮的“支持和故障排除”部分，如以下示例所示：
+    ![Azure VM blade](./media/virtual-machines-common-redeploy-to-new-node/vmoverview.png)
+2. To confirm the operation, click the 'Redeploy' button:
 
-    ![Azure VM 边栏选项卡](./media/virtual-machines-common-redeploy-to-new-node/vmoverview.png)  
+    ![Redeploy a VM blade](./media/virtual-machines-common-redeploy-to-new-node/redeployvm.png)
+3. The **Status** of the VM changes to *Updating* as the VM prepares to redeploy, as in the following example:
 
-2. 若要确认该操作，单击“重新部署”按钮：
+    ![VM updating](./media/virtual-machines-common-redeploy-to-new-node/vmupdating.png)
+4. The **Status** then changes to *Starting* as the VM boots up on a new Azure host, as in the following example:
 
-    ![“重新部署 VM”边栏选项卡](./media/virtual-machines-common-redeploy-to-new-node/redeployvm.png)  
+    ![VM starting](./media/virtual-machines-common-redeploy-to-new-node/vmstarting.png)
+5. After the VM finishes the boot process, the **Status** then returns to *Running*, indicating the VM has been successfully redeployed:
 
-3. VM 准备好重新部署时，该 VM 的“状态”会更改为“正在更新”，如以下示例所示：
-
-    ![VM 正在更新](./media/virtual-machines-common-redeploy-to-new-node/vmupdating.png)  
-
-4. VM 在新的 Azure 主机上启动时，“状态”将更改为“正在启动”，如以下示例所示：
-
-    ![VM 正在启动](./media/virtual-machines-common-redeploy-to-new-node/vmstarting.png)  
-
-5. VM 完成启动过程后，“状态”将返回到“正在运行”，这表示 VM 已成功重新部署：
-
-    ![VM 正在运行](./media/virtual-machines-common-redeploy-to-new-node/vmrunning.png)  
-
-<!---HONumber=Mooncake_1114_2016-->
+    ![VM running](./media/virtual-machines-common-redeploy-to-new-node/vmrunning.png)

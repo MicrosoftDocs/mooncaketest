@@ -1,99 +1,85 @@
 ---
-title: Windows VM 的常见问题 | Azure
-description: 解答通过 Resource Manager 模型创建 Windows 虚拟机的一些常见问题。
+title: FAQ about Windows VMs in Azure | Azure
+description: Provides answers to some of the common questions about Windows virtual machines created with the Resource Manager model.
 services: virtual-machines-windows
-documentationCenter: ''
-authors: cynthn
+documentationcenter: ''
+author: cynthn
 manager: timlt
 editor: ''
 tags: azure-resource-management
 
+ms.assetid: 757da816-a050-4889-a010-6f75d7978eb7
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
-ms.date: 08/16/2016
-wacn.date: 12/20/2016
+ms.date: 01/17/2017
+wacn.date: ''
 ms.author: cynthn
+
 ---
 
-# 有关 Windows 虚拟机的常见问题 
+# Frequently asked question about Windows Virtual Machines
+This article addresses some common questions about Windows virtual machines created in Azure using the Resource Manager deployment model. For the Linux version of this topic, see [Frequently asked question about Linux Virtual Machines](virtual-machines-linux-faq.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
-本文讨论了在 Azure 中使用 Resource Manager 部署模型创建的 Windows 虚拟机的一些常见问题。有关本主题的 Linux 版本，请参阅[有关 Linux 虚拟机的常见问题](./virtual-machines-linux-faq.md)
+## What can I run on an Azure VM?
+All subscribers can run server software on an Azure virtual machine. For information about the support policy for running Microsoft server software in Azure, see [Microsoft server software support for Azure Virtual Machines](https://support.microsoft.com/kb/2721672)
 
-## 可以在 Azure VM 上运行哪些程序？
+Certain versions of Windows 7, Windows 8.1, and Windows 10 are available to MSDN Azure benefit subscribers and MSDN Dev and Test Pay-As-You-Go subscribers, for development and test tasks. For details, including instructions and limitations, see [Windows Client images for MSDN subscribers](http://azure.microsoft.com/blog/2014/05/29/windows-client-images-on-azure/). 
 
-所有订户都可以在 Azure 虚拟机上运行服务器软件。有关在 Azure 中运行 Microsoft 服务器软件的支持策略的信息，请参阅 [Microsoft server software support for Azure Virtual Machines](https://support.microsoft.com/zh-cn/kb/2721672)（对 Azure 虚拟机中的 Microsoft 服务器软件的支持）
+## How much storage can I use with a virtual machine?
+Each data disk can be up to 1 TB. The number of data disks you can use depends on the size of the virtual machine. For details, see [Sizes for Virtual Machines](virtual-machines-windows-sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 
-某些版本的 Windows 7 和 Windows 8.1 可供 MSDN Azure 权益订户以及 MSDN 开发和测试即用即付订户用于开发和测试任务。有关详细信息（包括说明和限制），请参阅 [Windows Client images for MSDN subscribers（适用于 MSDN 订户的 Windows 客户端映像）](http://azure.microsoft.com/blog/2014/05/29/windows-client-images-on-azure/)。
+An Azure storage account provides storage for the operating system disk and any data disks. Each disk is a .vhd file stored as a page blob. For pricing details, see [Storage Pricing Details](https://www.azure.cn/pricing/details/storage/).
 
-## 虚拟机可以使用多少存储空间？
+## How can I access my virtual machine?
+Establish a remote connection using Remote Desktop Connection (RDP) for a Windows VM. For instructions, see [How to connect and log on to an Azure virtual machine running Windows](virtual-machines-windows-connect-logon.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). A maximum of two concurrent connections are supported, unless the server is configured as a Remote Desktop Services session host.  
 
-每个数据磁盘容量最高可达 1 TB。可以使用的数据磁盘数取决于虚拟机大小。有关详细信息，请参阅[虚拟机大小](./virtual-machines-windows-sizes.md)。
+If you're having problems with Remote Desktop, see [Troubleshoot Remote Desktop connections to a Windows-based Azure Virtual Machine](virtual-machines-windows-troubleshoot-rdp-connection.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). 
 
-Azure 存储帐户可为操作系统磁盘和任何数据磁盘提供存储空间。每个磁盘都是一个 .vhd 文件，存储作为页 blob。有关定价详细信息，请参阅 [Storage Pricing Details](https://www.azure.cn/pricing/details/storage/)（存储定价详细信息）。
+If you're familiar with Hyper-V, you might be looking for a tool similar to VMConnect. Azure doesn't offer a similar tool because console access to a virtual machine isn't supported.
 
-## 如何访问我的虚拟机？
+## Can I use the temporary disk (the D: drive by default) to store data?
+Don't use the temporary disk to store data. It is only temporary storage, so you would risk losing data that can't be recovered. Data loss can occur when the virtual machine moves to a different host. Resizing a virtual machine, updating the host, or a hardware failure on the host are some of the reasons a virtual machine might move.
 
-使用适用于 Windows VM 的远程桌面连接 (RDP) 建立远程连接。有关说明，请参阅 [How to connect and log on to an Azure virtual machine running Windows](./virtual-machines-windows-connect-logon.md)（如何连接并登录到运行 Windows 的 Azure 虚拟机）。除非将服务器配置为远程桌面服务会话主机，否则最多支持两个并发连接。
+If you have an application that needs to use the D: drive letter, you can reassign drive letters so that the temporary disk uses something other than D:. For instructions, see [Change the drive letter of the Windows temporary disk](virtual-machines-windows-classic-change-drive-letter.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json).
 
-如果在使用远程桌面时遇到问题，请参阅 [Troubleshoot Remote Desktop connections to a Windows-based Azure Virtual Machine](./virtual-machines-windows-troubleshoot-rdp-connection.md)（对与基于 Windows 的 Azure 虚拟机的远程桌面连接进行故障排除）。
+## How can I change the drive letter of the temporary disk?
+You can change the drive letter by moving the page file and reassigning drive letters, but you need to make sure you do the steps in a specific order. For instructions, see [Change the drive letter of the Windows temporary disk](virtual-machines-windows-classic-change-drive-letter.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json).
 
-如果熟悉 Hyper-V，可以查找与 VMConnect 类似的工具。Azure 不提供类似工具，因为不支持通过控制台访问虚拟机。
+## Can I add an existing VM to an availability set?
+No. If you want your VM to be part of an availability set, you need to create the VM within the set. There currently isn't a way to add a VM to an availability set after it has been created.
+## Can I upload a virtual machine to Azure?
+Yes. For instructions, see [Upload a Windows VM image to Azure ](virtual-machines-windows-upload-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 
-## 我是否可以使用临时磁盘（默认为 D: 驱动器）存储数据？
+## Can I resize the OS disk?
+Yes. For instructions, see [How to expand the OS drive of a Virtual Machine in an Azure Resource Group](virtual-machines-windows-expand-os-disk.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 
-不要使用临时磁盘来存储数据。它只是临时存储空间，因此存在丢失数据且数据不能恢复的风险。将虚拟机移到另一主机时，可能会发生数据丢失的情况。调整虚拟机大小、更新主机、主机硬件故障等都是需要移动虚拟机的原因。
+## Can I copy or clone an existing Azure VM?
+Yes. For instructions, see [How to create a copy of a Windows virtual machine in the Resource Manager deployment model](virtual-machines-windows-vhd-copy.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 
-如果有应用程序需要使用 D: 驱动器号，可以重新分配驱动器号以便临时磁盘使用除 D: 以外的位置。有关说明，请参阅 [Change the drive letter of the Windows temporary disk](./virtual-machines-windows-classic-change-drive-letter.md)（更改 Windows 临时磁盘的驱动器号）。
+## Does Azure support Linux VMs?
+Yes. To quickly create a Linux VM to try out, see [Create a Linux VM on Azure using the Portal](virtual-machines-linux-quick-create-portal.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
-## 如何更改临时磁盘的驱动器号？
+## Can I add a NIC to my VM after it's created?
+Yes, this is now possible. The VM first needs to be stopped deallocated. Then you can add or remove a NIC (unless it's the last NIC on the VM). 
 
-可以通过移动页面文件和重新分配驱动器号来更改驱动器号，但需确保按特定顺序执行这些步骤。有关说明，请参阅 [Change the drive letter of the Windows temporary disk](./virtual-machines-windows-classic-change-drive-letter.md)（更改 Windows 临时磁盘的驱动器号）。
+## Are there any computer name requirements?
+Yes. The computer name can be a maximum of 15 characters in length. See [Infrastructure naming guidelines](virtual-machines-windows-infrastructure-naming-guidelines.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) for more information around naming your resources.
 
-## 可否将现有 VM 添加到可用性集？
+## <a name="what-are-the-username-requirements-when-creating-a-vm"></a> What are the username requirements when creating a VM?
 
-不可以。如果希望将 VM 作为可用性集的一部分，则需要在该可用性集中创建 VM。目前，不支持在创建 VM 后将其添加到可用性集。
+Usernames can be a maximum of 20 characters in length and cannot end in a period ("."). 
 
-## 可否将虚拟机上载到 Azure？
-
-可以。有关说明，请参阅 [Upload a Windows VM image to Azure ](./virtual-machines-windows-upload-image.md)（将 Windows VM 映像上载到 Azure）
-
-## 可否调整 OS 磁盘的大小？
-
-可以。有关说明，请参阅 [How to expand the OS drive of a Virtual Machine in an Azure Resource Group](./virtual-machines-windows-expand-os-disk.md)（如何扩展 Azure 资源组中虚拟机的 OS 驱动器）。
-
-## 可否复制或克隆现有的 Azure VM？
-
-可以。有关说明，请参阅 [How to create a copy of a Windows virtual machine in the Resource Manager deployment model](./virtual-machines-windows-vhd-copy.md)（如何在 Resource Manager 部署模型中创建 Windows 虚拟机副本）。
-
-## Azure 可否支持 Linux VM？
-
-可以。若要快速创建 Linux VM 进行试用，请参阅 [Create a Linux VM on Azure using the Portal](./virtual-machines-linux-quick-create-portal.md)（使用门户在 Azure 上创建 Linux VM）。
-
-## 创建 VM 后能否向 VM 添加 NIC？
-
-否。添加 NIC 只能在创建时进行。
-
-## 是否有任何计算机名称要求？
-
-是的。计算机名称的最大长度为 15 个字符。有关命名资源的详细信息，请参阅 [Infrastructure naming guidelines](./virtual-machines-windows-infrastructure-naming-guidelines.md)（基础结构命名准则）。
-
-## <a name="what-are-the-username-requirements-when-creating-a-vm"></a> 创建 VM 时，用户名有什么要求？
-
-用户名最长为 20 个字符，不能以句点（“.”）结尾。
-
-不允许使用以下用户名：
-
+The following usernames are not allowed:
 <table>
     <tr>
         <td style="text-align:center">administrator </td><td style="text-align:center"> admin </td><td style="text-align:center"> user </td><td style="text-align:center"> user1</td>
     </tr>
     <tr>
         <td style="text-align:center">test </td><td style="text-align:center"> user2 </td><td style="text-align:center"> test1 </td><td style="text-align:center"> user3</td>
-    </tr>
-    <tr>
+    </tr>    <tr>
         <td style="text-align:center">admin1 </td><td style="text-align:center"> 1 </td><td style="text-align:center"> 123 </td><td style="text-align:center"> a</td>
     </tr>
     <tr>
@@ -113,29 +99,33 @@ Azure 存储帐户可为操作系统磁盘和任何数据磁盘提供存储空�
     </tr>
 </table>
 
-## <a name="what-are-the-password-requirements-when-creating-a-vm"></a> 创建 VM 时，密码有什么要求？
+## <a name="what-are-the-password-requirements-when-creating-a-vm"></a> What are the password requirements when creating a VM?
+Passwords must be 12 - 123 characters in length and meet 3 out of the following 4 complexity requirements:
 
-密码的长度必须为 8 到 123 个字符，并满足以下 4 个复杂性要求中的 3 个要求：
+* Have lower characters
+* Have upper characters
+* Have a digit
+* Have a special character (Regex match [\W_])
 
-- 具有小写字符
-- 具有大写字符
-- 具有数字
-- 具有特殊字符（正则表达式匹配 [\\W\_]）
+The following passwords are not allowed:
 
-不允许使用以下密码：
-
-不允许使用以下密码：
 <table>
     <tr>
-        <td style="text-align:center">abc@123</td><td style="text-align:center">P@$$w0rd</td><td style="text-align:center">P@ssw0rd</td><td style="text-align:center">P@ssword123</td><td style="text-align:center">Pa$$word</td>
+        <td>abc@123 </td>
+        <td>P@$$w0rd </td>
+        <td>P@ssw0rd </td>
+        <td>P@ssword123 </td>
+        <td>Pa$$word </td>
     </tr>
     <tr>
-        <td style="text-align:center">pass@word1</td><td style="text-align:center">Password!</td><td style="text-align:center">Password1</td><td style="text-align:center">Password22</td><td style="text-align:center">iloveyou!</td>
+        <td>pass@word1 </td>
+        <td>Password! </td>
+        <td>Password1 </td>
+        <td>Password22 </td>
+        <td>iloveyou! </td>
     </tr>
 </table>
 
 ## 我的 windows 虚拟机为何会被自动重启？
 
 答：通过 Azure 平台部署的 windows 虚拟机，依照最佳实践方案，默认启用了 windows 自动更新，来保证系统的更新和安全。遇到重大更新的时候，虚拟机会自动重启虚拟机，使之生效。如果您不希望自动更新影响到您的在线运行，可以在部署完毕以后，选择自动下载更新但是手动安装。
-
-<!---HONumber=Mooncake_Quality_Review_1118_2016-->

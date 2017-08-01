@@ -1,9 +1,9 @@
 ---
-title: Azure SQL 数据库资源限制 | Azure
-description: 本页介绍 Azure SQL 数据库的一些常见资源限制。
+title: Azure SQL Database Resource Limits | Microsoft Docs
+description: This page describes some common resource limits for Azure SQL Database.
 services: sql-database
 documentationcenter: na
-author: CarlRabeler
+author: janeng
 manager: jhubbard
 editor: ''
 
@@ -14,64 +14,60 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-management
-ms.date: 01/11/2017
-wacn.date: 01/25/2017
-ms.author: carlrab; janeng
+ms.date: 03/06/2017
+ms.author: janeng
+
 ---
+# Azure SQL Database resource limits
+## Overview
+Azure SQL Database manages the resources available to a database using two different mechanisms: **Resources Governance** and **Enforcement of Limits**. This topic explains these two main areas of resource management.
 
-# Azure SQL 数据库资源限制
-## 概述
-Azure SQL 数据库使用两种不同的机制管理可用于数据库的资源：**资源调控**和**强制限制**。本主题介绍了资源管理的这两个主要方面。
+## Resource governance
+One of the design goals of the Basic, Standard, and Premium service tiers is for Azure SQL Database to behave as if the database is running on its own machine, isolated from other databases. Resource governance emulates this behavior. If the aggregated resource utilization reaches the maximum available CPU, Memory, Log I/O, and Data I/O resources assigned to the database, resource governance queues queries in execution and assign resources to the queued queries as they free up.
 
-## 资源调控
-基本、标准和高级服务层的设计目标之一是为了让 Azure SQL 数据库的行为与数据库运行在其自己的计算机上相同，独立于其他数据库。资源调控模拟了此行为。如果聚合资源利用率达到分配给数据库的最大可用 CPU、内存、日志 I/O 和数据 I/O 资源数，资源调控会将执行中的查询排队，并在资源释放时将资源分配给排队的查询。
+As on a dedicated machine, utilizing all available resources results in a longer execution of currently executing queries, which can result in command timeouts on the client. Applications with aggressive retry logic and applications that execute queries against the database with a high frequency can encounter errors messages when trying to execute new queries when the limit of concurrent requests has been reached.
 
-由于在专用计算机上，利用所有可用资源将导致当前执行的查询的执行时间较长，这可能会导致客户端上的命令超时。达到并发请求数限制后，如果尝试执行新查询，具有积极重试逻辑的应用程序以及对数据库执行查询的应用程序遇到错误消息的频率会很高。
+### Recommendations:
+Monitor the resource utilization and the average response times of queries when nearing the maximum utilization of a database. When encountering higher query latencies you generally have three options:
 
-### 建议：
-在接近数据库的最大利用率时，监视查询的资源利用率以及平均响应时间。在遇到较长的查询延迟时，通常有三个选择：
+1. Reduce the number of incoming requests to the database to prevent timeout and the pile up of requests.
+2. Assign a higher performance level to the database.
+3. Optimize queries to reduce the resource utilization of each query. For more information, see the Query Tuning/Hinting section in the Azure SQL Database Performance Guidance article.
 
-1. 减少数据库的传入请求数以防止请求超时和请求积累。
-2. 为数据库分配更高的性能级别。
-3. 优化查询，以减少每个查询的资源利用率。有关详细信息，请参阅“Azure SQL 数据库性能指南”一文中的“查询优化/提示”部分。
+## Enforcement of limits
+Resources other than CPU, Memory, Log I/O, and Data I/O are enforced by denying new requests when limits are reached. When a database reaches the configured maximum size limit, inserts and updates that increase data size fail, while selects and deletes continue to work. Clients receive an [error message](sql-database-develop-error-messages.md) depending on the limit that has been reached.
 
-## 强制实施限制
-CPU、内存、日志 I/O 和数据 I/O 以外的资源在达到限制时，将通过拒绝新请求来强制实施。客户端将根据已达到的限制收到[错误消息](./sql-database-develop-error-messages.md)。
+For example, the number of connections to a SQL database and the number of concurrent requests that can be processed are restricted. SQL Database allows the number of connections to the database to be greater than the number of concurrent requests to support connection pooling. While the number of connections that are available can easily be controlled by the application, the number of parallel requests is often times harder to estimate and to control. Especially during peak loads when the application either sends too many requests or the database reaches its resource limits and starts piling up worker threads due to longer running queries, errors can be encountered.
 
-例如，会限制与 SQL 数据库的连接数以及可处理的并发请求数。SQL 数据库允许与数据库的连接数大于并发请求数以支持连接池。虽然应用程序可以轻松地控制可用的连接数，但并行请求数通常难于估计和控制。特别是在负载峰值期间，应用程序发送过多请求或数据库达到其资源限制，并且由于长时间运行查询，开始堆积工作线程，可能会遇到错误。
+## Service tiers and performance levels
+There are service tiers and performance levels for both single database and elastic pools.
 
-## <a id="service-tiers-and-performance-levels"></a>服务层和性能级别
-单一数据库和弹性池都有服务层和性能级别。
+### Single databases
+For a single database, the limits of a database are defined by the database service tier and performance level. The following table describes the characteristics of Basic, Standard, and Premium databases at varying performance levels.
 
-### 单一数据库
-对于单一数据库，数据库服务层和性能级别定义了数据库限制。下表描述了基本、标准和高级数据库在不同性能级别上的特征。
+[!INCLUDE [SQL DB service tiers table](../../includes/sql-database-service-tiers-table.md)]
 
-[!INCLUDE [SQL 数据库服务层表](../../includes/sql-database-service-tiers-table.md)]
+### Elastic pools
+[Elastic pools](sql-database-elastic-pool.md) share resources across databases in the pool. The following table describes the characteristics of Basic, Standard, and Premium elastic pools.
 
-### 弹性池
-[弹性池](./sql-database-elastic-pool.md)共享池中的数据库中的资源。下表描述了基本、标准和高级弹性池的特征。
+[!INCLUDE [SQL DB service tiers table for elastic databases](../../includes/sql-database-service-tiers-table-elastic-pools.md)]
 
-[!INCLUDE [用于弹性数据库的 SQL DB 服务层表](../../includes/sql-database-service-tiers-table-elastic-pools.md)]
+For an expanded definition of each resource listed in the previous tables, see the descriptions in [Service tier capabilities and limits](sql-database-performance-guidance.md#service-tier-capabilities-and-limits). For an overview of service tiers, see [Azure SQL Database Service Tiers and Performance Levels](sql-database-service-tiers.md).
 
-有关上述表中列出的每个资源的扩展定义，请参阅[服务层功能和限制](./sql-database-performance-guidance.md#service-tier-capabilities-and-limits)中的描述。有关服务层的概述，请参阅 [Azure SQL 数据库服务层和性能级别](./sql-database-service-tiers.md)。
-
-## 其他 SQL 数据库限制
-| 区域 | 限制 | 说明 |
+## Other SQL Database limits
+| Area | Limit | Description |
 | --- | --- | --- |
-| 使用按订阅自动导出的数据库 |10 |自动导出可创建自定义计划来备份 SQL 数据库。此功能的预览将于 2017 年 3 月 1 日结束。 |
-| 每个服务器的数据库 |最多 5000 个 |V12 服务器上每个服务器最多允许使用 5000 个数据库。 |
-| 每个服务器的 DTU |45000 |V12 服务器上每个服务器有 45000 个 DTU 可用于预配数据库、弹性池和数据仓库。 |
+| Databases using Automated export per subscription |10 |Automated export allows you to create a custom schedule for backing up your SQL databases. The preview of this feature will end on March 1, 2017.  |
+| Databases per server |Up to 5000 |Up to 5000 databases are allowed per server on V12 servers. |
+| DTUs per server |45000 |45000 DTUs are allowed per server on V12 servers for provisioning standalone databases and elastic pools. The total number of standalone databases and pools allowed per server is limited only by the number of server DTUs.  
 
-> [!IMPORTANT]
-Azure SQL 数据库自动导出现在处于预览状态且将于 2017 年 3 月 1 日停用。从 2016 年 12 月 1 日起，你将不再能够在任何 SQL 数据库上配置自动导出。所有现有的自动导出作业将继续工作，直到 2017 年 3 月 1 日。在 2016 年 12 月 1 日后，可以根据所选的计划定期通过 PowerShell 使用 [Azure 自动化](../automation/automation-intro.md)存档 SQL 数据库。如需示例脚本，可以[从 Github 下载示例脚本](https://github.com/Microsoft/sql-server-samples/tree/master/samples/manage/azure-automation-automated-export)。
->
 
-## 资源
-[Azure 订阅和服务限制、配额和约束](../azure-subscription-service-limits.md)
 
-[Azure SQL 数据库服务层和性能级别](./sql-database-service-tiers.md)
 
-[SQL 数据库客户端程序的错误消息](./sql-database-develop-error-messages.md)
+## Resources
+[Azure Subscription and Service Limits, Quotas, and Constraints](../azure-subscription-service-limits.md)
 
-<!---HONumber=Mooncake_0120_2017-->
-<!--update: update one include reference-->
+[Azure SQL Database Service Tiers and Performance Levels](sql-database-service-tiers.md)
+
+[Error messages for SQL Database client programs](sql-database-develop-error-messages.md)
+

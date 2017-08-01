@@ -1,9 +1,7 @@
-| 事务类型 | 每个区域的每个保管库在 10 秒内允许的事务数上限<sup>1</sup> |
+| Transactions Type | Max transactions allowed in 10 seconds, per vault per region<sup>1</sup> |
 | --- | --- |
-| 软键 CREATE KEY |10 |
-| 软键其他事务 |1500 |
-| 所有机密、保管库相关的事务 |2000 |
+| Soft-key CREATE KEY |10 |
+| Soft-key other transactions |1500 |
+| All secrets, vault related transactions |2000 |
 
-<sup>1</sup>所有事务类型存在订阅范围的限制，即每个密钥保管库限制的 5 倍。
-
-<!---HONumber=Mooncake_1226_2016-->
+<sup>1</sup> There is a subscription-wide limit for all transaction types, that is 5x per key vault limit. For example, HSM- other transactions per subscription are limited to 5000 transactions in 10 seconds per subscription.

@@ -1,6 +1,6 @@
 ---
-title: 五分钟内开始使用 Azure 存储 | Azure
-description: 使用 Azure 存储空间快速入门、Visual Studio 和 Azure 存储模拟器快速掌握 Azure Blob、表和队列。在五分钟内运行你的第一个 Azure 存储空间应用程序。
+title: Get started with Azure Storage in five minutes | Microsoft Docs
+description: Quickly ramp up on Azure Blobs, Table, and Queues using Azure Storage Quick Starts, Visual Studio, and the Azure storage emulator. Run your first Azure Storage application in five minutes.
 services: storage
 documentationcenter: .net
 author: mmacy
@@ -13,101 +13,101 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: get-started-article
-ms.date: 12/08/2016
-wacn.date: 01/06/2017
+ms.date: 02/23/2017
 ms.author: marsma
+
 ---
+# Get started with Azure Storage in five minutes
+## Overview
+It's easy to get started developing with Azure Storage. This tutorial shows you how to get an Azure Storage application up and running quickly. You'll use the Quick Start templates included with the Azure SDK for .NET. These Quick Starts contain ready-to-run code that demonstrates some basic programming scenarios with Azure Storage.
 
-# 五分钟内开始使用 Azure 存储空间
-## 概述
-通过 Azure 存储空间进行开发很容易入门。本教程向你说明如何构建一个 Azure 存储空间应用程序并快速运行。你将使用用于 .NET 的 Azure SDK 随附的快速启动模板。这些快速启动模板包含可以立刻运行的代码，用于演示部分通过 Azure 存储空间进行的基本编程方案。
+To learn more about Azure Storage before diving into the code, see [Next steps](#next-steps).
 
-在深入分析代码之前，若要详细了解 Azure 存储空间，请参阅[后续步骤](#next-steps)。
+## Prerequisites
+You'll need the following prerequisites before you start:
 
-## 先决条件
-在开始之前，你需要符合以下先决条件：
+1. To compile and build the application, you'll need [Visual Studio 2015](https://www.visualstudio.com/) or above installed on your computer.
+2. Install the latest version of the [Azure SDK for .NET](/downloads/). The SDK includes the Azure QuickStart sample projects, the Azure storage emulator, and the [Azure Storage Client Library for .NET](https://msdn.microsoft.com/library/azure/dn261237.aspx).
+3. Make sure that you have [.NET Framework 4.5](http://www.microsoft.com/download/details.aspx?id=30653) installed on your computer, as it is required by the Azure QuickStart sample projects that we'll be using in this tutorial.
 
-1. 若要编译和生成应用程序，你需要在你的计算机上安装 [Visual Studio](https://www.visualstudio.com/)。
-2. 安装最新版的 [用于 .NET 的 Azure SDK](/downloads/)。SDK 包括 Azure 快速入门示例项目、Azure 存储模拟器和[用于 .NET 的 Azure 存储空间客户端库](https://msdn.microsoft.com/zh-cn/library/azure/dn261237.aspx)。
-3. 确保在你的计算机上安装了 [.NET Framework 4.5](http://www.microsoft.com/download/details.aspx?id=30653)，因为我们将在本教程中使用的 Azure 快速入门示例项目需要它。
+    If you are not sure which version of .NET Framework is installed in your computer, see [How to: Determine Which .NET Framework Versions Are Installed](https://msdn.microsoft.com/vstudio/hh925568.aspx). Or, press the **Start** button or the Windows key, type **Control Panel**. Then, click **Programs** > **Programs and Features**, and determine whether the .NET Framework 4.5 is listed among the installed programs.
+4. You'll need an Azure subscription and an Azure storage account.
 
-    如果你不确定计算机上安装了哪个版本的 .NET Framework，请参阅[如何：确定安装的 .NET Framework 版本](https://msdn.microsoft.com/zh-cn/vstudio/hh925568.aspx)。或者，按“开始”按钮或 Windows 键，并键入“控制面板”。然后，单击“程序” > “程序和功能”，然后在已安装程序中确定是否列出 .NET Framework 4.5。
-4. 你将需要 Azure 订阅和 Azure 存储帐户。
+    - To get an Azure subscription, see [1rmb Trial](https://www.azure.cn/pricing/1rmb-trial/), [Purchase Options](https://www.azure.cn/pricing/purchase-options/).
+    - To create a storage account in Azure, see [How to create a storage account](./storage-create-storage-account.md#create-a-storage-account).
 
-    - 若要获取 Azure 订阅，请参阅 [1rmb 试用版](https://www.azure.cn/pricing/1rmb-trial/)、[购买选项](https://www.azure.cn/pricing/overview/)。
-    - 若要在 Azure 中创建存储帐户，请参阅[如何创建存储帐户](./storage-create-storage-account.md#create-a-storage-account)。
+## Run your first Azure Storage application against Azure Storage in the cloud
+Once you have an account, you can create a simple Azure Storage application using one of the Azure Quick Starts sample projects in Visual Studio. This tutorial focuses on the sample projects for Azure Storage: **Azure Storage: Blobs**, **Azure Storage: Files**, **Azure Storage: Queues**, and **Azure Storage: Tables**:
 
-##<a id="run-your-first-azure-storage-application-against-azure-storage-in-the-cloud"></a> 使用 Azure 存储模拟器在云中运行你的第一个 Azure 存储空间应用程序
+1. Start Visual Studio.
+2. From the **File** menu, click **New Project**.
+3. In the **New Project** dialog box, click **Installed** > **Templates** > **Visual C#** > **Cloud** > **QuickStarts** > **Data Services**.
+   
+   a. Choose one of the following templates: **Azure Storage: Blobs**, **Azure Storage: Files**, **Azure Storage: Queues**, or **Azure Storage: Tables**.
+   
+   b. Make sure that **.NET Framework 4.5** is selected as the target framework.
+   
+   c. Specify a name for your project and create the new Visual Studio solution, as shown:
 
-拥有帐户之后，即可以在 Visual Studio 中使用 Azure 快速启动示例项目之一创建一个简单的 Azure 存储空间应用程序。本教程重点介绍 Azure 存储空间的示例项目：**Azure 存储：Blob**、**Azure 存储空间：文件**、**Azure 存储空间：队列**以及 **Azure 存储空间：表**：
+    ![Azure Quick Starts][Image1]
 
-1. 启动 Visual Studio。
-2. 在“文件”菜单中，单击“新建项目”。
-3. 在“新建项目”对话框中，单击“已安装”>“模板”>“Visual C#”>“云”>“快速启动”>“数据服务”。
-    a.选择以下模板之一：**Azure 存储空间：Blob**、**Azure 存储空间：文件**、**Azure 存储空间：队列**或 **Azure 存储空间：表**。
-    b.确保选择 **.NET Framework 4.5** 作为目标框架。
-    c.为你的项目指定一个名称并创建新的 Visual Studio 解决方案，如下所示：
+You may want to review the source code before running the application. To review the code, select **Solution Explorer** on the **View** menu in Visual Studio. Then, double-click the Program.cs file.
 
-    ![Azure 快速启动][Image1]
+Next, run the sample application:
 
-你可能想要在运行应用程序之前检查源代码。若要查看代码，请在 Visual Studio 中的“查看”菜单上选择“解决方案资源管理器”。然后双击 Program.cs 文件。
+1. In Visual Studio, select **Solution Explorer** on the **View** menu. Open the **App.config** file and comment out the connection string for the Azure storage emulator:
 
-接下来，运行示例应用程序：
+   `<!--<add key="StorageConnectionString" value = "UseDevelopmentStorage=true;"/>-->`
 
-1. 在 Visual Studio 中的“查看”菜单上，选择“解决方案资源管理器”。打开 App.config 文件并注释掉 Azure 存储模拟器的连接字符串：
+2. Uncomment the connection string for the Azure Storage service in the App.config file, and replace `[AccountName]` and `[AccountKey]` with your account credentials:
 
-    `<!--<add key="StorageConnectionString" value = "UseDevelopmentStorage=true;"/>-->`
+   `<add key="StorageConnectionString" value="DefaultEndpointsProtocol=https;AccountName=[AccountName];AccountKey=[AccountKey];EndpointSuffix=core.chinacloudapi.cn"`
 
-2. 取消注释 Azure 存储服务的连接字符串，并在 App.config 文件中提供存储帐户名称和访问密钥：
-    `<add key="StorageConnectionString" value="DefaultEndpointsProtocol=https;AccountName=[AccountName];AccountKey=[AccountKey];EndpointSuffix=core.chinacloudapi.cn"`
+   To retrieve your storage account access key, see [Manage your storage access keys](storage-create-storage-account.md#manage-your-storage-access-keys).
+3. After you provide the storage account name and access key in the App.config file, on the **File** menu, click **Save All** to save all the project files.
+4. On the **Build** menu, click **Build Solution**.
+5. On the **Debug** menu, Press **F11** to run the solution step by step or press **F5** to run the solution.
 
-    若要检索存储帐户访问密钥，请参阅[管理存储访问密钥](./storage-create-storage-account.md#manage-your-storage-access-keys)。
+## Run your first Azure Storage application locally against the Azure Storage Emulator
+The [Azure Storage Emulator](storage-use-emulator.md) provides a local environment that emulates the Azure Blob, Queue, and Table services for development purposes. You can use the storage emulator to test your storage application locally, without creating an Azure subscription or storage account, and without incurring any cost.
 
-3. 在 App.config 文件中提供存储帐户名称和访问密钥后,在“文件” 菜单中，单击“全部保存”以保存所有项目文件。
-4. 在“生成”菜单中，单击“生成解决方案”。
-5. 在“调试”菜单中，按 **F11** 逐步运行该解决方案，或按 **F5** 运行该解决方案。
+To try it, let’s create a simple Azure Storage application using one of the Azure Quick Starts sample projects in Visual Studio. This tutorial focuses on the **Azure Blob Storage**, **Azure Table Storage**, and **Azure Queue Storage** sample projects:
 
-##<a id="run-your-first-azure-storage-application-locally-against-the-azure-storage-emulator"></a> 使用 Azure 存储模拟器在本地运行你的第一个 Azure 存储空间应用程序
+1. Start Visual Studio.
+2. From the **File** menu, click **New Project**.
+3. In the **New Project** dialog box, click **Installed** > **Templates** > **Visual C#** > **Cloud** > **QuickStarts** > **Data Services**.
+    
+    a. Choose one of the following templates: **Azure Storage: Blobs**, **Azure Storage: Files**, **Azure Storage: Queues**, or **Azure Storage: Tables**.
+    
+    b. Make sure that **.NET Framework 4.5** is selected as the target framework.
+    
+    c. Specify a name for your project and create the new Visual Studio solution, as shown:
 
-[Azure 存储模拟器](./storage-use-emulator.md)提供了一个针对开发目的模拟 Azure Blob、队列和表服务的本地环境。你可以使用存储模拟器在本地测试你的应用程序，而无需创建 Azure 订阅或存储帐户，并且不会产生任何费用。
+    ![Azure Quick Starts][Image1]
 
-若要尝试，让我们在 Visual Studio 中使用 Azure 快速启动示例项目之一创建一个简单的 Azure 存储空间应用程序。本教程重点介绍 **Azure Blob 存储**、**Azure 表存储**和 **Azure 队列存储**示例项目：
+4. In Visual Studio, select **Solution Explorer** on the **View** menu. Open the App.config file and comment out the connection string for your Azure storage account if you have already added one. Then uncomment the connection string for the Azure storage emulator:
 
-1. 启动 Visual Studio。
-2. 在“文件”菜单中，单击“新建项目”。
-3. 在“新建项目”对话框中，单击“已安装”>“模板”>“Visual C#”>“云”>“快速启动”>“数据服务”。
-    a.选择以下模板之一：**Azure 存储空间：Blob**、**Azure 存储空间：文件**、**Azure 存储空间：队列**或 **Azure 存储空间：表**。
-    b.确保选择 **.NET Framework 4.5** 作为目标框架。
-    c.为你的项目指定一个名称并创建新的 Visual Studio 解决方案，如下所示：
+   `<add key="StorageConnectionString" value = "UseDevelopmentStorage=true;"/>`
 
-    ![Azure 快速启动][Image1]
+You may want to review the source code before running the application. To review the code, select **Solution Explorer** on the **View** menu in Visual Studio. Then, double-click the Program.cs file.
 
-4. 在 Visual Studio 中的“查看”菜单上，选择“解决方案资源管理器”。打开 App.config 文件并注释掉 Azure 存储帐户的连接字符串（如果已添加）。然后取消注释 Azure 存储模拟器的连接字符串：
+Next, run the sample application in the Azure Storage Emulator:
 
-    `<add key="StorageConnectionString" value = "UseDevelopmentStorage=true;"/>`
+1. Press the **Start** button or the Windows key, search for *Azure Storage emulator*, and start the application. When the emulator starts, you'll see an icon and a notification in the Windows Task View area.
+2. In Visual Studio, click **Build Solution** on the **Build** menu.
+3. On the **Debug** menu, press **F11** to run the solution step by step, or press **F5** to run the solution from start to finish.
 
-你可能想要在运行应用程序之前检查源代码。若要查看代码，请在 Visual Studio 中的“查看”菜单上选择“解决方案资源管理器”。然后双击 Program.cs 文件。
+## Next steps
+See these resources to learn more about Azure Storage:
 
-接下来，在 Azure 存储模拟器中运行示例应用程序:
-
-1. 按“开始”按钮或 Windows 键，然后搜索 Azure 存储模拟器 并启动该应用程序。当模拟器启动时，你将在“Windows 任务视图”区域看到图标和通知。
-2. 在 Visual Studio 中，单击“生成”菜单上的“生成解决方案”。
-3. 在“调试”**菜单**上，按 **F11** 逐步运行该解决方案，或按 **F5** 从头到尾运行该解决方案。
-
-##<a id="next-steps"></a> 后续步骤
-
-若要了解有关 Azure 存储空间的详细信息，请参阅以下资源：
-
-* [Azure 存储空间简介](./storage-introduction.md)
-* [通过 .NET 开始使用 Azure Blob 存储](./storage-dotnet-how-to-use-blobs.md)
-* [通过 .NET 开始使用 Azure 表存储](./storage-dotnet-how-to-use-tables.md)
-* [通过 .NET 开始使用 Azure 队列存储](./storage-dotnet-how-to-use-queues.md)
-* [在 Windows 上开始使用 Azure 文件存储](./storage-dotnet-how-to-use-files.md)
-* [使用 AzCopy 命令行实用程序传输数据](./storage-use-azcopy.md)
-* [Azure 存档文档](./index.md)
-* [适用于 .NET 的 Azure 存储空间客户端库](https://msdn.microsoft.com/zh-cn/library/azure/dn261237.aspx)
-* [Azure 存储 REST API](https://msdn.microsoft.com/zh-cn/library/azure/dd179355.aspx)
+* [Introduction to Azure Storage](./storage-introduction.md)
+* [Get started with Azure Blob storage using .NET](storage-dotnet-how-to-use-blobs.md)
+* [Get started with Azure Table storage using .NET](storage-dotnet-how-to-use-tables.md)
+* [Get started with Azure Queue Storage using .NET](storage-dotnet-how-to-use-queues.md)
+* [Get started with Azure File storage on Windows](storage-dotnet-how-to-use-files.md)
+* [Transfer data with the AzCopy Command-Line Utility](storage-use-azcopy.md)
+* [Azure Storage Documentation](./index.md)
+* [Azure Storage Client Library for .NET](https://msdn.microsoft.com/library/azure/dn261237.aspx)
+* [Azure Storage Services REST API](https://msdn.microsoft.com/library/azure/dd179355.aspx)
 
 [Image1]: ./media/storage-getting-started-guide/QuickStart.png
-
-<!---HONumber=Mooncake_0103_2017-->

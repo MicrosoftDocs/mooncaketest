@@ -1,170 +1,322 @@
 ---
-title: 在 5 分钟内将 Node.js Web 应用部署到 Azure（CLI 2.0 预览版）| Azure
-description: 了解如何通过部署示例 Node.js 应用，轻松地在应用服务中运行 Web 应用。快速进行实际的开发，立即查看结果。
+title: Create a Node.js Application on Web App | Azure
+description: Deploy your first Node.js Hello World in App Service Web App in minutes. 
 services: app-service\web
 documentationcenter: ''
-author: cephalin
-manager: wpickett
+author: syntaxc4
+manager: erikre
 editor: ''
 
-ms.assetid: 412cc786-5bf3-4e1b-b696-6a08cf46501e
+ms.assetid: 582bb3c2-164b-42f5-b081-95bfcb7a502a
 ms.service: app-service-web
 ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: hero-article
-ms.date: 01/04/2017
-wacn.date: 02/10/2017
-ms.author: cephalin
+ms.date: 03/28/2017
+wacn.date: ''
+ms.author: cfowler
 ---
+# Create a Node.js Application on Web App
 
-# 在 5 分钟内将第一个 Node.js Web 应用部署到 Azure（CLI 2.0 预览版）
-> [!div class="op_single_selector"]
->- [第一个 HTML 站点](./app-service-web-get-started-html.md)
->- [第一个 .NET 应用](./app-service-web-get-started-dotnet.md)
->- [第一个 PHP 应用](./app-service-web-get-started-php.md)
->- [第一个 Node.js 应用](./app-service-web-get-started-nodejs.md)
->- [第一个 Python 应用](./app-service-web-get-started-python.md)
->- [第一个 Java 应用](./app-service-web-get-started-java.md)
+This quickstart tutorial walks through how to develop and deploy a Node.js app to Azure. We'll run the app using a Linux-based Azure App Service, and create and configure a new Web App within it using the Azure CLI. We'll then use git to deploy our Node.js app to Azure.
 
-本教程旨在帮助用户将第一个 Node.js Web 应用部署到 [Azure App Service](../app-service/app-service-value-prop-what-is.md)。应用服务可用于创建 Web 应用、[移动应用后端](../app-service-mobile/index.md)和 [API 应用](../app-service-api/app-service-api-apps-why-best-platform.md)。
+![hello-world-in-browser](./media/app-service-web-get-started-nodejs-poc/hello-world-in-browser.png)
 
-用户将能够：
+You can follow the steps below using a Mac, Windows or Linux machine. It should take you only about 5 minutes to complete all of the steps below.
 
-* 在 Azure App Service 中创建 Web 应用。
-* 部署示例 Node.js 代码。
-* 查看代码在生产环境中的实时运行。
-* 以[推送 Git 提交](https://git-scm.com/docs/git-push)的相同方式来更新 Web 应用。
+## Before you begin
 
-## 用于完成任务的 CLI 版本
+Before running this sample, install the following prerequisites locally:
 
-可使用以下 CLI 版本之一完成任务：
+1. [Download and install git](https://git-scm.com/)
+1. [Download and install Node.js and NPM](https://nodejs.org/)
+1. Download and install the [Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli)
 
-- [Azure CLI 1.0](./app-service-web-get-started-nodejs-cli-nodejs.md)：用于经典部署模型和资源管理部署模型的 CLI
-- [Azure CLI 2.0（预览版）](./app-service-web-get-started-nodejs.md)：用于资源管理部署模型的下一代 CLI
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
+
+## Download the sample
+
+Clone the Hello World sample app repository to your local machine.
+
+```bash
+git clone https://github.com/Azure-Samples/nodejs-docs-hello-world
+```
+
+> [!TIP]
+> Alternatively, you can [download the sample](https://github.com/Azure-Samples/nodejs-docs-hello-world/archive/master.zip) as a zip file and extract it.
+
+Change to the directory that contains the sample code.
+
+```bash
+cd nodejs-docs-hello-world
+```
+
+## Run the app locally
+
+Run the application locally by opening a terminal window and using the `npm start` script for the sample to launch the built in Node.js http server.
+
+```bash
+npm start
+```
+
+Open a web browser, and navigate to the sample.
+
+```bash
+http://localhost:1337
+```
+
+You can see the **Hello World** message from the sample app displayed in the page.
+
+![localhost-hello-world-in-browser](./media/app-service-web-get-started-nodejs-poc/localhost-hello-world-in-browser.png)
+
+In your terminal window, press **Ctrl+C** to exit the web server.
+
+## Log in to Azure
+
+We are now going to use the Azure CLI 2.0 in a terminal window to create the resources needed to host our Node.js app in Azure. Log in to your Azure subscription with the [az login](https://docs.microsoft.com/cli/azure/#login) command and follow the on-screen directions.
+
+```azurecli
+az login
+```
 
 [!INCLUDE [azure-cli-2-azurechinacloud-environment-parameter](../../includes/azure-cli-2-azurechinacloud-environment-parameter.md)]
 
-## <a name="Prerequisites"></a>先决条件
-* [Git](http://www.git-scm.com/downloads)。
-* [Azure CLI 2.0 预览版](https://docs.microsoft.com/cli/azure/install-az-cli2)。
-* 一个 Azure 帐户。如果你没有帐户，可以[注册试用版](https://www.azure.cn/pricing/1rmb-trial/?WT.mc_id=A261C142F)。
+## Configure a Deployment User
 
-## 部署 Node.js Web 应用
-1. 打开新的 Windows 命令提示符、PowerShell 窗口、Linux shell 或 OS X 终端。运行 `git --version` 和 `azure --version`，验证计算机上是否已安装 Git 和 Azure CLI。
+For FTP and local Git it is necessary to have a deployment user configured on the server to authenicate your deployment. Creating a deployment user is a one time configuration, take a note of the username and password as they will be used in a step below.
 
-    ![在 Azure 中测试第一个 Web 应用的 CLI 工具安装](./media/app-service-web-get-started-languages/1-test-tools-2.0.png)
+> [!NOTE]
+> A deployment user is required for FTP and Local Git deployment to a Web App.
+> The `username` and `password` are account-level, as such, are different from your Azure Subscription credentials. These credentials are only required to be created once.
+>
 
-    如果尚未安装这些工具，请参阅[先决条件](#Prerequisites)中的下载链接。
-2. 如下所示登录 Azure ：
+Use the [az appservice web deployment user set](https://docs.microsoft.com/cli/azure/appservice/web/deployment/user#set) command to create your account-level credentials.
 
-    ```
-    az login
-    ```
-
-    按照帮助消息的提示继续此登录过程。
-
-    ![登录到 Azure 以创建第一个 Web 应用](./media/app-service-web-get-started-languages/3-azure-login-2.0.png)  
-
-3. 设置应用服务的部署用户。稍后会使用这些凭据部署代码。
-
-    ```
-    az appservice web deployment user set --user-name <username> --password <password>
-    ```
-
-3. 创建新的[资源组](../azure-resource-manager/resource-group-overview.md)。对于第一个应用服务教程，不需要实际知道它是什么。
-
-    ```
-    az group create --location "<location>" --name my-first-app-group
-    ```
-
-    若要查看可用于 `<location>` 的可能值，请使用 `az appservice list-locations` CLI 命令。
-
-3. 创建新的“免费”[应用服务计划](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md)。对于第一个应用服务教程，只需知道不用为此计划中的 Web 应用付费即可。
-
-    ```
-    az appservice plan create --name my-free-appservice-plan --resource-group my-first-app-group --sku FREE
-    ```
-
-4. 使用 `<app_name>` 中的唯一名称创建新的 Web 应用。
-
-    ```
-    az appservice web create --name <app_name> --resource-group my-first-app-group --plan my-free-appservice-plan
-    ```
-
-4. 接下来，获取要部署的示例 Node.js 代码。切换到工作目录 (`CD`) 并克隆示例应用，如下所示：
-
-    ```
-    cd <working_directory>
-    git clone https://github.com/Azure-Samples/app-service-web-nodejs-get-started.git
-    ```
-
-5. 更改为示例应用的存储库。
-
-    ```
-    cd app-service-web-nodejs-get-started
-    ```
-5. 使用以下命令配置应用服务 Web 应用的本地 Git 部署：
-
-    ```
-    az appservice web source-control config-local-git --name <app_name> --resource-group my-first-app-group
-    ```
-
-    会获得类似如下的 JSON 输出，这意味着已配置远程 Git 存储库：
-
-    ```
-    {
-    "url": "https://<deployment_user>@<app_name>.scm.chinacloudsites.cn/<app_name>.git"
-    }
-    ```
-
-6. 将 JSON 中的 URL 作为本地存储库的 Git remote 添加（为简单起见，调用 `azure`）。
-
-    ```
-    git remote add azure https://<deployment_user>@<app_name>.scm.chinacloudsites.cn/<app_name>.git
-    ```
-
-7. 像使用 Git 推送任何代码一样，将示例代码部署到 Azure 应用。出现提示时，使用之前配置的密码。
-
-    ```
-    git push azure master
-    ```
-
-    ![在 Azure 中将代码推送到第一个 Web 应用](./media/app-service-web-get-started-languages/node-git-push.png)  
-
-    `git push` 不仅将代码放在 Azure 中，也在部署引擎中触发部署任务。如果项目（存储库）根目录中存在 package.json，部署脚本会还原所需的包。
-
-恭喜！应用已部署到 Azure App Service。
-
-## 查看应用实时运行
-若要查看 Azure 中实时运行的应用，请从存储库中的任何目录运行以下命令：
-
-```
-azure site browse
+```azurecli
+az appservice web deployment user set --user-name <username> --password <password>
 ```
 
-## 更新应用
-现在可以使用 Git 随时从项目（存储库）根目录进行推送，以更新实时站点。操作方式与首次部署代码时相同。例如，每次想要推送已在本地测试的新更改时，只需从项目（存储库）根目录运行以下命令：
+## Create a resource group
 
+Create a resource group with the [az group create](https://docs.microsoft.com/cli/azure/group#create). An Azure resource group is a logical container into which Azure resources like web apps, databases and storage accounts are deployed and managed.
+
+```azurecli
+az group create --name myResourceGroup --location chinanorth
 ```
-git add .
-git commit -m "<your_message>"
+
+## Create an Azure App Service
+
+Create a Linux-based App Service Plan with the [az appservice plan create](https://docs.microsoft.com/cli/azure/appservice/plan#create) command.
+
+> [!NOTE]
+> An App Service plan represents the collection of physical resources used to host your apps. All applications assigned to an App Service plan share the resources defined by it allowing you to save cost when hosting multiple apps.
+>
+> App Service plans define:
+> * Region (China North, China East, China North)
+> * Instance Size (Small, Medium, Large)
+> * Scale Count (one, two or three instances, etc.)
+> * SKU (Free, Shared, Basic, Standard, Premium)
+>
+
+The following example creates an App Service Plan on Linux Workers named `quickStartPlan` using the **Standard** pricing tier.
+
+```azurecli
+az appservice plan create --name quickStartPlan --resource-group myResourceGroup --sku S1 --is-linux
+```
+
+When the App Service Plan has been created, the Azure CLI shows information similar to the following example.
+
+```json
+{
+    "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.Web/serverfarms/quickStartPlan",
+    "kind": "linux",
+    "location": "China North",
+    "sku": {
+    "capacity": 1,
+    "family": "S",
+    "name": "S1",
+    "tier": "Standard"
+    },
+    "status": "Ready",
+    "type": "Microsoft.Web/serverfarms"
+}
+```
+
+## Create a web app
+
+Now that an App Service plan has been created, create a Web App within the `quickStartPlan` App Service plan. The web app gives us a hosting space to deploy our code as well as provides a URL for us to view the deployed application. Use the [az appservice web create](https://docs.microsoft.com/cli/azure/appservice/web#create) command to create the Web App.
+
+In the command below please substitute your own unique app name where you see the <app_name> placeholder. The <app_name> will be used as the default DNS site for the web app, and so the name needs to be unique across all apps in Azure. You can later map any custom DNS entry to the web app before you expose it to your users.
+
+```azurecli
+az appservice web create --name <app_name> --resource-group myResourceGroup --plan quickStartPlan
+```
+
+When the Web App has been created, the Azure CLI shows information similar to the following example.
+
+```json
+{
+    "clientAffinityEnabled": true,
+    "defaultHostName": "<app_name>.chinacloudsites.cn",
+    "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.Web/sites/<app_name>",
+    "isDefaultContainer": null,
+    "kind": "app",
+    "location": "China North",
+    "name": "<app_name>",
+    "repositorySiteName": "<app_name>",
+    "reserved": true,
+    "resourceGroup": "myResourceGroup",
+    "serverFarmId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.Web/serverfarms/quickStartPlan",
+    "state": "Running",
+    "type": "Microsoft.Web/sites",
+}
+```
+
+Browse to the site to see your newly created Web App.
+
+```bash
+http://<app_name>.chinacloudsites.cn
+```
+
+![app-service-web-service-created](./media/app-service-web-get-started-nodejs-poc/app-service-web-service-created.png)
+
+We've now created an empty new Web App in Azure. Let's now configure our Web App to use Node.js and deploy our app to it.
+
+## Configure to use Node.js
+
+Use the [az appservice web config update](https://docs.microsoft.com/cli/azure/app-service-web/config#update) command to configure the Web App to use Node.js version `6.9.3`.
+
+> [!TIP]
+> Setting the node.js version this way uses a default container provided by the platform, if you would like to use your own container refer to the CLI reference for the [az appservice web config container update](https://docs.microsoft.com/cli/azure/appservice/web/config/container#update) command.
+
+```azurecli
+az appservice web config update --linux-fx-version "NODE|6.9.3" --startup-file process.json --name <app_name> --resource-group myResourceGroup
+```
+
+## Configure local git deployment
+
+You can deploy to your Web App in a variety of ways including FTP, local Git as well as GitHub, Visual Studio Team Services and Bitbucket.
+
+Use the [az appservice web source-control config-local-git](https://docs.microsoft.com/cli/azure/appservice/web/source-control#config-local-git) command to configure local git access to the Web App.
+
+```azurecli
+az appservice web source-control config-local-git --name <app_name> --resource-group myResourceGroup --query url --output tsv
+```
+
+Copy the output from the terminal as it will be used in the next step.
+
+```bash
+https://<username>@<app_name>.scm.chinacloudsites.cn:443/<app_name>.git
+```
+
+## Push to Azure from Git
+
+Add an Azure remote to your local Git repository.
+
+```bash
+git remote add azure <paste-previous-command-output-here>
+```
+
+Push to the Azure remote to deploy your application. You will be prompted for the password you supplied earlier as part of the creation of the deployment user.
+
+```azurecli
 git push azure master
 ```
 
-## 后续步骤
-[创建、配置 Node.js Express Web 应用，并将其部署到 Azure](./app-service-web-nodejs-get-started.md)。通过学习本教程，可以了解在 Azure 中运行 Node.js Web 应用所需的基本技能，如：
+During deployment, Azure App Service will communicate it's progress with Git.
 
-* 使用 PowerShell/Bash 在 Azure 中创建和配置应用。
-* 设置 Node.js 版本。
-* 使用不在根应用程序目录中的开始文件。
-* 使用 NPM 自动执行。
-* 获取错误和输出日志。
+```bash
+Counting objects: 23, done.
+Delta compression using up to 4 threads.
+Compressing objects: 100% (21/21), done.
+Writing objects: 100% (23/23), 3.71 KiB | 0 bytes/s, done.
+Total 23 (delta 8), reused 7 (delta 1)
+remote: Updating branch 'master'.
+remote: Updating submodules.
+remote: Preparing deployment for commit id 'bf114df591'.
+remote: Generating deployment script.
+remote: Generating deployment script for node.js Web Site
+remote: Generated deployment script files
+remote: Running deployment command...
+remote: Handling node.js deployment.
+remote: Kudu sync from: '/home/site/repository' to: '/home/site/wwwroot'
+remote: Copying file: '.gitignore'
+remote: Copying file: 'LICENSE'
+remote: Copying file: 'README.md'
+remote: Copying file: 'index.js'
+remote: Copying file: 'package.json'
+remote: Copying file: 'process.json'
+remote: Deleting file: 'hostingstart.html'
+remote: Ignoring: .git
+remote: Using start-up script index.js from package.json.
+remote: Node.js versions available on the platform are: 4.4.7, 4.5.0, 6.2.2, 6.6.0, 6.9.1.
+remote: Selected node.js version 6.9.1. Use package.json file to choose a different version.
+remote: Selected npm version 3.10.8
+remote: Finished successfully.
+remote: Running post deployment command(s)...
+remote: Deployment successful.
+To https://<app_name>.scm.chinacloudsites.cn:443/<app_name>.git
+ * [new branch]      master -> master
+```
 
-或者，对第一个 Web 应用执行更多操作。例如：
+## Browse to the app
 
-* 尝试[将代码部署到 Azure 的其他方法](./web-sites-deploy.md)。
-* 使 Azure 应用上升到更高的层次。对用户进行身份验证。按需缩放。设置一些性能警报。所有这些操作只需按几下鼠标即可完成。请参阅[在第一个 Web 应用中添加功能](./app-service-web-get-started-2.md)。
+Browse to the deployed application using your web browser.
 
-<!---HONumber=Mooncake_0206_2017-->
-<!--Update_Description: change for azure cli to azure cli 2.0-->
+```bash
+http://<app_name>.chinacloudsites.cn
+```
+
+This time, the page that displays the Hello World message is running using our Node.js code running as an Azure App Service web app.
+
+## Updating and Deploying the Code
+
+Using a local text editor, open the `index.js` file within the Node.js app, and make a small change to the text within the call to `response.end`:
+
+```nodejs
+response.end("Hello Azure!");
+```
+
+Commit your changes in git, then push the code changes to Azure.
+
+```bash
+git commit -am "updated output"
+git push azure master
+```
+
+Once deployment has completed, switch back to the browser window that opened in the Browse to the app step, and hit refresh.
+
+![hello-world-in-browser](./media/app-service-web-get-started-nodejs-poc/hello-world-in-browser.png)
+
+## Manage your new Azure web app
+
+Go to the Azure portal preview to take a look at the web app you just created.
+
+To do this, sign in to [https://portal.azure.cn](https://portal.azure.cn).
+
+From the left menu, click **App Service**, then click the name of your Azure web app.
+
+![Portal navigation to Azure web app](./media/app-service-web-get-started-nodejs-poc/nodejs-docs-hello-world-app-service-list.png)
+
+You have landed in your web app's _blade_ (a portal page that opens horizontally).
+
+By default, your web app's blade shows the **Overview** page. This page gives you a view of how your app is doing. Here, you can also perform basic management tasks like browse, stop, start, restart, and delete. The tabs on the left side of the blade shows the different configuration pages you can open.
+
+![App Service blade in Azure portal preview](./media/app-service-web-get-started-nodejs-poc/nodejs-docs-hello-world-app-service-detail.png)
+
+These tabs in the blade show the many great features you can add to your web app. The following list gives you just a few of the possibilities:
+
+* Map a custom DNS name
+* Bind a custom SSL certificate
+* Configure continuous deployment
+* Scale up and out
+* Add user authentication
+
+**Congratulations!** You've deployed your first Node.js app to App Service.
+
+[!INCLUDE [cli-samples-clean-up](../../includes/cli-samples-clean-up.md)]
+
+## Next steps
+
+Explore pre-created [Web Apps CLI scripts](app-service-cli-samples.md).

@@ -1,29 +1,26 @@
-| 资源 | 默认限制 | 最大限制 |
+| Resource | Default Limit | Maximum Limit |
 | --- | --- | --- |
-| 每个订阅的 VM 数 |每个区域 20 个<sup>1</sup> |每个区域 10,000 个 |
-| 每个订阅的 VM 总核心数 |每个区域 20 个<sup>1</sup> |每个区域 10,000 个 |
-| 每个订阅每个系列（Dv2、F 等）的 VM 核心数 |每个区域 20 个<sup>1</sup> |每个区域 10,000 个 |
-| 每订阅的协同管理员数 |不受限制 |不受限制 |
-| 每个订阅的[存储帐户数](../articles/storage/storage-create-storage-account.md) |200 |200<sup>2</sup> |
-| 每个订阅的[资源组](../articles/azure-resource-manager/resource-group-overview.md)数 |800 |800 |
-| 每个订阅的[可用性集](../articles/virtual-machines/virtual-machines-windows-manage-availability.md#configure-multiple-virtual-machines-in-an-availability-set-for-redundancy)数 |每个区域 2000 个 |每个区域 2000 个 |
-| 资源管理器 API 读取次数 |每小时 15000 次 |每小时 15000 次 |
-| 资源管理器 API 写入次数 |每小时 1200 次 |每小时 1200 次 |
-| 资源管理器 API 请求大小 |4194304 字节 |4194304 字节 |
-| 每个订阅的[云服务数](../articles/cloud-services/cloud-services-choose-me.md) |不适用<sup>3</sup> |不适用<sup>3</sup> |
-| 每个订阅的[地缘组](../articles/virtual-network/virtual-networks-migrate-to-regional-vnet.md)数 |不适用<sup>3</sup> |不适用<sup>3</sup> |
+| VMs per [subscription](/documentation/articles/billing-buy-sign-up-azure-subscription/) |20<sup>1</sup> per Region |10,000 per Region |
+| VM total cores per [subscription](/documentation/articles/billing-buy-sign-up-azure-subscription/) |20<sup>1</sup> per Region |10,000 per Region |
+| VM per series (Dv2, F, etc.) cores per [subscription](/documentation/articles/billing-buy-sign-up-azure-subscription/) |20<sup>1</sup> per Region |10,000 per Region |
+| [Co-administrators](/documentation/articles/billing-add-change-azure-subscription-administrator/) per subscription |Unlimited |Unlimited |
+| [Storage accounts](../articles/storage/storage-create-storage-account.md) per subscription |200 |200<sup>2</sup> |
+| [Resource Groups](../articles/azure-resource-manager/resource-group-overview.md) per subscription |800 |800 |
+| [Availability Sets](../articles/virtual-machines/virtual-machines-windows-manage-availability.md#configure-multiple-virtual-machines-in-an-availability-set-for-redundancy) per subscription |2000 per Region |2000 per Region |
+| Resource Manager API Reads |15000 per hour |15000 per hour |
+| Resource Manager API Writes |1200 per hour |1200 per hour |
+| Resource Manager API request size |4194304 bytes |4194304 bytes |
+| [Cloud services](../articles/cloud-services/cloud-services-choose-me.md) per subscription |Not Applicable<sup>3</sup> |Not Applicable<sup>3</sup> |
+| [Affinity groups](../articles/virtual-network/virtual-networks-migrate-to-regional-vnet.md) per subscription |Not Applicable<sup>3</sup> |Not Applicable<sup>3</sup> |
 
-<sup>1</sup>默认限制因产品类别类型（例如试用、即用即付和系列）而有所不同，如 Dv2 等。
+<sup>1</sup>Default limits vary by offer Category Type, such as Trial, Pay-As-You-Go, and series, such as Dv2, F, etc.
 
-<sup>2</sup>这包括标准和高级存储帐户。如果需要的存储帐户超过 200 个，请通过 [Azure 支持](https://www.azure.cn/support/faq/)提出请求。Azure 存储空间团队将评审你的业务案例，最多可以批准 250 个存储帐户。
+<sup>2</sup>This includes both Standard and Premium storage accounts. If you require more than 200 storage accounts, make a request through [Azure Support](https://www.azure.cn/support/faq/). The Azure Storage team will review your business case and may approve up to 250 storage accounts.
 
-<sup>3</sup>使用 Azure 资源组和 Azure 资源管理器时不再需要这些功能。
+<sup>3</sup>These features are no longer required with Azure Resource Groups and the Azure Resource Manager.
 
 > [!NOTE]
-请务必强调虚拟机核心数的区域总数限制，以及单独强制实施的每个大小系列（Dv2、F 等）的区域性限制。例如，假设某个订阅在中国东部的 VM 核心数限制为 30 个，即 A 系列的核心数限制为 30，D 系列的核心数限制也为 30。此订阅允许部署 30 个 A1 VM，或 30 个 D1 VM，或者两者的组合，但其总数不能超过 30 个核心（例如，10 个 A1 VM 和 20 个 D1 VM）。
+> It is important to emphasize that virtual machine cores have a regional total limit as well as a regional per size series (Dv2, F, etc.) limit that are separately enforced.  For example, consider a subscription with a China East total VM core limit of 30, an A series core limit of 30, and a D series core limit of 30.  This subscription would be allowed to deploy 30 A1 VMs, or 30 D1 VMs, or a combnation of the two not to exceed a total of 30 cores (e.g. 10 A1 VMs and 20 D1 VMs).  
 > <!-- -->
 > 
-> 
 >
-
-<!---HONumber=Mooncake_0103_2017-->

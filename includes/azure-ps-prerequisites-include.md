@@ -1,7 +1,6 @@
-## 先决条件：安装 Azure PowerShell 模块
-若要执行本文中的步骤，你需要[安装和配置 Azure PowerShell](https://docs.microsoft.com/powershell/azureps-cmdlets-docs)，并始终按照说明进行操作，以登录到 Azure 并选择你的订阅。
+## Prerequisite: Install the Azure PowerShell Module
+
+To perform the steps in this article, you'll need to [to install and configure Azure PowerShell](https://docs.microsoft.com/powershell/azureps-cmdlets-docs) and follow the instructions all the way to the end to sign into Azure and select your subscription.
 
 > [!NOTE]
->如果你没有 Azure 帐户，需要获取一个。可以[在此处注册 1 元试用帐户](https://www.azure.cn/pricing/1rmb-trial/)。
-
-<!---HONumber=Mooncake_0104_2016-->
+> If you don't have an Azure account, you'll need one. Go sign up for a [1rmb trial here](https://www.azure.cn/pricing/1rmb-trial/).

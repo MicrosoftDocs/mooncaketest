@@ -1,4 +1,2 @@
 > [!NOTE]
-> 若要完成本教程，您需要一个 Azure 帐户。您可以[注册试用版](https://www.azure.cn/pricing/1rmb-trial)。
-
-<!---HONumber=71-->
+> To complete this tutorial, you need an Azure account. You can <a href="/http://www.windowsazure.cn/zh-cn/pricing/free-trial/" target="_blank">sign up for a free trial</a>.

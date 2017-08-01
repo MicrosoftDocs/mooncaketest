@@ -1,11 +1,13 @@
-| 资源 | 限制 |
-|---------------------------------------------|----------------------------------------|
-| 缓存大小 | 530 GB |
-| 数据库 | 64 |
-| 连接的最大客户端数 | 20,000 |
-| Redis 缓存副本（用于高可用性） | 1 |
-| 启用群集的高级缓存中的分片数 | 10 |
+| Resource | Limit |
+| --- | --- |
+| Cache size |530 GB |
+| Databases |64 |
+| Max connected clients |40,000 |
+| Redis Cache replicas (for high availability) |1 |
+| Shards in a premium cache with clustering |10 |
 
-每个定价层的 Azure Redis 缓存限制和大小都不相同。若要查看定价层及其关联的大小，请参阅 [Azure Redis 缓存定价](https://www.azure.cn/pricing/details/redis-cache/)。
+Azure Redis Cache limits and sizes are different for each pricing tier. To see the pricing tiers and their associated sizes, see [Azure Redis Cache Pricing](https://www.azure.cn/pricing/details/redis-cache/).
 
-<!---HONumber=Mooncake_0215_2016-->
+For more information on Azure Redis Cache configuration limits, see [Default Redis server configuration](../articles/redis-cache/cache-configure.md#default-redis-server-configuration).
+
+Because configuration and management of Azure Redis Cache instances is done by Microsoft, not all Redis commands are supported in Azure Redis Cache. For more information, see [Redis commands not supported in Azure Redis Cache]((redis-cache/cache-configure.md#redis-commands-not-supported-in-azure-redis-cache).

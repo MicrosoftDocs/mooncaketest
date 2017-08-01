@@ -1,15 +1,13 @@
-下表列出了特定于 Azure 事件中心的配额和限制。有关事件中心定价的信息，请参阅[事件中心定价](https://www.azure.cn/pricing/details/event-hubs/)。
+The following table lists quotas and limits specific to Azure Event Hubs. For information about Event Hubs pricing, see [Event Hubs Pricing](https://www.azure.cn/pricing/details/event-hubs/).
 
-| 限制 | 范围 | 类型 | 超出时的行为 | 值 |
+| Limit | Scope | Type | Behavior when exceeded | Value |
 | --- | --- | --- | --- | --- |
-| 每个命名空间的事件中心数 |命名空间 |静态 |创建新的命名空间的后续请求将被拒绝。 |10 |
-| 每个事件中心的分区数 | 实体 | 静态 | - | 32 |
-| 每个事件中心的使用者组数 | 实体 | 静态 | - | 20 |
-| 每个命名空间的 AMQP 连接数 | 命名空间 | 静态 |将拒绝后续的其他连接请求，并且调用代码将收到异常。| 5,000 |
-| 事件中心事件的最大大小 | 系统范围 | 静态 | - | 256KB |
-| 事件中心名称的最大大小 |实体 |静态 |- |50 个字符 |
-| 每个使用者组的非 epoch 接收方数 | 实体 | 静态 | - | 5 |
-| 事件数据的最大保留期 | 实体 | 静态 | - | 1-7 天 |
-| 最大吞吐量单位 | 命名空间 | 静态 | 超出吞吐量单位限制将导致数据被限制，并生成 **ServerBusyException** 异常。你可以通过填写支持票证来为标准层请求更多的吞吐量单位。额外的吞吐量单位基于承诺的购买以大小为 20 个单位的块的形式提供。| 20 |
-
-<!---HONumber=Mooncake_0116_2017-->
+| Number of Event Hubs per namespace |Namespace |Static |Subsequent requests for creation of a new namespace will be rejected. |10 |
+| Number of partitions per Event Hub |Entity |Static |- |32 |
+| Number of consumer groups per Event Hub |Entity |Static |- |20 |
+| Number of AMQP connections per namespace |Namespace |Static |Subsequent requests for additional connections will be rejected and an exception will be received by the calling code. |5,000 |
+| Maximum size of Event Hubs event|System-wide |Static |- |256KB |
+| Maximum size of an Event Hub name |Entity |Static |- |50 characters |
+| Number of non-epoch receivers per consumer group |Entity |Static |- |5 |
+| Maximum retention period of event data |Entity |Static |- |1-7 days |
+| Maximum throughput units |Namespace |Static |Exceeding the throughput unit limit will cause your data to be throttled and generate a **ServerBusyException**. You can request a larger number of throughput units for a Standard tier by filing a support ticket. Additional throughput units are available in blocks of twenty on a committed purchase basis. |20 |

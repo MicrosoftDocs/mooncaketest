@@ -1,4 +1,4 @@
->[!IMPORTANT]
-> 您的存储帐户密钥类似于您的存储帐户的根密码。始终要小心保护帐户密钥。避免将其分发给其他用户、对其进行硬编码或将其保存在其他人可以访问的纯文本文件中。如果认为帐户密钥可能已泄漏，请使用 Azure 经典管理门户重新生成帐户密钥。若要了解如何重新生成帐户密钥，请参阅[如何在 Azure 经典管理门户中创建、管理或删除存储帐户](../articles/storage/storage-create-storage-account.md#manage-your-storage-account)。
-
-<!---HONumber=Mooncake_0516_2016-->
+> [!IMPORTANT]
+> Your storage account key is similar to the root password for your storage account. Always be careful to protect your account key. Avoid distributing it to other users, hard-coding it, or saving it anywhere in plaintext that is accessible to others. Regenerate your account key using the Azure portal preview if you believe it may have been compromised. To learn how to regenerate your account key, see [How to create, manage, or delete a storage account in the Azure portal preview](../articles/storage/storage-create-storage-account.md#manage-your-storage-account).
+> 
+> 

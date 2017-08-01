@@ -1,112 +1,97 @@
-按照以下步骤操作可在运行 Windows Server 的虚拟机上安装和运行 MongoDB。
+Follow these steps to install and run MongoDB on a virtual machine running Windows Server.
 
 > [!IMPORTANT]
-> 默认情况下，不启用 MongoDB 安全功能，例如身份验证和 IP 地址绑定。在将 MongoDB 部署到生产环境之前，应启用安全功能。有关详细信息，请参阅[安全性和身份验证](http://www.mongodb.org/display/DOCS/Security+and+Authentication)。
+> MongoDB security features, such as authentication and IP address binding, are not enabled by default. Security features should be enabled before deploying MongoDB to a production environment.  For more information, see [Security and Authentication](http://www.mongodb.org/display/DOCS/Security+and+Authentication).
+>
+>
 
-1. 使用远程桌面连接到该虚拟机后，从虚拟机上的“开始”菜单打开 Internet Explorer。
+1. After you've connected to the virtual machine using Remote Desktop, open Internet Explorer from the **Start** menu on the virtual machine.
+2. Select the **Tools** button in the upper right corner.  In **Internet Options**, select the **Security** tab, and then select the **Trusted Sites** icon, and finally click the **Sites** button. Add *https://\*.mongodb.org* to the list of trusted sites.
+3. Go to [Downloads - MongoDB](https://www.mongodb.com/download-center#community).
+4. Find the **Current Stable Release** of **Community Server**, select the latest **64-bit** version in the Windows column. Download, then run the MSI installer.
+5. MongoDB is typically installed in C:\Program Files\MongoDB. Search for Environment Variables on the desktop and add the MongoDB binaries path to the PATH variable. For example, you might find the binaries at C:\Program Files\MongoDB\Server\3.4\bin on your machine.
+6. Create MongoDB data and log directories in the data disk (such as drive **F:**) you created in the preceding steps. From **Start**, select **Command Prompt** to open a command prompt window.  Type:
 
-2. 选择右上角的“工具”按钮。在“Internet 选项”中，选择“安全”选项卡，然后选择“可信站点”图标，最后单击“站点”按钮。将 _https://*.mongodb.org_ 添加到受信任站点列表中。
+        C:\> F:
+        F:\> mkdir \MongoData
+        F:\> mkdir \MongoLogs
+7. To run the database, run:
 
-3. 转到[“下载 - MongoDB”](https://www.mongodb.com/download-center#community)。
+        F:\> C:
+        C:\> mongod --dbpath F:\MongoData\ --logpath F:\MongoLogs\mongolog.log
 
-4. 查找**社区服务器**的**当前稳定版本**，在 Windows 专栏中选择最新 **64 位**版本。下载，然后运行 MSI 安装程序。
+    All log messages are directed to the *F:\MongoLogs\mongolog.log* file as mongod.exe server starts and preallocates journal files. It may take several minutes for MongoDB to preallocate the journal files and start listening for connections. The command prompt stays focused on this task while your MongoDB instance is running.
+8. To start the MongoDB administrative shell, open another command window from **Start** and type the following commands:
 
-5. MongoDB 通常安装在 C:\\Program Files\\MongoDB 下。在桌面上搜索环境变量并将 MongoDB 二进制文件路径添加到 PATH 变量。例如，可在计算机上的 C:\\Program Files\\MongoDB\\Server\\3.2\\bin 中找到这些二进制文件。
+        C:\> cd \my_mongo_dir\bin  
+        C:\my_mongo_dir\bin> mongo  
+        >db  
+        test
+        > db.foo.insert( { a : 1 } )  
+        > db.foo.find()  
+        { _id : ..., a : 1 }  
+        > show dbs  
+        ...  
+        > show collections  
+        ...  
+        > help  
 
-6. 在上述步骤中创建的数据磁盘（例如 **F:** 盘）中创建 MongoDB 数据和日志目录。从“开始”中，选择“命令提示符”以打开命令提示符窗口。键入：
+    The database is created by the insert.
+9. Alternatively, you can install mongod.exe as a service:
 
-    ```
-    C:\> F:
-    F:> mkdir \MongoData
-    F:> mkdir \MongoLogs
-    ```
+        C:\> mongod --dbpath F:\MongoData\ --logpath F:\MongoLogs\mongolog.log --logappend  --install
 
-7. 若要运行数据库，请运行：
+    A service is installed named MongoDB with a description of "Mongo DB". The `--logpath` option must be used to specify a log file, since the running service does not have a command window to display output.  The `--logappend` option specifies that a restart of the service causes output to append to the existing log file.  The `--dbpath` option specifies the location of the data directory. For more service-related command-line options, see [Service-related command-line options][MongoWindowsSvcOptions].
 
-    ```
-    F:> C:
-    C:\> mongod --dbpath F:\MongoData\ --logpath F:\MongoLogs\mongolog.log
-    ```
+    To start the service, run this command:
 
-    当 mongod.exe 服务器启动和预分配日志文件时，所有日志消息都定向到 *F:\\MongoLogs\\mongolog.log* 文件。MongoDB 可能需要几分钟来预分配日志文件和开始侦听连接。当 MongoDB 实例运行时，命令提示符始终停留在此任务上。
+        C:\> net start MongoDB
+10. Now that MongoDB is installed and running, you need to open a port in Windows Firewall so you can remotely connect to MongoDB.  From the **Start** menu, select **Administrative Tools** and then **Windows Firewall with Advanced Security**.
+11. a) In the left pane, select **Inbound Rules**.  In the **Actions** pane on the right, select **New Rule...**.
 
-8. 若要启动 MongoDB 命令行管理程序，请从“开始”中打开另一个命令窗口并键入以下命令：
+    ![Windows Firewall][Image1]
 
-    ```
-    C:\> cd \my_mongo_dir\bin  
-    C:\my_mongo_dir\bin> mongo  
-    >db  
-    test
-    > db.foo.insert( { a : 1 } )  
-    > db.foo.find()  
-    { _id : ..., a : 1 }  
-    > show dbs  
-    ...  
-    > show collections  
-    ...  
-    > help  
-    ```
+    b) In the **New Inbound Rule Wizard**, select **Port** and then click **Next**.
 
-    通过 insert 创建数据库。
+    ![Windows Firewall][Image2]
 
-9. 或者，你可以将 mongod.exe 作为一项服务来安装：
+    c) Select **TCP** and then **Specific local ports**.  Specify a port of "27017" (the default port MongoDB listens on) and click **Next**.
 
-    ```
-    C:\> mongod --dbpath F:\MongoData\ --logpath F:\MongoLogs\mongolog.log --logappend  --install
-    ```
+    ![Windows Firewall][Image3]
 
-    安装了名为“MongoDB”的服务，其描述为“Mongo DB”。必须使用 `--logpath` 选项指定日志文件，因为正运行的服务不会在命令窗口中显示输出。`--logappend` 选项指定重启服务可将输出附加到现有日志文件。`--dbpath` 选项指定数据目录的位置。有关与服务相关的更多命令行选项，请参阅[与服务相关的命令行选项][MongoWindowsSvcOptions]。
+    d) Select **Allow the connection** and click **Next**.
 
-    若要启动该服务，请运行以下命令：
+    ![Windows Firewall][Image4]
 
-    ```
-    C:\> net start MongoDB
-    ```
+    e) Click **Next** again.
 
-10. 现在，MongoDB 已安装且处于运行状态，需要在 Windows 防火墙中打开一个端口才能远程连接到 MongoDB。从“开始”菜单中，选择“管理工具”，然后选择“高级安全 Windows 防火墙”。
+    ![Windows Firewall][Image5]
 
-11. a) 在左窗格中，选择“入站规则”。在右侧的“操作”窗格中，选择“新建规则...”。
+    f) Specify a name for the rule, such as "MongoPort", and click **Finish**.
 
-    ![Windows 防火墙][Image1]  
+    ![Windows Firewall][Image6]
 
-    b) 在“新建入站规则向导”中，选择“端口”，然后单击“下一步”。
+12. If you didn't configure an endpoint for MongoDB when you created the virtual machine, you can do it now. You need both the firewall rule and the endpoint to be able to connect to MongoDB remotely.
 
-    ![Windows 防火墙][Image2]  
+  In the Azure portal, click **Virtual Machines (classic)**, click the name of your new virtual machine, and then click **Endpoints**.
 
-    c) 选择“TCP”，然后选择“特定本地端口”。指定端口“27017”（MongoDB 侦听的默认端口），然后单击“下一步”。
+    ![Endpoints][Image7]
 
-    ![Windows 防火墙][Image3]  
+13. Click **Add**.
 
-    d) 选择“允许连接”，然后单击“下一步”。
+14. Add an endpoint with name "Mongo", protocol **TCP**, and both **Public** and **Private** ports set to "27017". Opening this port allows MongoDB to be accessed remotely.
 
-    ![Windows 防火墙][Image4]  
+    ![Endpoints][Image9]
 
-    e) 再次单击“下一步”。
-
-    ![Windows 防火墙][Image5]  
-
-    f) 指定规则名称（如“MongoPort”），单击“完成”。
-
-    ![Windows 防火墙][Image6]  
-
-12. 如果你在创建虚拟机时未配置 MongoDB 的终结点，你可以现在完成此操作。你需要防火墙规则和终结点能够远程连接到 MongoDB。在经典管理门户中，依次单击“虚拟机”、你的新虚拟机的名称和“终结点”。
-
-    ![终结点][Image7]  
-
-13. 单击页面底部的“添加”。选择“添加独立终结点”，然后单击“下一步”。
-
-    ![终结点][Image8]  
-
-14. 添加名为“Mongo”的终结点、协议 **TCP**，并将“公用”和“专用”端口均设置为“27017”。打开此端口即可允许远程访问 MongoDB。
-
-    ![终结点][Image9]  
-
-> [!NOTE]
-> 端口 27017 是 MongoDB 使用的默认端口。可以在启动 mongod.exe 服务器时通过指定 `--port` 参数更改此默认端口。请确保在防火墙中提供同一个端口号以及上面说明中的“Mongo”终结点。
+> [AZURE.NOTE]
+> The port 27017 is the default port used by MongoDB. You can change this default port by specifying the `--port` parameter when starting the mongod.exe server. Make sure to give the same port number in the firewall and the "Mongo" endpoint in the preceding instructions.
+>
+>
 
 [MongoDownloads]: http://www.mongodb.org/downloads
 
 [MongoWindowsSvcOptions]: http://www.mongodb.org/display/DOCS/Windows+Service
+
 
 [Image1]: ./media/install-and-run-mongo-on-win2k8-vm/WinFirewall1.png
 [Image2]: ./media/install-and-run-mongo-on-win2k8-vm/WinFirewall2.png
@@ -114,8 +99,8 @@
 [Image4]: ./media/install-and-run-mongo-on-win2k8-vm/WinFirewall4.png
 [Image5]: ./media/install-and-run-mongo-on-win2k8-vm/WinFirewall5.png
 [Image6]: ./media/install-and-run-mongo-on-win2k8-vm/WinFirewall6.png
-[Image7]: ./media/install-and-run-mongo-on-win2k8-vm/WinVmAddEndpoint.png
-[Image8]: ./media/install-and-run-mongo-on-win2k8-vm/WinVmAddEndpoint2.png
-[Image9]: ./media/install-and-run-mongo-on-win2k8-vm/WinVmAddEndpoint3.png
-
-<!---HONumber=Mooncake_1114_2016-->
+[Image7]: ./media/install-and-run-mongo-on-win2k8-vm/menusendpointadd.png
+<!-- Removed 03/08/2017. Not in new portal. -->
+<!-- [Image8]: ./media/install-and-run-mongo-on-win2k8-vm/WinVmAddEndpoint2.png
+-->
+[Image9]: ./media/install-and-run-mongo-on-win2k8-vm/newendpointdetails.png

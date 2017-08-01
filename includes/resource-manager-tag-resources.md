@@ -1,34 +1,30 @@
-1. 若要查看资源或资源组的标记，请选择“标记”图标。
+1. To view the tags for a resource or resource group, select the **Tags** icon. 
 
-     ![在资源和资源组边栏选项卡上选择标记](./media/resource-manager-tag-resources/select-tag-icon.png)  
+     ![Select tags on resource and resource group blades](./media/resource-manager-tag-resources/select-tag-icon.png)
 
-2. 此时将显示资源的现有标记。如果以前未应用标记，则该列表为空。
+2. You see the existing tags for the resource. If you have not previously applied tags, the list is empty. 
 
-     ![显示资源和资源组边栏选项卡上的现有标记](./media/resource-manager-tag-resources/existing-tags.png)  
+     ![Show existing tags on resource and resource group blades](./media/resource-manager-tag-resources/existing-tags.png)
 
-3. 若要添加标记，请键入键和值，或者从下拉菜单中选择现有标记。选择“保存”。
+3. To add a tag, type a key and value, or select an existing one from the dropdown menu. Select **Save**.
 
-     ![添加新标记](./media/resource-manager-tag-resources/tag-resources.png)  
+     ![Add new tag](./media/resource-manager-tag-resources/tag-resources.png)
+3. To view all the resources with a tag value, select **>** (More services), and enter the word **Tags** into the filter text box. Select **Tags** from the available options.
+   
+     ![Find tags via the Browse hub](./media/resource-manager-tag-resources/browse-tags.png)
 
-4. 若要查看具有标记值的所有资源，请选择“>”（更多服务），然后按**标记**筛选。从可用选项中选择“标记”。
+4. You see a summary of the tags in your subscriptions.
 
-     ![通过“浏览”中心查找标记](./media/resource-manager-tag-resources/browse-tags.png)  
+     ![Show all tags](./media/resource-manager-tag-resources/tag-taxonomy.png)
 
-5. 此时将显示订阅中标记的摘要。
+5. Select any of the tags to display the resources and resource groups with that tag.
 
-     ![显示所有标记](./media/resource-manager-tag-resources/tag-taxonomy.png)  
+     ![Show tagged resources](./media/resource-manager-tag-resources/show-tagged-resources.png)
 
-6. 选择任一标记会显示带有该标记的资源和资源组。
+6. Select **Pin blade to dashboard** for quick access.
 
-     ![显示带标记的资源](./media/resource-manager-tag-resources/show-tagged-resources.png)  
+     ![Pin tags to the Dashboard](./media/resource-manager-tag-resources/pin-tag.png)
 
-7. 选择“将边栏选项卡固定到仪表板”以便快速访问。
+7. You can select the pinned tag from the dashboard to see the resources with that tag.
 
-     ![将标记固定到仪表板](./media/resource-manager-tag-resources/pin-tag.png)  
-
-8. 可以从仪表板选择固定的标记以查看具有该标记的资源。
-
-     ![将标记固定到仪表板](./media/resource-manager-tag-resources/show-pinned-tag.png)  
-
-<!---HONumber=Mooncake_0227_2017-->
-<!--Update_Description: new aticle about how to config resource manager tag -->
+     ![Pin tags to the Dashboard](./media/resource-manager-tag-resources/show-pinned-tag.png)

@@ -1,8 +1,6 @@
-资源|默认限制
----|---
-每个可用性集的虚拟机数 | 100 
-每个订阅的证书数|不受限制<sup>1</sup>
+| Resource | Default Limit |
+| --- | --- |
+| Virtual machines per availability set |100 |
+| Certificates per subscription |Unlimited<sup>1</sup> |
 
-<sup>1</sup>使用 Azure 资源管理器时，证书将存储在 Azure 密钥保管库中。尽管订阅的证书数不受限制，但每个部署（由一个 VM 或一个可用性集组成）仍然存在 1 MB 的证书限制。
-
-<!---HONumber=71-->
+<sup>1</sup>With Azure Resource Manager, certificates are stored in the Azure Key Vault. Although the number of certificates is unlimited for a subscription, there is still a 1 MB limit of certificates per deployment (which consists of either a single VM or an availability set).

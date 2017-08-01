@@ -1,6 +1,6 @@
 ---
-title: Web Apps 概述 | Azure
-description: 了解 Azure App Service 如何帮助用户开发和托管 Web 应用程序
+title: Web Apps overview | Azure
+description: Learn how Azure App Service helps you develop and host web applications
 services: app-service\web
 documentationcenter: ''
 author: cephalin
@@ -14,50 +14,45 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
 ms.date: 01/04/2017
-wacn.date: 02/10/2017
+wacn.date: ''
 ms.author: cephalin
+
 ---
+# Web Apps overview
+*App Service Web Apps* is a fully managed compute platform that is optimized for hosting websites and web applications. This [platform-as-a-service](https://en.wikipedia.org/wiki/Platform_as_a_service) (PaaS) offering of Azure lets you focus on your business logic while Azure takes care of the infrastructure to run and scale your apps.
 
-# Web Apps 概述
-*应用服务 Web 应用*是一个完全托管的计算平台，非常适合用来托管网站和 Web 应用程序。Azure 的这个[平台即服务](https://zh.wikipedia.org/wiki/平台即服务) (PaaS) 产品可让用户专注于业务逻辑，而让 Azure 负责处理用来运行和缩放应用的基础结构。
+## What is a web app in App Service?
+In App Service, a *web app* is the compute resources that Azure provides for hosting a website or web application.  
 
->[!VIDEO https://channel9.msdn.com/Shows/Azure-Friday/Azure-App-Service-Web-Apps-with-Yochay-Kiriaty/player]
->
->
+The compute resources may be on shared or dedicated virtual machines (VMs), depending on the pricing tier that you choose. Your application code runs in a managed VM that is isolated from other customers.
 
-## 应用服务中的 Web 应用是什么？
-在应用服务中，*Web 应用*是 Azure 提供用来托管网站或 Web 应用程序的计算资源。
+Your code can be in any language or framework that is supported by [Azure App Service](../app-service/app-service-value-prop-what-is.md), such as ASP.NET, Node.js, Java, PHP, or Python. You can also run scripts that use [PowerShell and other scripting languages](web-sites-create-web-jobs.md#acceptablefiles) in a web app.
 
-该计算资源可能位于共享虚拟机 (VM) 上，也可能位于专用虚拟机上，具体取决于你选择的定价层。你的应用程序代码在独立于其他客户的托管 VM 中运行。
+For examples of typical application scenarios that you can use Web Apps for, see the **Scenarios and recommendations** section of [Azure App Service, Virtual Machines, Service Fabric, and Cloud Services comparison](choose-web-site-cloud-service-vm.md#scenarios).
 
-你的代码可以使用 [Azure App Service](../app-service/app-service-value-prop-what-is.md) 支持的任何语言或框架，例如 ASP.NET、Node.js、Java、PHP 或 Python。也可以在 Web 应用中运行使用 [PowerShell 和其他脚本语言](./web-sites-create-web-jobs.md#acceptablefiles)的脚本。
+## Why use Web Apps?
+Here are some key features of App Service that apply to Web Apps:
 
-有关可使用 Web 应用的典型应用程序的应用场景示例，请参阅 [Azure App Service、虚拟机、Service Fabric 和云服务的比较](./choose-web-site-cloud-service-vm.md#scenarios)的**应用场景和建议**一节。
+* **Multiple languages and frameworks** - App Service has first-class support for ASP.NET, Node.js, Java, PHP, and Python. You can also run [PowerShell and other scripts or executables](web-sites-create-web-jobs.md) on App Service VMs.
+* **DevOps optimization** - Set up [continuous integration and deployment](app-service-continuous-deployment.md) with GitHub. Promote updates through [test and staging environments](web-sites-staged-publishing.md). Perform [A/B testing](app-service-web-test-in-production-get-start.md). Manage your apps in App Service by using [Azure PowerShell](https://docs.microsoft.com/powershell/azureps-cmdlets-docs) or the [cross-platform command-line interface (CLI)](../cli-install-nodejs.md).
+* **Global scale with high availability** - Scale [up](web-sites-scale.md) or [out](../monitoring-and-diagnostics/insights-how-to-scale.md) manually or automatically. Host your apps anywhere in Azure.cn's national datacenter infrastructure, and the App Service [SLA](https://www.azure.cn/support/sla/app-service/) promises high availability.
+* **Connections to SaaS platforms and on-premises data** - Choose from more than 50 connectors for enterprise systems (such as SAP, Siebel, and Oracle), SaaS services (such as Salesforce and Office 365), and internet services. Access on-premises data using [Azure Virtual Networks](app-service-vnet-integration-powershell.md).
+* **Security and compliance** - App Service is [ISO, SOC, and PCI compliant](https://www.trustcenter.cn/).
+* **Visual Studio integration** - Dedicated tools in Visual Studio streamline the work of creating, deploying, and debugging.
 
-## 为何使用 Web Apps？
-以下是适用于 Web 应用的一些主要应用服务功能：
+In addition, a web app can take advantage of features offered by [API Apps](../app-service-api/app-service-api-apps-why-best-platform.md) (such as CORS support) and [Mobile Apps](../app-service-mobile/app-service-mobile-value-prop.md) (such as push notifications). For more information about app types in App Service, see [Azure App Service overview](../app-service/app-service-value-prop-what-is.md).
 
-* **多种语言和框架** — 应用服务为 ASP.NET、Node.js、Java、PHP 和 Python 提供一流支持。也可以在应用服务 VM 上运行 [PowerShell 和其他脚本或可执行文件](./web-sites-create-web-jobs.md)。
-* **开发运营优化** - 使用 GitHub 设置[持续集成和部署](./app-service-continuous-deployment.md)。通过[测试和过渡环境](./web-sites-staged-publishing.md)提升更新。执行 [A/B 测试](./app-service-web-test-in-production-get-start.md)。使用 [Azure PowerShell](https://docs.microsoft.com/powershell/azureps-cmdlets-docs) 或[跨平台命令行接口 (CLI)](../xplat-cli-install.md) 在应用服务中管理应用。
-* **具有高可用性的全局缩放** - 以手动或自动方式[增加](./web-sites-scale.md)或[扩大](../monitoring-and-diagnostics/insights-how-to-scale.md)。在 Azure.cn 全国数据中心基础结构中的任意位置托管应用，并且应用服务 [SLA](https://www.azure.cn/support/sla/app-service/) 承诺高可用性。
-* **连接到 SaaS 平台和本地数据** - 从适用于企业系统（例如 SAP、Siebel 和 Oracle）的 50 多个连接器、SaaS 服务（例如 Salesforce 和 Office 365）以及 Internet 服务中进行选择。使用 [Azure 虚拟网络](./app-service-vnet-integration-powershell.md)访问本地数据。
-* **安全性和合规性** - 应用服务符合 [ISO、SOC 和 PCI](https://www.trustcenter.cn/) 的要求。
-* **Visual Studio 集成** — Visual Studio 中的专用工具可简化创建、部署和调试工作。
+Besides Web Apps in App Service, Azure offers other services that can be used for hosting websites and web applications. For most scenarios, Web Apps is the best choice.  For microservice architecture, consider [Service Fabric](/azure/service-fabric), and if you need more control over the VMs that your code runs on, consider [Azure Virtual Machines](/azure/virtual-machines/). For more information about how to choose between these Azure services, see [Azure App Service, Virtual Machines, Service Fabric, and Cloud Services comparison](choose-web-site-cloud-service-vm.md).
 
-此外，Web 应用可以利用 [API 应用](../app-service-api/app-service-api-apps-why-best-platform.md)提供的功能（例如 CORS 支持）和[移动应用](../app-service-mobile/app-service-mobile-value-prop.md)提供的功能（例如推送通知）。有关应用服务中应用类型的详细信息，请参阅 [Azure App Service 概述](../app-service/app-service-value-prop-what-is.md)。
-
-除了应用服务中的 Web 应用，Azure 还提供可用来托管网站和 Web 应用程序的其他服务。大多数情况下，Web Apps 是最佳选择。对于微服务体系结构，请考虑使用 [Service Fabric](../service-fabric/index.md)；如果需要更好地控制运行代码的 VM，请考虑使用 [Azure 虚拟机](../virtual-machines/index.md)。有关如何在这些 Azure 服务之间做出选择的详细信息，请参阅 [Azure App Service、虚拟机、Service Fabric 和云服务的比较](./choose-web-site-cloud-service-vm.md)。
-
-## 入门
-若要首先在应用服务中向新 Web 应用部署示例代码，请遵循以下下拉框中的教程之一。需要一个 Azure 试用帐户。
+## Getting started
+To get started by deploying sample code to a new web app in App Service, follow one of the tutorials in the following dropdown box. You'll need a trial Azure account.
 
 > [!div class="op_single_selector"]
->- [在 5 分钟内将第一个 HTML 站点部署到 Azure](./app-service-web-get-started-html-cli-nodejs.md)
->- [在 5 分钟内将第一个 ASP.NET Web 应用部署到 Azure](./app-service-web-get-started-dotnet-cli-nodejs.md)
->- [在 5 分钟内将第一个 PHP Web 应用部署到 Azure](./app-service-web-get-started-php-cli-nodejs.md)
->- [在 5 分钟内将第一个 Node.js Web 应用部署到 Azure](./app-service-web-get-started-nodejs-cli-nodejs.md)
->- [在 5 分钟内将第一个 Python Web 应用部署到 Azure](./app-service-web-get-started-python-cli-nodejs.md)
->- [在 5 分钟内将第一个 Java Web 应用部署到 Azure](./app-service-web-get-started-java.md)
-
-<!---HONumber=Mooncake_0206_2017-->
-<!--Update_Description: add selector for the get-started tutorial-->
+> * [Deploy your first ASP.NET web app to Azure in 5 minutes](app-service-web-get-started-dotnet.md)
+> * [Deploy your first PHP web app to Azure in 5 minutes](app-service-web-get-started-php.md)
+> * [Deploy your first Node.js web app to Azure in 5 minutes](app-service-web-get-started-nodejs.md)
+> * [Deploy your first Java web app to Azure in 5 minutes](app-service-web-get-started-java.md)
+> * [Deploy your first Python web app to Azure in 5 minutes](app-service-web-get-started-python.md)
+> * [Deploy your first HTML site to Azure in 5 minutes](app-service-web-get-started-html.md)
+> 
+>

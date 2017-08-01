@@ -1,20 +1,18 @@
-资源|默认限制|最大限制
----|---|---
-每个订阅的核心数 <sup>1</sup>|20|10,000
-每个订阅的协同管理员数|200|200
-每个订阅的[存储帐户数](../articles/storage/storage-create-storage-account.md)<sup>2</sup>|100|100
-每个订阅的[云服务数](../articles/cloud-services/cloud-services-choose-me.md)|20|200
-每个订阅的[本地网络数](http://msdn.microsoft.com/zh-cn/library/jj157100.aspx)|10|500
-每个订阅的 SQL 数据库服务器数|6|150
-每个订阅的 DNS 服务器|9|100
-每个订阅的保留的 IP|20|100
-每个订阅的托管服务证书数|400|400
-每个订阅的[地缘组](../articles/virtual-network/virtual-networks-migrate-to-regional-vnet.md)数|256|256
-每个区域每个订阅的 [Batch](../articles/batch/index.md) 帐户数|1|50
-每个订阅的警报规则数|250|250
+| Resource | Default Limit | Maximum Limit |
+| --- | --- | --- |
+| Cores per subscription <sup>1</sup> |20 |10,000 |
+| Co-administrators per subscription |200 |200 |
+| [Storage accounts](/documentation/articles/storage-create-storage-account/) per subscription<sup>2</sup> |200 |250 |
+| [Cloud services](/documentation/articles/cloud-services-choose-me/) per subscription |20 |200 |
+| [Local networks](http://msdn.microsoft.com/zh-cn/library/jj157100.aspx) per subscription |10 |500 |
+| SQL Database servers per subscription |6 |150 |
+| DNS servers per subscription |9 |100 |
+| Reserved IPs per subscription |20 |100 |
+| Hosted service certificates per subscription |400 |400 |
+| [Affinity groups](/documentation/articles/virtual-networks-migrate-to-regional-vnet/) per subscription |256 |256 |
+| Alert rules per subscription |250 |250 |
 
-<sup>1</sup>特小实例作为一项核心至核心限制计数，即使使用了部分核心。
+<sup>1</sup>Extra Small instances count as one core towards the core limit despite using a partial core.
 
-<sup>2</sup>这包括标准和高级存储帐户。如果需要的存储帐户超过 200 个，请通过 [Azure 支持](https://www.azure.cn/support/faq/)提出请求。Azure 存储空间团队将评审你的业务案例，最多可以批准 250 个存储帐户。
+<sup>2</sup>This includes both Standard and Premium storage accounts. If you require more than 200 storage accounts, make a request through [Azure Support](/support/faq/). The Azure Storage team will review your business case and may approve up to 250 storage accounts. 
 
-<!---HONumber=Mooncake_0905_2016-->

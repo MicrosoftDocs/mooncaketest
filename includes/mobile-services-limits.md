@@ -1,16 +1,14 @@
-| 层： | 免费 | 基本 | 标准 |
+| TIER: | FREE | BASIC | STANDARD |
 |----|----|----|----|
-| API 调用 | 500 K | 1\.5 M/单位 | 15 M/单位 |
-| 活动设备数 | 500 | 不受限制 | 不受限制 |
-| 缩放 | 不适用 | 最多 6 个单位 | 单位数不受限制 |
-| 推送通知 | 包含通知中心免费层，最多 100 万次推送 | 包含通知中心基本层，最多 1000 万次推送 | 包含通知中心标准层，最多 1000 万次推送 |
-| 实时消息传送/<br/>Web 套接字 | 受限制 | 350 / 移动服务 | 不受限制 |
-| 脱机同步 | 受限制 | 附送 | 附送 |
-| 计划的作业 | 受限制 | 附送 | 附送 |
-| SQL 数据库（必需）<br/>对更多的容量应用标准费率 | 附送 20 MB | 附送 20 MB | 附送 20 MB |
-| CPU 容量 | 60 分钟/每天 | 不受限制 | 不受限制 |
-| 出站数据传输 | 每天 165 MB（每日滚动更新） | 附送 | 附送 |
+| API Calls | 500 K | 1.5 M / unit | 15 M / unit |
+| Active Devices | 500 | Unlimited | Unlimited |
+| Scale | N/A | Up to 6 units | Unlimited units |
+| Push Notifications | Notification Hubs Free Tier included, up to 1 M pushes | Notification Hubs Basic Tier included, up to 10 M pushes | Notification Hubs Standard Tier included, up to 10 M pushes |
+| Real time messaging/<br/>Web Sockets | Limited | 350 / mobile service | Unlimited |
+| Offline synchronizations | Limited | Included | Included |
+| Scheduled jobs  | Limited | Included | Included |
+| SQL Database (required) <br/>Standard rates apply for additional capacity | 20 MB included | 20 MB included | 20 MB included |
+| CPU capacity | 60 minutes / day | Unlimited | Unlimited |
+| Outbound data transfer | 165 MB per day (daily Rollover) | Included | Included |
 
-有关这些限制的更多详细信息以及有关定价的信息，请参阅[移动服务定价](https://www.azure.cn/pricing/details/mobile-services/)。
-
-<!---HONumber=71-->
+For additional details on these limits and for information on pricing, see [Mobile Services Pricing](https://azure.microsoft.com/pricing/details/mobile-services/).

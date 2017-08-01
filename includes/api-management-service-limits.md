@@ -1,11 +1,9 @@
-| 资源 | 限制 |
+| Resource                          | Limit                                    |
 |-----------------------------------|------------------------------------------|
-| API 调用（每个缩放单位） | 每天 3200 万次<sup>1</sup> |
-| 数据传输（每个缩放单位） | 每天 161 GB<sup>1</sup> |
-| 缓存 | 5 GB<sup>1</sup> |
-| 缩放单位 | 无限制<sup>1</sup> |
-| Azure Active Directory 集成| 无限制的用户帐户<sup>1</sup> |
+| API Calls (per unit of scale)     | 32 million per day<sup>1</sup>            |
+| Data transfer (per unit of scale) | 161 GB per day<sup>1</sup> |
+| Cache                             | 5 GB<sup>1</sup> |
+| Units of scale                    | Unlimited<sup>1</sup> |
+| Azure Active Directory Integration| Unlimited User Accounts<sup>1</sup> |
 
-<sup>1</sup>每个定价层的 API 管理限制不同。
-
-<!---HONumber=Mooncake_1207_2015-->
+<sup>1</sup>API Management limits are different for each pricing tier. To see the pricing tiers and their associated limits and scaling options, see [API Management Pricing](http://azure.microsoft.com/pricing/details/api-management/).

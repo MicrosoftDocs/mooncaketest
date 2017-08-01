@@ -1,15 +1,13 @@
-可以在 [Azure 门户预览](https://portal.azure.cn)中使用“浏览”边栏选项卡访问缓存。
+Caches can be accessed in the [Azure portal preview](https://portal.azure.cn) using the **Browse** blade.
 
-![Azure Redis 缓存浏览边栏选项卡](./media/redis-cache-browse/redis-cache-browse.png)  
+![Azure Redis Cache Browse Blade](./media/redis-cache-browse/redis-cache-browse.png)
 
-若要查看缓存，请单击“更多服务”>“Redis 缓存”。如果你最近浏览过 Redis 缓存，则可以从列表中直接单击“Redis 缓存”，而无需单击“更多服务”。
+To view your caches, click **More services > Redis Caches**. If you have recently browsed to a Redis Cache, you can click **Redis Caches** directly from the list without clicking **More services**.
 
-选择所需的缓存查看并配置其设置。
+Select the desired cache to view and configure the settings for that cache.
 
-![Azure Redis 缓存浏览缓存列表](./media/redis-cache-browse/redis-caches.png)  
+![Azure Redis Cache Browse Cache List](./media/redis-cache-browse/redis-caches.png)
 
-可以通过“Redis 缓存”边栏选项卡查看并配置缓存。
+You can view and configure your cache from the **Redis Cache** blade.
 
-![Redis 缓存的所有设置](./media/redis-cache-browse/redis-cache-blade.png)  
-
-<!---HONumber=Mooncake_0206_2017-->
+![Redis Cache All Settings](./media/redis-cache-browse/redis-cache-blade.png)

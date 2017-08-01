@@ -1,9 +1,7 @@
-资源 | 软性限制
+Resource | Soft limit
 ---------|-----------
-CDN 配置文件 | 8
-每个配置文件的 CDN 终结点数 | 10
-每个终结点的自定义域数 | 10 
+CDN profiles | 8
+CDN endpoints per profile | 10
+Custom domains per endpoint | 10 
 
-通过打开支持票证请求更新订阅的软限制。
-
-<!---HONumber=Mooncake_1017_2016-->
+Request an update to your subscription's soft limits by opening a support ticket.

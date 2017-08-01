@@ -1,22 +1,19 @@
-1. 在门户左侧单击“+”，然后在搜索中键入"虚拟网络网关"。在搜索返回结果中找到“虚拟网络网关”，然后单击该条目。在“虚拟网络网关”边栏选项卡中，单击底部的“创建”。这会打开“创建虚拟网络网关”边栏选项卡。
-2. 在“创建虚拟网络网关”边栏选项卡中，填写虚拟网络网关的值。
+1. In the portal, on the left side, click **+** and type "Virtual Network Gateway" in search. Locate **Virtual network gateway** in the search return and click the entry. On the **Virtual network gateway** blade, click **Create** at the bottom of the blade. This opens the **Create virtual network gateway** blade.
+2. On the **Create virtual network gateway** blade, fill in the values for your virtual network gateway.
 
-    ![创建虚拟网络网关边栏选项卡字段](./media/vpn-gateway-add-gw-rm-portal-include/createvng.png "创建虚拟网络网关边栏选项卡字段")  
+    ![Create virtual network gateway blade fields](./media/vpn-gateway-add-gw-rm-portal-include/createvng.png "Create virtual network gateway blade fields")
+3. **Name**: Name your gateway. This is not the same as naming a gateway subnet. It's the name of the gateway object you are creating.
+4. **Gateway type**: Select **VPN**. VPN gateways use the virtual network gateway type **VPN**. 
+5. **VPN type**: Select the VPN type that is specified for your configuration. Most configurations require a Route-based VPN type.
+6. **SKU**: Select the gateway SKU from the dropdown. The SKUs listed in the dropdown depend on the VPN type you select.
+7. **Location**: Adjust the **Location** field to point to the location where your virtual network is located. If the location is not pointing to the region where your virtual network resides, the virtual network will not appear in the 'Choose a virtual network' dropdown.
+8. Choose the virtual network to which you want to add this gateway. Click **Virtual network** to open the **Choose a virtual network** blade. Select the VNet. If you don't see your VNet, make sure the **Location** field is pointing to the region in which your virtual network is located.
+9. Choose a public IP address. Click **Public IP address** to open the **Choose public IP address** blade. Click **+Create New** to open the **Create public IP address blade**. Input a name for your public IP address. This blade creates a public IP address object to which a public IP address will be dynamically assigned.<br>Click **OK** to save your changes to this blade.
+10. **Subscription**: Verify that the correct subscription is selected.
+11. **Resource group**: This setting is determined by the Virtual Network that you select. 
+12. Don't adjust the **Location** after you've specified the previous settings.
+13. Verify the settings. You can select **Pin to dashboard** at the bottom of the blade if you want your gateway to appear on the dashboard.
+14. Click **Create** to begin creating the gateway. The settings will be validated and you'll see the "Deploying Virtual network gateway" tile on the dashboard. Creating a gateway can take up to 45 minutes. You may need to refresh your portal page to see the completed status.
 
-3. **名称**：为网关命名。这与为网关子网命名不同。它是要创建的网关对象的名称。
-4. **网关类型**：选择“VPN”。VPN 网关使用虚拟网络网关类型“VPN”。
-5. **VPN 类型**：选择为配置指定的 VPN 类型。大多数配置要求基于路由的 VPN 类型。
-6. **SKU**：从下拉列表中选择网关 SKU。下拉列表中列出的 SKU 取决于选择的 VPN 类型。
-7. **位置**：调整“位置”字段，使其指向虚拟网络所在的位置。如果位置不指向虚拟网络所在的区域，则虚拟网络不会在“选择虚拟网络”下拉列表中出现。
-8. 选择要将此网关添加到其中的虚拟网络。单击“虚拟网络”打开“选择虚拟网络”边栏选项卡。选择 VNet。如果看不到 VNet，请确保“位置”字段指向虚拟网络所在的区域。
-9. 选择公共 IP 地址。单击“公共 IP 地址”打开“选择公共 IP 地址”边栏选项卡。单击“+新建”打开“创建公共 IP 地址”边栏选项卡。输入公共 IP 地址的名称。此边栏选项卡创建公共 IP 地址对象，系统会将公共 IP 地址动态分配给该对象。<br>单击“确定”保存对此边栏选项卡所做的更改。
-10. **订阅**：确保选择正确的订阅。
-11. **资源组**：此设置取决于选择的虚拟网络。
-12. 指定上述设置后请不要调整“位置”。
-13. 验证设置。如果希望网关显示在仪表板上，可以在边栏选项卡底部选择“固定到仪表板”。
-14. 单击“创建”开始创建网关。将会验证这些设置，并会在仪表板上看到“正在部署虚拟网络网关”磁贴。创建网关最多可能需要 45 分钟。你可能需要刷新门户页才能看到完成状态。
-
-    ![部署虚拟网络网关](./media/vpn-gateway-add-gw-rm-portal-include/deployvnetgw150.png "部署虚拟网络网关")
-15. 创建网关后，可以通过在门户中查看虚拟网络，来查看已分配给网关的 IP 地址。网关将显示为连接的设备。可以单击连接的设备（虚拟网络网关），查看详细信息。
-
-<!---HONumber=Mooncake_0206_2017-->
+    ![Deploying Virtual network gateway](./media/vpn-gateway-add-gw-rm-portal-include/deployvnetgw150.png "Deploying Virtual network gateway")
+15. After the gateway is created, you can view the IP address that has been assigned to it by looking at the virtual network in the portal. The gateway will appear as a connected device. You can click the connected device (your virtual network gateway) to view more information.

@@ -1,6 +1,6 @@
 The previous example showed a standard sign-in, which requires the client to contact both the identity provider and the back-end Azure service every time the app starts. This method is inefficient, and you can have usage-related issues if many customers try to start your app simultaneously. A better approach is to cache the authorization token returned by the Azure service, and try to use this first before using a provider-based sign-in.
 
-> [AZURE.NOTE]
+> [!NOTE]
 > You can cache the token issued by the back-end Azure service regardless of whether you are using client-managed or service-managed authentication. This tutorial uses service-managed authentication.
 >
 >
@@ -28,10 +28,10 @@ The previous example showed a standard sign-in, which requires the client to con
 
     This method stores the user ID and token in a preference file that is marked private. This should protect access to the cache so that other apps on the device do not have access to the token. The preference is sandboxed for the app. However, if someone gains access to the device, it is possible that they may gain access to the token cache through other means.
 
-    > [AZURE.NOTE]
-    > You can further protect the token with encryption, if token access to your data is considered highly sensitive and someone may gain access to the device. A completely secure solution is beyond the scope of this tutorial, however, and depends on your security requirements.
-    >
-    >
+   > [!NOTE]
+   > You can further protect the token with encryption, if token access to your data is considered highly sensitive and someone may gain access to the device. A completely secure solution is beyond the scope of this tutorial, however, and depends on your security requirements.
+   >
+   >
 4. In the ToDoActivity.java file, add the following definition for the `loadUserTokenCache` method.
 
         private boolean loadUserTokenCache(MobileServiceClient client)

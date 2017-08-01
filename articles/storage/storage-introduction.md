@@ -1,6 +1,6 @@
 ---
-title: Azure 存储简介 | Azure
-description: Microsoft 的云中在线数据存储 - Azure 存储空间的概述。了解如何在应用程序中使用最佳的云存储解决方案。
+title: Introduction to Azure Storage | Microsoft Docs
+description: An overview of Azure Storage, Microsoft's online data storage in the cloud. Learn how to use the best available cloud storage solution in your applications.
 services: storage
 documentationcenter: ''
 author: mmacy
@@ -13,236 +13,225 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 02/02/2017
-wacn.date: 03/20/2017
+ms.date: 02/24/2017
 ms.author: marsma
+
 ---
+# Introduction to Azure Storage
 
-# Azure 存储简介
-## 概述
-Azure 存储空间是依赖于持续性、可用性和可缩放性来满足客户需求的现代应用程序的云存储解决方案。通过阅读本文章，开发人员、IT 专业人员和业务决策人员可以了解：
+## Overview
+Azure Storage is the cloud storage solution for modern applications that rely on durability, availability, and scalability to meet the needs of their customers. By reading this article, developers, IT Pros, and business decision makers can learn about:
 
-- 什么是 Azure 存储服务，以及如何在你的云、移动、服务器和桌面应用程序中利用它
-- 使用 Azure 存储服务可以存储哪种数据：Blob（对象）数据、NoSQL 表数据、队列消息和文件共享。
-- 在 Azure 存储服务中如何管理对你的数据的访问
-- 如何通过冗余和复制确保 Azure 存储数据的持久性
-- 接下来要到何处去构建你的第一个 Azure 存储应用程序
+* What Azure Storage is, and how you can take advantage of it in your cloud, mobile, server, and desktop applications
+* What kinds of data you can store with the Azure Storage services: blob (object) data, NoSQL table data, queue messages, and file shares.
+* How access to your data in Azure Storage is managed
+* How your Azure Storage data is made durable via redundancy and replication
+* Where to go next to build your first Azure Storage application
 
-若要快速启动并运行 Azure 存储服务，请参阅[在 5 分钟内开始使用 Azure 存储空间](./storage-getting-started-guide.md)
+To get up and running with Azure Storage quickly, see [Get started with Azure Storage in five minutes](storage-getting-started-guide.md).
 
-有关可配合 Azure 存储空间使用的工具、库和其他资源的详细信息，请参阅下面的[后续步骤](#next-steps)。
+For details on tools, libraries, and other resources for working with Azure Storage, see [Next Steps](#next-steps) below.
 
-## 什么是 Azure 存储服务？
+## What is Azure Storage?
+Cloud computing enables new scenarios for applications requiring scalable, durable, and highly available storage for their data – which is exactly why Microsoft developed Azure Storage. In addition to making it possible for developers to build large-scale applications to support new scenarios, Azure Storage also provides the storage foundation for Azure Virtual Machines, a further testament to its robustness.
 
-对于需要为其数据使用可伸缩的、持久的且具有高可用性的存储的应用程序，云计算使其有了新的方案可供选择，这正是 Microsoft 开发 Azure 存储服务的原因。除了使开发人员可以构建大型应用程序来支持新方案之外，Azure 存储服务还为 Azure 虚拟机提供了存储基础，进一步证明其可靠性。 
+Azure Storage is massively scalable, so you can store and process hundreds of terabytes of data to support the big data scenarios required by scientific, financial analysis, and media applications. Or you can store the small amounts of data required for a small business website. Wherever your needs fall, you pay only for the data you’re storing. Azure Storage currently stores tens of trillions of unique customer objects, and handles millions of requests per second on average.
 
-Azure 存储服务可以大规模伸缩，因此你可以存储和处理数百 TB 的数据来支持科学、财务分析和媒体应用程序所需的大数据方案。你也可以存储小型商业网站所需的少量数据。当你的需求降低时，你只需要为你当前存储的数据支付费用。Azure 存储服务当前存储了数十万亿个唯一的客户对象，平均每秒处理数百万个请求。 
+Azure Storage is elastic, so you can design applications for a large global audience, and scale those applications as needed - both in terms of the amount of data stored and the number of requests made against it. You pay only for what you use, and only when you use it.
 
-Azure 存储服务是弹性的，因此你可以针对大量的全球受众设计应用程序，并根据需要伸缩这些应用程序 - 在存储的数据量和针对它发出的请求数两个方面。你只需要为你使用的内容付费，并且只需要在你使用它时付费。
+Azure Storage uses an auto-partitioning system that automatically load-balances your data based on traffic. This means that as the demands on your application grow, Azure Storage automatically allocates the appropriate resources to meet them.
 
-Azure 存储服务使用了一个自动分区系统，它可以根据流量自动对你的数据进行负载均衡。这意味着当你的应用程序上的需求增长时，Azure 存储服务会自动分配合适的资源来满足这些需求。 
+Azure Storage is accessible from anywhere in the world, from any type of application, whether it’s running in the cloud, on the desktop, on an on-premises server, or on a mobile or tablet device. You can use Azure Storage in mobile scenarios where the application stores a subset of data on the device and synchronizes it with a full set of data stored in the cloud.
 
-可以从世界上的任何位置从任何类型的应用程序访问 Azure 存储服务，无论该应用程序是在云中、在桌面上、在本地服务器上运行还是在移动设备或平板电脑设备上运行。你可以将 Azure 存储服务用于移动方案，在这类方案中，应用程序在设备上存储一部分数据，并将其与存储在云中的完整数据集进行同步。
+Azure Storage supports clients using a diverse set of operating systems (including Windows and Linux) and a variety of programming languages (including .NET, Java, Node.js, Python, Ruby, PHP and C++ and mobile programming languages) for convenient development. Azure Storage also exposes data resources via simple REST APIs, which are available to any client capable of sending and receiving data via HTTP/HTTPS.
 
-Azure 存储服务支持使用各种操作系统（包括 Windows 和 Linux）及各种编程语言（包括 .NET、Java、Node.js、Python、Ruby、PHP、C++ 和移动编程语言）的客户端以方便开发。Azure 存储服务还通过简单的 REST API 公开数据资源，这些 REST API 可供能够通过 HTTP/HTTPS 发送和接收数据的任何客户端使用。
+Azure Premium Storage delivers high-performance, low-latency disk support for I/O intensive workloads running on Azure Virtual Machines. With Azure Premium Storage, you can attach multiple persistent data disks to a virtual machine and configure them to meet your performance requirements. Each data disk is backed by an SSD disk in Azure Premium Storage for maximum I/O performance. See [Premium Storage: High-Performance Storage for Azure Virtual Machine Workloads](storage-premium-storage.md) for more details.
 
-Azure 高级存储提供高性能、低延迟的磁盘支持，适合在 Azure 虚拟机上运行的 I/O 密集型工作负载。有了 Azure 高级存储，你就可以将多个持久性数据磁盘附加到虚拟机，并根据性能要求对其进行配置。每个数据磁盘在 Azure 高级存储中都有一个后备 SSD 磁盘，以确保最高的 I/O 性能。有关详细信息，请参阅[高级存储：适用于 Azure 虚拟机工作负荷的高性能存储](./storage-premium-storage.md)。
+## Introducing the Azure Storage services
+Azure storage provides the following four services: Blob storage, Table storage, Queue storage, and File storage.
 
-## Azure 存储服务介绍
-Azure 存储空间提供以下四种服务：Blob 存储、表存储、队列存储和文件存储。
+* Blob Storage stores unstructured object data. A blob can be any type of text or binary data, such as a document, media file, or application installer. Blob storage is also referred to as Object storage.
+* Table Storage stores structured datasets. Table storage is a NoSQL key-attribute data store, which allows for rapid development and fast access to large quantities of data.
+* Queue Storage provides reliable messaging for workflow processing and for communication between components of cloud services.
+* File Storage offers shared storage for legacy applications using the standard SMB protocol. Azure virtual machines and cloud services can share file data across application components via mounted shares, and on-premises applications can access file data in a share via the File service REST API.
 
-* Blob 存储用于存储非结构化对象数据。Blob 可以是任何类型的文本或二进制数据，例如文档、媒体文件或应用程序安装程序。Blob 存储也称为对象存储。
-* 表存储用于存储结构化数据集。表存储是一个 NoSQL“键-属性”数据存储，可以用于实现快速开发以及快速访问大量数据。
-* 队列存储为云服务的各个组件之间的工作流处理和通信提供可靠的消息传送。
-* 文件存储使用标准 SMB 协议为旧版应用程序提供共享存储。Azure 虚拟机和云服务可通过装载的共享在应用程序组件之间共享文件数据，本地应用程序可通过文件服务 REST API 来访问共享中的文件数据。
+An Azure storage account is a secure account that gives you access to services in Azure Storage. Your storage account provides the unique namespace for your storage resources. The image below shows the relationships between the Azure storage resources in a storage account:
 
-Azure 存储帐户是一个安全的帐户，它向你授予对 Azure 存储空间中服务的访问权限。你的存储帐户为你的存储资源提供唯一的命名空间。下图显示了存储帐户中各种 Azure 存储资源之间的关系：
-
-![Azure 存储资源](./media/storage-introduction/storage-concepts.png)  
+![Azure Storage Resources](./media/storage-introduction/storage-concepts.png)
 
 [!INCLUDE [storage-account-types-include](../../includes/storage-account-types-include.md)]
 
 [!INCLUDE [storage-versions-include](../../includes/storage-versions-include.md)]
 
-## <a name="blob-storage"></a> Blob 存储
+## Blob storage
+For users with large amounts of unstructured object data to store in the cloud, Blob storage offers a cost-effective and scalable solution. You can use Blob storage to store content such as:
 
-对于有大量非结构化对象数据要存储在云中的用户，Blob 存储提供了一种经济高效且可伸缩的解决方案。你可以使用 Blob 存储来存储如下内容：
+* Documents
+* Social data such as photos, videos, music, and blogs
+* Backups of files, computers, databases, and devices
+* Images and text for web applications
+* Configuration data for cloud applications
+* Big data, such as logs and other large datasets
 
-* 文档
-* 社交数据，例如照片、视频、音乐和博客
-* 文件、计算机、数据库和设备的备份
-* Web 应用程序的图像和文本
-* 云应用程序的配置数据
-* 大数据，例如日志和其他大型数据集
+Every blob is organized into a container. Containers also provide a useful way to assign security policies to groups of objects. A storage account can contain any number of containers, and a container can contain any number of blobs, up to the 500 TB capacity limit of the storage account.
 
-每个 Blob 都组织到一个容器中。容器还提供了一种有用的方式来向对象组分配安全策略。一个存储帐户可以包含任意数目的容器，一个容器可以包含任意数目的 Blob，直至达到存储帐户的容量限制 500 TB。
+Blob storage offers three types of blobs, block blobs, append blobs, and page blobs (disks).
 
-Blob 存储提供三种类型的 Blob：块 Blob、追加 Blob 和页 Blob（磁盘）。
+* Block blobs are optimized for streaming and storing cloud objects, and are a good choice for storing documents, media files, backups etc.
+* Append blobs are similar to block blobs, but are optimized for append operations. An append blob can be updated only by adding a new block to the end. Append blobs are a good choice for scenarios such as logging, where new data needs to be written only to the end of the blob.
+* Page blobs are optimized for representing IaaS disks and supporting random writes, and may be up to 1 TB in size. An Azure virtual machine network attached IaaS disk is a VHD stored as a page blob.
 
-* 块 Blob 进行了相应的优化来流化和存储云对象，并且是用于存储文档、介质文件和备份等对象的不错选择。
-* 追加 Blob 类似于块 Blob，但针对追加追加操作进行了优化。追加 Blob 仅可以通过将新的块添加到末尾来进行更新。对于需要新数据只能写入到 Blob 结尾的情况，例如日志记录，追加 Blob 是一个不错的选择 。
-* 页 Blob 进行了相应的优化来表示 IaaS 磁盘和支持随机写入，并且最大可以为 1 TB。Azure 虚拟机网络连接的 IaaS 磁盘是一个 VHD，存储为页 Blob。
+For very large datasets where network constraints make uploading or downloading data to Blob storage over the wire unrealistic, you can ship a hard drive to 21VNET to import or export data directly from the data center. See [Use the Azure Import/Export Service to Transfer Data to Blob Storage](./storage-import-export-service.md). 
 
-对于网络限制使得通过线缆向 Blob 存储上传或从其下载数据不可行的每个大型数据集，你可以将硬盘驱动器发送到 21 世纪互联以直接通过数据中心导入或导出数据。请参阅[使用 Azure 导入/导出服务将数据传输到 Blob 存储中](./storage-import-export-service.md)。
+## Table storage
+Modern applications often demand data stores with greater scalability and flexibility than previous generations of software required. Table storage offers highly available, massively scalable storage, so that your application can automatically scale to meet user demand. Table storage is Azure’s NoSQL key/attribute store – it has a schemaless design, making it different from traditional relational databases. With a schemaless data store, it's easy to adapt your data as the needs of your application evolve. Table storage is easy to use, so developers can create applications quickly. Access to data is fast and cost-effective for all kinds of applications.  Table storage is typically significantly lower in cost than traditional SQL for similar volumes of data.
 
-## 表存储
-与前几代的必需软件相比，现代应用程序通常要求数据存储具有更高的可伸缩性和灵活性。表存储提供了具有高可用性且可大规模伸缩的存储，因此你的应用程序可以自动伸缩以满足用户需求。表存储是 Windows 的 NoSQL 键/属性存储 - 它具有无模式的设计，使其不同于传统的关系数据库。采用无模式的数据存储，可以很容易地随着你的应用程序需求的发展使数据适应存储。表存储易于使用，因此开发人员可以快速创建应用程序。对于所有类型的应用程序，都可以快速并经济高效地访问数据。对于相似的数据量，表存储的成本通常显著低于传统的 SQL。
+Table storage is a key-attribute store, meaning that every value in a table is stored with a typed property name. The property name can be used for filtering and specifying selection criteria. A collection of properties and their values comprise an entity. Since Table storage is schemaless, two entities in the same table can contain different collections of properties, and those properties can be of different types.
 
-表存储是一种“键-属性”存储，这意味着表中的每个值都是随所键入的一个属性名称存储的。属性名称可以用来筛选和指定选择条件。属性集合及其值构成了实体。因为表存储是无模式的，因此同一表中的两个实体可以包含不同的属性集合，并且这些属性可以属于不同的类型。
+You can use Table storage to store flexible datasets, such as user data for web applications, address books, device information, and any other type of metadata that your service requires.  You can store any number of entities in a table, and a storage account may contain any number of tables, up to the capacity limit of the storage account.
 
-你可以使用表存储来存储灵活的数据集，例如 Web 应用程序的用户数据、通讯簿、设备信息，以及你的服务需要的任何其他类型的元数据。可以在表中存储任意数量的实体，并且一个存储帐户可以包含任意数量的表，直至达到存储帐户的容量极限。
+Like Blobs and Queues, developers can manage and access Table storage using standard REST protocols, however Table storage also supports a subset of the OData protocol, simplifying advanced querying capabilities and enabling both JSON and AtomPub (XML based) formats.
 
-像 Blob 和队列一样，开发人员可以使用标准 REST 协议来管理和访问表存储，不过，表存储还支持 OData 协议的一个子集，这简化了高级查询功能并支持 JSON 和 AtomPub（基于 XML）格式。
+For today's Internet-based applications, NoSQL databases like Table storage offer a popular alternative to traditional relational databases.
 
-对于当前的基于 Internet 的应用程序，NoSQL 数据库（例如表存储）提供了一种用于替代传统的关系数据库的主流方式。
+## Queue storage
+In designing applications for scale, application components are often decoupled, so that they can scale independently. Queue storage provides a reliable messaging solution for asynchronous communication between application components, whether they are running in the cloud, on the desktop, on an on-premises server, or on a mobile device. Queue storage also supports managing asynchronous tasks and building process workflows.
 
-## 队列存储
-在设计应用程序以实现可伸缩性时，通常要将各个应用程序组件分离，使其可以独立地进行伸缩。队列存储为在应用程序组件之间进行异步通信提供了一种可靠的消息传送解决方案，无论这些应用程序组件是在云中、在桌面上、在本地服务器上运行还是在移动设备上运行。队列存储还支持管理异步任务以及构建过程工作流。
+A storage account can contain any number of queues. A queue can contain any number of messages, up to the capacity limit of the storage account. Individual messages may be up to 64 KB in size.
 
-一个存储帐户可以包含任意数目的队列。队列可以包含任意数量的消息，直至达到存储帐户的容量极限。每条消息最大可以为 64 KB。
+## File storage
+Azure File storage offers cloud-based SMB file shares, so that you can migrate legacy applications that rely on file shares to Azure quickly and without costly rewrites. With Azure File storage, applications running in Azure virtual machines or cloud services can mount a file share in the cloud, just as a desktop application mounts a typical SMB share. Any number of application components can then mount and access the File storage share simultaneously.
 
-## 文件存储
-Azure 文件存储提供了基于云的 SMB 文件共享，这样你可以将依赖文件共享的旧版应用程序快速迁移到 Azure 且无成本高昂的重写。使用 Azure 文件存储，在 Azure 虚拟机或云服务中运行的应用程序可以在云中装载文件共享，就像桌面应用程序装载典型的 SMB 共享一样。之后，任意数量的应用程序组件可以装载并同时访问文件存储共享。
+Since a File storage share is a standard SMB file share, applications running in Azure can access data in the share via file system I/O APIs. Developers can therefore leverage their existing code and skills to migrate existing applications. IT Pros can use PowerShell cmdlets to create, mount, and manage File storage shares as part of the administration of Azure applications.
 
-由于文件存储共享是标准的 SMB 文件共享，在 Azure 中运行的应用程序可以通过文件系统 I/O API 访问共享中的数据。因此，开发人员可以利用其现有代码和技术迁移现有应用程序。IT 专业人员在管理 Azure 应用程序的过程中，可以使用 PowerShell cmdlet 来创建、装载和管理文件存储共享。
+Like the other Azure storage services, File storage exposes a REST API for accessing data in a share. On-premise applications can call the File storage REST API to access data in a file share. This way, an enterprise can choose to migrate some legacy applications to Azure and continue running others from within their own organization. Note that mounting a file share is only possible for applications running in Azure; an on-premises application may only access the file share via the REST API.
 
-像其他 Azure 存储服务一样，文件存储可供 REST API 使用以便访问共享中的数据。本地应用程序可以调用文件存储 REST API 以访问文件共享中的数据。这样，企业就可以选择将某些旧版应用程序迁移到 Azure，并且在其自己的组织内继续运行其他应用程序。注意，装载文件共享只适用于在 Azure 中运行的应用程序；本地应用程序只能通过 REST API 访问文件共享。
+Distributed applications can also use File storage to store and share useful application data and development and testing tools. For example, an application may store configuration files and diagnostic data such as logs, metrics, and crash dumps in a File storage share so that they are available to multiple virtual machines or roles. Developers and administrators can store utilities that they need to build or manage an application in a File storage share that is available to all components, rather than installing them on every virtual machine or role instance.
 
-分布式应用程序也可以使用文件存储来存储和共享有用的应用程序数据以及开发和测试工具。例如，应用程序可能会在文件存储共享中存储配置文件和诊断数据，例如日志、指标以及故障转储，从而供多个虚拟机或角色使用。开发人员和管理员可以将生成或管理应用程序所需的实用程序存储在一个可供所有组件使用的文件存储共享中，而不是将它们安装在每个虚拟机或角色实例上。
+## Access to Blob, Table, Queue, and File resources
+By default, only the storage account owner can access resources in the storage account. For the security of your data, every request made against resources in your account must be authenticated. Authentication relies on a Shared Key model. Blobs can also be configured to support anonymous authentication.
 
-## 访问 Blob、表、队列和文件资源
-默认情况下，只有存储帐户所有者可以访问存储帐户中的资源。为保证你的数据的安全性，对你帐户中的资源发出的每个请求都必须进行身份验证。身份验证依赖于一个共享密钥模型。还可以将 Blob 配置为支持异步身份验证。
+Your storage account is assigned two private access keys on creation that are used for authentication. Having two keys ensures that your application remains available when you regularly regenerate the keys as a common security key management practice.
 
-在创建你的存储帐户时为其分配了两个用于身份验证的私有访问密钥。设置两个密钥可以确保你的应用程序在你定期重新生成密钥（这是一种常用的安全密钥管理做法）时仍然保持可用。
+If you do need to allow users controlled access to your storage resources, then you can create a shared access signature. A shared access signature (SAS) is a token that can be appended to a URL that enables delegated access to a storage resource. Anyone who possesses the token can access the resource it points to with the permissions it specifies, for the period of time that it is valid. Beginning with version 2015-04-05, Azure Storage supports two kinds of shared access signatures: service SAS and account SAS.
 
-如果你不需要为你的存储资源实施用户受控访问，则可以创建一个共享访问签名。共享访问签名是一个可以附加到 URL 的令牌，可以实现对存储资源的委托访问。持有令牌的任何人都可以在令牌有效期间使用它指定的权限访问它指向的资源。从 2015-04-05 版开始，Azure 存储空间支持两种类型的共享访问签名：服务 SAS 和帐户 SAS。
+The service SAS delegates access to a resource in just one of the storage services: the Blob, Queue, Table, or File service.
 
-服务 SAS 只能委派对以下一个存储服务中的资源的访问权限：Blob、队列、表或文件服务。
+An account SAS delegates access to resources in one or more of the storage services. You can delegate access to service-level operations that are not available with a service SAS. You can also delegate access to read, write, and delete operations on blob containers, tables, queues, and file shares that are not permitted with a service SAS.
 
-帐户 SAS 可委派对一个或多个存储服务中的资源的访问权限。你可以委派对服务级别操作的访问权限，而这是服务 SAS 所无法提供的。你还可以委派对 blob 容器、表、队列和文件共享执行读取、写入和删除操作的访问权限，而这是服务 SAS 所不允许的。
+Finally, you can specify that a container and its blobs, or a specific blob, are available for public access. When you indicate that a container or blob is public, anyone can read it anonymously; no authentication is required.  Public containers and blobs are useful for exposing resources such as media and documents that are hosted on websites.  To decrease network latency for a global audience, you can cache blob data used by websites with the Azure CDN.
 
-最后，你可以指定一个容器及其 Blob 或某个特定的 Blob 可供公开访问。当你指定某个容器或 Blob 为公用的时，任何人都可以匿名读取它，不需要进行身份验证。公用容器和 Blob 非常适用于公开在网站上托管的资源，例如媒体和文档。若要降低全球受众的网络延迟，你可以通过 Azure CDN 来缓存网站使用的 Blob 数据。
+See [Using Shared Access Signatures (SAS)](storage-dotnet-shared-access-signature-part-1.md) for more information on shared access signatures. See [Manage anonymous read access to containers and blobs](storage-manage-access-to-resources.md) and [Authentication for the Azure Storage Services](https://msdn.microsoft.com/library/azure/dd179428.aspx) for more information on secure access to your storage account.
 
-有关共享访问签名的详细信息，请参阅[使用共享访问签名 (SAS)](./storage-dotnet-shared-access-signature-part-1.md)。有关安全访问你的存储帐户的详细信息，请参阅[管理对容器和 Blob 的匿名读取访问](./storage-manage-access-to-resources.md)和 [Azure 存储服务身份验证](https://msdn.microsoft.com/zh-cn/library/azure/dd179428.aspx)。
+## Replication for durability and high availability
+The data in your Azure storage account is always replicated to ensure durability and high availability. Replication copies your data, either within the same data center, or to a second data center, depending on which replication option you choose. Replication protects your data and preserves your application up-time in the event of transient hardware failures. If your data is replicated to a second data center, that also protects your data against a catastrophic failure in the primary location.
 
-## <a name="replication-for-durability-and-high-availability"></a> 用于实现持久性和高可用性的复制
-始终复制 Azure 存储帐户中的数据，确保持久性和高可用性。根据所选的复制选项，复制操作将在同一数据中心内复制数据或将其复制到辅助数据中心。发生临时硬件故障时，复制会保护数据，并保证应用程序继续正常运行。如果将数据复制到辅助数据中心，主位置发生灾难性故障时，这也可保护数据。
+Replication ensures that your storage account meets the [Service-Level Agreement (SLA) for Storage](https://www.azure.cn/support/sla/storage/) even in the face of failures. See the SLA for information about Azure Storage guarantees for durability and availability. 
 
-即使遇到故障，复制也可确保存储帐户满足[存储的服务级别协议 (SLA)](https://www.azure.cn/support/sla/storage/)。有关 Azure 存储的持久性和可用性保证信息，请参阅 SLA。
+When you create a storage account, you can select one of the following replication options:
 
-创建存储帐户时，可选择以下复制选项之一：
+* **Locally redundant storage (LRS).** Locally redundant storage maintains three copies of your data. LRS is replicated three times within a single data center in a single region. LRS protects your data from normal hardware failures, but not from the failure of a single data center.
 
-- **本地冗余存储 (LRS)。** 本地冗余存储保留数据的三个副本。LRS 在单个区域中的单个数据中心内复制三次。LRS 可以保护数据免受普通的硬件故障损害，但无法保护数据免受单个数据中心故障的损害。
+    LRS is offered at a discount. For maximum durability, we recommend that you use geo-redundant storage, described below.
 
-    LRS 以折扣价格提供。为获得最大持久性，我们建议你使用下文所述的地域冗余存储。
+* **Geo-redundant storage (GRS)**. GRS maintains six copies of your data. With GRS, your data is replicated three times within the primary region, and is also replicated three times in a secondary region hundreds of miles away from the primary region, providing the highest level of durability. In the event of a failure at the primary region, Azure Storage will failover to the secondary region. GRS ensures that your data is durable in two separate regions.
 
-- 异地冗余存储 (GRS)。GRS 维护你的数据的六个副本。使用 GRS 时，你的数据将在主区域内复制三次，并且还在离主区域数百英里的辅助区域中复制三次，从而提供最高级别的持久性。当主区域中发生故障时，Azure 存储空间将故障转移到辅助区域。GRS 在两个不同的区域中确保你的数据持久保存。
+* **Read-access geo-redundant storage (RA-GRS)**. Read-access geo-redundant storage replicates your data to a secondary geographic location, and also provides read access to your data in the secondary location. Read-access geo-redundant storage allows you to access your data from either the primary or the secondary location, in the event that one location becomes unavailable. Read-access geo-redundant storage is the default option for your storage account by default when you create it.
 
-- 读取访问异地冗余存储 (RA-GRS)。读取访问异地冗余存储将数据复制到一个辅助地理位置，同时提供对该辅助位置中的数据的读访问权限。读取访问地域冗余存储允许你从主位置或辅助位置访问数据，以防其中一个位置不可用。默认情况下，在创建存储帐户时，读取访问异地冗余存储便是存储帐户的默认选项。
+  > [!IMPORTANT]
+  > You can change how your data is replicated after your storage account has been created, unless you specified ZRS when you created the account. However, note that you may incur an additional one-time data transfer cost if you switch from LRS to GRS or RA-GRS.
+  >
+  >
 
-    > [!IMPORTANT]
-    > 创建存储帐户后，你可以更改复制数据的方式。但请注意，如果你从 LRS 切换到 GRS 或 RA-GRS，可能会产生额外的一次性数据传输费用。
+See [Azure Storage replication](storage-redundancy.md) for additional details about storage replication options.
 
-有关存储复制选项的其他详细信息，请参阅 [Azure 存储空间复制](./storage-redundancy.md)。
+For pricing information for storage account replication, see [Azure Storage Pricing](https://www.azure.cn/pricing/details/storage/).
 
-有关存储帐户复制的定价信息，请参阅 [Azure 存储空间定价](https://www.azure.cn/pricing/details/storage/)。
+For architectural details about durability with Azure Storage, see [SOSP Paper - Azure Storage: A Highly Available Cloud Storage Service with Strong Consistency](http://blogs.msdn.com/b/windowsazurestorage/archive/2011/11/20/windows-azure-storage-a-highly-available-cloud-storage-service-with-strong-consistency.aspx).
 
-有关 Azure 存储空间持久性的体系结构详细信息，请参阅 [SOSP 论文 - Azure 存储空间：具有高度一致性的高可用云存储服务](http://blogs.msdn.com/b/windowsazurestorage/archive/2011/11/20/windows-azure-storage-a-highly-available-cloud-storage-service-with-strong-consistency.aspx)。
+## Transferring data to and from Azure Storage
+You can use the AzCopy command-line utility to copy blob, file, and table data within your storage account or across storage accounts. See [Transfer data with the AzCopy Command-Line Utility](storage-use-azcopy.md) for more information.
 
-## 将数据传输到和移出 Azure 存储空间
-你可以使用 AzCopy 命令行实用程序复制存储帐户内或跨存储帐户的 blob、文件和表数据。有关详细信息，请参阅[使用 AzCopy 命令行实用程序传输数据](./storage-use-azcopy.md)。
+AzCopy is built on top of the [Azure Data Movement Library](https://www.nuget.org/packages/Microsoft.Azure.Storage.DataMovement/), which is currently available in preview.
 
-AzCopy 在 [Azure 数据移动库](https://www.nuget.org/packages/Microsoft.Azure.Storage.DataMovement/)的基础上构建，当前以预览版提供。
+The Azure Import/Export service provides a way to import blob data into or export blob data from your storage account via a hard drive disk mailed to the Azure data center. For more information about the Import/Export service, see [Use the Azure Import/Export Service to Transfer Data to Blob Storage](./storage-import-export-service.md).
 
-Azure 导入/导出服务通过邮寄给 Azure 数据中心的硬盘驱动器，提供将 Blob 数据导入存储帐户或将其从存储帐户中导出的方法。有关导入/导出服务的详细信息，请参阅[使用 Azure 导入/导出服务将数据传输到 Blob 存储中](./storage-import-export-service.md)。
-
-## 定价
+## Pricing
 [!INCLUDE [storage-account-billing-include](../../includes/storage-account-billing-include.md)]
 
-## 存储 API、库和工具
-Azure 存储空间资源可以通过任何发出 HTTP/HTTPS 请求的语言来进行访问。另外，Azure 存储空间还为多种主流语言提供了编程库。这些库通过对细节进行处理简化了使用 Azure 存储空间的许多方面，这些细节包括同步和异步调用、操作的批处理、异常管理、自动重试、操作行为，等等。这些库当前可供下列语言和平台以及正在筹备的其他语言和平台使用：
+## Storage APIs, libraries, and tools
+Azure Storage resources can be accessed by any language that can make HTTP/HTTPS requests. Additionally, Azure Storage offers programming libraries for several popular languages. These libraries simplify many aspects of working with Azure Storage by handling details such as synchronous and asynchronous invocation, batching of operations, exception management, automatic retries, operational behavior and so forth. Libraries are currently available for the following languages and platforms, with others in the pipeline:
 
-### Azure 存储数据服务
-- [存储服务 REST API](http://msdn.microsoft.com/zh-cn/library/azure/dd179355.aspx)
-- [适用于 .NET、Windows Phone 和 Windows 运行时的存储空间客户端库](https://www.nuget.org/packages/WindowsAzure.Storage/)
-- [适用于 C++ 的存储客户端库 ](https://github.com/Azure/azure-storage-cpp)
-- [适用于 Java/Android 的存储空间客户端库](/develop/java/)
-- [适用于 Node.js 的存储空间客户端库](http://azure.github.io/azure-storage-node/)
-- [适用于 PHP 的存储空间客户端库](/develop/php/)
-- [适用于 Ruby 的存储空间客户端库](/develop/ruby/)
-- [适用于 Python 的存储空间客户端库](/develop/python/)
-- [适用于 PowerShell 1.0 的存储空间 Cmdlet](https://msdn.microsoft.com/zh-cn/library/azure/mt269418.aspx)
+### Azure Storage data services
+* [Storage Services REST API](http://msdn.microsoft.com/library/azure/dd179355.aspx)
+* [Storage Client Library for .NET, Windows Phone, and Windows Runtime](https://www.nuget.org/packages/WindowsAzure.Storage/)
+* [Storage Client Library for C++](https://github.com/Azure/azure-storage-cpp)
+* [Storage Client Library for Java/Android](https://wwww.azure.cn/develop/java/)
+* [Storage Client Library for Node.js](http://azure.github.io/azure-storage-node/)
+* [Storage Client Library for PHP](https://wwww.azure.cn/develop/php/)
+* [Storage Client Library for Ruby](https://wwww.azure.cn/develop/ruby/)
+* [Storage Client Library for Python](https://wwww.azure.cn/develop/python/)
+* [Storage Cmdlets for PowerShell 1.0](https://msdn.microsoft.com/library/azure/mt269418.aspx)
 
-### Azure 存储空间管理服务
-- [存储资源提供程序 REST API 参考](https://msdn.microsoft.com/zh-cn/library/azure/mt163683.aspx)
-- [适用于 .NET 的存储资源提供程序客户端库](https://msdn.microsoft.com/zh-cn/library/azure/mt131037.aspx)
-- [适用于 PowerShell 1.0 的存储资源提供程序 Cmdlet](https://msdn.microsoft.com/zh-cn/library/azure/mt607151.aspx)
-- [存储服务管理 REST API (Classic)](https://msdn.microsoft.com/zh-cn/library/azure/ee460790.aspx)
+### Azure Storage management services
+* [Storage Resource Provider REST API Reference](https://docs.microsoft.com/rest/api/storagerp/)
+* [Storage Resource Provider Client Library for .NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.storage)
+* [Storage Resource Provider Cmdlets for PowerShell 1.0](https://docs.microsoft.com/powershell/storage/)
+* [Storage Service Management REST API (Classic)](https://msdn.microsoft.com/library/azure/ee460790.aspx)
 
-### Azure 存储空间数据移动服务
-- [存储导入/导出服务 REST API](https://docs.microsoft.com/en-us/rest/api/storageimportexport/)
-- [适用于 .NET 的存储数据移动客户端库](https://www.nuget.org/packages/Microsoft.Azure.Storage.DataMovement/)
+### Azure Storage data movement services
+* [Storage Import/Export Service REST API](storage-import-export-service.md)
+* [Storage Data Movement Client Library for .NET](https://www.nuget.org/packages/Microsoft.Azure.Storage.DataMovement/)
 
-### 工具和实用程序
+### Tools and utilities
+* [Azure Storage Explorer](http://go.microsoft.com/fwlink/?LinkID=822673&clcid=0x409)
+* [Azure Storage Client Tools](storage-explorers.md)
+* [Azure SDKs and Tools](https://www.azure.cn/downloads/)
+* [Azure Storage Emulator](http://www.microsoft.com/download/details.aspx?id=43709)
+* [Azure PowerShell](https://docs.microsoft.com/powershell/azureps-cmdlets-docs)
+* [AzCopy Command-Line Utility](http://aka.ms/downloadazcopy)
 
-- [Azure 存储空间资源管理器](http://storageexplorer.com/)
-- [Azure 存储客户端工具](./storage-explorers.md)
-- [Azure SDK 和工具](/downloads/)
-- [Azure 存储模拟器](http://www.microsoft.com/en-in/download/details.aspx?id=43709)
-- [Azure PowerShell](../powershell-install-configure.md)
-- [AzCopy 命令行实用程序](http://aka.ms/downloadazcopy)
+## Next steps
+To learn more about Azure Storage, explore these resources:
 
-##<a id="next-steps"></a> 后续步骤
+### Documentation
+- [Azure Storage Documentation](./index.md)
+- [Create a storage account](./storage-create-storage-account.md)
+- [Get started with Azure Storage in five minutes](./storage-getting-started-guide.md)
 
-若要了解有关 Azure 存储空间的详细信息，请参阅以下资源：
+### For administrators
+* [Using Azure PowerShell with Azure Storage](storage-powershell-guide-full.md)
+* [Using Azure CLI with Azure Storage](storage-azure-cli.md)
 
-### 文档
-- [Azure 存档文档](./index.md)
-- [创建存储帐户](./storage-create-storage-account.md)
-- [五分钟内开始使用 Azure 存储](./storage-getting-started-guide.md)
+### For .NET developers
+* [Get started with Azure Blob storage using .NET](storage-dotnet-how-to-use-blobs.md)
+* [Get started with Azure Table storage using .NET](storage-dotnet-how-to-use-tables.md)
+* [Get started with Azure Queue storage using .NET](storage-dotnet-how-to-use-queues.md)
+* [Get started with Azure File storage on Windows](storage-dotnet-how-to-use-files.md)
 
-### 面向管理员
+### For Java/Android developers
+* [How to use Blob storage from Java](storage-java-how-to-use-blob-storage.md)
+* [How to use Table storage from Java](storage-java-how-to-use-table-storage.md)
+* [How to use Queue storage from Java](storage-java-how-to-use-queue-storage.md)
+* [How to use File storage from Java](storage-java-how-to-use-file-storage.md)
 
-- [对 Azure 存储服务使用 Azure PowerShell](./storage-powershell-guide-full.md)
-- [将 Azure CLI 用于 Azure 存储空间](./storage-azure-cli.md)
+### For Node.js developers
+* [How to use Blob storage from Node.js](storage-nodejs-how-to-use-blob-storage.md)
+* [How to use Table storage from Node.js](storage-nodejs-how-to-use-table-storage.md)
+* [How to use Queue storage from Node.js](storage-nodejs-how-to-use-queues.md)
 
-### 面向 .NET 开发人员
+### For PHP developers
+* [How to use Blob storage from PHP](storage-php-how-to-use-blobs.md)
+* [How to use Table storage from PHP](storage-php-how-to-use-table-storage.md)
+* [How to use Queue storage from PHP](storage-php-how-to-use-queues.md)
 
-- [通过 .NET 开始使用 Azure Blob 存储](./storage-dotnet-how-to-use-blobs.md)
-- [通过 .NET 开始使用 Azure 表存储](./storage-dotnet-how-to-use-tables.md)
-- [通过 .NET 开始使用 Azure 队列存储](./storage-dotnet-how-to-use-queues.md)
-- [在 Windows 上开始使用 Azure 文件存储](./storage-dotnet-how-to-use-files.md)
+### For Ruby developers
+* [How to use Blob storage from Ruby](storage-ruby-how-to-use-blob-storage.md)
+* [How to use Table storage from Ruby](storage-ruby-how-to-use-table-storage.md)
+* [How to use Queue storage from Ruby](storage-ruby-how-to-use-queue-storage.md)
 
-### 面向 Java/Android 开发人员
-
-- [如何通过 Java 使用 Blob 存储](./storage-java-how-to-use-blob-storage.md)
-- [如何通过 Java 使用表存储](./storage-java-how-to-use-table-storage.md)
-- [如何通过 Java 使用队列存储](./storage-java-how-to-use-queue-storage.md)
-- [如何通过 Java 使用文件存储](./storage-java-how-to-use-file-storage.md)
-
-### 面向 Node.js 开发人员
-
-- [如何通过 Node.js 使用 Blob 存储](./storage-nodejs-how-to-use-blob-storage.md)
-- [如何通过 Node.js 使用表存储](./storage-nodejs-how-to-use-table-storage.md)
-- [如何通过 Node.js 使用队列存储](./storage-nodejs-how-to-use-queues.md)
-
-### 面向 PHP 开发人员
-
-- [如何通过 PHP 使用 Blob 存储](./storage-php-how-to-use-blobs.md)
-- [如何通过 PHP 使用表存储](./storage-php-how-to-use-table-storage.md)
-- [如何通过 PHP 使用队列存储](./storage-php-how-to-use-queues.md)
-
-### 面向 Ruby 开发人员
-
-- [如何通过 Ruby 使用 Blob 存储](./storage-ruby-how-to-use-blob-storage.md)
-- [如何通过 Ruby 使用表存储](./storage-ruby-how-to-use-table-storage.md)
-- [如何通过 Ruby 使用队列存储](./storage-ruby-how-to-use-queue-storage.md)
-
-### 面向 Python 开发人员
-* [如何通过 Python 使用 Blob 存储](./storage-python-how-to-use-blob-storage.md)
-- [如何通过 Python 使用表存储](./storage-python-how-to-use-table-storage.md)
-- [如何通过 Python 使用队列存储](./storage-python-how-to-use-queue-storage.md)
-- [如何通过 Python 使用文件存储](./storage-python-how-to-use-file-storage.md)
-
-<!---HONumber=Mooncake_0313_2017-->
-<!--Update_Description: add reference to import/export service; remove duplicate link references-->
+### For Python developers
+* [How to use Blob storage from Python](storage-python-how-to-use-blob-storage.md)
+* [How to use Table storage from Python](storage-python-how-to-use-table-storage.md)
+* [How to use Queue storage from Python](storage-python-how-to-use-queue-storage.md)
+* [How to use File storage from Python](storage-python-how-to-use-file-storage.md)

@@ -1,25 +1,23 @@
-默认情况下，可匿名调用移动应用后端中的 API。接下来，需限制为仅可访问已验证的客户端。
+By default, APIs in a Mobile Apps back end can be invoked anonymously. Next, you need to restrict access to only authenticated clients.  
 
-* **Node.js 后端（通过 Azure 门户）**：
+* **Node.js back end (via the Azure portal)** :  
 
-    在移动应用的设置中，单击“简易表”并选择表。单击“更改权限”，为所有权限选择“仅已验证的访问”，然后单击“保存”。
-* **.NET 后端 (C#)**：
+    In your Mobile Apps settings, click **Easy Tables** and select your table. Click **Change permissions**, select **Authenticated access only** for all permissions, and then click **Save**.
+* **.NET back end (C#)**:  
 
-    在服务器项目中，导航到“控制器”>“TodoItemController.cs”。将 `[Authorize]` 属性添加到“TodoItemController”类，如下所示。若要限制为仅可访问特定方法，还可只向这些方法应用此属性（而非类）。重新发布服务器项目。
+    In the server project, navigate to **Controllers** > **TodoItemController.cs**. Add the `[Authorize]` attribute to the **TodoItemController** class, as follows. To restrict access only to specific methods, you can also apply this attribute just to those methods instead of the class. Republish the server project.
 
     ```
     [Authorize]
     public class TodoItemController : TableController<TodoItem>
     ```
 
-* **Node.js 后端（通过 Node.js 代码）**：
+* **Node.js backend (via Node.js code)** :  
 
-    若要访问表时需验证身份，请向 Node.js 服务器脚本添加以下行：
+    To require authentication for table access, add the following line to the Node.js server script:
 
     ```
     table.access = 'authenticated';
     ```
 
-    有关更多详细信息，请参阅[如何：要求在访问表时进行身份验证](../articles/app-service-mobile/app-service-mobile-node-backend-how-to-use-server-sdk.md#howto-tables-auth)。若要了解如何从网站下载快速入门代码项目，请参阅[如何：使用 Git 下载 Node.js 后端快速入门代码项目](../articles/app-service-mobile/app-service-mobile-node-backend-how-to-use-server-sdk.md#download-quickstart)。
-
-<!---HONumber=Mooncake_0116_2017-->
+    For more details, see [How to: Require authentication for access to tables](../articles/app-service-mobile/app-service-mobile-node-backend-how-to-use-server-sdk.md#howto-tables-auth). To learn how to download the quickstart code project from your site, see [How to: Download the Node.js backend quickstart code project using Git](../articles/app-service-mobile/app-service-mobile-node-backend-how-to-use-server-sdk.md#download-quickstart).

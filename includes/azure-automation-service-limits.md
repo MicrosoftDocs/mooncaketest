@@ -1,11 +1,9 @@
-资源|最大限制
----|---
-每个自动化帐户每 30 秒可以提交的新作业的最大数量（非计划的作业）|100
-每个自动化帐户相同时间实例并发运行的作业的最大数量（非计划的作业）|200
-每个自动化帐户每 30 秒可以导入的模块的最大数量|5
-一个模块的最大大小|100 MB
-作业运行时间 - 免费层|每个订阅每个日历月 500 分钟
-给定到作业的最大内存量 |400 MB
-每个作业允许的最大网络套接字数量|1000
-
-<!---HONumber=Mooncake_0905_2016-->
+| Resource | Maximum Limit |
+| --- | --- |
+| Max number of new jobs that can be submitted every 30 seconds per Automation Account (non Scheduled jobs) |100 |
+| Max number of concurrent running jobs at the same instance of time per Automation Account (non Scheduled jobs) |200 |
+| Max number of modules that can be imported every 30 seconds per Automation Account |5 |
+| Max size of a Module |100 MB |
+| Job Run Time - Free tier |500 minutes per subscription per calendar month |
+| Max amount of memory given to a job |400 MB |
+| Max number of network sockets allowed per job |1000 |

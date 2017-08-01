@@ -1,10 +1,10 @@
 ---
-title: SQL 数据库性能：服务层 | Azure
-description: 比较 SQL 数据库服务层。
-keywords: 数据库选项,数据库性能
+title: 'SQL Database performance: Service tiers | Microsoft Docs'
+description: Compare SQL Database service tiers.
+keywords: database options,database performance
 services: sql-database
 documentationcenter: ''
-author: CarlRabeler
+author: janeng
 manager: jhubbard
 editor: ''
 
@@ -12,73 +12,100 @@ ms.assetid: f5c5c596-cd1e-451f-92a7-b70d4916e974
 ms.service: sql-database
 ms.custom: overview
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-management
-ms.date: 01/11/2017
-wacn.date: 03/16/2017
-ms.author: carlrab; janeng
+wms.date: 03/06/2017
+ms.author: janeng
+
 ---
+# SQL Database options and performance: Understand what's available in each service tier
 
-# SQL 数据库选项和性能：了解每个服务层提供的功能
-[Azure SQL 数据库](./sql-database-technical-overview.md)提供了三个具有多个性能级别的服务层（**基本**、**标准**、**高级**和**高级 RS**），用于处理不同的工作负荷。更高的性能级别提供不断增加的资源，旨在递增式提供更高的吞吐量。无需停机[即可动态更改服务层和性能级别](./sql-database-scale-up.md)。基本、标准和高级服务层都提供 99.99% 的运行时间 SLA、灵活的业务连续性选项、安全功能和按小时计费。高级 RS 服务层提供和高级服务层相同的性能级别、安全功能和业务连续性，以及相对低的 SLA。
+[Azure SQL Database](sql-database-technical-overview.md) offers four service tiers: **Basic**, **Standard**, **Premium**, and **Premium RS**. Each service tier has multiple performance levels to handle different workloads. Higher performance levels provide additional resources designed to deliver increasingly higher throughput. You can change service tiers and performance levels dynamically without downtime. Basic, Standard, and Premium service tiers all have an uptime SLA of 99.99%, flexible business continuity options, security features, and hourly billing. The Premium RS tier provides the same performance levels, security features and business continuity features as the Premium tier albeit at a reduced SLA.
 
->[!IMPORTANT]
->高级 RS 数据库运行的冗余副本的数量比标准和高级层的数据库低。所以当遇到服务失败时，你可能需要通过一个最多滞后5分钟的备份来恢复数据库。
+> [!IMPORTANT]
+> Premium RS databases run with a lower number of redundant copies than Premium or Standard databases. So, in the event of a service failure, you may need to recover your database from a backup with up to a 5-minute lag.
+>
 
-可以在所选[性能级别](./sql-database-service-tiers.md#single-database-service-tiers-and-performance-levels)上使用专用资源创建单一数据库。还可以在资源在数据库之间共享的[弹性池](./sql-database-service-tiers.md#elastic-pool-service-tiers-and-performance-in-edtus)中管理多个数据库。可用于单一数据库的资源以数据库事务单位 (DTU) 表示，可用于弹性池的资源则用弹性 DTU (eDTU) 表示。有关 DTU 和 eDTU 的详细信息，请参阅[什么是 DTU？](./sql-database-what-is-a-dtu.md)。
+You can create single databases with dedicated resources within a service tier at a specific [performance level](sql-database-service-tiers.md#single-database-service-tiers-and-performance-levels). You can also create databases within an [elastic pool](sql-database-service-tiers.md#elastic-pool-service-tiers-and-performance-in-edtus) in which the resources are shared across multiple databases. The resources available for single databases are expressed in terms of Database Transaction Units (DTUs) and for elastic pools in terms of elastic Database Transaction Units (eDTUs). For more on DTUs and eDTUs, see [What is a DTU?](sql-database-what-is-a-dtu.md) 
 
-在这两种情况下，服务层包括“基本”、“标准”和“高级”。
+## Choosing a service tier
+The following table provides examples of the tiers best suited for different application workloads.
 
-## 选择服务层
-下表提供了最适用于不同应用程序工作负荷的层的示例。
-
-| 服务层 | 目标工作负荷 |
+| Service tier | Target workloads |
 | :--- | --- |
-| **基本** | 最适合小型数据库，通常支持在给定时间执行一个活动操作。示例包括用于开发或测试的数据库，或不常使用的小型应用程序。 |
-| **标准** |云应用程序的转到选项，提供低到中等的 IO 性能要求，并支持多个并发查询。示例包括工作组或 Web 应用程序。 |
-| **高级** | 专为高事务量设计，提供高 IO 性能要求，并支持许多并发用户。示例包括支持任务关键型应用程序的数据库。 |
-| **高级 RS** | 专为具有 IO 密集型工作负载但不需要最高可用性保证的客户设计。示例包括测试高性能工作负载，或分析数据库不是记录系统的工作负载。 |
+| **Basic** | Best suited for a small database, supporting typically one single active operation at a given time. Examples include databases used for development or testing, or small-scale infrequently used applications. |
+| **Standard** |The go-to option for cloud applications with low to medium IO performance requirements, supporting multiple concurrent queries. Examples include workgroup or web applications. |
+| **Premium** | Designed for high transactional volume with high IO performance requirements, supporting many concurrent users. Examples are databases supporting mission critical applications. |
+| **Premium RS** | Designed for IO-intensive workloads that do not require the highest availability guarantees. Examples include testing high-performance workloads, or an analytical workload where the database is not the system of record. |
+|||
 
-首先确定是要运行单一数据库，还是要运行共享资源的组数据库。查看[弹性池注意事项](./sql-database-elastic-pool-guidance.md)。若要确定服务层，首先确定所需的最小数据库功能：
+First decide if you want to run a single database with a defined amount of dedicated resource or if you want to share a pool of resources across a group of databases. Review the [elastic pool considerations](sql-database-elastic-pool-guidance.md). To decide on a service tier, start by determining the minimum database features that you need:
 
-| **服务层功能** | **基本** | **标准** | **高级** | **高级 RS**|
+| **Service tier features** | **Basic** | **Standard** | **Premium** | **Premium RS**|
 | :-- | --: | --: | --: | --: |
-| 单个数据库的最大数据库大小 | 2 GB | 250 GB | 4 TB*  | 500 GB  |
-| 弹性池的最大总存储 | 117 GB | 1200 GB | 750 GB | 750 GB |
-| 每个池的最大数据库数 | 400  | 400 | 50 | 50 |
-| 数据库备份保留期 | 7 days | 35 days | 35 days | 35 days |
+| Maximum individual database size | 2 GB | 250 GB | 4 TB*  | 500 GB  |
+| Maximum total storage in an elastic pool | 117 GB | 1200 GB | 750 GB | 750 GB |
+| Maximum number of databases per pool | 400  | 400 | 50 | 50 |
+| Database backup retention period | 7 days | 35 days | 35 days | 35 days |
 ||||||
 
-确定最低服务层后，就可以确定数据库的性能级别（DTU 数）。标准 S2 和 S3 性能级别在许多情况下是好的起点。对于具有较高 CPU 或 IO 要求的数据库，高级性能级别是合适的起点。与最高的标准性能级别相比，高级性能级别提供更多 CPU 和至少高 10 倍的 IO。
+Once you have determined the minimum service tier, you are ready to determine the performance level for the database (the number of DTUs). The standard S2 and S3 performance levels are often a good starting point. For databases with high CPU or IO requirements, the Premium performance levels are the right starting point. Premium offers more CPU and starts at 10x more IO compared to the highest Standard performance level.
 
-初始选取性能级别后，可以根据实际经验动态增加或减少[单个数据库](./sql-database-scale-up.md)或[弹性池](./sql-database-elastic-pool-manage-portal.md#change-performance-settings-of-a-pool)。对于迁移方案，还可以使用 [DTU 计算器](http://dtucalculator.azurewebsites.net/)估计所需的 DTU 数。
+## Single database service tiers and performance levels
+For single databases, there are multiple performance levels within each service tier. You have the flexibility to choose the level that best meets your workload’s demands using the [Azure portal preview](sql-database-manage-single-databases-portal.md), [PowerShell](sql-database-manage-single-databases-powershell.md), [Transact-SQL](sql-database-manage-single-databases-tsql.md), C#, and the REST API. 
 
-##<a name="standalone-database-service-tiers-and-performance-levels"></a> 单一数据库服务层和性能级别
-对于单一数据库，每个服务层内都具有多个性能级别。你可以灵活选择最能满足你的工作负荷需求的级别。如果你需要增加或减少工作负荷，可以轻松更改数据库层。有关详细信息，请参阅[更改数据库服务层和性能级别](./sql-database-scale-up.md)。
+Regardless of the number of databases hosted, your database gets a guaranteed set of resources and the expected performance characteristics of your database are not affected.
 
-尽管有多个托管的数据库，你的数据库仍可确保获得一组资源，并且数据库的预期性能特征不受影响。
+[!INCLUDE [SQL DB service tiers table](../../includes/sql-database-service-tiers-table.md)]
 
-[!INCLUDE [SQL 数据库服务层表](../../includes/sql-database-service-tiers-table.md)]
+> [!NOTE]
+> For a detailed explanation of all other rows in this service tiers table, see [Service tier capabilities and limits](sql-database-performance-guidance.md#service-tier-capabilities-and-limits).
+> 
 
->[!NOTE]
-> 如需本服务层表中所有其他行的详细说明，请参阅[服务层功能和限制](./sql-database-performance-guidance.md#service-tier-capabilities-and-limits)。
+## Scaling up or scaling down a single database
 
-##<a name="elastic-pool-service-tiers-and-performance-in-edtus"></a><a name="elastic-database-pool-service-tiers-and-performance-in-edtus"></a><a name="single-database-service-tiers-and-performance-levels"></a> 弹性池服务层和性能 (eDTU)
+After initially picking a service tier and performance level, you can scale a single database up or down dynamically based on actual experience. If you need to scale up or down, you can easily change the tiers of your database using the [Azure portal preview](sql-database-manage-single-databases-portal.md), [PowerShell](sql-database-manage-single-databases-powershell.md), [Transact-SQL](sql-database-manage-single-databases-tsql.md), C#, and the REST API. 
 
-池允许数据库共享和使用 eDTU 资源，而无需为该池中的每个数据库分配特定性能级别。例如，标准池中的单一数据库可使用 0 个 eDTU 到最大数据库 eDTU 数（配置池时设置的）运转。弹性池允许多个具有不同工作负荷的数据库有效地使用在整个池中都可用的 eDTU 资源。有关详细信息，请参阅[弹性池的价格和性能注意事项](./sql-database-elastic-pool-guidance.md)。
+> [!VIDEO https://channel9.msdn.com/Blogs/Azure/Azure-SQL-Database-dynamically-scale-up-or-scale-down/player]
+>
 
-下表描述了池服务层的特征。
+Changing the service tier and/or performance level of a database creates a replica of the original database at the new performance level, and then switches connections over to the replica. No data is lost during this process but during the brief moment when we switch over to the replica, connections to the database are disabled, so some transactions in flight may be rolled back. This window varies, but is on average under 4 seconds, and in more than 99% of cases is less than 30 seconds. If there are large numbers of transactions in flight at the moment connections are disabled, this window may be longer.  
 
-[!INCLUDE [用于弹性池的 SQL 数据库服务层表](../../includes/sql-database-service-tiers-table-elastic-db-pools.md)]
+The duration of the entire scale-up process depends on both the size and service tier of the database before and after the change. For example, a 250 GB database that is changing to, from, or within a Standard service tier, should complete within 6 hours. For a database of the same size that is changing performance levels within the Premium service tier, it should complete within 3 hours.
 
-池中的每个数据库也遵循该层的单一数据库特征。例如，基本池具有每池最大会话数为 4800 - 28800 的限制，但该基本池中单个数据库具有 300 个会话数的数据库限制。
+* To downgrade a database, the database should be smaller than the maximum allowed size of the target service tier. 
+* When upgrading a database with [Geo-Replication](sql-database-geo-replication-portal.md) enabled, you must first upgrade its secondary databases to the desired performance tier before upgrading the primary database.
+* When downgrading from a Premium service tier, you must first terminate all Geo-Replication relationships. You can follow the steps described in the [Recover from an outage](sql-database-disaster-recovery.md) topic to stop the replication process between the primary and the active secondary databases.
+* The restore service offerings are different for the various service tiers. If you are downgrading you may lose the ability to restore to a point in time, or have a lower backup retention period. For more information, see [Azure SQL Database Backup and Restore](sql-database-business-continuity.md).
+* The new properties for the database are not applied until the changes are complete.
 
-## 后续步骤
+> [!IMPORTANT]
+> For detailed steps, see [Manage a single database in the Azure portal preview](sql-database-manage-single-databases-portal.md), [Manage a single database with PowerShell](sql-database-manage-single-databases-powershell.md), or [Manage a single database with Transact-SQL](sql-database-manage-single-databases-tsql.md).
+>
 
-* 了解有关[弹性池](./sql-database-elastic-pool-guidance.md)和[弹性池的价格和性能注意事项](./sql-database-elastic-pool-guidance.md)的详细信息。
-* 了解如何[监视、管理弹性池和调整其大小](./sql-database-elastic-pool-manage-portal.md)以及如何[监视单个数据库的性能](./sql-database-single-database-monitor.md)。
-* 现在，你已了解有关 SQL 数据库层的信息，可使用 [1 元帐户](https://www.azure.cn/pricing/1rmb-trial/)来试用这些层，并了解[如何创建你的第一个 SQL 数据库](./sql-database-get-started.md)。
+## Elastic pool service tiers and performance in eDTUs
 
-<!---HONumber=Mooncake_0120_2017-->
-<!--update: add sub title "单一数据库服务层和性能级别"-->
+Pools allow databases to share and consume eDTU resources without needing to assign a specific performance level to each database in the pool. For example, a single database in a Standard pool can go from using 0 eDTUs to the maximum database eDTU you set up when you configure the pool. Pools allow multiple databases with varying workloads to efficiently use eDTU resources available to the entire pool. See [Price and performance considerations for an elastic pool](sql-database-elastic-pool-guidance.md) for details.
+
+The following table describes the characteristics of pool service tiers.
+
+[!INCLUDE [SQL DB service tiers table for elastic pools](../../includes/sql-database-service-tiers-table-elastic-pools.md)]
+
+Each database within a pool also adheres to the single database characteristics for that tier. For example, the Basic pool has a limit for max sessions per pool of 4800 - 28800, but an individual database within a Basic pool has a database limit of 300 sessions.
+
+## Scaling up or scaling down an elastic pool
+
+After initially picking a service tier and performance level, you can scale the elastic pool up or down dynamically based on actual experience. 
+
+* Changing the min eDTUs per database or max eDTUs per database typically completes in five minutes or less.
+* Time to change the pool size (eDTUs) depends on the combined size of all databases in the pool. Changes average 90 minutes or less per 100 GB. For example, if the total space of all databases in the pool is 200 GB, then the expected latency for changing the pool eDTU per pool is 3 hours or less.
+
+For detailed steps, see [Manage an elastic pool in the Azure portal preview](sql-database-elastic-pool-manage-portal.md), [Manage an elastic pool with Powershell](sql-database-elastic-pool-manage-powershell.md), [Manage an elastic pool with Transact-SQL](sql-database-elastic-pool-manage-tsql.md), or [Manage an elastic pool with C#](sql-database-elastic-pool-manage-csharp.md).
+
+## Next steps
+
+* Learn the details of [elastic pools](sql-database-elastic-pool-guidance.md) and [price and performance considerations for elastic pools](sql-database-elastic-pool-guidance.md).
+* Learn how to [Monitor, manage, and resize elastic pools](sql-database-elastic-pool-manage-portal.md) and [Monitor the performance of single databases](sql-database-single-database-monitor.md).
+* Now that you know about the SQL Database tiers, try them out with a [1rmb account](https://www.azure.cn/pricing/1rmb-trial/) and learn [how to create your first SQL database](sql-database-get-started.md).
+* For migration scenarios, use the [DTU Calculator](http://dtucalculator.azurewebsites.net/) to approximate the number of DTUs needed. 

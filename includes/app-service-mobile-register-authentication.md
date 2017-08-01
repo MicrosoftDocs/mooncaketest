@@ -1,13 +1,11 @@
-首先，需要在标识提供者网站上注册应用，然后在移动应用后端设置提供者生成的凭据。
+First, you need to register your app at an identity provider's site, and then you will set the provider-generated credentials in the Mobile App backend.
 
-1. 请按照以下提供者特定的说明来配置首选标识提供者：
+1. Configure your preferred identity provider by following the provider-specific instructions: 
 
     + [Azure Active Directory](../articles/app-service-mobile/app-service-mobile-how-to-configure-active-directory-authentication.md)
     + [Microsoft](../articles/app-service-mobile/app-service-mobile-how-to-configure-microsoft-authentication.md)
 
-2. 为要在应用中支持的各提供者重复上述步骤。
+2. Repeat the previous steps for each provider you want to support in your app.
 
 <!-- URLs. -->
 [Azure portal]: https://portal.azure.cn/
-
-<!---HONumber=Mooncake_0919_2016-->

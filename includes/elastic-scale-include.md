@@ -1,5 +1,3 @@
-#### 了解详细信息
+#### Learn More
 
-尚未使用弹性数据库工具？ 请查看我们的[入门指南](../articles/sql-database/sql-database-elastic-scale-get-started.md)。有关问题，请在 [SQL 数据库论坛](https://social.msdn.microsoft.com/Forums/zh-cn/home?forum=windowsazurezhchs)上联系我们和发出功能请求。
-
-<!---HONumber=69-->
+Not using elastic database tools yet? Check out our [Getting Started Guide](../articles/sql-database/sql-database-elastic-scale-get-started.md) and [Documentation Map](/documentation/articles/sql-database-elastic-scale-documentation-map/).  For questions, please reach out to us on the [SQL Database forum](https://social.msdn.microsoft.com/Forums/zh-cn/home?forum=windowsazurezhchs) and for feature requests.

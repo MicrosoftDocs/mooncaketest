@@ -1,9 +1,11 @@
-Azure 虚拟机支持附加许多的数据磁盘。为了获得最佳性能，你需要限制附加到虚拟机的、重度使用的磁盘数，以避免可能的性能限制。只要不是所有磁盘在同一时间都重度使用，存储帐户就可以支持更多的磁盘。
+An Azure virtual machine supports attaching a number of data disks. For optimal performance, you will want to limit the number of highly utilized disks attached to the virtual machine to avoid possible throttling. If all disks are not being highly utilized at the same time, the storage account can support a larger number disks.
 
-- **标准存储帐户：**标准存储帐户的总请求率上限为 20,000 IOPS。在标准存储帐户中，所有虚拟机磁盘的 IOPS 总数不应超过此限制。
+- **For Azure Managed Disks:** Managed Disks count limit is regional for the subscription. The default soft limit is 2,000 per region per subscription. To increase your limit, contact Azure support.
 
-    你可以根据请求率的限制，大致计算单个标准存储帐户可支持的重度使用磁盘数。例如，对于基本层 VM，重度使用的磁盘数上限约为 66（每个磁盘 20,000/300 IOPS）；对于标准层 VM，约为 40（每个磁盘 20,000/500 IOPS），如下表中所示。
+    Managed Snapshots and Images are counted against the Managed Disks limit.
 
-- **高级存储帐户：**高级存储帐户的总吞吐量速率上限为 50 Gbps。所有 VM 磁盘的总吞吐量不应超过此限制。
+- **For standard storage accounts:** A standard storage account has a maximum total request rate of 20,000 IOPS. The total IOPS across all of your virtual machine disks in a standard storage account should not exceed this limit.
+  
+    You can roughly calculate the number of highly utilized disks supported by a single standard storage account based on the request rate limit. For example, for a Basic Tier VM, the maximum number of highly utilized disks is about 66 (20,000/300 IOPS per disk), and for a Standard Tier VM, it is about 40 (20,000/500 IOPS per disk), as shown in the table below. 
+- **For premium storage accounts:** A premium storage account has a maximum total throughput rate of 50 Gbps. The total throughput across all of your VM disks should not exceed this limit.
 
-<!---HONumber=Mooncake_0313_2017-->

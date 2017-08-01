@@ -1,33 +1,34 @@
-1. 登录到 [Azure 门户预览][]。
+1. Log on to the [Azure portal][].
 
-2. 在门户的左侧导航窗格中，依次单击“新建”，搜索“Service Bus"。
-4. 在“创建命名空间”对话框中，输入命名空间名称。系统会立即检查该名称是否可用。
+2. In the left navigation pane of the portal, click **New**, then click **Enterprise Integration**, and then click **Service Bus**.
 
-5. 在确保命名空间名称可用后，选择定价层（基本或标准）。
+4. In the **Create namespace** dialog, enter a namespace name. The system immediately checks to see if the name is available.
 
-7. 在“订阅”字段中，选择要在其中创建命名空间的 Azure 订阅。
+5. After making sure the namespace name is available, choose the pricing tier (Basic, Standard, or Premium).
 
-9. 在“资源组”字段中，选择该命名空间将存在于的现有资源组，或者创建一个新资源组。
+7. In the **Subscription** field, choose an Azure subscription in which to create the namespace.
 
-8. 在“位置”中，选择将在其中托管该命名空间的国家或地区。
+9. In the **Resource group** field, choose an existing resource group in which the namespace will live, or create a new one.      
 
-    ![创建命名空间][create-namespace]  
+8. In **Location**, choose the country or region in which your namespace should be hosted.
 
-6. 单击“创建”。系统现已创建命名空间并已将其启用。您可能需要等待几分钟，因为系统将为您的帐户配置资源。
+    ![Create namespace][create-namespace]
 
-### 获取管理凭据
+6. Click **Create**. The system now creates your namespace and enables it. You might have to wait several minutes as the system provisions resources for your account.
 
-1. 在命名空间列表中，单击新建的命名空间名称。
+### Obtain the management credentials
 
-3. 在命名空间边栏选项卡中，单击“共享访问策略”。
+1. In the list of namespaces, click the newly created namespace name.
 
-4. 在“共享访问策略”边栏选项卡中，单击“RootManageSharedAccessKey”。
+3. In the namespace blade, click **Shared access policies**.
 
-    ![连接信息][connection-info]  
+4. In the **Shared access policies** blade, click **RootManageSharedAccessKey**.
 
-5. 在“策略: RootManageSharedAccessKey”边栏选项卡中，单击“连接字符串 Cprimary 密钥”旁边的“复制”按钮，将连接字符串复制到剪贴板以供将来使用。将此值粘贴到记事本或其他某个临时位置。
+    ![connection-info][connection-info]
 
-    ![连接字符串][connection-string]  
+5. In the **Policy: RootManageSharedAccessKey** blade, click the copy button next to **Connection string–primary key**, to copy the connection string to your clipboard for later use. Paste this value into Notepad or some other temporary location.
+
+    ![connection-string][connection-string]
 
 <!--Image references-->
 
@@ -36,7 +37,4 @@
 [connection-string]: ./media/service-bus-create-namespace-portal/connection-string.png
 
 <!--Reference style links - using these makes the source content way more readable than using inline links-->
-
-[Azure 门户预览]: https://portal.azure.cn
-
-<!---HONumber=Mooncake_1121_2016-->
+[Azure portal]: https://portal.azure.cn

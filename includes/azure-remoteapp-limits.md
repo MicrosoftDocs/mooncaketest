@@ -1,22 +1,27 @@
-|资源 | 默认限制|
+|Resource | Default limit|
 |--------------|--------|
-|每个用户的集合数| 1|
-|每个集合的发布应用数|	100|	
-|集合试用期| 30 天|
-|试用集合数| 每个订阅 2 个|
-|每个试用集合的用户数| 10|
-|试用模板映像数|	25|
-|付费集合数| 3（你可以请求增加）|
-|付费模板映像数| 25|	
-|用户 - 基本层*| 400（默认）/800（最大）|
-|用户 - 标准层*| 250（默认）/500（最大）|
-|订阅中所有集合的并发连接数| 5000（你可以请求增加）|
-|每个集合每个用户的用户数据存储 (UPD)| 50 GB|
-|空闲超时| 4 小时|
-|断开连接超时| 4 小时|
+|Collections per user| 1|
+|Published apps per collection|	100|
+|Trial collection duration| 30 days|
+|Trial collections| 2 per subscription|
+|Users per trial collection| 10|
+|Trial template images|	25|
+|Paid collections| 3 |
+|Paid template images| 25|
+|Users - basic tier*| 400 (default)/ 800 (maximum)|
+|Users - standard tier*| 250 (default)/ 500 (maximum)|
+|Users- premium tier| 100 default.|
+|Users - premium plus tier | 50 default.|
+|Concurrent connections across all collections in a subscription| 5000|
+|User data storage (UPD) per user per collection| 50 GB|
+|Idle timeout| 4 hours|
+|Disconnected timeout| 4 hours|
 
-** 提高用户限制后不能超过上面列出的最大限制。用户数由用于集合的 VM 数决定。对于基本层，每个 VM 有 16 个用户；对于标准层，每个 VM 有 10 个用户。
+*User limits in basic and standard tiers cannot be increased beyond the maximum limit listed above. 
 
-若要请求增加付费集合数或并发连接数，请将包含需求详细信息（包括你的订阅 ID）的电子邮件发送到 [remoteappforum@microsoft.com](mailto:remoteappforum@microsoft.com)。
+The number of users is determined by the number of VMs used for your collection:
 
-<!---HONumber=71-->
+- Basic = 16 users per VM
+- Standard = 10 users per VM
+- Premium = 4 users per VM
+- Premium plus = 2 users per VM

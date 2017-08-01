@@ -53,6 +53,7 @@
   ],
   "notification_subscribers": [],
   "branches_to_filter": [],
+  "continue_with_document_error": true,
   "skip_source_output_uploading": false,
   "need_preview_pull_request": false,
   "dependent_repositories": [
@@ -60,7 +61,7 @@
       "path_to_root": "_themes",
       "url": "https://github.com/Microsoft/templates.docs.msft.zh-cn",
       "branch": "headerfooterpoc",
-      "branch_mapping": {} 
+      "branch_mapping": {}
     }
   ],
   "need_generate_pdf_url_template": false
